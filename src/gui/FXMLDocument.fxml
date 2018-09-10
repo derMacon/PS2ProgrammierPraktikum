@@ -273,6 +273,7 @@
          <menus>
             <Menu mnemonicParsing="false" text="Datei">
                <items>
+                  <MenuItem mnemonicParsing="false" onAction="#onClickStartGame" text="Neues Spiel" />
                   <MenuItem mnemonicParsing="false" text="Speichern" />
                   <MenuItem mnemonicParsing="false" text="Öffnen" />
                   <MenuItem mnemonicParsing="false" text="Close" />
