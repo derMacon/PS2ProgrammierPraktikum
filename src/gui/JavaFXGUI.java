@@ -18,7 +18,7 @@ public class JavaFXGUI implements GUIConnector {
 
     //25 images for each face of a half (0..24)
     private static int IMG_COUNT = 25;
-    protected static final Image EMPTY_IMG = new Image("Other/EmptyV2.png");
+    protected static final Image EMPTY_IMG = new Image("other/EmptyV2.png");
 
     private Image[] imgs;
 

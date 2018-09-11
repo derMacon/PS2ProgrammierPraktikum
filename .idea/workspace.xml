@@ -2,31 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Other/Doodle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logic/PlayerState/DefaultAIPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Bank.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Board.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/DistrictType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Domino.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Doodle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Entry.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/LogicTransfer/GUI2Game.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Pos.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/SingleTile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Tiles.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Other/IDEAHotkeys.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/Other/IDEAHotkeys.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FXMLDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FXMLDocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FXMLGame.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FXMLGame.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Other/Doodle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/other/Doodle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Other/EmptyV2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/other/EmptyV2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Other/IDEAHotkeys.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/other/IDEAHotkeys.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Other/UseCases.docx" beforeDir="false" afterPath="$PROJECT_DIR$/src/other/UseCases.docx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/JavaFXGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/JavaFXGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/BankSelection/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/BankSelection/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/LogicTransfer/GUIConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/LogicTransfer/GUIConnector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/LogicTransfer/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/LogicTransfer/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/PlayerState/HumanPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/PlayerState/HumanPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/PlayerState/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/PlayerState/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Token/Domino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/Token/Domino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Token/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/BankSelection/Entry.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -210,7 +190,7 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Other/Doodle.java">
+            <entry file="file://$PROJECT_DIR$/src/other/Doodle.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="324">
                   <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
@@ -278,7 +258,7 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/Other/IDEAHotkeys.txt">
+            <entry file="file://$PROJECT_DIR$/src/other/IDEAHotkeys.txt">
               <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
@@ -452,19 +432,6 @@
               <item name="PS2ProgrammierPraktikum" type="b2602c69:ProjectViewProjectNode" />
               <item name="PS2ProgrammierPraktikum" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PS2ProgrammierPraktikum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PS2ProgrammierPraktikum" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
-              <item name="img" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PS2ProgrammierPraktikum" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PS2ProgrammierPraktikum" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="logic" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -499,7 +466,7 @@
               <item name="PS2ProgrammierPraktikum" type="b2602c69:ProjectViewProjectNode" />
               <item name="PS2ProgrammierPraktikum" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Other" type="462c0819:PsiDirectoryNode" />
+              <item name="other" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -518,7 +485,7 @@
     <property name="SearchEverywhereHistoryKey" value="rand&#9;PSI&#9;JAVA://logic.BankSelection.Bank#rand" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536695968226" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1536696158747" />
     <property name="dynamic.classpath" value="false" />
     <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
@@ -651,18 +618,17 @@
       <workItem from="1536511178065" duration="11301000" />
       <workItem from="1536609198227" duration="15542000" />
       <workItem from="1536678259044" duration="1966000" />
-      <workItem from="1536685481897" duration="10461000" />
+      <workItem from="1536685481897" duration="10652000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55763000" />
+    <option name="totallyTimeSpent" value="55954000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.12877584" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.12877584" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -672,7 +638,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.20358814" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.14196567" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.27925116" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.27925116" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -817,7 +783,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Other/Doodle.java">
+    <entry file="file://$PROJECT_DIR$/src/other/Doodle.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" column="20" lean-forward="true" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
@@ -862,7 +828,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Other/IDEAHotkeys.txt">
+    <entry file="file://$PROJECT_DIR$/src/other/IDEAHotkeys.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/Random.java">
