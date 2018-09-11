@@ -4,9 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.control.Label;
+import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
@@ -19,16 +20,22 @@ import java.util.ResourceBundle;
 public class FXMLDocumentController implements Initializable {
 
     @FXML
-    private Pane pnSelected;
+    private Label lblPlayer1;
+
+    @FXML
+    private Label lblPlayer2;
 
     @FXML
     private Button btnLeft;
 
     @FXML
-    private GridPane grdPnBot3Board;
+    private GridPane grdPnBot2Board;
 
     @FXML
-    private GridPane grdPnBot2Board;
+    private Label lblPlayer3;
+
+    @FXML
+    private Label lblPlayer4;
 
     @FXML
     private GridPane grdPnHumanBoard;
@@ -40,19 +47,25 @@ public class FXMLDocumentController implements Initializable {
     private Pane pnDiscard;
 
     @FXML
-    private GridPane grdPnCurrentSelectiveGroup;
+    private Button btnUp;
 
     @FXML
-    private Button btnUp;
+    private Button btnRight;
+
+    @FXML
+    private Pane pnSelected;
+
+    @FXML
+    private GridPane grdPnBot3Board;
+
+    @FXML
+    private GridPane grdPnCurrentSelectiveGroup;
 
     @FXML
     private GridPane grdPnFutureselectiveGroup;
 
     @FXML
     private Button btnDown;
-
-    @FXML
-    private Button btnRight;
 
     private GUI2Game game;
     private JavaFXGUI gui;
@@ -110,6 +123,29 @@ public class FXMLDocumentController implements Initializable {
                 });
             }
         }
+    }
+
+    @FXML
+    private void onClickPnSelected(MouseEvent event) {
+//        game.boxClicked();
+        System.out.println("Auswahlbox auswgewaehlt.");
+    }
+
+    @FXML
+    private void onDragDetectedPnSelected(MouseEvent event) {
+        System.out.println("Drag");
+        /* drag was detected, start a drag-and-drop gesture*/
+        /* allow any transfer mode */
+        Dragboard db = this.pnSelected.startDragAndDrop(TransferMode.MOVE);
+        ClipboardContent content = new ClipboardContent();
+
+        content.putString("");
+        db.setContent(content);
+
+        db.setDragView(this.pnSelected.snapshot(new SnapshotParameters(), null), 10, 10);
+
+        event.consume();
+
     }
 
 

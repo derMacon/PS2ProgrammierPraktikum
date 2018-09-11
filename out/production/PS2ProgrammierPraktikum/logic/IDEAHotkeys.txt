@@ -1,5 +1,0 @@
-IDEA shortcuts: 
-- alt + Enter: import packgages
-- alt + einfg: add constructor / Getter / Setter 
-- Strg + f12: quickly navigate through edited file
-- Strg + Shift + u: select text block

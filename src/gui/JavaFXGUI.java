@@ -13,7 +13,7 @@ public class JavaFXGUI implements GUIConnector {
 
     //25 images for each face of a half (0..24)
     private static int IMG_COUNT = 25;
-    protected static final Image EMPTY_IMG = new Image("Stuff/EmptyV2.png");
+    protected static final Image EMPTY_IMG = new Image("Other/EmptyV2.png");
 
     private Image[] imgs;
 
@@ -24,15 +24,16 @@ public class JavaFXGUI implements GUIConnector {
 
     private Pane pnSelected;
     private Label lblTurn;
-    private ImageView[][][] imgVwsBoards;
+    private ImageView[][] imgVwsPlayerBoard;
+    private ImageView[][][] imgWwsAIBoards;
     private ImageView[][][] imgVwsProvidedBank;
 
-
-    public JavaFXGUI(Pane pnSelected, Label lblTurn, ImageView[][][] imgVwsGame, ImageView[][][] imgVwsBank) {
+    public JavaFXGUI(Pane pnSelected, Label lblTurn, ImageView[][] imgWssPlayerBoard, ImageView[][][] imgWwsAIBoards, ImageView[][][] imgVwsProvidedBank) {
         this.pnSelected = pnSelected;
         this.lblTurn = lblTurn;
-        this.imgVwsBoards = imgVwsGame;
-        this.imgVwsProvidedBank = imgVwsBank;
+        this.imgVwsPlayerBoard = imgWssPlayerBoard;
+        this.imgWwsAIBoards = imgWwsAIBoards;
+        this.imgVwsProvidedBank = imgVwsProvidedBank;
 
         //loadAllImages
         imgs = new Image[IMG_COUNT];
@@ -43,6 +44,11 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void showWhosTurn(String name) {
+
+    }
+
+    @Override
+    public void showPointsForPlayer(Player pl, int points) {
 
     }
 
@@ -58,8 +64,47 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void updateGrid(Board board) {
-
+        int width = board.getCols();
+        int height = board.getRows();
+        for (int i = 0; i < width; ++i) {
+            for (int j = 0; j < height; ++j) {
+                Pos pos = new Pos(i, j);
+                showCellOnGrid(pos, board.getCell(pos));
+            }
+        }
     }
+
+    @Override
+    public void setDominoOnGui(Player pl, Domino dom) {
+//        if(pl instanceof HumanPlayer) {
+//            Pos domPos = dom.getFstPos();
+//            this.imgVwsPlayerBoard[domPos.x()][domPos.y()] = dom.getFstVal();
+//        }
+    }
+
+//    /**
+//     * Shows the image with the given value at the given position on the game
+//     * grid.
+//     *
+//     * @param pos position on the game grid
+//     * @param value value for which the image should be displayed at pos
+//     */
+//    private void showCellOnGrid(Pos pos, int value) {
+//        if (isValidPosOnGameGrid(pos)) {
+//            if (value == Board.EMPTY) {
+//                this.imgVewsGame[pos.x()][pos.y()].setImage(EMPTY_IMG);
+//            } else {
+//                this.imgVewsGame[pos.x()][pos.y()].setImage(getImage(value));
+//            }
+//        }
+//    }
+//
+//    private boolean isValidPosOnGameGrid(Pos pos) {
+//        return pos.x() >= 0
+//                && pos.x() < this.imgVewsGame.length
+//                && pos.y() >= 0
+//                && pos.y() < this.imgVewsGame[pos.x()].length;
+//    }
 
     @Override
     public void showOnGrid(int ordPlayer, Pos fstPos, int fstValue, Pos sndPos, int sndValue) {
@@ -227,11 +272,11 @@ public class JavaFXGUI implements GUIConnector {
      */
     private void addEffectToDominoPos(Pos pos, ColorAdjust effect) {
         if (this.currDomino != null) {
-            this.imgVwsBoards[pos.x()][pos.y()].setEffect(effect);
+            this.imgVwsPlayerBoard[pos.x()][pos.y()].setEffect(effect);
             if (this.currDomino.getRot() % 2 == 0) {
-                this.imgVwsBoards[pos.x() + 1][pos.y()].setEffect(effect);
+                this.imgVwsPlayerBoard[pos.x() + 1][pos.y()].setEffect(effect);
             } else {
-                this.imgVwsBoards[pos.x()][pos.y() + 1].setEffect(effect);
+                this.imgVwsPlayerBoard[pos.x()][pos.y() + 1].setEffect(effect);
             }
         }
     }

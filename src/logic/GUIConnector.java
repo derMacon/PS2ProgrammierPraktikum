@@ -46,4 +46,17 @@ public interface GUIConnector {
      * @param result
      */
     void showResult(Result result);
+
+
+    /**
+     * Shows players points.
+     * @param pl
+     * @param points
+     */
+    void showPointsForPlayer(Player pl, int points);
+
+
+    void setDominoOnGui(Player pl, Domino dom);
+
+
 }

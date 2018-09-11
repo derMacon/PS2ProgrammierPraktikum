@@ -1,0 +1,10 @@
+IDEA shortcuts: 
+- alt + Enter: import packgages
+- alt + einfg: add constructor / Getter / Setter 
+- Strg + alt + l: Reformat file
+- Strg + Shift + a: split eingeben um Bildschirm zu teilen
+- Strg + f12: quickly navigate through edited file
+- Strg + i: implement interface
+- Start typing in the project window and quickly find class
+- Strg + Shift + u: select text block
+- Strg + o: Override base class method
