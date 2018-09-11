@@ -11,8 +11,8 @@ import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
-import logic.GUI2Game;
-import logic.Pos;
+import logic.LogicTransfer.GUI2Game;
+import logic.Token.Pos;
 
 import java.net.URL;
 import java.util.ResourceBundle;

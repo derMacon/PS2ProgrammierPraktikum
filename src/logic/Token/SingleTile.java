@@ -1,6 +1,8 @@
-package logic;
+package logic.Token;
 
-import static logic.DistrictType.*;
+import logic.Token.DistrictType;
+
+import static logic.Token.DistrictType.*;
 
 public enum SingleTile {
     CITY_HALL (CENTER),

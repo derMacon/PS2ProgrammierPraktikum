@@ -1,8 +1,12 @@
-package logic;
+package logic.PlayerState;
+
+import logic.Token.Domino;
+import logic.LogicTransfer.GUIConnector;
+import logic.Token.Pos;
+import logic.Token.SingleTile;
 
 public class Board {
 
-    private GUIConnector gui;
     public static final int DEFAULT_BOARD_SIZE = 5;
 
     private SingleTile[][] cells;
@@ -10,8 +14,7 @@ public class Board {
     public Board(GUIConnector gui, int sizeX, int sizeY) {
     }
 
-    public Board(GUIConnector gui) {
-        this.gui = gui;
+    public Board() {
         cells = new SingleTile[DEFAULT_BOARD_SIZE][DEFAULT_BOARD_SIZE];
     }
 
@@ -32,8 +35,12 @@ public class Board {
     }
 
     public void lay(Domino domino) {
-        if (isValidPos(domino.getFstPos())) {
-            gui.updateGrid(this);
+        assert null != domino;
+            Pos posFstTile = domino.getFstPos();
+            Pos posSndTile = domino.getFstPos();
+        if (isValidPos(posFstTile) && isValidPos(posSndTile)) {
+            this.cells[posFstTile.x()][posFstTile.y()] = domino.getFstVal();
+            this.cells[posSndTile.x()][posSndTile.y()] = domino.getSndVal();
         }
     }
 }

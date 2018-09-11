@@ -1,4 +1,4 @@
-package logic;
+package logic.Token;
 
 /**
  * a position. It may have negative values.

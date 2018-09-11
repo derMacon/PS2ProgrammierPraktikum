@@ -1,4 +1,10 @@
-package logic;
+package logic.LogicTransfer;
+
+import logic.*;
+import logic.PlayerState.Player;
+import logic.Token.Pos;
+import logic.PlayerState.Board;
+import logic.Token.Domino;
 
 /**
  * method the logic needs to display current gamestatus on gui.

@@ -1,4 +1,6 @@
-package logic;
+package logic.Token;
+
+import logic.PlayerState.Player;
 
 public class Entry {
     private Domino domino;

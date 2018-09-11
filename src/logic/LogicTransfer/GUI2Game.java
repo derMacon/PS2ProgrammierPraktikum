@@ -3,7 +3,9 @@
  * To change this template file, clickOnPlayersBank Tools | Templates
  * and open the template in the editor.
  */
-package logic;
+package logic.LogicTransfer;
+
+import logic.Token.Pos;
 
 /**
  * defines the methods needed by the FXMLController for reacting to the users input.

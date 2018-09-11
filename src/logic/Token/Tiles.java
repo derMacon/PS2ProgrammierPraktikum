@@ -1,7 +1,9 @@
-package logic;
+package logic.Token;
 
 
-import static logic.SingleTile.*;
+import logic.Token.SingleTile;
+
+import static logic.Token.SingleTile.*;
 
 public enum Tiles {
     P0_P0_Val1   (P0, P0, 1),
@@ -66,12 +68,12 @@ public enum Tiles {
         this.value = value;
     }
 
-    public int getFst() {
-        return fst.ordinal();
+    public SingleTile getFst() {
+        return this.fst;
     }
 
-    public int getSnd() {
-        return snd.ordinal();
+    public SingleTile getSnd() {
+        return this.snd;
     }
 
     public int getValue() {

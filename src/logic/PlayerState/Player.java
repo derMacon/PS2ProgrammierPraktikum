@@ -1,4 +1,11 @@
-package logic;
+package logic.PlayerState;
+
+import logic.BankSelection.Bank;
+import logic.Token.Pos;
+import logic.LogicTransfer.GUIConnector;
+import logic.PlayerState.Board;
+import logic.PlayerState.District;
+import logic.Token.Domino;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -10,7 +17,7 @@ public abstract class Player {
     protected GUIConnector gui;
 
     public Player(GUIConnector gui) {
-        this.board = new Board();
+//        this.board = new Board();
         this.gameStats = new LinkedList<>();
         this.gui = gui;
     }

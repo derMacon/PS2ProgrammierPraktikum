@@ -1,4 +1,4 @@
-package logic;
+package logic.Token;
 
 /**
  * A Domino has a tile and a rotation. Rotation 0 shows a horizontal orientated
@@ -73,7 +73,7 @@ public class Domino {
      * gets the value at the top-left side: fst for rotation 0 and 1 else snd
      * @return the value at the top-left side
      */
-    public int getFstVal() {
+    public SingleTile getFstVal() {
         return rotation < 2 ? tiles.getFst() : tiles.getSnd();
     }
 
@@ -81,7 +81,7 @@ public class Domino {
      * gets the value at the right-bottom side
      * @return the value at the right-bottom side
      */
-    int getSndVal() {
+    public SingleTile getSndVal() {
         return rotation < 2 ? tiles.getSnd() : tiles.getFst();
     }
 

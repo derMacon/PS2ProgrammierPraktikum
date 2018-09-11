@@ -1,7 +1,10 @@
-package logic;
+package logic.LogicTransfer;
 
-import java.util.LinkedList;
-import java.util.List;
+import logic.BankSelection.Bank;
+import logic.PlayerState.Player;
+import logic.Token.Pos;
+import logic.PlayerState.Board;
+import logic.Token.Domino;
 
 //import static logic.Player.HUMAN;
 

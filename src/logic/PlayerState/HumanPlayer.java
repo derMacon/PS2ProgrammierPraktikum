@@ -1,4 +1,7 @@
-package logic;
+package logic.PlayerState;
+
+import logic.BankSelection.Bank;
+import logic.Token.Pos;
 
 public class HumanPlayer extends Player {
     @Override

@@ -7,6 +7,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import logic.*;
+import logic.PlayerState.Player;
+import logic.Token.Pos;
+import logic.LogicTransfer.GUIConnector;
+import logic.PlayerState.Board;
+import logic.Token.Domino;
 
 
 public class JavaFXGUI implements GUIConnector {
