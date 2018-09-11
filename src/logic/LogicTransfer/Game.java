@@ -1,42 +1,50 @@
 package logic.LogicTransfer;
 
 import logic.BankSelection.Bank;
+import logic.PlayerState.DefaultAIPlayer;
+import logic.PlayerState.HumanPlayer;
 import logic.PlayerState.Player;
 import logic.Token.Pos;
-import logic.PlayerState.Board;
 import logic.Token.Domino;
+
+import java.util.LinkedList;
+import java.util.List;
 
 //import static logic.Player.HUMAN;
 
 public class Game implements GUI2Game {
 
     public final static int BANK_SIZE = 4;
+    public final static int CURRENT_BANK_IDX = 0;
+    public final static int NEXT_BANK_IDX = 1;
     public final static int PLAYER_CNT = 4;
 
     /**
      * Current round, drawn dominos.
      */
-    private final Bank currentRoundBank;
+    private Bank currentRoundBank;
 
     /**
      * Current round, drawn dominos.
      */
-//    private final Bank nextRoundBank;
+    private Bank nextRoundBank;
 
     /**
      * the stack with all dominos at the beginning.
      */
 //    private final List<Domino> stack;
 
-    /**
-     * table to lay dominos on
-     */
-    private Board[] boards;
+    private Player[] players;
 
     /**
      * the current player
      */
-    private Player currPlayer;
+    private Player currPlayerReference;
+
+    private int currPlayerIdx;
+
+    private List<Domino> stack;
+
     /**
      * the current domino
      */
@@ -47,22 +55,23 @@ public class Game implements GUI2Game {
      */
     private GUIConnector gui;
 
-//    /**
-//     * creates a game
-//     *
-//     * @param gui gui to display on
-//     * @param sizeX x-size of the board
-//     * @param sizeY y-size of the board
-//     */
-//    public Game(GUIConnector gui, int sizeX, int sizeY) {
-//        this.gui = gui;
-//        this.currentRoundBank = new Domino[Player.values().length][BANK_SIZE];
-//        this.nextRoundBank = new Domino[Player.values().length][BANK_SIZE];
-//        this.stack = new LinkedList<>();
-//        this.board = new Board(gui, sizeX, sizeY);
-//        currPlayer = HUMAN;
-//        currDomino = null;
-//    }
+    /**
+     * creates a game
+     *
+     * @param gui gui to display on
+     * @param sizeX x-size of the board
+     * @param sizeY y-size of the board
+     */
+    public Game(GUIConnector gui, int sizeX, int sizeY) {
+        this.gui = gui;
+        this.currentRoundBank = new Bank(PLAYER_CNT);
+        this.nextRoundBank = new Bank(PLAYER_CNT);
+        this.stack = new LinkedList<>();
+        this.players = new Player[PLAYER_CNT];
+        this.currPlayerIdx = 0;
+        currPlayerReference = null;
+        currDomino = null;
+    }
 
 
 //    /**
@@ -105,7 +114,8 @@ public class Game implements GUI2Game {
 //    }
 
 
-    public Game(Bank currentBank, Domino currDomino) {
+    public Game(Bank currentBank, Bank nextRoundBank, Domino currDomino) {
+        this.nextRoundBank = nextRoundBank;
         this.currDomino = currDomino;
         this.currentRoundBank = currentBank;
     }
@@ -125,9 +135,48 @@ public class Game implements GUI2Game {
 
     }
 
+
+
+
     @Override
     public void startGame() {
+        // renew players (containing boards)
+        this.players = createNewPlayers();
+        this.gui.updateAllPlayers(this.players);
 
+        // fill stack
+        this.stack = Domino.fill(this.stack);
+        updateBanksDominos();
+
+
+        this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
+        this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
+
+        this.currPlayerIdx = 0;
+    }
+
+    private void updateBanksDominos() {
+        drawNewDominosForNextRound();
+        getNewBankDominos();
+    }
+
+    private void getNewBankDominos() {
+        this.currentRoundBank = this.nextRoundBank.copy();
+    }
+
+    private void drawNewDominosForNextRound() {
+        this.nextRoundBank.drawFromStack(this.stack);
+    }
+
+
+
+    private Player[] createNewPlayers() {
+        Player[] output = new Player[PLAYER_CNT];
+        output[0] = new HumanPlayer(gui);
+        for (int i = 1; i < PLAYER_CNT; i++) {
+            output[i] = new DefaultAIPlayer(gui);
+        }
+        return output;
     }
 
     @Override

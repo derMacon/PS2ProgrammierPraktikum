@@ -1,7 +1,6 @@
 package logic.BankSelection;
 
 import logic.Token.Domino;
-import logic.Token.Entry;
 import logic.PlayerState.Player;
 
 import java.util.List;
@@ -11,12 +10,33 @@ public class Bank {
     public static final int BANK_SIZE = 4;
     public static final int CURRENT_BANK_IDX = 0;
     public static final int NEXT_BANK_IDX = 1;
+    public static final int BANK_COUNT = 2;
 
     private Random rand = new Random();
     private Entry[] entries;
 
     public Bank(Entry[] entries) {
         this.entries = entries;
+    }
+
+    public Bank() {
+        this(BANK_SIZE);
+    }
+
+    public Bank(int count) {
+        entries = new Entry[count];
+    }
+
+    public Entry[] getEntries() {
+        return entries;
+    }
+
+    public Domino[] getDominos() {
+        Domino[] domFromBank = new Domino[BANK_SIZE];
+        for (int i = 0; i < BANK_SIZE; i++) {
+            domFromBank[i] = this.entries[i].getDomino();
+        }
+        return domFromBank;
     }
 
     public void selectEntry(Player player, int domIdx) {
@@ -35,7 +55,7 @@ public class Bank {
     }
 
 
-    public void fill(List<Domino> stack) {
+    public void drawFromStack(List<Domino> stack) {
         for (int i = 0; i < BANK_SIZE; i++) {
             fill(stack.get(rand.nextInt(stack.size())), i);
         }
@@ -45,5 +65,13 @@ public class Bank {
         if(0 <= idx && BANK_SIZE > idx) {
             this.entries[idx] = new Entry(domino);
         }
+    }
+
+    public Bank copy() {
+        Bank output = new Bank();
+        for (int i = 0; i < BANK_SIZE; i++) {
+            output.entries[i] = this.entries[i];
+        }
+        return output;
     }
 }

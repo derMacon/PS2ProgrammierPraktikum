@@ -7,11 +7,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
 import logic.LogicTransfer.GUI2Game;
+import logic.LogicTransfer.Game;
 import logic.Token.Pos;
 
 import java.net.URL;
@@ -36,6 +38,9 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Label lblPlayer4;
+
+    @FXML
+    private Label lblTurn;
 
     @FXML
     private GridPane grdPnHumanBoard;
@@ -73,14 +78,21 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        ImageView[][] imgVwsGame = addImageViewsToGrid(grdPnHumanBoard);
-        this.addDragAndDropHandlers(imgVwsGame);
+        ImageView[][] imgVwsHumanBoard = addImageViewsToGrid(grdPnHumanBoard);
+        this.addDragAndDropHandlers(imgVwsHumanBoard);
 
+        ImageView[][][] imgVwsAIBoards = new ImageView[][][] {addImageViewsToGrid(grdPnBot1Board), addImageViewsToGrid(grdPnBot2Board), addImageViewsToGrid(grdPnBot3Board)};
+        ImageView[][][] imgVwsBanks = new ImageView[][][] {addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnFutureselectiveGroup)};
+
+        this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, imgVwsBanks);
+
+        this.game = new Game(gui, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
     }
 
     @FXML
     private void onClickStartGame(ActionEvent event) {
-
+        System.out.println("start game");
+        this.game.startGame();
     }
 
 

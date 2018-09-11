@@ -7,10 +7,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import logic.*;
+import logic.BankSelection.Bank;
 import logic.PlayerState.Player;
 import logic.Token.Pos;
 import logic.LogicTransfer.GUIConnector;
-import logic.PlayerState.Board;
 import logic.Token.Domino;
 
 
@@ -48,6 +48,52 @@ public class JavaFXGUI implements GUIConnector {
     }
 
     @Override
+    public void setToBank(int ordBank, Bank bank) {
+        Image[][] newBank = genImagesFromBank(bank);
+        updateCurrentBankWithNewBank(newBank);
+    }
+
+    private Image[][] genImagesFromBank(Bank bank) {
+        Image[][] output = new Image[4][2];
+        Image[] imgDominos = null;
+
+        Domino[] domFromBank = bank.getDominos();
+        for (int i = 0; i < domFromBank.length; i++) {
+            imgDominos = genDominoImg(i, domFromBank[i]);
+            output[i] = imgDominos;
+        }
+        return output;
+    }
+
+    private Image[] genDominoImg(int domIdx, Domino domino) {
+        Image[] output = new Image[2];
+        output[0] = getImage(domino.getFstVal().ordinal());
+        output[1] = getImage(domino.getSndVal().ordinal());
+        return output;
+    }
+
+    private void updateCurrentBankWithNewBank(Image[][] newBank) {
+        for (int i = 0; i < newBank.length; i++) {
+            for (int j = 0; j < 2; j++) {
+                this.imgVwsProvidedBank[Bank.CURRENT_BANK_IDX][i][j].setImage(newBank[i][j]);
+            }
+        }
+    }
+
+    /**
+     * Returns the appropriate pre-loaded image for the given value.
+     *
+     * @param value value for the image should be returned
+     * @return image if the value was valid, otherwise the empty image
+     */
+    private Image getImage(int value) {
+        return (value >= 0 && value <= this.imgs.length)
+                ? this.imgs[value]
+                : EMPTY_IMG;
+    }
+
+
+    @Override
     public void showWhosTurn(String name) {
 
     }
@@ -57,10 +103,6 @@ public class JavaFXGUI implements GUIConnector {
 
     }
 
-    @Override
-    public void setToBank(int ordBank, int index, Domino domino) {
-
-    }
 
     @Override
     public void showInChooseBox(Domino dominoRotated) {
@@ -68,15 +110,28 @@ public class JavaFXGUI implements GUIConnector {
     }
 
     @Override
-    public void updateGrid(Board board) {
-        int width = board.getCols();
-        int height = board.getRows();
-        for (int i = 0; i < width; ++i) {
-            for (int j = 0; j < height; ++j) {
-                Pos pos = new Pos(i, j);
-                showCellOnGrid(pos, board.getCell(pos));
-            }
+    public void selectDomino(int idx) {
+
+    }
+
+    @Override
+    public void updateAllPlayers(Player[] players) {
+        for(Player pl : players) {
+            updatePlayer(pl);
         }
+    }
+
+    @Override
+    public void updatePlayer(Player player) {
+//        Board board = player.getBoard();
+//        int width = board.getCols();
+//        int height = board.getRows();
+//        for (int i = 0; i < width; ++i) {
+//            for (int j = 0; j < height; ++j) {
+//                Pos pos = new Pos(i, j);
+//                showCellOnGrid(pos, board.getCell(pos));
+//            }
+//        }
     }
 
     @Override
@@ -87,14 +142,14 @@ public class JavaFXGUI implements GUIConnector {
 //        }
     }
 
-//    /**
-//     * Shows the image with the given value at the given position on the game
-//     * grid.
-//     *
-//     * @param pos position on the game grid
-//     * @param value value for which the image should be displayed at pos
-//     */
-//    private void showCellOnGrid(Pos pos, int value) {
+    /**
+     * Shows the image with the given value at the given position on the game
+     * grid.
+     *
+     * @param pos position on the game grid
+     * @param value value for which the image should be displayed at pos
+     */
+    private void showCellOnGrid(Pos pos, int value) {
 //        if (isValidPosOnGameGrid(pos)) {
 //            if (value == Board.EMPTY) {
 //                this.imgVewsGame[pos.x()][pos.y()].setImage(EMPTY_IMG);
@@ -102,7 +157,7 @@ public class JavaFXGUI implements GUIConnector {
 //                this.imgVewsGame[pos.x()][pos.y()].setImage(getImage(value));
 //            }
 //        }
-//    }
+    }
 //
 //    private boolean isValidPosOnGameGrid(Pos pos) {
 //        return pos.x() >= 0
@@ -120,11 +175,6 @@ public class JavaFXGUI implements GUIConnector {
     public void showResult(Result result) {
 
     }
-
-
-
-
-
 
 
 

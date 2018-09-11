@@ -1,5 +1,7 @@
 package logic.Token;
 
+import java.util.List;
+
 /**
  * A Domino has a tile and a rotation. Rotation 0 shows a horizontal orientated
  * domino with the first value on the left and the second on the right.
@@ -113,19 +115,19 @@ public class Domino {
     }
 
 
-//    /**
-//     * gets all values of Tiles in a list. All existing dominos in list have
-//     * to be removed so each domino is single in list.
-//     * @param list list to be cleared and added to
-//     * @return same list with all dominos once each
-//     */
-//    public static List<Domino> fill(List<Domino> list) {
-//        list.clear();
-//        for (Tiles tile : Tiles.values()) {
-//            list.add(new Domino(tiles));
-//        }
-//        return list;
-//    }
+    /**
+     * gets all values of Tiles in a list. All existing dominos in list have
+     * to be removed so each domino is single in list.
+     * @param list list to be cleared and added to
+     * @return same list with all dominos once each
+     */
+    public static List<Domino> fill(List<Domino> list) {
+        list.clear();
+        for (Tiles tile : Tiles.values()) {
+            list.add(new Domino(tile, null));
+        }
+        return list;
+    }
 
 
     /**

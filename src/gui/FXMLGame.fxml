@@ -16,7 +16,7 @@
                     <children>
                         <VBox prefHeight="775.0" prefWidth="157.0">
                             <children>
-                                <Label prefHeight="86.0" prefWidth="148.0" />
+                                <Label fx:id="lblTurn" prefHeight="86.0" prefWidth="148.0" />
                                 <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="792.0" prefWidth="148.0">
                                     <items>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
@@ -271,7 +271,7 @@
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
-                <Menu mnemonicParsing="false" text="Datei">
+                <Menu mnemonicParsing="false" text="Spiel">
                     <items>
                         <MenuItem mnemonicParsing="false" onAction="#onClickStartGame" text="Neues Spiel" />
                         <MenuItem mnemonicParsing="false" text="Speichern" />

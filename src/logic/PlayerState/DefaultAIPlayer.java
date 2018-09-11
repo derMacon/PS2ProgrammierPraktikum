@@ -4,9 +4,9 @@ import logic.BankSelection.Bank;
 import logic.LogicTransfer.GUIConnector;
 import logic.Token.Pos;
 
-public class HumanPlayer extends Player {
+public class DefaultAIPlayer extends Player {
 
-    public HumanPlayer(GUIConnector gui) {
+    public DefaultAIPlayer(GUIConnector gui) {
         super(gui);
     }
 

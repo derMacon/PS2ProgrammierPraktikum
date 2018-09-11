@@ -1,6 +1,7 @@
-package logic.Token;
+package logic.BankSelection;
 
 import logic.PlayerState.Player;
+import logic.Token.Domino;
 
 public class Entry {
     private Domino domino;
@@ -10,6 +11,7 @@ public class Entry {
         this.domino = domino;
         this.selectedPlayer = selectedPlayer;
     }
+
 
     public Entry(Domino domino) {
         this(domino, null);

@@ -22,6 +22,10 @@ public abstract class Player {
         this.gui = gui;
     }
 
+    public Board getBoard() {
+        return this.board;
+    }
+
     abstract void selectFromBank(Bank[] bank);
 
     abstract Pos genDominoPos();
