@@ -1,11 +1,9 @@
-package logic.PlayerState;
+package logic.playerState;
 
-import logic.BankSelection.Bank;
-import logic.Token.Pos;
-import logic.LogicTransfer.GUIConnector;
-import logic.PlayerState.Board;
-import logic.PlayerState.District;
-import logic.Token.Domino;
+import logic.bankSelection.Bank;
+import logic.token.Pos;
+import logic.logicTransfer.GUIConnector;
+import logic.token.Domino;
 
 import java.util.LinkedList;
 import java.util.List;

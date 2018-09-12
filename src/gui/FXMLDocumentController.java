@@ -4,17 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
-import logic.LogicTransfer.GUI2Game;
-import logic.LogicTransfer.Game;
-import logic.Token.Pos;
+import logic.logicTransfer.GUI2Game;
+import logic.logicTransfer.Game;
+import logic.token.Pos;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -82,10 +82,8 @@ public class FXMLDocumentController implements Initializable {
         this.addDragAndDropHandlers(imgVwsHumanBoard);
 
         ImageView[][][] imgVwsAIBoards = new ImageView[][][] {addImageViewsToGrid(grdPnBot1Board), addImageViewsToGrid(grdPnBot2Board), addImageViewsToGrid(grdPnBot3Board)};
-        ImageView[][][] imgVwsBanks = new ImageView[][][] {addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnFutureselectiveGroup)};
 
-        this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, imgVwsBanks);
-
+        this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnFutureselectiveGroup));
         this.game = new Game(gui, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
     }
 
@@ -95,7 +93,30 @@ public class FXMLDocumentController implements Initializable {
         this.game.startGame();
     }
 
+    @FXML
+    private void onClickGrdPnBank(MouseEvent event) {
+        int x = -1;
+        int y = -1;
+        boolean leftClicked = event.getButton() == MouseButton.PRIMARY;
+        boolean rightClicked = event.getButton() == MouseButton.SECONDARY;
 
+        //determine the imageview of the grid that contains the coordinates of the mouseclick
+        //to determine the board-coordinates
+        for (Node node : grdPnCurrentSelectiveGroup.getChildren()) {
+            if (node instanceof ImageView) {
+                if (node.getBoundsInParent().contains(event.getX(), event.getY())) {
+                    //to use following methods the columnIndex and rowIndex
+                    //must have been set when adding the imageview to the grid
+                    x = GridPane.getColumnIndex(node);
+                    y = GridPane.getRowIndex(node);
+                }
+            }
+        }
+
+        if (x >= 0 && y >= 0 && leftClicked) {
+            this.game.selectDom(y);
+        }
+    }
 
 
     private void addDragAndDropHandlers(ImageView[][] imgVws) {

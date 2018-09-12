@@ -1,4 +1,4 @@
-package logic.Token;
+package logic.token;
 
 /**
  * a position. It may have negative values.
@@ -13,12 +13,20 @@ public class Pos {
         this.y = y;
     }
 
+    /**
+     * Getter for the x coordinate of the position.
+     * @return x coordinate of the position
+     */
     public int x() {
-        return x;
+        return this.x;
     }
 
+    /**
+     * Getter for the y coordinate of the position.
+     * @return y coordinate of the position
+     */
     public int y() {
-        return y;
+        return this.y;
     }
 
     /**

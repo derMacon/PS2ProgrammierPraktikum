@@ -5,13 +5,14 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import logic.*;
-import logic.BankSelection.Bank;
-import logic.PlayerState.Player;
-import logic.Token.Pos;
-import logic.LogicTransfer.GUIConnector;
-import logic.Token.Domino;
+import logic.bankSelection.Bank;
+import logic.playerState.Player;
+import logic.token.Pos;
+import logic.logicTransfer.GUIConnector;
+import logic.token.Domino;
+import logic.token.Tiles;
 
 
 public class JavaFXGUI implements GUIConnector {
@@ -31,14 +32,19 @@ public class JavaFXGUI implements GUIConnector {
     private Label lblTurn;
     private ImageView[][] imgVwsPlayerBoard;
     private ImageView[][][] imgWwsAIBoards;
-    private ImageView[][][] imgVwsProvidedBank;
+//    private ImageView[][][] imgVwsProvidedBank;
+    private ImageView[][] imgVwsCurrentBank;
+    private ImageView[][] imgVwsNextBank;
 
-    public JavaFXGUI(Pane pnSelected, Label lblTurn, ImageView[][] imgWssPlayerBoard, ImageView[][][] imgWwsAIBoards, ImageView[][][] imgVwsProvidedBank) {
+    public JavaFXGUI(Pane pnSelected, Label lblTurn, ImageView[][] imgWssPlayerBoard, ImageView[][][] imgWwsAIBoards,
+                     ImageView[][] imgVwsCurrentBank, ImageView[][] imgVwsNextBank) {
         this.pnSelected = pnSelected;
         this.lblTurn = lblTurn;
         this.imgVwsPlayerBoard = imgWssPlayerBoard;
         this.imgWwsAIBoards = imgWwsAIBoards;
-        this.imgVwsProvidedBank = imgVwsProvidedBank;
+//        this.imgVwsProvidedBank = imgVwsProvidedBank;
+        this.imgVwsCurrentBank = imgVwsCurrentBank;
+        this.imgVwsNextBank = imgVwsNextBank;
 
         //loadAllImages
         imgs = new Image[IMG_COUNT];
@@ -47,37 +53,36 @@ public class JavaFXGUI implements GUIConnector {
         }
     }
 
+
     @Override
     public void setToBank(int ordBank, Bank bank) {
-        Image[][] newBank = genImagesFromBank(bank);
-        updateCurrentBankWithNewBank(newBank);
-    }
-
-    private Image[][] genImagesFromBank(Bank bank) {
-        Image[][] output = new Image[4][2];
-        Image[] imgDominos = null;
-
-        Domino[] domFromBank = bank.getDominos();
-        for (int i = 0; i < domFromBank.length; i++) {
-            imgDominos = genDominoImg(i, domFromBank[i]);
-            output[i] = imgDominos;
+        Domino[] dominos = bank.getDominos();
+        for (int i = 0; i < dominos.length; i++) {
+            setToBank(ordBank, i, dominos[i]);
         }
-        return output;
     }
 
-    private Image[] genDominoImg(int domIdx, Domino domino) {
-        Image[] output = new Image[2];
-        output[0] = getImage(domino.getFstVal().ordinal());
-        output[1] = getImage(domino.getSndVal().ordinal());
-        return output;
-    }
 
-    private void updateCurrentBankWithNewBank(Image[][] newBank) {
-        for (int i = 0; i < newBank.length; i++) {
-            for (int j = 0; j < 2; j++) {
-                this.imgVwsProvidedBank[Bank.CURRENT_BANK_IDX][i][j].setImage(newBank[i][j]);
-            }
+    public void setToBank(int ordBank, int index, Domino domino) {
+        ImageView[][] imgVwsBank = ordBank == Bank.CURRENT_BANK_IDX ? this.imgVwsCurrentBank : this.imgVwsNextBank;
+        if (index >= 0 && index < imgVwsBank[IDX_FST].length) {
+            Image[] imgs = (domino != null) ? this.getImagesForTile(domino.getTile()) : this.getImagesForTile(null);
+            imgVwsBank[IDX_FST][index].setImage(imgs[IDX_FST]);
+            imgVwsBank[IDX_SND][index].setImage(imgs[IDX_SND]);
         }
+    }
+
+    /**
+     * Returns the appropriate images for the tile. The images are pre-loaded.
+     *
+     * @param tile the tile for which the image should be determined
+     * @return an array with two images (first and second of the tile)
+     */
+    private Image[] getImagesForTile(Tiles tile) {
+        Image[] imgs = (tile != null) ? new Image[]{
+                getImage(tile.getFst().ordinal()), getImage(tile.getSnd().ordinal())}
+                : new Image[]{EMPTY_IMG, EMPTY_IMG};
+        return imgs;
     }
 
     /**
@@ -106,8 +111,113 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void showInChooseBox(Domino dominoRotated) {
+        this.currDomino = dominoRotated;
+        this.pnSelected.getChildren().clear();
+
+        if (dominoRotated != null) {
+            int idxFst = IDX_FST;
+            int idxSnd = IDX_SND;
+            ImageView[] imgVwsSelected = new ImageView[]{new ImageView(), new ImageView()};
+
+            GridPane grdPn = new GridPane();
+            grdPn.getColumnConstraints().add(this.getColConstraints());
+            grdPn.getRowConstraints().add(this.getRowConstraints());
+
+            if (dominoRotated.getRot() % 2 == 0) { //domino is horizontal
+                grdPn.getColumnConstraints().add(getColConstraints());
+
+                for (int i = 0; i <= 1; ++i) {
+                    grdPn.add(imgVwsSelected[i], i, 0);
+                    imgVwsSelected[i].fitWidthProperty().bind(grdPn.widthProperty().divide(2));
+                    imgVwsSelected[i].fitHeightProperty().bind(grdPn.heightProperty());
+                }
+                setPnSelectedHorizontal();
+            } else {
+                grdPn.getRowConstraints().add(this.getRowConstraints());
+
+                for (int i = 0; i <= 1; ++i) {
+                    grdPn.add(imgVwsSelected[i], 0, i);
+                    imgVwsSelected[i].fitWidthProperty().bind(grdPn.widthProperty());
+                    imgVwsSelected[i].fitHeightProperty().bind(grdPn.heightProperty().divide(2));
+                }
+                setPnSelectedVertical();
+            }
+
+            if (dominoRotated.getRot() >= 2) {
+                idxFst = IDX_SND;
+                idxSnd = IDX_FST;
+            }
+
+            this.pnSelected.getChildren().add(grdPn);
+            grdPn.prefWidthProperty().bind(pnSelected.widthProperty());
+            grdPn.prefHeightProperty().bind(pnSelected.heightProperty());
+
+            imgVwsSelected[idxFst].setImage(imgs[dominoRotated.getTile().getFst().ordinal()]);
+            imgVwsSelected[idxSnd].setImage(imgs[dominoRotated.getTile().getSnd().ordinal()]);
+        }
+    }
+
+    /**
+     * Creates a new column constraints for a grid pane. The column has always
+     * the width of 100%.
+     *
+     * @return new column constraints for grid pane
+     */
+    private ColumnConstraints getColConstraints() {
+        ColumnConstraints column = new ColumnConstraints();
+        column.setPercentWidth(100);
+        column.setHgrow(Priority.ALWAYS);
+        column.setMinWidth(10.0);
+        return column;
+    }
+
+    /**
+     * Changes the properties of the pane where the selected domino is presented
+     * to present a horizontal domino.
+     */
+    private void setPnSelectedHorizontal() {
+        this.pnSelected.setLayoutX(17.0);
+        this.pnSelected.setLayoutY(44.0);
+        this.pnSelected.setPrefHeight(42.0);
+        this.pnSelected.setPrefWidth(72.0);
+
+        AnchorPane.setTopAnchor(pnSelected, 40.0);
+        AnchorPane.setBottomAnchor(pnSelected, 27.0);
+        AnchorPane.setLeftAnchor(pnSelected, 21.0);
+        AnchorPane.setRightAnchor(pnSelected, 26.0);
+    }
+
+    /**
+     * Changes the properties of the pane where the selected domino is presented
+     * to present a vertical domino.
+     */
+    private void setPnSelectedVertical() {
+        this.pnSelected.setLayoutX(45.0);
+        this.pnSelected.setLayoutY(21.0);
+        this.pnSelected.setPrefHeight(71.0);
+        this.pnSelected.setPrefWidth(42.0);
+
+        AnchorPane.setTopAnchor(pnSelected, 29.0);
+        AnchorPane.setBottomAnchor(pnSelected, 10.0);
+        AnchorPane.setLeftAnchor(pnSelected, 40.0);
+        AnchorPane.setRightAnchor(pnSelected, 45.0);
 
     }
+
+    /**
+     * Creates a new row constraints for a grid pane. The row has always the
+     * height of 100%.
+     *
+     * @return new row constraints for grid pane
+     */
+    private RowConstraints getRowConstraints() {
+        RowConstraints row = new RowConstraints();
+        row.setPercentHeight(100);
+        row.setVgrow(Priority.ALWAYS);
+        row.setMinHeight(10.0);
+        return row;
+    }
+
 
     @Override
     public void selectDomino(int idx) {

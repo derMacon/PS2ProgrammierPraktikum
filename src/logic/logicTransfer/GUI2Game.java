@@ -3,9 +3,9 @@
  * To change this template file, clickOnPlayersBank Tools | Templates
  * and open the template in the editor.
  */
-package logic.LogicTransfer;
+package logic.logicTransfer;
 
-import logic.Token.Pos;
+import logic.token.Pos;
 
 /**
  * defines the methods needed by the FXMLController for reacting to the users input.
@@ -52,5 +52,8 @@ public interface GUI2Game {
      *
      * @author silas
      */
-    void clickOnChooseBox();
+    void selectDom(int idx);
+
+
+
 }

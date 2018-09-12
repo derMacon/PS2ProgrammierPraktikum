@@ -1,7 +1,7 @@
-package logic.BankSelection;
+package logic.bankSelection;
 
-import logic.PlayerState.Player;
-import logic.Token.Domino;
+import logic.playerState.Player;
+import logic.token.Domino;
 
 public class Entry {
     private Domino domino;

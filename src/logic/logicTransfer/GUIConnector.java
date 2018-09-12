@@ -1,11 +1,10 @@
-package logic.LogicTransfer;
+package logic.logicTransfer;
 
 import logic.*;
-import logic.BankSelection.Bank;
-import logic.PlayerState.Player;
-import logic.Token.Pos;
-import logic.PlayerState.Board;
-import logic.Token.Domino;
+import logic.bankSelection.Bank;
+import logic.playerState.Player;
+import logic.token.Pos;
+import logic.token.Domino;
 
 /**
  * method the logic needs to display current gamestatus on gui.
@@ -69,6 +68,7 @@ public interface GUIConnector {
 
 
     void setDominoOnGui(Player pl, Domino dom);
+
 
 
 }

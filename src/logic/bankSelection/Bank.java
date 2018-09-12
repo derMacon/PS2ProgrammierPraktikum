@@ -1,7 +1,7 @@
-package logic.BankSelection;
+package logic.bankSelection;
 
-import logic.Token.Domino;
-import logic.PlayerState.Player;
+import logic.token.Domino;
+import logic.playerState.Player;
 
 import java.util.List;
 import java.util.Random;
@@ -37,6 +37,10 @@ public class Bank {
             domFromBank[i] = this.entries[i].getDomino();
         }
         return domFromBank;
+    }
+
+    public Domino getDomino(int idx) {
+        return 0 <= idx && this.entries.length > idx ? this.entries[idx].getDomino() : null;
     }
 
     public void selectEntry(Player player, int domIdx) {

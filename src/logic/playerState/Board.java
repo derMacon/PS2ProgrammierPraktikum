@@ -1,9 +1,9 @@
-package logic.PlayerState;
+package logic.playerState;
 
-import logic.Token.Domino;
-import logic.LogicTransfer.GUIConnector;
-import logic.Token.Pos;
-import logic.Token.SingleTile;
+import logic.token.Domino;
+import logic.logicTransfer.GUIConnector;
+import logic.token.Pos;
+import logic.token.SingleTile;
 
 public class Board {
 

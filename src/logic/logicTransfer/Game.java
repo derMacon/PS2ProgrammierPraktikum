@@ -1,11 +1,11 @@
-package logic.LogicTransfer;
+package logic.logicTransfer;
 
-import logic.BankSelection.Bank;
-import logic.PlayerState.DefaultAIPlayer;
-import logic.PlayerState.HumanPlayer;
-import logic.PlayerState.Player;
-import logic.Token.Pos;
-import logic.Token.Domino;
+import logic.bankSelection.Bank;
+import logic.playerState.DefaultAIPlayer;
+import logic.playerState.HumanPlayer;
+import logic.playerState.Player;
+import logic.token.Pos;
+import logic.token.Domino;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -120,6 +120,12 @@ public class Game implements GUI2Game {
         this.currentRoundBank = currentBank;
     }
 
+    private void nextRound() {
+        // TODO insert code for ending game.
+
+    }
+
+
     @Override
     public void boxClicked() {
 
@@ -150,7 +156,7 @@ public class Game implements GUI2Game {
 
 
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
-        this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
+//        this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
 
         this.currPlayerIdx = 0;
     }
@@ -180,8 +186,12 @@ public class Game implements GUI2Game {
     }
 
     @Override
-    public void clickOnChooseBox() {
-
+    public void selectDom(int idx) {
+        System.out.println(idx);
+        this.currentRoundBank.selectEntry(this.players[currPlayerIdx], idx);
+        // TODO rest selects dominos
+        this.currDomino = this.currentRoundBank.getDomino(idx);
+        this.gui.showInChooseBox(this.currDomino);
     }
 
 }

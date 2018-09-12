@@ -1,54 +1,71 @@
-package logic.Token;
+package logic.token;
 
 import java.util.List;
 
 /**
- * A Domino has a tile and a rotation. Rotation 0 shows a horizontal orientated
+ * A Domino has a tile, a rotation and a position. Rotation 0 shows a horizontal orientated
  * domino with the first value on the left and the second on the right.
- *
+ * <p>
  * Rotation:
- *   the first value of the domino is the one under the cursor.
- *   rotation 0 - horizontally - not rotated         - snd is right of fst
- *            1 - vertically   - rotated  90 degrees - snd is bottom of fst
- *            2 - horizontally - rotated 180 degrees - snd is left of fst
- *            3 - vertically   - rotated 270 degrees - snd is top of fst
+ * the first value of the domino is the one under the cursor.
+ * rotation 0 - horizontally - not rotated         - snd is right of fst
+ * 1 - vertically   - rotated  90 degrees - snd is bottom of fst
+ * 2 - horizontally - rotated 180 degrees - snd is left of fst
+ * 3 - vertically   - rotated 270 degrees - snd is top of fst
+ *
  * @author GeritKaleck
  */
 public class Domino {
 
-    /** the tile */
+    /**
+     * the tile
+     */
     private final Tiles tiles;
-    /** the rotation of the tile
-     *   rotation 0 - horizontally - not rotated         - snd is right of fst
-     *            1 - vertically   - rotated  90 degrees - snd is bottom of fst
-     *            2 - horizontally - rotated 180 degrees - snd is left of fst
-     *            3 - vertically   - rotated 270 degrees - snd is top of fst
+    /**
+     * the rotation of the tile
+     * rotation 0 - horizontally - not rotated         - snd is right of fst
+     * 1 - vertically   - rotated  90 degrees - snd is bottom of fst
+     * 2 - horizontally - rotated 180 degrees - snd is left of fst
+     * 3 - vertically   - rotated 270 degrees - snd is top of fst
      */
     private int rotation;
 
+    /**
+     * Only modification to pos-class from ueb09
+     *
+     * @author silas
+     */
     private Pos posFst;
 
     /**
-     * creates a domino with the given tile and rotation 0
+     * creates a domino with the given tile, position and rotation 0
+     *
      * @param tile to set
+     * @param pos  position of the domino
      */
     public Domino(Tiles tile, Pos pos) {
-        this.tiles = tile;
-        this.rotation = 0;
+        this(tile, pos, 0);
+    }
+
+    public Domino(Tiles tile) {
+        this(tile, new Pos(0,0), 0);
     }
 
     /**
-     * creates a tiles with the given tile and rotation
+     * creates a tiles with the given tile, position and rotation
+     *
      * @param tiles
      * @param rotation
      */
     public Domino(Tiles tiles, Pos pos, int rotation) {
         this.tiles = tiles;
+        this.posFst = pos;
         this.rotation = rotation;
     }
 
     /**
      * gets the tile
+     *
      * @return the tile
      */
     public Tiles getTile() {
@@ -56,7 +73,8 @@ public class Domino {
     }
 
     /**
-     * gets the roation
+     * gets the rotation
+     *
      * @return the rotation
      */
     public int getRot() {
@@ -73,6 +91,7 @@ public class Domino {
 
     /**
      * gets the value at the top-left side: fst for rotation 0 and 1 else snd
+     *
      * @return the value at the top-left side
      */
     public SingleTile getFstVal() {
@@ -81,19 +100,25 @@ public class Domino {
 
     /**
      * gets the value at the right-bottom side
+     *
      * @return the value at the right-bottom side
      */
     public SingleTile getSndVal() {
         return rotation < 2 ? tiles.getSnd() : tiles.getFst();
     }
 
+    /**
+     * Getter for the first position of the domino (top / left tile)
+     * @return
+     */
     public Pos getFstPos() {
         return this.posFst;
     }
 
     /**
      * gets postion of the second half of the domino when the first half is
-     * on the given position.
+     * on the this.posFst position.
+     *
      * @return position of the second half
      */
     public Pos getSndPos() {
@@ -101,11 +126,13 @@ public class Domino {
         int y = posFst.y();
         switch (rotation) {
             case 0:
-            case 2: x = posFst.x() + 1;
+            case 2:
+                x = posFst.x() + 1;
                 y = posFst.y();
                 break;
             case 1:
-            case 3: x = posFst.x();
+            case 3:
+                x = posFst.x();
                 y = posFst.y() + 1;
                 break;
             default:
@@ -118,6 +145,7 @@ public class Domino {
     /**
      * gets all values of Tiles in a list. All existing dominos in list have
      * to be removed so each domino is single in list.
+     *
      * @param list list to be cleared and added to
      * @return same list with all dominos once each
      */
@@ -132,6 +160,7 @@ public class Domino {
 
     /**
      * dominos are equal if the have the same tile (rotation may differ)
+     *
      * @param obj
      * @return
      */

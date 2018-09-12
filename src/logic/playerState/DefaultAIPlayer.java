@@ -1,8 +1,8 @@
-package logic.PlayerState;
+package logic.playerState;
 
-import logic.BankSelection.Bank;
-import logic.LogicTransfer.GUIConnector;
-import logic.Token.Pos;
+import logic.bankSelection.Bank;
+import logic.logicTransfer.GUIConnector;
+import logic.token.Pos;
 
 public class DefaultAIPlayer extends Player {
 

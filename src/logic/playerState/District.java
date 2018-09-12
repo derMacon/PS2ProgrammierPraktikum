@@ -1,4 +1,4 @@
-package logic.PlayerState;
+package logic.playerState;
 
 public class District {
 

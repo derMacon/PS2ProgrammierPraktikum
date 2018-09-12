@@ -1,9 +1,7 @@
-package logic.Token;
+package logic.token;
 
 
-import logic.Token.SingleTile;
-
-import static logic.Token.SingleTile.*;
+import static logic.token.SingleTile.*;
 
 public enum Tiles {
     P0_P0_Val1   (P0, P0, 1),
