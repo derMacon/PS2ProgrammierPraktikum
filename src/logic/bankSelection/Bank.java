@@ -74,15 +74,17 @@ public class Bank {
 
     /**
      * Generates the player who selected the domino at a given position
+     *
      * @param idx idx of the domino which was selected
      * @return
      */
     public Player getSelectedPlayer(int idx) {
-        return isValidBankIdx(idx) && !isNotSelected(idx) ? this.entries[idx].getSelectedPlayer() : null;
+        return isValidBankIdx(idx) && !isNotSelected(idx) && null != this.entries[idx] ? this.entries[idx].getSelectedPlayer() : null;
     }
 
     /**
      * Checks if a slot on the bank at the given index isn't already selected by another player
+     *
      * @param domIdx index for the domino that needs to be checked
      * @return true if bank index isn't already selected by another player
      */
@@ -94,10 +96,11 @@ public class Bank {
 
     /**
      * Selects a entry at a given bank index
-     * @param player reference of the player to select the entry at the given index
-     * @param bankIdx index for the domino on the bank
      *
-     * TODO find out how to tag a precondition
+     * @param player  reference of the player to select the entry at the given index
+     * @param bankIdx index for the domino on the bank
+     *                <p>
+     *                TODO find out how to tag a precondition
      * @precondition player must be unequal to null, bankIdx must be a valid bank index, and the slot which the player
      * wants to select hold a domino (you can't select an empty slot)
      */
@@ -108,31 +111,44 @@ public class Bank {
 
     /**
      * Gets the domino the given player selected earlier on in the game
+     *
      * @param player player which selected a domino
      * @return the domino which the player selected, null if there is no such domino.
      */
     public Domino getPlayerSelectedDomino(Player player) {
+        assert null != player;
         Domino output = null;
         int counter = 0;
         while (counter < bankSize && null == output) {
-            if (this.entries[counter].getSelectedPlayer().equals(player)) {
-                output =  null != this.entries[counter] ? this.entries[counter].getDomino() : null;
+            if (null != this.entries[counter] && player.equals(this.entries[counter].getSelectedPlayer())) {
+                output = this.entries[counter].getDomino();
             }
+            counter++;
         }
         return output;
     }
 
-
+    /**
+     * Draws a random domino from the given stack
+     *
+     * @param stack list of dominos currently in the stack
+     */
     public void drawFromStack(List<Domino> stack) {
+        assert null != stack;
         for (int i = 0; i < bankSize; i++) {
             fill(stack.get(rand.nextInt(stack.size())), i);
         }
     }
 
+    /**
+     * Setter for a given entry index
+     *
+     * @param domino domino to be set in the given entry, domino may be null
+     * @param idx    index of the entry that will be modified
+     */
     public void fill(Domino domino, int idx) {
-        if (0 <= idx && bankSize > idx) {
-            this.entries[idx] = new Entry(domino);
-        }
+        assert 0 <= idx && bankSize > idx;
+        this.entries[idx] = new Entry(domino);
     }
 
     public Bank copy() {
@@ -146,6 +162,7 @@ public class Bank {
 
     /**
      * Checks if a given index is a valid index on the bank
+     *
      * @param idx index of a domino on the bank
      * @return true if index is a valid bank index
      */

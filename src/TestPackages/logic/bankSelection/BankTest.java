@@ -19,23 +19,41 @@ import static org.junit.Assert.*;
 
 public class BankTest {
 
+    public static final int DEFAULT_TEST_BANK_SIZE = 4;
+
     //<editor-fold defaultstate="collapsed" desc="Helping Method - Setting up tests">
     /**
-     * Fills a given list with the stack of dominos and generates a bank from the first 4 dominos of the stack. Dominos
-     * are not randomized.
-     *
+     * Fills a given list with the stack of dominos and generates a bank from the first len dominos of the stack. Dominos
+     * are NOT randomized.
+     * @param len size of the bank
      * @param stack input list serving as the stack
      * @return bank with the first 4 dominos from the newly filled stack.
      */
-    private Bank genBankFromStack(List<Domino> stack) {
+    private Bank genBankFromStack(int len, List<Domino> stack) {
         stack = Domino.fill(stack);
-        Entry[] entries = new Entry[]{new Entry(stack.get(0)), new Entry(stack.get(1)), new Entry(stack.get(2)), new Entry(stack.get(3))};
-        Bank bank = new Bank(entries);
-        return bank;
+        Entry[] entries = new Entry[len];
+        for (int i = 0; i < len; i++) {
+            entries[i] = new Entry(stack.get(i));
+        }
+        return new Bank(entries);
+    }
+
+    private Bank genBankFromStack(List<Domino> stack) {
+        //<editor-fold defaultstate="collapsed" desc="Alternative">
+//        stack = Domino.fill(stack);
+//        Entry[] entries = new Entry[]{new Entry(stack.get(0)), new Entry(stack.get(1)), new Entry(stack.get(2)), new Entry(stack.get(3))};
+//        Bank bank = new Bank(entries);
+//        return bank;
+        //</editor-fold>
+        return genBankFromStack(DEFAULT_TEST_BANK_SIZE, stack);
+    }
+
+    private Bank genBankFromStack(int len) {
+        return genBankFromStack(len, new LinkedList<Domino>());
     }
 
     private Bank genBankFromStack() {
-        return genBankFromStack(new LinkedList<Domino>());
+        return genBankFromStack(DEFAULT_TEST_BANK_SIZE, new LinkedList<Domino>());
     }
     //</editor-fold>
 
@@ -60,10 +78,13 @@ public class BankTest {
 
     @Test
     public void testGetSelectedPlayer_GettingNotSelectedDomino() {
-        Bank bank = genBankFromStack();
+        List<Domino> stack = new LinkedList<>();
+        genBankFromStack(stack);
+        Entry[] entries = new Entry[]{new Entry(stack.get(0)), null};
+        Bank bank = new Bank(entries);
         assertNull(bank.getSelectedPlayer(0));
+        assertNull(bank.getSelectedPlayer(1));
     }
-
 
     // --- isNotSelected ---
     @Test
@@ -139,17 +160,127 @@ public class BankTest {
 
 
     // --- getPlayerSelectedDomino ---
-//    @Test
-//    public void testgetPlayerSelectedDomino_MixedBank() {
-//        List<Domino> stack = new LinkedList<>();
-//        genBankFromStack(stack);
-//        Entry[] entries = new Entry[]{new Entry(stack.get(0)), new Entry(stack.get(1)), null};
-//        Bank bank = new Bank(entries);
-//        Player player = new DefaultAIPlayer(new FakeGUI());
-//        bank.selectEntry(player, 0);
-//        assertSame(player, bank.getSelectedPlayer(0));
-//        assertNull(bank.getSelectedPlayer(1));
-//        assertNull(bank.getSelectedPlayer(2));
-//    }
+    @Test
+    public void testGetPlayerSelectedDomino_MixedBank() {
+        List<Domino> stack = new LinkedList<>();
+        genBankFromStack(stack);
+        Entry[] entries = new Entry[]{new Entry(stack.get(0)), new Entry(stack.get(1)), null};
+        Bank bank = new Bank(entries);
+        Player player = new DefaultAIPlayer(new FakeGUI());
+        Domino outputDom = bank.getPlayerSelectedDomino(player);
+        assertNull(outputDom);
+
+        bank.selectEntry(player, 0);
+        assertSame(stack.get(0), bank.getPlayerSelectedDomino(player));
+    }
+
+    @Test (expected = AssertionError.class)
+    public void testGetPlayerSelectedDomino_NullParam() {
+        new Bank(4).getPlayerSelectedDomino(null);
+    }
+
+
+    // --- drawFromStack ---
+    @Test
+    public void testDrawFromStack_DrawFullStack() {
+        List<Domino> stack = new LinkedList<>();
+        // only init stack
+        genBankFromStack(Tiles.TILES_CNT, stack);
+        Bank bank = new Bank(Tiles.TILES_CNT);
+        bank.drawFromStack(stack);
+        Domino[] domOnBank = bank.getAllDominos();
+        boolean containsAllStackDoms = true;
+        for(Domino currDom : domOnBank) {
+            containsAllStackDoms &= stack.contains(currDom);
+        }
+        assertEquals(stack.size(), domOnBank.length);
+        assertTrue(containsAllStackDoms);
+    }
+
+
+    @Test (expected = AssertionError.class)
+    public void testDrawFromStack_NullParam() {
+        new Bank(1).drawFromStack(null);
+    }
+
+
+    // --- fill ---
+    @Test
+    public void testFill_Valid() {
+        List<Domino> stack = new LinkedList<>();
+        Bank bank = genBankFromStack(stack);
+        // Just to make sure... checking before setting
+        assertNotEquals(stack.get(4), bank.getDomino(3));
+
+        bank.fill(stack.get(4), 3);
+        assertEquals(stack.get(4), bank.getDomino(3));
+    }
+
+    @Test
+    public void testFill_NullParam() {
+        List<Domino> stack = new LinkedList<>();
+        Bank bank = genBankFromStack(stack);
+        Entry fstEntry = bank.getEntries()[0];
+        // before
+        assertSame(stack.get(0), fstEntry.getDomino());
+        assertNull(fstEntry.getSelectedPlayer());
+
+        bank.fill(null, 0);
+        // after
+        fstEntry = bank.getEntries()[0];
+        assertNull(fstEntry.getDomino());
+        assertNull(fstEntry.getSelectedPlayer());
+    }
+
+    @Test (expected = AssertionError.class)
+    public void testFill_InvalidIdxSmall() {
+        new Bank(4).fill(new Domino(Tiles.A0_A0_Val7), -1);
+    }
+
+    @Test (expected = AssertionError.class)
+    public void testFill_InvalidIdxLarge() {
+        new Bank(4).fill(new Domino(Tiles.A0_A0_Val7), 4);
+    }
+
+
+    // --- copy ---
+    @Test
+    public void testCopy_Valid() {
+        Bank bank = genBankFromStack(1);
+        // new reference
+        assertNotSame(bank, bank.copy());
+        // new entries
+        assertNotSame(bank.getEntries(), bank.copy().getEntries());
+        // new domino array reference
+        assertNotSame(bank.getAllDominos(), bank.copy().getAllDominos());
+        // same domino array values
+        assertArrayEquals(bank.getAllDominos(), bank.copy().getAllDominos());
+        // same reference for actual dominos
+        assertSame(bank.getAllDominos()[0], bank.copy().getAllDominos()[0]);
+    }
+
+    @Test
+    public void testCopy_EmptyBank() {
+        Bank bank = new Bank(1);
+        assertNotSame(bank, bank.copy());
+        assertNotSame(bank.getEntries(), bank.copy().getEntries());
+        assertNotSame(bank.getAllDominos(), bank.copy().getAllDominos());
+        assertArrayEquals(bank.getAllDominos(), bank.copy().getAllDominos());
+        assertSame(bank.getAllDominos()[0], bank.copy().getAllDominos()[0]);
+    }
+
+    @Test
+    public void testCopy_MixedBank() {
+        List<Domino> stack = new LinkedList<>();
+        genBankFromStack(stack);
+        Entry[] entries = new Entry[]{new Entry(stack.get(0)), new Entry(stack.get(1)), null};
+        Bank bank = new Bank(entries);
+
+        assertNotSame(bank, bank.copy());
+        assertNotSame(bank.getEntries(), bank.copy().getEntries());
+        assertNotSame(bank.getAllDominos(), bank.copy().getAllDominos());
+        assertArrayEquals(bank.getAllDominos(), bank.copy().getAllDominos());
+        assertSame(bank.getAllDominos()[0], bank.copy().getAllDominos()[0]);
+    }
 
 }

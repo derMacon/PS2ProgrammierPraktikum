@@ -53,7 +53,7 @@ public enum Tiles {
     O0_I2_Val47   (O0, I2, 47),
     P0_I3_Val48   (P0, I3, 48);
 
-    public static final int HIGHEST_VALUE = 48;
+    public static final int TILES_CNT = 48;
 
     private final SingleTile fst;
     private final SingleTile snd;
