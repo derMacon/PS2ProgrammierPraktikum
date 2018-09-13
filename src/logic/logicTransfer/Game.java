@@ -14,7 +14,6 @@ import java.util.List;
 
 public class Game implements GUI2Game {
 
-    public final static int BANK_SIZE = 4;
     public final static int CURRENT_BANK_IDX = 0;
     public final static int NEXT_BANK_IDX = 1;
     public final static int PLAYER_CNT = 4;

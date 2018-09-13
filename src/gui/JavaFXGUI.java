@@ -56,7 +56,7 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void setToBank(int ordBank, Bank bank) {
-        Domino[] dominos = bank.getDominos();
+        Domino[] dominos = bank.getAllDominos();
         for (int i = 0; i < dominos.length; i++) {
             setToBank(ordBank, i, dominos[i]);
         }

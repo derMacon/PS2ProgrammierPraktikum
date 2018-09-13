@@ -12,9 +12,12 @@ public class Entry {
         this.selectedPlayer = selectedPlayer;
     }
 
-
     public Entry(Domino domino) {
         this(domino, null);
+    }
+
+    public void selectEntry(Player player) {
+        this.selectedPlayer = player;
     }
 
     public Domino getDomino() {

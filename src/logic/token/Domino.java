@@ -1,5 +1,6 @@
 package logic.token;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -48,8 +49,9 @@ public class Domino {
     }
 
     public Domino(Tiles tile) {
-        this(tile, new Pos(0,0), 0);
+        this(tile, new Pos(0, 0), 0);
     }
+
 
     /**
      * creates a tiles with the given tile, position and rotation
@@ -109,6 +111,7 @@ public class Domino {
 
     /**
      * Getter for the first position of the domino (top / left tile)
+     *
      * @return
      */
     public Pos getFstPos() {
@@ -150,7 +153,11 @@ public class Domino {
      * @return same list with all dominos once each
      */
     public static List<Domino> fill(List<Domino> list) {
-        list.clear();
+        if (null == list) {
+            list = new LinkedList<Domino>();
+        } else {
+            list.clear();
+        }
         for (Tiles tile : Tiles.values()) {
             list.add(new Domino(tile, null));
         }
