@@ -8,7 +8,9 @@ import javafx.scene.Node;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.input.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
@@ -21,6 +23,13 @@ import java.util.ResourceBundle;
 
 public class FXMLDocumentController implements Initializable {
 
+    public static final Image BANK_BOX_TEXTURE = new Image("other/GUITextures/LargeBoxV1Alpha.png");
+    public static final Image BACKGROUND_TEXTURE = new Image("other/GUITextures/BackgroundV2.png");
+    public static final Image BOARD_BACKGROUND_TEXTURE = new Image("other/GUITextures/SelectedBoxV4Alpha.png");
+
+    @FXML
+    private AnchorPane aPnNextRound;
+
     @FXML
     private Label lblPlayer1;
 
@@ -31,6 +40,9 @@ public class FXMLDocumentController implements Initializable {
     private Button btnLeft;
 
     @FXML
+    private Label lblTurn;
+
+    @FXML
     private GridPane grdPnBot2Board;
 
     @FXML
@@ -38,9 +50,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Label lblPlayer4;
-
-    @FXML
-    private Label lblTurn;
 
     @FXML
     private GridPane grdPnHumanBoard;
@@ -61,7 +70,16 @@ public class FXMLDocumentController implements Initializable {
     private Pane pnSelected;
 
     @FXML
+    private AnchorPane aPnHumanPlayerBackground;
+
+    @FXML
     private GridPane grdPnBot3Board;
+
+    @FXML
+    private Pane aPnBackground;
+
+    @FXML
+    private AnchorPane aPnThisRound;
 
     @FXML
     private GridPane grdPnCurrentSelectiveGroup;
@@ -78,6 +96,13 @@ public class FXMLDocumentController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
+
+        setAPnWithImageAsForeground(this.aPnThisRound, BANK_BOX_TEXTURE);
+//        setAPnWithImageAsBackground(this.aPnBackground, BACKGROUND_TEXTURE);
+        setAPnWithImageAsBackground(this.aPnHumanPlayerBackground, BOARD_BACKGROUND_TEXTURE);
+
         ImageView[][] imgVwsHumanBoard = addImageViewsToGrid(grdPnHumanBoard);
         this.addDragAndDropHandlers(imgVwsHumanBoard);
 
@@ -85,6 +110,31 @@ public class FXMLDocumentController implements Initializable {
 
         this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnFutureselectiveGroup));
         this.game = new Game(gui, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
+    }
+
+    private void setAPnWithImageAsBackground(Pane pane, Image image) {
+        setAPnWithImage(pane, image, false);
+    }
+
+    private void setAPnWithImageAsForeground(Pane pane, Image image) {
+        setAPnWithImage(pane, image, true);
+    }
+
+    /**
+     * https://stackoverflow.com/questions/42172015/javafxscenebuilder-how-can-i-automatically-resize-the-scene-when-the-window?rq=1
+     * @param pane
+     * @param image
+     */
+    private void setAPnWithImage(Pane pane, Image image, boolean addAsForeground) {
+        ImageView imgVW = new ImageView(image);
+        imgVW.setPreserveRatio(false);
+        imgVW.fitHeightProperty().bind(pane.heightProperty());
+        imgVW.fitWidthProperty().bind(pane.widthProperty());
+        if(addAsForeground) {
+            pane.getChildren().add(imgVW);
+        } else {
+            pane.getChildren().add(0, imgVW);
+        }
     }
 
     @FXML

@@ -4,6 +4,7 @@ IDEA shortcuts:
 - Shift + f10: Run project
 - double clicking shift: search everywhere 
 - alt + f7: find usage
+- Strg + d: duplicate selected block, line if no block selected 
 - Strg + alt + l: Reformat file
 - Strg + Shift + a: split eingeben um Bildschirm zu teilen
 - Strg + f12: quickly navigate through edited file
