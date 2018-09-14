@@ -1,9 +1,8 @@
 package TestPackages.logic.bankSelection;
 
-import gui.JavaFXGUI;
+import TestPackages.other.FakeGUI;
 import logic.bankSelection.Bank;
 import logic.bankSelection.Entry;
-import logic.logicTransfer.Game;
 import logic.playerState.DefaultAIPlayer;
 import logic.playerState.Player;
 import logic.token.Domino;
@@ -13,7 +12,6 @@ import java.util.List;
 
 import logic.token.Tiles;
 import org.junit.Test;
-import org.junit.experimental.theories.suppliers.TestedOn;
 
 import static org.junit.Assert.*;
 

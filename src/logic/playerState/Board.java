@@ -7,7 +7,7 @@ import logic.token.SingleTile;
 
 public class Board {
 
-    public static final int DEFAULT_BOARD_SIZE = 5;
+    public static final int BOARD_SIZE = 5;
 
     private SingleTile[][] cells;
 
@@ -15,7 +15,7 @@ public class Board {
     }
 
     public Board() {
-        cells = new SingleTile[DEFAULT_BOARD_SIZE][DEFAULT_BOARD_SIZE];
+        cells = new SingleTile[BOARD_SIZE][BOARD_SIZE];
     }
 
     public int getCols() {
@@ -27,7 +27,7 @@ public class Board {
     }
 
     public boolean isValidPos(Pos pos) {
-        return 0 < pos.x() && DEFAULT_BOARD_SIZE > pos.x() && 0 < pos.y() && DEFAULT_BOARD_SIZE > pos.y();
+        return 0 < pos.x() && BOARD_SIZE > pos.x() && 0 < pos.y() && BOARD_SIZE > pos.y();
     }
 
     public boolean fits(Domino domino) {

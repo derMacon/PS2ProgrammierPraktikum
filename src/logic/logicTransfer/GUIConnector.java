@@ -44,13 +44,10 @@ public interface GUIConnector {
 
     /**
      * shows the images corresponding to the two values on grid.
-     * @param ordPlayer
-     * @param fstPos
-     * @param fstValue
-     * @param sndPos
-     * @param sndValue
+     * @param ordPlayer ordinal value of the current player
+     * @param domino choosen domino to display on board
      */
-    void showOnGrid(int ordPlayer, Pos fstPos, int fstValue, Pos sndPos, int sndValue);
+    void showOnGrid(int ordPlayer, Domino domino);
 
     /**
      * presents the results.

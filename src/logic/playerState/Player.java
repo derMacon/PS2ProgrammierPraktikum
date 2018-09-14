@@ -10,7 +10,7 @@ import java.util.List;
 
 public abstract class Player {
     protected Board board;
-    protected Bank[] banks;
+//    protected Bank[] banks;
     protected List<District> gameStats;
     protected GUIConnector gui;
 
@@ -18,6 +18,7 @@ public abstract class Player {
 //        this.board = new Board();
         this.gameStats = new LinkedList<>();
         this.gui = gui;
+        this.board = new Board();
     }
 
     public Board getBoard() {
@@ -28,10 +29,8 @@ public abstract class Player {
 
     abstract Pos genDominoPos();
 
-    public void setToBoard() {
-        Domino playerSelectedDomino = this.banks[Bank.CURRENT_BANK_IDX].getPlayerSelectedDomino(this);
+    public void showOnBoard(Domino playerSelectedDomino) {
         this.board.lay(playerSelectedDomino);
-
     }
 
 }

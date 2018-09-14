@@ -1,6 +1,7 @@
 package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
+import logic.playerState.Board;
 import logic.playerState.DefaultAIPlayer;
 import logic.playerState.HumanPlayer;
 import logic.playerState.Player;
@@ -35,11 +36,6 @@ public class Game implements GUI2Game {
 
     private Player[] players;
 
-    /**
-     * the current player
-     */
-    private Player currPlayerReference;
-
     private int currPlayerIdx;
 
     private List<Domino> stack;
@@ -68,7 +64,6 @@ public class Game implements GUI2Game {
         this.stack = new LinkedList<>();
         this.players = new Player[PLAYER_CNT];
         this.currPlayerIdx = 0;
-        currPlayerReference = null;
         currDomino = null;
     }
 
@@ -132,16 +127,25 @@ public class Game implements GUI2Game {
 
     @Override
     public boolean fits(Pos pos) {
+        return true;
+    }
+
+    @Override
+    public boolean domFits(Domino dom, Board board) {
         return false;
     }
 
     @Override
-    public void setOnBoard(Pos posFst) {
-
+    public void setOnBoard(Pos pos) {
+//        if (currDomino != null && board.fits(currDomino, posFst)) {
+        System.out.println("setOnBoard -> Game");
+            currDomino.setPos(new Pos(pos.x(), pos.y()));
+            this.players[this.currPlayerIdx].showOnBoard(currDomino);
+            this.gui.showOnGrid(this.currPlayerIdx, this.currDomino);
+//            setToChooseBox(null);
+//            nextPlayer();
+//        }
     }
-
-
-
 
     @Override
     public void startGame() {

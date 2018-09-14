@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import logic.*;
 import logic.bankSelection.Bank;
+import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.token.Pos;
 import logic.logicTransfer.GUIConnector;
@@ -32,7 +33,7 @@ public class JavaFXGUI implements GUIConnector {
     private Label lblTurn;
     private ImageView[][] imgVwsPlayerBoard;
     private ImageView[][][] imgWwsAIBoards;
-//    private ImageView[][][] imgVwsProvidedBank;
+    //    private ImageView[][][] imgVwsProvidedBank;
     private ImageView[][] imgVwsCurrentBank;
     private ImageView[][] imgVwsNextBank;
 
@@ -226,7 +227,7 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void updateAllPlayers(Player[] players) {
-        for(Player pl : players) {
+        for (Player pl : players) {
             updatePlayer(pl);
         }
     }
@@ -252,22 +253,6 @@ public class JavaFXGUI implements GUIConnector {
 //        }
     }
 
-    /**
-     * Shows the image with the given value at the given position on the game
-     * grid.
-     *
-     * @param pos position on the game grid
-     * @param value value for which the image should be displayed at pos
-     */
-    private void showCellOnGrid(Pos pos, int value) {
-//        if (isValidPosOnGameGrid(pos)) {
-//            if (value == Board.EMPTY) {
-//                this.imgVewsGame[pos.x()][pos.y()].setImage(EMPTY_IMG);
-//            } else {
-//                this.imgVewsGame[pos.x()][pos.y()].setImage(getImage(value));
-//            }
-//        }
-    }
 //
 //    private boolean isValidPosOnGameGrid(Pos pos) {
 //        return pos.x() >= 0
@@ -276,9 +261,32 @@ public class JavaFXGUI implements GUIConnector {
 //                && pos.y() < this.imgVewsGame[pos.x()].length;
 //    }
 
-    @Override
-    public void showOnGrid(int ordPlayer, Pos fstPos, int fstValue, Pos sndPos, int sndValue) {
 
+    @Override
+    public void showOnGrid(int ordPlayer, Domino domino) {
+        System.out.println("show on grid -> javafxgui");
+        ImageView[][] board = 0 == ordPlayer ? this.imgVwsPlayerBoard : this.imgWwsAIBoards[ordPlayer];
+        showCellOnGrid(board, domino.getFstPos(), domino.getFstVal().ordinal());
+        showCellOnGrid(board, domino.getSndPos(), domino.getSndVal().ordinal());
+    }
+
+
+    /**
+     * Shows the image with the given value at the given position on the game
+     * grid.
+     *
+     * @param pos   position on the game grid
+     * @param value value for which the image should be displayed at pos
+     */
+    private void showCellOnGrid(ImageView[][] imgVwBoard, Pos pos, int value) {
+        if (isValidPosOnGameGrid(imgVwBoard, pos)) {
+            imgVwBoard[pos.x()][pos.y()].setImage(getImage(value));
+        }
+    }
+
+    private boolean isValidPosOnGameGrid(ImageView[][] board, Pos pos) {
+        return null != board && null != pos && Board.BOARD_SIZE == board.length
+                && null != board[0] && Board.BOARD_SIZE == board[0].length;
     }
 
     @Override
@@ -287,12 +295,11 @@ public class JavaFXGUI implements GUIConnector {
     }
 
 
-
     /**
      * Loads one image for one half of a domino tile.
      *
      * @param value of the current tile; should be between 0 and 6, if is not the
-     * empty image will be returned
+     *              empty image will be returned
      * @return image with appropriate number of eyes; empty image if there is
      * not image available for desired number of eyes
      */
@@ -376,16 +383,10 @@ public class JavaFXGUI implements GUIConnector {
                 break;
             default:
                 img = EMPTY_IMG;
-        };
+        }
+        ;
         return img;
     }
-
-
-
-
-
-
-
 
 
     /**
@@ -429,11 +430,11 @@ public class JavaFXGUI implements GUIConnector {
      * A current domino has to be available. If there is no current domino (so,
      * no domino is the selected box, nothing happens).
      *
-     * @param pos position of the first half of the domino; the current domino
-     * is used to determine whether the cell to the right or below it is marked
-     * as well
+     * @param pos    position of the first half of the domino; the current domino
+     *               is used to determine whether the cell to the right or below it is marked
+     *               as well
      * @param effect how the color of the cells given through pos is changed. If
-     * is value is null any previous effects are removed.
+     *               is value is null any previous effects are removed.
      */
     private void addEffectToDominoPos(Pos pos, ColorAdjust effect) {
         if (this.currDomino != null) {

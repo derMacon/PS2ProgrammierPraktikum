@@ -1,4 +1,4 @@
-package TestPackages.logic.bankSelection;
+package TestPackages.other;
 
 import logic.Result;
 import logic.bankSelection.Bank;
@@ -39,7 +39,7 @@ public class FakeGUI implements GUIConnector {
     }
 
     @Override
-    public void showOnGrid(int ordPlayer, Pos fstPos, int fstValue, Pos sndPos, int sndValue) {
+    public void showOnGrid(int ordPlayer, Domino domino) {
 
     }
 

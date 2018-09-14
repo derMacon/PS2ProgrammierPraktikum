@@ -19,6 +19,31 @@ import java.util.List;
 public class Domino {
 
     /**
+     * Number of possiblities a domino can be rotated
+     */
+    public static final int ROTATION_CNT = 4;
+
+    /**
+     * Index of the first tile
+     */
+    public static final int FST_TILE_IDX = 0;
+
+    /**
+     * Index of the second tile
+     */
+    public static final int SND_TILE_IDX = 1;
+
+    /**
+     * Default Pos for a domino
+     */
+    public static final Pos DEFAULT_POS = new Pos(0, 0);
+
+    /**
+     * Default rotation for a domino
+     */
+    public static final int DEFAULT_ROT = 0;
+
+    /**
      * the tile
      */
     private final Tiles tiles;
@@ -32,37 +57,55 @@ public class Domino {
     private int rotation;
 
     /**
-     * Only modification to pos-class from ueb09
-     *
-     * @author silas
+     * top left position of the domino
      */
     private Pos posFst;
 
     /**
-     * creates a domino with the given tile, position and rotation 0
-     *
-     * @param tile to set
-     * @param pos  position of the domino
+     * bottom right position of the domino
      */
-    public Domino(Tiles tile, Pos pos) {
-        this(tile, pos, 0);
-    }
-
-    public Domino(Tiles tile) {
-        this(tile, new Pos(0, 0), 0);
-    }
-
+    private Pos posSnd;
 
     /**
      * creates a tiles with the given tile, position and rotation
      *
-     * @param tiles
-     * @param rotation
+     * @param tiles tiles of the domino
+     * @param posFst first position of the domino
+     * @param rotation rotation of the domino
      */
-    public Domino(Tiles tiles, Pos pos, int rotation) {
-        this.tiles = tiles;
-        this.posFst = pos;
+    public Domino(Tiles tiles, Pos posFst, int rotation) {
+        assert null != tiles && isValidRot(rotation);
         this.rotation = rotation;
+        this.tiles = tiles;
+        this.posFst = posFst;
+        updatePosSnd();
+    }
+
+    /**
+     * creates a domino with the given tile, position and rotation 0
+     *
+     * @param tiles to set
+     * @param pos  position of the first domino tile (top left)
+     */
+    public Domino(Tiles tiles, Pos pos) {
+        this(tiles, pos, DEFAULT_ROT);
+    }
+
+    /**
+     * creates a domino with a given tile and rotation
+     * @param tiles
+     * @param rot
+     */
+    public Domino(Tiles tiles, int rot) {
+        this(tiles, DEFAULT_POS, rot);
+    }
+
+    /**
+     * creates a domino with a given tile
+      * @param tiles to set
+     */
+    public Domino(Tiles tiles) {
+        this(tiles, DEFAULT_POS, DEFAULT_ROT);
     }
 
     /**
@@ -83,12 +126,32 @@ public class Domino {
         return rotation;
     }
 
+    public void setPos(Pos posFst) {
+        this.posFst = posFst;
+        updatePosSnd();
+    }
+
+    /**
+     * Generates the district type for the first or second tile of the domino
+      * @param idx index of the tile
+     * @return the district type of the tile at the given index, null if index is invalid
+     */
+    public DistrictType genTileDistrictType(int idx) {
+        DistrictType output = null;
+        if (FST_TILE_IDX == idx || SND_TILE_IDX == idx) {
+            output = FST_TILE_IDX == idx ? this.tiles.getFst().getDistrictType() : this.tiles.getSnd().getDistrictType();
+        }
+        return output;
+    }
+
     /**
      * increments the rotation by one. The roation is 0..3.
+     * updated the second position.
      */
     public void incRot() {
-        rotation++;
-        rotation %= 4;
+        this.rotation++;
+        this.rotation %= 4;
+        updatePosSnd();
     }
 
     /**
@@ -119,29 +182,39 @@ public class Domino {
     }
 
     /**
-     * gets postion of the second half of the domino when the first half is
-     * on the this.posFst position.
+     * Getter for the second position of the domino (bottom / right tile)
+     * @return
+     */
+    public Pos getSndPos() {
+        return this.posSnd;
+    }
+
+    /**
+     * updates postion of the second half of the domino when the first half is
+     * on the this.posFst position. If this.posFst equals null nothing will happen
      *
      * @return position of the second half
      */
-    public Pos getSndPos() {
-        int x = posFst.x();
-        int y = posFst.y();
-        switch (rotation) {
-            case 0:
-            case 2:
-                x = posFst.x() + 1;
-                y = posFst.y();
-                break;
-            case 1:
-            case 3:
-                x = posFst.x();
-                y = posFst.y() + 1;
-                break;
-            default:
-                assert false : "rotation has to be 0..3 but was " + rotation;
+    private void updatePosSnd() {
+        if(null != this.posFst) {
+            int x = posFst.x();
+            int y = posFst.y();
+            switch (rotation) {
+                case 0:
+                case 2:
+                    x = posFst.x() + 1;
+                    y = posFst.y();
+                    break;
+                case 1:
+                case 3:
+                    x = posFst.x();
+                    y = posFst.y() + 1;
+                    break;
+                default:
+                    assert false : "rotation has to be 0..3 but was " + rotation;
+            }
+            this.posSnd = new Pos(x, y);
         }
-        return new Pos(x, y);
     }
 
 
@@ -187,6 +260,10 @@ public class Domino {
     @Override
     public String toString() {
         return tiles.toString() + rotation;
+    }
+
+    private boolean isValidRot(int rot) {
+        return 0 <= rot && ROTATION_CNT > rot;
     }
 
 

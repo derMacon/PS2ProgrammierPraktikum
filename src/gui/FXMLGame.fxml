@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import java.lang.*?>
@@ -10,7 +11,7 @@
 
 <BorderPane prefHeight="900.0" prefWidth="1093.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLDocumentController">
     <center>
-        <AnchorPane prefHeight="907.0" prefWidth="1123.0" BorderPane.alignment="CENTER">
+        <AnchorPane prefHeight="764.0" prefWidth="993.0" BorderPane.alignment="CENTER">
             <children>
                 <HBox prefHeight="775.0" prefWidth="993.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <children>
@@ -128,23 +129,38 @@
                                         <Insets bottom="15.0" />
                                     </VBox.margin>
                                 </BorderPane>
-                                <Separator prefHeight="85.0" prefWidth="488.0" />
-                                <HBox alignment="CENTER" prefHeight="114.0" prefWidth="488.0">
+                                <Separator prefHeight="31.0" prefWidth="489.0" />
+                                <HBox alignment="CENTER" prefHeight="188.0" prefWidth="489.0">
                                     <children>
-                                        <AnchorPane prefHeight="138.0" prefWidth="201.0">
-                                            <children>
-                                                <Pane fx:id="pnSelected" layoutX="29.0" layoutY="47.0" onDragDetected="#onDragDetectedPnSelected" onMouseClicked="#onClickPnSelected" prefHeight="44.0" prefWidth="115.0" />
-                                                <Label prefHeight="30.0" prefWidth="86.0" text="Auswahl:">
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <ImageView fitHeight="200.0" fitWidth="200.0">
+                                       <image>
+                                          <Image url="@../other/GUITextures/SelectBoxV7Alpha.png" />
+                                       </image>
+                                    </ImageView>
+                                                <Label layoutX="65.0" layoutY="30.0" prefHeight="30.0" prefWidth="86.0" text="Auswahl:">
                                                     <font>
                                                         <Font size="17.0" />
                                                     </font>
                                                 </Label>
-                                            </children>
-                                        </AnchorPane>
+                                              <AnchorPane layoutX="20.0" layoutY="45.0" prefHeight="115.0" prefWidth="162.0">
+                                                  <children>
+                                                      <Pane fx:id="pnSelected" layoutX="43.0" layoutY="86.0" onDragDetected="#onDragDetectedPnSelected" onMouseClicked="#onClickPnSelected" prefHeight="44.0" prefWidth="115.0" />
+                                                  </children>
+                                              </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                              <Pane prefHeight="200.0" prefWidth="26.0" />
                                         <AnchorPane prefHeight="138.0" prefWidth="201.0">
                                             <children>
-                                                <Pane fx:id="pnDiscard" layoutX="29.0" layoutY="47.0" prefHeight="44.0" prefWidth="115.0" />
-                                                <Label layoutY="-1.0" prefHeight="30.0" prefWidth="86.0" text="Verwerfen:">
+                                    <ImageView fitHeight="200.0" fitWidth="200.0">
+                                       <image>
+                                          <Image url="@../other/GUITextures/SelectBoxV4Alpha.png" />
+                                       </image>
+                                    </ImageView>
+                                                <Pane fx:id="pnDiscard" layoutX="43.0" layoutY="78.0" prefHeight="44.0" prefWidth="115.0" />
+                                                <Label layoutX="43.0" layoutY="33.0" prefHeight="30.0" prefWidth="86.0" text="Verwerfen:">
                                                     <font>
                                                         <Font size="17.0" />
                                                     </font>

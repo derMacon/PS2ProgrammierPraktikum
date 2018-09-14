@@ -5,6 +5,8 @@
  */
 package logic.logicTransfer;
 
+import logic.playerState.Board;
+import logic.token.Domino;
 import logic.token.Pos;
 
 /**
@@ -32,12 +34,21 @@ public interface GUI2Game {
     boolean fits(Pos pos);
 
     /**
+     * Checks if a given domino fits on a given board
+     * @param dom domino who's position will be checked
+     * @param board board to check for dominos position
+     * @return true if domino fits on the board, null one of the parameters equals null or if the domino's position
+     * equals null.
+     */
+    boolean domFits(Domino dom, Board board);
+
+    /**
      * puts the current Domino to the given position on board and removes it
      * from the choose-box and switches to the next player.
      *
-     * @param posFst position to lay to describes the top-left halfs position
+//     * @param dom domino to be set on board
      */
-    void setOnBoard(Pos posFst);
+    void setOnBoard(Pos pos);
 
     /**
      * clears the board. deals the dominos to the banks. <br>
