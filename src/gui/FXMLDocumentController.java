@@ -26,9 +26,8 @@ public class FXMLDocumentController implements Initializable {
     public static final Image BANK_BOX_TEXTURE = new Image("gui/textures/LargeBoxV1Alpha.png");
     public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV2.png");
     public static final Image BOARD_BACKGROUND_TEXTURE = new Image("gui/textures/SelectedBoxV4Alpha.png");
+    public static final Image ROTBOX_TEXTURE = new Image("gui/textures/SelectBoxV4Alpha.png");
 
-    @FXML
-    private AnchorPane aPnNextRound;
 
     @FXML
     private Label lblPlayer1;
@@ -78,8 +77,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private AnchorPane aPnBackground;
 
-    @FXML
-    private AnchorPane aPnThisRound;
+
 
     @FXML
     private GridPane grdPnCurrentSelectiveGroup;
@@ -88,7 +86,39 @@ public class FXMLDocumentController implements Initializable {
     private GridPane grdPnFutureselectiveGroup;
 
     @FXML
-    private GridPane grdPnPlayer2Gui;
+    private GridPane grdPnPlayersAI;
+
+    @FXML
+    private GridPane grdPnPlayer1Texture;
+
+    @FXML
+    private GridPane grdPnPlayer2Texture;
+
+    @FXML
+    private GridPane grdPnDisposeTexture;
+
+    @FXML
+    private GridPane grdPnRotBoxTexture;
+
+    @FXML
+    private GridPane grdPnPlayer3Texture;
+
+    @FXML
+    private GridPane grdPnPlayer4Texture;
+
+    @FXML
+    private GridPane grdPnCurrentBankTexture;
+
+    @FXML
+    private GridPane grdPnNextBankTexture;
+
+    @FXML
+    private GridPane grdPnOverallBackgroundTexture;
+
+
+
+
+
 
     @FXML
     private Button btnDown;
@@ -112,10 +142,18 @@ public class FXMLDocumentController implements Initializable {
     }
     
     private void setUpGuiTextures() {
-        setAPnWithImageAsBackground(this.grdPnPlayer2Gui, BACKGROUND_TEXTURE);
-//        setAPnWithImageAsBackground(this.aPnThisRound, BANK_BOX_TEXTURE);
-//        setAPnWithImageAsBackground(this.aPnBackground, BACKGROUND_TEXTURE);
-//        setAPnWithImageAsBackground(this.aPnHumanPlayerBackground, BOARD_BACKGROUND_TEXTURE);
+        setAPnWithImageAsBackground(grdPnCurrentBankTexture, BANK_BOX_TEXTURE);
+        setAPnWithImageAsBackground(grdPnNextBankTexture, BANK_BOX_TEXTURE);
+
+        setAPnWithImageAsBackground(grdPnPlayer1Texture, BOARD_BACKGROUND_TEXTURE);
+        setAPnWithImageAsBackground(grdPnPlayer2Texture, BOARD_BACKGROUND_TEXTURE);
+        setAPnWithImageAsBackground(grdPnPlayer3Texture, BOARD_BACKGROUND_TEXTURE);
+        setAPnWithImageAsBackground(grdPnPlayer4Texture, BOARD_BACKGROUND_TEXTURE);
+
+        setAPnWithImageAsBackground(this.grdPnRotBoxTexture, ROTBOX_TEXTURE);
+        setAPnWithImageAsBackground(this.grdPnDisposeTexture, ROTBOX_TEXTURE);
+
+        setAPnWithImageAsBackground(grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
     }
 
     private void setAPnWithImageAsBackground(Pane pane, Image image) {
@@ -134,14 +172,16 @@ public class FXMLDocumentController implements Initializable {
     private void setAPnWithImage(Pane pane, Image image, boolean addAsForeground) {
         ImageView imgVW = new ImageView(image);
         imgVW.setPreserveRatio(false);
-        imgVW.setX(pane.getHeight());
-        System.out.println(pane.getProperties());
-        imgVW.setFitWidth(20);
+//        imgVW.setX(pane.getHeight());
+//        System.out.println(pane.getProperties());
+//        imgVW.setFitWidth(20);
 //        imgVW.fitHeightProperty().bind(pane.translateYProperty());
-//        imgVW.fitHeightProperty().bind(pane.heightProperty());
+        imgVW.fitHeightProperty().bind(pane.heightProperty());
         
 //        imgVW.fitWidthProperty().bind(pane.translateXProperty());
-//        imgVW.fitWidthProperty().bind(pane.widthProperty());
+        imgVW.fitWidthProperty().bind(pane.widthProperty());
+
+//        imgVwsGame[x][y].fitWidthProperty().bind(grdPn.widthProperty().divide(colcount).subtract(grdPn.getHgap()));
         if(addAsForeground) {
             pane.getChildren().add(imgVW);
         } else {
@@ -273,4 +313,6 @@ public class FXMLDocumentController implements Initializable {
         }
         return imgVwsGame;
     }
+
+
 }
