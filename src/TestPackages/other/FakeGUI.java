@@ -3,6 +3,7 @@ package TestPackages.other;
 import logic.Result;
 import logic.bankSelection.Bank;
 import logic.logicTransfer.GUIConnector;
+import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.token.Domino;
 import logic.token.Pos;
@@ -10,11 +11,6 @@ import logic.token.Pos;
 public class FakeGUI implements GUIConnector {
     @Override
     public void showWhosTurn(String name) {
-
-    }
-
-    @Override
-    public void selectDomino(int idx) {
 
     }
 
@@ -55,6 +51,11 @@ public class FakeGUI implements GUIConnector {
 
     @Override
     public void setDominoOnGui(Player pl, Domino dom) {
+
+    }
+
+    @Override
+    public void updateGrid(int playerOrd, Board board) {
 
     }
 }

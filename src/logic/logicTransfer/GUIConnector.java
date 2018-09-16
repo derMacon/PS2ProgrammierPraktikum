@@ -2,6 +2,7 @@ package logic.logicTransfer;
 
 import logic.*;
 import logic.bankSelection.Bank;
+import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.token.Pos;
 import logic.token.Domino;
@@ -18,8 +19,6 @@ public interface GUIConnector {
      */
     void showWhosTurn(String name);
 
-    void selectDomino(int idx);
-
     /**
      * sets a domino to the players bank at index. Empties it if domino is null.
      * @param index
@@ -34,11 +33,15 @@ public interface GUIConnector {
     void showInChooseBox(Domino dominoRotated);
 
     /**
-     * updates the grids cells.
+     * updates all data concerning a certain player (board, districts, points, etc.)
      * @param player
      */
     void updatePlayer(Player player);
 
+    /**
+     * updates all data concerning an array of players
+     * @param players 
+     */
     void updateAllPlayers(Player[] players);
 
 
@@ -66,6 +69,7 @@ public interface GUIConnector {
 
     void setDominoOnGui(Player pl, Domino dom);
 
-
+    
+    void updateGrid(int playerOrd, Board board); 
 
 }

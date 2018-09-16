@@ -2,6 +2,7 @@ package logic.playerState;
 
 import logic.bankSelection.Bank;
 import logic.logicTransfer.GUIConnector;
+import logic.token.Domino;
 import logic.token.Pos;
 
 public class HumanPlayer extends Player {
@@ -11,12 +12,14 @@ public class HumanPlayer extends Player {
     }
 
     @Override
-    void selectFromBank(Bank[] bank) {
-
+    public void selectFromBank(Bank bank) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    Pos genDominoPos() {
-        return null;
+    protected Pos genDominoPos(Domino domino) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+   
 }

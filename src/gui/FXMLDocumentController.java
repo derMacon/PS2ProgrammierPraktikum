@@ -23,9 +23,9 @@ import java.util.ResourceBundle;
 
 public class FXMLDocumentController implements Initializable {
 
-    public static final Image BANK_BOX_TEXTURE = new Image("other/GUITextures/LargeBoxV1Alpha.png");
-    public static final Image BACKGROUND_TEXTURE = new Image("other/GUITextures/BackgroundV2.png");
-    public static final Image BOARD_BACKGROUND_TEXTURE = new Image("other/GUITextures/SelectedBoxV4Alpha.png");
+    public static final Image BANK_BOX_TEXTURE = new Image("gui/textures/LargeBoxV1Alpha.png");
+    public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV2.png");
+    public static final Image BOARD_BACKGROUND_TEXTURE = new Image("gui/textures/SelectedBoxV4Alpha.png");
 
     @FXML
     private AnchorPane aPnNextRound;
@@ -76,7 +76,7 @@ public class FXMLDocumentController implements Initializable {
     private GridPane grdPnBot3Board;
 
     @FXML
-    private Pane aPnBackground;
+    private AnchorPane aPnBackground;
 
     @FXML
     private AnchorPane aPnThisRound;
@@ -88,6 +88,9 @@ public class FXMLDocumentController implements Initializable {
     private GridPane grdPnFutureselectiveGroup;
 
     @FXML
+    private GridPane grdPnPlayer2Gui;
+
+    @FXML
     private Button btnDown;
 
     private GUI2Game game;
@@ -97,11 +100,7 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
-
-        setAPnWithImageAsForeground(this.aPnThisRound, BANK_BOX_TEXTURE);
-//        setAPnWithImageAsBackground(this.aPnBackground, BACKGROUND_TEXTURE);
-        setAPnWithImageAsBackground(this.aPnHumanPlayerBackground, BOARD_BACKGROUND_TEXTURE);
+        setUpGuiTextures();
 
         ImageView[][] imgVwsHumanBoard = addImageViewsToGrid(grdPnHumanBoard);
         this.addDragAndDropHandlers(imgVwsHumanBoard);
@@ -110,6 +109,13 @@ public class FXMLDocumentController implements Initializable {
 
         this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnFutureselectiveGroup));
         this.game = new Game(gui, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
+    }
+    
+    private void setUpGuiTextures() {
+        setAPnWithImageAsBackground(this.grdPnPlayer2Gui, BACKGROUND_TEXTURE);
+//        setAPnWithImageAsBackground(this.aPnThisRound, BANK_BOX_TEXTURE);
+//        setAPnWithImageAsBackground(this.aPnBackground, BACKGROUND_TEXTURE);
+//        setAPnWithImageAsBackground(this.aPnHumanPlayerBackground, BOARD_BACKGROUND_TEXTURE);
     }
 
     private void setAPnWithImageAsBackground(Pane pane, Image image) {
@@ -128,8 +134,14 @@ public class FXMLDocumentController implements Initializable {
     private void setAPnWithImage(Pane pane, Image image, boolean addAsForeground) {
         ImageView imgVW = new ImageView(image);
         imgVW.setPreserveRatio(false);
-        imgVW.fitHeightProperty().bind(pane.heightProperty());
-        imgVW.fitWidthProperty().bind(pane.widthProperty());
+        imgVW.setX(pane.getHeight());
+        System.out.println(pane.getProperties());
+        imgVW.setFitWidth(20);
+//        imgVW.fitHeightProperty().bind(pane.translateYProperty());
+//        imgVW.fitHeightProperty().bind(pane.heightProperty());
+        
+//        imgVW.fitWidthProperty().bind(pane.translateXProperty());
+//        imgVW.fitWidthProperty().bind(pane.widthProperty());
         if(addAsForeground) {
             pane.getChildren().add(imgVW);
         } else {
@@ -139,7 +151,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void onClickStartGame(ActionEvent event) {
-        System.out.println("start game");
         this.game.startGame();
     }
 
@@ -210,7 +221,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void onClickPnSelected(MouseEvent event) {
-//        game.boxClicked();
+        game.boxClicked();
         System.out.println("Auswahlbox auswgewaehlt.");
     }
 

@@ -2,6 +2,7 @@ package logic.playerState;
 
 import logic.bankSelection.Bank;
 import logic.logicTransfer.GUIConnector;
+import logic.token.Domino;
 import logic.token.Pos;
 
 public class DefaultAIPlayer extends Player {
@@ -11,12 +12,15 @@ public class DefaultAIPlayer extends Player {
     }
 
     @Override
-    void selectFromBank(Bank[] bank) {
-
+    public void selectFromBank(Bank bank) {
+        // TODO insert code
     }
 
     @Override
-    Pos genDominoPos() {
+    protected Pos genDominoPos(Domino domino) {
+        // use in selectFromBank
         return null;
     }
+
+    
 }

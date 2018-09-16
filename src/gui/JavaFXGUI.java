@@ -20,7 +20,7 @@ public class JavaFXGUI implements GUIConnector {
 
     //25 images for each face of a half (0..24)
     private static int IMG_COUNT = 25;
-    protected static final Image EMPTY_IMG = new Image("other/EmptyV2.png");
+    protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV1.png");
 
     private Image[] imgs;
 
@@ -220,10 +220,10 @@ public class JavaFXGUI implements GUIConnector {
     }
 
 
-    @Override
-    public void selectDomino(int idx) {
-
-    }
+   @Override
+   public void updateGrid(int playerOrd, Board board) {
+       // TODO insert code
+   }
 
     @Override
     public void updateAllPlayers(Player[] players) {
