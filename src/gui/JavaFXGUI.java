@@ -235,8 +235,8 @@ public class JavaFXGUI implements GUIConnector {
     @Override
     public void updatePlayer(Player player) {
 //        Board board = player.getBoard();
-//        int width = board.getCols();
-//        int height = board.getRows();
+//        int width = board.getSizeX();
+//        int height = board.getSizeY();
 //        for (int i = 0; i < width; ++i) {
 //            for (int j = 0; j < height; ++j) {
 //                Pos pos = new Pos(i, j);
@@ -284,14 +284,21 @@ public class JavaFXGUI implements GUIConnector {
         }
     }
 
-    private boolean isValidPosOnGameGrid(ImageView[][] board, Pos pos) {
-        return null != board && null != pos && Board.BOARD_SIZE == board.length
-                && null != board[0] && Board.BOARD_SIZE == board[0].length;
+    /**
+     * Checks if a given Pos is a valid position in the given ImageView array.
+     * @param board Array to check with
+     * @param pos pos to check
+     * @return true if both parameters are uenqual to null and the pos represents a valid board position
+     */
+    protected  boolean isValidPosOnGameGrid(ImageView[][] board, Pos pos) {
+        return null != board && null != pos && null != board[0]
+                && 0 <= pos.x() && board[0].length > pos.x()
+                && 0 <= pos.y() && board[0].length > pos.y();
     }
 
     @Override
     public void showResult(Result result) {
-
+        // TODO insert code
     }
 
 

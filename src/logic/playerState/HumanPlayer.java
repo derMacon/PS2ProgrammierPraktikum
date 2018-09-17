@@ -7,8 +7,8 @@ import logic.token.Pos;
 
 public class HumanPlayer extends Player {
 
-    public HumanPlayer(GUIConnector gui) {
-        super(gui);
+    public HumanPlayer(GUIConnector gui, int boardSizeX, int boardSizeY) {
+        super(gui, boardSizeX, boardSizeY);
     }
 
     @Override

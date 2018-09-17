@@ -4,6 +4,7 @@ IDEA shortcuts:
 - Shift + f10: Run project
 - double clicking shift: search everywhere 
 - alt + f7: find usage
+- Strg + Shift + Ruecktaste: go back to last code change
 - Strg + d: duplicate selected block, line if no block selected 
 - Strg + shift + d: Move textblock with arrow keys
 - Strg + alt + l: Reformat file

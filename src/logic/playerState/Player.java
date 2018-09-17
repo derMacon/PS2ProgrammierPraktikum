@@ -29,8 +29,8 @@ public abstract class Player {
      * Constructor setting up the gui
      * @param gui reference to update gui
      */
-    public Player(GUIConnector gui) {
-        this(gui, new Board()); 
+    public Player(GUIConnector gui, int boardSizeX, int boardSizeY) {
+        this(gui, new Board(boardSizeX, boardSizeY));
     }
     
     /**
@@ -42,6 +42,15 @@ public abstract class Player {
         this.gameStats = new LinkedList<>();
         this.gui = gui; 
         this.board = board;
+    }
+
+    /**
+     * Constructor used for testing with a specific board. Empty slots are represented by
+     * @param gui Reference to the gui
+     * @param strBoard String representation of the board
+     */
+    public Player(GUIConnector gui, String strBoard) {
+        this(gui, new Board(strBoard));
     }
 
     /**

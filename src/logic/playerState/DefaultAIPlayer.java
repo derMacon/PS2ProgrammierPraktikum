@@ -7,8 +7,8 @@ import logic.token.Pos;
 
 public class DefaultAIPlayer extends Player {
 
-    public DefaultAIPlayer(GUIConnector gui) {
-        super(gui);
+    public DefaultAIPlayer(GUIConnector gui, int boardSizeX, int boardSizeY) {
+        super(gui, boardSizeX, boardSizeY);
     }
 
     @Override

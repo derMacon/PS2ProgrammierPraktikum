@@ -23,6 +23,9 @@ import java.util.ResourceBundle;
 
 public class FXMLDocumentController implements Initializable {
 
+    public static final int DEFAULT_PLAYER_COUNT = 4;
+
+    // Gui textures
     public static final Image BANK_BOX_TEXTURE = new Image("gui/textures/LargeBoxV1Alpha.png");
     public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV2.png");
     public static final Image BOARD_BACKGROUND_TEXTURE = new Image("gui/textures/SelectedBoxV4Alpha.png");
@@ -30,25 +33,7 @@ public class FXMLDocumentController implements Initializable {
 
 
     @FXML
-    private Label lblPlayer1;
-
-    @FXML
-    private Label lblPlayer2;
-
-    @FXML
     private Button btnLeft;
-
-    @FXML
-    private Label lblTurn;
-
-    @FXML
-    private GridPane grdPnBot2Board;
-
-    @FXML
-    private Label lblPlayer3;
-
-    @FXML
-    private Label lblPlayer4;
 
     @FXML
     private GridPane grdPnHumanBoard;
@@ -69,36 +54,19 @@ public class FXMLDocumentController implements Initializable {
     private Pane pnSelected;
 
     @FXML
-    private AnchorPane aPnHumanPlayerBackground;
+    private GridPane grdPnOverallBackgroundTexture;
 
     @FXML
-    private GridPane grdPnBot3Board;
-
-    @FXML
-    private AnchorPane aPnBackground;
-
-
-
-    @FXML
-    private GridPane grdPnCurrentSelectiveGroup;
-
-    @FXML
-    private GridPane grdPnFutureselectiveGroup;
-
-    @FXML
-    private GridPane grdPnPlayersAI;
-
-    @FXML
-    private GridPane grdPnPlayer1Texture;
+    private GridPane grdPnNextBankTexture;
 
     @FXML
     private GridPane grdPnPlayer2Texture;
 
     @FXML
-    private GridPane grdPnDisposeTexture;
+    private Button btnDown;
 
     @FXML
-    private GridPane grdPnRotBoxTexture;
+    private GridPane grdPnPlayer1Texture;
 
     @FXML
     private GridPane grdPnPlayer3Texture;
@@ -107,21 +75,51 @@ public class FXMLDocumentController implements Initializable {
     private GridPane grdPnPlayer4Texture;
 
     @FXML
+    private Label lblPlayer1;
+
+    @FXML
+    private Label lblPlayer2;
+
+    @FXML
+    private Label lblTurn;
+
+    @FXML
+    private GridPane grdPnBot2Board;
+
+    @FXML
+    private Label lblPlayer3;
+
+    @FXML
+    private Label lblPlayer4;
+
+    @FXML
+    private GridPane grdPnCurrentBankTexture2;
+
+    @FXML
+    private GridPane grdPnDisposeTexture;
+
+    @FXML
+    private GridPane grdPnBot3Board;
+
+    @FXML
+    private GridPane grdPnCurrentSelectiveGroup1;
+
+    @FXML
+    private GridPane grdPnCurrentSelectiveGroup;
+
+    @FXML
+    private GridPane grdPnRotBoxTexture;
+
+    @FXML
+    private GridPane grdPnPlayersAI;
+
+    @FXML
+    private GridPane grdPnFutureselectiveGroup;
+
+    @FXML
     private GridPane grdPnCurrentBankTexture;
 
-    @FXML
-    private GridPane grdPnNextBankTexture;
 
-    @FXML
-    private GridPane grdPnOverallBackgroundTexture;
-
-
-
-
-
-
-    @FXML
-    private Button btnDown;
 
     private GUI2Game game;
     private JavaFXGUI gui;
@@ -138,7 +136,7 @@ public class FXMLDocumentController implements Initializable {
         ImageView[][][] imgVwsAIBoards = new ImageView[][][] {addImageViewsToGrid(grdPnBot1Board), addImageViewsToGrid(grdPnBot2Board), addImageViewsToGrid(grdPnBot3Board)};
 
         this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnFutureselectiveGroup));
-        this.game = new Game(gui, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
+        this.game = new Game(gui, Game.DEFAULT_PLAYER_CNT, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
     }
     
     private void setUpGuiTextures() {

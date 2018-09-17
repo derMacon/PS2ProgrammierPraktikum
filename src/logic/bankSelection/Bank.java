@@ -11,7 +11,7 @@ public class Bank {
     public static final int NEXT_BANK_IDX = 1;
     public static final int BANK_COUNT = 2;
 
-    public final int bankSize;
+    private final int bankSize;
 
     /**
      * Random object needed to draw new dominos from the stack
@@ -41,6 +41,14 @@ public class Bank {
     }
 
     /**
+     * Getter for the bank size
+     * @return
+     */
+    public int getBankSize() {
+        return this.bankSize;
+    }
+
+    /**
      * Getter for the Entry array
      *
      * @return entries of the bank
@@ -50,13 +58,14 @@ public class Bank {
     }
 
     /**
-     * Generates an array of dominos from objects entry array
+     * Generates an array of dominos from objects entry array. Used to for copying banks. Empty slots are denoted by a
+     * nullpointer. An array might look like this: new Domino[] {null, new Domino(...), null, null};
      *
      * @return dominos on this bank, null for empty slots
      */
     public Domino[] getAllDominos() {
-        Domino[] domFromBank = new Domino[bankSize];
-        for (int i = 0; i < bankSize; i++) {
+        Domino[] domFromBank = new Domino[this.entries.length];
+        for (int i = 0; i < this.entries.length; i++) {
             domFromBank[i] = null != this.entries[i] ? this.entries[i].getDomino() : null;
         }
         return domFromBank;
@@ -92,6 +101,22 @@ public class Bank {
         return isValidBankIdx(domIdx)
                 && null != this.entries[domIdx]
                 && null == this.entries[domIdx].getSelectedPlayer();
+    }
+
+    public boolean isEmpty() {
+        int counter = 0;
+        for(Entry currentEntry : this.entries) {
+            if(null != currentEntry){
+                counter++;
+            }
+        }
+        return 0 == counter;
+    }
+
+    public void clearAllEntries() {
+        for (int i = 0; i < this.bankSize; i++) {
+            this.entries[i] = null;
+        }
     }
 
     /**
@@ -136,9 +161,11 @@ public class Bank {
     public void drawFromStack(List<Domino> stack) {
         assert null != stack;
         for (int i = 0; i < bankSize; i++) {
-            fill(stack.get(rand.nextInt(stack.size())), i);
+             fill(stack.remove(rand.nextInt(stack.size())), i);
         }
     }
+
+
 
     /**
      * Setter for a given entry index
