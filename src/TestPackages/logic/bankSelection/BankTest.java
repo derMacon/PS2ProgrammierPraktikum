@@ -20,10 +20,12 @@ public class BankTest {
     public static final int DEFAULT_TEST_BANK_SIZE = 4;
 
     //<editor-fold defaultstate="collapsed" desc="Helping Method - Setting up tests">
+
     /**
      * Fills a given list with the stack of dominos and generates a bank from the first len dominos of the stack. Dominos
      * are NOT randomized.
-     * @param len size of the bank
+     *
+     * @param len   size of the bank
      * @param stack input list serving as the stack
      * @return bank with the first 4 dominos from the newly filled stack.
      */
@@ -136,7 +138,7 @@ public class BankTest {
     public void testGetAllDominos_Filled() {
         List<Domino> stack = new LinkedList<>();
         Bank bank = genBankFromStack(stack);
-        Domino[] expOutput = new Domino[] {stack.get(0), stack.get(1), stack.get(2), stack.get(3)};
+        Domino[] expOutput = new Domino[]{stack.get(0), stack.get(1), stack.get(2), stack.get(3)};
         assertArrayEquals(expOutput, bank.getAllDominos());
     }
 
@@ -150,9 +152,9 @@ public class BankTest {
     @Test
     public void testGetAllDominos_Mixed() {
         Domino domino = new Domino(Tiles.A0_A0_Val7);
-        Entry[] entries = new Entry[] {null, new Entry(domino)};
+        Entry[] entries = new Entry[]{null, new Entry(domino)};
         Bank bank = new Bank(entries);
-        Domino[] expOutput = new Domino[] {null, domino};
+        Domino[] expOutput = new Domino[]{null, domino};
         assertArrayEquals(expOutput, bank.getAllDominos());
     }
 
@@ -164,15 +166,17 @@ public class BankTest {
         genBankFromStack(stack);
         Entry[] entries = new Entry[]{new Entry(stack.get(0)), new Entry(stack.get(1)), null};
         Bank bank = new Bank(entries);
-        Player player = new DefaultAIPlayer(new FakeGUI(), 5,5);
+        Player player = new DefaultAIPlayer(new FakeGUI(), 5, 5);
+        // Domino selected by no player
         Domino outputDom = bank.getPlayerSelectedDomino(player);
         assertNull(outputDom);
 
+        // Domino selected by given player
         bank.selectEntry(player, 0);
         assertSame(stack.get(0), bank.getPlayerSelectedDomino(player));
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testGetPlayerSelectedDomino_NullParam() {
         new Bank(4).getPlayerSelectedDomino(null);
     }
@@ -188,7 +192,7 @@ public class BankTest {
         bank.drawFromStack(stack);
         Domino[] domOnBank = bank.getAllDominos();
         boolean containsAllStackDoms = true;
-        for(Domino currDom : domOnBank) {
+        for (Domino currDom : domOnBank) {
             containsAllStackDoms &= stack.contains(currDom);
         }
         assertEquals(stack.size(), domOnBank.length);
@@ -196,7 +200,7 @@ public class BankTest {
     }
 
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testDrawFromStack_NullParam() {
         new Bank(1).drawFromStack(null);
     }
@@ -230,12 +234,12 @@ public class BankTest {
         assertNull(fstEntry.getSelectedPlayer());
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testFill_InvalidIdxSmall() {
         new Bank(4).fill(new Domino(Tiles.A0_A0_Val7), -1);
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testFill_InvalidIdxLarge() {
         new Bank(4).fill(new Domino(Tiles.A0_A0_Val7), 4);
     }

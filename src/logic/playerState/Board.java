@@ -60,18 +60,18 @@ public class Board {
         String[] lines = input.split("\n");
         String[][] inputCells = new String[lines.length][];
         for (int i = 0; i < lines.length; i++) {
-            inputCells[i] = lines[i].trim().split("\\s");
+            inputCells[i] = lines[i].trim().split("\\s+");
         }
         this.sizeX = inputCells[0].length;
         this.sizeY = inputCells.length;
         this.cells = new SingleTile[sizeX][sizeY];
         for (int y = 0; y < sizeY; y++) {
-            assert sizeX == sizeY;
+            assert inputCells[y].length == sizeX;
             for (int x = 0; x < sizeX; x++) {
-                if (inputCells[x][y].equals("-1")) {
+                if (inputCells[y][x].equals("e")) {
                     cells[x][y] = null;
                 } else {
-                    int ordTile = Integer.parseInt(inputCells[x][y]);
+                    int ordTile = Integer.parseInt(inputCells[y][x]);
                     this.cells[x][y] = SingleTile.values()[ordTile];
                 }
             }

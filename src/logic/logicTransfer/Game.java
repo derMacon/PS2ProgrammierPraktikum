@@ -19,7 +19,6 @@ public class Game implements GUI2Game {
     public final static int DEFAULT_PLAYER_CNT = 4;
 
 
-
     /**
      * Current round, drawn dominos.
      */
@@ -73,7 +72,7 @@ public class Game implements GUI2Game {
     /**
      * creates a game
      *
-     * @param gui gui to display on
+     * @param gui   gui to display on
      * @param sizeX x-size of the board
      * @param sizeY y-size of the board
      */
@@ -94,23 +93,30 @@ public class Game implements GUI2Game {
     /**
      * Constructor for testing, setting specific players (with their appropriate Board), current / next round bank, and
      * the domino in the rotate box of the human player. Current player MUST hold a valid Board.
+     * <p>
+     * Used to skip startGame method with a specific game
      *
-     * @param gui gui for the game
-     * @param players players participating in this game
-     * @param currPlayerIdx index of the current player
+     * @param gui              gui for the game
+     * @param players          players participating in this game
+     * @param currPlayerIdx    index of the current player
      * @param currentRoundBank current round bank
-     * @param nextRoundBank next round bank
-     * @param currDomino domino in the rotation box of the human player
+     * @param nextRoundBank    next round bank
+     * @param stack            stack of dominos used to fill banks
+     * @param roundCount       number of round already played, used for case differention at beginning of the game
+     * @param currDomino       domino in the rotation box of the human player
      */
-    public Game(GUIConnector gui, Player[] players, int currPlayerIdx, Bank currentRoundBank, Bank nextRoundBank, Domino currDomino) {
+    public Game(GUIConnector gui, Player[] players, int currPlayerIdx, Bank currentRoundBank, Bank nextRoundBank,
+                List<Domino> stack, int roundCount, Domino currDomino) {
         this.gui = gui;
         this.players = players;
         this.currentRoundBank = currentRoundBank;
         this.nextRoundBank = nextRoundBank;
+        this.stack = stack;
+        this.roundCount = roundCount;
         this.currDomino = currDomino;
         this.currPlayerIdx = currPlayerIdx;
-        this.standardBoardSizeX = players[currPlayerIdx].getBoard().getSizeX();
-        this.standardBoardSizeY = players[currPlayerIdx].getBoard().getSizeY();
+        this.standardBoardSizeX = null == players[currPlayerIdx] ? 0 : players[currPlayerIdx].getBoard().getSizeX();
+        this.standardBoardSizeY = null == players[currPlayerIdx] ? 0 : players[currPlayerIdx].getBoard().getSizeY();
     }
 
     /**
@@ -151,7 +157,6 @@ public class Game implements GUI2Game {
 //        this.currentRoundBank = currentBank;
 //        this.currDomino = null;
 //    }
-
     private Player getPlayerFromType(int playerType, GUIConnector gui, int boardSizeX, int boardSizeY) {
         switch (playerType) {
             default:
@@ -161,6 +166,7 @@ public class Game implements GUI2Game {
 
     /**
      * Getter for the current bank
+     *
      * @return the reference for the current bank
      */
     public Bank getCurrentRoundBank() {
@@ -169,6 +175,7 @@ public class Game implements GUI2Game {
 
     /**
      * Getter for the next bank
+     *
      * @return reference for the next bank
      */
     public Bank getNextRoundBank() {
@@ -177,6 +184,7 @@ public class Game implements GUI2Game {
 
     /**
      * Getter for the players array
+     *
      * @return
      */
     public Player[] getPlayers() {
@@ -196,6 +204,7 @@ public class Game implements GUI2Game {
 
     /**
      * Getter for a specific players board
+     *
      * @param playerIdx player index
      * @return a specific players board
      */
@@ -209,6 +218,7 @@ public class Game implements GUI2Game {
 
     /**
      * Checks if a player index is valid
+     *
      * @param idx index that will be checked
      * @return true if given index for a player is valid
      */
@@ -248,40 +258,6 @@ public class Game implements GUI2Game {
         return false;
     }
 
-    @Override
-    public void setOnBoard(Pos pos) {
-//        if (currDomino != null && board.fits(currDomino, posFst)) {
-        System.out.println("setOnBoard -> Game");
-        currDomino.setPos(new Pos(pos.x(), pos.y()));
-        this.players[this.currPlayerIdx].showOnBoard(currDomino);
-        this.gui.showOnGrid(this.currPlayerIdx, this.currDomino);
-//            setToChooseBox(null);
-//            nextPlayer();
-//        }
-    }
-
-    @Override
-    public void startGame() {
-        // renew players (containing boards)
-        this.players = createNewPlayers();
-        this.gui.updateAllPlayers(this.players);
-
-        // fill stack
-        this.stack = Domino.fill(this.stack);
-
-        /*
-        use of methods that will be used later on in the game. No need to implement a extra function just to initialize
-        the first draw to the current bank.
-         */
-        drawNewDominosForNextRound();
-        copyAndRemoveNextRoundBankToCurrentBank();
-
-        this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
-//        this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
-
-        this.currPlayerIdx = 0;
-        this.roundCount = 0;
-    }
 
 
     private void drawNewDominosForNextRound() {
@@ -302,10 +278,32 @@ public class Game implements GUI2Game {
     private Player[] createNewPlayers() {
         Player[] output = new Player[DEFAULT_PLAYER_CNT];
         output[0] = new HumanPlayer(gui, this.standardBoardSizeX, this.standardBoardSizeY);
-        for (int i = 1; i < DEFAULT_PLAYER_CNT; i++) {
+        for (int i = 1; i < this.players.length; i++) {
             output[i] = new DefaultAIPlayer(gui, this.standardBoardSizeX, this.standardBoardSizeY);
         }
         return output;
+    }
+
+    @Override
+    public void startGame() {
+        // renew players (containing boards)
+        this.players = createNewPlayers();
+        this.gui.updateAllPlayers(this.players);
+
+        // fill stack
+        this.stack = Domino.fill(this.stack);
+
+        /*
+        use of methods that will be used later on in the game. No need to implement a extra function just to initialize
+        the first draw to the current bank.
+         */
+        drawNewDominosForNextRound();
+        copyAndRemoveNextRoundBankToCurrentBank();
+
+        this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
+
+        this.currPlayerIdx = 0;
+        this.roundCount = 0;
     }
 
     @Override
@@ -321,18 +319,45 @@ public class Game implements GUI2Game {
                 this.players[i].selectFromBank(this.currentRoundBank);
             }
 
+            //TODO insert code to update selection on gui
+
             // players which selected lower dominos can select earlier
             int counter = 0;
             Player temp = this.currentRoundBank.getSelectedPlayer(counter);
-            while (!(temp instanceof HumanPlayer)) {
-                temp.selectFromBank(this.nextRoundBank);
-            }
+
+            // will only work when selectFromBank is implemented (all players have to selecto something.
+//            while (!(temp instanceof HumanPlayer)) {
+//                temp.selectFromBank(this.nextRoundBank);
+//                counter = (counter + 1) % this.players.length;
+//                temp = this.currentRoundBank.getSelectedPlayer(counter);
+//            }
 
         } else {
-            // selection after first round, always from second bank
-            // TODO insert code
+            /* selection after first round, always from second bank
+            TODO insert code
+                - player selects
+                - Ai players after player select
+                - Players before human do turn
+                - human calls setOnBoard / dispose
+            */
         }
         this.gui.showInChooseBox(this.currDomino);
+    }
+
+    @Override
+    public void setOnBoard(Pos pos) {
+//        if (currDomino != null && board.fits(currDomino, posFst)) {
+        currDomino.setPos(new Pos(pos.x(), pos.y()));
+        this.players[this.currPlayerIdx].showOnBoard(currDomino);
+        this.gui.showOnGrid(this.currPlayerIdx, this.currDomino);
+//            setToChooseBox(null);
+//            nextPlayer();
+//        }
+        /*
+        TODO insert code
+            - other AI players do turn
+            - other AI players select
+         */
     }
 
     private void nextRound() {
@@ -340,5 +365,10 @@ public class Game implements GUI2Game {
             - draw new dominos, 
             - copy banks 
          */
+    }
+
+    public boolean won(Player player) {
+        // TODO insert code
+        return true;
     }
 }

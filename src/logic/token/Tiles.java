@@ -120,6 +120,7 @@ public enum Tiles {
      * @return the first Enum member with the same values as the input
      */
     public static Tiles genTile(SingleTile fstTile, SingleTile sndTile) {
+        assert null != fstTile && null != sndTile;
         return genTile(fstTile.ordinal(), sndTile.ordinal());
     }
 

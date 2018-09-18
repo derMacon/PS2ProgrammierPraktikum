@@ -126,9 +126,15 @@ public class Domino {
         return rotation;
     }
 
-    public void setPos(Pos posFst) {
+    /**
+     * Setter for the position
+     * @param posFst new position
+     * @return reference to this domino
+     */
+    public Domino setPos(Pos posFst) {
         this.posFst = posFst;
         updatePosSnd();
+        return this;
     }
 
     /**
@@ -147,11 +153,13 @@ public class Domino {
     /**
      * increments the rotation by one. The roation is 0..3.
      * updated the second position.
+     * @return reference to the domino
      */
-    public void incRot() {
+    public Domino incRot() {
         this.rotation++;
         this.rotation %= 4;
         updatePosSnd();
+        return this;
     }
 
     /**

@@ -1,9 +1,20 @@
 package TestPackages.logic.logicTransfer;
 
 import TestPackages.other.FakeGUI;
+import logic.bankSelection.Bank;
+import logic.bankSelection.Entry;
+import logic.logicTransfer.GUIConnector;
 import logic.logicTransfer.Game;
+import logic.playerState.DefaultAIPlayer;
+import logic.playerState.HumanPlayer;
+import logic.playerState.Player;
+import logic.token.Domino;
 import logic.token.Tiles;
 import org.junit.Test;
+
+import java.util.LinkedList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class GameTest {
@@ -11,7 +22,7 @@ public class GameTest {
     // --- Constructor used by FXMLController ---
     @Test
     public void testConstuctor_gui_int_int_int_BeforeStart() {
-        Game game = new Game(new FakeGUI(), 2,3, 5);
+        Game game = new Game(new FakeGUI(), 2, 3, 5);
 
         assertEquals(2, game.getNumberOfPlayers());
         assertEquals(2, game.getCurrentRoundBank().getBankSize());
@@ -35,7 +46,7 @@ public class GameTest {
 
     @Test
     public void testConstructor_gui_int_int_int_AfterStart() {
-        Game game = new Game(new FakeGUI(), 2,3, 5);
+        Game game = new Game(new FakeGUI(), 2, 3, 5);
         game.startGame();
 
         // banks initialized -> current bank now with content
@@ -50,8 +61,103 @@ public class GameTest {
 
     // --- Constructor - only used for testing ---
     @Test
-    public void testTestConstructor_gui_players_int_Bank_Bank_Domino() {
-//        Game game = new Game(new FakeGUI(), )
+    public void testTestConstructor_gui_players_int_Bank_Bank_Domino_BeforeStart() {
+        // Standard Game - Build with testing constructor
+        GUIConnector fakeGui = new FakeGUI();
+        int sizeX = 5;
+        int sizeY = 5;
+        Player[] players = new Player[4];
+        Bank currentBank = new Bank(4);
+        Bank nextBank = new Bank(4);
+        List<Domino> stack = new LinkedList<>();
+
+        Game gameTestingConstr = new Game(fakeGui, players, 0, currentBank, nextBank, stack, 0, null);
+
+        assertEquals(4, gameTestingConstr.getNumberOfPlayers());
+        assertEquals(4, gameTestingConstr.getCurrentRoundBank().getBankSize());
+        assertEquals(4, gameTestingConstr.getNextRoundBank().getBankSize());
+
+        // banks initialized
+        assertNotNull(gameTestingConstr.getCurrentRoundBank().getEntries());
+        assertNotNull(gameTestingConstr.getNextRoundBank().getEntries());
+        // but no content yet
+        assertTrue(gameTestingConstr.getCurrentRoundBank().isEmpty());
+        assertTrue(gameTestingConstr.getNextRoundBank().isEmpty());
+        assertNull(gameTestingConstr.getCurrentRoundBank().getEntries()[0]);
+        assertNull(gameTestingConstr.getNextRoundBank().getEntries()[0]);
+
+        // stack is empty
+        assertEquals(0, gameTestingConstr.getStack().size());
+
+        // players array is initialized
+        assertNotNull(gameTestingConstr.getPlayers());
+        // but content not initialized until call of method game.startGame()
+        assertNull(gameTestingConstr.getPlayersBoard(0));
+        assertNull(gameTestingConstr.getPlayersBoard(1));
+        assertNull(gameTestingConstr.getPlayersBoard(2));
+        assertNull(gameTestingConstr.getPlayersBoard(3));
     }
+
+    @Test
+    public void testTestConstructor_gui_players_int_Bank_Bank_Domino_AfterStart() {
+            // - Standard Game (after start game) - Build with testing constructor -
+
+        GUIConnector fakeGui = new FakeGUI();
+        int sizeX = 5;
+        int sizeY = 5;
+
+        Player pl1 = new HumanPlayer(fakeGui, sizeX, sizeY);
+        Player pl2 = new DefaultAIPlayer(fakeGui, sizeX, sizeY);
+        Player pl3 = new DefaultAIPlayer(fakeGui, sizeX, sizeY);
+        Player pl4 = new DefaultAIPlayer(fakeGui, sizeX, sizeY);
+        Player[] players = new Player[]{pl1, pl2, pl3, pl4};
+
+        Entry entry1 = new Entry(new Domino(Tiles.P0_H0_Val13));
+        Entry entry2 = new Entry(new Domino(Tiles.A0_A0_Val7));
+        Entry entry3 = new Entry(new Domino(Tiles.A0_S2_Val42));
+        Entry entry4 = new Entry(new Domino(Tiles.A0_S1_Val37));
+        Entry[] entries = new Entry[] {entry1,entry2, entry3, entry4};
+        Bank currentBank = new Bank(entries);
+        Bank nextBank = new Bank(4);
+
+        List<Domino> stack = new LinkedList<>();
+        stack = Domino.fill(stack);
+
+        Game gameTestingConstr = new Game(fakeGui, players, 0, currentBank, nextBank, stack, 0, null);
+
+            // - actual tests -
+
+        assertEquals(4, gameTestingConstr.getNumberOfPlayers());
+        assertEquals(4, gameTestingConstr.getCurrentRoundBank().getBankSize());
+        assertEquals(4, gameTestingConstr.getNextRoundBank().getBankSize());
+
+        // banks initialized
+        assertNotNull(gameTestingConstr.getCurrentRoundBank().getEntries());
+        assertNotNull(gameTestingConstr.getNextRoundBank().getEntries());
+        // now with content
+        assertArrayEquals(entries, gameTestingConstr.getCurrentRoundBank().getEntries());
+
+        // filled stack
+        assertEquals(48, gameTestingConstr.getStack().size());
+        // players array is initialized
+        assertArrayEquals(new Player[] {pl1, pl2, pl3, pl4}, gameTestingConstr.getPlayers());
+        // now with content
+        assertEquals(pl1.getBoard(), gameTestingConstr.getPlayersBoard(0));
+        assertEquals(pl2.getBoard(), gameTestingConstr.getPlayersBoard(1));
+        assertEquals(pl3.getBoard(), gameTestingConstr.getPlayersBoard(2));
+        assertEquals(pl4.getBoard(), gameTestingConstr.getPlayersBoard(3));
+    }
+
+
+    //<editor-fold defaultstate="collapsed" desc="Modified tests from ueb09">
+    @Test
+    public void testWon_Player() {
+        Game game = new Game(new FakeGUI(), 2, 3, 4);
+        assertTrue(game.won(game.getPlayers()[0]));
+        assertTrue(game.won(game.getPlayers()[1]));
+    }
+
+
+    //</editor-fold>
 
 }
