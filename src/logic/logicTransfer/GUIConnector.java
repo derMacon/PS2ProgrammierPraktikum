@@ -1,10 +1,9 @@
 package logic.logicTransfer;
 
-import logic.*;
 import logic.bankSelection.Bank;
 import logic.playerState.Board;
 import logic.playerState.Player;
-import logic.token.Pos;
+import logic.playerState.Result;
 import logic.token.Domino;
 
 /**

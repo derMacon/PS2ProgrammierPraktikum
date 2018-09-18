@@ -6,10 +6,10 @@ import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import logic.*;
 import logic.bankSelection.Bank;
 import logic.playerState.Board;
 import logic.playerState.Player;
+import logic.playerState.Result;
 import logic.token.Pos;
 import logic.logicTransfer.GUIConnector;
 import logic.token.Domino;

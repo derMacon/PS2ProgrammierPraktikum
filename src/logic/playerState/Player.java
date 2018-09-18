@@ -16,7 +16,7 @@ public abstract class Player {
     protected Board board;
     
     /**
-     * List of districts containing the gamestatistics
+     * List of districts containing the game statistics
      */
     protected List<District> gameStats;
     
@@ -55,10 +55,30 @@ public abstract class Player {
 
     /**
      * Getter for the board
-     * @return 
+     * @return board reference
      */
     public Board getBoard() {
         return this.board;
+    }
+
+    /**
+     * Gtter for the gamestats
+     * @return gamestats
+     */
+    public List<District> getGameStats() {
+        return this.gameStats;
+    }
+
+    /**
+     * Generates the sum of points the districts represent
+     * @return
+     */
+    public int getBoardPoints() {
+        int sum = 0;
+        for (int i = 0; i < this.gameStats.size(); i++) {
+            sum += this.gameStats.get(i).genPoints();
+        }
+        return sum;
     }
 
     /**

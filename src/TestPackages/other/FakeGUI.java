@@ -1,12 +1,11 @@
 package TestPackages.other;
 
-import logic.Result;
+import logic.playerState.Result;
 import logic.bankSelection.Bank;
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.token.Domino;
-import logic.token.Pos;
 
 public class FakeGUI implements GUIConnector {
     @Override
