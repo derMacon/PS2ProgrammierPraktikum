@@ -16,31 +16,55 @@ public class BoardTest {
     //<editor-fold defaultstate="collapsed" desc="Domino generator">
 
     /**
-     * Genererates a domino from the given occupancy
+     * Genererates a domino from the given occupancy, position and rotation
+     *
+     * @param fstOrd ordinal value of the first tile
+     * @param sndOrd ordinal value of the second tile
+     * @param pos position of the first tile
+     * @param rot rotation of the domino
+     * @return a domino from the given occupancy
+     */
+    private Domino genDominoFromTileOrd(int fstOrd, int sndOrd, Pos pos, int rot) {
+        Tiles tiles = Tiles.genTile(fstOrd, sndOrd);
+        assert null != tiles;
+        return new Domino(tiles, pos, rot);
+    }
+
+    /**
+     * Genererates a domino from the given occupancy, position
+     *
+     * @param fstOrd ordinal value of the first tile
+     * @param sndOrd ordinal value of the second tile
+     * @param pos position of the first tile
+     * @return a domino from the given occupancy
+     */
+    private Domino genDominoFromTileOrd(int fstOrd, int sndOrd, Pos pos) {
+        Tiles tiles = Tiles.genTile(fstOrd, sndOrd);
+        assert null != tiles;
+        return new Domino(tiles, pos);
+    }
+
+    /**
+     * Genererates a domino from the given occupancy, position and rotation
      *
      * @param fstOrd ordinal value of the first tile
      * @param sndOrd ordinal value of the second tile
      * @return a domino from the given occupancy
      */
     private Domino genDominoFromTileOrd(int fstOrd, int sndOrd) {
-        Tiles tiles = Tiles.genTile(fstOrd, sndOrd);
-        assert null != tiles;
-        return new Domino(tiles);
+        return genDominoFromTileOrd(fstOrd, sndOrd, new Pos(0,0), 0);
     }
 
     /**
-     * Genererates a domino from the given occupancy
+     * Genererates a domino from the given occupancy and rotation
      *
      * @param fstOrd ordinal value of the first tile
      * @param sndOrd ordinal value of the second tile
+     * @param rot rotation of the domino
      * @return a domino from the given occupancy
      */
     private Domino genDominoFromTileOrd(int fstOrd, int sndOrd, int rot) {
-        Domino output = genDominoFromTileOrd(fstOrd, sndOrd);
-        for (int i = 0; i < rot; i++) {
-            output.incRot();
-        }
-        return output;
+        return genDominoFromTileOrd(fstOrd, sndOrd, new Pos(0,0), rot);
     }
 
     /**
@@ -292,22 +316,23 @@ public class BoardTest {
     /*--- rotated 2 ------------------------------------------*/
     @Test
     public void testFits_rotated2() {
-//        Board board = new Board(
-//                "e e e e e e\n" +
-//                        "e e 13 5 e e\n" +
-//                        "e e e e e e\n");
-//        Domino dom = genDominoFromTileOrd(21, 21, 2); // 13 - 1 -> P0_A0_Val14
-//        assertEquals(13, dom.getFstVal());
-//        assertEquals(new Pos(2, 0), dom.getSnd(new Pos(1, 0)));
-//        assertTrue("Dom " + dom.getFst() + dom.getSnd() + " on " + dom.getSnd(new Pos(1, 0)),
-//                board.fits(dom.setPos(new Pos(1, 0)));
-//        assertTrue(board.fits(dom.setPos(new Pos(0, 1))));
-//        assertTrue(board.fits(dom.setPos(new Pos(1, 2))));
-//
-//        dom = new Domino(SIX_FIVE, 2);
-//        assertTrue(board.fits(dom.setPos(new Pos(3, 0))));
-//        assertTrue(board.fits(dom.setPos(new Pos(4, 1))));
-//        assertTrue(board.fits(dom.setPos(new Pos(3, 2))));
+        Board board = new Board(
+                "e e e e e e\n" +
+                        "e e 13 21 e e\n" +
+                        "e e e e e e\n");
+        Domino dom = genDominoFromTileOrd(13, 1, new Pos(1, 0)); // 13 - 1 -> P0_A0_Val14
+        assertEquals(1, dom.getFstVal());
+        assertEquals(12, dom.getSndVal());
+        assertEquals(new Pos(1, 0), dom.getFstPos());
+        assertEquals(new Pos(2, 0), dom.getSndPos());
+        assertTrue(board.fits(dom));
+        assertTrue(board.fits(dom.setPos(new Pos(0, 1))));
+        assertTrue(board.fits(dom.setPos(new Pos(1, 2))));
+
+        dom = genDominoFromTileOrd(13, 21);
+        assertTrue(board.fits(dom.setPos(new Pos(3, 0))));
+        assertTrue(board.fits(dom.setPos(new Pos(4, 1))));
+        assertTrue(board.fits(dom.setPos(new Pos(3, 2))));
     }
 
     @Test
@@ -348,7 +373,7 @@ public class BoardTest {
 
 
     /*------- findPosfor() ---------------------------------------------------*/
-//
+
 //    @Test
 //    public void testFindPosFor_rot0_above() {
 //        Board board = new Board(

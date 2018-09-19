@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import logic.bankSelection.Bank;
+import logic.dataPreservation.Logger;
 import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerState.Result;
@@ -37,6 +38,8 @@ public class JavaFXGUI implements GUIConnector {
     private ImageView[][] imgVwsCurrentBank;
     private ImageView[][] imgVwsNextBank;
 
+    private Logger logger;
+
     public JavaFXGUI(Pane pnSelected, Label lblTurn, ImageView[][] imgWssPlayerBoard, ImageView[][][] imgWwsAIBoards,
                      ImageView[][] imgVwsCurrentBank, ImageView[][] imgVwsNextBank) {
         this.pnSelected = pnSelected;
@@ -52,6 +55,8 @@ public class JavaFXGUI implements GUIConnector {
         for (int i = 0; i < imgs.length; ++i) {
             this.imgs[i] = this.loadImage(i);
         }
+
+        this.logger = new Logger(this.imgVwsPlayerBoard.length);
     }
 
 
@@ -247,19 +252,9 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void setDominoOnGui(Player pl, Domino dom) {
-//        if(pl instanceof HumanPlayer) {
-//            Pos domPos = dom.getFstPos();
-//            this.imgVwsPlayerBoard[domPos.x()][domPos.y()] = dom.getFstVal();
-//        }
+
     }
 
-//
-//    private boolean isValidPosOnGameGrid(Pos pos) {
-//        return pos.x() >= 0
-//                && pos.x() < this.imgVewsGame.length
-//                && pos.y() >= 0
-//                && pos.y() < this.imgVewsGame[pos.x()].length;
-//    }
 
 
     @Override

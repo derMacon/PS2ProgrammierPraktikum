@@ -91,7 +91,7 @@ public abstract class Player {
      * Helping Method - Player updates the domino position to fit on the board
      * @return the a valid position to fit the domino on the board
      */
-    protected abstract Pos genDominoPos(Domino domino);
+    protected abstract void updateDominoPos(Domino domino);
 
     /**
      * Displays the given domino on the players board

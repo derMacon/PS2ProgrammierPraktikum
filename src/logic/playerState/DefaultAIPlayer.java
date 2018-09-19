@@ -29,10 +29,9 @@ public class DefaultAIPlayer extends Player {
     }
 
     @Override
-    protected Pos genDominoPos(Domino domino) {
+    protected void updateDominoPos(Domino domino) {
         // use in selectFromBank
         // TODO insert code
-        return null;
     }
 
     

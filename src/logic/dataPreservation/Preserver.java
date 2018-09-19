@@ -16,7 +16,9 @@ public abstract class Preserver {
     /**
      * Reference to the logger
      */
-    Logger logger; 
+    Logger logger;
+
+    protected File dir;
 
     public Preserver(Logger logger) {
         this.logger = logger;

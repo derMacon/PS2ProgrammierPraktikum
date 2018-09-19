@@ -1,6 +1,7 @@
 package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
+import logic.dataPreservation.Logger;
 import logic.playerState.Board;
 import logic.playerState.DefaultAIPlayer;
 import logic.playerState.HumanPlayer;
@@ -70,6 +71,11 @@ public class Game implements GUI2Game {
     private final int standardBoardSizeY;
 
     /**
+     * Logger for this game
+     */
+    private Logger logger;
+
+    /**
      * creates a game
      *
      * @param gui   gui to display on
@@ -87,6 +93,7 @@ public class Game implements GUI2Game {
         this.currPlayerIdx = 0;
         this.currDomino = null;
         this.roundCount = 0;
+        this.logger = new Logger(playerCnt);
     }
 
 
@@ -119,44 +126,7 @@ public class Game implements GUI2Game {
         this.standardBoardSizeY = null == players[currPlayerIdx] ? 0 : players[currPlayerIdx].getBoard().getSizeY();
     }
 
-    /**
-     * for testing: gets the banks of the players and the current domino.
-     *
-     * @param gui
-     * @param sizeX
-     * @param sizeY
-     * @param banks
-     * @param currDomino
-     */
-    public Game(GUIConnector gui, int playerCnt, int sizeX, int sizeY, Bank[] banks, Domino currDomino) {
-        this(gui, playerCnt, sizeX, sizeY);
-        this.currDomino = currDomino;
-        this.currentRoundBank = banks[0].copy();
-        this.nextRoundBank = banks[1].copy();
-        setToChooseBox(currDomino);
-    }
 
-    /**
-     * for testing: gets the banks and the board of a player with a given index.
-     *
-     * @param gui
-     * @param banks
-     * @param board
-     * @param playerType
-     */
-//    public Game(GUIConnector gui, Bank[] banks, String board, int ordPlayer, int playerType) {
-//        this(gui, board.split("\n")[0].length(), board.split("\n").length, banks, playerType);
-//        this.players[ordPlayer] = getPlayerFromType(playerType, gui);
-//        gui.updateGrid(ordPlayer, this.players[ordPlayer].getBoard());
-//    }
-//
-//    public Game(GUIConnector gui, Bank currentBank, Bank nextRoundBank) {
-//        this(gui, )
-//        this.gui = gui;
-//        this.nextRoundBank = nextRoundBank;
-//        this.currentRoundBank = currentBank;
-//        this.currDomino = null;
-//    }
     private Player getPlayerFromType(int playerType, GUIConnector gui, int boardSizeX, int boardSizeY) {
         switch (playerType) {
             default:
