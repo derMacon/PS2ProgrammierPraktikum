@@ -21,7 +21,8 @@ public class JavaFXGUI implements GUIConnector {
 
     //25 images for each face of a half (0..24)
     private static int IMG_COUNT = 25;
-    protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV1.png");
+//    protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV1.png");
+    protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV3.png");
 
     private Image[] imgs;
 
@@ -113,6 +114,7 @@ public class JavaFXGUI implements GUIConnector {
     public void showPointsForPlayer(Player pl, int points) {
 
     }
+
 
 
     @Override
@@ -232,13 +234,13 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void updateAllPlayers(Player[] players) {
-        for (Player pl : players) {
-            updatePlayer(pl);
-        }
+//        for (Player pl : players) {
+//            updatePlayer(pl);
+//        }
     }
 
     @Override
-    public void updatePlayer(Player player) {
+    public void updatePlayer(Player player, int ordPlayer) {
 //        Board board = player.getBoard();
 //        int width = board.getSizeX();
 //        int height = board.getSizeY();
@@ -248,11 +250,6 @@ public class JavaFXGUI implements GUIConnector {
 //                showCellOnGrid(pos, board.getCell(pos));
 //            }
 //        }
-    }
-
-    @Override
-    public void setDominoOnGui(Player pl, Domino dom) {
-
     }
 
 
@@ -449,4 +446,23 @@ public class JavaFXGUI implements GUIConnector {
         }
     }
 
+    @Override
+    public void selectDomino(int ordBank, int idxDom, int ordPlayer) {
+
+    }
+
+    @Override
+    public void greyOutBank(int ordBank) {
+
+    }
+
+    @Override
+    public void deleteDomFromBank(int ordBank, int idx) {
+
+    }
+
+    @Override
+    public void setColorForArrows(int idx, int mode) {
+
+    }
 }

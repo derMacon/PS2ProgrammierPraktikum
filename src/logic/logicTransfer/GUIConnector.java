@@ -20,8 +20,8 @@ public interface GUIConnector {
 
     /**
      * sets a domino to the players bank at index. Empties it if domino is null.
-     * @param index
-     * @param domino
+     * @param ordBank ordinal value of the bank that will be updated (0 for current, 1 for next bank)
+     * @param bank reference to the bank that will be displayed / updated on the gui
      */
     void setToBank(int ordBank, Bank bank);
 
@@ -35,7 +35,7 @@ public interface GUIConnector {
      * updates all data concerning a certain player (board, districts, points, etc.)
      * @param player
      */
-    void updatePlayer(Player player);
+    void updatePlayer(Player player, int ordPlayer);
 
     /**
      * updates all data concerning an array of players
@@ -60,15 +60,46 @@ public interface GUIConnector {
 
     /**
      * Shows players points.
-     * @param pl
-     * @param points
+     * @param pl reference to the player
+     * @param ordPlayer ordinal value of the player
      */
-    void showPointsForPlayer(Player pl, int points);
+    void showPointsForPlayer(Player pl, int ordPlayer);
 
+    /**
+     * Updates the board from the given players ordinal value
+     * @param playerOrd ordinal value of the player
+     * @param board board to update
+     */
+    void updateGrid(int playerOrd, Board board);
 
-    void setDominoOnGui(Player pl, Domino dom);
+    /**
+     * Selects a domino from a given bank with a given index and player
+     * @param ordBank ordinal value of the bank
+     * @param idxDom index of the domino that will be selected
+     * @param ordPlayer ordinal value of the player the domino will be selected with
+     */
+    void selectDomino(int ordBank, int idxDom, int ordPlayer);
 
-    
-    void updateGrid(int playerOrd, Board board); 
+    /**
+     * Greys out a bank with a given ordinal value
+     * @param ordBank ordinal value of the bank that will be greyed out
+     */
+    void greyOutBank(int ordBank);
+
+    /**
+     * Deletes a domino from a bank
+     * @param ordBank ordinal value of the bank from which the domino will be deleted
+     * @param idx index of the domino that will be deleted
+     */
+    void deleteDomFromBank(int ordBank, int idx);
+
+    /**
+     * Selects a given mode for the arrow buttons (e.g. red color when it is not possible to move board in a certain
+     * direction)
+     * @param idx index of the arrow which will be changed / updated
+     * @param mode mode which the arrow will be changed to (red / green color)
+     */
+    void setColorForArrows(int idx, int mode);
+
 
 }

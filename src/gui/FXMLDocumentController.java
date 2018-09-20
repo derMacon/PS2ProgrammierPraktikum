@@ -27,8 +27,8 @@ public class FXMLDocumentController implements Initializable {
 
     // Gui textures
     public static final Image BANK_BOX_TEXTURE = new Image("gui/textures/LargeBoxV1Alpha.png");
-    public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV2.png");
-    public static final Image BOARD_BACKGROUND_TEXTURE = new Image("gui/textures/SelectedBoxV4Alpha.png");
+    public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV3.png");
+    public static final Image BOARD_BACKGROUND_TEXTURE = new Image("gui/textures/SelectedBoxV5Alpha.png");
     public static final Image ROTBOX_TEXTURE = new Image("gui/textures/SelectBoxV4Alpha.png");
 
 
@@ -148,8 +148,8 @@ public class FXMLDocumentController implements Initializable {
         setAPnWithImageAsBackground(grdPnPlayer3Texture, BOARD_BACKGROUND_TEXTURE);
         setAPnWithImageAsBackground(grdPnPlayer4Texture, BOARD_BACKGROUND_TEXTURE);
 
-        setAPnWithImageAsBackground(this.grdPnRotBoxTexture, ROTBOX_TEXTURE);
-        setAPnWithImageAsBackground(this.grdPnDisposeTexture, ROTBOX_TEXTURE);
+        setAPnWithImageAsBackground(this.grdPnRotBoxTexture, BOARD_BACKGROUND_TEXTURE);
+        setAPnWithImageAsBackground(this.grdPnDisposeTexture, BOARD_BACKGROUND_TEXTURE);
 
         setAPnWithImageAsBackground(grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
     }

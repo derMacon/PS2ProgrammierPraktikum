@@ -24,7 +24,7 @@ public class FakeGUI implements GUIConnector {
     }
 
     @Override
-    public void updatePlayer(Player player) {
+    public void updatePlayer(Player player, int ordPlayer) {
 
     }
 
@@ -44,17 +44,32 @@ public class FakeGUI implements GUIConnector {
     }
 
     @Override
-    public void showPointsForPlayer(Player pl, int points) {
-
-    }
-
-    @Override
-    public void setDominoOnGui(Player pl, Domino dom) {
+    public void showPointsForPlayer(Player pl, int ordPlayer) {
 
     }
 
     @Override
     public void updateGrid(int playerOrd, Board board) {
+
+    }
+
+    @Override
+    public void selectDomino(int ordBank, int idxDom, int ordPlayer) {
+
+    }
+
+    @Override
+    public void greyOutBank(int ordBank) {
+
+    }
+
+    @Override
+    public void deleteDomFromBank(int ordBank, int idx) {
+
+    }
+
+    @Override
+    public void setColorForArrows(int idx, int mode) {
 
     }
 }
