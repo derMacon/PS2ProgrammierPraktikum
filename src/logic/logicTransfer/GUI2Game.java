@@ -58,13 +58,21 @@ public interface GUI2Game {
     void startGame();
 
     /**
-     * Selects a domino from the choose panel, for human player the domino will be put into the special box to rotate
+     * Selects a domino from the current bank, for human player the domino will be put into the special box to rotate
      * if necessary.
-     *
-     * @author silas
      */
-    void selectDom(int idx);
+    void selectDomOnCurrBank(int idx);
 
+    /**
+     * Selects a domino from the next bank, for human player the domino will be put into the special box to rotate
+     * if necessary.
+     */
+    void selectDomOnNextBank(int idx);
+
+    /**
+     * Moves Board one box in the given direction
+     */
+    void moveBoard(int dir);
 
 
 }

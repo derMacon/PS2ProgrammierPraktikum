@@ -277,7 +277,7 @@ public class Game implements GUI2Game {
     }
 
     @Override
-    public void selectDom(int idx) {
+    public void selectDomOnCurrBank(int idx) {
         System.out.println(idx);
         if (0 == this.roundCount) { // initial selection on first bank
             // update human player selection
@@ -340,5 +340,15 @@ public class Game implements GUI2Game {
     public boolean won(Player player) {
         // TODO insert code
         return true;
+    }
+
+    @Override
+    public void selectDomOnNextBank(int idx) {
+
+    }
+
+    @Override
+    public void moveBoard(int dir) {
+
     }
 }

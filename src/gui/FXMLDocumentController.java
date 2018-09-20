@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.input.*;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
@@ -213,7 +212,7 @@ public class FXMLDocumentController implements Initializable {
         }
 
         if (x >= 0 && y >= 0 && leftClicked) {
-            this.game.selectDom(y);
+            this.game.selectDomOnCurrBank(y);
         }
     }
 
@@ -310,6 +309,39 @@ public class FXMLDocumentController implements Initializable {
             }
         }
         return imgVwsGame;
+    }
+
+
+    /**
+     * Moves Board upwards
+     */
+    @FXML
+    private void moveBoardUp() {
+
+    }
+
+    /**
+     * Moves Board to the right
+     */
+    @FXML
+    private void moveBoardRight() {
+
+    }
+
+    /**
+     * Moves Board downwards
+     */
+    @FXML
+    private void moveBoardDown() {
+        System.out.println("move board down");
+    }
+
+    /**
+     * Moves Board to the left
+     */
+    @FXML
+    private void moveBoardLeft() {
+
     }
 
 

@@ -184,16 +184,16 @@
                                             </Label>
                                     <BorderPane prefHeight="441.0" prefWidth="426.0">
                                        <top>
-                                                    <Button fx:id="btnUp" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
+                                                    <Button fx:id="btnUp" mnemonicParsing="false" onAction="#moveBoardUp" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
                                        </top>
                                        <left>
-                                                    <Button fx:id="btnLeft" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
+                                                    <Button fx:id="btnLeft" mnemonicParsing="false" onAction="#moveBoardLeft" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
                                        </left>
                                        <right>
-                                                    <Button fx:id="btnRight" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
+                                                    <Button fx:id="btnRight" mnemonicParsing="false" onAction="#moveBoardRight" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
                                        </right>
                                        <bottom>
-                                                    <Button fx:id="btnDown" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
+                                                    <Button fx:id="btnDown" mnemonicParsing="false" onAction="#moveBoardDown" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
                                        </bottom>
                                        <center>
                                           <GridPane fx:id="grdPnPlayer1Texture" BorderPane.alignment="CENTER">
