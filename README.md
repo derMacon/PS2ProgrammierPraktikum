@@ -68,3 +68,5 @@ District - class
 - isNextToDistrict... mit Domino als Param. ist falsch -> weg
 - diamand operator beim initialisieren -> Und in Konstr. schieben.
 - Districts wurden in keinem Konstruktor gesetzt.
+
+- Grundsaetzlich nochmal nachschauen ob das Datenformat zum Speichern / Laden dasselbe wie beim Testen ist.
