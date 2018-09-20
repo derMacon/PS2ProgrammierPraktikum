@@ -29,6 +29,8 @@ public class FXMLDocumentController implements Initializable {
     public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV3.png");
     public static final Image BOARD_BACKGROUND_TEXTURE = new Image("gui/textures/SelectedBoxV5Alpha.png");
     public static final Image ROTBOX_TEXTURE = new Image("gui/textures/SelectBoxV4Alpha.png");
+    public static final Image SEPERATOR_TEXTURE = new Image("gui/textures/SeperatorV2Alpha.png");
+    public static final Image SEPERATOR_TEXTURE_ROTATED = new Image("gui/textures/SeperatorV2AlphaRotated.png");
 
 
     @FXML
@@ -118,6 +120,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private GridPane grdPnCurrentBankTexture;
 
+    @FXML
+    private GridPane grdPnSeperator1Texture;
+
+    @FXML
+    private GridPane grdPnSeperator2Texture;
+
+    @FXML
+    private GridPane grdPnSeperator3Texture;
+
 
 
     private GUI2Game game;
@@ -149,6 +160,10 @@ public class FXMLDocumentController implements Initializable {
 
         setAPnWithImageAsBackground(this.grdPnRotBoxTexture, BOARD_BACKGROUND_TEXTURE);
         setAPnWithImageAsBackground(this.grdPnDisposeTexture, BOARD_BACKGROUND_TEXTURE);
+
+        setAPnWithImageAsBackground(this.grdPnSeperator1Texture, SEPERATOR_TEXTURE);
+        setAPnWithImageAsBackground(this.grdPnSeperator2Texture, SEPERATOR_TEXTURE);
+        setAPnWithImageAsBackground(this.grdPnSeperator3Texture, SEPERATOR_TEXTURE_ROTATED);
 
         setAPnWithImageAsBackground(grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
     }

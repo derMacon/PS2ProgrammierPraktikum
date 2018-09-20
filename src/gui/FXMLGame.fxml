@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="900.0" prefWidth="1117.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLDocumentController">
+<BorderPane prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLDocumentController">
     <top>
         <MenuBar BorderPane.alignment="CENTER">
             <menus>
@@ -174,7 +174,14 @@
                                             </SplitPane>
                                         </children>
                                     </VBox>
-                                    <Separator orientation="VERTICAL" prefHeight="775.0" prefWidth="66.0" />
+                              <GridPane fx:id="grdPnSeperator1Texture" prefHeight="775.0" prefWidth="81.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                              </GridPane>
                                     <VBox prefHeight="775.0" prefWidth="451.0">
                                         <children>
                                             <Label fx:id="lblPlayer1" text="Spieler 1: 0 Punkte" textFill="WHITE">
@@ -227,7 +234,14 @@
                                           </GridPane>
                                        </center>
                                     </BorderPane>
-                                            <Separator prefHeight="91.0" prefWidth="422.0" />
+                                    <GridPane fx:id="grdPnSeperator3Texture" prefHeight="59.0" prefWidth="441.0">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                    </GridPane>
                                     <GridPane prefHeight="225.0" prefWidth="451.0">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -298,7 +312,14 @@
                                     </GridPane>
                                         </children>
                                     </VBox>
-                                    <Separator orientation="VERTICAL" prefHeight="775.0" prefWidth="58.0" />
+                              <GridPane fx:id="grdPnSeperator2Texture" prefHeight="775.0" prefWidth="82.0">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                              </GridPane>
                                     <GridPane fx:id="grdPnPlayersAI" prefHeight="648.0" prefWidth="237.0">
                                         <columnConstraints>
                                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
