@@ -69,4 +69,19 @@ District - class
 - diamand operator beim initialisieren -> Und in Konstr. schieben.
 - Districts wurden in keinem Konstruktor gesetzt.
 
+Generell
 - Grundsaetzlich nochmal nachschauen ob das Datenformat zum Speichern / Laden dasselbe wie beim Testen ist.
+
+Player - class 
+- Gamestats (List<District>) fehlen im Konstruktor (laden) ? Werden aber in Unterklassen errechnet, Berechnung muss in Mutterklasse verschoben werden
+- Nochmal ueberpruefen ob 3 Konstruktoren wirklich noetig sind
+- gamestats in districts umbennen
+- getBoardPoints() als foreach Schleife (genau wie beim Array)
+- Kuenstliches Spielverhalten als Interface deklarieren (spart das Exceptionwerfen im Humanplayer)
+
+DefaultPlayer - class 
+- 3. Konstruktor vergessen
+- selectDomFromBank(...) / updateDomino(...) schicker mit Rueckgabewert
+
+HumanPlayer - class 
+- 2 Konstruktoren fehlen
