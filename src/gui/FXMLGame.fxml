@@ -452,7 +452,7 @@
                                           </GridPane>
                                        </center>
                                        <top>
-                                          <Label fx:id="lblPlayer2" text="Spieler 1: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
+                                          <Label fx:id="lblPlayer2" text="Spieler 2: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
                                              <font>
                                                 <Font name="Papyrus" size="17.0" />
                                              </font>
