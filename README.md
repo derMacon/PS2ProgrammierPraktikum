@@ -8,10 +8,8 @@ Aktueller Stand der Gui:
 Was noch fehlt: 
 GUI - FXML
 - rot box : dominos anpassen
-- dunkler Hintergrund
-- Spielstandanzeige fehlt
 - Zuordnunganzeige fehlt
-- Aktuelle Spieleranzeige fehlt
+- Aktuelle Spieleranzeige beim Verkleinern des Fensters nicht mehr richtig zu sehen
 - Pane anpassen, dass wenn groesser 
 - Neue Schrift
 - Buttons: Bilder mit Pfeilen
@@ -19,11 +17,8 @@ GUI - FXML
 
 GUI - package
 - Javadoc
-- controller: stackoverflow quelle weg/Kommentare loeschen
 - Kommentare vereinheitlichen
 - Sterne aus Importen entfernen (IDEA Einstellungen)
-- logger aus der JavafxGui loeschen
-
 
 Connector - interface
 - updatePlayer: mit ord Zahl
