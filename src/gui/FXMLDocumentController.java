@@ -26,7 +26,7 @@ public class FXMLDocumentController implements Initializable {
 
     // Gui textures
     public static final Image BANK_BOX_TEXTURE = new Image("gui/textures/LargeBoxV1Alpha.png");
-    public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV3.png");
+    public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV4.png");
     public static final Image BOARD_BACKGROUND_TEXTURE = new Image("gui/textures/SelectedBoxV5Alpha.png");
     public static final Image ROTBOX_TEXTURE = new Image("gui/textures/SelectBoxV4Alpha.png");
     public static final Image SEPERATOR_TEXTURE = new Image("gui/textures/SeperatorV2Alpha.png");
@@ -148,52 +148,59 @@ public class FXMLDocumentController implements Initializable {
         this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnFutureselectiveGroup));
         this.game = new Game(gui, Game.DEFAULT_PLAYER_CNT, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
     }
-    
+
+    /**
+     * Sets up the gui with all necessary textures
+     */
     private void setUpGuiTextures() {
-        setAPnWithImageAsBackground(grdPnCurrentBankTexture, BANK_BOX_TEXTURE);
-        setAPnWithImageAsBackground(grdPnNextBankTexture, BANK_BOX_TEXTURE);
+        setPnWithImageAsBackground(grdPnCurrentBankTexture, BANK_BOX_TEXTURE);
+        setPnWithImageAsBackground(grdPnNextBankTexture, BANK_BOX_TEXTURE);
 
-        setAPnWithImageAsBackground(grdPnPlayer1Texture, BOARD_BACKGROUND_TEXTURE);
-        setAPnWithImageAsBackground(grdPnPlayer2Texture, BOARD_BACKGROUND_TEXTURE);
-        setAPnWithImageAsBackground(grdPnPlayer3Texture, BOARD_BACKGROUND_TEXTURE);
-        setAPnWithImageAsBackground(grdPnPlayer4Texture, BOARD_BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(grdPnPlayer1Texture, BOARD_BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(grdPnPlayer2Texture, BOARD_BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(grdPnPlayer3Texture, BOARD_BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(grdPnPlayer4Texture, BOARD_BACKGROUND_TEXTURE);
 
-        setAPnWithImageAsBackground(this.grdPnRotBoxTexture, BOARD_BACKGROUND_TEXTURE);
-        setAPnWithImageAsBackground(this.grdPnDisposeTexture, BOARD_BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnRotBoxTexture, BOARD_BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnDisposeTexture, BOARD_BACKGROUND_TEXTURE);
 
-        setAPnWithImageAsBackground(this.grdPnSeperator1Texture, SEPERATOR_TEXTURE);
-        setAPnWithImageAsBackground(this.grdPnSeperator2Texture, SEPERATOR_TEXTURE);
-        setAPnWithImageAsBackground(this.grdPnSeperator3Texture, SEPERATOR_TEXTURE_ROTATED);
+        setPnWithImageAsBackground(this.grdPnSeperator1Texture, SEPERATOR_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnSeperator2Texture, SEPERATOR_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnSeperator3Texture, SEPERATOR_TEXTURE_ROTATED);
 
-        setAPnWithImageAsBackground(grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
-    }
-
-    private void setAPnWithImageAsBackground(Pane pane, Image image) {
-        setAPnWithImage(pane, image, false);
-    }
-
-    private void setAPnWithImageAsForeground(Pane pane, Image image) {
-        setAPnWithImage(pane, image, true);
+        setPnWithImageAsBackground(grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
     }
 
     /**
-     * https://stackoverflow.com/questions/42172015/javafxscenebuilder-how-can-i-automatically-resize-the-scene-when-the-window?rq=1
-     * @param pane
-     * @param image
+     * Adds a given Image as Background to a given pane
+     * @param pane pane to add the ImageView to
+     * @param image Image to add
      */
-    private void setAPnWithImage(Pane pane, Image image, boolean addAsForeground) {
+    private void setPnWithImageAsBackground(Pane pane, Image image) {
+        setPnWithImage(pane, image, false);
+    }
+
+    /**
+     * Adds a given Image as Foreground to a given pane
+     * @param pane pane to add the ImageView to
+     * @param image Image to add
+     */
+    private void setPnWithImageAsForeground(Pane pane, Image image) {
+        setPnWithImage(pane, image, true);
+    }
+
+    /**
+     * Adds an Imageview Node to a given Pane, when addAsForeground == true the image will be added on top of all nodes
+     * in the pane, otherwise it will be added in the background.
+     * @param pane Pane to add the ImageView to
+     * @param image Image to add
+     * @param addAsForeground determines if the image should be added in the fore- or background
+     */
+    private void setPnWithImage(Pane pane, Image image, boolean addAsForeground) {
         ImageView imgVW = new ImageView(image);
         imgVW.setPreserveRatio(false);
-//        imgVW.setX(pane.getHeight());
-//        System.out.println(pane.getProperties());
-//        imgVW.setFitWidth(20);
-//        imgVW.fitHeightProperty().bind(pane.translateYProperty());
         imgVW.fitHeightProperty().bind(pane.heightProperty());
-        
-//        imgVW.fitWidthProperty().bind(pane.translateXProperty());
         imgVW.fitWidthProperty().bind(pane.widthProperty());
-
-//        imgVwsGame[x][y].fitWidthProperty().bind(grdPn.widthProperty().divide(colcount).subtract(grdPn.getHgap()));
         if(addAsForeground) {
             pane.getChildren().add(imgVW);
         } else {

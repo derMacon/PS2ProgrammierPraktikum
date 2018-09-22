@@ -39,7 +39,6 @@ public class JavaFXGUI implements GUIConnector {
     private ImageView[][] imgVwsCurrentBank;
     private ImageView[][] imgVwsNextBank;
 
-    private Logger logger;
 
     public JavaFXGUI(Pane pnSelected, Label lblTurn, ImageView[][] imgWssPlayerBoard, ImageView[][][] imgWwsAIBoards,
                      ImageView[][] imgVwsCurrentBank, ImageView[][] imgVwsNextBank) {
@@ -57,7 +56,6 @@ public class JavaFXGUI implements GUIConnector {
             this.imgs[i] = this.loadImage(i);
         }
 
-        this.logger = new Logger(this.imgVwsPlayerBoard.length);
     }
 
 
