@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.Random;
 
 public class Bank {
-    public static final int CURRENT_BANK_IDX = 0;
-    public static final int NEXT_BANK_IDX = 1;
-    public static final int BANK_COUNT = 2;
 
+    /**
+     * Number of entries in this bank
+     */
     private final int bankSize;
 
     /**
@@ -23,6 +23,10 @@ public class Bank {
      */
     private Entry[] entries;
 
+    /**
+     * Constructor setting the player count, used in the game.
+     * @param playerCnt
+     */
     public Bank(int playerCnt) {
         this.entries = new Entry[playerCnt];
         this.bankSize = playerCnt;
@@ -32,17 +36,17 @@ public class Bank {
     /**
      * Constructor setting the entries. Used for testing.
      *
-     * @param entries entries of the
+     * @param entries entries of the bank
      */
-    public Bank(Entry[] entries) {
+    public Bank(Entry[] entries, Random pseudoRandom) {
         this.entries = entries;
-        this.rand = new Random();
+        this.rand = pseudoRandom;
         this.bankSize = entries.length;
     }
 
     /**
      * Getter for the bank size
-     * @return
+     * @return bank size
      */
     public int getBankSize() {
         return this.bankSize;
@@ -54,7 +58,11 @@ public class Bank {
      * @return entries of the bank
      */
     public Entry[] getEntries() {
-        return entries;
+        return this.entries;
+    }
+
+    public Entry getSpecificEntry(int entryIdx) {
+        return this.entries[entryIdx];
     }
 
     /**
@@ -92,17 +100,9 @@ public class Bank {
     }
 
     /**
-     * Checks if a slot on the bank at the given index isn't already selected by another player
-     *
-     * @param domIdx index for the domino that needs to be checked
-     * @return true if bank index isn't already selected by another player
+     * Determinies if the bank is empty or not
+     * @return true when all entries are null pointers
      */
-    public boolean isNotSelected(int domIdx) {
-        return isValidBankIdx(domIdx)
-                && null != this.entries[domIdx]
-                && null == this.entries[domIdx].getSelectedPlayer();
-    }
-
     public boolean isEmpty() {
         int counter = 0;
         for(Entry currentEntry : this.entries) {
@@ -113,11 +113,24 @@ public class Bank {
         return 0 == counter;
     }
 
+    /**
+     * Sets all entries equal to null
+     */
     public void clearAllEntries() {
         for (int i = 0; i < this.bankSize; i++) {
-            this.entries[i] = null;
+            deleteEntry(i);
         }
     }
+
+    /**
+     * Deletes a specific entry with a given index
+     * @param entryIdx
+     */
+    public void deleteEntry(int entryIdx) {
+        assert isValidBankIdx(entryIdx) && this.entries != null;
+        this.entries[entryIdx] = null;
+    }
+
 
     /**
      * Selects a entry at a given bank index
@@ -130,8 +143,21 @@ public class Bank {
      * wants to select hold a domino (you can't select an empty slot)
      */
     public void selectEntry(Player player, int bankIdx) {
-        assert null != player && isValidBankIdx(bankIdx) && null != this.entries && null != this.entries[bankIdx];
+        assert null != player && isValidBankIdx(bankIdx) && null != this.entries
+                && null != this.entries[bankIdx] && isNotSelected(bankIdx);
         this.entries[bankIdx].selectEntry(player);
+    }
+
+    /**
+     * Checks if a slot on the bank at the given index isn't already selected by another player
+     *
+     * @param domIdx index for the domino that needs to be checked
+     * @return true if bank index isn't already selected by another player
+     */
+    public boolean isNotSelected(int domIdx) {
+        return isValidBankIdx(domIdx)
+                && null != this.entries[domIdx]
+                && null == this.entries[domIdx].getSelectedPlayer();
     }
 
     /**
@@ -160,12 +186,12 @@ public class Bank {
      */
     public void drawFromStack(List<Domino> stack) {
         assert null != stack;
-        for (int i = 0; i < bankSize; i++) {
-             fill(stack.remove(rand.nextInt(stack.size())), i);
+        if(0 < stack.size()) {
+            for (int i = 0; i < bankSize; i++) {
+                fill(stack.remove(rand.nextInt(stack.size())), i);
+            }
         }
     }
-
-
 
     /**
      * Setter for a given entry index
@@ -178,6 +204,10 @@ public class Bank {
         this.entries[idx] = new Entry(domino);
     }
 
+    /**
+     * Copies the bank
+     * @return new reference for the bank
+     */
     public Bank copy() {
         Bank output = new Bank(this.bankSize);
         for (int i = 0; i < bankSize; i++) {

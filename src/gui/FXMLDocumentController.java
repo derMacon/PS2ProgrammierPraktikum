@@ -22,116 +22,213 @@ import java.util.ResourceBundle;
 
 public class FXMLDocumentController implements Initializable {
 
+    //<editor-fold defaultstate="collapsed" desc="Gui textures">
+    /**
+     * Background for the selection box containing the current- / nextRoundBank
+     */
+    public static final Image BANK_BOX_TEXTURE = new Image("gui/textures/LargeBoxV1Alpha.png");
+
+    /**
+     * Overall Background for the whole main window
+     */
+    public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV4.png");
+
+    /**
+     * Background for the individual player boards
+     */
+    public static final Image BOARD_BACKGROUND_TEXTURE = new Image("gui/textures/SelectedBoxV5Alpha.png");
+
+    /**
+     * Background for the rotation box
+     */
+    public static final Image ROTBOX_TEXTURE = new Image("gui/textures/SelectBoxV4Alpha.png");
+
+    /**
+     * Texture for the vertical seperatorors between the different secotions of the window
+     */
+    public static final Image SEPERATOR_TEXTURE_VERTICAL = new Image("gui/textures/SeperatorV2Alpha.png");
+
+    /**
+     * Texture for the horizontal seperator between the different secotions of the window
+     */
+    public static final Image SEPERATOR_TEXTURE_HORIZONTAL = new Image("gui/textures/SeperatorV2AlphaRotated.png");
+    //</editor-fold>
+
+    /**
+     * Default number of players
+     */
     public static final int DEFAULT_PLAYER_COUNT = 4;
 
-    // Gui textures
-    public static final Image BANK_BOX_TEXTURE = new Image("gui/textures/LargeBoxV1Alpha.png");
-    public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV4.png");
-    public static final Image BOARD_BACKGROUND_TEXTURE = new Image("gui/textures/SelectedBoxV5Alpha.png");
-    public static final Image ROTBOX_TEXTURE = new Image("gui/textures/SelectBoxV4Alpha.png");
-    public static final Image SEPERATOR_TEXTURE = new Image("gui/textures/SeperatorV2Alpha.png");
-    public static final Image SEPERATOR_TEXTURE_ROTATED = new Image("gui/textures/SeperatorV2AlphaRotated.png");
 
-
-    @FXML
-    private Button btnLeft;
-
+    // --- Boards ---
+    /**
+     * Grid pane representing the board of the human player
+     */
     @FXML
     private GridPane grdPnHumanBoard;
 
+    /**
+     * Grid pane representing the board of the first bot
+     */
     @FXML
     private GridPane grdPnBot1Board;
 
-    @FXML
-    private Pane pnDiscard;
-
-    @FXML
-    private Button btnUp;
-
-    @FXML
-    private Button btnRight;
-
-    @FXML
-    private Pane pnSelected;
-
-    @FXML
-    private GridPane grdPnOverallBackgroundTexture;
-
-    @FXML
-    private GridPane grdPnNextBankTexture;
-
-    @FXML
-    private GridPane grdPnPlayer2Texture;
-
-    @FXML
-    private Button btnDown;
-
-    @FXML
-    private GridPane grdPnPlayer1Texture;
-
-    @FXML
-    private GridPane grdPnPlayer3Texture;
-
-    @FXML
-    private GridPane grdPnPlayer4Texture;
-
-    @FXML
-    private Label lblPlayer1;
-
-    @FXML
-    private Label lblPlayer2;
-
-    @FXML
-    private Label lblTurn;
-
+    /**
+     * Grid pane representing the board of the second bot
+     */
     @FXML
     private GridPane grdPnBot2Board;
 
-    @FXML
-    private Label lblPlayer3;
-
-    @FXML
-    private Label lblPlayer4;
-
-    @FXML
-    private GridPane grdPnCurrentBankTexture2;
-
-    @FXML
-    private GridPane grdPnDisposeTexture;
-
+    /**
+     * Grid pane representing the board of the third bot
+     */
     @FXML
     private GridPane grdPnBot3Board;
 
+    /**
+     * Label to display the name of the current player
+     */
     @FXML
-    private GridPane grdPnCurrentSelectiveGroup1;
+    private Label lblTurn;
 
+
+    // --- Interactive Items ---
+    /**
+     * Grid pane representing the current round's bank
+     */
     @FXML
     private GridPane grdPnCurrentSelectiveGroup;
 
-    @FXML
-    private GridPane grdPnRotBoxTexture;
-
-    @FXML
-    private GridPane grdPnPlayersAI;
-
+    /**
+     * Grid pane representing the next round's bank
+     */
     @FXML
     private GridPane grdPnFutureselectiveGroup;
 
+    /**
+     * Pane used for rotating the current domino from the human player
+     */
+    @FXML
+    private Pane pnSelected;
+
+    /**
+     * Pane to discard the human players current domino
+     */
+    @FXML
+    private Pane pnDiscard;
+
+    /**
+     * Button to move the whole board leftward
+     */
+    @FXML
+    private Button btnLeft;
+
+    /**
+     * Button to move the whole board upward
+     */
+    @FXML
+    private Button btnUp;
+
+    /**
+     * Button to move the whole board rightward
+     */
+    @FXML
+    private Button btnRight;
+
+    /**
+     * Button to move the whole board downward
+     */
+    @FXML
+    private Button btnDown;
+
+
+    // --- Grid panes for setting up textures ---
+    /**
+     * Grid pane setting up the overall background texture
+     */
+    @FXML
+    private GridPane grdPnOverallBackgroundTexture;
+
+
+    /**
+     * Grid pane setting up the texture for the current round bank
+     */
     @FXML
     private GridPane grdPnCurrentBankTexture;
 
+    /**
+     * Grid pane setting up the texture for the next round bank
+     */
+    @FXML
+    private GridPane grdPnNextBankTexture;
+
+
+    /**
+     * Grid pane setting up the texture for the board from player1
+     */
+    @FXML
+    private GridPane grdPnPlayer1Texture;
+
+    /**
+     * Grid pane setting up the texture for the board from player2
+     */
+    @FXML
+    private GridPane grdPnPlayer2Texture;
+
+    /**
+     * Grid pane setting up the texture for the board from player3
+     */
+    @FXML
+    private GridPane grdPnPlayer3Texture;
+
+    /**
+     * Grid pane setting up the texture for the board from player4
+     */
+    @FXML
+    private GridPane grdPnPlayer4Texture;
+
+
+    /**
+     * Grid pane setting up the texture for the rotation box
+     */
+    @FXML
+    private GridPane grdPnRotBoxTexture;
+
+    /**
+     * Grid pane setting up the texture for the dispose box
+     */
+    @FXML
+    private GridPane grdPnDisposeTexture;
+
+
+    /**
+     * Grid pane setting up the texture for first seperator
+     */
     @FXML
     private GridPane grdPnSeperator1Texture;
 
+    /**
+     * Grid pane setting up the texture for second seperator
+     */
     @FXML
     private GridPane grdPnSeperator2Texture;
 
+    /**
+     * Grid pane setting up the texture for third seperator
+     */
     @FXML
     private GridPane grdPnSeperator3Texture;
 
 
-
+    // --- actual fields ---
+    /**
+     * Reference to the game that will be played
+     */
     private GUI2Game game;
+
+    /**
+     * Reference to the internal gui controller (setting values generated by the logic)
+     */
     private JavaFXGUI gui;
 
 
@@ -143,7 +240,7 @@ public class FXMLDocumentController implements Initializable {
         ImageView[][] imgVwsHumanBoard = addImageViewsToGrid(grdPnHumanBoard);
         this.addDragAndDropHandlers(imgVwsHumanBoard);
 
-        ImageView[][][] imgVwsAIBoards = new ImageView[][][] {addImageViewsToGrid(grdPnBot1Board), addImageViewsToGrid(grdPnBot2Board), addImageViewsToGrid(grdPnBot3Board)};
+        ImageView[][][] imgVwsAIBoards = new ImageView[][][]{addImageViewsToGrid(grdPnBot1Board), addImageViewsToGrid(grdPnBot2Board), addImageViewsToGrid(grdPnBot3Board)};
 
         this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnFutureselectiveGroup));
         this.game = new Game(gui, Game.DEFAULT_PLAYER_CNT, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
@@ -164,16 +261,17 @@ public class FXMLDocumentController implements Initializable {
         setPnWithImageAsBackground(this.grdPnRotBoxTexture, BOARD_BACKGROUND_TEXTURE);
         setPnWithImageAsBackground(this.grdPnDisposeTexture, BOARD_BACKGROUND_TEXTURE);
 
-        setPnWithImageAsBackground(this.grdPnSeperator1Texture, SEPERATOR_TEXTURE);
-        setPnWithImageAsBackground(this.grdPnSeperator2Texture, SEPERATOR_TEXTURE);
-        setPnWithImageAsBackground(this.grdPnSeperator3Texture, SEPERATOR_TEXTURE_ROTATED);
+        setPnWithImageAsBackground(this.grdPnSeperator1Texture, SEPERATOR_TEXTURE_VERTICAL);
+        setPnWithImageAsBackground(this.grdPnSeperator2Texture, SEPERATOR_TEXTURE_VERTICAL);
+        setPnWithImageAsBackground(this.grdPnSeperator3Texture, SEPERATOR_TEXTURE_HORIZONTAL);
 
         setPnWithImageAsBackground(grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
     }
 
     /**
      * Adds a given Image as Background to a given pane
-     * @param pane pane to add the ImageView to
+     *
+     * @param pane  pane to add the ImageView to
      * @param image Image to add
      */
     private void setPnWithImageAsBackground(Pane pane, Image image) {
@@ -182,7 +280,8 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Adds a given Image as Foreground to a given pane
-     * @param pane pane to add the ImageView to
+     *
+     * @param pane  pane to add the ImageView to
      * @param image Image to add
      */
     private void setPnWithImageAsForeground(Pane pane, Image image) {
@@ -192,8 +291,9 @@ public class FXMLDocumentController implements Initializable {
     /**
      * Adds an Imageview Node to a given Pane, when addAsForeground == true the image will be added on top of all nodes
      * in the pane, otherwise it will be added in the background.
-     * @param pane Pane to add the ImageView to
-     * @param image Image to add
+     *
+     * @param pane            Pane to add the ImageView to
+     * @param image           Image to add
      * @param addAsForeground determines if the image should be added in the fore- or background
      */
     private void setPnWithImage(Pane pane, Image image, boolean addAsForeground) {
@@ -201,7 +301,7 @@ public class FXMLDocumentController implements Initializable {
         imgVW.setPreserveRatio(false);
         imgVW.fitHeightProperty().bind(pane.heightProperty());
         imgVW.fitWidthProperty().bind(pane.widthProperty());
-        if(addAsForeground) {
+        if (addAsForeground) {
             pane.getChildren().add(imgVW);
         } else {
             pane.getChildren().add(0, imgVW);
@@ -300,7 +400,6 @@ public class FXMLDocumentController implements Initializable {
         event.consume();
 
     }
-
 
 
     /**

@@ -18,12 +18,12 @@ public class District {
     /**
      * Tile positions of the district members
      */
-    List<Pos> tilePositions = new LinkedList<>();
+    List<Pos> tilePositions;
 
     /**
      * All SingleTiles of this district
      */
-    List<SingleTile> singleTiles = new LinkedList<SingleTile>();
+    List<SingleTile> singleTiles;
 
     /**
      * constructor for this class
@@ -32,7 +32,9 @@ public class District {
      * @param pos
      */
     public District(SingleTile fstDistrictMember, Pos pos) {
-        this.add(fstDistrictMember, pos);
+        this.tilePositions = new LinkedList<>();
+        this.singleTiles = new LinkedList<>();
+        add(fstDistrictMember, pos);
     }
 
     /**
@@ -98,17 +100,6 @@ public class District {
     public int genPoints() {
         // TODO insert code
         return 0;
-    }
-
-    /**
-     * Checks if one of the domino tiles is next to a member of this district
-     *
-     * @param dom domino to be checked
-     * @return true if one district member is next to one of the domino tiles
-     */
-    public boolean isNextToDistrictMember(Domino dom) {
-        return isNextToDistrictMember(dom.getFstVal(), dom.getFstPos())
-                || isNextToDistrictMember(dom.getSndVal(), dom.getSndPos());
     }
 
     /**

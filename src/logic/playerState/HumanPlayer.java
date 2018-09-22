@@ -22,15 +22,22 @@ public class HumanPlayer extends Player {
         super(gui, boardSizeX, boardSizeY);
     }
 
-    @Override
-    public void selectFromBank(Bank bank) {
-        throw new UnsupportedOperationException("Method should not be called: bank selection will be updated in the game class");
+    /**
+     * Constructor setting the gui and board
+     * @param gui reference to the GUIConnector
+     * @param board board to play on
+     */
+    public HumanPlayer(GUIConnector gui, Board board) {
+        super(gui, board);
     }
 
-    @Override
-    protected void updateDominoPos(Domino domino) {
-        throw new UnsupportedOperationException("Method should not be called: domino pos will be updated in the game class");
+    /**
+     * Constructor setting the gui and the board (in String formatting), used for testing / reloading.
+     * @param gui reference to the GUIConnector
+     * @param strBoard String representation of the board
+     */
+    public HumanPlayer(GUIConnector gui, String strBoard) {
+        super(gui, strBoard);
     }
-
 
 }

@@ -5,9 +5,42 @@ package logic.token;
  * @author GeritKaleck
  */
 public class Pos {
+
+    /**
+     * Constant determining the leftward rotation
+     */
+    public static final int LEFT_ROT = 0;
+
+    /**
+     * Constant determining the downward rotation
+     */
+    public static final int DOWN_ROT = 1;
+
+    /**
+     * Constant determining the rightward rotation
+     */
+    public static final int RIGHT_ROT = 2;
+
+    /**
+     * Constant determining the upward rotation
+     */
+    public static final int UP_ROT = 3;
+
+    /**
+     * x komponent of a position
+     */
     private final int x;
+
+    /**
+     * y komponent of a position
+     */
     private final int y;
 
+    /**
+     * Constructor for a position
+     * @param x x komponent of the position
+     * @param y y komponent of the position
+     */
     public Pos(int x, int y) {
         this.x = x;
         this.y = y;
@@ -47,10 +80,10 @@ public class Pos {
      */
     public Pos[] getNeighbours() {
         Pos[] neighbours = new Pos[4];
-        neighbours[0] = new Pos(this.x-1, this.y  );
-        neighbours[1] = new Pos(this.x  , this.y-1);
-        neighbours[2] = new Pos(this.x+1, this.y)  ;
-        neighbours[3] = new Pos(this.x  , this.y+1);
+        neighbours[LEFT_ROT] = new Pos(this.x-1, this.y  );
+        neighbours[DOWN_ROT] = new Pos(this.x  , this.y-1);
+        neighbours[RIGHT_ROT] = new Pos(this.x+1, this.y)  ;
+        neighbours[UP_ROT] = new Pos(this.x  , this.y+1);
         return neighbours;
     }
 

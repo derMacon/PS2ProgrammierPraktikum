@@ -9,6 +9,7 @@ import logic.token.Domino;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import logic.token.Tiles;
 import org.junit.Test;
@@ -35,7 +36,7 @@ public class BankTest {
         for (int i = 0; i < len; i++) {
             entries[i] = new Entry(stack.get(i));
         }
-        return new Bank(entries);
+        return new Bank(entries, new Random());
     }
 
     private Bank genBankFromStack(List<Domino> stack) {
@@ -81,7 +82,7 @@ public class BankTest {
         List<Domino> stack = new LinkedList<>();
         genBankFromStack(stack);
         Entry[] entries = new Entry[]{new Entry(stack.get(0)), null};
-        Bank bank = new Bank(entries);
+        Bank bank = new Bank(entries, new Random());
         assertNull(bank.getSelectedPlayer(0));
         assertNull(bank.getSelectedPlayer(1));
     }
@@ -153,7 +154,7 @@ public class BankTest {
     public void testGetAllDominos_Mixed() {
         Domino domino = new Domino(Tiles.A0_A0_Val7);
         Entry[] entries = new Entry[]{null, new Entry(domino)};
-        Bank bank = new Bank(entries);
+        Bank bank = new Bank(entries, new Random());
         Domino[] expOutput = new Domino[]{null, domino};
         assertArrayEquals(expOutput, bank.getAllDominos());
     }
@@ -165,7 +166,7 @@ public class BankTest {
         List<Domino> stack = new LinkedList<>();
         genBankFromStack(stack);
         Entry[] entries = new Entry[]{new Entry(stack.get(0)), new Entry(stack.get(1)), null};
-        Bank bank = new Bank(entries);
+        Bank bank = new Bank(entries, new Random());
         Player player = new DefaultAIPlayer(new FakeGUI(), 5, 5);
         // Domino selected by no player
         Domino outputDom = bank.getPlayerSelectedDomino(player);
@@ -276,7 +277,7 @@ public class BankTest {
         List<Domino> stack = new LinkedList<>();
         genBankFromStack(stack);
         Entry[] entries = new Entry[]{new Entry(stack.get(0)), new Entry(stack.get(1)), null};
-        Bank bank = new Bank(entries);
+        Bank bank = new Bank(entries, new Random());
 
         assertNotSame(bank, bank.copy());
         assertNotSame(bank.getEntries(), bank.copy().getEntries());

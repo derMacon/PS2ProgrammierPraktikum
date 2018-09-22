@@ -14,7 +14,7 @@ public interface GUIConnector {
 
     /**
      * displays the given name as has to turn.
-     * @param name
+     * @param name name of the player who's currently doing his turn
      */
     void showWhosTurn(String name);
 
@@ -27,19 +27,20 @@ public interface GUIConnector {
 
     /**
      * shows the domino in the choose-box. Clears it if dominoRotated is null.
-     * @param dominoRotated
+     * @param dominoRotated current domino of the human player
      */
     void showInChooseBox(Domino dominoRotated);
 
     /**
      * updates all data concerning a certain player (board, districts, points, etc.)
-     * @param player
+     * @param player player to update gui section for
+     * @param ordPlayer ordinal value of the player
      */
     void updatePlayer(Player player, int ordPlayer);
 
     /**
      * updates all data concerning an array of players
-     * @param players 
+     * @param players array of players who's sections on the gui will be updated
      */
     void updateAllPlayers(Player[] players);
 
@@ -53,7 +54,7 @@ public interface GUIConnector {
 
     /**
      * presents the results.
-     * @param result
+     * @param result Result that will be shown in another window
      */
     void showResult(Result result);
 
@@ -100,6 +101,13 @@ public interface GUIConnector {
      * @param mode mode which the arrow will be changed to (red / green color)
      */
     void setColorForArrows(int idx, int mode);
+
+    /**
+     * Blurs a given bank to focus the bank that a player is able to choose
+     */
+    void blurBank(int ordBank);
+
+
 
 
 }

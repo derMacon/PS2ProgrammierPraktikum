@@ -1,7 +1,6 @@
 package logic.playerState;
 
 import logic.bankSelection.Bank;
-import logic.token.Pos;
 import logic.logicTransfer.GUIConnector;
 import logic.token.Domino;
 
@@ -18,7 +17,7 @@ public abstract class Player {
     /**
      * List of districts containing the game statistics
      */
-    protected List<District> gameStats;
+    protected List<District> districts;
     
     /**
      * Gui reference to show 
@@ -39,7 +38,7 @@ public abstract class Player {
      * @param board to set dominos / SingleTiles to 
      */
     public Player(GUIConnector gui, Board board) {
-        this.gameStats = new LinkedList<>();
+        this.districts = new LinkedList<>();
         this.gui = gui; 
         this.board = board;
     }
@@ -51,6 +50,12 @@ public abstract class Player {
      */
     public Player(GUIConnector gui, String strBoard) {
         this(gui, new Board(strBoard));
+        this.districts = genGamestatsFromBoard(this.board);
+    }
+
+    private List<District> genGamestatsFromBoard(Board board) {
+        // TODO insert code
+        return null;
     }
 
     /**
@@ -65,8 +70,8 @@ public abstract class Player {
      * Gtter for the gamestats
      * @return gamestats
      */
-    public List<District> getGameStats() {
-        return this.gameStats;
+    public List<District> getDistricts() {
+        return this.districts;
     }
 
     /**
@@ -75,23 +80,11 @@ public abstract class Player {
      */
     public int getBoardPoints() {
         int sum = 0;
-        for (int i = 0; i < this.gameStats.size(); i++) {
-            sum += this.gameStats.get(i).genPoints();
+        for(District currDistrict : this.districts) {
+            sum += currDistrict.genPoints();
         }
         return sum;
     }
-
-    /**
-     * Each player selects a domino from a given bank
-     * @param bank bank from which the player selects a domino
-     */
-    public abstract void selectFromBank(Bank bank);
-    
-    /**
-     * Helping Method - Player updates the domino position to fit on the board
-     * @return the a valid position to fit the domino on the board
-     */
-    protected abstract void updateDominoPos(Domino domino);
 
     /**
      * Displays the given domino on the players board

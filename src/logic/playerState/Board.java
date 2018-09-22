@@ -7,11 +7,6 @@ import logic.token.SingleTile;
 public class Board {
 
     /**
-     * Default Board size for the board
-     */
-    public final int DEFAULT_BOARD_SIZE = 5;
-
-    /**
      * Number of rows on this board
      */
     private final int sizeX;
@@ -26,12 +21,11 @@ public class Board {
      */
     private SingleTile[][] cells;
 
-//    /**
-//     * Standard constructor for this class
-//     */
-//    public Board() {
-//        cells = new SingleTile[DEFAULT_BOARD_SIZE][DEFAULT_BOARD_SIZE];
-//    }
+    /**
+     * All SingleTiles in one array, used in testing constructor so that the enum method values() is not called for
+     * every single cell.
+     */
+    private final SingleTile[] allSingleTiles = SingleTile.values();
 
     /**
      * Constructor setting bank dimensions
@@ -72,7 +66,11 @@ public class Board {
                     cells[x][y] = null;
                 } else {
                     int ordTile = Integer.parseInt(inputCells[y][x]);
-                    this.cells[x][y] = SingleTile.values()[ordTile];
+                    if(this.allSingleTiles.length > ordTile) {
+                        this.cells[x][y] = allSingleTiles[ordTile];
+                    } else {
+                        this.cells[x][y] = null;
+                    }
                 }
             }
         }

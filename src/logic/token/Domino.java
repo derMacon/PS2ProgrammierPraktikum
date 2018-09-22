@@ -61,10 +61,6 @@ public class Domino {
      */
     private Pos posFst;
 
-    /**
-     * bottom right position of the domino
-     */
-    private Pos posSnd;
 
     /**
      * creates a tiles with the given tile, position and rotation
@@ -78,7 +74,6 @@ public class Domino {
         this.rotation = rotation;
         this.tiles = tiles;
         this.posFst = posFst;
-        updatePosSnd();
     }
 
     /**
@@ -133,7 +128,6 @@ public class Domino {
      */
     public Domino setPos(Pos posFst) {
         this.posFst = posFst;
-        updatePosSnd();
         return this;
     }
 
@@ -158,7 +152,6 @@ public class Domino {
     public Domino incRot() {
         this.rotation++;
         this.rotation %= 4;
-        updatePosSnd();
         return this;
     }
 
@@ -194,35 +187,25 @@ public class Domino {
      * @return
      */
     public Pos getSndPos() {
-        return this.posSnd;
-    }
-
-    /**
-     * updates postion of the second half of the domino when the first half is
-     * on the this.posFst position. If this.posFst equals null nothing will happen
-     *
-     * @return position of the second half
-     */
-    private void updatePosSnd() {
-        if(null != this.posFst) {
-            int x = posFst.x();
-            int y = posFst.y();
-            switch (rotation) {
-                case 0:
-                case 2:
-                    x = posFst.x() + 1;
-                    y = posFst.y();
-                    break;
-                case 1:
-                case 3:
-                    x = posFst.x();
-                    y = posFst.y() + 1;
-                    break;
-                default:
-                    assert false : "rotation has to be 0..3 but was " + rotation;
-            }
-            this.posSnd = new Pos(x, y);
+        if (null == this.posFst) {
+            return null;
         }
+
+        int x = this.posFst.x();
+        int y = this.posFst.y();
+        switch (rotation) {
+            case 0:
+            case 2: x = this.posFst.x() + 1;
+                y = this.posFst.y();
+                break;
+            case 1:
+            case 3: x = this.posFst.x();
+                y = this.posFst.y() + 1;
+                break;
+            default:
+                assert false : "rotation has to be 0..3 but was " + rotation;
+        }
+        return new Pos(x, y);
     }
 
 

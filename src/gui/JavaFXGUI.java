@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import logic.bankSelection.Bank;
 import logic.dataPreservation.Logger;
+import logic.logicTransfer.Game;
 import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerState.Result;
@@ -69,7 +70,7 @@ public class JavaFXGUI implements GUIConnector {
 
 
     public void setToBank(int ordBank, int index, Domino domino) {
-        ImageView[][] imgVwsBank = ordBank == Bank.CURRENT_BANK_IDX ? this.imgVwsCurrentBank : this.imgVwsNextBank;
+        ImageView[][] imgVwsBank = ordBank == Game.CURRENT_BANK_IDX ? this.imgVwsCurrentBank : this.imgVwsNextBank;
         if (index >= 0 && index < imgVwsBank[IDX_FST].length) {
             Image[] imgs = (domino != null) ? this.getImagesForTile(domino.getTile()) : this.getImagesForTile(null);
             imgVwsBank[IDX_FST][index].setImage(imgs[IDX_FST]);
@@ -461,6 +462,11 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void setColorForArrows(int idx, int mode) {
+
+    }
+
+    @Override
+    public void blurBank(int ordBank) {
 
     }
 }

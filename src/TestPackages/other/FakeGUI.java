@@ -72,4 +72,9 @@ public class FakeGUI implements GUIConnector {
     public void setColorForArrows(int idx, int mode) {
 
     }
+
+    @Override
+    public void blurBank(int ordBank) {
+
+    }
 }

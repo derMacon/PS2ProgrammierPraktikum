@@ -2,10 +2,7 @@ package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
 import logic.dataPreservation.Logger;
-import logic.playerState.Board;
-import logic.playerState.DefaultAIPlayer;
-import logic.playerState.HumanPlayer;
-import logic.playerState.Player;
+import logic.playerState.*;
 import logic.token.Pos;
 import logic.token.Domino;
 
@@ -286,7 +283,8 @@ public class Game implements GUI2Game {
 
             // update rest of the players
             for (int i = 1; i < this.players.length; i++) {
-                this.players[i].selectFromBank(this.currentRoundBank);
+                // rest of the players HAVE to be bots
+                ((BotBehavior) this.players[i]).selectFromBank(this.currentRoundBank);
             }
 
             //TODO insert code to update selection on gui

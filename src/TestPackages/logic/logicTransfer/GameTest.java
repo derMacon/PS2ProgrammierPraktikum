@@ -14,6 +14,7 @@ import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 import static org.junit.Assert.*;
 
@@ -117,7 +118,7 @@ public class GameTest {
         Entry entry3 = new Entry(new Domino(Tiles.A0_S2_Val42));
         Entry entry4 = new Entry(new Domino(Tiles.A0_S1_Val37));
         Entry[] entries = new Entry[] {entry1,entry2, entry3, entry4};
-        Bank currentBank = new Bank(entries);
+        Bank currentBank = new Bank(entries, new Random());
         Bank nextBank = new Bank(4);
 
         List<Domino> stack = new LinkedList<>();
