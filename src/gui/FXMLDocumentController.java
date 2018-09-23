@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
 import logic.logicTransfer.GUI2Game;
 import logic.logicTransfer.Game;
+import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 
 import java.net.URL;
@@ -231,6 +232,8 @@ public class FXMLDocumentController implements Initializable {
      */
     private JavaFXGUI gui;
 
+    private PlayerType[] choosenPlayerTypes;
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -244,6 +247,8 @@ public class FXMLDocumentController implements Initializable {
 
         this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnFutureselectiveGroup));
         this.game = new Game(gui, Game.DEFAULT_PLAYER_CNT, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
+
+        this.game.startGame();
     }
 
     /**
@@ -266,6 +271,20 @@ public class FXMLDocumentController implements Initializable {
         setPnWithImageAsBackground(this.grdPnSeperator3Texture, SEPERATOR_TEXTURE_HORIZONTAL);
 
         setPnWithImageAsBackground(grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
+    }
+
+    /**
+     * Setter for the PlayerTypes to pass choosen PlayerTypes from other controller
+     */
+    public void setChoosenPlayerTypes(PlayerType[] choosenPlayerTypes) {
+        this.choosenPlayerTypes = choosenPlayerTypes;
+    }
+
+    @FXML
+    private void testPrintPlayerTypes(ActionEvent event) {
+        for(PlayerType type : this.choosenPlayerTypes) {
+            System.out.println(type.getStringRepresentation());
+        }
     }
 
     /**
@@ -465,5 +484,12 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     * Exits game
+     */
+    @FXML
+    private void exitGame(ActionEvent event) {
+        System.exit(0);
+    }
 
 }

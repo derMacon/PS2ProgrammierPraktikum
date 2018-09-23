@@ -18,12 +18,12 @@
                         <MenuItem mnemonicParsing="false" onAction="#onClickStartGame" text="Neues Spiel" />
                         <MenuItem mnemonicParsing="false" text="Speichern" />
                         <MenuItem mnemonicParsing="false" text="Öffnen" />
-                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" onAction="#exitGame" text="Close" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Hilfe">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Spielregeln" />
+                        <MenuItem mnemonicParsing="false" onAction="#testPrintPlayerTypes" text="Spielregeln" />
                     </items>
                 </Menu>
             </menus>

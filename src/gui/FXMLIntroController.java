@@ -1,14 +1,21 @@
 package gui;
 
+import gui.FXMLDocumentController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
-import logic.playerState.Player;
+import javafx.stage.Stage;
 import logic.playerTypes.PlayerType;
 
+import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class FXMLIntroController implements Initializable {
@@ -36,16 +43,21 @@ public class FXMLIntroController implements Initializable {
     @FXML
     private ChoiceBox chcBxPlayer4;
 
-
+    /**
+     * Initializes the list of choice box items and afterwards sets it to the actual choice boxes.
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         this.choiceBoxItemNames = initListOfItems();
-
         initChoiceBox(this.chcBxPlayer2, this.chcBxPlayer3, this.chcBxPlayer4);
     }
 
     /**
      * Initialize list without first (Human) player
+     *
      * @return list without first (Human) player
      */
     private ObservableList initListOfItems() {
@@ -54,44 +66,81 @@ public class FXMLIntroController implements Initializable {
         for (int i = 1; i < possibleEnemyTypes.length; i++) {
             strRepresentations.add(possibleEnemyTypes[i].getStringRepresentation());
         }
-        return  strRepresentations;
+        return strRepresentations;
     }
 
     /**
      * Adds an item for every type of player in the game, also sets the first item as the default item
-     *
+     * <p>
      * https://docs.oracle.com/javafx/2/ui_controls/choice-box.htm
      * https://stackoverflow.com/questions/9605346/how-to-make-javafx-2-0-choicebox-to-select-its-first-element
      */
     private void initChoiceBox(ChoiceBox... inputCBoxArray) {
-        for(ChoiceBox cBox : inputCBoxArray) {
+        for (ChoiceBox cBox : inputCBoxArray) {
+            cBox.setStyle("-fx-font: 12px \"Papyrus\";");
             cBox.setItems(choiceBoxItemNames);
             cBox.getSelectionModel().selectFirst();
         }
     }
 
-
+    /**
+     * Loads the main game window
+     */
     @FXML
     private void startGame() {
         PlayerType[] choosenTypes = evalChoiceBox(this.chcBxPlayer2, this.chcBxPlayer3, this.chcBxPlayer4);
-
-        for (PlayerType curr : choosenTypes) {
-            System.out.println(curr.getStringRepresentation());
-        }
-
-        // TODO insert code: open another scene with the main game and the choosenTypes array
-
+        closeCurrentStageAndOpenNewStageFromFXML("FXMLGame.fxml", choosenTypes);
     }
 
+    /**
+     * Closes current stage (determined by casting the window of the first choice box to a stage) and closes it with the
+     * corresponding method. Also opens another window from a given fxml file and passes the chossen types to the
+     * controller.
+     * <p>
+     * https://www.youtube.com/watch?v=x3UlAwS6dEE
+     *
+     * @param fxml         fxml file to open
+     * @param choosenTypes choosen player types selected by the user
+     */
+    private void closeCurrentStageAndOpenNewStageFromFXML(String fxml, PlayerType[] choosenTypes) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource(fxml));
+            loader.load();
+
+            // Setting the choosen PlayerTypes
+            FXMLDocumentController gameController = loader.getController();
+            gameController.setChoosenPlayerTypes(choosenTypes);
+
+            Parent root = loader.getRoot();
+            Stage primaryStage = new Stage();
+//            primaryStage.setTitle("PS2 Programmierpraktikum: City-Domino");
+            primaryStage.setScene(new Scene(root, 1100, 900));
+            primaryStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // Casts to stage to be able to close the intro stage with code
+        // https://stackoverflow.com/questions/13246211/javafx-how-to-get-stage-from-controller-during-initialization
+        ((Stage) this.chcBxPlayer2.getScene().getWindow()).close();
+    }
+
+    /**
+     * Converts a given array of choose boxes to an array of the different PlayerTypes
+     *
+     * @param boxArray given array of choose boxes
+     * @return array of the different PlayerTypes selected by the user
+     */
     private PlayerType[] evalChoiceBox(ChoiceBox... boxArray) {
-        PlayerType[] output = new PlayerType[boxArray.length];
         PlayerType[] allPlayerTypes = PlayerType.values();
+        List<PlayerType> output = new LinkedList<>();
+        output.add(allPlayerTypes[0]);
         for (int i = 0; i < boxArray.length; i++) {
             // Only enemies are allowed to be selected -> +1 so exclude (first) Human PlayerType
             int selectedItemIdx = boxArray[i].getSelectionModel().getSelectedIndex() + 1;
-            output[i] =allPlayerTypes[selectedItemIdx];
+            output.add(allPlayerTypes[selectedItemIdx]);
         }
-        return output;
+        return output.toArray(new PlayerType[0]);
     }
 
 }
