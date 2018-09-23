@@ -4,7 +4,20 @@ import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Board {
+
+    /**
+     * String representation for an empty cell
+     */
+    private static final String STRING_EMPTY_CELL = "--";
+
+    /**
+     * String representation for the city hall
+     */
+    private static final String STRING_CITY_HALL = "CC";
 
     /**
      * Number of rows on this board
@@ -20,12 +33,6 @@ public class Board {
      * Board cells containing SingleTiles
      */
     private SingleTile[][] cells;
-
-    /**
-     * All SingleTiles in one array, used in testing constructor so that the enum method values() is not called for
-     * every single cell.
-     */
-    private final SingleTile[] allSingleTiles = SingleTile.values();
 
     /**
      * Constructor setting bank dimensions
@@ -56,21 +63,19 @@ public class Board {
         for (int i = 0; i < lines.length; i++) {
             inputCells[i] = lines[i].trim().split("\\s+");
         }
+
+        // Setting the actual SingleTile cells field
         this.sizeX = inputCells[0].length;
         this.sizeY = inputCells.length;
         this.cells = new SingleTile[sizeX][sizeY];
         for (int y = 0; y < sizeY; y++) {
             assert inputCells[y].length == sizeX;
             for (int x = 0; x < sizeX; x++) {
-                if (inputCells[y][x].equals("e")) {
+                String currentElement = inputCells[y][x];
+                if (currentElement.equals(STRING_EMPTY_CELL)) {
                     cells[x][y] = null;
                 } else {
-                    int ordTile = Integer.parseInt(inputCells[y][x]);
-                    if(this.allSingleTiles.length > ordTile) {
-                        this.cells[x][y] = allSingleTiles[ordTile];
-                    } else {
-                        this.cells[x][y] = null;
-                    }
+                    this.cells[x][y] = SingleTile.valueOf(currentElement);
                 }
             }
         }
@@ -111,6 +116,17 @@ public class Board {
         return null != pos
                 && isValidXValue(pos.x())
                 && isValidYValue(pos.y());
+    }
+
+    /**
+     * Initializes the list containing the String represenetation of all SingleTile elements
+     */
+    private List<String> initListWithStrForSingleTiles() {
+        List<String> output = new LinkedList<>();
+        for(SingleTile currTile : SingleTile.values()) {
+            output.add(currTile.name());
+        }
+        return output;
     }
 
     /**

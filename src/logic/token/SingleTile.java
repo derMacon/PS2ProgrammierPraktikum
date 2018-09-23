@@ -34,4 +34,9 @@ public enum SingleTile {
     public DistrictType getDistrictType() {
         return this.districtType;
     }
+
+//    public static SingleTile getElement(String strRepresentation) {
+//        for
+//    }
+
 }

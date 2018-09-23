@@ -1,5 +1,6 @@
 package TestPackages.logic.playerState;
 
+import logic.token.SingleTile.*;
 import logic.playerState.Board;
 import logic.token.Domino;
 import logic.token.Pos;
@@ -8,6 +9,7 @@ import logic.token.Tiles;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static logic.token.SingleTile.*;
 import static org.junit.Assert.*;
 
 public class BoardTest {
@@ -20,8 +22,8 @@ public class BoardTest {
      *
      * @param fstOrd ordinal value of the first tile
      * @param sndOrd ordinal value of the second tile
-     * @param pos position of the first tile
-     * @param rot rotation of the domino
+     * @param pos    position of the first tile
+     * @param rot    rotation of the domino
      * @return a domino from the given occupancy
      */
     private Domino genDominoFromTileOrd(int fstOrd, int sndOrd, Pos pos, int rot) {
@@ -35,7 +37,7 @@ public class BoardTest {
      *
      * @param fstOrd ordinal value of the first tile
      * @param sndOrd ordinal value of the second tile
-     * @param pos position of the first tile
+     * @param pos    position of the first tile
      * @return a domino from the given occupancy
      */
     private Domino genDominoFromTileOrd(int fstOrd, int sndOrd, Pos pos) {
@@ -52,7 +54,7 @@ public class BoardTest {
      * @return a domino from the given occupancy
      */
     private Domino genDominoFromTileOrd(int fstOrd, int sndOrd) {
-        return genDominoFromTileOrd(fstOrd, sndOrd, new Pos(0,0), 0);
+        return genDominoFromTileOrd(fstOrd, sndOrd, new Pos(0, 0), 0);
     }
 
     /**
@@ -60,11 +62,11 @@ public class BoardTest {
      *
      * @param fstOrd ordinal value of the first tile
      * @param sndOrd ordinal value of the second tile
-     * @param rot rotation of the domino
+     * @param rot    rotation of the domino
      * @return a domino from the given occupancy
      */
     private Domino genDominoFromTileOrd(int fstOrd, int sndOrd, int rot) {
-        return genDominoFromTileOrd(fstOrd, sndOrd, new Pos(0,0), rot);
+        return genDominoFromTileOrd(fstOrd, sndOrd, new Pos(0, 0), rot);
     }
 
     /**
@@ -139,59 +141,62 @@ public class BoardTest {
     }
 
 
-    // --- Constructor - only used for testing ---
-    @Test(expected = AssertionError.class)
-    public void testConstructor_NullParam() {
-        Board board = new Board(null);
-    }
-
-    @Test(expected = AssertionError.class)
-    public void testConstructor_EmptyString() {
-        Board board = new Board("");
-    }
-
-    @Test
-    public void testConstructor_OneCharStringEmpty() {
-        Board board = new Board("e");
-        assertEquals(1, board.getSizeX());
-        assertEquals(1, board.getSizeY());
-        SingleTile[][] expectedCells = new SingleTile[][]{{null}};
-        assertArrayEquals(expectedCells, board.getCells());
-    }
-
-    @Test
-    public void testConstructor_OneCharStringFilled() {
-        Board board = new Board("0");
-        assertEquals(1, board.getSizeX());
-        assertEquals(1, board.getSizeY());
-        SingleTile[][] expectedCells = new SingleTile[][]{{SingleTile.CITY_HALL}};
-        assertArrayEquals(expectedCells, board.getCells());
-    }
-
-    @Test
-    public void testConstructor_FilledString() {
-        Board board = new Board("e e \n e 0");
-        assertEquals(2, board.getSizeX());
-        assertEquals(2, board.getSizeY());
-        SingleTile[][] expectedCells = new SingleTile[][]{{null, null}, {null, SingleTile.CITY_HALL}};
-        assertArrayEquals(expectedCells, board.getCells());
-    }
-
-
+    //    // --- Constructor - only used for testing ---
+//    @Test(expected = AssertionError.class)
+//    public void testConstructor_NullParam() {
+//        Board board = new Board(null);
+//    }
+//
+//    @Test(expected = AssertionError.class)
+//    public void testConstructor_EmptyString() {
+//        Board board = new Board("");
+//    }
+//
+//    @Test
+//    public void testConstructor_OneCharStringEmpty() {
+//        Board board = new Board("e");
+//        assertEquals(1, board.getSizeX());
+//        assertEquals(1, board.getSizeY());
+//        SingleTile[][] expectedCells = new SingleTile[][]{{null}};
+//        assertArrayEquals(expectedCells, board.getCells());
+//    }
+//
+//    @Test
+//    public void testConstructor_OneCharStringFilled() {
+//        Board board = new Board("0");
+//        assertEquals(1, board.getSizeX());
+//        assertEquals(1, board.getSizeY());
+//        SingleTile[][] expectedCells = new SingleTile[][]{{SingleTile.CITY_HALL}};
+//        assertArrayEquals(expectedCells, board.getCells());
+//    }
+//
+//    @Test
+//    public void testConstructor_FilledString() {
+//        Board board = new Board("e e \n e 0");
+//        assertEquals(2, board.getSizeX());
+//        assertEquals(2, board.getSizeY());
+//        SingleTile[][] expectedCells = new SingleTile[][]{{null, null}, {null, SingleTile.CITY_HALL}};
+//        assertArrayEquals(expectedCells, board.getCells());
+//    }
+//
+//
     //<editor-fold defaultstate="collapsed" desc="Modified tests from ueb09">
     // --- fits ---
     @Test
     public void testFits_Touches3Sides() {
         Board board = new Board(
-                "e e e e e e e\n" +
-                        "e e e e e e e\n" +
-                        "e e 13 e e 4 e\n" +
-                        "e e 4 e e 3 e\n" +
-                        "e e 4 3 3 3 e\n" +
-                        "e e e e e e e\n");
-        Domino dom = genDominoFromTileOrd(13, 1);  // horiz 13 01 -> P0_A0_Val14
-        assertTrue(board.fits(dom.setPos(new Pos(2, 1))));  // above end (13 / P0)
-        assertFalse(board.fits(dom.setPos(new Pos(3, 2)))); // between 13 - 04
+                "-- -- -- -- -- -- --\n" +
+                        "-- -- -- -- -- -- --\n" +
+                        "-- -- P0 -- -- S0 --\n" +
+                        "-- -- P0 -- -- A1 --\n" +
+                        "-- -- P0 -- -- A1 --\n" +
+                        "-- -- A1 A1 A1 A1 --\n" +
+                        "-- -- -- -- -- -- --\n");
+        Domino dom = new Domino(Tiles.genTile(P0, A0));
+        // expected horiz P0_A0_Val14
+        assertEquals(14, dom.getTile().getValue());
+        assertTrue(board.fits(dom.setPos(new Pos(2, 1))));  // above end (P0)
+        assertFalse(board.fits(dom.setPos(new Pos(3, 2)))); // between P0 - S0
 
         dom.incRot();                                             // vert 13 over 1
         assertFalse(board.fits(dom.setPos(new Pos(3, 2)))); // right of 13 - 4, 3 sides touch
@@ -317,12 +322,14 @@ public class BoardTest {
     @Test
     public void testFits_rotated2() {
         Board board = new Board(
-                "e e e e e e\n" +
-                        "e e 13 21 e e\n" +
-                        "e e e e e e\n");
-        Domino dom = genDominoFromTileOrd(13, 1, new Pos(1, 0)); // 13 - 1 -> P0_A0_Val14
-        assertEquals(1, dom.getFstVal());
-        assertEquals(12, dom.getSndVal());
+                "-- -- -- -- -- --\n" +
+                        "-- -- P0 A0 -- --\n" +
+                        "-- -- -- -- -- --\n");
+        Domino dom = new Domino(Tiles.genTile(P0, A0), new Pos(1, 0));
+        // expected P0_A0_Val14
+        assertEquals(14, dom.getTile().getValue());
+        assertEquals(P0, dom.getFstVal());
+        assertEquals(A0, dom.getSndVal());
         assertEquals(new Pos(1, 0), dom.getFstPos());
         assertEquals(new Pos(2, 0), dom.getSndPos());
         assertTrue(board.fits(dom));
@@ -334,42 +341,42 @@ public class BoardTest {
         assertTrue(board.fits(dom.setPos(new Pos(4, 1))));
         assertTrue(board.fits(dom.setPos(new Pos(3, 2))));
     }
-
-    @Test
-    public void testFits_rotated2_notOnBoard() {
-        Board board = new Board(
-                "e e e e\n" +
-                        "e 13 1 e\n" +
-                        "e e e e\n");
-        Domino dom = genDominoFromTileOrd(13, 1, 2); // 13 - 1 -> P0_A0_Val14
-        assertFalse(board.fits(dom.setPos(new Pos(3, 1))));
-    }
-
-    @Test
-    public void testFits_rotated2_notTouching() {
-        Board board = new Board(
-                "e e e e e e\n" +
-                        "e e 4 13 e e\n" +
-                        "e e e e e e\n");
-        Domino dom = genDominoFromTileOrd(13, 1, 2); // 13 - 1 -> P0_A0_Val14
-        assertFalse(board.fits(dom.setPos(new Pos(0, 0))));
-        assertFalse(board.fits(dom.setPos(new Pos(0, 2))));
-        assertFalse(board.fits(dom.setPos(new Pos(4, 0))));
-        assertFalse(board.fits(dom.setPos(new Pos(4, 2))));
-    }
-
-    @Test
-    public void testFits_rotated2_ValuesDontFit() {
-        Board board = new Board(
-                "e e e e e e\n" +
-                        "e e 1 3 e e\n" +
-                        "e e e e e e\n");
-        Domino dom = genDominoFromTileOrd(13, 1, 2); // 13 - 1 -> P0_A0_Val14
-        assertFalse(board.fits(dom.setPos(new Pos(2, 0))));
-        assertFalse(board.fits(dom.setPos(new Pos(4, 0))));
-        assertFalse(board.fits(dom.setPos(new Pos(1, 0))));
-        assertFalse(board.fits(dom.setPos(new Pos(1, 2))));
-    }
+//
+//    @Test
+//    public void testFits_rotated2_notOnBoard() {
+//        Board board = new Board(
+//                "e e e e\n" +
+//                        "e 13 1 e\n" +
+//                        "e e e e\n");
+//        Domino dom = genDominoFromTileOrd(13, 1, 2); // 13 - 1 -> P0_A0_Val14
+//        assertFalse(board.fits(dom.setPos(new Pos(3, 1))));
+//    }
+//
+//    @Test
+//    public void testFits_rotated2_notTouching() {
+//        Board board = new Board(
+//                "e e e e e e\n" +
+//                        "e e 4 13 e e\n" +
+//                        "e e e e e e\n");
+//        Domino dom = genDominoFromTileOrd(13, 1, 2); // 13 - 1 -> P0_A0_Val14
+//        assertFalse(board.fits(dom.setPos(new Pos(0, 0))));
+//        assertFalse(board.fits(dom.setPos(new Pos(0, 2))));
+//        assertFalse(board.fits(dom.setPos(new Pos(4, 0))));
+//        assertFalse(board.fits(dom.setPos(new Pos(4, 2))));
+//    }
+//
+//    @Test
+//    public void testFits_rotated2_ValuesDontFit() {
+//        Board board = new Board(
+//                "e e e e e e\n" +
+//                        "e e 1 3 e e\n" +
+//                        "e e e e e e\n");
+//        Domino dom = genDominoFromTileOrd(13, 1, 2); // 13 - 1 -> P0_A0_Val14
+//        assertFalse(board.fits(dom.setPos(new Pos(2, 0))));
+//        assertFalse(board.fits(dom.setPos(new Pos(4, 0))));
+//        assertFalse(board.fits(dom.setPos(new Pos(1, 0))));
+//        assertFalse(board.fits(dom.setPos(new Pos(1, 2))));
+//    }
 
 
     /*------- findPosfor() ---------------------------------------------------*/
