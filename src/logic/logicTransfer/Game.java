@@ -3,6 +3,8 @@ package logic.logicTransfer;
 import logic.bankSelection.Bank;
 import logic.dataPreservation.Logger;
 import logic.playerState.*;
+import logic.playerTypes.DefaultAIPlayer;
+import logic.playerTypes.HumanPlayer;
 import logic.token.Pos;
 import logic.token.Domino;
 

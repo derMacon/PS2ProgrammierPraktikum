@@ -3,7 +3,7 @@ package TestPackages.logic.bankSelection;
 import TestPackages.other.FakeGUI;
 import logic.bankSelection.Bank;
 import logic.bankSelection.Entry;
-import logic.playerState.DefaultAIPlayer;
+import logic.playerTypes.DefaultAIPlayer;
 import logic.playerState.Player;
 import logic.token.Domino;
 

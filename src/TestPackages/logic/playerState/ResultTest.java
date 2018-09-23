@@ -1,7 +1,7 @@
 package TestPackages.logic.playerState;
 
 import TestPackages.other.FakeGUI;
-import logic.playerState.DefaultAIPlayer;
+import logic.playerTypes.DefaultAIPlayer;
 import logic.playerState.Player;
 import logic.playerState.Result;
 import org.junit.Test;

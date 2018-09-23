@@ -1,7 +1,9 @@
-package logic.playerState;
+package logic.playerTypes;
 
 import logic.bankSelection.Bank;
 import logic.logicTransfer.GUIConnector;
+import logic.playerState.Board;
+import logic.playerState.Player;
 import logic.token.Domino;
 import logic.token.Pos;
 

@@ -5,8 +5,6 @@
  */
 package logic.dataPreservation;
 
-import logic.playerState.DefaultAIPlayer;
-import logic.playerState.Player;
 import logic.token.Domino;
 
 import java.io.File;
