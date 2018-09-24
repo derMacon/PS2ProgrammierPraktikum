@@ -23,22 +23,22 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Spieler 1:   " GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <Label text="Spieler 1:        " GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <font>
                   <Font name="Papyrus" size="17.0" />
                </font>
             </Label>
-            <Label text="Spieler 2:   " GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <Label text="Spieler 2:        " GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <font>
                   <Font name="Papyrus" size="17.0" />
                </font>
             </Label>
-            <Label text="Spieler 3:   " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label text="Spieler 3:        " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font name="Papyrus" size="17.0" />
                </font>
             </Label>
-            <Label text="Spieler 4:   " GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label text="Spieler 4:        " GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font name="Papyrus" size="17.0" />
                </font>

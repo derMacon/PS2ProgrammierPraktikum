@@ -113,7 +113,7 @@ public class FXMLIntroController implements Initializable {
 
             Parent root = loader.getRoot();
             Stage primaryStage = new Stage();
-//            primaryStage.setTitle("PS2 Programmierpraktikum: City-Domino");
+            primaryStage.setTitle("PS2 Programmierpraktikum: City-Domino");
             primaryStage.setScene(new Scene(root, 1100, 900));
             primaryStage.show();
         } catch (IOException e) {
