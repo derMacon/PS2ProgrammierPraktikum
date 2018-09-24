@@ -6,6 +6,7 @@
 package logic.logicTransfer;
 
 import logic.playerState.Board;
+import logic.playerTypes.PlayerType;
 import logic.token.Domino;
 import logic.token.Pos;
 
@@ -15,6 +16,13 @@ import logic.token.Pos;
  * @author klk
  */
 public interface GUI2Game {
+
+    /**
+     * Setter for the player types, can't be setted in constructor beacause the init method of the docController is called
+     * before the introController has the chance to set the chosen values
+     * @param playerTypes types of the participating players
+     */
+    void setPlayerTypes(PlayerType[] types);
 
     /**
      * the current Domino (that is shown in choose-box) is rotated

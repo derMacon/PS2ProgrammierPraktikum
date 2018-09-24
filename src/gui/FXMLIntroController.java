@@ -1,6 +1,5 @@
 package gui;
 
-import gui.FXMLDocumentController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -110,7 +109,7 @@ public class FXMLIntroController implements Initializable {
 
             // Setting the choosen PlayerTypes
             FXMLDocumentController gameController = loader.getController();
-            gameController.setChoosenPlayerTypes(choosenTypes);
+            gameController.setChosenPlayerTypes(choosenTypes);
 
             Parent root = loader.getRoot();
             Stage primaryStage = new Stage();

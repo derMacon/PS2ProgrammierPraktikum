@@ -232,7 +232,7 @@ public class FXMLDocumentController implements Initializable {
      */
     private JavaFXGUI gui;
 
-    private PlayerType[] choosenPlayerTypes;
+    private PlayerType[] chosenPlayerTypes;
 
 
     @Override
@@ -247,7 +247,6 @@ public class FXMLDocumentController implements Initializable {
 
         this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnFutureselectiveGroup));
         this.game = new Game(gui, Game.DEFAULT_PLAYER_CNT, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
-
         this.game.startGame();
     }
 
@@ -274,15 +273,16 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Setter for the PlayerTypes to pass choosen PlayerTypes from other controller
+     * Setter for the PlayerTypes to pass chosen PlayerTypes from other controller
      */
-    public void setChoosenPlayerTypes(PlayerType[] choosenPlayerTypes) {
-        this.choosenPlayerTypes = choosenPlayerTypes;
+    public void setChosenPlayerTypes(PlayerType[] chosenPlayerTypes) {
+        this.chosenPlayerTypes = chosenPlayerTypes;
+        this.game.setPlayerTypes(chosenPlayerTypes);
     }
 
     @FXML
     private void testPrintPlayerTypes(ActionEvent event) {
-        for(PlayerType type : this.choosenPlayerTypes) {
+        for (PlayerType type : this.chosenPlayerTypes) {
             System.out.println(type.getStringRepresentation());
         }
     }

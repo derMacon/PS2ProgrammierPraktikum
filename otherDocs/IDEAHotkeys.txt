@@ -11,6 +11,7 @@ IDEA shortcuts:
 - Strg + Shift + a: split eingeben um Bildschirm zu teilen
 - Strg + p: see valid parameters
 - Shift + Esc: Hide console
+- Alt arrow up / down: switch between methods
 - Strg + f12: quickly navigate through edited file
 - Strg + i: implement interface
 - Start typing in the project window and quickly find class

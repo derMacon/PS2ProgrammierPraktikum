@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="241.0" prefWidth="341.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLIntroController">
+<AnchorPane prefHeight="252.0" prefWidth="298.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLIntroController">
    <children>
       <GridPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
@@ -23,32 +23,32 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Spieler 1:" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label text="Spieler 1:   " GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
                <font>
                   <Font name="Papyrus" size="17.0" />
                </font>
             </Label>
-            <Label text="Spieler 2:" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label text="Spieler 2:   " GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <font>
                   <Font name="Papyrus" size="17.0" />
                </font>
             </Label>
-            <Label text="Spieler 3:" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Label text="Spieler 3:   " GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <font>
                   <Font name="Papyrus" size="17.0" />
                </font>
             </Label>
-            <Label text="Spieler 4:" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+            <Label text="Spieler 4:   " GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <font>
                   <Font name="Papyrus" size="17.0" />
                </font>
             </Label>
-            <Label text="Menschlich" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+            <Label text="Menschlich" GridPane.columnIndex="1" GridPane.halignment="LEFT">
                <font>
                   <Font name="Papyrus" size="17.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#startGame" prefHeight="34.0" prefWidth="102.0" text="Starte Spiel" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
+            <Button mnemonicParsing="false" onAction="#startGame" prefHeight="26.0" prefWidth="91.0" text="Starte Spiel" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets left="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
@@ -58,16 +58,16 @@
             </Button>
             <ChoiceBox fx:id="chcBxPlayer4" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" right="10.0" top="10.0" />
                </GridPane.margin></ChoiceBox>
             <ChoiceBox fx:id="chcBxPlayer3" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </ChoiceBox>
             <ChoiceBox fx:id="chcBxPlayer2" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                  <Insets bottom="10.0" right="10.0" top="10.0" />
                </GridPane.margin>
             </ChoiceBox>
          </children>
