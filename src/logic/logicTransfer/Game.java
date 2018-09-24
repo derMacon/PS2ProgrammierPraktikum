@@ -105,6 +105,7 @@ public class Game implements GUI2Game {
      */
     public Game(GUIConnector gui, int playerCnt, int sizeX, int sizeY) {
         this.gui = gui;
+        this.playerTypes = DEFAULT_PLAYER_TYPES;
         this.players = new Player[playerCnt];
         this.standardBoardSizeX = sizeX;
         this.standardBoardSizeY = sizeY;
