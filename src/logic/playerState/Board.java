@@ -123,7 +123,7 @@ public class Board {
      */
     private List<String> initListWithStrForSingleTiles() {
         List<String> output = new LinkedList<>();
-        for(SingleTile currTile : SingleTile.values()) {
+        for (SingleTile currTile : SingleTile.values()) {
             output.add(currTile.name());
         }
         return output;
@@ -174,4 +174,32 @@ public class Board {
             this.cells[posSndTile.x()][posSndTile.y()] = domino.getSndVal();
         }
     }
+
+    // --- loading / saving ---
+
+    /**
+     * Generates a string for this object
+     * @return string representation for this object
+     */
+    @Override
+    public String toString() {
+        StringBuilder output = new StringBuilder();
+        for (int y = 0; y < this.sizeY; y++) {
+            for (int x = 0; x < this.sizeX; x++) {
+                output.append(this.cells[x][y]);
+                if(x == this.sizeX - 1) {
+                    output.append(" ");
+                }
+            }
+            output.append("\n");
+        }
+        return output.toString();
+    }
+
+    public Board fromString(String input) {
+        // TODO insert code
+        return null;
+    }
+
+
 }

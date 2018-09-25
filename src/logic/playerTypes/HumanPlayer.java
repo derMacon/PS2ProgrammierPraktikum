@@ -20,8 +20,8 @@ public class HumanPlayer extends Player {
      * @param boardSizeX width of the board
      * @param boardSizeY height of the board
      */
-    public HumanPlayer(GUIConnector gui, int boardSizeX, int boardSizeY) {
-        super(gui, boardSizeX, boardSizeY);
+    public HumanPlayer(GUIConnector gui, int idx, int boardSizeX, int boardSizeY) {
+        super(gui, idx, boardSizeX, boardSizeY);
     }
 
     /**
@@ -29,8 +29,8 @@ public class HumanPlayer extends Player {
      * @param gui reference to the GUIConnector
      * @param board board to play on
      */
-    public HumanPlayer(GUIConnector gui, Board board) {
-        super(gui, board);
+    public HumanPlayer(GUIConnector gui, int idx, Board board) {
+        super(gui, idx, board);
     }
 
     /**
@@ -38,8 +38,8 @@ public class HumanPlayer extends Player {
      * @param gui reference to the GUIConnector
      * @param strBoard String representation of the board
      */
-    public HumanPlayer(GUIConnector gui, String strBoard) {
-        super(gui, strBoard);
+    public HumanPlayer(GUIConnector gui, int idx, String strBoard) {
+        super(gui, idx, strBoard);
     }
 
 }

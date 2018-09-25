@@ -2,16 +2,17 @@ package logic.logicTransfer;
 
 import com.sun.jndi.toolkit.url.Uri;
 import logic.bankSelection.Bank;
+import logic.bankSelection.Entry;
 import logic.dataPreservation.Logger;
 import logic.playerState.*;
-import logic.playerTypes.DefaultAIPlayer;
-import logic.playerTypes.HumanPlayer;
 import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 import logic.token.Domino;
+import logic.token.Tiles;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class Game implements GUI2Game {
 
@@ -34,8 +35,18 @@ public class Game implements GUI2Game {
      * Default player types of the participating players
      */
     public final static PlayerType[] DEFAULT_PLAYER_TYPES =
-            new PlayerType[] {PlayerType.HUMAN, PlayerType.DEFAULT, PlayerType.DEFAULT, PlayerType.DEFAULT};
+            new PlayerType[]{PlayerType.HUMAN, PlayerType.DEFAULT, PlayerType.DEFAULT, PlayerType.DEFAULT};
 
+    /**
+     * Constant for first look of bank selection -> will be deleted for final commit
+     * // TODO delete this constant before final commit
+     */
+    public final static Bank PSEUDO_CURRENT_ROUND_BANK = new Bank(new Entry[]{
+            new Entry(new Domino(Tiles.values()[0])),
+            new Entry(new Domino(Tiles.values()[1])),
+            new Entry(new Domino(Tiles.values()[2])),
+            new Entry(new Domino(Tiles.values()[3]))
+    }, new Random());
 
     /**
      * Current round, drawn dominos.
@@ -152,17 +163,19 @@ public class Game implements GUI2Game {
 
     /**
      * Constructor used to laod game out of a file with a given path
+     *
      * @param filePath path of the file from which the game will be loaded
      */
     public Game(Uri filePath) {
-        // TODO insert code
+        // TODO insert code - load String from text file and initialize new objects with their constructors with String
+        // parameters
         this.standardBoardSizeX = 5;
         this.standardBoardSizeY = 5;
     }
 
     @Override
     public void safeGame(Uri filePath) {
-        // TODO insert code
+        // TODO insert code - get String representation from necessary objects by calling toString()
     }
 
     @Override
@@ -265,7 +278,6 @@ public class Game implements GUI2Game {
     }
 
 
-
     private void drawNewDominosForNextRound() {
         this.nextRoundBank.drawFromStack(this.stack);
     }
@@ -282,29 +294,31 @@ public class Game implements GUI2Game {
      * default player on the remaining array slots.
      */
     private Player[] createNewPlayers() {
-        Player[] output = new Player[DEFAULT_PLAYER_CNT];
-        output[0] = new HumanPlayer(gui, this.standardBoardSizeX, this.standardBoardSizeY);
-        for (int i = 1; i < this.players.length; i++) {
-            output[i] = new DefaultAIPlayer(gui, this.standardBoardSizeX, this.standardBoardSizeY);
+        Player[] output = new Player[this.playerTypes.length];
+        for (int i = 0; i < this.playerTypes.length; i++) {
+            output[i] = PlayerType.getPlayerInstanceWithGivenType(this.playerTypes[i], i, this.gui,
+                    this.standardBoardSizeX, this.standardBoardSizeY);
         }
         return output;
     }
 
     @Override
     public void startGame() {
-        // renew players (containing boards)
+        // instanciate players with given playertypes
         this.players = createNewPlayers();
-        this.gui.updateAllPlayers(this.players);
 
-        // fill stack
-        this.stack = Domino.fill(this.stack);
+//        // fill stack
+//        this.stack = Domino.fill(this.stack);
+//
+//        /*
+//        use of methods that will be used later on in the game. No need to implement a extra function just to initialize
+//        the first draw to the current bank.
+//         */
+//        drawNewDominosForNextRound();
+//        copyAndRemoveNextRoundBankToCurrentBank();
 
-        /*
-        use of methods that will be used later on in the game. No need to implement a extra function just to initialize
-        the first draw to the current bank.
-         */
-        drawNewDominosForNextRound();
-        copyAndRemoveNextRoundBankToCurrentBank();
+        // for first look -> Constant for bank
+        this.currentRoundBank = PSEUDO_CURRENT_ROUND_BANK;
 
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
 
@@ -356,7 +370,7 @@ public class Game implements GUI2Game {
 //        if (currDomino != null && board.fits(currDomino, posFst)) {
         currDomino.setPos(new Pos(pos.x(), pos.y()));
         this.players[this.currPlayerIdx].showOnBoard(currDomino);
-        this.gui.showOnGrid(this.currPlayerIdx, this.currDomino);
+//        this.gui.showOnGrid(this.currPlayerIdx, this.currDomino);
 //            setToChooseBox(null);
 //            nextPlayer();
 //        }

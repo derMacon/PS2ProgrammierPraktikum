@@ -250,7 +250,7 @@ public class Domino {
 
     @Override
     public String toString() {
-        return tiles.toString() + rotation;
+        return tiles.toString();
     }
 
     private boolean isValidRot(int rot) {

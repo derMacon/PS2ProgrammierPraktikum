@@ -25,19 +25,25 @@ public abstract class Player {
     protected GUIConnector gui;
 
     /**
+     * Index of player in player array of the game
+     */
+    protected final int idxInPlayerArray;
+
+    /**
      * Constructor setting up the gui
      * @param gui reference to update gui
      */
-    public Player(GUIConnector gui, int boardSizeX, int boardSizeY) {
-        this(gui, new Board(boardSizeX, boardSizeY));
+    public Player(GUIConnector gui, int idxInPlayerArray, int boardSizeX, int boardSizeY) {
+        this(gui, idxInPlayerArray, new Board(boardSizeX, boardSizeY));
     }
     
     /**
      * Constructor to set up the gui reference / board, only used for teeting
      * @param gui reference used for updating the gui
-     * @param board to set dominos / SingleTiles to 
+     * @param board to set dominos / SingleTiles to
      */
-    public Player(GUIConnector gui, Board board) {
+    public Player(GUIConnector gui, int idxInPlayerArray, Board board) {
+        this.idxInPlayerArray = idxInPlayerArray;
         this.districts = new LinkedList<>();
         this.gui = gui; 
         this.board = board;
@@ -48,8 +54,8 @@ public abstract class Player {
      * @param gui Reference to the gui
      * @param strBoard String representation of the board
      */
-    public Player(GUIConnector gui, String strBoard) {
-        this(gui, new Board(strBoard));
+    public Player(GUIConnector gui, int idxInPlayerArray, String strBoard) {
+        this(gui, idxInPlayerArray, new Board(strBoard));
         this.districts = genGamestatsFromBoard(this.board);
     }
 
@@ -64,6 +70,14 @@ public abstract class Player {
      */
     public Board getBoard() {
         return this.board;
+    }
+
+    /**
+     * Getter for the player index
+     * @return
+     */
+    public int getIdxInPlayerArray() {
+        return this.idxInPlayerArray;
     }
 
     /**
@@ -93,6 +107,14 @@ public abstract class Player {
     public void showOnBoard(Domino playerSelectedDomino) {
         assert null != playerSelectedDomino; 
         this.board.lay(playerSelectedDomino);
+        this.gui.showOnGrid(this.idxInPlayerArray, playerSelectedDomino);
     }
+
+    @Override
+    public String toString() {
+        return this.board.toString();
+    }
+
+
 
 }

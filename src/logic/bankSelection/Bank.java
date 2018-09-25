@@ -231,6 +231,10 @@ public class Bank {
         return 0 <= idx && this.entries.length > idx;
     }
 
+    /**
+     * Generates a String that can be saved in a .txt document
+     * @return String representation of this object
+     */
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
@@ -240,7 +244,12 @@ public class Bank {
         return output.toString();
     }
 
-    public static Bank convertStringToBank(String input) {
+    /**
+     * Generates a Bank from a given String
+     * @param input input String from which a new Bank will be generated
+     * @return Bank object
+     */
+    public static Bank fromString(String input) {
         // TODO insert code
         return null;
     }

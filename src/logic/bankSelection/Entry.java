@@ -61,12 +61,21 @@ public class Entry {
         this.selectedPlayer = player;
     }
 
+    /**
+     * Generates a String that can be saved in a .txt document
+     * @return String representation of this object
+     */
     @Override
     public String toString() {
-        return null;
+        return this.selectedPlayer.getIdxInPlayerArray() + " " + this.domino.toString();
     }
 
-    public static Bank convertStringToEntry(String input) {
+    /**
+     * Generates a Entry from a given String
+     * @param input input String from which a new Entry will be generated
+     * @return Entry object
+     */
+    public static Entry fromString(String input) {
         // TODO insert code
         return null;
     }

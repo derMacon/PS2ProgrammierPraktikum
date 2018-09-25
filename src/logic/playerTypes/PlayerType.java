@@ -32,17 +32,17 @@ public enum PlayerType {
      * @param boardSizeY Y - dimension of the board
      * @return a player of the given type
      */
-    public static Player getPlayerInstanceWithGivenType(PlayerType type, GUIConnector gui, int boardSizeX, int boardSizeY) {
+    public static Player getPlayerInstanceWithGivenType(PlayerType type, int idx, GUIConnector gui, int boardSizeX, int boardSizeY) {
         Player output = null;
         switch (type) {
             case HUMAN:
-                output = new HumanPlayer(gui, boardSizeX, boardSizeY);
+                output = new HumanPlayer(gui, idx, boardSizeX, boardSizeY);
                 break;
             case DEFAULT:
-                new DefaultAIPlayer(gui, boardSizeX, boardSizeY);
+               output = new DefaultAIPlayer(gui, idx, boardSizeX, boardSizeY);
                 break;
             default:
-                System.out.println("Not supported yet");
+                System.out.println("Not supported yet -> cannot instanciate desired playertype");
         }
         return output;
     }
