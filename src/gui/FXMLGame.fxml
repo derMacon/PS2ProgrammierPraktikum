@@ -239,7 +239,7 @@
                                           </GridPane>
                                        </center>
                                     </BorderPane>
-                                    <GridPane fx:id="grdPnSeperator3Texture" prefHeight="59.0" prefWidth="441.0">
+                                    <GridPane fx:id="grdPnSeperator3Texture" prefHeight="122.0" prefWidth="421.0">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                       </columnConstraints>
@@ -247,7 +247,7 @@
                                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                       </rowConstraints>
                                     </GridPane>
-                                    <GridPane prefHeight="225.0" prefWidth="451.0">
+                                    <GridPane prefHeight="211.0" prefWidth="421.0">
                                       <columnConstraints>
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -264,25 +264,16 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <BorderPane prefHeight="200.0" prefWidth="200.0">
-                                                   <center>
-                                                      <AnchorPane prefHeight="172.0" prefWidth="226.0">
-                                                         <children>
-                                                                        <Pane fx:id="pnSelected" layoutX="26.0" layoutY="14.0" onDragDetected="#onDragDetectedPnSelected" onMouseClicked="#onClickPnSelected" prefHeight="60.0" prefWidth="135.0" BorderPane.alignment="CENTER" />
-                                                         </children>
-                                                      </AnchorPane>
-                                                   </center>
-                                                   <GridPane.margin>
-                                                      <Insets />
-                                                   </GridPane.margin>
-                                                   <top>
-                                                      <Label prefHeight="26.0" prefWidth="128.0" text="Nächste Runde:" BorderPane.alignment="CENTER">
+                                                <AnchorPane prefHeight="200.0" prefWidth="177.0">
+                                                   <children>
+                                                      <Label layoutX="23.0" layoutY="7.0" prefHeight="26.0" prefWidth="128.0" text="Nächste Runde:">
                                                          <font>
                                                             <Font name="Papyrus" size="17.0" />
                                                          </font>
                                                       </Label>
-                                                   </top>
-                                                </BorderPane>
+                                                                  <Pane fx:id="pnSelected" layoutX="31.0" layoutY="71.0" onDragDetected="#onDragDetectedPnSelected" onMouseClicked="#onClickPnSelected" prefHeight="56.0" prefWidth="109.0" BorderPane.alignment="CENTER" />
+                                                   </children>
+                                                </AnchorPane>
                                              </children>
                                              <GridPane.margin>
                                                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

@@ -79,11 +79,6 @@ public class Game implements GUI2Game {
     private int currPlayerIdx;
 
     /**
-     * number of rounds already played
-     */
-    private int roundCount;
-
-    /**
      * the current domino of the human player (displayed in the rotation box)
      */
     private Domino currDomino;
@@ -126,7 +121,6 @@ public class Game implements GUI2Game {
         this.stack = new LinkedList<>();
         this.currPlayerIdx = 0;
         this.currDomino = null;
-        this.roundCount = 0;
         this.logger = new Logger(playerCnt);
     }
 
@@ -154,7 +148,6 @@ public class Game implements GUI2Game {
         this.currentRoundBank = currentRoundBank;
         this.nextRoundBank = nextRoundBank;
         this.stack = stack;
-        this.roundCount = roundCount;
         this.currDomino = currDomino;
         this.currPlayerIdx = currPlayerIdx;
         this.standardBoardSizeX = null == players[currPlayerIdx] ? 0 : players[currPlayerIdx].getBoard().getSizeX();
@@ -307,6 +300,11 @@ public class Game implements GUI2Game {
         // instanciate players with given playertypes
         this.players = createNewPlayers();
 
+        // for first look -> Constant for bank
+        this.currentRoundBank = PSEUDO_CURRENT_ROUND_BANK;
+        this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
+
+        //<editor-fold defaultstate="collapsed" desc="Init banks - actual code">
 //        // fill stack
 //        this.stack = Domino.fill(this.stack);
 //
@@ -316,68 +314,47 @@ public class Game implements GUI2Game {
 //         */
 //        drawNewDominosForNextRound();
 //        copyAndRemoveNextRoundBankToCurrentBank();
-
-        // for first look -> Constant for bank
-        this.currentRoundBank = PSEUDO_CURRENT_ROUND_BANK;
-
-        this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
+        //</editor-fold>
 
         this.currPlayerIdx = 0;
-        this.roundCount = 0;
     }
 
     /**
-     * Human selects a domino on the gui. 2 possible situations
-     * <p>
-     * 1.: It's the beginning of the game
+     * Human selects a domino on the gui: It's the beginning of the game
      * - Human Player selects a domino from the current round bank (given idx)
      * - Players after Human in the array also select a domino, the label to show who's turn is always updated
      * - Players who selected lower value cards each select a domino on the next round bank and display it on the gui
      * <p>
-     * 2.: Game has already started
-     * - Human Player selects a domino from the next round bank (given idx)
-     * - Human Player get's his selected domino from the current round bank and puts it as the current domino
-     * - Gui displays current domino
+     * 2.:
      *
      * @param idx Index of the domino selected by the Human-Player
      */
     @Override
     public void selectDomOnCurrBank(int idx) {
-        System.out.println(idx);
-        if (0 == this.roundCount) { // initial selection on first bank
-            // update human player selection
-            this.currentRoundBank.selectEntry(this.players[currPlayerIdx], idx);
-            this.currDomino = this.currentRoundBank.getDomino(idx);
+        // update human player selection
+        this.currentRoundBank.selectEntry(this.players[currPlayerIdx], idx);
+        this.currDomino = this.currentRoundBank.getDomino(idx);
 
-            // update rest of the players
-            for (int i = 1; i < this.players.length; i++) {
-                // rest of the players HAVE to be bots
-                ((BotBehavior) this.players[i]).selectFromBank(this.currentRoundBank);
-            }
-
-            //TODO insert code to update selection on gui
-
-            // players which selected lower dominos can select earlier
-            int counter = 0;
-            Player temp = this.currentRoundBank.getSelectedPlayer(counter);
-
-            // will only work when selectFromBank is implemented (all players have to selecto something.
-//            while (!(temp instanceof HumanPlayer)) {
-//                temp.selectFromBank(this.nextRoundBank);
-//                counter = (counter + 1) % this.players.length;
-//                temp = this.currentRoundBank.getSelectedPlayer(counter);
-//            }
-
-        } else {
-            /* selection after first round, always from second bank
-            TODO insert code
-                - player selects
-                - Ai players after player select
-                - Players before human do turn
-                - human calls setOnBoard / dispose
-            */
+        // update rest of the players -> Example how it could look (not final state)
+        for (int i = 1; i < this.players.length; i++) {
+            // rest of the players HAVE to be bots
+            ((BotBehavior) this.players[i]).selectFromBank(this.currentRoundBank);
         }
+
         this.gui.showInChooseBox(this.currDomino);
+    }
+
+    /**
+     * Human selects a domino on the gui: Game has already started
+     * - Human Player selects a domino from the next round bank (given idx)
+     * - Human Player get's his selected domino from the current round bank and puts it as the current domino
+     * - Gui displays current domino
+     *
+     * @param idx index of the domino the human player wants to select on the next round bank
+     */
+    @Override
+    public void selectDomOnNextBank(int idx) {
+
     }
 
     /**
@@ -393,13 +370,8 @@ public class Game implements GUI2Game {
      */
     @Override
     public void setOnBoard(Pos pos) {
-//        if (currDomino != null && board.fits(currDomino, posFst)) {
         currDomino.setPos(new Pos(pos.x(), pos.y()));
         this.players[this.currPlayerIdx].showOnBoard(currDomino);
-//        this.gui.showOnGrid(this.currPlayerIdx, this.currDomino);
-//            setToChooseBox(null);
-//            nextPlayer();
-//        }
         /*
         TODO insert code
             - other AI players do turn
@@ -413,21 +385,11 @@ public class Game implements GUI2Game {
      * - copy banks
      */
     private void nextRound() {
-       // TODO insert code
-    }
-
-    public boolean won(Player player) {
         // TODO insert code
-        return true;
-    }
-
-    @Override
-    public void selectDomOnNextBank(int idx) {
-
     }
 
     @Override
     public void moveBoard(int dir) {
-
+        // TODO insert code
     }
 }
