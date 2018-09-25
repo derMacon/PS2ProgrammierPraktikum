@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
 import logic.playerTypes.PlayerType;
@@ -41,6 +42,12 @@ public class FXMLIntroController implements Initializable {
      */
     @FXML
     private ChoiceBox chcBxPlayer4;
+
+    /**
+     * Button that will be clicked to start a new game with the selected player types
+     */
+    @FXML
+    private Button btnStartGame;
 
     /**
      * Initializes the list of choice box items and afterwards sets it to the actual choice boxes.
@@ -112,16 +119,16 @@ public class FXMLIntroController implements Initializable {
             gameController.setChosenPlayerTypes(choosenTypes);
 
             Parent root = loader.getRoot();
-            Stage primaryStage = new Stage();
-            primaryStage.setTitle("PS2 Programmierpraktikum: City-Domino");
-            primaryStage.setScene(new Scene(root, 1100, 900));
-            primaryStage.show();
+            Stage mainStage = new Stage();
+            mainStage.setTitle("PS2 Programmierpraktikum: City-Domino");
+            mainStage.setScene(new Scene(root, 1100, 900));
+            mainStage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
         // Casts to stage to be able to close the intro stage with code
         // https://stackoverflow.com/questions/13246211/javafx-how-to-get-stage-from-controller-during-initialization
-        ((Stage) this.chcBxPlayer2.getScene().getWindow()).close();
+        ((Stage) this.btnStartGame.getScene().getWindow()).close();
     }
 
     /**

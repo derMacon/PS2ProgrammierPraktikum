@@ -60,4 +60,15 @@ public class Entry {
     public void selectEntry(Player player) {
         this.selectedPlayer = player;
     }
+
+    @Override
+    public String toString() {
+        return null;
+    }
+
+    public static Bank convertStringToEntry(String input) {
+        // TODO insert code
+        return null;
+    }
+
 }

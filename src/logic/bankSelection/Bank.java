@@ -25,6 +25,7 @@ public class Bank {
 
     /**
      * Constructor setting the player count, used in the game.
+     *
      * @param playerCnt
      */
     public Bank(int playerCnt) {
@@ -46,6 +47,7 @@ public class Bank {
 
     /**
      * Getter for the bank size
+     *
      * @return bank size
      */
     public int getBankSize() {
@@ -101,12 +103,13 @@ public class Bank {
 
     /**
      * Determinies if the bank is empty or not
+     *
      * @return true when all entries are null pointers
      */
     public boolean isEmpty() {
         int counter = 0;
-        for(Entry currentEntry : this.entries) {
-            if(null != currentEntry){
+        for (Entry currentEntry : this.entries) {
+            if (null != currentEntry) {
                 counter++;
             }
         }
@@ -124,6 +127,7 @@ public class Bank {
 
     /**
      * Deletes a specific entry with a given index
+     *
      * @param entryIdx
      */
     public void deleteEntry(int entryIdx) {
@@ -186,7 +190,7 @@ public class Bank {
      */
     public void drawFromStack(List<Domino> stack) {
         assert null != stack;
-        if(0 < stack.size()) {
+        if (0 < stack.size()) {
             for (int i = 0; i < bankSize; i++) {
                 fill(stack.remove(rand.nextInt(stack.size())), i);
             }
@@ -206,6 +210,7 @@ public class Bank {
 
     /**
      * Copies the bank
+     *
      * @return new reference for the bank
      */
     public Bank copy() {
@@ -216,7 +221,6 @@ public class Bank {
         return output;
     }
 
-
     /**
      * Checks if a given index is a valid index on the bank
      *
@@ -226,4 +230,19 @@ public class Bank {
     private boolean isValidBankIdx(int idx) {
         return 0 <= idx && this.entries.length > idx;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder output = new StringBuilder();
+        for(Entry currEntry : this.entries) {
+            output.append(currEntry.toString());
+        }
+        return output.toString();
+    }
+
+    public static Bank convertStringToBank(String input) {
+        // TODO insert code
+        return null;
+    }
+
 }

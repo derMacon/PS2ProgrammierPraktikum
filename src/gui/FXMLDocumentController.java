@@ -1,23 +1,32 @@
 package gui;
 
+import com.sun.jndi.toolkit.url.Uri;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
+import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import logic.logicTransfer.GUI2Game;
 import logic.logicTransfer.Game;
 import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -142,6 +151,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button btnDown;
 
+    /**
+     * MenuBar containing the menuitem opening the controll panel to select the enemy player type. It is not possible
+     * to get the stage from an menuitem so the Menubar must be signed to detect the stage to make it possible to close it.
+     */
+    @FXML
+    private MenuBar mnBAnchorForStage;
+
 
     // --- Grid panes for setting up textures ---
     /**
@@ -232,8 +248,14 @@ public class FXMLDocumentController implements Initializable {
      */
     private JavaFXGUI gui;
 
+    /**
+     * Array serving as blueprint for the playertypes in the game
+     */
     private PlayerType[] chosenPlayerTypes;
 
+
+
+    // --- Setting up game ---
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -249,6 +271,18 @@ public class FXMLDocumentController implements Initializable {
         this.game = new Game(gui, Game.DEFAULT_PLAYER_CNT, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
         this.game.startGame();
     }
+
+    /**
+     * Setter for the PlayerTypes to pass chosen PlayerTypes from other controller
+     */
+    public void setChosenPlayerTypes(PlayerType[] chosenPlayerTypes) {
+        this.chosenPlayerTypes = chosenPlayerTypes;
+        this.game.setPlayerTypes(chosenPlayerTypes);
+    }
+
+
+
+    // --- Setting up gui look (textures) ---
 
     /**
      * Sets up the gui with all necessary textures
@@ -270,31 +304,6 @@ public class FXMLDocumentController implements Initializable {
         setPnWithImageAsBackground(this.grdPnSeperator3Texture, SEPERATOR_TEXTURE_HORIZONTAL);
 
         setPnWithImageAsBackground(grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
-    }
-
-    /**
-     * Setter for the PlayerTypes to pass chosen PlayerTypes from other controller
-     */
-    public void setChosenPlayerTypes(PlayerType[] chosenPlayerTypes) {
-        this.chosenPlayerTypes = chosenPlayerTypes;
-        this.game.setPlayerTypes(chosenPlayerTypes);
-    }
-
-    @FXML
-    private void testPrintPlayerTypes(ActionEvent event) {
-        for (PlayerType type : this.chosenPlayerTypes) {
-            System.out.println(type.getStringRepresentation());
-        }
-    }
-
-    /**
-     * Adds a given Image as Background to a given pane
-     *
-     * @param pane  pane to add the ImageView to
-     * @param image Image to add
-     */
-    private void setPnWithImageAsBackground(Pane pane, Image image) {
-        setPnWithImage(pane, image, false);
     }
 
     /**
@@ -327,36 +336,19 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    @FXML
-    private void onClickStartGame(ActionEvent event) {
-        this.game.startGame();
+    /**
+     * Adds a given Image as Background to a given pane
+     *
+     * @param pane  pane to add the ImageView to
+     * @param image Image to add
+     */
+    private void setPnWithImageAsBackground(Pane pane, Image image) {
+        setPnWithImage(pane, image, false);
     }
 
-    @FXML
-    private void onClickGrdPnBank(MouseEvent event) {
-        int x = -1;
-        int y = -1;
-        boolean leftClicked = event.getButton() == MouseButton.PRIMARY;
-        boolean rightClicked = event.getButton() == MouseButton.SECONDARY;
 
-        //determine the imageview of the grid that contains the coordinates of the mouseclick
-        //to determine the board-coordinates
-        for (Node node : grdPnCurrentSelectiveGroup.getChildren()) {
-            if (node instanceof ImageView) {
-                if (node.getBoundsInParent().contains(event.getX(), event.getY())) {
-                    //to use following methods the columnIndex and rowIndex
-                    //must have been set when adding the imageview to the grid
-                    x = GridPane.getColumnIndex(node);
-                    y = GridPane.getRowIndex(node);
-                }
-            }
-        }
 
-        if (x >= 0 && y >= 0 && leftClicked) {
-            this.game.selectDomOnCurrBank(y);
-        }
-    }
-
+    // --- Setting up interactive gui ---
 
     private void addDragAndDropHandlers(ImageView[][] imgVws) {
         for (int x = 0; x < imgVws.length; x++) {
@@ -397,30 +389,6 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
-    @FXML
-    private void onClickPnSelected(MouseEvent event) {
-        game.boxClicked();
-        System.out.println("Auswahlbox auswgewaehlt.");
-    }
-
-    @FXML
-    private void onDragDetectedPnSelected(MouseEvent event) {
-        System.out.println("Drag");
-        /* drag was detected, start a drag-and-drop gesture*/
-        /* allow any transfer mode */
-        Dragboard db = this.pnSelected.startDragAndDrop(TransferMode.MOVE);
-        ClipboardContent content = new ClipboardContent();
-
-        content.putString("");
-        db.setContent(content);
-
-        db.setDragView(this.pnSelected.snapshot(new SnapshotParameters(), null), 10, 10);
-
-        event.consume();
-
-    }
-
-
     /**
      * creates an array of imageviews corresponding to the gridPane. Each
      * imageView becomes a child of the gridPane and fills a cell. For proper
@@ -452,6 +420,113 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
+
+    // --- Menu interaction ---
+
+    /**
+     * @param event
+     */
+    @FXML
+    private void onClickStartGame(ActionEvent event) {
+        this.game.startGame();
+    }
+
+    @FXML
+    private void onClickSelectPlayerTypes(ActionEvent event) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLIntro.fxml"));
+        Stage introStage = new Stage();
+        introStage.setTitle("Auswahl: Gegnertypen");
+        introStage.setScene(new Scene(root));
+        introStage.show();
+        // Casts to stage to be able to close the intro stage with code
+        // https://stackoverflow.com/questions/13246211/javafx-how-to-get-stage-from-controller-during-initialization
+        ((Stage) this.mnBAnchorForStage.getScene().getWindow()).close();
+    }
+
+    @FXML
+    private void mnTmSaveGame(ActionEvent event) throws MalformedURLException {
+        this.game.safeGame(new Uri("test"));
+    }
+
+    @FXML
+    private void mnTmLoadGame(ActionEvent event) throws MalformedURLException {
+        this.game = new Game(new Uri("test"));
+    }
+
+    /**
+     * Exits game
+     */
+    @FXML
+    private void exitGame(ActionEvent event) {
+        System.exit(0);
+    }
+
+    /**
+     * TODO delete method
+     * Testprint will be deleted in final commit, implemented just to check if the right player types are passed to
+     * this controller.
+     *
+     * @param event
+     */
+    @FXML
+    private void testPrintPlayerTypes(ActionEvent event) {
+        for (PlayerType type : this.chosenPlayerTypes) {
+            System.out.println(type.getStringRepresentation());
+        }
+    }
+
+
+
+    // --- Game interactions ---
+
+    @FXML
+    private void onClickGrdPnBank(MouseEvent event) {
+        int x = -1;
+        int y = -1;
+        boolean leftClicked = event.getButton() == MouseButton.PRIMARY;
+        boolean rightClicked = event.getButton() == MouseButton.SECONDARY;
+
+        //determine the imageview of the grid that contains the coordinates of the mouseclick
+        //to determine the board-coordinates
+        for (Node node : grdPnCurrentSelectiveGroup.getChildren()) {
+            if (node instanceof ImageView) {
+                if (node.getBoundsInParent().contains(event.getX(), event.getY())) {
+                    //to use following methods the columnIndex and rowIndex
+                    //must have been set when adding the imageview to the grid
+                    x = GridPane.getColumnIndex(node);
+                    y = GridPane.getRowIndex(node);
+                }
+            }
+        }
+
+        if (x >= 0 && y >= 0 && leftClicked) {
+            this.game.selectDomOnCurrBank(y);
+        }
+    }
+
+    @FXML
+    private void onClickPnSelected(MouseEvent event) {
+        game.boxClicked();
+        System.out.println("Auswahlbox auswgewaehlt.");
+    }
+
+    @FXML
+    private void onDragDetectedPnSelected(MouseEvent event) {
+        System.out.println("Drag");
+        /* drag was detected, start a drag-and-drop gesture*/
+        /* allow any transfer mode */
+        Dragboard db = this.pnSelected.startDragAndDrop(TransferMode.MOVE);
+        ClipboardContent content = new ClipboardContent();
+
+        content.putString("");
+        db.setContent(content);
+
+        db.setDragView(this.pnSelected.snapshot(new SnapshotParameters(), null), 10, 10);
+
+        event.consume();
+
+    }
+
     /**
      * Moves Board upwards
      */
@@ -473,7 +548,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void moveBoardDown() {
-        System.out.println("move board down");
+
     }
 
     /**
@@ -484,12 +559,5 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
-    /**
-     * Exits game
-     */
-    @FXML
-    private void exitGame(ActionEvent event) {
-        System.exit(0);
-    }
 
 }

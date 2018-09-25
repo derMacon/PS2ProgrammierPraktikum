@@ -11,14 +11,19 @@
 
 <BorderPane prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLDocumentController">
     <top>
-        <MenuBar BorderPane.alignment="CENTER">
+        <MenuBar fx:id="mnBAnchorForStage" BorderPane.alignment="CENTER">
             <menus>
                 <Menu mnemonicParsing="false" text="Spiel">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#onClickStartGame" text="Neues Spiel" />
-                        <MenuItem mnemonicParsing="false" text="Speichern" />
-                        <MenuItem mnemonicParsing="false" text="Öffnen" />
-                        <MenuItem mnemonicParsing="false" onAction="#exitGame" text="Close" />
+                  <Menu mnemonicParsing="false" text="Neues Spiel">
+                    <items>
+                              <MenuItem mnemonicParsing="false" onAction="#onClickStartGame" text="Mit standard Gegnern" />
+                        <MenuItem mnemonicParsing="false" onAction="#onClickSelectPlayerTypes" text="Mit benutzerdefinierten Gegnern" />
+                    </items>
+                  </Menu>
+                        <MenuItem mnemonicParsing="false" onAction="#mnTmSaveGame" text="Speichern" />
+                        <MenuItem mnemonicParsing="false" onAction="#mnTmLoadGame" text="Öffnen" />
+                        <MenuItem mnemonicParsing="false" onAction="#exitGame" text="Beenden" />
                     </items>
                 </Menu>
                 <Menu mnemonicParsing="false" text="Hilfe">

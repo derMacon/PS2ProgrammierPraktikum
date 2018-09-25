@@ -10,11 +10,11 @@ public class Main extends Application {
 
     // Loading intro screen
     @Override
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage introStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("FXMLIntro.fxml"));
-        primaryStage.setTitle("PS2 Programmierpraktikum: City-Domino");
-        primaryStage.setScene(new Scene(root));
-        primaryStage.show();
+        introStage.setTitle("Auswahl: Gegnertypen");
+        introStage.setScene(new Scene(root));
+        introStage.show();
     }
 
 //    // Loading main game window

@@ -5,6 +5,7 @@
  */
 package logic.logicTransfer;
 
+import com.sun.jndi.toolkit.url.Uri;
 import logic.playerState.Board;
 import logic.playerTypes.PlayerType;
 import logic.token.Domino;
@@ -82,5 +83,14 @@ public interface GUI2Game {
      */
     void moveBoard(int dir);
 
+    /**
+     * Saves the current game in a .txt file at the selected path
+     */
+    void safeGame(Uri filePath);
+
+//    /**
+//     * loads / generates a game out of the .txt file at the selected path
+//     */
+//    static void loadGame(Uri filePath);
 
 }

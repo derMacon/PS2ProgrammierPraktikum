@@ -1,5 +1,6 @@
 package logic.logicTransfer;
 
+import com.sun.jndi.toolkit.url.Uri;
 import logic.bankSelection.Bank;
 import logic.dataPreservation.Logger;
 import logic.playerState.*;
@@ -149,6 +150,20 @@ public class Game implements GUI2Game {
         this.standardBoardSizeY = null == players[currPlayerIdx] ? 0 : players[currPlayerIdx].getBoard().getSizeY();
     }
 
+    /**
+     * Constructor used to laod game out of a file with a given path
+     * @param filePath path of the file from which the game will be loaded
+     */
+    public Game(Uri filePath) {
+        // TODO insert code
+        this.standardBoardSizeX = 5;
+        this.standardBoardSizeY = 5;
+    }
+
+    @Override
+    public void safeGame(Uri filePath) {
+        // TODO insert code
+    }
 
     @Override
     public void setPlayerTypes(PlayerType[] playerTypes) {
