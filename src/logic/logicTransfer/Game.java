@@ -326,6 +326,21 @@ public class Game implements GUI2Game {
         this.roundCount = 0;
     }
 
+    /**
+     * Human selects a domino on the gui. 2 possible situations
+     * <p>
+     * 1.: It's the beginning of the game
+     * - Human Player selects a domino from the current round bank (given idx)
+     * - Players after Human in the array also select a domino, the label to show who's turn is always updated
+     * - Players who selected lower value cards each select a domino on the next round bank and display it on the gui
+     * <p>
+     * 2.: Game has already started
+     * - Human Player selects a domino from the next round bank (given idx)
+     * - Human Player get's his selected domino from the current round bank and puts it as the current domino
+     * - Gui displays current domino
+     *
+     * @param idx Index of the domino selected by the Human-Player
+     */
     @Override
     public void selectDomOnCurrBank(int idx) {
         System.out.println(idx);
@@ -365,6 +380,17 @@ public class Game implements GUI2Game {
         this.gui.showInChooseBox(this.currDomino);
     }
 
+    /**
+     * - Player lays domino on the board
+     * - Iterate through current round bank getting the players, as long as it's not the human player:
+     * - display whos turn
+     * - current player selects a domino for the next round
+     * - current player gets the domino he selected in the round before
+     * - current player does his turn (internally: updatesDomPos(), layOnBoard(), displays it on gui)
+     * - if iterated to the end of the current bank the next round will be set up by nextRound()
+     *
+     * @param pos position where the Human player wants to display his current domino
+     */
     @Override
     public void setOnBoard(Pos pos) {
 //        if (currDomino != null && board.fits(currDomino, posFst)) {
@@ -381,11 +407,13 @@ public class Game implements GUI2Game {
          */
     }
 
+    /**
+     * Ends game or setts up the banks for the next round:
+     * - draw new dominos,
+     * - copy banks
+     */
     private void nextRound() {
-        /* TODO insert code for ending game / setting up next round 
-            - draw new dominos, 
-            - copy banks 
-         */
+       // TODO insert code
     }
 
     public boolean won(Player player) {
