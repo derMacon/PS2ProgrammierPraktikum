@@ -43,6 +43,13 @@ Pos - class
 Player - class 
 - Nochmal ueberpruefen ob 3 Konstruktoren wirklich noetig sind
 
+game - class
+- default_player_cnt nutzlos -> entfernen
+- im constructor bitte die playertypes initialisieren als Array mit dem aktuellen playerCnt
+- constante Default_Player_type entfernen
+- standardBoardSize brauchen wir nicht als member-variable, nur local im initializierungsschritt
+
+
 Email an Kaleck: 
 
 Sehr geehrte Fr. Kaleck, 
