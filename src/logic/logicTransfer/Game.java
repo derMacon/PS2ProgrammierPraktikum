@@ -5,6 +5,7 @@ import logic.bankSelection.Bank;
 import logic.bankSelection.Entry;
 import logic.dataPreservation.Logger;
 import logic.playerState.*;
+import logic.playerTypes.HumanPlayer;
 import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 import logic.token.Domino;
@@ -25,28 +26,6 @@ public class Game implements GUI2Game {
      * Index for the next round's bank
      */
     public final static int NEXT_BANK_IDX = 1;
-
-    /**
-     * Default number of players participating in the game
-     */
-    public final static int DEFAULT_PLAYER_CNT = 4;
-
-    /**
-     * Default player types of the participating players
-     */
-    public final static PlayerType[] DEFAULT_PLAYER_TYPES =
-            new PlayerType[]{PlayerType.HUMAN, PlayerType.DEFAULT, PlayerType.DEFAULT, PlayerType.DEFAULT};
-
-    /**
-     * Constant for first look of bank selection -> will be deleted for final commit
-     * // TODO delete this constant before final commit
-     */
-    public final static Bank PSEUDO_CURRENT_ROUND_BANK = new Bank(new Entry[]{
-            new Entry(new Domino(Tiles.values()[0])),
-            new Entry(new Domino(Tiles.values()[1])),
-            new Entry(new Domino(Tiles.values()[2])),
-            new Entry(new Domino(Tiles.values()[3]))
-    }, new Random());
 
     /**
      * Current round, drawn dominos.
@@ -112,7 +91,7 @@ public class Game implements GUI2Game {
      */
     public Game(GUIConnector gui, int playerCnt, int sizeX, int sizeY) {
         this.gui = gui;
-        this.playerTypes = DEFAULT_PLAYER_TYPES;
+        this.playerTypes = genDefaultPlayerTypeArray(playerCnt);
         this.players = new Player[playerCnt];
         this.standardBoardSizeX = sizeX;
         this.standardBoardSizeY = sizeY;
@@ -123,6 +102,8 @@ public class Game implements GUI2Game {
         this.currDomino = null;
         this.logger = new Logger(playerCnt);
     }
+
+
 
     /**
      * Constructor for testing, setting specific players (with their appropriate Board), current / next round bank, and
@@ -300,21 +281,19 @@ public class Game implements GUI2Game {
         // instanciate players with given playertypes
         this.players = createNewPlayers();
 
-        // for first look -> Constant for bank
-        this.currentRoundBank = PSEUDO_CURRENT_ROUND_BANK;
+        // fill stack
+        this.stack = Domino.fill(this.stack);
+
+        /*
+        use of methods that will be used later on in the game. No need to implement a extra function just to initialize
+        the first draw to the current bank.
+         */
+        drawNewDominosForNextRound();
+        copyAndRemoveNextRoundBankToCurrentBank();
+
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
 
-        //<editor-fold defaultstate="collapsed" desc="Init banks - actual code">
-//        // fill stack
-//        this.stack = Domino.fill(this.stack);
-//
-//        /*
-//        use of methods that will be used later on in the game. No need to implement a extra function just to initialize
-//        the first draw to the current bank.
-//         */
-//        drawNewDominosForNextRound();
-//        copyAndRemoveNextRoundBankToCurrentBank();
-        //</editor-fold>
+        // TODO insert code - update all players
 
         this.currPlayerIdx = 0;
     }
@@ -325,8 +304,6 @@ public class Game implements GUI2Game {
      * - Players after Human in the array also select a domino, the label to show who's turn is always updated
      * - Players who selected lower value cards each select a domino on the next round bank and display it on the gui
      * <p>
-     * 2.:
-     *
      * @param idx Index of the domino selected by the Human-Player
      */
     @Override
@@ -340,7 +317,7 @@ public class Game implements GUI2Game {
             // rest of the players HAVE to be bots
             ((BotBehavior) this.players[i]).selectFromBank(this.currentRoundBank);
         }
-
+        this.gui.selectDomino(CURRENT_BANK_IDX, idx, this.currPlayerIdx);
         this.gui.showInChooseBox(this.currDomino);
     }
 
@@ -391,5 +368,23 @@ public class Game implements GUI2Game {
     @Override
     public void moveBoard(int dir) {
         // TODO insert code
+    }
+
+    /**
+     * Generates a PlayerType array with a Human player type on the first slot and the default player type on the rest
+     * of the slots. The output will be used as a default setting for the user decided playertypes. With this method it
+     * is possible to skip the intro FXML if desired and start with the standard blueprint for the playertypes.
+     * @param playerCnt number of players participating in the game
+     * @return Playertype array containing a Human player type on the first slot and the default pllayer type on all
+     * other slots.
+     */
+    private PlayerType[] genDefaultPlayerTypeArray(int playerCnt) {
+        assert 0 < playerCnt;
+        PlayerType[] output = new PlayerType[playerCnt];
+        output[0] = PlayerType.HUMAN;
+        for (int i = 0; i < playerCnt; i++) {
+            output[i] = PlayerType.DEFAULT;
+        }
+        return output;
     }
 }

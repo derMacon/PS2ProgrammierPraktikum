@@ -62,6 +62,11 @@ public class FXMLDocumentController implements Initializable {
      * Texture for the horizontal seperator between the different secotions of the window
      */
     public static final Image SEPERATOR_TEXTURE_HORIZONTAL = new Image("gui/textures/SeperatorV2AlphaRotated.png");
+
+    /**
+     * Texture for the chip representing the selection of player 1
+     */
+    public static final Image SELECTION_PLAYER_1_TEXTURE = new Image("gui/textures/ChipV1.png");
     //</editor-fold>
 
     /**
@@ -108,6 +113,12 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private GridPane grdPnCurrentSelectiveGroup;
+
+    /**
+     * Grid pane displaying the corresponding chip showing which player selected the domino
+     */
+    @FXML
+    private GridPane grdPnCurrentRoundSelection;
 
     /**
      * Grid pane representing the next round's bank
@@ -273,7 +284,7 @@ public class FXMLDocumentController implements Initializable {
 
         ImageView[][][] imgVwsAIBoards = new ImageView[][][]{addImageViewsToGrid(grdPnBot1Board), addImageViewsToGrid(grdPnBot2Board), addImageViewsToGrid(grdPnBot3Board)};
 
-        this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnFutureselectiveGroup));
+        this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnCurrentRoundSelection), addImageViewsToGrid(grdPnFutureselectiveGroup));
         this.game = new Game(gui, Game.DEFAULT_PLAYER_CNT, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
         this.game.startGame();
     }
@@ -428,6 +439,7 @@ public class FXMLDocumentController implements Initializable {
 
 
 
+
     // --- Menu interaction ---
 
     /**
@@ -514,7 +526,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void onClickPnSelected(MouseEvent event) {
         game.boxClicked();
-        System.out.println("Auswahlbox auswgewaehlt.");
+        System.out.println("Auswahlbox auswgewaehlt...");
     }
 
     @FXML

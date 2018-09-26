@@ -25,6 +25,13 @@ public class JavaFXGUI implements GUIConnector {
 //    protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV1.png");
     protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV3.png");
 
+    /**
+     * Texture for the chip representing the selection of player 1
+     */
+    public static final Image SELECTION_PLAYER_1_TEXTURE = new Image("gui/textures/ChipV1.png");
+
+
+
     private Image[] imgs;
 
     private static final int IDX_FST = 0;
@@ -40,9 +47,10 @@ public class JavaFXGUI implements GUIConnector {
     private ImageView[][] imgVwsCurrentBank;
     private ImageView[][] imgVwsNextBank;
 
+    private ImageView[][] imgVwsCurrentBankSelection;
 
     public JavaFXGUI(Pane pnSelected, Label lblTurn, ImageView[][] imgWssPlayerBoard, ImageView[][][] imgWwsAIBoards,
-                     ImageView[][] imgVwsCurrentBank, ImageView[][] imgVwsNextBank) {
+                     ImageView[][] imgVwsCurrentBank, ImageView[][] imgVwsCurrentBankSelection, ImageView[][] imgVwsNextBank) {
         this.pnSelected = pnSelected;
         this.lblTurn = lblTurn;
         this.imgVwsPlayerBoard = imgWssPlayerBoard;
@@ -50,6 +58,8 @@ public class JavaFXGUI implements GUIConnector {
 //        this.imgVwsProvidedBank = imgVwsProvidedBank;
         this.imgVwsCurrentBank = imgVwsCurrentBank;
         this.imgVwsNextBank = imgVwsNextBank;
+
+        this.imgVwsCurrentBankSelection = imgVwsCurrentBankSelection;
 
         //loadAllImages
         imgs = new Image[IMG_COUNT];
@@ -447,6 +457,8 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void selectDomino(int ordBank, int idxDom, int ordPlayer) {
+        System.out.println("Select " + idxDom);
+        this.imgVwsCurrentBankSelection[0][idxDom].setImage(SELECTION_PLAYER_1_TEXTURE);
 
     }
 

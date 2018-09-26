@@ -22,7 +22,7 @@ public class Main extends Application {
 //    public void start(Stage primaryStage) throws Exception{
 //        Parent root = FXMLLoader.load(getClass().getResource("FXMLGame.fxml"));
 //        primaryStage.setTitle("PS2 Programmierpraktikum: City-Domino");
-//        primaryStage.setScene(new Scene(root, 1100 , 900));
+//        primaryStage.setScene(new Scene(root, 1150 , 900));
 ////        primaryStage.setScene(new Scene(root, 800 , 700)); // Dimensions for starting program on a laptop
 //        primaryStage.show();
 //    }
