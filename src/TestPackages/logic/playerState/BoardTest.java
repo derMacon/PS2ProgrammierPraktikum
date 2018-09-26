@@ -41,6 +41,7 @@ public class BoardTest {
     private Domino genDominoFromTileOrd(int fstOrd, int sndOrd, Pos pos) {
         Tiles tiles = Tiles.genTile(fstOrd, sndOrd);
         assert null != tiles;
+
         return new Domino(tiles, pos);
     }
 

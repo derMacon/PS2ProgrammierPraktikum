@@ -9,418 +9,472 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="900.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLDocumentController">
-    <top>
-        <MenuBar fx:id="mnBAnchorForStage" BorderPane.alignment="CENTER">
-            <menus>
-                <Menu mnemonicParsing="false" text="Spiel">
-                    <items>
-                        <Menu mnemonicParsing="false" text="Neues Spiel">
+
+<GridPane fx:id="grdPnOverallBackgroundTexture" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLDocumentController">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <BorderPane prefHeight="900.0" prefWidth="1100.0">
+          <top>
+              <MenuBar fx:id="mnBAnchorForStage" BorderPane.alignment="CENTER">
+                  <menus>
+                      <Menu mnemonicParsing="false" text="Spiel">
+                          <items>
+                              <Menu mnemonicParsing="false" text="Neues Spiel">
+                                  <items>
+                                      <MenuItem mnemonicParsing="false" onAction="#onClickStartGame" text="Mit standard Gegnern" />
+                                      <MenuItem mnemonicParsing="false" onAction="#onClickSelectPlayerTypes" text="Mit benutzerdefinierten Gegnern" />
+                                  </items>
+                              </Menu>
+                              <MenuItem mnemonicParsing="false" onAction="#mnTmSaveGame" text="Speichern" />
+                              <MenuItem mnemonicParsing="false" onAction="#mnTmLoadGame" text="Öffnen" />
+                              <MenuItem mnemonicParsing="false" onAction="#exitGame" text="Beenden" />
+                          </items>
+                      </Menu>
+                      <Menu mnemonicParsing="false" text="Hilfe">
+                          <items>
+                              <MenuItem mnemonicParsing="false" onAction="#testPrintPlayerTypes" text="Spielregeln" />
+                          </items>
+                      </Menu>
+                  </menus>
+              </MenuBar>
+          </top>
+         <left>
+                        <SplitPane dividerPositions="0.055627425614489, 0.5071151358344114" orientation="VERTICAL" prefHeight="825.0" prefWidth="189.0" BorderPane.alignment="CENTER">
                             <items>
-                                <MenuItem mnemonicParsing="false" onAction="#onClickStartGame" text="Mit standard Gegnern" />
-                                <MenuItem mnemonicParsing="false" onAction="#onClickSelectPlayerTypes" text="Mit benutzerdefinierten Gegnern" />
+                                <Label fx:id="lblTurn" prefHeight="43.0" prefWidth="156.0" text="Am Zug: Spieler 1" textFill="WHITE">
+                                    <font>
+                                        <Font name="Papyrus" size="17.0" />
+                                    </font>
+                                </Label>
+                                <GridPane fx:id="grdPnCurrentBankTexture" prefHeight="471.0" prefWidth="199.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <VBox prefHeight="316.0" prefWidth="158.0">
+                                            <children>
+                                                <Label prefHeight="26.0" prefWidth="128.0" text="Aktuelle Runde:">
+                                                    <font>
+                                                        <Font name="Papyrus" size="17.0" />
+                                                    </font>
+                                                    <VBox.margin>
+                                                        <Insets left="5.0" />
+                                                    </VBox.margin>
+                                                </Label>
+                                                <HBox prefHeight="335.0" prefWidth="174.0">
+                                                    <children>
+                                                        <GridPane fx:id="grdPnCurrentSelectiveGroup" onMouseClicked="#onClickGrdPnBank" prefHeight="407.0" prefWidth="149.0" vgap="5.0">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            </rowConstraints>
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </HBox.margin>
+                                                        </GridPane>
+                                                        <GridPane prefHeight="335.0" prefWidth="60.0" vgap="5.0">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            </rowConstraints>
+                                                        </GridPane>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </GridPane>
+                                <GridPane fx:id="grdPnNextBankTexture" prefHeight="471.0" prefWidth="199.0">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <VBox prefHeight="316.0" prefWidth="158.0">
+                                            <children>
+                                                <Label prefHeight="26.0" prefWidth="128.0" text="Nächste Runde:">
+                                                    <font>
+                                                        <Font name="Papyrus" size="17.0" />
+                                                    </font>
+                                                </Label>
+                                                <HBox prefHeight="335.0" prefWidth="174.0">
+                                                    <children>
+                                                        <GridPane fx:id="grdPnFutureselectiveGroup" onMouseClicked="#onClickGrdPnBank" prefHeight="407.0" prefWidth="149.0" vgap="5.0">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            </rowConstraints>
+                                                            <GridPane.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </GridPane.margin>
+                                                            <HBox.margin>
+                                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                            </HBox.margin>
+                                                        </GridPane>
+                                                        <GridPane prefHeight="335.0" prefWidth="60.0" vgap="5.0">
+                                                            <columnConstraints>
+                                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            </columnConstraints>
+                                                            <rowConstraints>
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            </rowConstraints>
+                                                        </GridPane>
+                                                    </children>
+                                                </HBox>
+                                            </children>
+                                        </VBox>
+                                    </children>
+                                </GridPane>
                             </items>
-                        </Menu>
-                        <MenuItem mnemonicParsing="false" onAction="#mnTmSaveGame" text="Speichern" />
-                        <MenuItem mnemonicParsing="false" onAction="#mnTmLoadGame" text="Öffnen" />
-                        <MenuItem mnemonicParsing="false" onAction="#exitGame" text="Beenden" />
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Hilfe">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#testPrintPlayerTypes" text="Spielregeln" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-    </top>
-   <left>
-                  <SplitPane dividerPositions="0.05589307411907655, 0.28554070473876064" orientation="VERTICAL" prefHeight="825.0" prefWidth="189.0" BorderPane.alignment="CENTER">
-                      <items>
-                          <Label fx:id="lblTurn" prefHeight="43.0" prefWidth="156.0" text="Am Zug: Spieler 1" textFill="WHITE">
-                              <font>
-                                  <Font name="Papyrus" size="17.0" />
-                              </font>
-                          </Label>
-                          <GridPane fx:id="grdPnCurrentBankTexture" prefHeight="471.0" prefWidth="199.0">
-                              <columnConstraints>
+               <BorderPane.margin>
+                  <Insets bottom="50.0" left="50.0" top="50.0" />
+               </BorderPane.margin>
+                        </SplitPane>
+         </left>
+         <right>
+                      <GridPane fx:id="grdPnPlayersAI" prefHeight="875.0" prefWidth="286.0" BorderPane.alignment="CENTER">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                          <children>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+                                  <center>
+                                      <GridPane fx:id="grdPnPlayer3Texture">
+                                          <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          </columnConstraints>
+                                          <rowConstraints>
+                                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                          </rowConstraints>
+                                          <children>
+                                              <GridPane fx:id="grdPnBot2Board" BorderPane.alignment="CENTER">
+                                                  <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                  <GridPane.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                  </GridPane.margin>
+                                              </GridPane>
+                                          </children>
+                                      </GridPane>
+                                  </center>
+                                  <GridPane.margin>
+                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                  </GridPane.margin>
+                                  <top>
+                                      <Label fx:id="lblPlayer3" text="Spieler 3: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
+                                          <font>
+                                              <Font name="Papyrus" size="17.0" />
+                                          </font>
+                                      </Label>
+                                  </top>
+                              </BorderPane>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+                                  <center>
+                                      <GridPane fx:id="grdPnPlayer4Texture">
+                                          <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                                          </columnConstraints>
+                                          <rowConstraints>
+                                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                                          </rowConstraints>
+                                          <children>
+                                              <GridPane fx:id="grdPnBot3Board" BorderPane.alignment="CENTER">
+                                                  <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                  <GridPane.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                  </GridPane.margin>
+                                              </GridPane>
+                                          </children>
+                                      </GridPane>
+                                  </center>
+                                  <GridPane.margin>
+                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                  </GridPane.margin>
+                                  <top>
+                                      <Label fx:id="lblPlayer4" text="Spieler 4: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
+                                          <font>
+                                              <Font name="Papyrus" size="17.0" />
+                                          </font>
+                                      </Label>
+                                  </top>
+                              </BorderPane>
+                              <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                  <GridPane.margin>
+                                      <Insets bottom="10.0" left="10.0" right="10.0" top="1.0" />
+                                  </GridPane.margin>
+                                  <center>
+                                      <GridPane fx:id="grdPnPlayer2Texture" BorderPane.alignment="CENTER">
+                                          <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          </columnConstraints>
+                                          <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          </rowConstraints>
+                                          <children>
+                                              <GridPane fx:id="grdPnBot1Board">
+                                                  <columnConstraints>
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                  </columnConstraints>
+                                                  <rowConstraints>
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                  </rowConstraints>
+                                                  <GridPane.margin>
+                                                      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                                  </GridPane.margin>
+                                              </GridPane>
+                                          </children>
+                                      </GridPane>
+                                  </center>
+                                  <top>
+                                      <Label fx:id="lblPlayer2" text="Spieler 2: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
+                                          <font>
+                                              <Font name="Papyrus" size="17.0" />
+                                          </font>
+                                      </Label>
+                                  </top>
+                              </BorderPane>
+                          </children>
+                          <padding>
+                              <Insets bottom="50.0" right="50.0" top="10.0" />
+                          </padding>
+               <BorderPane.margin>
+                  <Insets top="50.0" />
+               </BorderPane.margin>
+                      </GridPane>
+         </right>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <center>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <top>
+                                    <Label fx:id="lblPlayer1" text="Spieler 1: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
+                                        <font>
+                                            <Font name="Papyrus" size="17.0" />
+                                        </font>
+                                    </Label>
+                     </top>
+                     <center>
+                                    <BorderPane prefHeight="564.0" prefWidth="455.0" BorderPane.alignment="CENTER">
+                                        <top>
+                                            <Button fx:id="btnUp" mnemonicParsing="false" onAction="#moveBoardUp" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
+                                        </top>
+                                        <left>
+                                            <Button fx:id="btnLeft" mnemonicParsing="false" onAction="#moveBoardLeft" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
+                                        </left>
+                                        <right>
+                                            <Button fx:id="btnRight" mnemonicParsing="false" onAction="#moveBoardRight" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
+                                        </right>
+                                        <bottom>
+                                            <Button fx:id="btnDown" mnemonicParsing="false" onAction="#moveBoardDown" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
+                                        </bottom>
+                                        <center>
+                                            <GridPane fx:id="grdPnPlayer1Texture" BorderPane.alignment="CENTER">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <GridPane fx:id="grdPnHumanBoard">
+                                                        <columnConstraints>
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                        </columnConstraints>
+                                                        <rowConstraints>
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                        </rowConstraints>
+                                                        <GridPane.margin>
+                                                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                        </GridPane.margin>
+                                                    </GridPane>
+                                                </children>
+                                            </GridPane>
+                                        </center>
+                                    </BorderPane>
+                     </center>
+                     <bottom>
+                                    <GridPane prefHeight="258.0" prefWidth="455.0" BorderPane.alignment="CENTER">
+                                        <columnConstraints>
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        </columnConstraints>
+                                        <rowConstraints>
+                              <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="48.0" vgrow="SOMETIMES" />
+                                            <RowConstraints maxHeight="210.0" minHeight="10.0" prefHeight="210.0" vgrow="SOMETIMES" />
+                                        </rowConstraints>
+                                        <children>
+                                            <GridPane fx:id="grdPnRotBoxTexture" GridPane.rowIndex="1">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <AnchorPane prefHeight="200.0" prefWidth="177.0">
+                                                        <children>
+                                                            <Label layoutX="58.0" layoutY="14.0" prefHeight="35.0" prefWidth="72.0" text="Domino:">
+                                                                <font>
+                                                                    <Font name="Papyrus" size="17.0" />
+                                                                </font>
+                                                            </Label>
+                                                            <Pane fx:id="pnSelected" layoutX="31.0" layoutY="71.0" onDragDetected="#onDragDetectedPnSelected" onMouseClicked="#onClickPnSelected" prefHeight="56.0" prefWidth="109.0" BorderPane.alignment="CENTER" />
+                                                        </children>
+                                                    </AnchorPane>
+                                                </children>
+                                                <GridPane.margin>
+                                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                </GridPane.margin>
+                                            </GridPane>
+                                            <GridPane fx:id="grdPnDisposeTexture" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                                <children>
+                                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                                        <center>
+                                                            <Pane fx:id="pnDiscard" prefHeight="44.0" prefWidth="115.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                                  <Label layoutX="49.0" layoutY="60.0" prefHeight="35.0" prefWidth="89.0" text="Verwerfen:">
+                                                                      <font>
+                                                                          <Font name="Papyrus" size="17.0" />
+                                                                      </font>
+                                                                  </Label>
+                                             </children>
+                                          </Pane>
+                                                        </center>
+                                                    </BorderPane>
+                                                </children>
+                                                <GridPane.margin>
+                                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                                </GridPane.margin>
+                                            </GridPane>
+                              <GridPane fx:id="grdPnSeperator3Texture" GridPane.columnSpan="2">
+                                <columnConstraints>
                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              </columnConstraints>
-                              <rowConstraints>
+                                </columnConstraints>
+                                <rowConstraints>
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              </rowConstraints>
-                              <children>
-                                  <VBox prefHeight="316.0" prefWidth="158.0">
-                                      <children>
-                                          <Label prefHeight="26.0" prefWidth="128.0" text="Aktuelle Runde:">
-                                              <font>
-                                                  <Font name="Papyrus" size="17.0" />
-                                              </font>
-                                              <VBox.margin>
-                                                  <Insets left="5.0" />
-                                              </VBox.margin>
-                                          </Label>
-                                          <HBox prefHeight="335.0" prefWidth="174.0">
-                                              <children>
-                                                  <GridPane fx:id="grdPnCurrentSelectiveGroup" onMouseClicked="#onClickGrdPnBank" prefHeight="407.0" prefWidth="149.0" vgap="5.0">
-                                                      <columnConstraints>
-                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                      </columnConstraints>
-                                                      <rowConstraints>
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      </rowConstraints>
-                                                      <GridPane.margin>
-                                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                      </GridPane.margin>
-                                                      <HBox.margin>
-                                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                      </HBox.margin>
-                                                  </GridPane>
-                                                  <GridPane prefHeight="335.0" prefWidth="60.0" vgap="5.0">
-                                                      <columnConstraints>
-                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                      </columnConstraints>
-                                                      <rowConstraints>
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      </rowConstraints>
-                                                  </GridPane>
-                                              </children>
-                                          </HBox>
-                                      </children>
-                                  </VBox>
-                              </children>
-                          </GridPane>
-                          <GridPane fx:id="grdPnNextBankTexture" prefHeight="471.0" prefWidth="199.0">
-                              <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                              </columnConstraints>
-                              <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                              </rowConstraints>
-                              <children>
-                                  <VBox prefHeight="316.0" prefWidth="158.0">
-                                      <children>
-                                          <Label prefHeight="26.0" prefWidth="128.0" text="Nächste Runde:">
-                                              <font>
-                                                  <Font name="Papyrus" size="17.0" />
-                                              </font>
-                                          </Label>
-                                          <HBox prefHeight="335.0" prefWidth="174.0">
-                                              <children>
-                                                  <GridPane fx:id="grdPnFutureselectiveGroup" onMouseClicked="#onClickGrdPnBank" prefHeight="407.0" prefWidth="149.0" vgap="5.0">
-                                                      <columnConstraints>
-                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                      </columnConstraints>
-                                                      <rowConstraints>
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      </rowConstraints>
-                                                      <GridPane.margin>
-                                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                      </GridPane.margin>
-                                                      <HBox.margin>
-                                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                                      </HBox.margin>
-                                                  </GridPane>
-                                                  <GridPane prefHeight="335.0" prefWidth="60.0" vgap="5.0">
-                                                      <columnConstraints>
-                                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                      </columnConstraints>
-                                                      <rowConstraints>
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                      </rowConstraints>
-                                                  </GridPane>
-                                              </children>
-                                          </HBox>
-                                      </children>
-                                  </VBox>
-                              </children>
-                          </GridPane>
-                      </items>
-         <BorderPane.margin>
-            <Insets bottom="50.0" left="50.0" top="10.0" />
-         </BorderPane.margin>
-                  </SplitPane>
-   </left>
-   <right>
-                <GridPane fx:id="grdPnPlayersAI" prefHeight="875.0" prefWidth="286.0" BorderPane.alignment="CENTER">
+                                </rowConstraints>
+                              </GridPane>
+                                        </children>
+                                    </GridPane>
+                     </bottom>
+                     <BorderPane.margin>
+                        <Insets bottom="50.0" top="50.0" />
+                     </BorderPane.margin>
+                  </BorderPane>
+               </center>
+               <left>
+                  <GridPane fx:id="grdPnSeperator1Texture" prefHeight="875.0" prefWidth="60.0" BorderPane.alignment="CENTER">
                     <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
-                    <children>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-                            <center>
-                                <GridPane fx:id="grdPnPlayer3Texture">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                    <children>
-                                        <GridPane fx:id="grdPnBot2Board" BorderPane.alignment="CENTER">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <GridPane.margin>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                            </GridPane.margin>
-                                        </GridPane>
-                                    </children>
-                                </GridPane>
-                            </center>
-                            <GridPane.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                            </GridPane.margin>
-                            <top>
-                                <Label fx:id="lblPlayer3" text="Spieler 3: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
-                                    <font>
-                                        <Font name="Papyrus" size="17.0" />
-                                    </font>
-                                </Label>
-                            </top>
-                        </BorderPane>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-                            <center>
-                                <GridPane fx:id="grdPnPlayer4Texture">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                    <children>
-                                        <GridPane fx:id="grdPnBot3Board" BorderPane.alignment="CENTER">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <GridPane.margin>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                            </GridPane.margin>
-                                        </GridPane>
-                                    </children>
-                                </GridPane>
-                            </center>
-                            <GridPane.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                            </GridPane.margin>
-                            <top>
-                                <Label fx:id="lblPlayer4" text="Spieler 4: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
-                                    <font>
-                                        <Font name="Papyrus" size="17.0" />
-                                    </font>
-                                </Label>
-                            </top>
-                        </BorderPane>
-                        <BorderPane prefHeight="200.0" prefWidth="200.0">
-                            <GridPane.margin>
-                                <Insets bottom="10.0" left="10.0" right="10.0" top="1.0" />
-                            </GridPane.margin>
-                            <center>
-                                <GridPane fx:id="grdPnPlayer2Texture" BorderPane.alignment="CENTER">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                    <children>
-                                        <GridPane fx:id="grdPnBot1Board">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <GridPane.margin>
-                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                            </GridPane.margin>
-                                        </GridPane>
-                                    </children>
-                                </GridPane>
-                            </center>
-                            <top>
-                                <Label fx:id="lblPlayer2" text="Spieler 2: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
-                                    <font>
-                                        <Font name="Papyrus" size="17.0" />
-                                    </font>
-                                </Label>
-                            </top>
-                        </BorderPane>
-                    </children>
-                    <padding>
-                        <Insets bottom="50.0" right="50.0" top="10.0" />
-                    </padding>
-                </GridPane>
-   </right>
-   <center>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <top>
-                        <Label fx:id="lblPlayer1" text="Spieler 1: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
-                            <font>
-                                <Font name="Papyrus" size="17.0" />
-                            </font>
-                        </Label>
-         </top>
-         <center>
-                        <BorderPane prefHeight="441.0" prefWidth="426.0" BorderPane.alignment="CENTER">
-                            <top>
-                                <Button fx:id="btnUp" mnemonicParsing="false" onAction="#moveBoardUp" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
-                            </top>
-                            <left>
-                                <Button fx:id="btnLeft" mnemonicParsing="false" onAction="#moveBoardLeft" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
-                            </left>
-                            <right>
-                                <Button fx:id="btnRight" mnemonicParsing="false" onAction="#moveBoardRight" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
-                            </right>
-                            <bottom>
-                                <Button fx:id="btnDown" mnemonicParsing="false" onAction="#moveBoardDown" prefHeight="25.0" prefWidth="25.0" BorderPane.alignment="CENTER" />
-                            </bottom>
-                            <center>
-                                <GridPane fx:id="grdPnPlayer1Texture" BorderPane.alignment="CENTER">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                    <children>
-                                        <GridPane fx:id="grdPnHumanBoard">
-                                            <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                            </columnConstraints>
-                                            <rowConstraints>
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                            </rowConstraints>
-                                            <GridPane.margin>
-                                                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                            </GridPane.margin>
-                                        </GridPane>
-                                    </children>
-                                </GridPane>
-                            </center>
-                        </BorderPane>
+                     <BorderPane.margin>
+                        <Insets bottom="50.0" top="50.0" />
+                     </BorderPane.margin>
+                  </GridPane>
+               </left>
+               <right>
+                  <GridPane fx:id="grdPnSeperator2Texture" prefHeight="875.0" prefWidth="60.0" BorderPane.alignment="CENTER">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <BorderPane.margin>
+                        <Insets bottom="50.0" top="50.0" />
+                     </BorderPane.margin>
+                  </GridPane>
+               </right>
+            </BorderPane>
          </center>
-         <bottom>
-                        <GridPane prefHeight="211.0" prefWidth="421.0" BorderPane.alignment="CENTER">
-                            <columnConstraints>
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                            </columnConstraints>
-                            <rowConstraints>
-                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                            </rowConstraints>
-                            <children>
-                                <GridPane fx:id="grdPnRotBoxTexture">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                    <children>
-                                        <AnchorPane prefHeight="200.0" prefWidth="177.0">
-                                            <children>
-                                                <Label layoutX="23.0" layoutY="7.0" prefHeight="26.0" prefWidth="128.0" text="Nächste Runde:">
-                                                    <font>
-                                                        <Font name="Papyrus" size="17.0" />
-                                                    </font>
-                                                </Label>
-                                                <Pane fx:id="pnSelected" layoutX="31.0" layoutY="71.0" onDragDetected="#onDragDetectedPnSelected" onMouseClicked="#onClickPnSelected" prefHeight="56.0" prefWidth="109.0" BorderPane.alignment="CENTER" />
-                                            </children>
-                                        </AnchorPane>
-                                    </children>
-                                    <GridPane.margin>
-                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                    </GridPane.margin>
-                                </GridPane>
-                                <GridPane fx:id="grdPnDisposeTexture" GridPane.columnIndex="1">
-                                    <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                    </columnConstraints>
-                                    <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                    </rowConstraints>
-                                    <children>
-                                        <BorderPane prefHeight="200.0" prefWidth="200.0">
-                                            <center>
-                                                <Pane fx:id="pnDiscard" prefHeight="44.0" prefWidth="115.0" BorderPane.alignment="CENTER" />
-                                            </center>
-                                            <top>
-                                                <Label prefHeight="35.0" prefWidth="89.0" text="Verwerfen:" BorderPane.alignment="CENTER">
-                                                    <font>
-                                                        <Font name="Papyrus" size="17.0" />
-                                                    </font>
-                                                </Label>
-                                            </top>
-                                        </BorderPane>
-                                    </children>
-                                    <GridPane.margin>
-                                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                    </GridPane.margin>
-                                </GridPane>
-                            </children>
-                        </GridPane>
-         </bottom>
-         <BorderPane.margin>
-            <Insets bottom="50.0" />
-         </BorderPane.margin>
       </BorderPane>
-   </center>
-</BorderPane>
+   </children>
+</GridPane>
