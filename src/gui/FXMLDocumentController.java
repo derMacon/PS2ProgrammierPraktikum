@@ -168,6 +168,12 @@ public class FXMLDocumentController implements Initializable {
 
 
     /**
+     * Grid pnae setting up the texture for the label showing who's turn it is
+     */
+    @FXML
+    private GridPane grdPnTurnLblTexture;
+
+    /**
      * Grid pane setting up the texture for the current round bank
      */
     @FXML
@@ -288,13 +294,14 @@ public class FXMLDocumentController implements Initializable {
      * Sets up the gui with all necessary textures
      */
     private void setUpGuiTextures() {
-        setPnWithImageAsBackground(grdPnCurrentBankTexture, BANK_BOX_TEXTURE);
-        setPnWithImageAsBackground(grdPnNextBankTexture, BANK_BOX_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnTurnLblTexture, BANK_BOX_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnCurrentBankTexture, BANK_BOX_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnNextBankTexture, BANK_BOX_TEXTURE);
 
-        setPnWithImageAsBackground(grdPnPlayer1Texture, BOARD_BACKGROUND_TEXTURE);
-        setPnWithImageAsBackground(grdPnPlayer2Texture, BOARD_BACKGROUND_TEXTURE);
-        setPnWithImageAsBackground(grdPnPlayer3Texture, BOARD_BACKGROUND_TEXTURE);
-        setPnWithImageAsBackground(grdPnPlayer4Texture, BOARD_BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnPlayer1Texture, BOARD_BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnPlayer2Texture, BOARD_BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnPlayer3Texture, BOARD_BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnPlayer4Texture, BOARD_BACKGROUND_TEXTURE);
 
         setPnWithImageAsBackground(this.grdPnRotBoxTexture, BOARD_BACKGROUND_TEXTURE);
         setPnWithImageAsBackground(this.grdPnDisposeTexture, BOARD_BACKGROUND_TEXTURE);
@@ -303,7 +310,7 @@ public class FXMLDocumentController implements Initializable {
         setPnWithImageAsBackground(this.grdPnSeperator2Texture, SEPERATOR_TEXTURE_VERTICAL);
         setPnWithImageAsBackground(this.grdPnSeperator3Texture, SEPERATOR_TEXTURE_HORIZONTAL);
 
-        setPnWithImageAsBackground(grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
     }
 
     /**
