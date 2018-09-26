@@ -46,6 +46,9 @@ Player - class
 game - class
 - standardBoardSize brauchen wir nicht als member-variable, nur local im initializierungsschritt
     -> Initialisierung fndet nicht im Konstruktor statt, muessen festgehalten werden um in startGame() zu initialisieren.
+- getPlayersBoard(int..) unnoetig, wenn man bereits einen Getter fuer die Players hat
+
+    
 
 Email an Kaleck: 
 
