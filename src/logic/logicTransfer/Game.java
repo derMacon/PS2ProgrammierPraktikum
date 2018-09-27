@@ -235,10 +235,12 @@ public class Game implements GUI2Game {
             // TODO insert code -> show Who's Turn
         }
 
-        // TODO delete line before final commit
+        // TODO delete lines before final commit
         // Only for demonstrative purpose -> will be deleted before final commit (belongs in selectDomOnNextBank()
         // beacause the player has to select a domino on the next round before it is possible to rotate the preselected one.)
+        this.currDomino = this.currentRoundBank.getDomino(idx);
         this.gui.showInChooseBox(this.currDomino);
+        this.gui.deleteDomFromBank(0, idx);
 
         // TODO blur out boxes which are not accessible when user participates in the upcomming standard round
     }

@@ -17,6 +17,8 @@ import logic.logicTransfer.GUIConnector;
 import logic.token.Domino;
 import logic.token.Tiles;
 
+import java.util.EmptyStackException;
+
 
 public class JavaFXGUI implements GUIConnector {
 
@@ -469,7 +471,13 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void deleteDomFromBank(int ordBank, int idx) {
-
+        if(0 == ordBank) {
+            this.imgVwsCurrentBank[0][idx].setImage(EMPTY_IMG);
+            this.imgVwsCurrentBank[1][idx].setImage(EMPTY_IMG);
+        } else if (1 == ordBank) {
+            this.imgVwsNextBank[0][idx].setImage(EMPTY_IMG);
+            this.imgVwsNextBank[1][idx].setImage(EMPTY_IMG);
+        }
     }
 
     @Override

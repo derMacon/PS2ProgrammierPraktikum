@@ -12,112 +12,7 @@ import static org.junit.Assert.*;
 
 public class BoardTest {
 
-
-    //<editor-fold defaultstate="collapsed" desc="Domino generator">
-
-    /**
-     * Genererates a domino from the given occupancy, position and rotation
-     *
-     * @param fstOrd ordinal value of the first tile
-     * @param sndOrd ordinal value of the second tile
-     * @param pos    position of the first tile
-     * @param rot    rotation of the domino
-     * @return a domino from the given occupancy
-     */
-    private Domino genDominoFromTileOrd(int fstOrd, int sndOrd, Pos pos, int rot) {
-        Tiles tiles = Tiles.genTile(fstOrd, sndOrd);
-        assert null != tiles;
-        return new Domino(tiles, pos, rot);
-    }
-
-    /**
-     * Genererates a domino from the given occupancy, position
-     *
-     * @param fstOrd ordinal value of the first tile
-     * @param sndOrd ordinal value of the second tile
-     * @param pos    position of the first tile
-     * @return a domino from the given occupancy
-     */
-    private Domino genDominoFromTileOrd(int fstOrd, int sndOrd, Pos pos) {
-        Tiles tiles = Tiles.genTile(fstOrd, sndOrd);
-        assert null != tiles;
-
-        return new Domino(tiles, pos);
-    }
-
-    /**
-     * Genererates a domino from the given occupancy, position and rotation
-     *
-     * @param fstOrd ordinal value of the first tile
-     * @param sndOrd ordinal value of the second tile
-     * @return a domino from the given occupancy
-     */
-    private Domino genDominoFromTileOrd(int fstOrd, int sndOrd) {
-        return genDominoFromTileOrd(fstOrd, sndOrd, new Pos(0, 0), 0);
-    }
-
-    /**
-     * Genererates a domino from the given occupancy and rotation
-     *
-     * @param fstOrd ordinal value of the first tile
-     * @param sndOrd ordinal value of the second tile
-     * @param rot    rotation of the domino
-     * @return a domino from the given occupancy
-     */
-    private Domino genDominoFromTileOrd(int fstOrd, int sndOrd, int rot) {
-        return genDominoFromTileOrd(fstOrd, sndOrd, new Pos(0, 0), rot);
-    }
-
-    /**
-     * Genereates a domino from a given ordinal value of one of the singletiles
-     *
-     * @param tileOrd ordinal value of one of the singletiles
-     * @return a domino from a given ordinal value of one of the singletiles
-     */
-    private Domino genDominoFromTileOrd(int tileOrd) {
-        Domino domino = genDominoFromFstTile(tileOrd);
-        if (domino == null) {
-            domino = genDominoFromSndTile(tileOrd);
-        }
-        assert null != domino;
-        return domino;
-    }
-
-    /**
-     * Generates a domino from the ordinal value of the first singletile
-     *
-     * @param fstOrd ordinal value of the first singletile
-     * @return a domino from the ordinal value of the first singletile
-     */
-    private Domino genDominoFromFstTile(int fstOrd) {
-        Tiles tiles;
-        int counter = 0;
-        do {
-            tiles = Tiles.genTile(fstOrd, counter);
-            counter++;
-        } while (null == tiles && counter < SingleTile.values().length);
-        return new Domino(tiles);
-    }
-
-    /**
-     * Generates a domino from the ordinal value of the second singletile
-     *
-     * @param sndOrd ordinal value of the second singletile
-     * @return a domino from the ordinal value of the second singletile
-     */
-    private Domino genDominoFromSndTile(int sndOrd) {
-        Tiles tiles;
-        int counter = 0;
-        do {
-            tiles = Tiles.genTile(counter, sndOrd);
-            counter++;
-        } while (null == tiles && counter < SingleTile.values().length);
-        return new Domino(tiles);
-    }
-    //</editor-fold>
-
-
-    // --- Constructor - used for game ---
+    // --- 1. Constructor - used for game ---
     @Test(expected = AssertionError.class)
     public void testConstructor_ValidEmpty() {
         Board board = new Board(0, 0);
@@ -140,7 +35,7 @@ public class BoardTest {
     }
 
 
-        // --- Constructor - only used for testing ---
+    // --- 1. Constructor - only used for testing ---
     @Test(expected = AssertionError.class)
     public void testConstructor_NullParam() {
         Board board = new Board(null);
@@ -178,13 +73,13 @@ public class BoardTest {
         assertArrayEquals(expectedCells, board.getCells());
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testConstructor_FilledString_Asymmetric() {
         new Board("-- -- -- \n -- CC");
     }
 
 
-    //<editor-fold defaultstate="collapsed" desc="Modified tests from ueb09">
+    //<editor-fold defaultstate="collapsed" desc="2. Modified tests from ueb09 (Contains test for fits)">
     // --- fits ---
     @Test
     public void testFits_Touches3Sides() {
@@ -264,7 +159,7 @@ public class BoardTest {
     public void testFits_rotated0_ValuesDontFit() {
         Board board = new Board(
                 "-- -- -- -- -- --\n" +
-                        "-- -- S0 S1 -- --\n" +
+                        "-- -- S0 H0 -- --\n" +
                         "-- -- -- -- -- --\n");
         Domino dom = new Domino(Tiles.genTile(P0, A0));
         // expected P0_A0_Val14
@@ -272,8 +167,7 @@ public class BoardTest {
         assertFalse(board.fits(dom.setPos(new Pos(3, 0))));
         assertFalse(board.fits(dom.setPos(new Pos(4, 1))));
         assertFalse(board.fits(dom.setPos(new Pos(3, 2))));
-
-        dom = genDominoFromTileOrd(13, 1); // 13 - 1 -> P0_A0_Val14
+        dom = new Domino(Tiles.genTile(H0, S0));
         assertFalse(board.fits(dom.setPos(new Pos(2, 0))));
         assertFalse(board.fits(dom.setPos(new Pos(2, 2))));
     }
@@ -320,7 +214,7 @@ public class BoardTest {
     public void testFits_rotated1_ValuesDontFit() {
         Board board = new Board(
                 "-- -- -- -- -- --\n" +
-                        "-- -- S0 S1 -- --\n" +
+                        "-- -- S0 H1 -- --\n" +
                         "-- -- -- -- -- --\n");
         Domino dom = new Domino(Tiles.genTile(P0, A0), 1);
         assertFalse(board.fits(dom.setPos(new Pos(1, 0))));
@@ -328,7 +222,7 @@ public class BoardTest {
         assertFalse(board.fits(dom.setPos(new Pos(4, 0))));
         assertFalse(board.fits(dom.setPos(new Pos(4, 1))));
 
-        dom = genDominoFromTileOrd(13, 1); // 13 - 1 -> P0_A0_Val14
+        dom = new Domino(Tiles.genTile(H0, S0), 1);
         assertFalse(board.fits(dom.setPos(new Pos(1, 1))));
         assertFalse(board.fits(dom.setPos(new Pos(4, 0))));
     }
@@ -351,7 +245,7 @@ public class BoardTest {
         assertTrue(board.fits(dom.setPos(new Pos(0, 1))));
         assertTrue(board.fits(dom.setPos(new Pos(1, 2))));
 
-        dom = genDominoFromTileOrd(13, 21);
+        dom = new Domino(Tiles.genTile(P0, S0), 2);
         assertTrue(board.fits(dom.setPos(new Pos(3, 0))));
         assertTrue(board.fits(dom.setPos(new Pos(4, 1))));
         assertTrue(board.fits(dom.setPos(new Pos(3, 2))));
@@ -396,6 +290,9 @@ public class BoardTest {
     // findPosFor() tests in testclasses for players who implement the BotBehavior interface, but here named
     // updateDominoPos() - tests since the domino holds the information about the position of the first tile and only
     // will be UPDATED.
+
+
+
 
     //</editor-fold>
 
