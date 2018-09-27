@@ -47,24 +47,11 @@ Player - class
 
 
 game - class
-- standardBoardSize brauchen wir nicht als member-variable, nur local im initializierungsschritt
-    -> Initialisierung fndet nicht im Konstruktor statt, muessen festgehalten werden um in startGame() zu initialisieren.
-- getPlayersBoard(int..) unnoetig, wenn man bereits einen Getter fuer die Players hat
-- startGame() mit Parameter (PlayerTypes[]) von Popup Fenster aufrufen
-- public und private methoden trennen
-- drawNewDom... umbenennen zu randomlyDrawDom...
-- createNewPlayers: playerTypes, board dimensionen als Parameter. Muessen aus Attributen geloescht werden
-- startGame muss vor createNewPlayers
-- selectDomCurrBank: Eingegraute Bereiche muessen noch aktualisiert werden
 - Farbliche Hervorhebung ueberdenken, vielleicht Schalter zwischen Schwarz/Weiss und Farbe
-- selectDomOnCurrBank: statt currPlayerIdx 0 (am besten mit Konstante) als array index setzen. Nur Spieler kann diese Fkt. aufrufen. 
-- currDomino zu frueh in gesetzt, Zeile muss weg
 - selectFromBank mit Rueckgabetyp Bank um klarzustellen, dass die Bank modifiziert wird. Dasselbe gilt fuer drawFromStack().
-- gui.selectDomino vor die for Schleife und einmal in die Schleife selbst kopieren
 - showInChooseBox mit Kommentar versehen, dass im final Commit in selectDomOnNextBank stehen soll
-- Bedingung ob erste Runde oder nicht in selectDomOnCurrBank() fehlt
 
-    
+
 
 Email an Kaleck: 
 
