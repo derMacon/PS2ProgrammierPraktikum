@@ -19,13 +19,6 @@ import logic.token.Pos;
 public interface GUI2Game {
 
     /**
-     * Setter for the player types, can't be setted in constructor beacause the init method of the docController is called
-     * before the introController has the chance to set the chosen values
-     * @param playerTypes types of the participating players
-     */
-    void setPlayerTypes(PlayerType[] types);
-
-    /**
      * the current Domino (that is shown in choose-box) is rotated
      * by 90 degrees clockwise and shown. If the clickOnPlayersBank-box is
      * empty and a cell of the current players bank is empty a new domino is
@@ -64,7 +57,7 @@ public interface GUI2Game {
      * gets one of the stacks dominos and sets it to the middle of the board. <br>
      * human player starts.
      */
-    void startGame();
+    void startGame(PlayerType[] playerTypes, int sizeX, int sizeY);
 
     /**
      * Selects a domino from the current bank, for human player the domino will be put into the special box to rotate

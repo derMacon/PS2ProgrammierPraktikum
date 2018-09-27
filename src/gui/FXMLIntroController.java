@@ -116,7 +116,7 @@ public class FXMLIntroController implements Initializable {
 
             // Setting the choosen PlayerTypes
             FXMLDocumentController gameController = loader.getController();
-            gameController.setChosenPlayerTypes(choosenTypes);
+            gameController.startGame(choosenTypes);
 
             Parent root = loader.getRoot();
             Stage mainStage = new Stage();

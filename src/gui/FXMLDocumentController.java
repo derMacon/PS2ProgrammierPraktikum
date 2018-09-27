@@ -285,16 +285,16 @@ public class FXMLDocumentController implements Initializable {
         ImageView[][][] imgVwsAIBoards = new ImageView[][][]{addImageViewsToGrid(grdPnBot1Board), addImageViewsToGrid(grdPnBot2Board), addImageViewsToGrid(grdPnBot3Board)};
 
         this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnCurrentRoundSelection), addImageViewsToGrid(grdPnFutureselectiveGroup));
-        this.game = new Game(gui, Game.DEFAULT_PLAYER_CNT, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
-        this.game.startGame();
+        this.game = new Game(gui, DEFAULT_PLAYER_COUNT, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
     }
 
     /**
      * Setter for the PlayerTypes to pass chosen PlayerTypes from other controller
      */
-    public void setChosenPlayerTypes(PlayerType[] chosenPlayerTypes) {
-        this.chosenPlayerTypes = chosenPlayerTypes;
-        this.game.setPlayerTypes(chosenPlayerTypes);
+    public void startGame(PlayerType[] chosenPlayerTypes) {
+//        this.chosenPlayerTypes = chosenPlayerTypes;
+//        this.game.setPlayerTypes(chosenPlayerTypes);
+        this.game.startGame(chosenPlayerTypes, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
     }
 
 
@@ -447,7 +447,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void onClickStartGame(ActionEvent event) {
-        this.game.startGame();
+        System.out.println("Not implemented yet");
     }
 
     @FXML
