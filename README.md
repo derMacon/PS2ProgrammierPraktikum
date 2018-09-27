@@ -55,7 +55,7 @@ game - class
 
 Email an Kaleck: 
 
-Sehr geehrte Fr. Kaleck, 
+Sehr geehrte Frau Kaleck, 
 hiermit würde ich mich gerne für einen früheren Vorabnahmetermin für das Programmierpraktikum von Ps2 anmelden.
 
 Ich hätte allerdings noch einige Frage. 
