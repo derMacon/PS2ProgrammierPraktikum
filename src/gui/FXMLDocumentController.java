@@ -41,7 +41,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      * Overall Background for the whole main window
      */
-    public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV4.png");
+    public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV5.png");
 
     /**
      * Background for the individual player boards
@@ -67,6 +67,16 @@ public class FXMLDocumentController implements Initializable {
      * Texture for the chip representing the selection of player 1
      */
     public static final Image SELECTION_PLAYER_1_TEXTURE = new Image("gui/textures/ChipV1.png");
+
+    /**
+     * Overlay texture for the dispose field
+     */
+    public static final Image DISPOSE_TEXTURE = new Image("gui/textures/TrashIconV1.png");
+
+    /**
+     * Overlay texture for the dispose field
+     */
+    public static final Image ROTATION_TEXTURE = new Image("gui/textures/RotationIconV1.png");
     //</editor-fold>
 
     /**
@@ -314,7 +324,9 @@ public class FXMLDocumentController implements Initializable {
         setPnWithImageAsBackground(this.grdPnPlayer3Texture, BOARD_BACKGROUND_TEXTURE);
         setPnWithImageAsBackground(this.grdPnPlayer4Texture, BOARD_BACKGROUND_TEXTURE);
 
+        setPnWithImageAsBackground(this.grdPnRotBoxTexture, ROTATION_TEXTURE);
         setPnWithImageAsBackground(this.grdPnRotBoxTexture, BOARD_BACKGROUND_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnDisposeTexture, DISPOSE_TEXTURE);
         setPnWithImageAsBackground(this.grdPnDisposeTexture, BOARD_BACKGROUND_TEXTURE);
 
         setPnWithImageAsBackground(this.grdPnSeperator1Texture, SEPERATOR_TEXTURE_VERTICAL);

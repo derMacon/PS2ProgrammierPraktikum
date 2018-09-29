@@ -30,7 +30,7 @@ public class JavaFXGUI implements GUIConnector {
     /**
      * Texture for the chip representing the selection of player 1
      */
-    public static final Image SELECTION_PLAYER_1_TEXTURE = new Image("gui/textures/ChipV1.png");
+    public static final Image SELECTION_PLAYER_1_TEXTURE = new Image("gui/textures/ChipV2.png");
 
 
 

@@ -279,6 +279,7 @@ public class Game implements GUI2Game {
     public void setOnBoard(Pos pos) {
         currDomino.setPos(new Pos(pos.x(), pos.y()));
         this.players[this.currPlayerIdx].showOnBoard(currDomino);
+        setToChooseBox(null);
 
         botsDoTheirTurn();
         setupNextRound(); // also determines if game is over, will call endRound() if necessary
