@@ -5,7 +5,7 @@ Aktueller Stand der Gui:
 
 
 ![alt text](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/GUIScreenshot/Intro240918.png)
-![alt text](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/GUIScreenshot/220918.png)
+![alt text](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/GUIScreenshot/290918.png)
 
 
 Was noch fehlt: 
