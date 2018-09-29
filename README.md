@@ -51,6 +51,19 @@ game - class
 - selectFromBank mit Rueckgabetyp Bank um klarzustellen, dass die Bank modifiziert wird. Dasselbe gilt fuer drawFromStack().
 - showInChooseBox mit Kommentar versehen, dass im final Commit in selectDomOnNextBank stehen soll
 
+- Javadocs fehlen
+- selectDomOnCurrentBank: selectFromBank mit Rueckgabe des idx,todo naechste bank muss gefuellt werden, todo spieler mit niedrigeren Karten waehlen und ziehen
+- setOnBoard mit Human konstante
+- setupNextRound in botsdotheirturn verschieben
+- dispose fehlt
+- setupnextround mit aktualisierung der punkte
+- boxclicked println muss weg
+- domFits muss weg
+- gendefaultplayertype for bei 1 starten
+- setupNextRound erst kopieren dann ziehen
+- botsdotheir muss nach oben
+
+
 
 
 Email an Kaleck: 
