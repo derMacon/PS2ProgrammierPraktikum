@@ -181,6 +181,10 @@ public class Game implements GUI2Game {
         return this.players.length;
     }
 
+    /**
+     * Getter for the domino stack
+     * @return
+     */
     public List<Domino> getStack() {
         return this.stack;
     }
@@ -195,14 +199,10 @@ public class Game implements GUI2Game {
         // fill stack
         this.stack = Domino.fill(this.stack);
 
-        /*
-        use of methods that will be used later on in the game. No need to implement a extra function just to initialize
-        the first draw to the current bank.
-         */
-        randomlyDrawNewDominosForNextRound();
-        copyAndRemoveNextRoundBankToCurrentBank();
-
+        // fill current bank
+        this.currentRoundBank.drawFromStack(this.stack);
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
+
         this.currPlayerIdx = 0;
 
         // TODO insert code - update all players
@@ -227,13 +227,9 @@ public class Game implements GUI2Game {
         this.currentRoundBank.selectEntry(this.players[HUMAN_PLAYER_IDX], idx);
         this.gui.selectDomino(CURRENT_BANK_IDX, idx, HUMAN_PLAYER_IDX);
 
-        // update rest of the players -> Example how it could look (not final state)
-        for (int i = 1; i < this.players.length; i++) {
-            // rest of the players HAVE to be bots
-            ((BotBehavior) this.players[i]).selectFromBank(this.currentRoundBank);
-            this.gui.selectDomino(CURRENT_BANK_IDX, idx, i);
-            // TODO insert code -> show Who's Turn
-        }
+        botsDoInitialSelect();
+        randomlyDrawNewDominosForNextRound();
+        botsDoTheirTurn();
 
         // TODO delete lines before final commit
         // Only for demonstrative purpose -> will be deleted before final commit (belongs in selectDomOnNextBank()
@@ -278,7 +274,7 @@ public class Game implements GUI2Game {
     @Override
     public void setOnBoard(Pos pos) {
         currDomino.setPos(new Pos(pos.x(), pos.y()));
-        this.players[this.currPlayerIdx].showOnBoard(currDomino);
+        this.players[HUMAN_PLAYER_IDX].showOnBoard(currDomino);
         setToChooseBox(null);
 
         botsDoTheirTurn();
@@ -351,7 +347,26 @@ public class Game implements GUI2Game {
         return output;
     }
 
+    private void botsDoInitialSelect() {
+        // update rest of the players -> Example how it could look (not final state)
+        int botSelectedDomIdx;
+        for (int i = 1; i < this.players.length; i++) {
+            // rest of the players HAVE to be bots
+            botSelectedDomIdx = ((BotBehavior) this.players[i]).selectFromBank(this.currentRoundBank);
+            this.gui.selectDomino(CURRENT_BANK_IDX, botSelectedDomIdx, i);
+            // TODO insert code -> show Who's Turn
+        }
+    }
+
     // --- Do necessary turns / Setting up banks for next round ---
+    /**
+     * Iterates through the selected players from the current bank until the selected player is the Human player.
+     * If the round is finished (the last bank slot was evaluated) the next round will be setup (banks will be loaded)
+     */
+    private void botsDoTheirTurn() {
+
+    }
+
     /**
      * Ends game or setts up the banks for the next round:
      * - draw new dominos,
@@ -361,20 +376,19 @@ public class Game implements GUI2Game {
         // TODO insert code
     }
 
-    private void randomlyDrawNewDominosForNextRound() {
-        this.nextRoundBank.drawFromStack(this.stack);
-    }
-
     private void copyAndRemoveNextRoundBankToCurrentBank() {
         this.currentRoundBank = this.nextRoundBank.copy();
         this.nextRoundBank.clearAllEntries();
     }
 
-    private void endRound() {
-
+    private void randomlyDrawNewDominosForNextRound() {
+        this.nextRoundBank.drawFromStack(this.stack);
     }
 
-    private void botsDoTheirTurn() {
+    /**
+     * Ends round and displays the result of all players
+     */
+    private void endRound() {
 
     }
 

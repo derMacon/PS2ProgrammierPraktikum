@@ -24,9 +24,9 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     }
 
     @Override
-    public Bank selectFromBank(Bank bank) {
+    public int selectFromBank(Bank bank) {
         // TODO insert code
-        return null;
+        return 0;
     }
 
     @Override

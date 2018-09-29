@@ -9,11 +9,12 @@ import logic.token.Domino;
 public interface BotBehavior {
 
     /**
-     * Bot selects a domino from a given bank
+     * Bot selects a domino from a given bank, and returns the selected bank index
      *
-     * @param bank
+     * @param bank the bank that the player will select from
+     * @return the selected bank index
      */
-    Bank selectFromBank(Bank bank);
+    int selectFromBank(Bank bank);
 
     /**
      * Bot searches for a position on the board where it is possible to lay a domino.
