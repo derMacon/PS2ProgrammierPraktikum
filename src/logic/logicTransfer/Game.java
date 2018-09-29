@@ -300,17 +300,14 @@ public class Game implements GUI2Game {
     }
 
     @Override
-    public boolean domFits(Domino dom, Board board) {
-        // TODO insert code
-        return false;
-    }
-
-    @Override
     public void moveBoard(int dir) {
         // TODO insert code
     }
 
-
+    @Override
+    public void disposeCurrDomino() {
+        setToChooseBox(null);
+    }
 
     // ---------------------------------- Helping methods ----------------------------------
 

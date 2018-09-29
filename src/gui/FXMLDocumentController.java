@@ -510,58 +510,55 @@ public class FXMLDocumentController implements Initializable {
 
     // --- Game interactions ---
 
-//    @FXML
-//    private void onClickGrdPnCurrentBank(MouseEvent event) {
-//        int x = -1;
-//        int y = -1;
-//        boolean leftClicked = event.getButton() == MouseButton.PRIMARY;
-//        boolean rightClicked = event.getButton() == MouseButton.SECONDARY;
-//
-//        //determine the imageview of the grid that contains the coordinates of the mouseclick
-//        //to determine the board-coordinates
-//        for (Node node : grdPnCurrentSelectiveGroup.getChildren()) {
-//            if (node instanceof ImageView) {
-//                if (node.getBoundsInParent().contains(event.getX(), event.getY())) {
-//                    //to use following methods the columnIndex and rowIndex
-//                    //must have been set when adding the imageview to the grid
-//                    x = GridPane.getColumnIndex(node);
-//                    y = GridPane.getRowIndex(node);
-//                }
-//            }
-//        }
-//
-//        if (x >= 0 && y >= 0 && leftClicked) {
-//            this.game.selectDomOnCurrBank(y);
-//
-//        }
-//    }
-//
-//    @FXML
-//    private void onClickGrdPnNextBank(MouseEvent event) {
-//        int x = -1;
-//        int y = -1;
-//        boolean leftClicked = event.getButton() == MouseButton.PRIMARY;
-//        boolean rightClicked = event.getButton() == MouseButton.SECONDARY;
-//
-//        //determine the imageview of the grid that contains the coordinates of the mouseclick
-//        //to determine the board-coordinates
-//        for (Node node : grdPnFutureselectiveGroup.getChildren()) {
-//            if (node instanceof ImageView) {
-//                if (node.getBoundsInParent().contains(event.getX(), event.getY())) {
-//                    //to use following methods the columnIndex and rowIndex
-//                    //must have been set when adding the imageview to the grid
-//                    x = GridPane.getColumnIndex(node);
-//                    y = GridPane.getRowIndex(node);
-//                }
-//            }
-//        }
-//
-//        if (x >= 0 && y >= 0 && leftClicked) {
-//            this.game.selectDomOnNextBank(y);
-//        }
-//    }
+    @FXML
+    private void onClickGrdPnCurrentBank(MouseEvent event) {
+        int x = -1;
+        int y = -1;
+        boolean leftClicked = event.getButton() == MouseButton.PRIMARY;
+        boolean rightClicked = event.getButton() == MouseButton.SECONDARY;
 
+        //determine the imageview of the grid that contains the coordinates of the mouseclick
+        //to determine the board-coordinates
+        for (Node node : grdPnCurrentSelectiveGroup.getChildren()) {
+            if (node instanceof ImageView) {
+                if (node.getBoundsInParent().contains(event.getX(), event.getY())) {
+                    //to use following methods the columnIndex and rowIndex
+                    //must have been set when adding the imageview to the grid
+                    x = GridPane.getColumnIndex(node);
+                    y = GridPane.getRowIndex(node);
+                }
+            }
+        }
 
+        if (x >= 0 && y >= 0 && leftClicked) {
+            this.game.selectDomOnCurrBank(y);
+        }
+    }
+
+    @FXML
+    private void onClickGrdPnNextBank(MouseEvent event) {
+        int x = -1;
+        int y = -1;
+        boolean leftClicked = event.getButton() == MouseButton.PRIMARY;
+        boolean rightClicked = event.getButton() == MouseButton.SECONDARY;
+
+        //determine the imageview of the grid that contains the coordinates of the mouseclick
+        //to determine the board-coordinates
+        for (Node node : grdPnFutureselectiveGroup.getChildren()) {
+            if (node instanceof ImageView) {
+                if (node.getBoundsInParent().contains(event.getX(), event.getY())) {
+                    //to use following methods the columnIndex and rowIndex
+                    //must have been set when adding the imageview to the grid
+                    x = GridPane.getColumnIndex(node);
+                    y = GridPane.getRowIndex(node);
+                }
+            }
+        }
+
+        if (x >= 0 && y >= 0 && leftClicked) {
+            this.game.selectDomOnNextBank(y);
+        }
+    }
 
     @FXML
     private void onClickPnSelected(MouseEvent event) {
@@ -584,6 +581,12 @@ public class FXMLDocumentController implements Initializable {
 
         event.consume();
 
+    }
+
+    @FXML
+    private void dispose(MouseEvent event) {
+        System.out.println("dispose");
+        this.game.disposeCurrDomino();
     }
 
     /**

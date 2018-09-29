@@ -36,13 +36,9 @@ public interface GUI2Game {
     boolean fits(Pos pos);
 
     /**
-     * Checks if a given domino fits on a given board
-     * @param dom domino who's position will be checked
-     * @param board board to check for dominos position
-     * @return true if domino fits on the board, null one of the parameters equals null or if the domino's position
-     * equals null.
+     * Disposes the Human player's selected domino (this.currDomino)
      */
-    boolean domFits(Domino dom, Board board);
+    void disposeCurrDomino();
 
     /**
      * puts the current Domino to the given position on board and removes it

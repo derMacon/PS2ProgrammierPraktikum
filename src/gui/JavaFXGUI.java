@@ -24,14 +24,13 @@ public class JavaFXGUI implements GUIConnector {
 
     //25 images for each face of a half (0..24)
     private static int IMG_COUNT = 25;
-//    protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV1.png");
+    //    protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV1.png");
     protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV3.png");
 
     /**
      * Texture for the chip representing the selection of player 1
      */
     public static final Image SELECTION_PLAYER_1_TEXTURE = new Image("gui/textures/ChipV2.png");
-
 
 
     private Image[] imgs;
@@ -125,7 +124,6 @@ public class JavaFXGUI implements GUIConnector {
     public void showPointsForPlayer(Player pl, int points) {
 
     }
-
 
 
     @Override
@@ -238,10 +236,10 @@ public class JavaFXGUI implements GUIConnector {
     }
 
 
-   @Override
-   public void updateGrid(int playerOrd, Board board) {
-       // TODO insert code
-   }
+    @Override
+    public void updateGrid(int playerOrd, Board board) {
+        // TODO insert code
+    }
 
     @Override
     public void updateAllPlayers(Player[] players) {
@@ -262,7 +260,6 @@ public class JavaFXGUI implements GUIConnector {
 //            }
 //        }
     }
-
 
 
     @Override
@@ -289,11 +286,12 @@ public class JavaFXGUI implements GUIConnector {
 
     /**
      * Checks if a given Pos is a valid position in the given ImageView array.
+     *
      * @param board Array to check with
-     * @param pos pos to check
+     * @param pos   pos to check
      * @return true if both parameters are uenqual to null and the pos represents a valid board position
      */
-    protected  boolean isValidPosOnGameGrid(ImageView[][] board, Pos pos) {
+    protected boolean isValidPosOnGameGrid(ImageView[][] board, Pos pos) {
         return null != board && null != pos && null != board[0]
                 && 0 <= pos.x() && board[0].length > pos.x()
                 && 0 <= pos.y() && board[0].length > pos.y();
@@ -460,7 +458,13 @@ public class JavaFXGUI implements GUIConnector {
     @Override
     public void selectDomino(int ordBank, int idxDom, int ordPlayer) {
         System.out.println("Select " + idxDom);
-        this.imgVwsCurrentBankSelection[0][idxDom].setImage(SELECTION_PLAYER_1_TEXTURE);
+        switch (ordPlayer) {
+            case Game.HUMAN_PLAYER_IDX:
+                this.imgVwsCurrentBankSelection[0][idxDom].setImage(SELECTION_PLAYER_1_TEXTURE);
+                break;
+            default:
+                System.out.println("Not supported yet");
+        }
 
     }
 
@@ -471,7 +475,7 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void deleteDomFromBank(int ordBank, int idx) {
-        if(0 == ordBank) {
+        if (0 == ordBank) {
             this.imgVwsCurrentBank[0][idx].setImage(EMPTY_IMG);
             this.imgVwsCurrentBank[1][idx].setImage(EMPTY_IMG);
         } else if (1 == ordBank) {
