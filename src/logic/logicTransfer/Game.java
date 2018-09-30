@@ -21,7 +21,7 @@ public class Game implements GUI2Game {
     /**
      * Index for the next round's bank
      */
-    public static final  int NEXT_BANK_IDX = 1;
+    public static final int NEXT_BANK_IDX = 1;
 
     /**
      * Index for the human player in the local players array
@@ -103,6 +103,17 @@ public class Game implements GUI2Game {
      */
     public Game(GUIConnector gui, Player[] players, int currPlayerIdx, Bank currentRoundBank, Bank nextRoundBank,
                 List<Domino> stack, Domino currDomino) {
+        initTestingLoadingConstructor(gui, players, currPlayerIdx, currentRoundBank, nextRoundBank, stack, currDomino);
+    }
+
+    public Game(GUIConnector gui, String input) {
+        Converter gameContent = new Converter(gui, input);
+        initTestingLoadingConstructor(gui, gameContent.getPlayers(), HUMAN_PLAYER_IDX, gameContent.getCurrentBank(), gameContent.getNextBank(),
+                gameContent.getStack(), gameContent.getCurrDomino());
+    }
+
+    private void initTestingLoadingConstructor(GUIConnector gui, Player[] players, int currPlayerIdx, Bank currentRoundBank, Bank nextRoundBank,
+                                               List<Domino> stack, Domino currDomino) {
         this.gui = gui;
         this.players = players;
         this.currentRoundBank = currentRoundBank;
@@ -112,11 +123,9 @@ public class Game implements GUI2Game {
         this.currPlayerIdx = currPlayerIdx;
     }
 
-    public Game(GUIConnector gui, String input) {
-
-    }
 
     // --- saving / loading game ---
+
     /**
      * Constructor used to laod game out of a file with a given path
      *
@@ -134,6 +143,7 @@ public class Game implements GUI2Game {
 
 
     // --- Setter / Getter ---
+
     /**
      * Getter for the current bank
      *
@@ -170,6 +180,7 @@ public class Game implements GUI2Game {
 
     /**
      * Getter for the domino stack
+     *
      * @return
      */
     public List<Domino> getStack() {
@@ -203,6 +214,7 @@ public class Game implements GUI2Game {
      * - Players after Human in the array also select a domino, the label to show who's turn is always updated
      * - Players who selected lower value cards each select a domino on the next round bank and display it on the gui
      * <p>
+     *
      * @param idx Index of the domino selected by the Human-Player
      */
     @Override
@@ -229,7 +241,6 @@ public class Game implements GUI2Game {
     }
 
 
-
     // ---------------------------------- Standard round ----------------------------------
 
     // |Human: selectDomOnNextBank| -> |Human: setOnBoard| -> |Bots do their turn| -> |Banks will be drawn from stack|
@@ -247,6 +258,7 @@ public class Game implements GUI2Game {
     public void selectDomOnNextBank(int idx) {
 
     }
+
     /**
      * - Player lays domino on the board
      * - Iterate through current round bank getting the players, as long as it's not the human player:
@@ -267,7 +279,6 @@ public class Game implements GUI2Game {
         botsDoTheirTurn();
         setupNextRound(); // also determines if game is over, will call endRound() if necessary
     }
-
 
 
     // ---------------------------------- Further interactions with the board / game ----------------------------------
@@ -299,6 +310,7 @@ public class Game implements GUI2Game {
     // ---------------------------------- Helping methods ----------------------------------
 
     // --- Init game ---
+
     /**
      * Creates a new Player array. Used to initialize the players field.
      *
@@ -317,6 +329,7 @@ public class Game implements GUI2Game {
      * Generates a PlayerType array with a Human player type on the first slot and the default player type on the rest
      * of the slots. The output will be used as a default setting for the user decided playertypes. With this method it
      * is possible to skip the intro FXML if desired and start with the standard blueprint for the playertypes.
+     *
      * @param playerCnt number of players participating in the game
      * @return Playertype array containing a Human player type on the first slot and the default pllayer type on all
      * other slots.
@@ -343,6 +356,7 @@ public class Game implements GUI2Game {
     }
 
     // --- Do necessary turns / Setting up banks for next round ---
+
     /**
      * Iterates through the selected players from the current bank until the selected player is the Human player.
      * If the round is finished (the last bank slot was evaluated) the next round will be setup (banks will be loaded)
@@ -377,6 +391,7 @@ public class Game implements GUI2Game {
     }
 
     // --- Human interaction ---
+
     /**
      * Checks if a player index is valid
      *

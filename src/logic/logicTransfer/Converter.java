@@ -1,6 +1,7 @@
 package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
+import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerTypes.PlayerType;
 import logic.token.Domino;
@@ -57,7 +58,7 @@ public class Converter {
         return currDomino;
     }
 
-    public Converter(String input, GUIConnector gui) {
+    public Converter(GUIConnector gui, String input) {
         String[][] descriptionBlocks = gendDescriptiveField(input);
         fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui);
     }
@@ -77,34 +78,53 @@ public class Converter {
      */
     public String[][] gendDescriptiveField(String input) {
         List<String> blocks = new LinkedList<>();
-
+        // overall sections (board/banks/stack) are seperated
         for (String currBlock : input.split("<")) {
             blocks.add(currBlock);
         }
-
-        /**
-         * First element of the list is useless
-         */
+         // First element of the list is useless
         int usefullElemCnt = blocks.get(0).equals("") ? blocks.size() - 1 : blocks.size();
-
+        // overall sections modified: title in first field, data in second
         String[][] output = new String[usefullElemCnt][2];
         for (int i = 0; i < usefullElemCnt; i++) {
-            output[i] = (blocks.get(i + 1).split(">"));
+            output[i] = (blocks.get(i + 1).split(">\n"));
         }
-
         return output;
     }
 
+    /**
+     * Generates the data for the fields. Iterates through the given description blocks, checks the title to chose which
+     * conversion method will be called
+     * @param descriptionBlocks
+     * @param gui
+     */
     public void fillFieldsWithDescriptiveBlocks(String[][] descriptionBlocks, GUIConnector gui) {
         for (int i = 0; i < descriptionBlocks.length; i++) {
             switch (descriptionBlocks[i][DESCRIPTION_IDX]) {
-                case BOARD_IDENTIFIER: break;
+                case BOARD_IDENTIFIER:
+                    this.players.add(convertStrToPlayerWithDefaultOccupancy(descriptionBlocks[i][DATA_IDX], i, gui));
+                    break;
                 case BANK_IDENTIFIER: break;
                 case STACK_IDENTIFIER: break;
                 default:
                     System.out.println("Not a valid identifier at idx " + i);
             }
         }
+    }
+    
+    private Player convertStrToPlayerWithDefaultOccupancy(String input, int idxPlayerArray, GUIConnector gui) {
+        PlayerType defaultPlayerTypeRelativeToIdx = 0 == idxPlayerArray ? PlayerType.HUMAN : PlayerType.DEFAULT;
+        return convertStrToPlayer(input, defaultPlayerTypeRelativeToIdx, idxPlayerArray, gui);
+    }
+
+    private Player convertStrToPlayer(String input, PlayerType type, int idxPlayerArray, GUIConnector gui) {
+        return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(type, new Board(input), idxPlayerArray, gui);
+    }
+    
+    
+    
+    private Bank convertStrToBank(String input) {
+        return null; 
     }
 
 

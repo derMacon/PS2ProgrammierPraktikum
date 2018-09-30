@@ -10,6 +10,7 @@ import logic.playerTypes.HumanPlayer;
 import logic.playerState.Player;
 import logic.playerTypes.PlayerType;
 import logic.token.Domino;
+import logic.token.SingleTile;
 import logic.token.Tiles;
 import org.junit.Test;
 
@@ -51,7 +52,7 @@ public class GameTest {
     @Test
     public void testConstructor_gui_int_int_int_AfterStart() {
         Game game = new Game(new FakeGUI(), 2, 3, 5);
-        game.startGame(new PlayerType[] {PlayerType.HUMAN}, 5, 5);
+        game.startGame(new PlayerType[]{PlayerType.HUMAN}, 5, 5);
 
         // banks initialized -> current bank now with content
         assertFalse(game.getCurrentRoundBank().isEmpty());
@@ -75,7 +76,7 @@ public class GameTest {
         Bank nextBank = new Bank(4);
         List<Domino> stack = new LinkedList<>();
 
-        Game gameTestingConstr = new Game(fakeGui, players, 0, currentBank, nextBank, stack,null);
+        Game gameTestingConstr = new Game(fakeGui, players, 0, currentBank, nextBank, stack, null);
 
         assertEquals(4, gameTestingConstr.getNumberOfPlayers());
         assertEquals(4, gameTestingConstr.getCurrentRoundBank().getBankSize());
@@ -158,18 +159,66 @@ public class GameTest {
         // against. Idea: Save a .txt file with a desired gamestatus somewhere in the repository and read it with this
         // test to generate a game.
 
+        String testGameRepresentation =
+                "<Spielfeld>\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- H1 P0 --\n" +
+                        "-- -- CC -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "<Spielfeld>\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- H1 P0 P1\n" +
+                        "-- -- CC -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "<Spielfeld>\n" +
+                        "-- -- -- P1 --\n" +
+                        "-- -- H1 P0 --\n" +
+                        "-- -- CC -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "<Spielfeld>\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- H1 P0 --\n" +
+                        "-- -- CC P1 --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "<Bänke>\n" +
+                        "0 H1P0,2 P0O1,3 I1P0\n" +
+                        "- P0P0,- A0A0,1 H0A0,- P1H0" +
+                        "<Beutel>\n" +
+                        "P0P0,P0P0,A1H0,I2P0";
+
         //TODO insert code for string representation of the initialized game.
-        Game gameTestingConstr = new Game(new FakeGUI(), "");
+        Game gameTestingConstr = new Game(new FakeGUI(), testGameRepresentation);
 
         // - actual tests -
+        // Board
+        SingleTile[][] expectedCells = new SingleTile[][]{
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, SingleTile.H1, SingleTile.CC, null, null},
+                {null, SingleTile.P0, null, null, null},
+                {null, null, null, null, null}
+        };
 
-        assertEquals(4, gameTestingConstr.getNumberOfPlayers());
-        assertEquals(4, gameTestingConstr.getCurrentRoundBank().getBankSize());
-        assertEquals(4, gameTestingConstr.getNextRoundBank().getBankSize());
 
-        // banks initialized
-        assertNotNull(gameTestingConstr.getCurrentRoundBank().getEntries());
-        assertNotNull(gameTestingConstr.getNextRoundBank().getEntries());
+//                {null, null, null, null, null},
+//                {null, null, SingleTile.H1, SingleTile.P0, null},
+//                {null, null, SingleTile.CC, null, null},
+//                {null, null, null, null, null},
+//                {null, null, null, null, null}
+//        };
+        assertArrayEquals(expectedCells, gameTestingConstr.getPlayers()[0].getBoard().getCells());
+
+//        assertEquals(4, gameTestingConstr.getNumberOfPlayers());
+//        assertEquals(4, gameTestingConstr.getCurrentRoundBank().getBankSize());
+//        assertEquals(4, gameTestingConstr.getNextRoundBank().getBankSize());
+//
+//        // banks initialized
+//        assertNotNull(gameTestingConstr.getCurrentRoundBank().getEntries());
+//        assertNotNull(gameTestingConstr.getNextRoundBank().getEntries());
         // now with content
 //        assertArrayEquals(entries, gameTestingConstr.getCurrentRoundBank().getEntries());
 
