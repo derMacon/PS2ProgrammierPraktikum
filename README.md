@@ -51,7 +51,6 @@ game - class
 - selectFromBank mit Rueckgabetyp Bank um klarzustellen, dass die Bank modifiziert wird. Dasselbe gilt fuer drawFromStack().
 - showInChooseBox mit Kommentar versehen, dass im final Commit in selectDomOnNextBank stehen soll
 
-- setupNextRound in botsdotheirturn verschieben
 - dispose fehlt
 - setupnextround mit aktualisierung der punkte
 - boxclicked println muss weg
