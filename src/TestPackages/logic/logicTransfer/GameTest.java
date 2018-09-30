@@ -117,10 +117,10 @@ public class GameTest {
         Player pl4 = new DefaultAIPlayer(fakeGui, 3, sizeX, sizeY);
         Player[] players = new Player[]{pl1, pl2, pl3, pl4};
 
-        Entry entry1 = new Entry(new Domino(Tiles.P0_H0_Val13));
-        Entry entry2 = new Entry(new Domino(Tiles.A0_A0_Val7));
-        Entry entry3 = new Entry(new Domino(Tiles.A0_S2_Val42));
-        Entry entry4 = new Entry(new Domino(Tiles.A0_S1_Val37));
+        Entry entry1 = new Entry(new Domino(Tiles.P0H0_Val13));
+        Entry entry2 = new Entry(new Domino(Tiles.A0A0_Val7));
+        Entry entry3 = new Entry(new Domino(Tiles.A0S2_Val42));
+        Entry entry4 = new Entry(new Domino(Tiles.A0S1_Val37));
         Entry[] entries = new Entry[]{entry1, entry2, entry3, entry4};
         Bank currentBank = new Bank(entries, new Random());
         Bank nextBank = new Bank(4);

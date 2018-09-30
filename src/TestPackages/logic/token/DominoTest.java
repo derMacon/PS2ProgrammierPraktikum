@@ -23,7 +23,7 @@ public class DominoTest {
 
     @Test
     public void testPositions_rot0() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13, new Pos(1, 1), 0);
+        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(1, 1), 0);
         assertEquals(0, dom.getRot());
         assertEquals(P0, dom.getFstVal());
         assertEquals(H0, dom.getSndVal());
@@ -32,7 +32,7 @@ public class DominoTest {
 
     @Test
     public void testPositions_rot1() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13, new Pos(1, 1), 1);
+        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(1, 1), 1);
         assertEquals(1, dom.getRot());
         assertEquals(P0, dom.getFstVal());
         assertEquals(H0, dom.getSndVal());
@@ -41,7 +41,7 @@ public class DominoTest {
 
     @Test
     public void testPositions_rot2() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13, new Pos(0, 1), 2);
+        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(0, 1), 2);
         assertEquals(2, dom.getRot());
         assertEquals(H0, dom.getFstVal());
         assertEquals(P0, dom.getSndVal());
@@ -50,7 +50,7 @@ public class DominoTest {
 
     @Test
     public void testPositions_rot3() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13, new Pos(1, 0), 3);
+        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(1, 0), 3);
         assertEquals(3, dom.getRot());
         assertEquals(H0, dom.getFstVal());
         assertEquals(P0, dom.getSndVal());
@@ -61,10 +61,10 @@ public class DominoTest {
     // --- constructor ---
     @Test
     public void testDifferentConstructors_TestEquality() {
-        Domino dom1 = new Domino(Tiles.P0_H0_Val13, new Pos(0, 0), 0);
-        Domino dom2 = new Domino(Tiles.P0_H0_Val13, new Pos(0, 0));
-        Domino dom3 = new Domino(Tiles.P0_H0_Val13, 0);
-        Domino dom4 = new Domino(Tiles.P0_H0_Val13);
+        Domino dom1 = new Domino(Tiles.P0H0_Val13, new Pos(0, 0), 0);
+        Domino dom2 = new Domino(Tiles.P0H0_Val13, new Pos(0, 0));
+        Domino dom3 = new Domino(Tiles.P0H0_Val13, 0);
+        Domino dom4 = new Domino(Tiles.P0H0_Val13);
         assertTrue(dom1.equals(dom2));
         assertTrue(dom1.equals(dom3));
         assertTrue(dom1.equals(dom4));
@@ -80,7 +80,7 @@ public class DominoTest {
 
     @Test
     public void testDifferentConstructors_NullParam1b() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13, null, 0);
+        Domino dom = new Domino(Tiles.P0H0_Val13, null, 0);
         assertNull(dom.getFstPos());
         assertNull(dom.getSndPos());
     }
@@ -92,7 +92,7 @@ public class DominoTest {
 
     @Test
     public void testDifferentConstructors_NullParam2b() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13, null);
+        Domino dom = new Domino(Tiles.P0H0_Val13, null);
         assertNull(dom.getFstPos());
         assertNull(dom.getSndPos());
     }
@@ -104,12 +104,12 @@ public class DominoTest {
 
     @Test (expected = AssertionError.class)
     public void testDifferentConstructors_NullParam3b() {
-        new Domino(Tiles.P0_H0_Val13, -1);
+        new Domino(Tiles.P0H0_Val13, -1);
     }
 
     @Test (expected = AssertionError.class)
     public void testDifferentConstructors_NullParam3c() {
-        new Domino(Tiles.P0_H0_Val13, 4);
+        new Domino(Tiles.P0H0_Val13, 4);
     }
 
     @Test (expected = AssertionError.class)
@@ -130,7 +130,7 @@ public class DominoTest {
 
     @Test
     public void testIncRot0() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13);
+        Domino dom = new Domino(Tiles.P0H0_Val13);
         assertEquals(0, dom.getRot());
         assertEquals(P0, dom.getFstVal());
         assertEquals(H0, dom.getSndVal());
@@ -139,7 +139,7 @@ public class DominoTest {
 
     @Test
     public void testIncRot1() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13);
+        Domino dom = new Domino(Tiles.P0H0_Val13);
         dom.incRot();
         assertEquals(1, dom.getRot());
         assertEquals(P0, dom.getFstVal());
@@ -149,7 +149,7 @@ public class DominoTest {
 
     @Test
     public void testIncRot2() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13);
+        Domino dom = new Domino(Tiles.P0H0_Val13);
         dom.incRot();
         dom.incRot();
         assertEquals(2, dom.getRot());
@@ -160,7 +160,7 @@ public class DominoTest {
 
     @Test
     public void testIncRot3() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13);
+        Domino dom = new Domino(Tiles.P0H0_Val13);
         dom.incRot();
         dom.incRot();
         dom.incRot();
@@ -172,7 +172,7 @@ public class DominoTest {
 
     @Test
     public void testIncRot4() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13);
+        Domino dom = new Domino(Tiles.P0H0_Val13);
         dom.incRot();
         dom.incRot();
         dom.incRot();
@@ -185,7 +185,7 @@ public class DominoTest {
 
     @Test
     public void testIncRot_NullPos() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13, null);
+        Domino dom = new Domino(Tiles.P0H0_Val13, null);
         assertEquals(0, dom.getRot());
         dom.incRot();
         assertEquals(1, dom.getRot());
@@ -199,7 +199,7 @@ public class DominoTest {
     // --- getTileDistrictType ---
     @Test
     public void testGetTileDistrictType() {
-        Domino dom = new Domino(Tiles.P0_H0_Val13);
+        Domino dom = new Domino(Tiles.P0H0_Val13);
         assertEquals(DistrictType.PARK, dom.genTileDistrictType(0));
         assertEquals(DistrictType.HOME, dom.genTileDistrictType(1));
         assertNull(dom.genTileDistrictType(-1));

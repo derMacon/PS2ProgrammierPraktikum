@@ -55,9 +55,8 @@ public class Entry {
             this.selectedPlayer = players.get(ordPlayer);
         }
 
-        this.domino = new Domino(Tiles.fromString(components[DOMINO_IDX]));
-
         // Set domino
+        this.domino = new Domino(Tiles.fromString(components[DOMINO_IDX]));
 
     }
 

@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class Bank {
 
-    private final String SEPERATOR_STRING_REPRESENTATION = ", ";
+    private final String SEPERATOR_STRING_REPRESENTATION = ",";
 
     /**
      * Number of entries in this bank

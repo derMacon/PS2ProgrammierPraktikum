@@ -5,6 +5,7 @@ import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerTypes.PlayerType;
 import logic.token.Domino;
+import logic.token.Tiles;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -25,6 +26,11 @@ public class Converter {
     private Bank nextBank;
     private List<Domino> stack;
     private Domino currDomino;
+
+    // stack of possible dominos, only for internal purposes -> no gettter, every method has to delete the used dominos
+    private List<Domino> possibleDominos = Domino.fill(new LinkedList<Domino>());
+
+
 
     public static int getDescriptionIdx() {
         return DESCRIPTION_IDX;
@@ -64,7 +70,7 @@ public class Converter {
     }
 
     /**
-     * Takes a given String and extracts the information about the game. The Datastructure can be described as follows:
+     * Takes a given String and extracts the information about the game. The data structure can be described as follows:
      *
      * <Spielfeld>
      * <Spielfeld>
@@ -102,10 +108,16 @@ public class Converter {
         for (int i = 0; i < descriptionBlocks.length; i++) {
             switch (descriptionBlocks[i][DESCRIPTION_IDX]) {
                 case BOARD_IDENTIFIER:
-                    this.players.add(convertStrToPlayerWithDefaultOccupancy(descriptionBlocks[i][DATA_IDX], i, gui));
+                    this.players.add(i, convertStrToPlayerWithDefaultOccupancy(descriptionBlocks[i][DATA_IDX], i, gui));
                     break;
-                case BANK_IDENTIFIER: break;
-                case STACK_IDENTIFIER: break;
+                case BANK_IDENTIFIER:
+                    Bank[] banks = convertStrToBank(descriptionBlocks[i][DATA_IDX]);
+                    this.currentBank = banks[Game.CURRENT_BANK_IDX];
+                    this.nextBank = banks[Game.NEXT_BANK_IDX];
+                    break;
+                case STACK_IDENTIFIER:
+                    this.stack = convertStrToStack(descriptionBlocks[i][DATA_IDX]);
+                    break;
                 default:
                     System.out.println("Not a valid identifier at idx " + i);
             }
@@ -119,6 +131,7 @@ public class Converter {
     }
 
     private Player convertStrToPlayer(String input, PlayerType type, int idxPlayerArray, GUIConnector gui) {
+        // TODO update possible dominos list
         return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(type, new Board(input), idxPlayerArray, gui);
     }
     
@@ -128,7 +141,18 @@ public class Converter {
         Bank[] output = new Bank[2];
         output[Game.CURRENT_BANK_IDX] = new Bank(bothBanks[0], this.players);
         output[Game.NEXT_BANK_IDX] = new Bank(bothBanks[1], this.players);
-        return output; 
+        // TODO update possible dominos list
+        return output;
+    }
+
+    // --- convert stack ---
+    private List<Domino> convertStrToStack(String input) {
+        String[] dominosStr = input.split(",");
+        List<Domino> output = new LinkedList<>();
+        for(String currDomStr : dominosStr) {
+            output.add(new Domino(Tiles.fromString(currDomStr)));
+        }
+        return output;
     }
 
 

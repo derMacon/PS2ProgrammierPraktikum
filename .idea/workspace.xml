@@ -6,29 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/otherDocs/IDEAHotkeys.txt" beforeDir="false" afterPath="$PROJECT_DIR$/otherDocs/IDEAHotkeys.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/TestPackages/logic/logicTransfer/GameTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/TestPackages/logic/logicTransfer/GameTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/gui/FXMLDocumentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/gui/FXMLDocumentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/gui/JavaFXGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/gui/JavaFXGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/LogicTransfer/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/LogicTransfer/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/PlayerState/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/PlayerState/Board.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Token/DistrictType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Token/DistrictType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Token/SingleTile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Token/SingleTile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/playerTypes/PlayerType$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/playerTypes/PlayerType$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/playerTypes/PlayerType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/playerTypes/PlayerType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/TestPackages/logic/token/DominoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/TestPackages/logic/token/DominoTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/BankSelection/Entry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/BankSelection/Entry.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Token/Tiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/Token/Tiles.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TestPackages/logic/logicTransfer/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestPackages/logic/logicTransfer/GameTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestPackages/other/FakeGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestPackages/other/FakeGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FXMLDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FXMLDocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/JavaFXGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/JavaFXGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestPackages/logic/token/DominoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestPackages/logic/token/DominoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/bankSelection/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/bankSelection/Bank.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/bankSelection/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/bankSelection/Entry.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/logicTransfer/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/logicTransfer/Converter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/logicTransfer/GUIConnector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/logicTransfer/GUIConnector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/playerState/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/playerState/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/playerTypes/PlayerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/playerTypes/PlayerType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/DistrictType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/DistrictType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/SingleTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/SingleTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/token/Tiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/Tiles.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -106,7 +93,7 @@
                 </provider>
               </entry>
             </file>
-            <file pinned="false" current-in-tab="true">
+            <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/BoardTest.java">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="432">
@@ -131,11 +118,11 @@
                 </provider>
               </entry>
             </file>
-            <file pinned="false" current-in-tab="false">
+            <file pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Game.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="341">
-                    <caret line="332" column="53" selection-start-line="332" selection-start-column="53" selection-end-line="332" selection-end-column="53" />
+                  <state relative-caret-position="180">
+                    <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
                   </state>
                 </provider>
               </entry>
@@ -182,12 +169,12 @@
         <counts>
           <entry key="dummy" value="30" />
           <entry key="fxml" value="24" />
-          <entry key="java" value="89161" />
+          <entry key="java" value="90057" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="89161" />
+          <entry key="JAVA" value="90057" />
           <entry key="PLAIN_TEXT" value="30" />
           <entry key="XML" value="24" />
         </counts>
@@ -197,7 +184,7 @@
           <entry key="Domino" value="1" />
           <entry key="class" value="15" />
           <entry key="fxml" value="22" />
-          <entry key="java" value="345" />
+          <entry key="java" value="346" />
           <entry key="png" value="5" />
           <entry key="txt" value="4" />
         </counts>
@@ -206,7 +193,7 @@
         <counts>
           <entry key="CLASS" value="15" />
           <entry key="Image" value="5" />
-          <entry key="JAVA" value="345" />
+          <entry key="JAVA" value="346" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="XML" value="22" />
         </counts>
@@ -220,23 +207,11 @@
     <splitter split-orientation="horizontal" split-proportion="0.51419836">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/GUI2Game.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="576">
-                  <caret line="57" column="7" lean-forward="true" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="7" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Converter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="630">
-                  <caret line="130" column="23" lean-forward="true" selection-start-line="130" selection-start-column="23" selection-end-line="130" selection-end-column="23" />
+                <state relative-caret-position="396">
+                  <caret line="72" column="82" selection-start-line="72" selection-start-column="82" selection-end-line="72" selection-end-column="82" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -247,8 +222,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Bank.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="476">
-                  <caret line="54" column="9" lean-forward="true" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+                <state relative-caret-position="126">
+                  <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="63" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -259,8 +234,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Entry.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="476">
-                  <caret line="57" column="71" selection-start-line="57" selection-start-column="71" selection-end-line="57" selection-end-column="71" />
+                <state relative-caret-position="480">
+                  <caret line="58" column="45" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
                 </state>
               </provider>
             </entry>
@@ -268,8 +243,21 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/logic/token/Tiles.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-962">
-                  <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+                <state relative-caret-position="288">
+                  <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/token/DominoTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="710">
+                  <caret line="201" column="40" selection-start-line="201" selection-start-column="40" selection-end-line="201" selection-end-column="40" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#275#348#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -286,8 +274,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/logicTransfer/GameTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="775">
-                  <caret line="237" selection-start-line="237" selection-end-line="237" />
+                <state relative-caret-position="1116">
+                  <caret line="234" column="60" lean-forward="true" selection-start-line="234" selection-start-column="60" selection-end-line="234" selection-end-column="60" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -404,7 +392,6 @@
         <option value="$PROJECT_DIR$/src/TestPackages/logic/Token/DominoTest.java" />
         <option value="$PROJECT_DIR$/src/estPackages/logic/Token/DominoTest.java" />
         <option value="$PROJECT_DIR$/src/TestPackages/logic/bankSelection/FakeGUI.java" />
-        <option value="$PROJECT_DIR$/src/TestPackages/logic/token/DominoTest.java" />
         <option value="$PROJECT_DIR$/src/other/Test.fxml" />
         <option value="$PROJECT_DIR$/src/TestPackages/logic/token/TilesTest.java" />
         <option value="$PROJECT_DIR$/src/logic/Result.java" />
@@ -440,14 +427,15 @@
         <option value="$PROJECT_DIR$/src/logic/token/SingleTile.java" />
         <option value="$PROJECT_DIR$/src/logic/playerTypes/PlayerType.java" />
         <option value="$PROJECT_DIR$/src/gui/FXMLDocumentController.java" />
-        <option value="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" />
         <option value="$PROJECT_DIR$/src/logic/logicTransfer/GUIConnector.java" />
         <option value="$PROJECT_DIR$/src/TestPackages/other/FakeGUI.java" />
         <option value="$PROJECT_DIR$/src/gui/JavaFXGUI.java" />
-        <option value="$PROJECT_DIR$/src/TestPackages/logic/logicTransfer/GameTest.java" />
-        <option value="$PROJECT_DIR$/src/logic/token/Tiles.java" />
-        <option value="$PROJECT_DIR$/src/logic/bankSelection/Bank.java" />
         <option value="$PROJECT_DIR$/src/logic/bankSelection/Entry.java" />
+        <option value="$PROJECT_DIR$/src/logic/token/Tiles.java" />
+        <option value="$PROJECT_DIR$/src/TestPackages/logic/token/DominoTest.java" />
+        <option value="$PROJECT_DIR$/src/TestPackages/logic/logicTransfer/GameTest.java" />
+        <option value="$PROJECT_DIR$/src/logic/bankSelection/Bank.java" />
+        <option value="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" />
         <option value="$PROJECT_DIR$/src/logic/logicTransfer/Converter.java" />
       </list>
     </option>
@@ -635,7 +623,7 @@
     <property name="SearchEverywhereHistoryKey" value="updatePlayer&#9;PSI&#9;JAVA://logic.logicTransfer.GUIConnector#updatePlayer&#10;randomly&#9;PSI&#9;JAVA://logic.logicTransfer.Game#randomlyDrawNewDominosForNextRound&#10;ChipV1&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Git/IDEA/PS2ProgrammierPraktikum/src/gui/textures/ChipV1.png&#10;domi&#9;PSI&#9;JAVA://logic.token.Domino&#10;EMPTY_I&#9;PSI&#9;JAVA://gui.JavaFXGUI#EMPTY_IMG&#10;EMPTY&#9;PSI&#9;JAVA://gui.JavaFXGUI#EMPTY_IMG&#10;EMPTY.&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Git/IDEA/PS2ProgrammierPraktikum/src/gui/img/Empty.png&#10;rand&#9;PSI&#9;JAVA://logic.BankSelection.Bank#rand" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538322987092" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538324771314" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -884,7 +872,7 @@
       <workItem from="1538259447315" duration="2272000" />
       <workItem from="1538262402398" duration="7037000" />
       <workItem from="1538311864756" duration="6573000" />
-      <workItem from="1538319353373" duration="3629000" />
+      <workItem from="1538319353373" duration="5407000" />
     </task>
     <servers />
   </component>
@@ -921,7 +909,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="285311000" />
+    <option name="totallyTimeSpent" value="287089000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -936,7 +924,7 @@
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" weight="0.11963434" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.11963434" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -1090,17 +1078,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="399">
           <caret line="273" column="69" lean-forward="true" selection-start-line="273" selection-start-column="69" selection-end-line="273" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/token/DominoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2376">
-          <caret line="196" selection-start-line="196" selection-end-line="196" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#275#348#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1373,13 +1350,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="332" column="53" selection-start-line="332" selection-start-column="53" selection-end-line="332" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/playerTypes/PlayerType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="448">
@@ -1408,16 +1378,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/logicTransfer/GameTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="775">
-          <caret line="237" selection-start-line="237" selection-end-line="237" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/token/Domino.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
@@ -1425,34 +1385,62 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/token/Tiles.java">
+    <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Entry.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-962">
-          <caret line="26" column="28" lean-forward="true" selection-start-line="26" selection-start-column="28" selection-end-line="26" selection-end-column="28" />
+        <state relative-caret-position="480">
+          <caret line="58" column="45" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Bank.java">
+    <entry file="file://$PROJECT_DIR$/src/logic/token/Tiles.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="54" column="9" lean-forward="true" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+        <state relative-caret-position="288">
+          <caret line="16" column="27" lean-forward="true" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/token/DominoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="710">
+          <caret line="201" column="40" selection-start-line="201" selection-start-column="40" selection-end-line="201" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#275#348#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/logicTransfer/GameTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1116">
+          <caret line="234" column="60" lean-forward="true" selection-start-line="234" selection-start-column="60" selection-end-line="234" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Entry.java">
+    <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="57" column="71" selection-start-line="57" selection-start-column="71" selection-end-line="57" selection-end-column="71" />
+        <state relative-caret-position="126">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="63" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Converter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="130" column="23" lean-forward="true" selection-start-line="130" selection-start-column="23" selection-end-line="130" selection-end-column="23" />
+        <state relative-caret-position="396">
+          <caret line="72" column="82" selection-start-line="72" selection-start-column="82" selection-end-line="72" selection-end-column="82" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

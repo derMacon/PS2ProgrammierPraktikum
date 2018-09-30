@@ -14,10 +14,10 @@ import java.util.List;
 public class Game implements GUI2Game {
 
     public static final String BOARD_OCCUPANCE_FIRST_INSPECTION =
-            "P0 P1 -- -- --\n" +
-                    "-- -- -- H0 P2\n" +
-                    "-- -- CC H1 --\n" +
-                    "O2 O1 O0 S1 --\n";
+            "-- -- -- P2 --\n" +
+                    "-- -- -- H0 --\n" +
+                    "-- -- CC H1 S1\n" +
+                    "O2 O1 O0 -- --\n";
 
 
     /**
