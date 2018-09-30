@@ -75,7 +75,7 @@ public class GameTest {
         Bank nextBank = new Bank(4);
         List<Domino> stack = new LinkedList<>();
 
-        Game gameTestingConstr = new Game(fakeGui, players, 0, currentBank, nextBank, stack, 0, null);
+        Game gameTestingConstr = new Game(fakeGui, players, 0, currentBank, nextBank, stack,null);
 
         assertEquals(4, gameTestingConstr.getNumberOfPlayers());
         assertEquals(4, gameTestingConstr.getCurrentRoundBank().getBankSize());
@@ -127,7 +127,7 @@ public class GameTest {
         List<Domino> stack = new LinkedList<>();
         stack = Domino.fill(stack);
 
-        Game gameTestingConstr = new Game(fakeGui, players, 0, currentBank, nextBank, stack, 0, null);
+        Game gameTestingConstr = new Game(fakeGui, players, 0, currentBank, nextBank, stack, null);
 
         // - actual tests -
 
@@ -159,7 +159,7 @@ public class GameTest {
         // test to generate a game.
 
         //TODO insert code for string representation of the initialized game.
-        Game gameTestingConstr = new Game(null);
+        Game gameTestingConstr = new Game(new FakeGUI(), "");
 
         // - actual tests -
 

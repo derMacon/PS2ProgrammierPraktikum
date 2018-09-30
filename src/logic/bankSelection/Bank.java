@@ -188,7 +188,7 @@ public class Bank {
      *
      * @param stack list of dominos currently in the stack
      */
-    public void drawFromStack(List<Domino> stack) {
+    public void randomlyDrawFromStack(List<Domino> stack) {
         assert null != stack;
         if (0 < stack.size()) {
             for (int i = 0; i < bankSize; i++) {

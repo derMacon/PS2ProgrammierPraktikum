@@ -1,5 +1,6 @@
 package gui;
 
+import TestPackages.other.FakeGUI;
 import com.sun.jndi.toolkit.url.Uri;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -481,7 +482,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void mnTmLoadGame(ActionEvent event) throws MalformedURLException {
-        this.game = new Game(new Uri("test"));
+        this.game = new Game(new FakeGUI(), new Uri("test"));
     }
 
     /**

@@ -63,15 +63,6 @@ public class Game implements GUI2Game {
      */
     private GUIConnector gui;
 
-    /**
-     * Stardard board size (x - dimension)
-     */
-    private final int standardBoardSizeX;
-
-    /**
-     * Stardard board size (y - dimension)
-     */
-    private final int standardBoardSizeY;
 
     /**
      * Logger for this game
@@ -88,8 +79,6 @@ public class Game implements GUI2Game {
     public Game(GUIConnector gui, int playerCnt, int sizeX, int sizeY) {
         this.gui = gui;
         this.players = new Player[playerCnt];
-        this.standardBoardSizeX = sizeX;
-        this.standardBoardSizeY = sizeY;
         this.currentRoundBank = new Bank(playerCnt);
         this.nextRoundBank = new Bank(playerCnt);
         this.stack = new LinkedList<>();
@@ -110,11 +99,10 @@ public class Game implements GUI2Game {
      * @param currentRoundBank current round bank
      * @param nextRoundBank    next round bank
      * @param stack            stack of dominos used to fill banks
-     * @param roundCount       number of round already played, used for case differention at beginning of the game
      * @param currDomino       domino in the rotation box of the human player
      */
     public Game(GUIConnector gui, Player[] players, int currPlayerIdx, Bank currentRoundBank, Bank nextRoundBank,
-                List<Domino> stack, int roundCount, Domino currDomino) {
+                List<Domino> stack, Domino currDomino) {
         this.gui = gui;
         this.players = players;
         this.currentRoundBank = currentRoundBank;
@@ -122,10 +110,11 @@ public class Game implements GUI2Game {
         this.stack = stack;
         this.currDomino = currDomino;
         this.currPlayerIdx = currPlayerIdx;
-        this.standardBoardSizeX = null == players[currPlayerIdx] ? 0 : players[currPlayerIdx].getBoard().getSizeX();
-        this.standardBoardSizeY = null == players[currPlayerIdx] ? 0 : players[currPlayerIdx].getBoard().getSizeY();
     }
 
+    public Game(GUIConnector gui, String input) {
+
+    }
 
     // --- saving / loading game ---
     /**
@@ -133,11 +122,9 @@ public class Game implements GUI2Game {
      *
      * @param filePath path of the file from which the game will be loaded
      */
-    public Game(Uri filePath) {
+    public Game(GUIConnector gui, Uri filePath) {
         // TODO insert code - load String from text file and initialize new objects with their constructors with String
         // parameters
-        this.standardBoardSizeX = 5;
-        this.standardBoardSizeY = 5;
     }
 
     @Override
@@ -200,7 +187,7 @@ public class Game implements GUI2Game {
         this.stack = Domino.fill(this.stack);
 
         // fill current bank
-        this.currentRoundBank.drawFromStack(this.stack);
+        this.currentRoundBank.randomlyDrawFromStack(this.stack);
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
 
         this.currPlayerIdx = 0;
@@ -379,7 +366,7 @@ public class Game implements GUI2Game {
     }
 
     private void randomlyDrawNewDominosForNextRound() {
-        this.nextRoundBank.drawFromStack(this.stack);
+        this.nextRoundBank.randomlyDrawFromStack(this.stack);
     }
 
     /**

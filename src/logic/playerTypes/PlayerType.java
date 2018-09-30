@@ -7,8 +7,12 @@ import logic.playerState.Player;
  * Enum serving as a static factory of the player class
  */
 public enum PlayerType {
-    HUMAN("Menschlicher Spieler"), DEFAULT("Standard Gegner"), CAPABLE_OF_MOVING_BOARD("Not supported yet"),
-    INVOLVE_NEXT_BANK("Not supported yet"), INVOLVE_OTHER_PLAYERS("Not supported yet"), CONSIDERING_PLAYED_CARDS("Not supported yet");
+    HUMAN("Menschlicher Spieler"),
+    DEFAULT("Standard Gegner"),
+    CAPABLE_OF_MOVING_BOARD("Not supported yet"),
+    INVOLVE_NEXT_BANK("Not supported yet"),
+    INVOLVE_OTHER_PLAYERS("Not supported yet"),
+    CONSIDERING_PLAYED_CARDS("Not supported yet");
 
     private final String guiRepresentation;
 
@@ -23,6 +27,11 @@ public enum PlayerType {
     public String getStringRepresentation() {
         return guiRepresentation;
     }
+
+//    public static Player getPlayerInstanceWithoutGivenType(int idx, GUIConnector gui, int boardSizeX, int boardSizeY) {
+//        PlayerType defaultPlayerTypeRelativeToIdx = 0 == idx ? HUMAN : DEFAULT;
+//        return getPlayerInstanceWithGivenType(defaultPlayerTypeRelativeToIdx, idx, gui, boardSizeX, boardSizeY);
+//    }
 
     /**
      * Static factory for the players of a game
