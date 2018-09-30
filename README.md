@@ -59,6 +59,9 @@ game - class
 - setupNextRound erst kopieren dann ziehen
 - botsdotheir muss nach oben
 
+- Converter mit .read(gui, str...) einlesen. Vorteil: Rueckgabewert bei fischigen werten.
+- initTestingLoadingConstr. mit Rueckgabewert um Fehlermeldung erstellen zu koennen
+
 
 
 
