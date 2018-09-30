@@ -39,13 +39,6 @@ public interface GUIConnector {
     void updatePlayer(Player player, int ordPlayer);
 
     /**
-     * updates all data concerning an array of players
-     * @param players array of players who's sections on the gui will be updated
-     */
-    void updateAllPlayers(Player[] players);
-
-
-    /**
      * shows the images corresponding to the two values on grid.
      * @param ordPlayer ordinal value of the current player
      * @param domino choosen domino to display on board

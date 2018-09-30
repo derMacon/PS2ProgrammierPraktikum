@@ -15,6 +15,7 @@ import logic.playerState.Result;
 import logic.token.Pos;
 import logic.logicTransfer.GUIConnector;
 import logic.token.Domino;
+import logic.token.SingleTile;
 import logic.token.Tiles;
 
 import java.util.EmptyStackException;
@@ -22,9 +23,8 @@ import java.util.EmptyStackException;
 
 public class JavaFXGUI implements GUIConnector {
 
-    //25 images for each face of a half (0..24)
-    private static int IMG_COUNT = 25;
-    //    protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV1.png");
+    //26 images for each face of a half (0..25)
+    private static int IMG_COUNT = 26;
     protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV3.png");
 
     /**
@@ -242,23 +242,17 @@ public class JavaFXGUI implements GUIConnector {
     }
 
     @Override
-    public void updateAllPlayers(Player[] players) {
-//        for (Player pl : players) {
-//            updatePlayer(pl);
-//        }
-    }
-
-    @Override
     public void updatePlayer(Player player, int ordPlayer) {
-//        Board board = player.getBoard();
-//        int width = board.getSizeX();
-//        int height = board.getSizeY();
-//        for (int i = 0; i < width; ++i) {
-//            for (int j = 0; j < height; ++j) {
-//                Pos pos = new Pos(i, j);
-//                showCellOnGrid(pos, board.getCell(pos));
-//            }
-//        }
+        Board board = player.getBoard();
+        int width = board.getSizeX();
+        int height = board.getSizeY();
+        SingleTile[][] cells = board.getCells();
+        for (int y = 0; y < height; y++) {
+            for (int x = 0; x < width; x++) {
+                Pos pos = new Pos(x, y);
+                showCellOnGrid(this.imgVwsPlayerBoard, pos, cells[x][y].ordinal());
+            }
+        }
     }
 
 
@@ -318,75 +312,78 @@ public class JavaFXGUI implements GUIConnector {
                 img = new Image("gui/img/CityHall_Empty.png");
                 break;
             case 1:
-                img = new Image("gui/img/Amusement_0.png");
+                img = EMPTY_IMG;
                 break;
             case 2:
-                img = new Image("gui/img/Amusement_1.png");
+                img = new Image("gui/img/Amusement_0.png");
                 break;
             case 3:
-                img = new Image("gui/img/Amusement_2.png");
+                img = new Image("gui/img/Amusement_1.png");
                 break;
             case 4:
-                img = new Image("gui/img/Amusement_3.png");
+                img = new Image("gui/img/Amusement_2.png");
                 break;
             case 5:
-                img = new Image("gui/img/Industry_0.png");
+                img = new Image("gui/img/Amusement_3.png");
                 break;
             case 6:
-                img = new Image("gui/img/Industry_1.png");
+                img = new Image("gui/img/Industry_0.png");
                 break;
             case 7:
-                img = new Image("gui/img/Industry_2.png");
+                img = new Image("gui/img/Industry_1.png");
                 break;
             case 8:
-                img = new Image("gui/img/Industry_3.png");
+                img = new Image("gui/img/Industry_2.png");
                 break;
             case 9:
-                img = new Image("gui/img/Office_0.png");
+                img = new Image("gui/img/Industry_3.png");
                 break;
             case 10:
-                img = new Image("gui/img/Office_1.png");
+                img = new Image("gui/img/Office_0.png");
                 break;
             case 11:
-                img = new Image("gui/img/Office_2.png");
+                img = new Image("gui/img/Office_1.png");
                 break;
             case 12:
-                img = new Image("gui/img/Office_3.png");
+                img = new Image("gui/img/Office_2.png");
                 break;
             case 13:
-                img = new Image("gui/img/Park_0.png");
+                img = new Image("gui/img/Office_3.png");
                 break;
             case 14:
-                img = new Image("gui/img/Park_1.png");
+                img = new Image("gui/img/Park_0.png");
                 break;
             case 15:
-                img = new Image("gui/img/Park_2.png");
+                img = new Image("gui/img/Park_1.png");
                 break;
             case 16:
-                img = new Image("gui/img/Park_3.png");
+                img = new Image("gui/img/Park_2.png");
                 break;
             case 17:
-                img = new Image("gui/img/Shopping_0.png");
+                img = new Image("gui/img/Park_3.png");
                 break;
             case 18:
-                img = new Image("gui/img/Shopping_1.png");
+                img = new Image("gui/img/Shopping_0.png");
                 break;
             case 19:
-                img = new Image("gui/img/Shopping_2.png");
+                img = new Image("gui/img/Shopping_1.png");
                 break;
             case 20:
-                img = new Image("gui/img/Shopping_3.png");
+                img = new Image("gui/img/Shopping_2.png");
                 break;
             case 21:
-                img = new Image("gui/img/Home_0.png");
+                img = new Image("gui/img/Shopping_3.png");
                 break;
             case 22:
-                img = new Image("gui/img/Home_1.png");
+                img = new Image("gui/img/Home_0.png");
                 break;
             case 23:
-                img = new Image("gui/img/Home_2.png");
+                img = new Image("gui/img/Home_1.png");
                 break;
             case 24:
+                img = new Image("gui/img/Home_2.png");
+                break;
+            case 25:
                 img = new Image("gui/img/Home_3.png");
                 break;
             default:

@@ -73,7 +73,7 @@ public class Board {
             for (int x = 0; x < sizeX; x++) {
                 String currentElement = inputCells[y][x];
                 if (currentElement.equals(STRING_EMPTY_CELL)) {
-                    cells[x][y] = null;
+                    cells[x][y] = SingleTile.EC;
                 } else {
                     this.cells[x][y] = SingleTile.valueOf(currentElement);
                 }

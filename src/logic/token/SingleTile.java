@@ -6,7 +6,7 @@ import static logic.token.DistrictType.*;
  * Enum representing the whole label of a token / domino.
  */
 public enum SingleTile {
-    CC(CENTER),
+    CC(CENTER), EC(EMPTY_CELL),
     A0(AMUSEMENT), A1(AMUSEMENT), A2(AMUSEMENT), A3(AMUSEMENT),
     I0(INDUSTRY), I1(INDUSTRY), I2(INDUSTRY), I3(INDUSTRY),
     O0(OFFICE), O1(OFFICE), O2(OFFICE), O3(OFFICE),
@@ -34,9 +34,5 @@ public enum SingleTile {
     public DistrictType getDistrictType() {
         return this.districtType;
     }
-
-//    public static SingleTile getElement(String strRepresentation) {
-//        for
-//    }
 
 }

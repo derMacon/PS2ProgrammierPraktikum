@@ -8,6 +8,8 @@ import java.util.Random;
 
 public class Bank {
 
+    private final String SEPERATOR_STRING_REPRESENTATION = ", ";
+
     /**
      * Number of entries in this bank
      */
@@ -43,6 +45,14 @@ public class Bank {
         this.entries = entries;
         this.rand = pseudoRandom;
         this.bankSize = entries.length;
+    }
+
+    public Bank(String preallocation, List<Player> players) {
+        String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
+        this.bankSize = singleEntries.length;
+        for (int i = 0; i < bankSize; i++) {
+            this.entries[i] = new Entry(singleEntries[i], players);
+        }
     }
 
     /**

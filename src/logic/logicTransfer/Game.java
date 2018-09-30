@@ -13,6 +13,13 @@ import java.util.List;
 
 public class Game implements GUI2Game {
 
+    public static final String BOARD_OCCUPANCE_FIRST_INSPECTION =
+            "P0 P1 -- -- --\n" +
+                    "-- -- -- H0 P2\n" +
+                    "-- -- CC H1 --\n" +
+                    "O2 O1 O0 S1 --\n";
+
+
     /**
      * Index for the current round's bank
      */
@@ -193,6 +200,9 @@ public class Game implements GUI2Game {
     public void startGame(PlayerType[] playerTypes, int sizeX, int sizeY) {
         // instanciate players with given playertypes
         this.players = createNewPlayers(playerTypes, sizeX, sizeY);
+
+        // TODO delete next line before final commit
+        this.gui.updatePlayer(this.players[HUMAN_PLAYER_IDX], HUMAN_PLAYER_IDX);
 
         // fill stack
         this.stack = Domino.fill(this.stack);

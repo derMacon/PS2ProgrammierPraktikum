@@ -124,13 +124,18 @@ public enum Tiles {
         return genTile(fstTile.ordinal(), sndTile.ordinal());
     }
 
-    @Override
-    public String toString() {
+    /**
+     * Converts a given String to a tile
+     * @param input String to convert to tile
+     * @return the enum member corresponding with this String, null if no tile matches
+     */
+    public static Tiles fromString(String input) {
         // TODO insert code
         return null;
     }
 
-    public Tiles fromString(String input) {
+    @Override
+    public String toString() {
         // TODO insert code
         return null;
     }

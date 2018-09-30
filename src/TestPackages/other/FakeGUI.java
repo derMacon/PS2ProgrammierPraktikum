@@ -29,11 +29,6 @@ public class FakeGUI implements GUIConnector {
     }
 
     @Override
-    public void updateAllPlayers(Player[] players) {
-
-    }
-
-    @Override
     public void showOnGrid(int ordPlayer, Domino domino) {
 
     }

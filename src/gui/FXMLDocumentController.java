@@ -33,6 +33,9 @@ import java.util.ResourceBundle;
 
 public class FXMLDocumentController implements Initializable {
 
+
+
+
     //<editor-fold defaultstate="collapsed" desc="Gui textures">
     /**
      * Background for the selection box containing the current- / nextRoundBank
@@ -303,8 +306,6 @@ public class FXMLDocumentController implements Initializable {
      * Setter for the PlayerTypes to pass chosen PlayerTypes from other controller
      */
     public void startGame(PlayerType[] chosenPlayerTypes) {
-//        this.chosenPlayerTypes = chosenPlayerTypes;
-//        this.game.setPlayerTypes(chosenPlayerTypes);
         this.game.startGame(chosenPlayerTypes, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
     }
 

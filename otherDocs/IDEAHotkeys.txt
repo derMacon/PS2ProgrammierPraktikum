@@ -5,6 +5,7 @@ IDEA shortcuts:
 - double clicking shift: search everywhere 
 - alt + f7: find usage
 - strg + q: quick documentation, see info for parameters (strg + p)
+- Strg + b: navigate to interface implementation
 - Strg + Shift + Ruecktaste: go back to last code change
 - Strg + d: duplicate selected block, line if no block selected 
 - Strg + shift + d: Move textblock with arrow keys

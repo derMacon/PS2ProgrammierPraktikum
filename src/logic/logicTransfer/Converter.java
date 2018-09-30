@@ -111,7 +111,8 @@ public class Converter {
             }
         }
     }
-    
+
+    // --- convert players ----
     private Player convertStrToPlayerWithDefaultOccupancy(String input, int idxPlayerArray, GUIConnector gui) {
         PlayerType defaultPlayerTypeRelativeToIdx = 0 == idxPlayerArray ? PlayerType.HUMAN : PlayerType.DEFAULT;
         return convertStrToPlayer(input, defaultPlayerTypeRelativeToIdx, idxPlayerArray, gui);
@@ -121,10 +122,13 @@ public class Converter {
         return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(type, new Board(input), idxPlayerArray, gui);
     }
     
-    
-    
-    private Bank convertStrToBank(String input) {
-        return null; 
+    // --- convert bank ---
+    private Bank[] convertStrToBank(String input) {
+        String[] bothBanks = input.split("\n");
+        Bank[] output = new Bank[2];
+        output[Game.CURRENT_BANK_IDX] = new Bank(bothBanks[0], this.players);
+        output[Game.NEXT_BANK_IDX] = new Bank(bothBanks[1], this.players);
+        return output; 
     }
 
 

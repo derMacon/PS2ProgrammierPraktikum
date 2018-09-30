@@ -2,12 +2,21 @@ package logic.bankSelection;
 
 import logic.playerState.Player;
 import logic.token.Domino;
+import logic.token.Tiles;
+
+import java.util.List;
 
 /**
  * Class that implements an Entry of a bank. An entry consists out of a reference to a domino and a reference to the
  * player which selected this specific domino. Both fields may be null.
  */
 public class Entry {
+
+    private static final String BLANK_SEPERATOR = " ";
+    private static final String EMPTY_SLOT = "-";
+    private static final int SELECTED_PLAYER_IDX = 0;
+    private static final int DOMINO_IDX = 1;
+
 
     /**
      * Reference to the domino of the bank entry
@@ -35,6 +44,21 @@ public class Entry {
      */
     public Entry(Domino domino) {
         this(domino, null);
+    }
+
+    public Entry(String preallocation, List<Player> players) {
+        String[] components = preallocation.split(BLANK_SEPERATOR);
+
+        // Set selected player -> only set selected player if entry is not NOT selected
+        if (!components[SELECTED_PLAYER_IDX].equals(EMPTY_SLOT)) {
+            int ordPlayer = Integer.parseInt(components[SELECTED_PLAYER_IDX]);
+            this.selectedPlayer = players.get(ordPlayer);
+        }
+
+        this.domino = new Domino(Tiles.fromString(components[DOMINO_IDX]));
+
+        // Set domino
+
     }
 
     /**

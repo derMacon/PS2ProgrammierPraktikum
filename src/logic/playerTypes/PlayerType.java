@@ -1,6 +1,7 @@
 package logic.playerTypes;
 
 import logic.logicTransfer.GUIConnector;
+import logic.logicTransfer.Game;
 import logic.playerState.Board;
 import logic.playerState.Player;
 
@@ -65,7 +66,8 @@ public enum PlayerType {
         Player output = null;
         switch (type) {
             case HUMAN:
-                output = new HumanPlayer(gui, idx, boardSizeX, boardSizeY);
+//                output = new HumanPlayer(gui, idx, boardSizeX, boardSizeY); // Actual call without pre-laying dominos
+                output = new HumanPlayer(gui, idx, new Board(Game.BOARD_OCCUPANCE_FIRST_INSPECTION)); // Human player with filled field
                 break;
             case DEFAULT:
                output = new DefaultAIPlayer(gui, idx, boardSizeX, boardSizeY);

@@ -194,23 +194,48 @@ public class GameTest {
         Game gameTestingConstr = new Game(new FakeGUI(), testGameRepresentation);
 
         // - actual tests -
-        // Board
+
+        // Human player board
         SingleTile[][] expectedCells = new SingleTile[][]{
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, SingleTile.H1, SingleTile.CC, null, null},
-                {null, SingleTile.P0, null, null, null},
-                {null, null, null, null, null}
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC,},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC,},
+                {SingleTile.EC, SingleTile.H1, SingleTile.CC, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.P0, SingleTile.EC, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC}
         };
 
-
+        //<editor-fold defaultstate="collapsed" desc="Old version with nullpointers for the empty fields">
 //                {null, null, null, null, null},
 //                {null, null, SingleTile.H1, SingleTile.P0, null},
 //                {null, null, SingleTile.CC, null, null},
 //                {null, null, null, null, null},
 //                {null, null, null, null, null}
 //        };
-        assertArrayEquals(expectedCells, gameTestingConstr.getPlayers()[0].getBoard().getCells());
+        //</editor-fold>
+
+        SingleTile[][] actualCells = gameTestingConstr.getPlayers()[0].getBoard().getCells();
+        assertArrayEquals(expectedCells[0], actualCells[0]);
+        assertArrayEquals(expectedCells[1], actualCells[1]);
+        assertArrayEquals(expectedCells[2], actualCells[2]);
+        assertArrayEquals(expectedCells[3], actualCells[3]);
+
+        // Bot 1 board
+        expectedCells = new SingleTile[][]{
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC,},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC,},
+                {SingleTile.EC, SingleTile.H1, SingleTile.CC, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.P0, SingleTile.EC, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC}
+        };
+
+        actualCells = gameTestingConstr.getPlayers()[0].getBoard().getCells();
+        assertArrayEquals(expectedCells[0], actualCells[0]);
+        assertArrayEquals(expectedCells[1], actualCells[1]);
+        assertArrayEquals(expectedCells[2], actualCells[2]);
+        assertArrayEquals(expectedCells[3], actualCells[3]);
+
+
+
 
 //        assertEquals(4, gameTestingConstr.getNumberOfPlayers());
 //        assertEquals(4, gameTestingConstr.getCurrentRoundBank().getBankSize());
@@ -223,7 +248,7 @@ public class GameTest {
 //        assertArrayEquals(entries, gameTestingConstr.getCurrentRoundBank().getEntries());
 
         // filled stack
-        assertEquals(48, gameTestingConstr.getStack().size());
+//        assertEquals(48, gameTestingConstr.getStack().size());
         // players array is initialized
 //        assertArrayEquals(new Player[]{pl1, pl2, pl3, pl4}, gameTestingConstr.getPlayers());
         // now with content
