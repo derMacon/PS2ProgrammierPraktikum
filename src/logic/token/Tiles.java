@@ -131,13 +131,20 @@ public enum Tiles {
      */
     public static Tiles fromString(String input) {
         // TODO insert code
-        return null;
+        Tiles output = null;
+        Tiles[] possibleTiles = values();
+        int i = 0;
+        while(null == output && i < possibleTiles.length) {
+            output = possibleTiles[i].toString().equals(input) ? possibleTiles[i] : null;
+            i++;
+        }
+        return output;
     }
 
     @Override
     public String toString() {
-        // TODO insert code
-        return null;
+        // takes first 4 letters of the enum name
+        return this.name().substring(0, 4);
     }
 
 }

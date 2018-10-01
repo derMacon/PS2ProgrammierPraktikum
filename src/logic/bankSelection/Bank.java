@@ -50,10 +50,22 @@ public class Bank {
     public Bank(String preallocation, List<Player> players) {
         String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
         this.bankSize = players.size();
-        this.entries = new Entry[this.bankSize];
-        for (int i = bankSize - 1; i >= 0; i--) {
-            this.entries[i] = i >= singleEntries.length ? null : new Entry(singleEntries[i], players);
+        int offsetEmptySlots = this.bankSize > singleEntries.length ? this.bankSize - singleEntries.length : 0;
+
+        // convert to String array to entries array -> length to this.entries may differ
+        Entry[] temp = new Entry[singleEntries.length];
+        for (int i = 0; i < temp.length; i++) {
+            temp[i] = new Entry(singleEntries[i], players);
         }
+
+        // if there are empty slots in the given preallocation, they will be put in front of the other bank entries
+        if (0 < offsetEmptySlots) {
+            this.entries = new Entry[this.bankSize];
+            System.arraycopy(temp, 0, this.entries, offsetEmptySlots, temp.length);
+        } else {
+            this.entries = temp;
+        }
+
     }
 
     /**
