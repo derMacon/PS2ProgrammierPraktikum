@@ -60,7 +60,6 @@ game - class
 - botsdotheir muss nach oben
 
 Converter - class
-- Converter mit .read(gui, str...) einlesen. Vorteil: Rueckgabewert bei fischigen werten.
 - initTestingLoadingConstr. mit Rueckgabewert um Fehlermeldung erstellen zu koennen
 - Konstruktor nach oben
 - Getter fuer konstanten muessen weg
