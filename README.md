@@ -59,18 +59,7 @@ game - class
 - setupNextRound erst kopieren dann ziehen
 - botsdotheir muss nach oben
 
-Converter - class
-- initTestingLoadingConstr. mit Rueckgabewert um Fehlermeldung erstellen zu koennen
-- Konstruktor nach oben
-- Getter fuer konstanten muessen weg
-- Getter fuer currDomino muss auch weg 
-- genDescriptiveField falsch geschrieben
-- convertStrToBankS mit s
-
-Bank - class 
-- players muessen laenge vorgeben (constructor)
-- Entries muessen von hinten an aufgefuellt werden
-
+// convert erledigt
 
 PlayerType - enum
 - factory: loadPlayerInstanceWithGiven... mit String statt board um entsprechenden Konstruktor nutzen zu koennen
