@@ -13,12 +13,15 @@ import java.util.List;
 
 public class Game implements GUI2Game {
 
+    /**
+     * Constant used for the first inspection to preload the player's board with a given occupancy
+     * TODO must be deleted before the final commit
+     */
     public static final String BOARD_OCCUPANCE_FIRST_INSPECTION =
             "-- -- -- P2 --\n" +
                     "-- -- -- H0 --\n" +
                     "-- -- CC H1 S1\n" +
                     "O2 O1 O0 -- --\n";
-
 
     /**
      * Index for the current round's bank
@@ -77,13 +80,11 @@ public class Game implements GUI2Game {
     private Logger logger;
 
     /**
-     * creates a game
+     * creates a game, used for the actual game
      *
      * @param gui   gui to display on
-     * @param sizeX x-size of the board
-     * @param sizeY y-size of the board
      */
-    public Game(GUIConnector gui, int playerCnt, int sizeX, int sizeY) {
+    public Game(GUIConnector gui, int playerCnt) {
         this.gui = gui;
         this.players = new Player[playerCnt];
         this.currentRoundBank = new Bank(playerCnt);
@@ -113,14 +114,35 @@ public class Game implements GUI2Game {
         initTestingLoadingConstructor(gui, players, currPlayerIdx, currentRoundBank, nextRoundBank, stack, currDomino);
     }
 
+    /**
+     * Constructor used for Loading
+     * @param gui gui reference to the game
+     * @param input String input setting up the whole game
+     */
     public Game(GUIConnector gui, String input) {
-        Converter gameContent = new Converter(gui, input);
-        initTestingLoadingConstructor(gui, gameContent.getPlayers(), HUMAN_PLAYER_IDX, gameContent.getCurrentBank(), gameContent.getNextBank(),
-                gameContent.getStack(), gameContent.getCurrDomino());
+        Converter gameContent = new Converter();
+        // TODO use error message - error message used for treatment, maybe with a new Pop-Up Window or just in the log-File.
+        String returnMessage = gameContent.readStr(gui, input);
+        initTestingLoadingConstructor(gui, gameContent.getPlayers(), HUMAN_PLAYER_IDX, gameContent.getCurrentBank(),
+                gameContent.getNextBank(),gameContent.getStack(), gameContent.getCurrDomino());
     }
 
-    private void initTestingLoadingConstructor(GUIConnector gui, Player[] players, int currPlayerIdx, Bank currentRoundBank, Bank nextRoundBank,
-                                               List<Domino> stack, Domino currDomino) {
+    /**
+     * Helping method, called for initializing the Testing / Loading constructor. Necessary for avoiding code doubling
+     * in the Loading constructor.
+     *
+     * @param gui              gui for the game
+     * @param players          players participating in this game
+     * @param currPlayerIdx    index of the current player
+     * @param currentRoundBank current round bank
+     * @param nextRoundBank    next round bank
+     * @param stack            stack of dominos used to fill banks
+     * @param currDomino       domino in the rotation box of the human player
+     * @return String message containing the error messages, SUCCESSFUL_READ_MESSAGE if reading String was successful
+     */
+    private String initTestingLoadingConstructor(GUIConnector gui, Player[] players, int currPlayerIdx,
+                                                 Bank currentRoundBank, Bank nextRoundBank, List<Domino> stack,
+                                                 Domino currDomino) {
         this.gui = gui;
         this.players = players;
         this.currentRoundBank = currentRoundBank;
@@ -128,6 +150,8 @@ public class Game implements GUI2Game {
         this.stack = stack;
         this.currDomino = currDomino;
         this.currPlayerIdx = currPlayerIdx;
+        // TODO check if setting values was successful
+        return Converter.SUCCESSFUL_READ_MESSAGE;
     }
 
 

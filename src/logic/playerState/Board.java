@@ -45,6 +45,12 @@ public class Board {
         this.sizeX = sizeX;
         this.sizeY = sizeY;
         this.cells = new SingleTile[sizeX][sizeY];
+        // fill board with empty tiles
+        for (int y = 0; y < this.sizeY; y++) {
+            for (int x = 0; x < this.sizeX; x++) {
+                this.cells[x][y] = SingleTile.EC;
+            }
+        }
     }
 
     /**

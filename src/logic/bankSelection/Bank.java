@@ -49,9 +49,10 @@ public class Bank {
 
     public Bank(String preallocation, List<Player> players) {
         String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
-        this.bankSize = singleEntries.length;
-        for (int i = 0; i < bankSize; i++) {
-            this.entries[i] = new Entry(singleEntries[i], players);
+        this.bankSize = players.size();
+        this.entries = new Entry[this.bankSize];
+        for (int i = bankSize - 1; i >= 0; i--) {
+            this.entries[i] = i >= singleEntries.length ? null : new Entry(singleEntries[i], players);
         }
     }
 

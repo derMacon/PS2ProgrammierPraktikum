@@ -27,7 +27,7 @@ public class GameTest {
     // --- Constructor used by FXMLController ---
     @Test
     public void testConstuctor_gui_int_int_int_BeforeStart() {
-        Game game = new Game(new FakeGUI(), 2, 3, 5);
+        Game game = new Game(new FakeGUI(), 2);
 
         assertEquals(2, game.getNumberOfPlayers());
         assertEquals(2, game.getCurrentRoundBank().getBankSize());
@@ -45,13 +45,13 @@ public class GameTest {
         // players array is initialized
         assertNotNull(game.getPlayers());
         // but content not initialized until call of method game.startGame()
-        assertNull(game.getPlayers()[0].getBoard());
-        assertNull(game.getPlayers()[1].getBoard());
+        assertNull(game.getPlayers()[0]);
+        assertNull(game.getPlayers()[1]);
     }
 
     @Test
     public void testConstructor_gui_int_int_int_AfterStart() {
-        Game game = new Game(new FakeGUI(), 2, 3, 5);
+        Game game = new Game(new FakeGUI(), 2);
         game.startGame(new PlayerType[]{PlayerType.HUMAN}, 5, 5);
 
         // banks initialized -> current bank now with content
@@ -97,10 +97,10 @@ public class GameTest {
         // players array is initialized
         assertNotNull(gameTestingConstr.getPlayers());
         // but content not initialized until call of method game.startGame()
-        assertNull(gameTestingConstr.getPlayers()[0].getBoard());
-        assertNull(gameTestingConstr.getPlayers()[1].getBoard());
-        assertNull(gameTestingConstr.getPlayers()[2].getBoard());
-        assertNull(gameTestingConstr.getPlayers()[3].getBoard());
+        assertNull(gameTestingConstr.getPlayers()[0]);
+        assertNull(gameTestingConstr.getPlayers()[1]);
+        assertNull(gameTestingConstr.getPlayers()[2]);
+        assertNull(gameTestingConstr.getPlayers()[3]);
     }
 
     @Test
@@ -148,9 +148,9 @@ public class GameTest {
         assertArrayEquals(new Player[]{pl1, pl2, pl3, pl4}, gameTestingConstr.getPlayers());
         // now with content
         assertEquals(pl1.getBoard(), gameTestingConstr.getPlayers()[0].getBoard());
-        assertEquals(pl1.getBoard(), gameTestingConstr.getPlayers()[1].getBoard());
-        assertEquals(pl1.getBoard(), gameTestingConstr.getPlayers()[2].getBoard());
-        assertEquals(pl1.getBoard(), gameTestingConstr.getPlayers()[3].getBoard());
+        assertEquals(pl2.getBoard(), gameTestingConstr.getPlayers()[1].getBoard());
+        assertEquals(pl3.getBoard(), gameTestingConstr.getPlayers()[2].getBoard());
+        assertEquals(pl4.getBoard(), gameTestingConstr.getPlayers()[3].getBoard());
     }
 
     @Test

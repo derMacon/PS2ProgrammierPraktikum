@@ -20,6 +20,11 @@ public class Converter {
     public static final String BANK_IDENTIFIER = "Bänke";
     public static final String STACK_IDENTIFIER = "Beutel";
 
+    /**
+     * String message for displaying a successful read from the given data
+     */
+    public static final String SUCCESSFUL_READ_MESSAGE = "Laden erfolgreich";
+
     private List<Player> players = new LinkedList<>();
     private int currentPlayer;
     private Bank currentBank;
@@ -30,15 +35,17 @@ public class Converter {
     // stack of possible dominos, only for internal purposes -> no gettter, every method has to delete the used dominos
     private List<Domino> possibleDominos = Domino.fill(new LinkedList<Domino>());
 
-
-
-    public static int getDescriptionIdx() {
-        return DESCRIPTION_IDX;
+    /**
+     * Reads string input and converts it into the appropriate game instance fields
+     * @param input input to convert
+     * @return String message containing the error messages, SUCCESSFUL_READ_MESSAGE if reading String was successful
+     */
+    public String readStr(GUIConnector gui, String input) {
+        String[][] descriptionBlocks = gendDescriptiveField(input);
+        fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui);
+        return SUCCESSFUL_READ_MESSAGE;
     }
 
-    public static int getDataIdx() {
-        return DATA_IDX;
-    }
 
     public Player[] getPlayers() {
         return players.toArray(new Player[0]);
@@ -64,10 +71,7 @@ public class Converter {
         return currDomino;
     }
 
-    public Converter(GUIConnector gui, String input) {
-        String[][] descriptionBlocks = gendDescriptiveField(input);
-        fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui);
-    }
+
 
     /**
      * Takes a given String and extracts the information about the game. The data structure can be described as follows:

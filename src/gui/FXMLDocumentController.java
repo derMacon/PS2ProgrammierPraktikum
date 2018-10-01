@@ -299,7 +299,7 @@ public class FXMLDocumentController implements Initializable {
         ImageView[][][] imgVwsAIBoards = new ImageView[][][]{addImageViewsToGrid(grdPnBot1Board), addImageViewsToGrid(grdPnBot2Board), addImageViewsToGrid(grdPnBot3Board)};
 
         this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnCurrentRoundSelection), addImageViewsToGrid(grdPnFutureselectiveGroup));
-        this.game = new Game(gui, DEFAULT_PLAYER_COUNT, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
+        this.game = new Game(gui, DEFAULT_PLAYER_COUNT);
     }
 
     /**
