@@ -1,3 +1,5 @@
+Uebersicht: Wo befinden sich welche tests (Testklasse -> Zwischenueberschrift im Code)
+
 1. Erzeugen eines Spielfeldes mit definierter Belegung der Zellen über einen Konstruktor. 
     -> BoardTest (Constructor - tests)
     
@@ -18,7 +20,7 @@
             
 4. Erzeugen einer Spielsituation mit definierter Belegung der Spielfelder und der Ablagebereiche über einen
    Konstruktor.
-    -> GameTest (Constructor - tests)
+    -> GameTest / GameLoadingConstructorTest (Constructor - tests)
    
 5. Überprüfen, ob die ermittelte Ablageposition für eine Spielkarte den KI-Regeln entspricht
-    -> 
+    -> DefaultAIPlayerTest (updateDominoPos, modified tests from ueb09)

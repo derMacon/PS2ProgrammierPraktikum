@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/BankSelection/Entry.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/BankSelection/Entry.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/LogicTransfer/Converter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/LogicTransfer/Converter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/LogicTransfer/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/PS2ProgrammierPraktikum/logic/LogicTransfer/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/bankSelection/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/bankSelection/Entry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/dataPreservation/GameLoader.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/dataPreservation/GameSaver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/dataPreservation/Preserver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/logicTransfer/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/logicTransfer/Converter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestPackages/PS2PPTestUebersicht.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestPackages/PS2PPTestUebersicht.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TestPackages/logic/playerState/DefaultAIPlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestPackages/logic/playerState/DefaultAIPlayerTest.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -173,12 +165,12 @@
         <counts>
           <entry key="dummy" value="30" />
           <entry key="fxml" value="24" />
-          <entry key="java" value="95939" />
+          <entry key="java" value="95960" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="95939" />
+          <entry key="JAVA" value="95960" />
           <entry key="PLAIN_TEXT" value="30" />
           <entry key="XML" value="24" />
         </counts>
@@ -188,7 +180,7 @@
           <entry key="Domino" value="1" />
           <entry key="class" value="19" />
           <entry key="fxml" value="23" />
-          <entry key="java" value="367" />
+          <entry key="java" value="369" />
           <entry key="png" value="5" />
           <entry key="txt" value="4" />
         </counts>
@@ -197,7 +189,7 @@
         <counts>
           <entry key="CLASS" value="19" />
           <entry key="Image" value="5" />
-          <entry key="JAVA" value="367" />
+          <entry key="JAVA" value="369" />
           <entry key="PLAIN_TEXT" value="5" />
           <entry key="XML" value="23" />
         </counts>
@@ -208,17 +200,35 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6259058">
+    <splitter split-orientation="horizontal" split-proportion="0.5484601">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Converter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="896">
-                  <caret line="108" column="7" lean-forward="true" selection-start-line="108" selection-start-column="7" selection-end-line="108" selection-end-column="7" />
+                <state relative-caret-position="734">
+                  <caret line="102" column="41" lean-forward="true" selection-start-line="102" selection-start-column="41" selection-end-line="102" selection-end-column="41" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/PlayerTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="612">
+                  <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/DefaultAIPlayerTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="882">
+                  <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
                 </state>
               </provider>
             </entry>
@@ -261,28 +271,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/logic/token/SingleTile.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="396">
-                  <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/gui/JavaFXGUI.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="378">
                   <caret line="39" selection-start-line="39" selection-end-line="39" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/GUIConnector.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="648">
-                  <caret line="40" selection-start-line="40" selection-end-line="40" />
                 </state>
               </provider>
             </entry>
@@ -488,7 +480,6 @@
         <option value="$PROJECT_DIR$/src/TestPackages/logic/playerState/BoardTest.java" />
         <option value="$PROJECT_DIR$/src/logic/playerState/Player.java" />
         <option value="$PROJECT_DIR$/src/TestPackages/logic/playerState/PlayerTest.java" />
-        <option value="$PROJECT_DIR$/src/TestPackages/logic/playerState/DefaultAIPlayerTest.java" />
         <option value="$PROJECT_DIR$/src/logic/playerState/BotBehavior.java" />
         <option value="$PROJECT_DIR$/src/logic/playerTypes/DefaultAIPlayer.java" />
         <option value="$PROJECT_DIR$/src/logic/logicTransfer/GUI2Game.java" />
@@ -511,6 +502,7 @@
         <option value="$PROJECT_DIR$/src/logic/bankSelection/Entry.java" />
         <option value="$PROJECT_DIR$/src/logic/logicTransfer/Converter.java" />
         <option value="$PROJECT_DIR$/src/logic/playerTypes/PlayerType.java" />
+        <option value="$PROJECT_DIR$/src/TestPackages/logic/playerState/DefaultAIPlayerTest.java" />
       </list>
     </option>
   </component>
@@ -697,7 +689,7 @@
     <property name="SearchEverywhereHistoryKey" value="updatePlayer&#9;PSI&#9;JAVA://logic.logicTransfer.GUIConnector#updatePlayer&#10;randomly&#9;PSI&#9;JAVA://logic.logicTransfer.Game#randomlyDrawNewDominosForNextRound&#10;ChipV1&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Git/IDEA/PS2ProgrammierPraktikum/src/gui/textures/ChipV1.png&#10;domi&#9;PSI&#9;JAVA://logic.token.Domino&#10;EMPTY_I&#9;PSI&#9;JAVA://gui.JavaFXGUI#EMPTY_IMG&#10;EMPTY&#9;PSI&#9;JAVA://gui.JavaFXGUI#EMPTY_IMG&#10;EMPTY.&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Git/IDEA/PS2ProgrammierPraktikum/src/gui/img/Empty.png&#10;rand&#9;PSI&#9;JAVA://logic.BankSelection.Bank#rand" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538415121653" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1538424627563" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -734,7 +726,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.TestPackages.logic in PS2ProgrammierPraktikum">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -775,6 +767,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DefaultAIPlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PS2ProgrammierPraktikum" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TestPackages.logic.playerState.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="TestPackages.logic.playerState" />
+      <option name="MAIN_CLASS_NAME" value="TestPackages.logic.playerState.DefaultAIPlayerTest" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameLoadingConstructorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PS2ProgrammierPraktikum" />
       <extension name="coverage">
@@ -785,46 +795,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="TestPackages.logic.logicTransfer" />
       <option name="MAIN_CLASS_NAME" value="TestPackages.logic.logicTransfer.GameLoadingConstructorTest" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameLoadingConstructorTest.testStringConstructor_GetBank" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PS2ProgrammierPraktikum" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="TestPackages.logic.logicTransfer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="TestPackages.logic.logicTransfer" />
-      <option name="MAIN_CLASS_NAME" value="TestPackages.logic.logicTransfer.GameLoadingConstructorTest" />
-      <option name="METHOD_NAME" value="testStringConstructor_GetBank" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="GameLoadingConstructorTest.testStringConstructor_GetStack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PS2ProgrammierPraktikum" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="TestPackages.logic.logicTransfer.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="TestPackages.logic.logicTransfer" />
-      <option name="MAIN_CLASS_NAME" value="TestPackages.logic.logicTransfer.GameLoadingConstructorTest" />
-      <option name="METHOD_NAME" value="testStringConstructor_GetStack" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
@@ -851,18 +821,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameTest.testFileConstructor_WithUriInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="PS2ProgrammierPraktikum" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="TestPackages.logic.logicTransfer.*" />
+          <option name="PATTERN" value="TestPackages.logic.playerState.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="TestPackages.logic.logicTransfer" />
-      <option name="MAIN_CLASS_NAME" value="TestPackages.logic.logicTransfer.GameTest" />
-      <option name="METHOD_NAME" value="testFileConstructor_WithUriInput" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" value="TestPackages.logic.playerState" />
+      <option name="MAIN_CLASS_NAME" value="TestPackages.logic.playerState.PlayerTest" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestPackages.logic in PS2ProgrammierPraktikum" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PS2ProgrammierPraktikum" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TestPackages.logic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="TestPackages.logic" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
@@ -903,18 +889,18 @@
     <list>
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.GameTest" />
-      <item itemvalue="JUnit.GameTest.testFileConstructor_WithUriInput" />
       <item itemvalue="JUnit.GameLoadingConstructorTest" />
-      <item itemvalue="JUnit.GameLoadingConstructorTest.testStringConstructor_GetBank" />
-      <item itemvalue="JUnit.GameLoadingConstructorTest.testStringConstructor_GetStack" />
+      <item itemvalue="JUnit.DefaultAIPlayerTest" />
+      <item itemvalue="JUnit.PlayerTest" />
+      <item itemvalue="JUnit.TestPackages.logic in PS2ProgrammierPraktikum" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestPackages.logic in PS2ProgrammierPraktikum" />
+        <item itemvalue="JUnit.PlayerTest" />
+        <item itemvalue="JUnit.DefaultAIPlayerTest" />
         <item itemvalue="JUnit.GameTest" />
         <item itemvalue="JUnit.GameLoadingConstructorTest" />
-        <item itemvalue="JUnit.GameLoadingConstructorTest.testStringConstructor_GetStack" />
-        <item itemvalue="JUnit.GameLoadingConstructorTest.testStringConstructor_GetBank" />
-        <item itemvalue="JUnit.GameTest.testFileConstructor_WithUriInput" />
       </list>
     </recent_temporary>
   </component>
@@ -956,20 +942,11 @@
       <workItem from="1538311864756" duration="6573000" />
       <workItem from="1538319353373" duration="5513000" />
       <workItem from="1538397974972" duration="4722000" />
-      <workItem from="1538407882476" duration="7083000" />
+      <workItem from="1538407882476" duration="8174000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="GameLoadingConstructorTest_testStringConstructor_GetBank - 2018.10.01 at 18h 36m 46s.xml">
-      <configuration name="GameLoadingConstructorTest.testStringConstructor_GetBank" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GameLoadingConstructorTest_testStringConstructor_GetBank - 2018.10.01 at 18h 39m 18s.xml">
-      <configuration name="GameLoadingConstructorTest.testStringConstructor_GetBank" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="GameLoadingConstructorTest_testStringConstructor_GetBank - 2018.10.01 at 18h 41m 09s.xml">
-      <configuration name="GameLoadingConstructorTest.testStringConstructor_GetBank" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="GameLoadingConstructorTest_testStringConstructor_GetStack - 2018.10.01 at 18h 47m 30s.xml">
       <configuration name="GameLoadingConstructorTest.testStringConstructor_GetStack" configurationId="JUnit" />
     </history-entry>
@@ -991,9 +968,18 @@
     <history-entry file="GameTest - 2018.10.01 at 19h 31m 14s.xml">
       <configuration name="GameTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="DefaultAIPlayerTest - 2018.10.01 at 22h 07m 30s.xml">
+      <configuration name="DefaultAIPlayerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="PlayerTest - 2018.10.01 at 22h 07m 39s.xml">
+      <configuration name="PlayerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="TestPackages_logic_in_PS2ProgrammierPraktikum - 2018.10.01 at 22h 07m 51s.xml">
+      <configuration name="TestPackages.logic in PS2ProgrammierPraktikum" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="299000000" />
+    <option name="totallyTimeSpent" value="300091000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1017,7 +1003,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.17628706" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13572542" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26287052" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3580343" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1196,13 +1182,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/PlayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2628">
-          <caret line="153" column="15" selection-start-line="153" selection-start-column="15" selection-end-line="153" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/lang/Enum.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3780">
@@ -1228,13 +1207,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="20" column="6" selection-start-line="20" selection-start-column="6" selection-end-line="20" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/DefaultAIPlayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="121" selection-start-line="121" selection-end-line="121" />
         </state>
       </provider>
     </entry>
@@ -1527,11 +1499,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Converter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="896">
-          <caret line="108" column="7" lean-forward="true" selection-start-line="108" selection-start-column="7" selection-end-line="108" selection-end-column="7" />
+        <state relative-caret-position="734">
+          <caret line="102" column="41" lean-forward="true" selection-start-line="102" selection-start-column="41" selection-end-line="102" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/DefaultAIPlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="882">
+          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="41" column="5" lean-forward="true" selection-start-line="41" selection-start-column="5" selection-end-line="41" selection-end-column="5" />
         </state>
       </provider>
     </entry>

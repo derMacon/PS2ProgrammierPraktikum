@@ -17,8 +17,7 @@ import static org.junit.Assert.*;
 
 public class DefaultAIPlayerTest {
 
-    //<editor-fold defaultstate="collapsed" desc="Modified tests from ueb09">
-    // --- updateDominoPos ---
+    // --- 5. updateDominoPos, Modified tests from ueb09 ---
     @Test
     public void testUpdateDominoPos_rot0_above() {
         DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
@@ -116,6 +115,5 @@ public class DefaultAIPlayerTest {
         Domino actualOutput = player.updateDominoPos(new Domino(Tiles.genTile(P0, A0)));
         assertEquals(expectedOutput, actualOutput);
     }
-    //</editor-fold>
 
 }
