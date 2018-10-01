@@ -57,7 +57,6 @@ public class Entry {
 
         // Set domino
         this.domino = new Domino(Tiles.fromString(components[DOMINO_IDX]));
-
     }
 
     /**

@@ -124,7 +124,22 @@ public class Game implements GUI2Game {
         // TODO use error message - error message used for treatment, maybe with a new Pop-Up Window or just in the log-File.
         String returnMessage = gameContent.readStr(gui, input);
         initTestingLoadingConstructor(gui, gameContent.getPlayers(), HUMAN_PLAYER_IDX, gameContent.getCurrentBank(),
-                gameContent.getNextBank(),gameContent.getStack(), gameContent.getCurrDomino());
+                gameContent.getNextBank(),gameContent.getStack(), null);
+    }
+
+
+
+
+    // --- saving / loading game ---
+
+    /**
+     * Constructor used to laod game out of a file with a given path
+     *
+     * @param filePath path of the file from which the game will be loaded
+     */
+    public Game(GUIConnector gui, Uri filePath) {
+        // TODO insert code - load String from text file and initialize new objects with their constructors with String
+        // parameters
     }
 
     /**
@@ -152,19 +167,6 @@ public class Game implements GUI2Game {
         this.currPlayerIdx = currPlayerIdx;
         // TODO check if setting values was successful
         return Converter.SUCCESSFUL_READ_MESSAGE;
-    }
-
-
-    // --- saving / loading game ---
-
-    /**
-     * Constructor used to laod game out of a file with a given path
-     *
-     * @param filePath path of the file from which the game will be loaded
-     */
-    public Game(GUIConnector gui, Uri filePath) {
-        // TODO insert code - load String from text file and initialize new objects with their constructors with String
-        // parameters
     }
 
     @Override
