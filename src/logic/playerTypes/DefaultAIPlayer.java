@@ -1,6 +1,7 @@
 package logic.playerTypes;
 
 import logic.bankSelection.Bank;
+import logic.dataPreservation.Logger;
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Board;
 import logic.playerState.BotBehavior;
@@ -11,16 +12,16 @@ import java.util.List;
 
 public class DefaultAIPlayer extends Player implements BotBehavior {
 
-    public DefaultAIPlayer(GUIConnector gui, int idx, int boardSizeX, int boardSizeY) {
-        super(gui, idx, boardSizeX, boardSizeY);
+    public DefaultAIPlayer(GUIConnector gui, Logger logger, int idx, int boardSizeX, int boardSizeY) {
+        super(gui, logger, idx, boardSizeX, boardSizeY);
     }
 
-    public DefaultAIPlayer(GUIConnector gui, int idx, Board board) {
-        super(gui, idx, board);
+    public DefaultAIPlayer(GUIConnector gui, Logger logger, int idx, Board board) {
+        super(gui, logger, idx, board);
     }
 
-    public DefaultAIPlayer(GUIConnector gui, int idx, String strBoard) {
-        super(gui, idx, strBoard);
+    public DefaultAIPlayer(GUIConnector gui, Logger logger, int idx, String strBoard) {
+        super(gui, logger, idx, strBoard);
     }
 
     @Override

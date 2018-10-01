@@ -1,6 +1,7 @@
 package logic.playerTypes;
 
 import logic.bankSelection.Bank;
+import logic.dataPreservation.Logger;
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Board;
 import logic.playerState.Player;
@@ -20,8 +21,8 @@ public class HumanPlayer extends Player {
      * @param boardSizeX width of the board
      * @param boardSizeY height of the board
      */
-    public HumanPlayer(GUIConnector gui, int idx, int boardSizeX, int boardSizeY) {
-        super(gui, idx, boardSizeX, boardSizeY);
+    public HumanPlayer(GUIConnector gui, Logger logger, int idx, int boardSizeX, int boardSizeY) {
+        super(gui, logger, idx, boardSizeX, boardSizeY);
     }
 
     /**
@@ -29,8 +30,8 @@ public class HumanPlayer extends Player {
      * @param gui reference to the GUIConnector
      * @param board board to play on
      */
-    public HumanPlayer(GUIConnector gui, int idx, Board board) {
-        super(gui, idx, board);
+    public HumanPlayer(GUIConnector gui, Logger logger, int idx, Board board) {
+        super(gui, logger, idx, board);
     }
 
     /**
@@ -38,8 +39,8 @@ public class HumanPlayer extends Player {
      * @param gui reference to the GUIConnector
      * @param strBoard String representation of the board
      */
-    public HumanPlayer(GUIConnector gui, int idx, String strBoard) {
-        super(gui, idx, strBoard);
+    public HumanPlayer(GUIConnector gui, Logger logger, int idx, String strBoard) {
+        super(gui, logger, idx, strBoard);
     }
 
 }

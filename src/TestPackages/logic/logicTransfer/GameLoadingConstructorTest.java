@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import TestPackages.other.FakeGUI;
 import logic.bankSelection.Bank;
+import logic.dataPreservation.Logger;
 import logic.logicTransfer.Game;
 import logic.token.Domino;
 import logic.token.SingleTile;
@@ -49,7 +50,7 @@ public class GameLoadingConstructorTest {
                         "<Beutel>\n" +
                         "P0P0,P0P0,A1H0,I2P0";
 
-        Game gameTestingConstr = new Game(new FakeGUI(), testGameRepresentation);
+        Game gameTestingConstr = new Game(new FakeGUI(), new Logger(), testGameRepresentation);
 
         // - actual tests -
 
@@ -131,7 +132,7 @@ public class GameLoadingConstructorTest {
                         "- P0P0,- A0A0,1 H0A0,- P1H0" +
                         "<Beutel>\n" +
                         "P0P0,P0P0,A1H0,I2P0";
-        Game gameTestingConstr = new Game(new FakeGUI(), testGameRepresentation);
+        Game gameTestingConstr = new Game(new FakeGUI(), new Logger(), testGameRepresentation);
 
         // banks initialized
         assertNotNull(gameTestingConstr.getCurrentRoundBank().getEntries());
@@ -195,7 +196,7 @@ public class GameLoadingConstructorTest {
                         "- P0P0,- A0A0,1 H0A0,- P1H0" +
                         "<Beutel>\n" +
                         "P0P0,P0P0,A1H0,I2P0";
-        Game gameTestingConstr = new Game(new FakeGUI(), testGameRepresentation);
+        Game gameTestingConstr = new Game(new FakeGUI(), new Logger(), testGameRepresentation);
 
         assertEquals(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.P0)), gameTestingConstr.getStack().get(0));
         assertEquals(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.P0)), gameTestingConstr.getStack().get(1));

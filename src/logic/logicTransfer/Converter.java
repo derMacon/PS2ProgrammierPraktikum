@@ -1,6 +1,7 @@
 package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
+import logic.dataPreservation.Logger;
 import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerTypes.PlayerType;
@@ -73,9 +74,9 @@ public class Converter {
      * @param input input to convert
      * @return String message containing the error messages, SUCCESSFUL_READ_MESSAGE if reading String was successful
      */
-    public String readStr(GUIConnector gui, String input) {
+    public String readStr(GUIConnector gui, Logger logger, String input) {
         String[][] descriptionBlocks = genDescriptiveField(input);
-        fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui);
+        fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui, logger);
         return SUCCESSFUL_READ_MESSAGE;
     }
 
@@ -172,11 +173,11 @@ public class Converter {
      * @param descriptionBlocks
      * @param gui
      */
-    public void fillFieldsWithDescriptiveBlocks(String[][] descriptionBlocks, GUIConnector gui) {
+    public void fillFieldsWithDescriptiveBlocks(String[][] descriptionBlocks, GUIConnector gui, Logger logger) {
         for (int i = 0; i < descriptionBlocks.length; i++) {
             switch (descriptionBlocks[i][DESCRIPTION_IDX]) {
                 case BOARD_IDENTIFIER:
-                    this.players.add(i, convertStrToPlayerWithDefaultOccupancy(descriptionBlocks[i][DATA_IDX], i, gui));
+                    this.players.add(i, convertStrToPlayerWithDefaultOccupancy(descriptionBlocks[i][DATA_IDX], i, gui, logger));
                     break;
                 case BANK_IDENTIFIER:
                     Bank[] banks = convertStrToBanks(descriptionBlocks[i][DATA_IDX]);
@@ -203,9 +204,9 @@ public class Converter {
      * @param gui            reference to the gui
      * @return a fully instanciated Player containing a board and the corresponding districts
      */
-    private Player convertStrToPlayerWithDefaultOccupancy(String input, int idxPlayerArray, GUIConnector gui) {
+    private Player convertStrToPlayerWithDefaultOccupancy(String input, int idxPlayerArray, GUIConnector gui, Logger logger) {
         PlayerType defaultPlayerTypeRelativeToIdx = 0 == idxPlayerArray ? PlayerType.HUMAN : PlayerType.DEFAULT;
-        return convertStrToPlayer(input, defaultPlayerTypeRelativeToIdx, idxPlayerArray, gui);
+        return convertStrToPlayer(input, defaultPlayerTypeRelativeToIdx, idxPlayerArray, gui, logger);
     }
 
     /**
@@ -216,9 +217,9 @@ public class Converter {
      * @param gui            reference to the gui
      * @return a fully instanciated Player containing a board and the corresponding districts
      */
-    private Player convertStrToPlayer(String input, PlayerType type, int idxPlayerArray, GUIConnector gui) {
+    private Player convertStrToPlayer(String input, PlayerType type, int idxPlayerArray, GUIConnector gui, Logger logger) {
         // TODO update possible dominos list
-        return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(type, new Board(input), idxPlayerArray, gui);
+        return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(type, new Board(input), idxPlayerArray, gui, logger);
     }
 
     // --- convert bank ---
