@@ -1,7 +1,5 @@
 package logic.playerState;
 
-import logic.playerState.Player;
-
 import java.util.List;
 
 /**
@@ -26,6 +24,7 @@ public class Result {
 
     public Result(Player[] players) {
         this.players = players;
+        // TODO getWinner()
     }
 
     public List<Player> getWinner() {

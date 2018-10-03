@@ -30,7 +30,22 @@ public class JavaFXGUI implements GUIConnector {
     /**
      * Texture for the chip representing the selection of player 1
      */
-    public static final Image SELECTION_PLAYER_1_TEXTURE = new Image("gui/textures/ChipV2.png");
+    public static final Image SELECTION_PLAYER_1_TEXTURE = new Image("gui/textures/ChipPlayer1.png");
+
+    /**
+     * Texture for the chip representing the selection of player 1
+     */
+    public static final Image SELECTION_PLAYER_2_TEXTURE = new Image("gui/textures/ChipPlayer2.png");
+
+    /**
+     * Texture for the chip representing the selection of player 1
+     */
+    public static final Image SELECTION_PLAYER_3_TEXTURE = new Image("gui/textures/ChipPlayer3.png");
+
+    /**
+     * Texture for the chip representing the selection of player 1
+     */
+    public static final Image SELECTION_PLAYER_4_TEXTURE = new Image("gui/textures/ChipPlayer4.png");
 
 
     private Image[] imgs;
@@ -49,9 +64,11 @@ public class JavaFXGUI implements GUIConnector {
     private ImageView[][] imgVwsNextBank;
 
     private ImageView[][] imgVwsCurrentBankSelection;
+    private ImageView[][] imgVwsNextBankSelection;
 
     public JavaFXGUI(Pane pnSelected, Label lblTurn, ImageView[][] imgWssPlayerBoard, ImageView[][][] imgWwsAIBoards,
-                     ImageView[][] imgVwsCurrentBank, ImageView[][] imgVwsCurrentBankSelection, ImageView[][] imgVwsNextBank) {
+                     ImageView[][] imgVwsCurrentBank, ImageView[][] imgVwsCurrentBankSelection,
+                     ImageView[][] imgVwsNextBank, ImageView[][] imgVwsNextBankSelection) {
         this.pnSelected = pnSelected;
         this.lblTurn = lblTurn;
         this.imgVwsPlayerBoard = imgWssPlayerBoard;
@@ -61,6 +78,7 @@ public class JavaFXGUI implements GUIConnector {
         this.imgVwsNextBank = imgVwsNextBank;
 
         this.imgVwsCurrentBankSelection = imgVwsCurrentBankSelection;
+        this.imgVwsNextBankSelection = imgVwsNextBankSelection;
 
         //loadAllImages
         imgs = new Image[IMG_COUNT];

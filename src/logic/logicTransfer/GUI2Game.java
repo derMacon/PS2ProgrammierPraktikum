@@ -11,6 +11,8 @@ import logic.playerTypes.PlayerType;
 import logic.token.Domino;
 import logic.token.Pos;
 
+import java.net.URI;
+
 /**
  * defines the methods needed by the FXMLController for reacting to the users input.
  *
@@ -75,7 +77,7 @@ public interface GUI2Game {
     /**
      * Saves the current game in a .txt file at the selected path
      */
-    void safeGame(Uri filePath);
+    void safeGame(URI filePath);
 
 //    /**
 //     * loads / generates a game out of the .txt file at the selected path

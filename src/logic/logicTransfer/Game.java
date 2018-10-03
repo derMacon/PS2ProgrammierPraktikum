@@ -1,6 +1,5 @@
 package logic.logicTransfer;
 
-import com.sun.jndi.toolkit.url.Uri;
 import logic.bankSelection.Bank;
 import logic.dataPreservation.Logger;
 import logic.playerState.*;
@@ -8,6 +7,7 @@ import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 import logic.token.Domino;
 
+import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -136,7 +136,7 @@ public class Game implements GUI2Game {
      *
      * @param filePath path of the file from which the game will be loaded
      */
-    public Game(GUIConnector gui, Uri filePath) {
+    public Game(GUIConnector gui, URI filePath) {
         // TODO insert code - load String from text file and initialize new objects with their constructors with String
         // parameters
     }
@@ -170,7 +170,7 @@ public class Game implements GUI2Game {
     }
 
     @Override
-    public void safeGame(Uri filePath) {
+    public void safeGame(URI filePath) {
         // TODO insert code - get String representation from necessary objects by calling toString()
     }
 

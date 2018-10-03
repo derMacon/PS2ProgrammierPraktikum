@@ -1,7 +1,6 @@
 package gui;
 
 import TestPackages.other.FakeGUI;
-import com.sun.jndi.toolkit.url.Uri;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,7 +13,6 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
 import javafx.scene.image.Image;
 import javafx.scene.input.*;
 import javafx.scene.layout.GridPane;
@@ -28,19 +26,23 @@ import logic.token.Pos;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class FXMLDocumentController implements Initializable {
-
-
-
 
     //<editor-fold defaultstate="collapsed" desc="Gui textures">
     /**
      * Background for the selection box containing the current- / nextRoundBank
      */
     public static final Image BANK_BOX_TEXTURE = new Image("gui/textures/LargeBoxV1Alpha.png");
+
+    /**
+     * Background for the selection box containing the current- / nextRoundBank (rotated)
+     */
+    public static final Image BANK_BOX_TEXTURE_ROTATED = new Image("gui/textures/LargeBoxV1AlphaRotated.png");
 
     /**
      * Overall Background for the whole main window
@@ -129,10 +131,16 @@ public class FXMLDocumentController implements Initializable {
     private GridPane grdPnCurrentSelectiveGroup;
 
     /**
-     * Grid pane displaying the corresponding chip showing which player selected the domino
+     * Grid pane displaying the corresponding chip showing which player selected the domino for the current round
      */
     @FXML
     private GridPane grdPnCurrentRoundSelection;
+
+    /**
+     * Grid pane displaying the corresponding chip showing which player selected the domino for the next round
+     */
+    @FXML
+    private GridPane grdPnNextRoundSelection;
 
     /**
      * Grid pane representing the next round's bank
@@ -298,7 +306,9 @@ public class FXMLDocumentController implements Initializable {
 
         ImageView[][][] imgVwsAIBoards = new ImageView[][][]{addImageViewsToGrid(grdPnBot1Board), addImageViewsToGrid(grdPnBot2Board), addImageViewsToGrid(grdPnBot3Board)};
 
-        this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards, addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnCurrentRoundSelection), addImageViewsToGrid(grdPnFutureselectiveGroup));
+        this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards,
+                addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnCurrentRoundSelection),
+                addImageViewsToGrid(grdPnFutureselectiveGroup), addImageViewsToGrid(grdPnNextRoundSelection));
         this.game = new Game(gui, DEFAULT_PLAYER_COUNT);
     }
 
@@ -317,7 +327,7 @@ public class FXMLDocumentController implements Initializable {
      * Sets up the gui with all necessary textures
      */
     private void setUpGuiTextures() {
-        setPnWithImageAsBackground(this.grdPnTurnLblTexture, BANK_BOX_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnTurnLblTexture, BANK_BOX_TEXTURE_ROTATED);
         setPnWithImageAsBackground(this.grdPnCurrentBankTexture, BANK_BOX_TEXTURE);
         setPnWithImageAsBackground(this.grdPnNextBankTexture, BANK_BOX_TEXTURE);
 
@@ -478,12 +488,20 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void mnTmSaveGame(ActionEvent event) throws MalformedURLException {
-        this.game.safeGame(new Uri("test"));
+        try {
+            this.game.safeGame(new URI("test"));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML
     private void mnTmLoadGame(ActionEvent event) throws MalformedURLException {
-        this.game = new Game(new FakeGUI(), new Uri("test"));
+        try {
+            this.game = new Game(new FakeGUI(), new URI("test"));
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
