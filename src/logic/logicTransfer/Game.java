@@ -14,16 +14,6 @@ import java.util.List;
 public class Game implements GUI2Game {
 
     /**
-     * Constant used for the first inspection to preload the player's board with a given occupancy
-     * TODO must be deleted before the final commit
-     */
-    public static final String BOARD_OCCUPANCE_FIRST_INSPECTION =
-            "-- -- -- P2 --\n" +
-                    "-- -- -- H0 --\n" +
-                    "-- -- CC H1 S1\n" +
-                    "O2 O1 O0 -- --\n";
-
-    /**
      * Index for the current round's bank
      */
     public static final int CURRENT_BANK_IDX = 0;

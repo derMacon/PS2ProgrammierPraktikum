@@ -29,32 +29,42 @@ public class Logger {
     /**
      * Path to dir where log data should be stored
      */
-    private final File dir;
-
-    /**
-     * Constructor setting the default logger of the game containing the human player on idx == 0 and all bots on the
-     * slots comming after that
-     * @param path path to the log file
-     */
-    public Logger(File path) {
-        this.dir = path;
-    }
-
-    /**
-     * Constructor with string representation of the path.
-     * @param strPath String representation of the directory where the data will be stored
-     */
-    public Logger(String strPath) {
-        this(new File(strPath));
-    }
+    private File dir;
 
     /**
      * Cosntructor only setting the playerCnt, taking a default path as the file path for the data
      */
-    public Logger(){
-        this(DEFAULT_FILE_PATH);
+    private Logger(){
+        this.dir = DEFAULT_FILE_PATH;
     }
 
+    /**
+     * Getter for the logger instance
+     */
+    public static Logger getInstance() {
+        if (null == singleInstance) {
+            singleInstance = new Logger();
+        }
+        return singleInstance;
+    }
+
+    /**
+     * Setter for the file path (Type: File)
+     * @param path File representing the file path
+     */
+    public void setPath(File path) {
+        this.dir = path;
+    }
+
+    /**
+     * Setter for the file path (Type: String)
+     * @param path String representing the file path
+     */
+    public void setPath(String path) {
+        this.dir = new File(path);
+    }
+
+    // Actual logger mathod, prints the given message and then saves it to a given File
     public void printAndSafe(String inputLog) {
         System.out.println(inputLog);
         appendFileWithNewMove(inputLog);
@@ -69,13 +79,5 @@ public class Logger {
     private void appendFileWithNewMove(String moveDescription) {
         // TODO insert code
     }
-
-
-
-
-
-
-
-
 
 }
