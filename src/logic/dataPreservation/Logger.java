@@ -10,11 +10,20 @@ import logic.token.Domino;
 import java.io.File;
 
 /**
- *
+ * Logger for the game. Uses the singleton pattern, so that there can only be one single instance of this logger.
+ * The constructor is private and the instance can only be retuned be the corresponding static getter method.
  * @author silas
  */
 public class Logger {
 
+    /**
+     * Single instance of the logger. Initialized with null, can be returned with the corresponding getter.
+     */
+    private static Logger singleInstance = null;
+
+    /**
+     * Default file path for the file to which the data will be saved.
+     */
     private static final File DEFAULT_FILE_PATH = new File("xxx");
 
     /**

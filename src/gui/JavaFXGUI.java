@@ -7,7 +7,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import logic.bankSelection.Bank;
-import logic.dataPreservation.Logger;
 import logic.logicTransfer.Game;
 import logic.playerState.Board;
 import logic.playerState.Player;

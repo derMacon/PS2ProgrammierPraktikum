@@ -34,13 +34,12 @@ public abstract class Player {
      * Constructor setting up the gui
      *
      * @param gui reference to update gui
-     * @param logger logger for the game
      * @param idxInPlayerArray index of the player in the games player array
      * @param boardSizeX x - dimension of the players board
      * @param boardSizeY y - dimension of the players board
      */
-    public Player(GUIConnector gui, Logger logger, int idxInPlayerArray, int boardSizeX, int boardSizeY) {
-        this(gui, logger, idxInPlayerArray, new Board(boardSizeX, boardSizeY));
+    public Player(GUIConnector gui, int idxInPlayerArray, int boardSizeX, int boardSizeY) {
+        this(gui, idxInPlayerArray, new Board(boardSizeX, boardSizeY));
     }
 
     /**
@@ -50,7 +49,7 @@ public abstract class Player {
      * @param idxInPlayerArray index in the game's player array.
      * @param board            to set dominos / SingleTiles to
      */
-    public Player(GUIConnector gui, Logger logger, int idxInPlayerArray, Board board) {
+    public Player(GUIConnector gui, int idxInPlayerArray, Board board) {
         this.idxInPlayerArray = idxInPlayerArray;
         this.districts = new LinkedList<>();
         this.gui = gui;
@@ -64,8 +63,8 @@ public abstract class Player {
      * @param idxInPlayerArray index in the game's player array.
      * @param strBoard         String representation of the board
      */
-    public Player(GUIConnector gui, Logger logger, int idxInPlayerArray, String strBoard) {
-        this(gui, logger, idxInPlayerArray, new Board(strBoard));
+    public Player(GUIConnector gui, int idxInPlayerArray, String strBoard) {
+        this(gui, idxInPlayerArray, new Board(strBoard));
         this.districts = genDistrictsFromBoard(this.board);
     }
 

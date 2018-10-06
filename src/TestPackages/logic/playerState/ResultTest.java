@@ -13,12 +13,12 @@ public class ResultTest {
 
     @Test
     public void testGetWinner_OnlyOnePlayerHasPoints() {
-        Player expWinner = new DefaultAIPlayer(new FakeGUI(), new Logger(), 0,
+        Player expWinner = new DefaultAIPlayer(new FakeGUI(), 0,
                 "-- -- --\n" +
                         "-- CC P1\n" +
                         "-- -- H0");
-        Player[] players = new Player[] {expWinner, new DefaultAIPlayer(new FakeGUI(), new Logger(), 1, 3, 2),
-                new DefaultAIPlayer(new FakeGUI(), new Logger(), 1, 3, 2)};
+        Player[] players = new Player[] {expWinner, new DefaultAIPlayer(new FakeGUI(), 1, 3, 2),
+                new DefaultAIPlayer(new FakeGUI(), 1, 3, 2)};
         Result res = new Result(players);
         assertNotNull(res.getWinner());
         assertEquals(1, res.getWinner().size());
@@ -29,15 +29,15 @@ public class ResultTest {
     @Test
     public void testGetWinner_OnePlayerWinnsAllBoardsAreFilled_CanDetermineWinner() {
         FakeGUI fakeGui = new FakeGUI();
-        Player expWinner = new DefaultAIPlayer(fakeGui, new Logger(), 0,
+        Player expWinner = new DefaultAIPlayer(fakeGui, 0,
                 "-- -- --\n" +
                         "-- CC P1\n" +
                         "-- -- H1");
-        Player loser1 = new DefaultAIPlayer(fakeGui, new Logger(), 1,
+        Player loser1 = new DefaultAIPlayer(fakeGui, 1,
                 "-- -- --\n" +
                         "-- CC P1\n" +
                         "-- -- H0");
-        Player loser2 = new DefaultAIPlayer(fakeGui, new Logger(), 2,
+        Player loser2 = new DefaultAIPlayer(fakeGui, 2,
                 "-- -- --\n" +
                         "-- CC P1\n" +
                         "-- -- H0");
@@ -49,15 +49,15 @@ public class ResultTest {
     @Test
     public void testGetWinner_OnePlayerWinnsAllBoardsAreFilled_OrderOfPlayersIrrelevant() {
         FakeGUI fakeGui = new FakeGUI();
-        Player expWinner = new DefaultAIPlayer(fakeGui, new Logger(), 0,
+        Player expWinner = new DefaultAIPlayer(fakeGui, 0,
                 "-- -- --\n" +
                         "-- CC P1\n" +
                         "-- -- H1");
-        Player loser1 = new DefaultAIPlayer(fakeGui, new Logger(), 1,
+        Player loser1 = new DefaultAIPlayer(fakeGui, 1,
                 "-- -- --\n" +
                         "-- CC P1\n" +
                         "-- -- H0");
-        Player loser2 = new DefaultAIPlayer(fakeGui, new Logger(), 2,
+        Player loser2 = new DefaultAIPlayer(fakeGui, 2,
                 "-- -- --\n" +
                         "-- CC P1\n" +
                         "-- -- H0");

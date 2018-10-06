@@ -109,9 +109,9 @@ public class Game implements GUI2Game {
      * @param stack            stack of dominos used to fill banks
      * @param currDomino       domino in the rotation box of the human player
      */
-    public Game(GUIConnector gui, Logger logger, Player[] players, int currPlayerIdx, Bank currentRoundBank, Bank nextRoundBank,
+    public Game(GUIConnector gui, Player[] players, int currPlayerIdx, Bank currentRoundBank, Bank nextRoundBank,
                 List<Domino> stack, Domino currDomino) {
-        initTestingLoadingConstructor(gui, logger, players, currPlayerIdx, currentRoundBank, nextRoundBank, stack, currDomino);
+        initTestingLoadingConstructor(gui, players, currPlayerIdx, currentRoundBank, nextRoundBank, stack, currDomino);
     }
 
     /**
@@ -119,11 +119,11 @@ public class Game implements GUI2Game {
      * @param gui gui reference to the game
      * @param input String input setting up the whole game
      */
-    public Game(GUIConnector gui, Logger logger, String input) {
+    public Game(GUIConnector gui, String input) {
         Converter gameContent = new Converter();
         // TODO use error message - error message used for treatment, maybe with a new Pop-Up Window or just in the log-File.
-        String returnMessage = gameContent.readStr(gui, logger, input);
-        initTestingLoadingConstructor(gui, logger, gameContent.getPlayers(), HUMAN_PLAYER_IDX, gameContent.getCurrentBank(),
+        String returnMessage = gameContent.readStr(gui, input);
+        initTestingLoadingConstructor(gui, gameContent.getPlayers(), HUMAN_PLAYER_IDX, gameContent.getCurrentBank(),
                 gameContent.getNextBank(),gameContent.getStack(), null);
     }
 
@@ -154,11 +154,10 @@ public class Game implements GUI2Game {
      * @param currDomino       domino in the rotation box of the human player
      * @return String message containing the error messages, SUCCESSFUL_READ_MESSAGE if reading String was successful
      */
-    private String initTestingLoadingConstructor(GUIConnector gui, Logger logger, Player[] players, int currPlayerIdx,
+    private String initTestingLoadingConstructor(GUIConnector gui, Player[] players, int currPlayerIdx,
                                                  Bank currentRoundBank, Bank nextRoundBank, List<Domino> stack,
                                                  Domino currDomino) {
         this.gui = gui;
-        this.logger = logger;
         this.players = players;
         this.currentRoundBank = currentRoundBank;
         this.nextRoundBank = nextRoundBank;
@@ -356,7 +355,7 @@ public class Game implements GUI2Game {
     private Player[] createNewPlayers(PlayerType[] playerTypes, int sizeX, int sizeY) {
         Player[] output = new Player[playerTypes.length];
         for (int i = 0; i < playerTypes.length; i++) {
-            output[i] = PlayerType.getPlayerInstanceWithGivenType(playerTypes[i], i, this.gui, this.logger, sizeX, sizeY);
+            output[i] = PlayerType.getPlayerInstanceWithGivenType(playerTypes[i], i, this.gui, sizeX, sizeY);
         }
         return output;
     }

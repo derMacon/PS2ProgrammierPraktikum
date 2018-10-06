@@ -65,7 +65,7 @@ public class BankTest {
     public void testSelectGetSelectedPlayer_SelectValidDomino() {
         List<Domino> stack = null;
         Bank bank = genBankFromStack(stack);
-        Player fstPlayer = new DefaultAIPlayer(new FakeGUI(), new Logger(), 1, 5, 5);
+        Player fstPlayer = new DefaultAIPlayer(new FakeGUI(), 1, 5, 5);
         bank.selectEntry(fstPlayer, 0);
 
         assertSame(fstPlayer, bank.getSelectedPlayer(0));
@@ -93,7 +93,7 @@ public class BankTest {
     public void testIsNotSelected_ValidIdx() {
         List<Domino> stack = null;
         Bank bank = genBankFromStack(stack);
-        Player fstPlayer = new DefaultAIPlayer(new FakeGUI(), new Logger(), 1, 5, 5);
+        Player fstPlayer = new DefaultAIPlayer(new FakeGUI(), 1, 5, 5);
         bank.selectEntry(fstPlayer, 0);
 
         assertFalse(bank.isNotSelected(0));
@@ -104,7 +104,7 @@ public class BankTest {
     public void testIsNotSelected_InvalidIdxTooSmall() {
         List<Domino> stack = null;
         Bank bank = genBankFromStack(stack);
-        Player fstPlayer = new DefaultAIPlayer(new FakeGUI(), new Logger(), 1, 5, 5);
+        Player fstPlayer = new DefaultAIPlayer(new FakeGUI(), 1, 5, 5);
         bank.selectEntry(fstPlayer, -1);
     }
 
@@ -112,7 +112,7 @@ public class BankTest {
     public void testIsNotSelected_InvalidIdxTooBig() {
         List<Domino> stack = null;
         Bank bank = genBankFromStack(stack);
-        Player fstPlayer = new DefaultAIPlayer(new FakeGUI(), new Logger(), 1, 5, 5);
+        Player fstPlayer = new DefaultAIPlayer(new FakeGUI(), 1, 5, 5);
         bank.selectEntry(fstPlayer, 4);
     }
 
@@ -168,7 +168,7 @@ public class BankTest {
         genBankFromStack(stack);
         Entry[] entries = new Entry[]{new Entry(stack.get(0)), new Entry(stack.get(1)), null};
         Bank bank = new Bank(entries, new Random());
-        Player player = new DefaultAIPlayer(new FakeGUI(), new Logger(), 1, 5, 5);
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1, 5, 5);
         // Domino selected by no player
         Domino outputDom = bank.getPlayerSelectedDomino(player);
         assertNull(outputDom);

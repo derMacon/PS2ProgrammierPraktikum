@@ -7,3 +7,5 @@ starten ohne das Spiel neu zu instantiieren, man loescht einfach nur die gegeben
 
 - Board: Konstruktor erlaubt kein Leeres Board (x == 0 && y == 0) weil die Pruefung sonst zu 
 kompliziert wird, eine Fallunterscheidung ist noetig und das lohnt sich nicht. 
+
+- Logger mit Singleton Muster, spart Parameter (und ist erlaubt)

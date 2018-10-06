@@ -3,7 +3,6 @@ package TestPackages.logic.logicTransfer;
 import TestPackages.other.FakeGUI;
 import logic.bankSelection.Bank;
 import logic.bankSelection.Entry;
-import logic.dataPreservation.Logger;
 import logic.logicTransfer.GUIConnector;
 import logic.logicTransfer.Game;
 import logic.playerTypes.DefaultAIPlayer;
@@ -70,14 +69,13 @@ public class GameTest {
     public void testTestConstructor_gui_players_int_Bank_Bank_Domino_BeforeStart() {
         // Standard Game - Build with testing constructor
         GUIConnector fakeGui = new FakeGUI();
-        Logger logger = new Logger();
 
         Player[] players = new Player[4];
         Bank currentBank = new Bank(4);
         Bank nextBank = new Bank(4);
         List<Domino> stack = new LinkedList<>();
 
-        Game gameTestingConstr = new Game(fakeGui, logger, players, 0, currentBank, nextBank, stack, null);
+        Game gameTestingConstr = new Game(fakeGui, players, 0, currentBank, nextBank, stack, null);
 
         assertEquals(4, gameTestingConstr.getNumberOfPlayers());
         assertEquals(4, gameTestingConstr.getCurrentRoundBank().getBankSize());
@@ -109,14 +107,13 @@ public class GameTest {
         // - Standard Game (after start game) - Build with testing constructor -
 
         GUIConnector fakeGui = new FakeGUI();
-        Logger logger = new Logger();
         int sizeX = 5;
         int sizeY = 5;
 
-        Player pl1 = new HumanPlayer(fakeGui, logger, 0, sizeX, sizeY);
-        Player pl2 = new DefaultAIPlayer(fakeGui, logger, 1, sizeX, sizeY);
-        Player pl3 = new DefaultAIPlayer(fakeGui, logger, 2, sizeX, sizeY);
-        Player pl4 = new DefaultAIPlayer(fakeGui, logger, 3, sizeX, sizeY);
+        Player pl1 = new HumanPlayer(fakeGui, 0, sizeX, sizeY);
+        Player pl2 = new DefaultAIPlayer(fakeGui, 1, sizeX, sizeY);
+        Player pl3 = new DefaultAIPlayer(fakeGui, 2, sizeX, sizeY);
+        Player pl4 = new DefaultAIPlayer(fakeGui, 3, sizeX, sizeY);
         Player[] players = new Player[]{pl1, pl2, pl3, pl4};
 
         Entry entry1 = new Entry(new Domino(Tiles.P0H0_Val13));
@@ -130,7 +127,7 @@ public class GameTest {
         List<Domino> stack = new LinkedList<>();
         stack = Domino.fill(stack);
 
-        Game gameTestingConstr = new Game(fakeGui, logger, players, 0, currentBank, nextBank, stack, null);
+        Game gameTestingConstr = new Game(fakeGui, players, 0, currentBank, nextBank, stack, null);
 
         // - actual tests -
 

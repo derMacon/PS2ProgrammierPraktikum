@@ -39,15 +39,14 @@ public enum PlayerType {
      * @param gui reference to the gui
      * @return a player of the given type
      */
-    public static Player loadPlayerInstanceWithGivenTypeAndBoard(PlayerType type, Board board, int idx, GUIConnector gui,
-                                                                 Logger logger) {
+    public static Player loadPlayerInstanceWithGivenTypeAndBoard(PlayerType type, Board board, int idx, GUIConnector gui) {
         Player output = null;
         switch (type) {
             case HUMAN:
-                output = new HumanPlayer(gui, logger, idx, board);
+                output = new HumanPlayer(gui, idx, board);
                 break;
             case DEFAULT:
-                output = new DefaultAIPlayer(gui, logger, idx, board);
+                output = new DefaultAIPlayer(gui, idx, board);
                 break;
             default:
                 System.out.println("Not supported yet -> cannot instanciate desired playertype");
@@ -64,15 +63,15 @@ public enum PlayerType {
      * @param boardSizeY Y - dimension of the board
      * @return a player of the given type
      */
-    public static Player getPlayerInstanceWithGivenType(PlayerType type, int idx, GUIConnector gui, Logger logger, int boardSizeX, int boardSizeY) {
+    public static Player getPlayerInstanceWithGivenType(PlayerType type, int idx, GUIConnector gui, int boardSizeX, int boardSizeY) {
         Player output = null;
         switch (type) {
             case HUMAN:
 //                output = new HumanPlayer(gui, idx, boardSizeX, boardSizeY); // Actual call without pre-laying dominos
-                output = new HumanPlayer(gui, logger, idx, new Board(Game.BOARD_OCCUPANCE_FIRST_INSPECTION)); // Human player with filled field
+                output = new HumanPlayer(gui, idx, new Board(Game.BOARD_OCCUPANCE_FIRST_INSPECTION)); // Human player with filled field
                 break;
             case DEFAULT:
-               output = new DefaultAIPlayer(gui, logger, idx, boardSizeX, boardSizeY);
+               output = new DefaultAIPlayer(gui, idx, boardSizeX, boardSizeY);
                 break;
             default:
                 System.out.println("Not supported yet -> cannot instanciate desired playertype");
