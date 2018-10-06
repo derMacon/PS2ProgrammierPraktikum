@@ -15,13 +15,6 @@ public class TilesTest {
         assertEquals(expectedOutput, actualOutput);
     }
 
-    @Test
-    public void testGenTile_FromOrdinalValue() {
-        Tiles expectedOutput = Tiles.values()[0];
-        Tiles actualOutput = Tiles.genTile(13, 13);
-        assertEquals(expectedOutput, actualOutput);
-    }
-
     @Test (expected = AssertionError.class)
     public void testGenTile_NullParam1() {
         Tiles.genTile(null, SingleTile.P0);

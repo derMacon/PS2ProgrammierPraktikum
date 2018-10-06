@@ -1,10 +1,12 @@
 package logic.playerState;
 
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
+import logic.token.DistrictType;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -51,6 +53,7 @@ public class Board {
 
     /**
      * Initializes the board with a city center in the middle of the board
+     *
      * @param xSize x dimension of the board
      * @param ySize y dimension of the board
      * @return initialized board with city center in the middle
@@ -71,6 +74,7 @@ public class Board {
 
     /**
      * Fills the empty fields with the corresponding tile
+     *
      * @param input input array that will be filled with the empty tile
      * @return input array filled with empty tiles
      */
@@ -78,7 +82,7 @@ public class Board {
         System.out.println(input[0].length);
         for (int y = 0; y < input.length; y++) {
             for (int x = 0; x < input[0].length; x++) {
-                if(null == input[x][y]) {
+                if (null == input[x][y]) {
                     input[x][y] = SingleTile.EC;
                 }
             }
@@ -190,14 +194,84 @@ public class Board {
 
     /**
      * Checks if a domino with a given position fits on the board
+     * - gets all neighbors
+     * - checks if neighbors are valid (Same type)
      *
      * @param domino to check
      * @return true if the domino fits at the given position on the board
      */
     public boolean fits(Domino domino) {
         // TODO insert code
-        return true;
+        assert null != domino;
+        Pos posFst = domino.getFstPos();
+        Pos posSnd = domino.getSndPos();
+        if (isValidPos(posFst) && isValidPos(posSnd) && isEmpty(posFst) && isEmpty(posSnd)) {
+            List<Pos> fstTouchingNeighbour = genTouchingCells(posFst);
+            List<Pos> sndTouchingNeighbour = genTouchingCells(posSnd);
+
+            boolean sum = !fstTouchingNeighbour.isEmpty() || !sndTouchingNeighbour.isEmpty();
+            boolean fstNeighbours = checkIfNeighborsAreValid(domino.getFstVal(), fstTouchingNeighbour);
+            boolean sndNeighbours = checkIfNeighborsAreValid(domino.getSndVal(), sndTouchingNeighbour);
+
+
+            return (!fstTouchingNeighbour.isEmpty() || !sndTouchingNeighbour.isEmpty())
+                    && checkIfNeighborsAreValid(domino.getFstVal(), fstTouchingNeighbour)
+                    && checkIfNeighborsAreValid(domino.getSndVal(), sndTouchingNeighbour);
+        } else {
+            return false;
+        }
     }
+
+
+    /**
+     * Collects the touching cells from a given position.
+     *
+     * @param position position to examine
+     * @return a list containing all neighbors who are not out of bound and not empty
+     */
+    private List<Pos> genTouchingCells(Pos position) {
+        List<Pos> touchedCells = new LinkedList<>();
+        for (Pos currentNeighbour : position.getNeighbours()) {
+            if (isValidPos(currentNeighbour) && !isEmpty(currentNeighbour)) {
+                touchedCells.add(currentNeighbour);
+            }
+        }
+        return touchedCells;
+    }
+
+    /**
+     * Checks if the board has empty at the given position
+     *
+     * @param inputPos position to check
+     * @return true if board is empty at the given position
+     */
+    private boolean isEmpty(Pos inputPos) {
+        return SingleTile.EC == cells[inputPos.x()][inputPos.y()];
+    }
+
+    /**
+     * Checks if a given list of touching cell positions match types with a given singletile
+     *
+     * @param domTile         single tile from a domino to examine
+     * @param touchingDominos list of neighbor positions to examine
+     * @return true if all neighbor positions hold a singletile value that is compatible with the given singletile
+     */
+    private boolean checkIfNeighborsAreValid(SingleTile domTile, List<Pos> touchingDominos) {
+        if(touchingDominos.size() == 0) {
+            return true;
+        }
+        boolean onlyValidNeighbors;
+        DistrictType currTileDistrictType;
+        int counter = 0;
+        do {
+            Pos currPos = touchingDominos.get(counter);
+            currTileDistrictType = this.cells[currPos.x()][currPos.y()].getDistrictType();
+            onlyValidNeighbors = domTile.getDistrictType() == currTileDistrictType || currTileDistrictType == DistrictType.CENTER;
+            counter++;
+        } while (onlyValidNeighbors && counter < touchingDominos.size());
+        return onlyValidNeighbors;
+    }
+
 
     /**
      * Lays a domino on the board
@@ -207,7 +281,7 @@ public class Board {
     public void lay(Domino domino) {
         assert null != domino && fits(domino);
         Pos posFstTile = domino.getFstPos();
-        Pos posSndTile = domino.getFstPos();
+        Pos posSndTile = domino.getSndPos();
         if (isValidPos(posFstTile) && isValidPos(posSndTile)) {
             this.cells[posFstTile.x()][posFstTile.y()] = domino.getFstVal();
             this.cells[posSndTile.x()][posSndTile.y()] = domino.getSndVal();

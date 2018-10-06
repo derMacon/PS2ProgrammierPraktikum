@@ -188,16 +188,16 @@ public class BankTest {
     @Test
     public void testDrawFromStack_DrawFullStack() {
         List<Domino> stack = new LinkedList<>();
-        // only init stack
-        genBankFromStack(Tiles.TILES_CNT, stack);
+        stack = Domino.fill(stack);
         Bank bank = new Bank(Tiles.TILES_CNT);
         bank.randomlyDrawFromStack(stack);
         Domino[] domOnBank = bank.getAllDominos();
         boolean containsAllStackDoms = true;
+        List<Domino> freshStack = Domino.fill(new LinkedList<>());
         for (Domino currDom : domOnBank) {
-            containsAllStackDoms &= stack.contains(currDom);
+            containsAllStackDoms &= freshStack.contains(currDom);
         }
-        assertEquals(stack.size(), domOnBank.length);
+        assertEquals(Tiles.TILES_CNT, domOnBank.length);
         assertTrue(containsAllStackDoms);
     }
 

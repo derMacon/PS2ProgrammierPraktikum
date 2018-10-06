@@ -297,8 +297,9 @@ public class Game implements GUI2Game {
      */
     @Override
     public void setOnBoard(Pos pos) {
-        currDomino.setPos(new Pos(pos.x(), pos.y()));
+        this.currDomino.setPos(new Pos(pos.x(), pos.y()));
         this.players[HUMAN_PLAYER_IDX].showOnBoard(currDomino);
+        Logger.printAndSafe("HUMAN put " + this.currDomino.toString() + " to " + pos.toString());
         setToChooseBox(null);
 
         botsDoTheirTurn();
@@ -318,8 +319,7 @@ public class Game implements GUI2Game {
 
     @Override
     public boolean fits(Pos pos) {
-        // TODO insert code
-        return true;
+        return this.players[HUMAN_PLAYER_IDX].getBoard().fits(this.currDomino.setPos(pos));
     }
 
     @Override
@@ -436,6 +436,7 @@ public class Game implements GUI2Game {
     private void setToChooseBox(Domino currDomino) {
         this.gui.showInChooseBox(currDomino);
         this.currDomino = currDomino;
+        Logger.printAndSafe(currDomino + " put to rotation box");
     }
 
 

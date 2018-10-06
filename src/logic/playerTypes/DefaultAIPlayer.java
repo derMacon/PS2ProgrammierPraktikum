@@ -1,7 +1,6 @@
 package logic.playerTypes;
 
 import logic.bankSelection.Bank;
-import logic.dataPreservation.Logger;
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Board;
 import logic.playerState.BotBehavior;
@@ -10,6 +9,10 @@ import logic.token.Domino;
 
 import java.util.List;
 
+/**
+ * Default bot logic rules:
+ * TODO fill in the bots logic rules
+ */
 public class DefaultAIPlayer extends Player implements BotBehavior {
 
     public DefaultAIPlayer(GUIConnector gui, int idx, int boardSizeX, int boardSizeY) {
@@ -34,6 +37,10 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     public Domino updateDominoPos(Domino domino) {
         // use in selectFromBank
         // TODO insert code
+        return null;
+    }
+
+    private Domino trySpecificDomino(Domino domino) {
         return null;
     }
 

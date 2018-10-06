@@ -106,7 +106,7 @@ public class BoardTest {
         Board board = new Board("--");
         assertEquals(1, board.getSizeX());
         assertEquals(1, board.getSizeY());
-        SingleTile[][] expectedCells = new SingleTile[][]{{null}};
+        SingleTile[][] expectedCells = new SingleTile[][]{{SingleTile.EC}};
         assertArrayEquals(expectedCells, board.getCells());
     }
 
@@ -124,7 +124,10 @@ public class BoardTest {
         Board board = new Board("-- -- -- \n -- -- CC ");
         assertEquals(3, board.getSizeX());
         assertEquals(2, board.getSizeY());
-        SingleTile[][] expectedCells = new SingleTile[][]{{null, null, null}, {null, null, SingleTile.CC}};
+        SingleTile[][] expectedCells = new SingleTile[][]{
+                {SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.CC}};
         assertArrayEquals(expectedCells, board.getCells());
     }
 
@@ -234,14 +237,17 @@ public class BoardTest {
     public void testFits_rotated1() {
         Board board = new Board(
                 "-- -- -- -- -- --\n" +
-                        "-- -- S0 S1 -- --\n" +
+                        "-- -- A0 P0 -- --\n" +
                         "-- -- -- -- -- --\n");
-        Domino dom = new Domino(Tiles.genTile(P0, A0), 1);
+        Domino dom = new Domino(Tiles.genTile(P0, S0), 1);
+        assertTrue(board.fits(dom.setPos(new Pos(4, 1))));
+
+        dom = new Domino(Tiles.genTile(P0, A0), 1);
         // expected P0_A0_Val14, rot == 1
         assertEquals(14, dom.getTile().getValue());
         assertEquals(1, dom.getRot());
-        assertTrue(board.fits(dom.setPos(new Pos(4, 1))));
         assertTrue(board.fits(dom.setPos(new Pos(1, 0))));
+        assertTrue(board.fits(dom.setPos(new Pos(4, 1))));
     }
 
     @Test
@@ -292,8 +298,8 @@ public class BoardTest {
         Domino dom = new Domino(Tiles.genTile(P0, A0), new Pos(1, 0), 2);
         // expected P0_A0_Val14
         assertEquals(14, dom.getTile().getValue());
-        assertEquals(P0, dom.getFstVal());
-        assertEquals(S0, dom.getSndVal());
+        assertEquals(A0, dom.getFstVal());
+        assertEquals(P0, dom.getSndVal());
         assertEquals(new Pos(1, 0), dom.getFstPos());
         assertEquals(new Pos(2, 0), dom.getSndPos());
         assertTrue(board.fits(dom));
@@ -346,7 +352,22 @@ public class BoardTest {
     // updateDominoPos() - tests since the domino holds the information about the position of the first tile and only
     // will be UPDATED.
 
-
     //</editor-fold>
+
+
+    // --- Game specific tests ---
+    @Test
+    public void testFits_DomInCorner() {
+        Board board = new Board(
+                "-- -- -- -- --\n" +
+                        "-- -- -- P1 --\n" +
+                        "-- -- CC A0 --\n" +
+                        "-- -- -- -- --\n");
+        Domino dom = new Domino(Tiles.genTile(P0, I3), 0);
+        assertTrue(board.fits(dom.setPos(new Pos(3, 0))));
+    }
+
+
+
 
 }
