@@ -49,7 +49,7 @@ public abstract class Player {
      * @param idxInPlayerArray index in the game's player array.
      * @param board            to set dominos / SingleTiles to
      */
-    public Player(GUIConnector gui, int idxInPlayerArray, Board board) {
+    protected Player(GUIConnector gui, int idxInPlayerArray, Board board) {
         this.idxInPlayerArray = idxInPlayerArray;
         this.districts = new LinkedList<>();
         this.gui = gui;
