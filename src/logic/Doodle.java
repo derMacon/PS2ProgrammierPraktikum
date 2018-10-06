@@ -10,5 +10,6 @@ import java.util.List;
 public class Doodle {
 
     public static void main(String[] args) {
+        System.out.println(3 % 2);
     }
 }

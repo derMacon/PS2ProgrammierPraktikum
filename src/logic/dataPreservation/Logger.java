@@ -64,10 +64,10 @@ public class Logger {
         this.dir = new File(path);
     }
 
-    // Actual logger mathod, prints the given message and then saves it to a given File
+    // Actual logger method, prints the given message and then saves it to a given File
     public void printAndSafe(String inputLog) {
         System.out.println(inputLog);
-        appendFileWithNewMove(inputLog);
+//        appendFileWithNewMove(inputLog);
     }
 
 

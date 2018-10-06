@@ -28,10 +28,65 @@ public class BoardTest {
         Board board = new Board(1, -1);
     }
 
+    /**
+     * Baord:
+     * CC
+     */
     @Test
-    public void testConstructor_Valid() {
+    public void testConstructor_WithCCInMiddle_OneCell() {
         Board board = new Board(1, 1);
-        assertArrayEquals(new SingleTile[1][1], board.getCells());
+        assertArrayEquals(new SingleTile[][]{{SingleTile.CC}}, board.getCells());
+    }
+
+    /**
+     * Baord:
+     * CC EC
+     * EC EC
+     */
+    @Test
+    public void testConstructor_WithCCInMiddle_SymmetricalDimensionsEven_SmallesPossibleValue() {
+        Board board = new Board(2, 2);
+        SingleTile[][] expectedOutput = new SingleTile[][]{{SingleTile.CC, SingleTile.EC}, {SingleTile.EC, SingleTile.EC}};
+        SingleTile[][] actualOutput = board.getCells();
+        assertArrayEquals(expectedOutput, actualOutput);
+    }
+
+    /**
+     * Baord:
+     * EC EC EC EC EC
+     * EC EC EC EC EC
+     * EC EC CC EC EC
+     * EC EC EC EC EC
+     * EC EC EC EC EC
+     */
+    @Test
+    public void testConstructor_WithCCInMiddle_SymmetricalDimensionsEven_DefaultBaordSize() {
+        Board board = new Board(5, 5);
+        SingleTile[][] expectedOutput = new SingleTile[][]{
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.EC, SingleTile.CC, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC}};
+        SingleTile[][] actualOutput = board.getCells();
+        assertArrayEquals(expectedOutput, actualOutput);
+    }
+
+    /**
+     * Baord:
+     * EC EC EC
+     * EC CC EC
+     * EC EC EC
+     */
+    @Test
+    public void testConstructor_WithCCInMiddle_SymmetricalDimensionsUneven() {
+        Board board = new Board(3, 3);
+        SingleTile[][] expectedOutput = new SingleTile[][]{
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.CC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC}};
+        SingleTile[][] actualOutput = board.getCells();
+        assertArrayEquals(expectedOutput, actualOutput);
     }
 
 
@@ -290,8 +345,6 @@ public class BoardTest {
     // findPosFor() tests in testclasses for players who implement the BotBehavior interface, but here named
     // updateDominoPos() - tests since the domino holds the information about the position of the first tile and only
     // will be UPDATED.
-
-
 
 
     //</editor-fold>

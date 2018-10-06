@@ -1,5 +1,6 @@
 package logic.playerState;
 
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
@@ -37,20 +38,52 @@ public class Board {
     /**
      * Constructor setting bank dimensions
      *
-     * @param sizeX
-     * @param sizeY
+     * @param sizeX x dimension of the board
+     * @param sizeY y dimension of the board
      */
     public Board(int sizeX, int sizeY) {
         assert 0 < sizeX && 0 < sizeY;
         this.sizeX = sizeX;
         this.sizeY = sizeY;
-        this.cells = new SingleTile[sizeX][sizeY];
-        // fill board with empty tiles
-        for (int y = 0; y < this.sizeY; y++) {
-            for (int x = 0; x < this.sizeX; x++) {
-                this.cells[x][y] = SingleTile.EC;
+        this.cells = initCCinMiddleOfBoard(sizeX, sizeY);
+        this.cells = fillEmptyCellsWithTile(this.cells);
+    }
+
+    /**
+     * Initializes the board with a city center in the middle of the board
+     * @param xSize x dimension of the board
+     * @param ySize y dimension of the board
+     * @return initialized board with city center in the middle
+     */
+    private SingleTile[][] initCCinMiddleOfBoard(int xSize, int ySize) {
+        SingleTile[][] output = new SingleTile[sizeX][sizeY];
+        int xMiddle = xSize / 2;
+        int yMiddle = ySize / 2;
+        if (xSize % 2 == 0 && 0 < xMiddle) {
+            xMiddle--;
+        }
+        if (ySize % 2 == 0 && 0 < yMiddle) {
+            yMiddle--;
+        }
+        output[xMiddle][yMiddle] = SingleTile.CC;
+        return output;
+    }
+
+    /**
+     * Fills the empty fields with the corresponding tile
+     * @param input input array that will be filled with the empty tile
+     * @return input array filled with empty tiles
+     */
+    private SingleTile[][] fillEmptyCellsWithTile(SingleTile[][] input) {
+        System.out.println(input[0].length);
+        for (int y = 0; y < input.length; y++) {
+            for (int x = 0; x < input[0].length; x++) {
+                if(null == input[x][y]) {
+                    input[x][y] = SingleTile.EC;
+                }
             }
         }
+        return input;
     }
 
     /**
@@ -185,6 +218,7 @@ public class Board {
 
     /**
      * Generates a string for this object
+     *
      * @return string representation for this object
      */
     @Override
@@ -193,7 +227,7 @@ public class Board {
         for (int y = 0; y < this.sizeY; y++) {
             for (int x = 0; x < this.sizeX; x++) {
                 output.append(this.cells[x][y]);
-                if(x == this.sizeX - 1) {
+                if (x == this.sizeX - 1) {
                     output.append(" ");
                 }
             }

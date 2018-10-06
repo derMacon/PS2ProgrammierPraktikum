@@ -82,7 +82,7 @@ public class Game implements GUI2Game {
         this.stack = new LinkedList<>();
         this.currPlayerIdx = 0;
         this.currDomino = null;
-        this.logger = new Logger();
+        this.logger = Logger.getInstance();
     }
 
     /**
