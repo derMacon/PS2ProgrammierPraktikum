@@ -127,6 +127,15 @@ public abstract class Player {
         return futureDistrictList;
     }
 
+    /**
+     * Searches for an appropriate District to which a given tile and its position can be added. If no district is
+     * found, a new one will be created. If the tile merges two districts, those two will be merged to one new district
+     * and the tile / pos will be added afterwards.
+     * @param tile tile to find a district for
+     * @param pos pos to find a district for
+     * @param districts list of district to be examined
+     * @return an updated list of districts
+     */
     private List<District> addToAppropriateDistrict(SingleTile tile, Pos pos, List<District> districts) {
         if (SingleTile.EC != tile && SingleTile.CC != tile) {
             // find possible districts
@@ -143,26 +152,22 @@ public abstract class Player {
         return districts;
     }
 
-
+    /**
+     * Finds one or more possible districts to which the tile / pos can be added. If no district was found, an empty
+     * district list will be returned
+     * @param tile tile to find a district for
+     * @param pos pos to find a district for
+     * @param districts list of districts to chose from
+     * @return the possible districts from the given district list
+     */
     private List<District> findOrCreatePossibleDistricts(SingleTile tile, Pos pos, final List<District> districts) {
-        List<District> deepCopyForOutput = new LinkedList<>();
+        List<District> filteredDistrictList = new LinkedList<>();
         for (District currDistrict : districts) {
             if (currDistrict.typeAndPosMatchCurrDistrict(tile, pos)) {
-                deepCopyForOutput.add(currDistrict);
+                filteredDistrictList.add(currDistrict);
             }
         }
-        return deepCopyForOutput;
-    }
-
-
-    /**
-     * Removes all null pointers from list
-     *
-     * @param districts
-     * @return
-     */
-    private List<District> removeAllNullPointersFromList(List<District> districts) {
-        return null;
+        return filteredDistrictList;
     }
 
     /**
@@ -175,8 +180,10 @@ public abstract class Player {
         // update board
         this.board.lay(playerSelectedDomino);
         // update districts
-        this.districts = addToAppropriateDistrict(playerSelectedDomino.getFstVal(), playerSelectedDomino.getFstPos(), this.districts);
-        this.districts = addToAppropriateDistrict(playerSelectedDomino.getSndVal(), playerSelectedDomino.getSndPos(), this.districts);
+        this.districts = addToAppropriateDistrict(playerSelectedDomino.getFstVal(),
+                playerSelectedDomino.getFstPos(), this.districts);
+        this.districts = addToAppropriateDistrict(playerSelectedDomino.getSndVal(),
+                playerSelectedDomino.getSndPos(), this.districts);
         // update gui
         this.gui.showOnGrid(this.idxInPlayerArray, playerSelectedDomino);
     }

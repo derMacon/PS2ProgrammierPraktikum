@@ -123,7 +123,7 @@ public class PlayerTest {
         assertEquals(expectedDistricts, actualDistricts);
     }
 
-    // TODO more lay tests
+    // TODO more lay tests - especially with merging more than two districts
 
 
     // --- equals ---
