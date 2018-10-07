@@ -316,4 +316,29 @@ public class Board {
     }
 
 
+    /**
+     * Checks if a given objects holds the same data as the current instance (modified from ueb09)
+     * @param obj object to be examined
+     * @return true if equals, false if not or if given obj is a null pointer
+     */
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        // check individual cells
+        final Board other = (Board) obj;
+        boolean areSame = true;
+        for (int y = 0; y < this.sizeY && areSame; y++) {
+            for (int x = 0; x < this.sizeX && areSame; x++) {
+                areSame = this.cells[x][y] == other.cells[x][y];
+            }
+        }
+        return areSame;
+    }
+
+
 }

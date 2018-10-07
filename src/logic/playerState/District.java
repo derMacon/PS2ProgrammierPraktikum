@@ -44,6 +44,7 @@ public class District {
      * @param districts list of districts that will be merged
      */
     public District(List<District> districts) {
+        assert null != districts;
         this.singleTiles = new LinkedList<>();
         this.tilePositions = new LinkedList<>();
         for(District currDistrict : districts) {
@@ -62,17 +63,6 @@ public class District {
         assert null != singleTiles && null != pos;
         this.singleTiles = singleTiles;
         this.tilePositions = pos;
-    }
-
-    /**
-     * Constructor used for testing
-     * @param singleTiles
-     * @param pos
-     */
-    public District(SingleTile[] singleTiles, Pos[] pos) {
-        assert null != singleTiles && null != pos;
-        this.singleTiles = Arrays.asList(singleTiles);
-        this.tilePositions = Arrays.asList(pos);
     }
 
     /**

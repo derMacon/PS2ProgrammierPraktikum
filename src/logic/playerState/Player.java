@@ -121,7 +121,6 @@ public abstract class Player {
         SingleTile[][] cells = board.getCells();
         for (int y = 0; y < board.getSizeY(); y++) {
             for (int x = 0; x < board.getSizeX(); x++) {
-                System.out.println(x + " " + y);
                 futureDistrictList = addToAppropriateDistrict(cells[x][y], new Pos(x, y), futureDistrictList);
             }
         }
@@ -129,13 +128,16 @@ public abstract class Player {
     }
 
     private List<District> addToAppropriateDistrict(SingleTile tile, Pos pos, List<District> districts) {
-        // find possible districts
-        List<District> possibleDistricts = findOrCreatePossibleDistricts(tile, pos, districts);
-        if (!possibleDistricts.isEmpty()) {
+        if (SingleTile.EC != tile && SingleTile.CC != tile) {
+            // find possible districts
+            List<District> possibleDistricts = findOrCreatePossibleDistricts(tile, pos, districts);
             // delete possible districts from current district list (to avoid duplicates)
             districts.removeAll(possibleDistricts);
             // unit (merge) possible districts
-            districts.add(new District(possibleDistricts));
+            District updatedDistrict = new District(possibleDistricts);
+            updatedDistrict.add(tile, pos);
+            // Add updated district to district list
+            districts.add(updatedDistrict);
         }
         // return result (future this.districts)
         return districts;
@@ -144,14 +146,9 @@ public abstract class Player {
 
     private List<District> findOrCreatePossibleDistricts(SingleTile tile, Pos pos, final List<District> districts) {
         List<District> deepCopyForOutput = new LinkedList<>();
-        if (SingleTile.EC != tile && SingleTile.CC != tile) {
-            for (District currDistrict : districts) {
-                if (currDistrict.typeAndPosMatchCurrDistrict(tile, pos)) {
-                    deepCopyForOutput.add(currDistrict);
-                }
-            }
-            if (deepCopyForOutput.isEmpty()) {
-                deepCopyForOutput.add(new District(tile, pos));
+        for (District currDistrict : districts) {
+            if (currDistrict.typeAndPosMatchCurrDistrict(tile, pos)) {
+                deepCopyForOutput.add(currDistrict);
             }
         }
         return deepCopyForOutput;
@@ -173,9 +170,14 @@ public abstract class Player {
      *
      * @param playerSelectedDomino domino to display
      */
-    public void showOnBoard(Domino playerSelectedDomino) {
+    public void layOnBoard(Domino playerSelectedDomino) {
         assert null != playerSelectedDomino;
+        // update board
         this.board.lay(playerSelectedDomino);
+        // update districts
+        this.districts = addToAppropriateDistrict(playerSelectedDomino.getFstVal(), playerSelectedDomino.getFstPos(), this.districts);
+        this.districts = addToAppropriateDistrict(playerSelectedDomino.getSndVal(), playerSelectedDomino.getSndPos(), this.districts);
+        // update gui
         this.gui.showOnGrid(this.idxInPlayerArray, playerSelectedDomino);
     }
 

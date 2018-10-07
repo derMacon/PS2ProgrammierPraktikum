@@ -298,7 +298,7 @@ public class Game implements GUI2Game {
     @Override
     public void setOnBoard(Pos pos) {
         this.currDomino.setPos(new Pos(pos.x(), pos.y()));
-        this.players[HUMAN_PLAYER_IDX].showOnBoard(currDomino);
+        this.players[HUMAN_PLAYER_IDX].layOnBoard(currDomino);
         Logger.printAndSafe("HUMAN put " + this.currDomino.toString() + " to " + pos.toString());
         setToChooseBox(null);
 
