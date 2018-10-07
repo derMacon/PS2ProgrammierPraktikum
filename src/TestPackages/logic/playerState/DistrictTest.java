@@ -3,7 +3,6 @@ package TestPackages.logic.playerState;
 import logic.playerState.District;
 import logic.token.Pos;
 import logic.token.SingleTile;
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.LinkedList;
@@ -229,6 +228,12 @@ public class DistrictTest {
 
 
     // --- equals ---
+    @Test (expected = AssertionError.class)
+    public void testEquals_NullParam() {
+        District district = new District(SingleTile.A2, new Pos(1,1));
+        district.equals(null);
+    }
+
     @Test
     public void testEquals_Invalid() {
         District district1 = new District(SingleTile.A0, new Pos(0,0));
@@ -274,5 +279,41 @@ public class DistrictTest {
     }
 
 
+    // --- isNextTo ---
+    @Test (expected = AssertionError.class)
+    public void testIsNextTo_NullParam1() {
+        District district = new District(SingleTile.A2, new Pos(0,0));
+        district.typeAndPosMatchCurrDistrict(null, new Pos(0,1));
+    }
+
+    @Test (expected = AssertionError.class)
+    public void testIsNextTo_NullParam2() {
+        District district = new District(SingleTile.A2, new Pos(0,0));
+        district.typeAndPosMatchCurrDistrict(SingleTile.A3, null);
+    }
+
+    @Test (expected = AssertionError.class)
+    public void testIsNextTo_NullParam3() {
+        District district = new District(SingleTile.A2, new Pos(0,0));
+        district.typeAndPosMatchCurrDistrict(null, null);
+    }
+
+    @Test
+    public void testIsNextTo_Valid_AllDirections_MatchingTypes() {
+        District district = new District(SingleTile.A2, new Pos(1,1));
+        assertTrue(district.typeAndPosMatchCurrDistrict(SingleTile.A0, new Pos(0,1))); // Left
+        assertTrue(district.typeAndPosMatchCurrDistrict(SingleTile.A0, new Pos(2,1))); // Right
+        assertTrue(district.typeAndPosMatchCurrDistrict(SingleTile.A0, new Pos(1,0))); // Up
+        assertTrue(district.typeAndPosMatchCurrDistrict(SingleTile.A0, new Pos(1,2))); // Down
+    }
+
+    @Test
+    public void testIsNextTo_Valid_AllDirections_NotMatchingTypes() {
+        District district = new District(SingleTile.A2, new Pos(1,1));
+        assertFalse(district.typeAndPosMatchCurrDistrict(SingleTile.P0, new Pos(0,1))); // Left
+        assertFalse(district.typeAndPosMatchCurrDistrict(SingleTile.P0, new Pos(2,1))); // Right
+        assertFalse(district.typeAndPosMatchCurrDistrict(SingleTile.P0, new Pos(1,0))); // Up
+        assertFalse(district.typeAndPosMatchCurrDistrict(SingleTile.P0, new Pos(1,2))); // Down
+    }
 
 }

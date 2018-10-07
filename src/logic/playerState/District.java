@@ -1,9 +1,6 @@
 package logic.playerState;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader;
 import logic.token.Domino;
@@ -43,6 +40,19 @@ public class District {
     }
 
     /**
+     * Constructor taking in a list of districts and forms a new district containing all given districts
+     * @param districts list of districts that will be merged
+     */
+    public District(List<District> districts) {
+        this.singleTiles = new LinkedList<>();
+        this.tilePositions = new LinkedList<>();
+        for(District currDistrict : districts) {
+            this.singleTiles.addAll(currDistrict.singleTiles);
+            this.tilePositions.addAll(currDistrict.tilePositions);
+        }
+    }
+
+    /**
      * Used for testing
      *
      * @param singleTiles
@@ -52,6 +62,25 @@ public class District {
         assert null != singleTiles && null != pos;
         this.singleTiles = singleTiles;
         this.tilePositions = pos;
+    }
+
+    /**
+     * Constructor used for testing
+     * @param singleTiles
+     * @param pos
+     */
+    public District(SingleTile[] singleTiles, Pos[] pos) {
+        assert null != singleTiles && null != pos;
+        this.singleTiles = Arrays.asList(singleTiles);
+        this.tilePositions = Arrays.asList(pos);
+    }
+
+    /**
+     * Constructor used for testing
+     * @param testDistricts districts that will be merged
+     */
+    public District(District[] testDistricts) {
+        this(Arrays.asList(testDistricts));
     }
 
     /**
@@ -84,6 +113,8 @@ public class District {
         this.tilePositions.add(newPos);
     }
 
+
+
     /**
      * Merges two districts if a tile is
      *
@@ -93,8 +124,9 @@ public class District {
      * (in the same line -> d1.merge(d2).add(tileX)))
      */
     public District merge(District other) {
-        assert null != other && !Collections.disjoint(this.singleTiles, other.singleTiles);
+        assert null != other && Collections.disjoint(this.tilePositions, other.tilePositions);
 
+        // TODO delete next line before final commit
         boolean temp = Collections.disjoint(this.singleTiles, other.singleTiles);
 
         this.singleTiles.addAll(other.singleTiles);
@@ -123,13 +155,40 @@ public class District {
      * @param tile tile that will be checked
      * @param pos pos that will be checked
      * @return true if one district member is next to the given pos and the
-     * district type matches
+     * district type matches, position cannot be already contained in the district (AssertionError)
      */
-    private boolean isNextToDistrictMember(SingleTile tile, Pos pos) {
-        if (tile.getDistrictType() == this.singleTiles.get(0).getDistrictType()) {
-            // TODO insert code
-        }
-        return false;
+    public boolean typeAndPosMatchCurrDistrict(SingleTile tile, Pos pos) {
+        assert null != tile && null != pos;
+
+        // TODO delete next lines before final commit
+        boolean typeMatching = matchingDistrictTypes(tile);
+        boolean posMatching = elemPosIsNextToExistingElem(pos);
+
+        return matchingDistrictTypes(tile) && elemPosIsNextToExistingElem(pos);
+    }
+
+    /**
+     * Checks if a given Tiles district type matches the overall district type of the current district
+     * @param tile
+     * @return
+     */
+    private boolean matchingDistrictTypes(SingleTile tile) {
+        return tile.getDistrictType() == this.singleTiles.get(0).getDistrictType();
+    }
+
+    /**
+     * Iterates through the district positions and check if any element has the appropriate group of neighbors
+     * @param pos Position to examine
+     * @return true if pos is next to existing district member pos
+     */
+    private boolean elemPosIsNextToExistingElem(Pos pos) {
+        boolean isNextToDistrictMember;
+        int i = 0;
+        do {
+            isNextToDistrictMember = this.tilePositions.get(i).getNeighbours().contains(pos);
+            i++;
+        } while(!isNextToDistrictMember && i < this.tilePositions.size());
+        return isNextToDistrictMember;
     }
 
     /**
@@ -139,6 +198,7 @@ public class District {
      */
     @Override
     public boolean equals(Object obj) {
+        assert null != obj;
         if ((null == obj) || !(obj instanceof District)) {
             return false;
         }

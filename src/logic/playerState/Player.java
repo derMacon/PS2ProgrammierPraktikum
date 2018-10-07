@@ -1,9 +1,11 @@
 package logic.playerState;
 
-import logic.dataPreservation.Logger;
 import logic.logicTransfer.GUIConnector;
 import logic.token.Domino;
+import logic.token.Pos;
+import logic.token.SingleTile;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -33,10 +35,10 @@ public abstract class Player {
     /**
      * Constructor setting up the gui
      *
-     * @param gui reference to update gui
+     * @param gui              reference to update gui
      * @param idxInPlayerArray index of the player in the games player array
-     * @param boardSizeX x - dimension of the players board
-     * @param boardSizeY y - dimension of the players board
+     * @param boardSizeX       x - dimension of the players board
+     * @param boardSizeY       y - dimension of the players board
      */
     public Player(GUIConnector gui, int idxInPlayerArray, int boardSizeX, int boardSizeY) {
         this(gui, idxInPlayerArray, new Board(boardSizeX, boardSizeY));
@@ -110,11 +112,59 @@ public abstract class Player {
 
     /**
      * Generates the corresponding districts from a given Board
+     *
      * @param board Board to generate the districts from
      * @return List of districts from the board
      */
     private List<District> genDistrictsFromBoard(Board board) {
-        // TODO insert code
+        List<District> futureDistrictList = new LinkedList<>();
+        SingleTile[][] cells = board.getCells();
+        for (int y = 0; y < board.getSizeY(); y++) {
+            for (int x = 0; x < board.getSizeX(); x++) {
+                System.out.println(x + " " + y);
+                futureDistrictList = addToAppropriateDistrict(cells[x][y], new Pos(x, y), futureDistrictList);
+            }
+        }
+        return futureDistrictList;
+    }
+
+    private List<District> addToAppropriateDistrict(SingleTile tile, Pos pos, List<District> districts) {
+        // find possible districts
+        List<District> possibleDistricts = findOrCreatePossibleDistricts(tile, pos, districts);
+        if (!possibleDistricts.isEmpty()) {
+            // delete possible districts from current district list (to avoid duplicates)
+            districts.removeAll(possibleDistricts);
+            // unit (merge) possible districts
+            districts.add(new District(possibleDistricts));
+        }
+        // return result (future this.districts)
+        return districts;
+    }
+
+
+    private List<District> findOrCreatePossibleDistricts(SingleTile tile, Pos pos, final List<District> districts) {
+        List<District> deepCopyForOutput = new LinkedList<>();
+        if (SingleTile.EC != tile && SingleTile.CC != tile) {
+            for (District currDistrict : districts) {
+                if (currDistrict.typeAndPosMatchCurrDistrict(tile, pos)) {
+                    deepCopyForOutput.add(currDistrict);
+                }
+            }
+            if (deepCopyForOutput.isEmpty()) {
+                deepCopyForOutput.add(new District(tile, pos));
+            }
+        }
+        return deepCopyForOutput;
+    }
+
+
+    /**
+     * Removes all null pointers from list
+     *
+     * @param districts
+     * @return
+     */
+    private List<District> removeAllNullPointersFromList(List<District> districts) {
         return null;
     }
 

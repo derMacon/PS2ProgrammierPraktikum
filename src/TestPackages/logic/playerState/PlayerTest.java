@@ -3,14 +3,112 @@ package TestPackages.logic.playerState;
 import TestPackages.other.FakeGUI;
 import logic.dataPreservation.Logger;
 import logic.playerState.Board;
+import logic.playerState.District;
 import logic.playerState.Player;
 import logic.playerTypes.DefaultAIPlayer;
+import logic.token.Domino;
+import logic.token.Pos;
+import logic.token.SingleTile;
+import logic.token.Tiles;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 import static logic.token.SingleTile.*;
 import static org.junit.Assert.*;
 
 public class PlayerTest {
+
+
+    // --- find proper district distribution ---
+
+    @Test
+    public void testConstructor_TouchingDistricts_TwoDistrictsContainingOneElem() {
+        // expected districts
+        List<District> expectedDistricts = new LinkedList<>();
+        expectedDistricts.add(new District(SingleTile.P1, new Pos(2, 1)));
+        expectedDistricts.add(new District(SingleTile.S0, new Pos(2, 2)));
+        // actual districts
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+                        "-- -- --\n" +
+                        "-- CC P1\n" +
+                        "-- -- S0\n");
+        List<District> actualDistricts = player.getDistricts();
+        // testing
+        assertEquals(expectedDistricts, actualDistricts);
+    }
+
+    @Test
+    public void testConstructor_NotTouchingSameType_TwoDistrictsContainingOneElem() {
+        // expected districts
+        List<District> expectedDistricts = new LinkedList<>();
+        expectedDistricts.add(new District(SingleTile.P0, new Pos(0, 0)));
+        expectedDistricts.add(new District(SingleTile.P1, new Pos(2, 1)));
+        // actual districts
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+                        "P0 -- --\n" +
+                        "-- CC P1\n" +
+                        "-- -- --\n");
+        List<District> actualDistricts = player.getDistricts();
+        // testing
+        assertEquals(expectedDistricts, actualDistricts);
+    }
+
+
+    @Test
+    public void testConstructor_OneDistrictTwoElements() {
+        // expected districts
+        List<District> expectedDistricts = new LinkedList<>();
+        expectedDistricts.add(new District(new District[]{
+                new District(SingleTile.P0, new Pos(0, 0)),
+                new District(SingleTile.P1, new Pos(1, 0))
+        }));
+        // actual districts
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+                        "P0 P1 --\n" +
+                        "-- CC --\n" +
+                        "-- -- --\n");
+        List<District> actualDistricts = player.getDistricts();
+        // testing
+        assertEquals(expectedDistricts, actualDistricts);
+    }
+
+
+    // --- lay ---
+
+    /**
+     * Board
+     * EC EC EC
+     * EC CC P1
+     * EC EC S0
+     */
+    @Test
+    public void testLay_TwoDistrictsContainingOneElem() {
+        // expected output
+        Board expectedBoard = new Board(
+                "-- -- --\n" +
+                        "-- CC P1\n" +
+                        "-- -- S0\n");
+        List<District> expectedDistricts = new LinkedList<>();
+        expectedDistricts.add(new District(SingleTile.P1, new Pos(2, 1)));
+        expectedDistricts.add(new District(SingleTile.S0, new Pos(2, 2)));
+
+        // actual output
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- -- --\n" +
+                        "-- CC --\n" +
+                        "-- -- --\n");
+        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.P1, SingleTile.S0), 1));
+        Board actualBoard = player.getBoard();
+        List<District> actualDistricts = player.getDistricts();
+
+        assertEquals(expectedBoard, actualBoard);
+        assertEquals(expectedDistricts, actualDistricts);
+    }
+
 
     // --- 3. getBoardPoints ---
 
