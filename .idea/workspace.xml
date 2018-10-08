@@ -5,8 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TestPackages/logic/playerState/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/TestPackages/logic/playerState/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/playerTypes/DefaultAIPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/playerTypes/DefaultAIPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/token/Domino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/Domino.java" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -156,11 +156,20 @@
                 </provider>
               </entry>
             </file>
-            <file pinned="false" current-in-tab="true">
+            <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/otherDocs/OrdValTiles_Overview.txt">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="288">
                     <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/src/logic/token/Domino.java">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="558">
+                    <caret line="107" column="35" selection-start-line="107" selection-start-column="35" selection-end-line="107" selection-end-column="35" />
                   </state>
                 </provider>
               </entry>
@@ -237,7 +246,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="18" />
-          <entry key="java" value="59" />
+          <entry key="java" value="64" />
           <entry key="png" value="1" />
           <entry key="txt" value="4" />
         </counts>
@@ -246,18 +255,18 @@
         <counts>
           <entry key="CLASS" value="18" />
           <entry key="Image" value="1" />
-          <entry key="JAVA" value="59" />
+          <entry key="JAVA" value="64" />
           <entry key="PLAIN_TEXT" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="20046" />
+          <entry key="java" value="20531" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="20046" />
+          <entry key="JAVA" value="20531" />
         </counts>
       </usages-collector>
     </session>
@@ -266,7 +275,7 @@
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.33034915">
+    <splitter split-orientation="horizontal" split-proportion="0.41987467">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -298,15 +307,6 @@
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/logic/playerState/Player.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="752">
-                  <caret line="177" column="16" selection-start-line="177" selection-start-column="16" selection-end-line="177" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -347,14 +347,23 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/logic/playerTypes/DefaultAIPlayer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="342">
-                  <caret line="26" selection-start-line="26" selection-end-line="26" />
+                <state relative-caret-position="738">
+                  <caret line="41" column="48" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/logic/playerState/Player.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="72">
+                  <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -363,11 +372,20 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/PlayerTest.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-2448">
+                <state relative-caret-position="-8434">
                   <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/DefaultAIPlayerTest.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="489">
+                  <caret line="105" selection-start-line="105" selection-end-line="105" />
                 </state>
               </provider>
             </entry>
@@ -419,6 +437,15 @@
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/logic/playerState/Player.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-2335">
+                  <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -508,7 +535,6 @@
         <option value="$PROJECT_DIR$/src/gui/FXMLIntro.fxml" />
         <option value="$PROJECT_DIR$/src/gui/main/FXMLDocumentController.java" />
         <option value="$PROJECT_DIR$/src/gui/playerTypeSelect/FXMLIntroController.java" />
-        <option value="$PROJECT_DIR$/src/logic/token/Domino.java" />
         <option value="$PROJECT_DIR$/src/gui/Main.java" />
         <option value="$PROJECT_DIR$/src/gui/FXMLIntroController.java" />
         <option value="$PROJECT_DIR$/src/logic/playerState/BotBehavior.java" />
@@ -536,7 +562,6 @@
         <option value="$PROJECT_DIR$/src/TestPackages/logic/bankSelection/BankTest.java" />
         <option value="$PROJECT_DIR$/src/TestPackages/logic/token/TilesTest.java" />
         <option value="$PROJECT_DIR$/src/logic/token/SingleTile.java" />
-        <option value="$PROJECT_DIR$/src/logic/playerTypes/DefaultAIPlayer.java" />
         <option value="$PROJECT_DIR$/src/logic/token/Pos.java" />
         <option value="$PROJECT_DIR$/src/TestPackages/logic/playerState/DistrictTest.java" />
         <option value="$PROJECT_DIR$/src/TestPackages/logic/playerState/BoardTest.java" />
@@ -546,6 +571,8 @@
         <option value="$PROJECT_DIR$/src/logic/playerState/Player.java" />
         <option value="$PROJECT_DIR$/src/logic/playerTypes/PlayerType.java" />
         <option value="$PROJECT_DIR$/src/TestPackages/logic/playerState/PlayerTest.java" />
+        <option value="$PROJECT_DIR$/src/logic/playerTypes/DefaultAIPlayer.java" />
+        <option value="$PROJECT_DIR$/src/logic/token/Domino.java" />
       </list>
     </option>
   </component>
@@ -738,7 +765,7 @@
     <property name="SearchEverywhereHistoryKey" value="Uri&#9;PSI&#9;JAVA://TestPackages.logic.playerState.DefaultAIPlayerTest#testUpdateDominoPos_rot0_rightOf&#10;updatePlayer&#9;PSI&#9;JAVA://logic.logicTransfer.GUIConnector#updatePlayer&#10;randomly&#9;PSI&#9;JAVA://logic.logicTransfer.Game#randomlyDrawNewDominosForNextRound&#10;ChipV1&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Git/IDEA/PS2ProgrammierPraktikum/src/gui/textures/ChipV1.png&#10;domi&#9;PSI&#9;JAVA://logic.token.Domino&#10;EMPTY_I&#9;PSI&#9;JAVA://gui.JavaFXGUI#EMPTY_IMG&#10;EMPTY&#9;PSI&#9;JAVA://gui.JavaFXGUI#EMPTY_IMG&#10;EMPTY.&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Git/IDEA/PS2ProgrammierPraktikum/src/gui/img/Empty.png&#10;rand&#9;PSI&#9;JAVA://logic.BankSelection.Bank#rand" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539017012015" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539018104007" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.Arquillian JUnit4" value="" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
@@ -775,7 +802,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.PlayerTest.testLay_MergeFourDistricts_WholeField">
+  <component name="RunManager" selected="JUnit.TestPackages.logic in PS2ProgrammierPraktikum">
     <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -826,26 +853,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="TestPackages.logic.playerState" />
       <option name="MAIN_CLASS_NAME" value="TestPackages.logic.playerState.PlayerTest" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="PlayerTest.testLay_CannotLayWrongType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="PS2ProgrammierPraktikum" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="TestPackages.logic.playerState.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="TestPackages.logic.playerState" />
-      <option name="MAIN_CLASS_NAME" value="TestPackages.logic.playerState.PlayerTest" />
-      <option name="METHOD_NAME" value="testLay_CannotLayWrongType" />
-      <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="moduleWithDependencies" />
@@ -914,6 +921,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestPackages.logic in PS2ProgrammierPraktikum" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="PS2ProgrammierPraktikum" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="TestPackages.logic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="TestPackages.logic" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="TEST_SEARCH_SCOPE">
@@ -945,19 +970,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.PlayerTest.testLay_CannotLayWrongType" />
       <item itemvalue="JUnit.PlayerTest" />
       <item itemvalue="JUnit.PlayerTest.testLay_MergeThreeDistricts" />
       <item itemvalue="JUnit.PlayerTest.testLay_MergeTwoDistricts_WholeField" />
       <item itemvalue="JUnit.PlayerTest.testLay_MergeFourDistricts_WholeField" />
+      <item itemvalue="JUnit.TestPackages.logic in PS2ProgrammierPraktikum" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.TestPackages.logic in PS2ProgrammierPraktikum" />
         <item itemvalue="JUnit.PlayerTest.testLay_MergeFourDistricts_WholeField" />
         <item itemvalue="JUnit.PlayerTest.testLay_MergeTwoDistricts_WholeField" />
         <item itemvalue="JUnit.PlayerTest" />
         <item itemvalue="JUnit.PlayerTest.testLay_MergeThreeDistricts" />
-        <item itemvalue="JUnit.PlayerTest.testLay_CannotLayWrongType" />
       </list>
     </recent_temporary>
   </component>
@@ -1009,14 +1034,11 @@
       <workItem from="1538856954940" duration="7355000" />
       <workItem from="1538933172907" duration="12327000" />
       <workItem from="1538950659132" duration="4096000" />
-      <workItem from="1539011670067" duration="4698000" />
+      <workItem from="1539011670067" duration="5788000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="PlayerTest_testLay_MergeThreeDistricts - 2018.10.08 at 18h 21m 17s.xml">
-      <configuration name="PlayerTest.testLay_MergeThreeDistricts" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="PlayerTest_testLay_MergeThreeDistricts - 2018.10.08 at 18h 28m 01s.xml">
       <configuration name="PlayerTest.testLay_MergeThreeDistricts" configurationId="JUnit" />
     </history-entry>
@@ -1044,9 +1066,12 @@
     <history-entry file="PlayerTest_testLay_MergeFourDistricts_WholeField - 2018.10.08 at 18h 40m 40s.xml">
       <configuration name="PlayerTest.testLay_MergeFourDistricts_WholeField" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="TestPackages_logic_in_PS2ProgrammierPraktikum - 2018.10.08 at 18h 44m 32s.xml">
+      <configuration name="TestPackages.logic in PS2ProgrammierPraktikum" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="356417000" />
+    <option name="totallyTimeSpent" value="357507000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1061,7 +1086,7 @@
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.11208267" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.11208267" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -1070,7 +1095,7 @@
       <window_info id="Capture Tool" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.31435257" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1700468" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.1723869" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.52886117" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1312,6 +1337,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="936">
           <caret line="59" column="53" selection-start-line="59" selection-start-column="53" selection-end-line="59" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1377,13 +1405,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/DefaultAIPlayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="33" column="50" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/src.zip!/java/util/List.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="8784">
@@ -1395,13 +1416,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="33" column="24" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/token/Domino.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4518">
-          <caret line="252" column="26" selection-start-line="252" selection-start-column="26" selection-end-line="252" selection-end-column="26" />
         </state>
       </provider>
     </entry>
@@ -1486,16 +1500,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2808">
           <caret line="199" selection-start-line="199" selection-end-line="199" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/playerTypes/DefaultAIPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1587,6 +1591,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/otherDocs/OrdValTiles_Overview.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8434">
+          <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/DefaultAIPlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/playerState/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="11" column="22" selection-start-line="11" selection-start-column="22" selection-end-line="11" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/playerState/Board.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="553">
@@ -1597,24 +1629,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/playerState/Player.java">
+    <entry file="file://$PROJECT_DIR$/src/logic/playerTypes/DefaultAIPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="752">
-          <caret line="177" column="16" selection-start-line="177" selection-start-column="16" selection-end-line="177" selection-end-column="16" />
+        <state relative-caret-position="738">
+          <caret line="41" column="48" selection-start-line="41" selection-start-column="48" selection-end-line="41" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/otherDocs/OrdValTiles_Overview.txt">
+    <entry file="file://$PROJECT_DIR$/src/logic/token/Domino.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TestPackages/logic/playerState/PlayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2448">
-          <caret line="41" column="38" lean-forward="true" selection-start-line="41" selection-start-column="38" selection-end-line="41" selection-end-column="38" />
+        <state relative-caret-position="558">
+          <caret line="107" column="35" selection-start-line="107" selection-start-column="35" selection-end-line="107" selection-end-column="35" />
         </state>
       </provider>
     </entry>

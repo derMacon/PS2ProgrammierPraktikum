@@ -33,6 +33,20 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         return 0;
     }
 
+    /**
+     * Generates the max. points available on the board for a given domino.
+     * Iterates through board -> sets copy on every pos -> gets the board points -> find max
+     * @param domino
+     * @return
+     */
+    private int potentialPointsForDomino(final Domino domino) {
+        Domino copy = new Domino(domino); 
+        int maxPoints = 0;
+
+    }
+
+
+
     @Override
     public Domino updateDominoPos(Domino domino) {
         // use in selectFromBank
