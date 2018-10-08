@@ -14,7 +14,7 @@ public interface BotBehavior {
      * @param bank the bank that the player will select from
      * @return the selected bank index
      */
-    int selectFromBank(Bank bank);
+    Bank selectFromBank(Bank bank, int ordBank);
 
     /**
      * Bot searches for a position on the board where it is possible to lay a domino.

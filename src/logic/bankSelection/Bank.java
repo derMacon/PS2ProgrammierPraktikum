@@ -3,6 +3,7 @@ package logic.bankSelection;
 import logic.token.Domino;
 import logic.playerState.Player;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
@@ -124,6 +125,13 @@ public class Bank {
         return isValidBankIdx(idx) && !isNotSelected(idx) && null != this.entries[idx] ? this.entries[idx].getSelectedPlayer() : null;
     }
 
+    public void updateDomino(int bankIdx, Domino dom) {
+        this.entries[bankIdx].setDomino(dom);
+    }
+
+
+
+
     /**
      * Determinies if the bank is empty or not
      *
@@ -211,12 +219,38 @@ public class Bank {
      *
      * @param stack list of dominos currently in the stack
      */
+//    public void randomlyDrawFromStack(List<Domino> stack) {
+//        assert null != stack;
+//        List<Domino> picks = new LinkedList<>();
+//        if (0 < stack.size()) {
+//            for (int i = 0; i < bankSize; i++) {
+//                picks.add(stack.remove(rand.nextInt(stack.size())));
+//            }
+//        }
+//        fill(sortDominoList(picks));
+//    }
+
     public void randomlyDrawFromStack(List<Domino> stack) {
         assert null != stack;
+        List<Domino> picks = new LinkedList<>();
         if (0 < stack.size()) {
             for (int i = 0; i < bankSize; i++) {
                 fill(stack.remove(rand.nextInt(stack.size())), i);
             }
+        }
+        fill(sortDominoList(picks));
+    }
+
+    private List<Domino> sortDominoList(List<Domino> domList) {
+        // TODO insert code
+        return domList;
+    }
+
+
+
+    public void fill(List<Domino> domList) {
+        for (int i = 0; i < domList.size(); i++) {
+            fill(domList.get(i), i);
         }
     }
 
@@ -231,18 +265,18 @@ public class Bank {
         this.entries[idx] = new Entry(domino);
     }
 
-    /**
-     * Copies the bank
-     *
-     * @return new reference for the bank
-     */
-    public Bank copy() {
-        Bank output = new Bank(this.bankSize);
-        for (int i = 0; i < bankSize; i++) {
-            output.entries[i] = this.entries[i];
-        }
-        return output;
-    }
+//    /**
+//     * Copies the bank
+//     *
+//     * @return new reference for the bank
+//     */
+//    public Bank copy() {
+//        Bank output = new Bank(this.bankSize);
+//        for (int i = 0; i < bankSize; i++) {
+//            output.entries[i] = this.entries[i];
+//        }
+//        return output;
+//    }
 
     /**
      * Checks if a given index is a valid index on the bank
@@ -275,6 +309,16 @@ public class Bank {
     public static Bank fromString(String input) {
         // TODO insert code
         return null;
+    }
+
+
+
+    public Bank copy() {
+        Entry[] copyEntries = new Entry[this.entries.length];
+        for (int i = 0; i < this.entries.length; i++) {
+            copyEntries[i] = this.entries[i].copy();
+        }
+        return new Bank(copyEntries, this.rand);
     }
 
 }

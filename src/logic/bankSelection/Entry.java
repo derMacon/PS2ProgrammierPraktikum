@@ -76,6 +76,14 @@ public class Entry {
     }
 
     /**
+     * Setter for the domino
+     * @param dom domino to be setted
+     */
+    public void setDomino(Domino dom) {
+        this.domino = dom;
+    }
+
+    /**
      * Setter for the player reference of this bank entry
      * @param player player to select this bank entry
      */
@@ -100,6 +108,15 @@ public class Entry {
     public static Entry fromString(String input) {
         // TODO insert code
         return null;
+    }
+
+    /**
+     * Provides a copy, where the domino is copied with a real deep copy but the player is not. It is only necessary to
+     * copy the domino, because it will later on be modified.
+     * @return copy of the entry
+     */
+    public Entry copy() {
+        return new Entry(this.domino.copy(), this.selectedPlayer);
     }
 
 }

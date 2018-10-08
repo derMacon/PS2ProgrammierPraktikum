@@ -217,7 +217,11 @@ public class Game implements GUI2Game {
         this.players = createNewPlayers(playerTypes, sizeX, sizeY);
 
         // TODO delete next line before final commit
-        this.gui.updatePlayer(this.players[HUMAN_PLAYER_IDX], HUMAN_PLAYER_IDX);
+//        this.gui.updatePlayer(this.players[HUMAN_PLAYER_IDX], HUMAN_PLAYER_IDX);
+
+        for (int i = 0; i < this.players.length; i++) {
+            this.gui.updatePlayer(this.players[i], i);
+        }
 
         // fill stack
         this.stack = Domino.fill(this.stack);
@@ -370,12 +374,9 @@ public class Game implements GUI2Game {
     }
 
     private void botsDoInitialSelect() {
-        // update rest of the players -> Example how it could look (not final state)
-        int botSelectedDomIdx;
         for (int i = 1; i < this.players.length; i++) {
             // rest of the players HAVE to be bots
-            botSelectedDomIdx = ((BotBehavior) this.players[i]).selectFromBank(this.currentRoundBank);
-            this.gui.selectDomino(CURRENT_BANK_IDX, botSelectedDomIdx, i);
+            this.currentRoundBank = ((BotBehavior) this.players[i]).selectFromBank(this.currentRoundBank, CURRENT_BANK_IDX);
             // TODO insert code -> show Who's Turn
         }
     }

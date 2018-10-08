@@ -11,7 +11,7 @@ IDEA shortcuts:
 - Strg + d: duplicate selected block, line if no block selected 
 - Strg + shift + d: Move textblock with arrow keys
 - Strg + alt + l: Reformat file
-- Strg + Shift + a: split eingeben um Bildschirm zu teilen
+- Strg + Shift + a: type split and the screen will split into different windows
 - Strg + p: see valid parameters
 - Shift + Esc: Hide console
 - Alt arrow up / down: switch between methods

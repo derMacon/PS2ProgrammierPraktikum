@@ -11,6 +11,7 @@ import logic.logicTransfer.Game;
 import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerState.Result;
+import logic.playerTypes.HumanPlayer;
 import logic.token.Pos;
 import logic.logicTransfer.GUIConnector;
 import logic.token.Domino;
@@ -264,10 +265,11 @@ public class JavaFXGUI implements GUIConnector {
         int width = board.getSizeX();
         int height = board.getSizeY();
         SingleTile[][] cells = board.getCells();
+        ImageView[][] imgVwsOfPlayer = player instanceof HumanPlayer ? this.imgVwsPlayerBoard : this.imgWwsAIBoards[ordPlayer - 1];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 Pos pos = new Pos(x, y);
-                showCellOnGrid(this.imgVwsPlayerBoard, pos, cells[x][y].ordinal());
+                showCellOnGrid(imgVwsOfPlayer, pos, cells[x][y].ordinal());
             }
         }
     }
@@ -475,6 +477,15 @@ public class JavaFXGUI implements GUIConnector {
         switch (ordPlayer) {
             case Game.HUMAN_PLAYER_IDX:
                 this.imgVwsCurrentBankSelection[0][idxDom].setImage(SELECTION_PLAYER_1_TEXTURE);
+                break;
+            case 1:
+                this.imgVwsCurrentBankSelection[0][idxDom].setImage(SELECTION_PLAYER_2_TEXTURE);
+                break;
+            case 2:
+                this.imgVwsCurrentBankSelection[0][idxDom].setImage(SELECTION_PLAYER_3_TEXTURE);
+                break;
+            case 3:
+                this.imgVwsCurrentBankSelection[0][idxDom].setImage(SELECTION_PLAYER_4_TEXTURE);
                 break;
             default:
                 System.out.println("Not supported yet");

@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author GeritKaleck
  */
-public class Domino {
+public class Domino implements Comparable{
 
     /**
      * Number of possiblities a domino can be rotated
@@ -70,7 +70,7 @@ public class Domino {
      * @param rotation rotation of the domino
      */
     public Domino(Tiles tiles, Pos posFst, int rotation) {
-        assert null != tiles && isValidRot(rotation);
+        assert null != tiles && null != posFst && isValidRot(rotation);
         this.rotation = rotation;
         this.tiles = tiles;
         this.posFst = posFst;
@@ -231,7 +231,7 @@ public class Domino {
             list.clear();
         }
         for (Tiles tile : Tiles.values()) {
-            list.add(new Domino(tile, null));
+            list.add(new Domino(tile, DEFAULT_POS));
         }
         return list;
     }
@@ -265,5 +265,27 @@ public class Domino {
         return 0 <= rot && ROTATION_CNT > rot;
     }
 
+    /**
+     * Provides a deep copy of this domino
+     * @return a deep copy of this domino
+     */
+    public Domino copy() {
+        System.out.println(null == this.tiles);
+        System.out.println(null == this.posFst);
+        return new Domino(this.tiles, new Pos(this.posFst.x(), this.posFst.y()), this.rotation);
+    }
 
+
+    @Override
+    public int compareTo(Object o) {
+        assert null != o && (o instanceof Domino);
+        Domino other = (Domino)o;
+        if(other.tiles.getValue() > this.tiles.getValue()) {
+            return -1;
+        } else if (other.tiles.getValue() == this.tiles.getValue()) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 }

@@ -1,6 +1,7 @@
 package logic.playerTypes;
 
 import logic.bankSelection.Bank;
+import logic.bankSelection.Choose;
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Board;
 import logic.playerState.BotBehavior;
@@ -9,6 +10,7 @@ import logic.playerState.Player;
 import logic.token.Domino;
 import logic.token.Pos;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -30,52 +32,59 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     }
 
     @Override
-    public int selectFromBank(Bank bank) {
-        // TODO insert code
-        int maxSlotIdx = 0;
-        int maxBankVal = 0;
+    public Bank selectFromBank(Bank bank, int ordBank) {
+        // bank copy, serves as temporary bank
+        Bank bankCopy = bank.copy();
+        // Generate potentially best Choose for each possible domino on the given bank
+        List<Choose> bestChoosesForEachPossibleBankSlot = new LinkedList<>();
         for (int i = 0; i < bank.getBankSize(); i++) {
-            if(bank.isNotSelected(i) && maxBankVal < potentialPointsOnCurrentBoard(bank.getDomino(i))) {
-                maxSlotIdx = i;
+            if (bank.isNotSelected(i)) {
+                bestChoosesForEachPossibleBankSlot.add(genBestChoose(bankCopy.getDomino(i).copy(), i));
             }
         }
-        bank.selectEntry(this, maxSlotIdx);
-        // TODO updating gui here, and not in game class
-        return maxSlotIdx;
+        // evaluate which choose is best
+        Choose overallBestChoose = Choose.max(bestChoosesForEachPossibleBankSlot);
+        // update domino (rotation and position) of the best choose
+        bank.updateDomino(overallBestChoose.getIdxOnBank(), overallBestChoose.getDomWithPosAndRot());
+        // actually select a domino from the bank
+        bank.selectEntry(this, overallBestChoose.getIdxOnBank());
+        // update gui
+        this.gui.selectDomino(ordBank, overallBestChoose.getIdxOnBank(), this.idxInPlayerArray);
+        // return the bank, although bank reference is modified internally (just to make sure is is evident)
+        return bank;
     }
+
 
     /**
      * Generates the max. points available on the board for a given domino.
      * Iterates through board -> sets copy on every pos -> gets the board points -> find max
+     *
      * @param domino
      * @return
      */
-    private int potentialPointsOnCurrentBoard(final Domino domino) {
-        int maxPoints = 0;
-        int currPosPoints;
+    private Choose genBestChoose(Domino domino, int bankSlotIndex) {
+        Choose currChoose;
+        Choose maxChoose = null;
         for (int y = 0; y < this.board.getSizeY(); y++) {
             for (int x = 0; x < this.board.getSizeX(); x++) {
-                currPosPoints = potentialPointsOnSpecificPos(domino, new Pos(x, y));
-                if(currPosPoints > maxPoints) {
-                    maxPoints = currPosPoints;
+                domino.setPos(new Pos(x, y));
+                if (this.board.fits(domino)) {
+                    currChoose = genChoose(domino, bankSlotIndex);
+                    maxChoose = Choose.max(maxChoose, currChoose);
                 }
             }
         }
-        return maxPoints;
+        return maxChoose;
     }
 
     /**
-     *
      * @param domino
-     * @param pos
      * @return
      */
-    private int potentialPointsOnSpecificPos(Domino domino, Pos pos) {
-        domino.setPos(pos);
+    private Choose genChoose(Domino domino, int bankSlotIndex) {
         List<District> updatedDeepCopy = updatedDistricts(this.districts, domino);
-        return genDistrictPoints(updatedDeepCopy);
+        return new Choose(domino, genDistrictPoints(updatedDeepCopy), bankSlotIndex);
     }
-
 
 
     @Override
