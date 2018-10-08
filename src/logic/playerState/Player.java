@@ -99,7 +99,7 @@ public abstract class Player {
 
     /**
      * Generates the sum of points the districts represent
-     *
+     * //TODO delete this method -> use genDistrictPoints
      * @return
      */
     public int getBoardPoints() {
@@ -109,6 +109,16 @@ public abstract class Player {
         }
         return sum;
     }
+
+
+    public int genDistrictPoints(List<District> districts) {
+        int sum = 0;
+        for (District currDistrict : districts) {
+            sum += currDistrict.genPoints();
+        }
+        return sum;
+    }
+
 
     /**
      * Generates the corresponding districts from a given Board
@@ -131,8 +141,9 @@ public abstract class Player {
      * Searches for an appropriate District to which a given tile and its position can be added. If no district is
      * found, a new one will be created. If the tile merges two districts, those two will be merged to one new district
      * and the tile / pos will be added afterwards.
-     * @param tile tile to find a district for
-     * @param pos pos to find a district for
+     *
+     * @param tile      tile to find a district for
+     * @param pos       pos to find a district for
      * @param districts list of district to be examined
      * @return an updated list of districts
      */
@@ -155,8 +166,9 @@ public abstract class Player {
     /**
      * Finds one or more possible districts to which the tile / pos can be added. If no district was found, an empty
      * district list will be returned
-     * @param tile tile to find a district for
-     * @param pos pos to find a district for
+     *
+     * @param tile      tile to find a district for
+     * @param pos       pos to find a district for
      * @param districts list of districts to chose from
      * @return the possible districts from the given district list
      */
@@ -175,18 +187,40 @@ public abstract class Player {
      *
      * @param playerSelectedDomino domino to display
      */
-    public void layOnBoard(Domino playerSelectedDomino) {
+    public void showOnBoard(Domino playerSelectedDomino) {
         assert null != playerSelectedDomino;
         // update board
         this.board.lay(playerSelectedDomino);
         // update districts
-        this.districts = addToAppropriateDistrict(playerSelectedDomino.getFstVal(),
-                playerSelectedDomino.getFstPos(), this.districts);
-        this.districts = addToAppropriateDistrict(playerSelectedDomino.getSndVal(),
-                playerSelectedDomino.getSndPos(), this.districts);
+        this.districts = updatedDistricts(this.districts, playerSelectedDomino);
+
+//        this.districts = addToAppropriateDistrict(playerSelectedDomino.getFstVal(),
+//                playerSelectedDomino.getFstPos(), this.districts);
+//        this.districts = addToAppropriateDistrict(playerSelectedDomino.getSndVal(),
+//                playerSelectedDomino.getSndPos(), this.districts);
         // update gui
         this.gui.showOnGrid(this.idxInPlayerArray, playerSelectedDomino);
     }
+
+    /**
+     * Generates a deep copy of the given districts and adds the domino to it at the appropriate slot
+     *
+     * @param districts districts to add the domino to
+     * @param domino    domino to add to the districts
+     * @return an updated list of districts
+     */
+    protected List<District> updatedDistricts(final List<District> districts, Domino domino) {
+        // deep copy of whole district list
+        List<District> output = new LinkedList<>();
+        for (District currDistrict : districts) {
+            output.add(currDistrict);
+        }
+        // adding domino to slots
+        output = addToAppropriateDistrict(domino.getFstVal(), domino.getFstPos(), output);
+        output = addToAppropriateDistrict(domino.getSndVal(), domino.getSndPos(), output);
+        return output;
+    }
+
 
     @Override
     public String toString() {

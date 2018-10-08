@@ -203,4 +203,19 @@ public class District {
 
     }
 
+    /**
+     * Makes a deep copy of the current District
+     * @return a deep copy of the current District
+     */
+    public District copy() {
+        List<SingleTile> copyTiles = new LinkedList<>();
+        List<Pos> copyPos = new LinkedList<>();
+        for (int i = 0; i < this.singleTiles.size(); i++) {
+            copyTiles.add(this.singleTiles.get(i));
+            copyPos.add(this.tilePositions.get(i));
+        }
+        return new District(copyTiles, copyPos);
+    }
+
+
 }

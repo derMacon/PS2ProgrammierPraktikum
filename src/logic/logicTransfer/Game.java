@@ -290,7 +290,7 @@ public class Game implements GUI2Game {
      * - display whos turn
      * - current player selects a domino for the next round
      * - current player gets the domino he selected in the round before
-     * - current player does his turn (internally: updatesDomPos(), layOnBoard(), displays it on gui)
+     * - current player does his turn (internally: updatesDomPos(), showOnBoard(), displays it on gui)
      * - if iterated to the end of the current bank the next round will be set up by nextRound()
      *
      * @param pos position where the Human player wants to display his current domino
@@ -298,7 +298,7 @@ public class Game implements GUI2Game {
     @Override
     public void setOnBoard(Pos pos) {
         this.currDomino.setPos(new Pos(pos.x(), pos.y()));
-        this.players[HUMAN_PLAYER_IDX].layOnBoard(currDomino);
+        this.players[HUMAN_PLAYER_IDX].showOnBoard(currDomino);
         Logger.printAndSafe("HUMAN put " + this.currDomino.toString() + " to " + pos.toString());
         setToChooseBox(null);
 

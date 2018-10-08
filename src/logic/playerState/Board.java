@@ -51,6 +51,23 @@ public class Board {
         this.cells = fillEmptyCellsWithTile(this.cells);
     }
 
+
+    /**
+     * Copy constructor, used for deep copy for generating the potential points on the board (DefaultAIPlayer)
+     * @param other board to copy
+     */
+    public Board(Board other) {
+        assert null != other;
+        this.sizeX = other.sizeX;
+        this.sizeY = other.sizeY;
+        this.cells = new SingleTile[this.sizeX][this.sizeY];
+        for (int y = 0; y < this.sizeY; y++) {
+            for (int x = 0; x < this.sizeX; x++) {
+                this.cells[x][y] = other.cells[x][y];
+            }
+        }
+    }
+
     /**
      * Initializes the board with a city center in the middle of the board
      *

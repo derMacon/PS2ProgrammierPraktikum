@@ -4,8 +4,10 @@ import logic.bankSelection.Bank;
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Board;
 import logic.playerState.BotBehavior;
+import logic.playerState.District;
 import logic.playerState.Player;
 import logic.token.Domino;
+import logic.token.Pos;
 
 import java.util.List;
 
@@ -30,7 +32,16 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     @Override
     public int selectFromBank(Bank bank) {
         // TODO insert code
-        return 0;
+        int maxSlotIdx = 0;
+        int maxBankVal = 0;
+        for (int i = 0; i < bank.getBankSize(); i++) {
+            if(bank.isNotSelected(i) && maxBankVal < potentialPointsOnCurrentBoard(bank.getDomino(i))) {
+                maxSlotIdx = i;
+            }
+        }
+        bank.selectEntry(this, maxSlotIdx);
+        // TODO updating gui here, and not in game class
+        return maxSlotIdx;
     }
 
     /**
@@ -39,10 +50,30 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * @param domino
      * @return
      */
-    private int potentialPointsForDomino(final Domino domino) {
-        Domino copy = new Domino(domino); 
+    private int potentialPointsOnCurrentBoard(final Domino domino) {
         int maxPoints = 0;
+        int currPosPoints;
+        for (int y = 0; y < this.board.getSizeY(); y++) {
+            for (int x = 0; x < this.board.getSizeX(); x++) {
+                currPosPoints = potentialPointsOnSpecificPos(domino, new Pos(x, y));
+                if(currPosPoints > maxPoints) {
+                    maxPoints = currPosPoints;
+                }
+            }
+        }
+        return maxPoints;
+    }
 
+    /**
+     *
+     * @param domino
+     * @param pos
+     * @return
+     */
+    private int potentialPointsOnSpecificPos(Domino domino, Pos pos) {
+        domino.setPos(pos);
+        List<District> updatedDeepCopy = updatedDistricts(this.districts, domino);
+        return genDistrictPoints(updatedDeepCopy);
     }
 
 

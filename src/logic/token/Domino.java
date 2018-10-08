@@ -107,9 +107,9 @@ public class Domino {
      * Copy constructor, used for deep copy for generating the potential points on the board (DefaultAIPlayer)
      * @param domino domino to copy
      */
-    public Domino(Domino domino) {
-        this(domino.tiles);
-    }
+//    public Domino(Domino domino) {
+//        this(domino.tiles);
+//    }
 
     /**
      * gets the tile

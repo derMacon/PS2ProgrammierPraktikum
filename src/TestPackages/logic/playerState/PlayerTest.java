@@ -153,7 +153,7 @@ public class PlayerTest {
                 "-- -- --\n" +
                         "-- CC --\n" +
                         "-- -- --\n");
-        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.P1, SingleTile.S0), new Pos(2, 1), 1));
+        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.P1, SingleTile.S0), new Pos(2, 1), 1));
         Board actualBoard = player.getBoard();
         List<District> actualDistricts = player.getDistricts();
 
@@ -179,7 +179,7 @@ public class PlayerTest {
                 "-- -- --\n" +
                         "-- CC S1\n" +
                         "-- -- S0\n");
-        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.S0, SingleTile.S0), new Pos(1, 0)));
+        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.S0, SingleTile.S0), new Pos(1, 0)));
         Board actualBoard = player.getBoard();
         List<District> actualDistricts = player.getDistricts();
 
@@ -206,7 +206,7 @@ public class PlayerTest {
                 "-- -- --\n" +
                         "S1 CC --\n" +
                         "S2 -- --\n");
-        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), 2));
+        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), 2));
         Board actualBoard = player.getBoard();
         List<District> actualDistricts = player.getDistricts();
 
@@ -221,7 +221,7 @@ public class PlayerTest {
                 "-- -- --\n" +
                         "S1 CC --\n" +
                         "S2 -- --\n");
-        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), 0)); // difference to previous test
+        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), 0)); // difference to previous test
     }
 
     @Test
@@ -244,7 +244,7 @@ public class PlayerTest {
                 "S0 -- --\n" +
                         "S1 CC S0\n" +
                         "S2 -- S1\n");
-        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.S0, SingleTile.S0), new Pos(1, 0)));
+        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.S0, SingleTile.S0), new Pos(1, 0)));
         Board actualBoard = player.getBoard();
         List<District> actualDistricts = player.getDistricts();
 
@@ -272,7 +272,7 @@ public class PlayerTest {
                 "S0 -- --\n" +
                         "S1 CC S0\n" +
                         "S2 S0 S1\n");
-        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.S0, SingleTile.S0), new Pos(1, 0)));
+        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.S0, SingleTile.S0), new Pos(1, 0)));
         Board actualBoard = player.getBoard();
         List<District> actualDistricts = player.getDistricts();
 
@@ -303,7 +303,7 @@ public class PlayerTest {
                         "-- -- CC S2 --\n" +
                         "-- -- -- -- --\n" +
                         "-- -- -- -- --\n");
-        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), new Pos(2, 1)));
+        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), new Pos(2, 1)));
         Board actualBoard = player.getBoard();
         List<District> actualDistricts = player.getDistricts();
 
