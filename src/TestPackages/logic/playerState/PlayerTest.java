@@ -12,12 +12,50 @@ import logic.token.Tiles;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class PlayerTest {
+
+    // --- Setting up districts for testing ---
+
+    /**
+     * Setts up a district from a given SingleTile array and another Pos array
+     * @param tiles tiles of the district
+     * @param pos positions of the district
+     * @return a district from a given SingleTile array and another Pos array
+     */
+    private District setupDistrict(SingleTile[] tiles, Pos[] pos) {
+        assert null != tiles && null != pos && tiles.length == pos.length;
+        return new District(Arrays.asList(tiles), Arrays.asList(pos));
+    }
+
+    /**
+     * Checks if two districts match with their respective content
+     * @param fstDistrict first district to check against
+     * @param sndDistrict second district to check against
+     * @return true if districts match
+     */
+    private boolean districtsMatch(District fstDistrict, District sndDistrict) {
+        return listEqualsIgnoreOrder(fstDistrict.getSingleTiles(), sndDistrict.getSingleTiles())
+                && listEqualsIgnoreOrder(fstDistrict.getTilePositions(), fstDistrict.getTilePositions());
+    }
+
+    /**
+     * Checks if lists contain same elements independent of order
+     * https://stackoverflow.com/questions/1075656/simple-way-to-find-if-two-different-lists-contain-exactly-the-same-elements
+     *
+     * @param list1 first list to compare with
+     * @param list2 second list to compare with
+     * @param <T>   type of the list elements
+     * @return true if lists contain same elements independent of order
+     */
+    public static <T> boolean listEqualsIgnoreOrder(List<T> list1, List<T> list2) {
+        return new HashSet<>(list1).equals(new HashSet<>(list2));
+    }
 
 
     // --- find proper district distribution ---
@@ -115,7 +153,7 @@ public class PlayerTest {
                 "-- -- --\n" +
                         "-- CC --\n" +
                         "-- -- --\n");
-        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.P1, SingleTile.S0),  new Pos(2, 1), 1));
+        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.P1, SingleTile.S0), new Pos(2, 1), 1));
         Board actualBoard = player.getBoard();
         List<District> actualDistricts = player.getDistricts();
 
@@ -123,7 +161,156 @@ public class PlayerTest {
         assertEquals(expectedDistricts, actualDistricts);
     }
 
-    // TODO more lay tests - especially with merging more than two districts
+    @Test
+    public void testLay_MergingTwoDistricts_OneDistrictsInTotal() {
+        // expected output
+        Board expectedBoard = new Board(
+                "-- S0 S0\n" +
+                        "-- CC S1\n" +
+                        "-- -- S0\n");
+        SingleTile[] district1Tiles = new SingleTile[]{SingleTile.S1, SingleTile.S0, SingleTile.S0, SingleTile.S0};
+        Pos[] district1Pos = new Pos[]{new Pos(2, 1), new Pos(2, 2), new Pos(1, 0), new Pos(2, 0)};
+        District expectedDistric = setupDistrict(district1Tiles, district1Pos);
+        List<District> expectedDistricts = new LinkedList<>();
+        expectedDistricts.add(expectedDistric);
+
+        // actual output
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- -- --\n" +
+                        "-- CC S1\n" +
+                        "-- -- S0\n");
+        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.S0, SingleTile.S0), new Pos(1, 0)));
+        Board actualBoard = player.getBoard();
+        List<District> actualDistricts = player.getDistricts();
+
+        assertEquals(expectedBoard, actualBoard);
+        assertEquals(expectedDistricts, actualDistricts);
+    }
+
+    @Test
+    public void testLay_MergingTwoDistricts_TwoDistrictsInTotal() {
+        // expected output
+        Board expectedBoard = new Board(
+                "S0 P0 --\n" +
+                        "S1 CC --\n" +
+                        "S2 -- --\n");
+        SingleTile[] district1Tiles = new SingleTile[]{SingleTile.S1, SingleTile.S2, SingleTile.S0};
+        Pos[] district1Pos = new Pos[]{new Pos(0, 1), new Pos(0, 2), new Pos(0, 0)};
+        District expectedSingleDistric = setupDistrict(district1Tiles, district1Pos);
+        List<District> expectedDistricts = new LinkedList<>();
+        expectedDistricts.add(expectedSingleDistric);
+        expectedDistricts.add(new District(SingleTile.P0, new Pos(1, 0)));
+
+        // actual output
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- -- --\n" +
+                        "S1 CC --\n" +
+                        "S2 -- --\n");
+        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), 2));
+        Board actualBoard = player.getBoard();
+        List<District> actualDistricts = player.getDistricts();
+
+        assertEquals(expectedBoard, actualBoard);
+        assertEquals(expectedDistricts, actualDistricts);
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testLay_CannotLayWrongType() {
+        // actual output
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- -- --\n" +
+                        "S1 CC --\n" +
+                        "S2 -- --\n");
+        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), 0)); // difference to previous test
+    }
+
+    @Test
+    public void testLay_MergeThreeDistricts() {
+        // expected output
+        Board expectedBoard = new Board(
+                "S0 S0 S0\n" +
+                        "S1 CC S0\n" +
+                        "S2 -- S1\n");
+        SingleTile[] district1Tiles = new SingleTile[]{SingleTile.S0, SingleTile.S1, SingleTile.S2, SingleTile.S0,
+                SingleTile.S1, SingleTile.S0, SingleTile.S0};
+        Pos[] district1Pos = new Pos[]{new Pos(0, 0), new Pos(0, 1), new Pos(0, 2), new Pos(2, 1),
+                new Pos(2, 2), new Pos(1, 0), new Pos(2, 0)};
+        District expectedSingleDistric = setupDistrict(district1Tiles, district1Pos);
+        List<District> expectedDistricts = new LinkedList<>();
+        expectedDistricts.add(expectedSingleDistric);
+
+        // actual output
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "S0 -- --\n" +
+                        "S1 CC S0\n" +
+                        "S2 -- S1\n");
+        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.S0, SingleTile.S0), new Pos(1, 0)));
+        Board actualBoard = player.getBoard();
+        List<District> actualDistricts = player.getDistricts();
+
+        assertEquals(expectedBoard, actualBoard);
+        assertTrue(districtsMatch(((LinkedList<District>) expectedDistricts).get(0), actualDistricts.get(0)));
+    }
+
+    @Test
+    public void testLay_MergeTwoDistricts_WholeField() {
+        // expected output
+        Board expectedBoard = new Board(
+                "S0 S0 S0\n" +
+                        "S1 CC S0\n" +
+                        "S2 S0 S1\n");
+        SingleTile[] district1Tiles = new SingleTile[]{SingleTile.S0, SingleTile.S1, SingleTile.S2, SingleTile.S0,
+                SingleTile.S1, SingleTile.S0, SingleTile.S0, SingleTile.S0};
+        Pos[] district1Pos = new Pos[]{new Pos(0, 0), new Pos(0, 1), new Pos(0, 2), new Pos(2, 1),
+                new Pos(2, 2), new Pos(1, 0), new Pos(2, 0), new Pos(1, 2)};
+        District expectedSingleDistric = setupDistrict(district1Tiles, district1Pos);
+        List<District> expectedDistricts = new LinkedList<>();
+        expectedDistricts.add(expectedSingleDistric);
+
+        // actual output
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "S0 -- --\n" +
+                        "S1 CC S0\n" +
+                        "S2 S0 S1\n");
+        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.S0, SingleTile.S0), new Pos(1, 0)));
+        Board actualBoard = player.getBoard();
+        List<District> actualDistricts = player.getDistricts();
+
+        assertEquals(expectedBoard, actualBoard);
+        assertTrue(districtsMatch(((LinkedList<District>) expectedDistricts).get(0), actualDistricts.get(0)));
+    }
+
+    @Test
+    public void testLay_MergeFourDistricts_WholeField() {
+        // expected output
+        Board expectedBoard = new Board(
+                "-- -- -- S0 --\n" +
+                        "-- -- P0 S0 S1\n" +
+                        "-- -- CC S2 --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n");
+        SingleTile[] district1Tiles = new SingleTile[]{SingleTile.S0, SingleTile.S1, SingleTile.S2, SingleTile.S0};
+        Pos[] district1Pos = new Pos[]{new Pos(3, 0), new Pos(3, 1), new Pos(4, 1), new Pos(4, 2)};
+        District expectedSingleDistrict = setupDistrict(district1Tiles, district1Pos);
+        List<District> expectedDistricts = new LinkedList<>();
+        expectedDistricts.add(new District(SingleTile.P0, new Pos(2, 1)));
+        expectedDistricts.add(expectedSingleDistrict);
+
+        // actual output
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- -- -- S0 --\n" +
+                        "-- -- -- -- S1\n" +
+                        "-- -- CC S2 --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n");
+        player.layOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), new Pos(2, 1)));
+        Board actualBoard = player.getBoard();
+        List<District> actualDistricts = player.getDistricts();
+
+        assertEquals(expectedBoard, actualBoard);
+        assertTrue(districtsMatch(((LinkedList<District>) expectedDistricts).get(0), actualDistricts.get(0)));
+        assertTrue(districtsMatch(((LinkedList<District>) expectedDistricts).get(1), actualDistricts.get(1)));
+    }
 
 
     // --- equals ---
@@ -140,12 +327,12 @@ public class PlayerTest {
     public void testEquals_Invalid() {
         Board board1 = new Board(
                 "-- -- --\n" +
-                "-- CC --\n" +
-                "-- -- --\n");
+                        "-- CC --\n" +
+                        "-- -- --\n");
         Board board2 = new Board(
                 "-- -- --\n" +
-                "-- CC P0\n" +
-                "-- -- --\n");
+                        "-- CC P0\n" +
+                        "-- -- --\n");
         assertNotEquals(board1, board2);
     }
 
@@ -153,16 +340,14 @@ public class PlayerTest {
     public void testEquals_Valid() {
         Board board1 = new Board(
                 "-- -- --\n" +
-                "-- CC --\n" +
-                "-- -- --\n");
+                        "-- CC --\n" +
+                        "-- -- --\n");
         Board board2 = new Board(
                 "-- -- --\n" +
-                "-- CC --\n" +
-                "-- -- --\n");
+                        "-- CC --\n" +
+                        "-- -- --\n");
         assertEquals(board1, board2);
     }
-
-
 
 
     // --- 3. getBoardPoints ---
