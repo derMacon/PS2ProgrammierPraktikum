@@ -1,17 +1,19 @@
 package logic.bankSelection;
 
-import test.other.FakeGUI;
+import other.FakeGUI;
 import logic.bankSelection.Bank;
 import logic.bankSelection.Entry;
-import logic.playerState.Player;
+import logic.dataPreservation.Logger;
 import logic.playerTypes.DefaultAIPlayer;
+import logic.playerState.Player;
 import logic.token.Domino;
-import logic.token.Tiles;
-import org.junit.Test;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+
+import logic.token.Tiles;
+import org.junit.Test;
 
 import static org.junit.Assert.*;
 

@@ -2,8 +2,9 @@ package logic.logicTransfer;
 
 import static org.junit.Assert.*;
 
-import test.other.FakeGUI;
+import other.FakeGUI;
 import logic.bankSelection.Bank;
+import logic.dataPreservation.Logger;
 import logic.logicTransfer.Game;
 import logic.token.Domino;
 import logic.token.SingleTile;

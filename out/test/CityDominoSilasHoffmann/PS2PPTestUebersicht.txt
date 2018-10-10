@@ -1,0 +1,26 @@
+Uebersicht: Wo befinden sich welche tests (Testklasse -> Zwischenueberschrift im Code)
+
+1. Erzeugen eines Spielfeldes mit definierter Belegung der Zellen über einen Konstruktor. 
+    -> BoardTest (Constructor - tests)
+    
+2. Überprüfen, ob eine Karte auf einem definierten Spielfeld an eine Position passt. 
+    -> BoardTest (modified tests from ueb09)
+
+3. Überprüfen der erreichten Punktzahl eines Spielfeldes in verschiedenen Belegungssituationen
+    -> PlayerTest
+    
+            3.1 mit verbundenen Stadtteilen ohne Symbole»
+                -> Touching districts without points
+                
+            3.2 mit verbundenen Stadtteilen mit Symbolen»
+                -> Touching districts with points
+                
+            3.3 mit nicht verbundenen Stadtteilen ohne/mit Symbolen
+                -> Not touching districts
+            
+4. Erzeugen einer Spielsituation mit definierter Belegung der Spielfelder und der Ablagebereiche über einen
+   Konstruktor.
+    -> GameTest / GameLoadingConstructorTest (Constructor - tests)
+   
+5. Überprüfen, ob die ermittelte Ablageposition für eine Spielkarte den KI-Regeln entspricht
+    -> DefaultAIPlayerTest (updateDominoPos, modified tests from ueb09)

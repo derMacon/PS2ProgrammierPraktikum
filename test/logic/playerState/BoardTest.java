@@ -91,11 +91,10 @@ public class BoardTest {
 
 
     // --- 1. Constructor - only used for testing ---
-    @Test(expected = AssertionError.class)
-    public void testConstructor_NullParam() {
+//    @Test(expected = AssertionError.class)
+//    public void testConstructor_NullParam() {
 //        Board board = new Board(null);
-        // TODO update test
-    }
+//    }
 
     @Test(expected = AssertionError.class)
     public void testConstructor_EmptyString() {

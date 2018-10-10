@@ -1,6 +1,7 @@
 package logic.playerState;
 
-import test.other.FakeGUI;
+import other.FakeGUI;
+import logic.dataPreservation.Logger;
 import logic.playerTypes.DefaultAIPlayer;
 import logic.playerState.Player;
 import logic.playerState.Result;

@@ -1,6 +1,6 @@
 package logic.playerState;
 
-import test.other.FakeGUI;
+import other.FakeGUI;
 import logic.playerState.Board;
 import logic.playerState.District;
 import logic.playerState.Player;

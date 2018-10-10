@@ -1,6 +1,7 @@
 package logic.playerState;
 
-import test.other.FakeGUI;
+import other.FakeGUI;
+import logic.dataPreservation.Logger;
 import logic.playerTypes.DefaultAIPlayer;
 import logic.token.Domino;
 import logic.token.Pos;
@@ -11,6 +12,7 @@ import static logic.token.SingleTile.P0;
 
 import org.junit.Test;
 
+import static logic.token.SingleTile.*;
 import static org.junit.Assert.*;
 
 

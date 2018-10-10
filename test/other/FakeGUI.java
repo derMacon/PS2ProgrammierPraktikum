@@ -1,4 +1,4 @@
-package test.other;
+package other;
 
 import logic.playerState.Result;
 import logic.bankSelection.Bank;

@@ -1,6 +1,6 @@
 package logic.logicTransfer;
 
-import test.other.FakeGUI;
+import other.FakeGUI;
 import logic.bankSelection.Bank;
 import logic.bankSelection.Entry;
 import logic.logicTransfer.GUIConnector;
@@ -10,6 +10,7 @@ import logic.playerTypes.HumanPlayer;
 import logic.playerState.Player;
 import logic.playerTypes.PlayerType;
 import logic.token.Domino;
+import logic.token.SingleTile;
 import logic.token.Tiles;
 import org.junit.Test;
 
