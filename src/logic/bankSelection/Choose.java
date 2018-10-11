@@ -5,6 +5,12 @@ import logic.token.Domino;
 import java.util.List;
 
 public class Choose {
+    
+    /**
+     * Value with which the maxvalue local variable in the max method will be 
+     * initialized with
+     */
+    public static final int INIT_VALUE_MAX_POINTS = -1; 
 
     /**
      * Domino with a position and rotation
@@ -62,7 +68,7 @@ public class Choose {
      * @return the object with the highest number of points
      */
     public static Choose max(List<Choose> chooseDom) {
-        int maxPoints = 0;
+        int maxPoints = INIT_VALUE_MAX_POINTS;
         Choose output = null;
         for(Choose currChoose : chooseDom) {
             if(currChoose.potentialPointsOnBoard > maxPoints) {

@@ -72,6 +72,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
                     currChoose = genChoose(domino, bankSlotIndex);
                     maxChoose = Choose.max(maxChoose, currChoose);
                 }
+                // TODO else branch, what happens if domino doesn't fit anywhere
             }
         }
         return maxChoose;
