@@ -15,6 +15,8 @@ Generell
 - Herausfinden wie man eine Precondition kennzeichnet
 - Sterne aus Importen entfernen (IDEA Einstellungen)
 - Wie soll Fehlerbehandlung beim korrupten Dateien aussehen? (Lösungsmöglichkeiten: Popup, Logger)
+- Fragen ob Arrays.asList() erlaubt
+- Fragen ob Collections.sort() erlaubt
 
 GUI - FXML
 - rot box : dominos anpassen
@@ -35,8 +37,6 @@ Tiles - class
 
 Player - class 
 - Nochmal ueberpruefen ob 3 Konstruktoren wirklich noetig sind
-
-
 
 game - class
 - Farbliche Hervorhebung ueberdenken, vielleicht Schalter zwischen Schwarz/Weiss und Farbe
