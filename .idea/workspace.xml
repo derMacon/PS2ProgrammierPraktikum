@@ -27,9 +27,18 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="1596877311">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -64,7 +73,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/logic/bankSelection/EntryTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
+            <state relative-caret-position="144">
               <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -104,62 +113,31 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="CityDominoSilasHoffmann" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CityDominoSilasHoffmann" type="462c0819:PsiDirectoryNode" />
+              <item name="PS2ProgrammierPraktikum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PS2ProgrammierPraktikum" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="CityDominoSilasHoffmann" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CityDominoSilasHoffmann" type="462c0819:PsiDirectoryNode" />
+              <item name="PS2ProgrammierPraktikum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PS2ProgrammierPraktikum" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="CityDominoSilasHoffmann" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CityDominoSilasHoffmann" type="462c0819:PsiDirectoryNode" />
+              <item name="PS2ProgrammierPraktikum" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PS2ProgrammierPraktikum" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CityDominoSilasHoffmann" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CityDominoSilasHoffmann" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="logic" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CityDominoSilasHoffmann" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CityDominoSilasHoffmann" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="logic" type="462c0819:PsiDirectoryNode" />
-              <item name="bankSelection" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CityDominoSilasHoffmann" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CityDominoSilasHoffmann" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CityDominoSilasHoffmann" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CityDominoSilasHoffmann" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="logic" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="CityDominoSilasHoffmann" type="b2602c69:ProjectViewProjectNode" />
-              <item name="CityDominoSilasHoffmann" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="logic" type="462c0819:PsiDirectoryNode" />
-              <item name="bankSelection" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -168,11 +146,11 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539133149008" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1539295385932" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
@@ -194,7 +172,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.BankTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gui.Main" />
       <module name="CityDominoSilasHoffmann" />
@@ -204,6 +182,20 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="BankTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CityDominoSilasHoffmann" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="logic.bankSelection.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="logic.bankSelection" />
+      <option name="MAIN_CLASS_NAME" value="logic.bankSelection.BankTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -240,9 +232,11 @@
       <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.logic in CityDominoSilasHoffmann" />
       <item itemvalue="JUnit.GameTest" />
+      <item itemvalue="JUnit.BankTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.BankTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.GameTest" />
         <item itemvalue="JUnit.logic in CityDominoSilasHoffmann" />
@@ -257,16 +251,16 @@
     <option name="myMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="F:\Studium\2.Semester\ProgrammStrukturen2\Repos\Git\Both\CityDominoSilasHoffmann" />
-          <option name="myCopyRoot" value="F:\Studium\2.Semester\ProgrammStrukturen2\Repos\Git\Both\CityDominoSilasHoffmann" />
+          <option name="myVcsRoot" value="F:\Studium\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum" />
+          <option name="myCopyRoot" value="F:\Studium\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\nbproject" />
         </SvnCopyRootSimple>
       </list>
     </option>
     <option name="myMoreRealMappingRoots">
       <list>
         <SvnCopyRootSimple>
-          <option name="myVcsRoot" value="F:\Studium\2.Semester\ProgrammStrukturen2\Repos\Git\Both\CityDominoSilasHoffmann" />
-          <option name="myCopyRoot" value="F:\Studium\2.Semester\ProgrammStrukturen2\Repos\Git\Both\CityDominoSilasHoffmann" />
+          <option name="myVcsRoot" value="F:\Studium\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum" />
+          <option name="myCopyRoot" value="F:\Studium\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\nbproject" />
         </SvnCopyRootSimple>
       </list>
     </option>
@@ -279,43 +273,45 @@
       <option name="presentableId" value="Default" />
       <updated>1539131510343</updated>
       <workItem from="1539131511648" duration="1293000" />
+      <workItem from="1539133126328" duration="619000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1293000" />
+    <option name="totallyTimeSpent" value="1912000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Image Layers" />
-      <window_info id="Designer" />
-      <window_info id="UI Designer" />
-      <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25198728" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" visible="true" weight="0.3299532" />
-      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Image Layers" order="2" />
+      <window_info id="Designer" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3299532" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="right" id="Palette" />
-      <window_info anchor="right" id="Theme Preview" />
-      <window_info anchor="right" id="Capture Analysis" />
-      <window_info anchor="right" id="Palette&#9;" />
-      <window_info anchor="right" id="Database" />
-      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3299532" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Capture Analysis" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Maven Projects" order="8" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,18 +321,15 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/logic/bankSelection/EntryTest.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        <state relative-caret-position="108">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/JavaFXGUI.java">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/test/logic/logicTransfer/GameTest.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -348,10 +341,13 @@
     <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Bank.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/JavaFXGUI.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/logic/bankSelection/EntryTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+        <state relative-caret-position="144">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -1,0 +1,3 @@
+Credits:
+- Trash icon base texture: https://www.flaticon.com/free-icon/dustbin_1570
+- Rotation icon base texture: https://www.iconsdb.com/white-icons/available-updates-icon.html

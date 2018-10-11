@@ -1,0 +1,47 @@
+
+Betreff	AW: Programmierpraktikum
+Von	Gerit Kaleck
+An	inf103088
+Datum	Mi 10:42
+Hallo Silas,
+
+für das Programmierpraktikum nutzen Sie bitte das Repository [1].
+
+In NetBeans importieren Sie Ihr bereits begonnenes Projekt in das Verzeichnis "trunk" Ihres Repositories.
+Alternativ checken Sie das Verzeichnis "trunk" aus, verschieben Ihre Projektdateien in das entstandene Arbeitsverzeichnis und übertragen alle Dateien und Verzeichnisse (außer den Verzeichnissen "build", "dist" und "nbproject/private") per „svn add“ und „commit“ in das Repository.
+Im trunk dürfen Sie mit jeder beliebigen Entwicklungsumgebung arbeiten, dort schauen wir üblicherweise nicht hinein. In den tags muss jedoch jeweils ein NetBeans-Projekt vorliegen.
+
+Beachten Sie, für die Abnahme des Zwischenstands das gewünschte tag anzulegen [2]. Sofern Sie sich nicht vor der Abnahme des Zwischenstands wieder abmelden, werden nach Schließung der Repositories Ihre unter tags\final und tags\final-binaries eingecheckten Dateien bewertet werden (auch wenn dort keine Ergebnisse auftauchen).
+
+Um für alle die gleichen Bedingungen zu schaffen, wird der Zustand des Repositories zu Beginn des ersten Vorlesungstages (0.01 Uhr) bewertet! 
+Davon abweichend ist eine vorzeitige Abnahme möglich und von uns ausdrücklich empfohlen, wenn Sie bereits in der vorlesungsfreien Zeit anfangen wollen, Code zu implementieren. Sie erhalten dann früher Feedback und haben mehr Zeit, die im Gespräch erhaltenen Hinweise bis zur endgültigen Abgabe einzuarbeiten.
+
+Die Termine für die Abnahme des Zwischenstandes werden von uns nach Veröffentlichung des Stundenplans festgelegt. Bitte kontrollieren Sie dann, ob Sie Ihren Termin identifizieren können und dieser für Sie zu ermöglichen ist.
+Was Sie bis zur Abnahme des Zwischenstands beachten müssen, finden Sie unter [3].
+
+Achten Sie zur Abnahme des Zwischenstandes darauf,
+- ein korrekt benanntes tag angelegt zu haben,
+- im Projektnamen einen Hinweis auf Ihren Namen anzulegen,
+- das vorgesehene Büro aufzusuchen und
+- rechtzeitig zu erscheinen.
+
+Wir sind gespannt auf Ihre Zwischenergebnisse!
+
+Viele Grüße
+das PP-Team [4]
+
+[1]: https://stud.fh-wedel.de/repos/uebungen/ppss/ppss_52 
+[2]: http://www.fh-wedel.de/mitarbeiter/klk/programmierpraktikum-java/zwischenstand/repository/
+[3]: http://www.fh-wedel.de/mitarbeiter/klk/programmierpraktikum-java/zwischenstand/
+[4]: klk, lvo, mpa
+
+-----Ursprüngliche Nachricht-----
+Von: inf103088 <inf103088@stud.fh-wedel.de> 
+Gesendet: Dienstag, 11. September 2018 03:15
+An: Gerit Kaleck <klk@fh-wedel.de>
+Betreff: Programmierpraktikum
+
+Sehr geehrte Frau Kaleck,
+hiermit würde ich mich gerne beim Programmierpraktikum anmelden.
+Viele Grüße,
+Silas Hoffmann (inf 103088)

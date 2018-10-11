@@ -1,0 +1,11 @@
+- Bank: Keine Banksize Konstante, da die Banksize von der Anzahl der Spieler abhaengt. Groesse alos 
+nur per Getter erreichbar. 
+
+- Spieler (inkl. Boards) erst beim Start eines neuen Spieles initialisieren und nicht im 
+Konstruktor um Dopplung beim erneuten Starten eines Spiels zu vermeiden. Man kann ein neues Spiel 
+starten ohne das Spiel neu zu instantiieren, man loescht einfach nur die gegebenen Spielstaende.
+
+- Board: Konstruktor erlaubt kein Leeres Board (x == 0 && y == 0) weil die Pruefung sonst zu 
+kompliziert wird, eine Fallunterscheidung ist noetig und das lohnt sich nicht. 
+
+- Logger mit Singleton Muster, spart Parameter (und ist erlaubt)
