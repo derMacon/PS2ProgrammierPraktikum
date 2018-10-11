@@ -317,8 +317,10 @@ public class Bank {
 
     public Bank copy() {
         Entry[] copyEntries = new Entry[this.entries.length];
+        Entry temp; 
         for (int i = 0; i < this.entries.length; i++) {
-            copyEntries[i] = this.entries[i].copy();
+            temp = this.entries[i];
+            copyEntries[i] = null == temp ? null : temp.copy();
         }
         return new Bank(copyEntries, this.rand);
     }
