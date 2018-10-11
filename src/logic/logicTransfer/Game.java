@@ -227,7 +227,7 @@ public class Game implements GUI2Game {
         this.stack = Domino.fill(this.stack);
 
         // fill current bank
-        this.currentRoundBank.randomlyDrawFromStack(this.stack);
+        this.stack = this.currentRoundBank.randomlyDrawFromStack(this.stack);
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
 
         this.currPlayerIdx = 0;

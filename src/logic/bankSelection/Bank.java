@@ -230,15 +230,17 @@ public class Bank {
 //        fill(sortDominoList(picks));
 //    }
 
-    public void randomlyDrawFromStack(List<Domino> stack) {
+    public List<Domino> randomlyDrawFromStack(List<Domino> stack) {
         assert null != stack;
         List<Domino> picks = new LinkedList<>();
         if (0 < stack.size()) {
             for (int i = 0; i < bankSize; i++) {
                 fill(stack.remove(rand.nextInt(stack.size())), i);
+//                picks.add(stack.remove(rand.nextInt(stack.size())));
             }
         }
         fill(sortDominoList(picks));
+        return stack; // just to show that stack is updated (not really necessary)
     }
 
     private List<Domino> sortDominoList(List<Domino> domList) {
