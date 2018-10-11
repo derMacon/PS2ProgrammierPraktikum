@@ -6,6 +6,11 @@ import logic.token.Pos;
 import logic.token.Tiles;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
+
 import static logic.token.SingleTile.*;
 import static org.junit.Assert.*;
 
@@ -73,9 +78,9 @@ public class DominoTest {
         assertTrue(dom3.equals(dom4));
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testDifferentConstructors_NullParam1a() {
-        new Domino(null, new Pos(0,0), 0);
+        new Domino(null, new Pos(0, 0), 0);
     }
 
     @Test
@@ -85,9 +90,9 @@ public class DominoTest {
         assertNull(dom.getSndPos());
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testDifferentConstructors_NullParam2a() {
-        new Domino(null, new Pos(0,0));
+        new Domino(null, new Pos(0, 0));
     }
 
     @Test
@@ -97,22 +102,22 @@ public class DominoTest {
         assertNull(dom.getSndPos());
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testDifferentConstructors_NullParam3a() {
         new Domino(null, 0);
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testDifferentConstructors_NullParam3b() {
         new Domino(Tiles.P0H0_Val13, -1);
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testDifferentConstructors_NullParam3c() {
         new Domino(Tiles.P0H0_Val13, 4);
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testDifferentConstructors_NullParam4() {
         new Domino(null);
     }
@@ -134,7 +139,7 @@ public class DominoTest {
         assertEquals(0, dom.getRot());
         assertEquals(P0, dom.getFstVal());
         assertEquals(H0, dom.getSndVal());
-        assertEquals(new Pos(1,0), dom.getSndPos());
+        assertEquals(new Pos(1, 0), dom.getSndPos());
     }
 
     @Test
@@ -144,7 +149,7 @@ public class DominoTest {
         assertEquals(1, dom.getRot());
         assertEquals(P0, dom.getFstVal());
         assertEquals(H0, dom.getSndVal());
-        assertEquals(new Pos(0,1), dom.getSndPos());
+        assertEquals(new Pos(0, 1), dom.getSndPos());
     }
 
     @Test
@@ -155,7 +160,7 @@ public class DominoTest {
         assertEquals(2, dom.getRot());
         assertEquals(H0, dom.getFstVal());
         assertEquals(P0, dom.getSndVal());
-        assertEquals(new Pos(1,0), dom.getSndPos());
+        assertEquals(new Pos(1, 0), dom.getSndPos());
     }
 
     @Test
@@ -167,7 +172,7 @@ public class DominoTest {
         assertEquals(3, dom.getRot());
         assertEquals(H0, dom.getFstVal());
         assertEquals(P0, dom.getSndVal());
-        assertEquals(new Pos(0,1), dom.getSndPos());
+        assertEquals(new Pos(0, 1), dom.getSndPos());
     }
 
     @Test
@@ -180,7 +185,7 @@ public class DominoTest {
         assertEquals(0, dom.getRot());
         assertEquals(P0, dom.getFstVal());
         assertEquals(H0, dom.getSndVal());
-        assertEquals(new Pos(1,0), dom.getSndPos());
+        assertEquals(new Pos(1, 0), dom.getSndPos());
     }
 
     @Test
@@ -196,6 +201,28 @@ public class DominoTest {
     }
 
 
+    // --- sort list of dominos ---
+    @Test
+    public void testSortDomList_Valid() {
+        List<Domino> overallStack = Domino.fill(new LinkedList<>());
+        List<Domino> domInput = Arrays.asList(new Domino[]{
+                overallStack.get(5),
+                overallStack.get(1),
+                overallStack.get(10),
+                overallStack.get(6)}
+        );
+        Collections.sort(domInput);
+        Domino[] expectedOutput = new Domino[] {
+                overallStack.get(1),
+                overallStack.get(5),
+                overallStack.get(6),
+                overallStack.get(10)
+        };
+        Domino[] actualOutput = domInput.toArray(new Domino[0]);
+        assertArrayEquals(expectedOutput, actualOutput);
+    }
+
+
     // --- getTileDistrictType ---
     @Test
     public void testGetTileDistrictType() {
@@ -205,4 +232,6 @@ public class DominoTest {
         assertNull(dom.genTileDistrictType(-1));
         assertNull(dom.genTileDistrictType(2));
     }
+
+
 }

@@ -3,6 +3,7 @@ package logic.bankSelection;
 import logic.token.Domino;
 import logic.playerState.Player;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -219,37 +220,23 @@ public class Bank {
      *
      * @param stack list of dominos currently in the stack
      */
-//    public void randomlyDrawFromStack(List<Domino> stack) {
-//        assert null != stack;
-//        List<Domino> picks = new LinkedList<>();
-//        if (0 < stack.size()) {
-//            for (int i = 0; i < bankSize; i++) {
-//                picks.add(stack.remove(rand.nextInt(stack.size())));
-//            }
-//        }
-//        fill(sortDominoList(picks));
-//    }
-
     public List<Domino> randomlyDrawFromStack(List<Domino> stack) {
         assert null != stack;
         List<Domino> picks = new LinkedList<>();
         if (0 < stack.size()) {
             for (int i = 0; i < bankSize; i++) {
-                fill(stack.remove(rand.nextInt(stack.size())), i);
-//                picks.add(stack.remove(rand.nextInt(stack.size())));
+                picks.add(stack.remove(rand.nextInt(stack.size())));
             }
         }
-        fill(sortDominoList(picks));
+        Collections.sort(picks);
+        fill(picks);
         return stack; // just to show that stack is updated (not really necessary)
     }
 
-    private List<Domino> sortDominoList(List<Domino> domList) {
-        // TODO insert code
-        return domList;
-    }
-
-
-
+    /**
+     * Fills all entries with a given list
+     * @param domList list to set the entries with
+     */
     public void fill(List<Domino> domList) {
         for (int i = 0; i < domList.size(); i++) {
             fill(domList.get(i), i);
