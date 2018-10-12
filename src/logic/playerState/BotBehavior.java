@@ -24,4 +24,6 @@ public interface BotBehavior {
      */
     Domino updateDominoPos(Domino domino);
 
+    void doStandardTurn(Bank currBank, Bank nextBank);
+
 }

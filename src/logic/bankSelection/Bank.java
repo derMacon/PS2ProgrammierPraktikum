@@ -12,6 +12,8 @@ public class Bank {
 
     private final String SEPERATOR_STRING_REPRESENTATION = ",";
 
+    public final int INVALID_OUTPUT = -1;
+
     /**
      * Number of entries in this bank
      */
@@ -91,6 +93,26 @@ public class Bank {
     public Entry getSpecificEntry(int entryIdx) {
         return this.entries[entryIdx];
     }
+
+    /**
+     * Returns the index of a given domino reference in this bank
+     * @param domino domino reference to check the bank for
+     * @return the index of a given domino reference in this bank, -1 (const: INVALID_OUTPUT) if not found.
+     */
+    public int getDominoIdx(Domino domino) {
+        // TODO write tests
+        Domino currEntryDom;
+        int i = 0;
+        do {
+            currEntryDom = this.entries[i].getDomino();
+            if(currEntryDom == domino) { // actually checking for reference
+                return i;
+            }
+            i++;
+        } while (i < this.entries.length);
+        return INVALID_OUTPUT;
+    }
+
 
     /**
      * Generates an array of dominos from objects entry array. Used to for copying banks. Empty slots are denoted by a
@@ -254,19 +276,6 @@ public class Bank {
         this.entries[idx] = new Entry(domino);
     }
 
-//    /**
-//     * Copies the bank
-//     *
-//     * @return new reference for the bank
-//     */
-//    public Bank copy() {
-//        Bank output = new Bank(this.bankSize);
-//        for (int i = 0; i < bankSize; i++) {
-//            output.entries[i] = this.entries[i];
-//        }
-//        return output;
-//    }
-
     /**
      * Checks if a given index is a valid index on the bank
      *
@@ -300,8 +309,10 @@ public class Bank {
         return null;
     }
 
-
-
+    /**
+     * Makes a copy of the bank, references to the individual entries stay the same
+     * @return a copy of the bank, references to the individual entries stay the same
+     */
     public Bank copy() {
         Entry[] copyEntries = new Entry[this.entries.length];
         Entry temp; 

@@ -73,6 +73,7 @@ public class Choose {
         for(Choose currChoose : chooseDom) {
             if(currChoose.potentialPointsOnBoard > maxPoints) {
                    output = currChoose;
+                   maxPoints = currChoose.potentialPointsOnBoard;
             }
         }
         return output;

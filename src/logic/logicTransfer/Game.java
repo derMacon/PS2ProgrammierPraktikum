@@ -388,7 +388,16 @@ public class Game implements GUI2Game {
      * If the round is finished (the last bank slot was evaluated) the next round will be setup (banks will be loaded)
      */
     private void botsDoTheirTurn() {
-
+        Player currPlayerInstance = this.currentRoundBank.getSelectedPlayer(this.currPlayerIdx);
+//        while(HUMAN_PLAYER_IDX != currPlayerInstance.getIdxInPlayerArray()) {
+        while(null != currPlayerInstance && currPlayerInstance instanceof BotBehavior) {
+            ((BotBehavior) currPlayerInstance).doStandardTurn(this.currentRoundBank, this.nextRoundBank);
+            this.currPlayerIdx++;
+            currPlayerInstance = this.currentRoundBank.getSelectedPlayer(this.currPlayerIdx);
+        }
+        if(this.players.length <= this.currPlayerIdx) {
+            setupNextRound();
+        }
     }
 
     /**
@@ -398,6 +407,7 @@ public class Game implements GUI2Game {
      */
     private void setupNextRound() {
         // TODO insert code
+        System.out.println("Setting up next round");
     }
 
     private void copyAndRemoveNextRoundBankToCurrentBank() {
@@ -406,7 +416,8 @@ public class Game implements GUI2Game {
     }
 
     private void randomlyDrawNewDominosForNextRound() {
-        this.nextRoundBank.randomlyDrawFromStack(this.stack);
+        this.stack = this.nextRoundBank.randomlyDrawFromStack(this.stack);
+        this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
     }
 
     /**

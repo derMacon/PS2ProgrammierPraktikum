@@ -3,6 +3,7 @@ package logic.playerTypes;
 import logic.bankSelection.Bank;
 import logic.bankSelection.Choose;
 import logic.logicTransfer.GUIConnector;
+import logic.logicTransfer.Game;
 import logic.playerState.Board;
 import logic.playerState.BotBehavior;
 import logic.playerState.District;
@@ -54,6 +55,13 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         return bank;
     }
 
+    @Override
+    public void doStandardTurn(Bank currBank, Bank nextBank) {
+        Bank nexBank = selectFromBank(nextBank, Game.NEXT_BANK_IDX);
+        Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
+        this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getDominoIdx(playersSelectedDomino));
+        showOnBoard(playersSelectedDomino);
+    }
 
     /**
      * Generates the max. points available on the board for a given domino.
@@ -84,15 +92,13 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      */
     private Choose genChoose(Domino domino, int bankSlotIndex) {
         List<District> updatedDeepCopy = updatedDistricts(this.districts, domino);
-        return new Choose(domino, genDistrictPoints(updatedDeepCopy), bankSlotIndex);
+        return new Choose(domino.copy(), genDistrictPoints(updatedDeepCopy), bankSlotIndex);
     }
 
 
     @Override
     public Domino updateDominoPos(Domino domino) {
-        // use in selectFromBank
-        // TODO insert code
-        return null;
+        return domino; // Method is needed for other Bot types...
     }
 
     private Domino trySpecificDomino(Domino domino) {

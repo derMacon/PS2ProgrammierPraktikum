@@ -278,7 +278,7 @@ public class JavaFXGUI implements GUIConnector {
     @Override
     public void showOnGrid(int ordPlayer, Domino domino) {
         System.out.println("show on grid -> javafxgui");
-        ImageView[][] board = 0 == ordPlayer ? this.imgVwsPlayerBoard : this.imgWwsAIBoards[ordPlayer];
+        ImageView[][] board = 0 == ordPlayer ? this.imgVwsPlayerBoard : this.imgWwsAIBoards[ordPlayer - 1];
         showCellOnGrid(board, domino.getFstPos(), domino.getFstVal().ordinal());
         showCellOnGrid(board, domino.getSndPos(), domino.getSndVal().ordinal());
     }
@@ -474,18 +474,19 @@ public class JavaFXGUI implements GUIConnector {
     @Override
     public void selectDomino(int ordBank, int idxDom, int ordPlayer) {
         System.out.println("Select " + idxDom);
+        ImageView[][] imgVwsGivenBank = Game.CURRENT_BANK_IDX == ordBank ? this.imgVwsCurrentBankSelection : this.imgVwsNextBankSelection;
         switch (ordPlayer) {
             case Game.HUMAN_PLAYER_IDX:
-                this.imgVwsCurrentBankSelection[0][idxDom].setImage(SELECTION_PLAYER_1_TEXTURE);
+                imgVwsGivenBank[0][idxDom].setImage(SELECTION_PLAYER_1_TEXTURE);
                 break;
             case 1:
-                this.imgVwsCurrentBankSelection[0][idxDom].setImage(SELECTION_PLAYER_2_TEXTURE);
+                imgVwsGivenBank[0][idxDom].setImage(SELECTION_PLAYER_2_TEXTURE);
                 break;
             case 2:
-                this.imgVwsCurrentBankSelection[0][idxDom].setImage(SELECTION_PLAYER_3_TEXTURE);
+                imgVwsGivenBank[0][idxDom].setImage(SELECTION_PLAYER_3_TEXTURE);
                 break;
             case 3:
-                this.imgVwsCurrentBankSelection[0][idxDom].setImage(SELECTION_PLAYER_4_TEXTURE);
+                imgVwsGivenBank[0][idxDom].setImage(SELECTION_PLAYER_4_TEXTURE);
                 break;
             default:
                 System.out.println("Not supported yet");
