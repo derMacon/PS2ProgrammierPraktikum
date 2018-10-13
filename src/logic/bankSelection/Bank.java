@@ -10,8 +10,14 @@ import java.util.Random;
 
 public class Bank {
 
+    /**
+     * Seperator constant that's used to read from a file and write into it
+     */
     private final String SEPERATOR_STRING_REPRESENTATION = ",";
 
+    /**
+     * Constant that is used to show an invalid int output
+     */
     public final int INVALID_OUTPUT = -1;
 
     /**
@@ -99,13 +105,25 @@ public class Bank {
      * @param domino domino reference to check the bank for
      * @return the index of a given domino reference in this bank, -1 (const: INVALID_OUTPUT) if not found.
      */
-    public int getDominoIdx(Domino domino) {
+//    public int getDominoIdx(Domino domino) {
+//        // TODO write tests
+//        Domino currEntryDom;
+//        int i = 0;
+//        do {
+//            currEntryDom = this.entries[i].getDomino();
+//            if(currEntryDom == domino) { // actually checking for reference
+//                return i;
+//            }
+//            i++;
+//        } while (i < this.entries.length);
+//        return INVALID_OUTPUT;
+//    }
+    
+    public int getSelectedDominoIdx(Player player) {
         // TODO write tests
-        Domino currEntryDom;
         int i = 0;
         do {
-            currEntryDom = this.entries[i].getDomino();
-            if(currEntryDom == domino) { // actually checking for reference
+            if(this.entries[i].getSelectedPlayer() == player) { // actually checking for reference
                 return i;
             }
             i++;

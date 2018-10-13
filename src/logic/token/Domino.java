@@ -270,8 +270,6 @@ public class Domino implements Comparable{
      * @return a deep copy of this domino
      */
     public Domino copy() {
-        System.out.println(null == this.tiles);
-        System.out.println(null == this.posFst);
         return new Domino(this.tiles, new Pos(this.posFst.x(), this.posFst.y()), this.rotation);
     }
 
@@ -288,4 +286,5 @@ public class Domino implements Comparable{
             return 1;
         }
     }
+    
 }

@@ -59,7 +59,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     public void doStandardTurn(Bank currBank, Bank nextBank) {
         Bank nexBank = selectFromBank(nextBank, Game.NEXT_BANK_IDX);
         Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
-        this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getDominoIdx(playersSelectedDomino));
+        this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getSelectedDominoIdx(this)); 
         showOnBoard(playersSelectedDomino);
     }
 
