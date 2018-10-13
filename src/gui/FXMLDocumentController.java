@@ -91,7 +91,10 @@ public class FXMLDocumentController implements Initializable {
      */
     public static final Image ROTATION_TEXTURE = new Image("gui/textures/RotationIconV1.png");
 
-    public static Image DOWN_ARROW_TEXTURE = new Image("gui/textures/ArrowDownV1.png");
+    public static Image DOWN_ARROW_TEXTURE = new Image("gui/textures/ArrowDownV2.png");
+    public static Image LEFT_ARROW_TEXTURE = new Image("gui/textures/ArrowLeftV2.png");
+    public static Image UP_ARROW_TEXTURE = new Image("gui/textures/ArrowUpV2.png");
+    public static Image RIGHT_ARROW_TEXTURE = new Image("gui/textures/ArrowRightV2.png");
     //</editor-fold>
 
     /**
@@ -361,7 +364,13 @@ public class FXMLDocumentController implements Initializable {
         setPnWithImageAsBackground(this.grdPnSeperator2Texture, SEPERATOR_TEXTURE_VERTICAL);
         setPnWithImageAsBackground(this.grdPnSeperator3Texture, SEPERATOR_TEXTURE_HORIZONTAL);
 
-//        this.btnDown.setGraphic(new ImageView(DOWN_ARROW_TEXTURE));
+        this.btnDown.setGraphic(new ImageView(DOWN_ARROW_TEXTURE));
+        this.btnLeft.setGraphic(new ImageView(DOWN_ARROW_TEXTURE));
+        this.btnLeft.setRotate(90);
+        this.btnUp.setGraphic(new ImageView(DOWN_ARROW_TEXTURE));
+        this.btnUp.setRotate(180);
+        this.btnRight.setGraphic(new ImageView(DOWN_ARROW_TEXTURE));
+        this.btnRight.setRotate(270);
 
         setPnWithImageAsBackground(this.grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
     }

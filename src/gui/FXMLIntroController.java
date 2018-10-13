@@ -122,7 +122,7 @@ public class FXMLIntroController implements Initializable {
             Stage mainStage = new Stage();
             mainStage.getIcons().add(FXMLDocumentController.LOGO_ICON_TEXTURE);
             mainStage.setTitle("PS2 Programmierpraktikum: City-Domino");
-            mainStage.setScene(new Scene(root, 1150, 900));
+            mainStage.setScene(new Scene(root, 1200, 900));
             mainStage.show();
         } catch (IOException e) {
             e.printStackTrace();

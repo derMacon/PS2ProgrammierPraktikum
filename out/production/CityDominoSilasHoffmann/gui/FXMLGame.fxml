@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane fx:id="grdPnOverallBackgroundTexture" prefHeight="900.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLDocumentController">
+<GridPane fx:id="grdPnOverallBackgroundTexture" prefHeight="900.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLDocumentController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
     </columnConstraints>
@@ -196,7 +196,7 @@
                     <center>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <top>
-                                <Label fx:id="lblPlayer1" text="Spieler 1: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
+                                <Label fx:id="lblPlayer1" text="Spieler 1: 0 Punkte" textFill="WHITE" BorderPane.alignment="TOP_LEFT">
                                     <font>
                                         <Font name="Papyrus" size="17.0" />
                                     </font>
@@ -337,7 +337,7 @@
                 </BorderPane>
             </center>
          <left>
-            <GridPane fx:id="grdPnLargeBoxOutlay" prefHeight="775.0" prefWidth="238.0" BorderPane.alignment="CENTER">
+            <GridPane fx:id="grdPnLargeBoxOutlay" prefHeight="775.0" prefWidth="275.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
@@ -345,7 +345,7 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                      <SplitPane dividerPositions="0.055627425614489, 0.5" orientation="VERTICAL" prefHeight="765.0" prefWidth="233.0">
+                      <SplitPane dividerPositions="0.05555555555555555, 0.5230352303523035" orientation="VERTICAL" prefHeight="765.0" prefWidth="233.0">
                           <items>
                               <GridPane fx:id="grdPnTurnLblTexture">
                                   <columnConstraints>
@@ -385,7 +385,7 @@
                                               </Label>
                                               <HBox prefHeight="335.0" prefWidth="174.0">
                                                   <children>
-                                                      <GridPane fx:id="grdPnCurrentSelectiveGroup" onMouseClicked="#onClickGrdPnCurrentBank" prefHeight="279.0" prefWidth="141.0" vgap="5.0">
+                                                      <GridPane fx:id="grdPnCurrentSelectiveGroup" onMouseClicked="#onClickGrdPnCurrentBank" prefHeight="279.0" prefWidth="141.0" vgap="3.0">
                                                           <columnConstraints>
                                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -406,7 +406,7 @@
                                                 <Insets right="5.0" />
                                              </padding>
                                                       </GridPane>
-                                                      <GridPane fx:id="grdPnCurrentRoundSelection" onMouseClicked="#onClickGrdPnCurrentBank" prefHeight="299.0" prefWidth="73.0" vgap="5.0">
+                                                      <GridPane fx:id="grdPnCurrentRoundSelection" onMouseClicked="#onClickGrdPnCurrentBank" prefHeight="299.0" prefWidth="73.0" vgap="3.0">
                                                           <columnConstraints>
                                                               <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                           </columnConstraints>
@@ -452,7 +452,7 @@
                                               </Label>
                                     <HBox prefHeight="335.0" prefWidth="174.0">
                                        <children>
-                                          <GridPane fx:id="grdPnFutureselectiveGroup" onMouseClicked="#onClickGrdPnNextBank" prefHeight="279.0" prefWidth="141.0" vgap="5.0">
+                                          <GridPane fx:id="grdPnFutureselectiveGroup" onMouseClicked="#onClickGrdPnNextBank" prefHeight="279.0" prefWidth="141.0" vgap="3.0">
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -470,7 +470,7 @@
                                                 <Insets right="5.0" />
                                              </HBox.margin>
                                           </GridPane>
-                                          <GridPane fx:id="grdPnNextRoundSelection" onMouseClicked="#onClickGrdPnNextBank" prefHeight="299.0" prefWidth="73.0" vgap="5.0">
+                                          <GridPane fx:id="grdPnNextRoundSelection" onMouseClicked="#onClickGrdPnNextBank" prefHeight="299.0" prefWidth="73.0" vgap="3.0">
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                              </columnConstraints>
@@ -498,7 +498,7 @@
                               </GridPane>
                           </items>
                      <GridPane.margin>
-                        <Insets bottom="18.0" left="13.0" right="13.0" top="18.0" />
+                        <Insets bottom="17.0" left="13.0" right="13.0" top="18.0" />
                      </GridPane.margin>
                       </SplitPane>
                </children>
