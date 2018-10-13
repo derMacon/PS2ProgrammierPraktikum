@@ -5,7 +5,7 @@ Loesung fuer das Programmierpraktikum 2018 der FH-Wedel (Fach: Programmstrukture
 
 
 ![alt text](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/GUIScreenshot/Intro121018.png)
-![alt text](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/GUIScreenshot/Main121018.png)
+![alt text](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/GUIScreenshot/Main141018.png)
 
 
 ## Was noch fehlt: 
