@@ -34,7 +34,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 
     @Override
     public Bank selectFromBank(Bank bank, int ordBank) {
-        // bank copy, serves as temporary bank
+        // bank copyWithoutSelection, serves as temporary bank
         Bank bankCopy = bank.copy();
         // Generate potentially best Choose for each possible domino on the given bank
         List<Choose> bestChoosesForEachPossibleBankSlot = new LinkedList<>();
@@ -65,7 +65,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 
     /**
      * Generates the max. points available on the board for a given domino.
-     * Iterates through board -> sets copy on every pos -> gets the board points -> find max
+     * Iterates through board -> sets copyWithoutSelection on every pos -> gets the board points -> find max
      *
      * @param domino
      * @return

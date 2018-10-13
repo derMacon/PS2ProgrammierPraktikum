@@ -328,8 +328,8 @@ public class Bank {
     }
 
     /**
-     * Makes a copy of the bank, references to the individual entries stay the same
-     * @return a copy of the bank, references to the individual entries stay the same
+     * Makes a copyWithoutSelection of the bank, references to the individual entries stay the same
+     * @return a copyWithoutSelection of the bank, references to the individual entries stay the same
      */
     public Bank copy() {
         Entry[] copyEntries = new Entry[this.entries.length];

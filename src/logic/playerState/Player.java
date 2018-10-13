@@ -203,14 +203,14 @@ public abstract class Player {
     }
 
     /**
-     * Generates a deep copy of the given districts and adds the domino to it at the appropriate slot
+     * Generates a deep copyWithoutSelection of the given districts and adds the domino to it at the appropriate slot
      *
      * @param districts districts to add the domino to
      * @param domino    domino to add to the districts
      * @return an updated list of districts
      */
     protected List<District> updatedDistricts(final List<District> districts, Domino domino) {
-        // deep copy of whole district list
+        // deep copyWithoutSelection of whole district list
         List<District> output = new LinkedList<>();
         for (District currDistrict : districts) {
             output.add(currDistrict);
@@ -226,6 +226,5 @@ public abstract class Player {
     public String toString() {
         return this.board.toString();
     }
-
 
 }

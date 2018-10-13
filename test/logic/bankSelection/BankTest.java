@@ -243,7 +243,7 @@ public class BankTest {
         new Bank(4).fill(new Domino(Tiles.A0A0_Val7), 4);
     }
 
-    // --- copy ---
+    // --- copyWithoutSelection ---
     @Test
     public void testCopy_Valid() {
         Bank bank = genBankFromStack(1);

@@ -317,7 +317,7 @@ public class DistrictTest {
     }
 
 
-    // TODO test deep copy (updateDistricts)
+    // TODO test deep copyWithoutSelection (updateDistricts)
 
 
 }

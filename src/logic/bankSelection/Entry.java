@@ -111,9 +111,9 @@ public class Entry {
     }
 
     /**
-     * Provides a copy, where the domino is copied with a real deep copy but the player is not. It is only necessary to
-     * copy the domino, because it will later on be modified.
-     * @return copy of the entry
+     * Provides a copyWithoutSelection, where the domino is copied with a real deep copyWithoutSelection but the player is not. It is only necessary to
+     * copyWithoutSelection the domino, because it will later on be modified.
+     * @return copyWithoutSelection of the entry
      */
     public Entry copy() {
         return new Entry(this.domino.copy(), this.selectedPlayer);

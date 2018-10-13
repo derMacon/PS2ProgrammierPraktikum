@@ -48,6 +48,9 @@ public class JavaFXGUI implements GUIConnector {
     public static final Image SELECTION_PLAYER_4_TEXTURE = new Image("gui/textures/ChipPlayer4.png");
 
 
+    public static final int NOT_SELECTED = -1;
+
+
     private Image[] imgs;
 
     private static final int IDX_FST = 0;
@@ -96,8 +99,10 @@ public class JavaFXGUI implements GUIConnector {
         for (int i = 0; i < dominos.length; i++) {
             setToBank(ordBank, i, dominos[i]);
             currPlayer = bank.getSelectedPlayer(i);
-            if(null != currPlayer) {
+            if (null != currPlayer) {
                 selectDomino(ordBank, i, currPlayer.getIdxInPlayerArray());
+            } else {
+                selectDomino(ordBank, i, NOT_SELECTED);
             }
         }
     }
@@ -492,6 +497,9 @@ public class JavaFXGUI implements GUIConnector {
                 break;
             case 3:
                 imgVwsGivenBank[0][idxDom].setImage(SELECTION_PLAYER_4_TEXTURE);
+                break;
+            case NOT_SELECTED:
+                imgVwsGivenBank[0][idxDom].setImage(EMPTY_IMG);
                 break;
             default:
                 System.out.println("Not supported yet");

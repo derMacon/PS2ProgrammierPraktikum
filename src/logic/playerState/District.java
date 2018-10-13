@@ -203,8 +203,8 @@ public class District {
     }
 
     /**
-     * Makes a deep copy of the current District
-     * @return a deep copy of the current District
+     * Makes a deep copyWithoutSelection of the current District
+     * @return a deep copyWithoutSelection of the current District
      */
     public District copy() {
         List<SingleTile> copyTiles = new LinkedList<>();

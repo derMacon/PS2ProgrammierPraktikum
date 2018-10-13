@@ -104,8 +104,8 @@ public class Domino implements Comparable{
     }
 
     /**
-     * Copy constructor, used for deep copy for generating the potential points on the board (DefaultAIPlayer)
-     * @param domino domino to copy
+     * Copy constructor, used for deep copyWithoutSelection for generating the potential points on the board (DefaultAIPlayer)
+     * @param domino domino to copyWithoutSelection
      */
 //    public Domino(Domino domino) {
 //        this(domino.tiles);
@@ -266,8 +266,8 @@ public class Domino implements Comparable{
     }
 
     /**
-     * Provides a deep copy of this domino
-     * @return a deep copy of this domino
+     * Provides a deep copyWithoutSelection of this domino
+     * @return a deep copyWithoutSelection of this domino
      */
     public Domino copy() {
         return new Domino(this.tiles, new Pos(this.posFst.x(), this.posFst.y()), this.rotation);

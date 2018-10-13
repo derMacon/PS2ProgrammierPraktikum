@@ -52,8 +52,8 @@ public class Board {
 
 
     /**
-     * Copy constructor, used for deep copy for generating the potential points on the board (DefaultAIPlayer)
-     * @param other board to copy
+     * Copy constructor, used for deep copyWithoutSelection for generating the potential points on the board (DefaultAIPlayer)
+     * @param other board to copyWithoutSelection
      */
     public Board(Board other) {
         assert null != other;
