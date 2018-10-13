@@ -35,13 +35,16 @@ public class FXMLDocumentController implements Initializable {
 
     //<editor-fold defaultstate="collapsed" desc="Gui textures">
     /**
-     * Icon for the game 
+     * Icon for the game
      */
-    public static final Image LOGO_ICON_TEXTURE = new Image("gui/textures/LogoIcon.png");
+    public static final Image LOGO_ICON_TEXTURE = new Image("gui/textures/LogoIconV2.png");
+
     /**
      * Background for the selection box containing the current- / nextRoundBank
      */
     public static final Image BANK_BOX_TEXTURE = new Image("gui/textures/LargeBoxV1Alpha.png");
+
+    public static final Image LARGE_BOX_OUTLAY_TEXTURE = new Image("gui/textures/LargeBoxV3Alpha.png");
 
     /**
      * Background for the selection box containing the current- / nextRoundBank (rotated)
@@ -87,6 +90,8 @@ public class FXMLDocumentController implements Initializable {
      * Overlay texture for the dispose field
      */
     public static final Image ROTATION_TEXTURE = new Image("gui/textures/RotationIconV1.png");
+
+    public static Image DOWN_ARROW_TEXTURE = new Image("gui/textures/ArrowDownV1.png");
     //</editor-fold>
 
     /**
@@ -222,6 +227,12 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private GridPane grdPnNextBankTexture;
 
+    /**
+     * Grid pane setting up the texture for the outlay of the large box
+     */
+    @FXML
+    private GridPane grdPnLargeBoxOutlay;
+
 
     /**
      * Grid pane setting up the texture for the board from player1
@@ -334,6 +345,7 @@ public class FXMLDocumentController implements Initializable {
         setPnWithImageAsBackground(this.grdPnTurnLblTexture, BANK_BOX_TEXTURE_ROTATED);
         setPnWithImageAsBackground(this.grdPnCurrentBankTexture, BANK_BOX_TEXTURE);
         setPnWithImageAsBackground(this.grdPnNextBankTexture, BANK_BOX_TEXTURE);
+        setPnWithImageAsBackground(this.grdPnLargeBoxOutlay, LARGE_BOX_OUTLAY_TEXTURE);
 
         setPnWithImageAsBackground(this.grdPnPlayer1Texture, BOARD_BACKGROUND_TEXTURE);
         setPnWithImageAsBackground(this.grdPnPlayer2Texture, BOARD_BACKGROUND_TEXTURE);
@@ -348,6 +360,8 @@ public class FXMLDocumentController implements Initializable {
         setPnWithImageAsBackground(this.grdPnSeperator1Texture, SEPERATOR_TEXTURE_VERTICAL);
         setPnWithImageAsBackground(this.grdPnSeperator2Texture, SEPERATOR_TEXTURE_VERTICAL);
         setPnWithImageAsBackground(this.grdPnSeperator3Texture, SEPERATOR_TEXTURE_HORIZONTAL);
+
+//        this.btnDown.setGraphic(new ImageView(DOWN_ARROW_TEXTURE));
 
         setPnWithImageAsBackground(this.grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
     }
