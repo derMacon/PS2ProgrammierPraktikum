@@ -12,6 +12,7 @@ public class Main extends Application {
     @Override
     public void start(Stage introStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("FXMLIntro.fxml"));
+        introStage.getIcons().add(FXMLDocumentController.LOGO_ICON_TEXTURE);
         introStage.setTitle("Auswahl: Gegnertypen");
         introStage.setScene(new Scene(root));
         introStage.show();

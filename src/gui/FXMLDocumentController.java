@@ -35,6 +35,10 @@ public class FXMLDocumentController implements Initializable {
 
     //<editor-fold defaultstate="collapsed" desc="Gui textures">
     /**
+     * Icon for the game 
+     */
+    public static final Image LOGO_ICON_TEXTURE = new Image("gui/textures/LogoIcon.png");
+    /**
      * Background for the selection box containing the current- / nextRoundBank
      */
     public static final Image BANK_BOX_TEXTURE = new Image("gui/textures/LargeBoxV1Alpha.png");
@@ -47,7 +51,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      * Overall Background for the whole main window
      */
-    public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV5.png");
+    public static final Image BACKGROUND_TEXTURE = new Image("gui/textures/BackgroundV6.png");
 
     /**
      * Background for the individual player boards
@@ -479,6 +483,7 @@ public class FXMLDocumentController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLIntro.fxml"));
         Stage introStage = new Stage();
         introStage.setTitle("Auswahl: Gegnertypen");
+        introStage.getIcons().add(FXMLDocumentController.LOGO_ICON_TEXTURE);
         introStage.setScene(new Scene(root));
         introStage.show();
         // Casts to stage to be able to close the intro stage with code
