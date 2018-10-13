@@ -17,6 +17,7 @@ Loesung fuer das Programmierpraktikum 2018 der FH-Wedel (Fach: Programmstrukture
 - Wie soll Fehlerbehandlung beim korrupten Dateien aussehen? (Lösungsmöglichkeiten: Popup, Logger)
 - Fragen ob Arrays.asList() erlaubt
 - Fragen ob Collections.sort() erlaubt
+- AI bei Punktegleichheit auf moeglichst wenig kleine Felder achten (Wichtig, nicht vergessen. Zugregeln nochmal nachschlagen)
 
 ### GUI - FXML
 - rot box : dominos anpassen
