@@ -35,11 +35,6 @@ public class FakeGUI implements GUIConnector {
     }
 
     @Override
-    public void showPointsForPlayer(Player pl, int ordPlayer) {
-
-    }
-
-    @Override
     public void updateGrid(int playerOrd, Board board) {
 
     }

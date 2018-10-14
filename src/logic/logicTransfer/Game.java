@@ -304,7 +304,6 @@ public class Game implements GUI2Game {
     public void setOnBoard(Pos pos) {
         this.currDomino.setPos(new Pos(pos.x(), pos.y()));
         this.players[HUMAN_PLAYER_IDX].showOnBoard(currDomino);
-        this.gui.showPointsForPlayer(HUMAN_PLAYER_IDX, this.players[HUMAN_PLAYER_IDX].getBoardPoints());
         
         Logger.printAndSafe("HUMAN put " + this.currDomino.toString() + " to " + pos.toString());
         setToChooseBox(null);

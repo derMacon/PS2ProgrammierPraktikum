@@ -73,10 +73,13 @@ public class JavaFXGUI implements GUIConnector {
 
     private ImageView[][] imgVwsCurrentBankSelection;
     private ImageView[][] imgVwsNextBankSelection;
+    
+    private Label[] lblPlayerNameAndPoints; 
 
     public JavaFXGUI(Pane pnSelected, Label lblTurn, ImageView[][] imgWssPlayerBoard, ImageView[][][] imgWwsAIBoards,
                      ImageView[][] imgVwsCurrentBank, ImageView[][] imgVwsCurrentBankSelection,
-                     ImageView[][] imgVwsNextBank, ImageView[][] imgVwsNextBankSelection) {
+                     ImageView[][] imgVwsNextBank, ImageView[][] imgVwsNextBankSelection, 
+                     Label[] lblPlayerNameAndPoints) {
         this.pnSelected = pnSelected;
         this.lblTurn = lblTurn;
         this.imgVwsPlayerBoard = imgWssPlayerBoard;
@@ -87,6 +90,8 @@ public class JavaFXGUI implements GUIConnector {
 
         this.imgVwsCurrentBankSelection = imgVwsCurrentBankSelection;
         this.imgVwsNextBankSelection = imgVwsNextBankSelection;
+        
+        this.lblPlayerNameAndPoints = lblPlayerNameAndPoints; 
 
         //loadAllImages
         imgs = new Image[IMG_COUNT];
@@ -155,9 +160,10 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void showPointsForPlayer(int ordPlayer, int boardPoints) {
-        switch(ordPlayer) {
-            case 0: 
-        }
+        
+        this.lblPlayerNameAndPoints[ordPlayer].setText("Spieler ");
+        this.lblPlayerNameAndPoints[ordPlayer].setText("Spieler " + (ordPlayer + 1) + ": " + boardPoints + " Punkte");
+        System.out.println(boardPoints);
     }
 
 

@@ -133,6 +133,30 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private Label lblTurn;
+    
+    /**
+     * Label to display the name and the current number of points of the first player
+     */
+    @FXML
+    private Label lblPlayer1; 
+    
+    /**
+     * Label to display the name and the current number of points of the second player
+     */
+    @FXML
+    private Label lblPlayer2; 
+    
+    /**
+     * Label to display the name and the current number of points of the third player
+     */
+    @FXML
+    private Label lblPlayer3; 
+    
+    /**
+     * Label to display the name and the current number of points of the fourth player
+     */
+    @FXML
+    private Label lblPlayer4; 
 
 
     // --- Interactive Items ---
@@ -326,7 +350,8 @@ public class FXMLDocumentController implements Initializable {
 
         this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards,
                 addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnCurrentRoundSelection),
-                addImageViewsToGrid(grdPnFutureselectiveGroup), addImageViewsToGrid(grdPnNextRoundSelection));
+                addImageViewsToGrid(grdPnFutureselectiveGroup), addImageViewsToGrid(grdPnNextRoundSelection), 
+                new Label[] {this.lblPlayer1, this.lblPlayer2, this.lblPlayer3, this.lblPlayer4});
         this.game = new Game(gui, DEFAULT_PLAYER_COUNT);
     }
 

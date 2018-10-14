@@ -103,6 +103,9 @@ public abstract class Player {
      * @return
      */
     public int getBoardPoints() {
+        if(this.districts == null || this.districts.isEmpty()) {
+            return 0; 
+        }
         int sum = 0;
         for (District currDistrict : this.districts) {
             sum += currDistrict.genPoints();
@@ -200,6 +203,7 @@ public abstract class Player {
 //                playerSelectedDomino.getSndPos(), this.districts);
         // update gui
         this.gui.showOnGrid(this.idxInPlayerArray, playerSelectedDomino);
+        this.gui.showPointsForPlayer(this.idxInPlayerArray, getBoardPoints());
     }
 
     /**
