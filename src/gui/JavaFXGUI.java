@@ -22,6 +22,11 @@ import java.util.EmptyStackException;
 
 
 public class JavaFXGUI implements GUIConnector {
+    
+    /**
+     * Sentence that will be completed and shown in the appropriate label
+     */
+    public static final String WHOS_TURN_SENTENCE = "Am Zug: Spieler "; 
 
     //26 images for each face of a half (0..25)
     private static int IMG_COUNT = 26;
@@ -144,13 +149,15 @@ public class JavaFXGUI implements GUIConnector {
 
 
     @Override
-    public void showWhosTurn(String name) {
-
+    public void showWhosTurn(int ordPlayer) {
+        this.lblTurn.setText(WHOS_TURN_SENTENCE + (ordPlayer));
     }
 
     @Override
-    public void showPointsForPlayer(Player pl, int points) {
-
+    public void showPointsForPlayer(int ordPlayer, int boardPoints) {
+        switch(ordPlayer) {
+            case 0: 
+        }
     }
 
 

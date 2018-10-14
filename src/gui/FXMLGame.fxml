@@ -196,7 +196,7 @@
                     <center>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <top>
-                                <Label fx:id="lblPlayer1" text="Spieler 1: 0 Punkte" textFill="WHITE" BorderPane.alignment="TOP_LEFT">
+                                <Label fx:id="lblPlayer1" contentDisplay="CENTER" text="Spieler 1: 0 Punkte" textFill="WHITE" BorderPane.alignment="TOP_CENTER">
                                     <font>
                                         <Font name="Papyrus" size="17.0" />
                                     </font>
@@ -355,7 +355,7 @@
                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   </rowConstraints>
                                   <children>
-                                      <Label fx:id="lblTurn" alignment="TOP_CENTER" prefHeight="43.0" prefWidth="156.0" text="Am Zug: Spieler 1">
+                                      <Label fx:id="lblTurn" alignment="TOP_CENTER" prefHeight="43.0" prefWidth="156.0">
                                           <font>
                                               <Font name="Papyrus" size="17.0" />
                                           </font>

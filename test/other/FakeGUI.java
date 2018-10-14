@@ -8,10 +8,6 @@ import logic.playerState.Player;
 import logic.token.Domino;
 
 public class FakeGUI implements GUIConnector {
-    @Override
-    public void showWhosTurn(String name) {
-
-    }
 
     @Override
     public void setToBank(int ordBank, Bank bank) {
@@ -71,5 +67,15 @@ public class FakeGUI implements GUIConnector {
     @Override
     public void blurBank(int ordBank) {
 
+    }
+
+    @Override
+    public void showWhosTurn(int ordPlayer) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void showPointsForPlayer(int ordPlayer, int boardPoints) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

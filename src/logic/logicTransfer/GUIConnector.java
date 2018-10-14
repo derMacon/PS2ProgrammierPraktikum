@@ -14,9 +14,9 @@ public interface GUIConnector {
 
     /**
      * displays the given name as has to turn.
-     * @param name name of the player who's currently doing his turn
+     * @param ordPlayer ordinal value of the player who's currently doing his turn
      */
-    void showWhosTurn(String name);
+    void showWhosTurn(int ordPlayer);
 
     /**
      * sets a domino to the players bank at index. Empties it if domino is null.
@@ -57,7 +57,7 @@ public interface GUIConnector {
      * @param pl reference to the player
      * @param ordPlayer ordinal value of the player
      */
-    void showPointsForPlayer(Player pl, int ordPlayer);
+    void showPointsForPlayer(int ordPlayer, int boardPoints);
 
     /**
      * Updates the board from the given players ordinal value

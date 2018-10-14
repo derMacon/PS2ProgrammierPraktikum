@@ -91,23 +91,23 @@ public class Game implements GUI2Game {
      * <p>
      * Used to skip startGame method with a specific game
      *
-     * @param gui              gui for the game
-     * @param players          players participating in this game
-     * @param currPlayerIdx    index of the current player
+     * @param gui gui for the game
+     * @param players players participating in this game
+     * @param currPlayerIdx index of the current player
      * @param currentRoundBank current round bank
-     * @param nextRoundBank    next round bank
-     * @param stack            stack of dominos used to fill banks
-     * @param currDomino       domino in the rotation box of the human player
+     * @param nextRoundBank next round bank
+     * @param stack stack of dominos used to fill banks
+     * @param currDomino domino in the rotation box of the human player
      */
     public Game(GUIConnector gui, Player[] players, int currPlayerIdx, Bank currentRoundBank, Bank nextRoundBank,
-                List<Domino> stack, Domino currDomino) {
+            List<Domino> stack, Domino currDomino) {
         initTestingLoadingConstructor(gui, players, currPlayerIdx, currentRoundBank, nextRoundBank, stack, currDomino);
     }
 
     /**
      * Constructor used for Loading
      *
-     * @param gui   gui reference to the game
+     * @param gui gui reference to the game
      * @param input String input setting up the whole game
      */
     public Game(GUIConnector gui, String input) {
@@ -119,7 +119,6 @@ public class Game implements GUI2Game {
     }
 
     // --- saving / loading game ---
-
     /**
      * Constructor used to laod game out of a file with a given path
      *
@@ -135,19 +134,19 @@ public class Game implements GUI2Game {
      * constructor. Necessary for avoiding code doubling in the Loading
      * constructor.
      *
-     * @param gui              gui for the game
-     * @param players          players participating in this game
-     * @param currPlayerIdx    index of the current player
+     * @param gui gui for the game
+     * @param players players participating in this game
+     * @param currPlayerIdx index of the current player
      * @param currentRoundBank current round bank
-     * @param nextRoundBank    next round bank
-     * @param stack            stack of dominos used to fill banks
-     * @param currDomino       domino in the rotation box of the human player
+     * @param nextRoundBank next round bank
+     * @param stack stack of dominos used to fill banks
+     * @param currDomino domino in the rotation box of the human player
      * @return String message containing the error messages,
      * SUCCESSFUL_READ_MESSAGE if reading String was successful
      */
     private String initTestingLoadingConstructor(GUIConnector gui, Player[] players, int currPlayerIdx,
-                                                 Bank currentRoundBank, Bank nextRoundBank, List<Domino> stack,
-                                                 Domino currDomino) {
+            Bank currentRoundBank, Bank nextRoundBank, List<Domino> stack,
+            Domino currDomino) {
         this.gui = gui;
         this.players = players;
         this.currentRoundBank = currentRoundBank;
@@ -165,7 +164,6 @@ public class Game implements GUI2Game {
     }
 
     // --- Setter / Getter ---
-
     /**
      * Getter for the current bank
      *
@@ -229,6 +227,7 @@ public class Game implements GUI2Game {
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
 
         this.currPlayerIdx = 0;
+        this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
 
         // TODO insert code - update all players
         // TODO blur out boxes which are not accessible when user selects the first domino from the current bank
@@ -269,7 +268,6 @@ public class Game implements GUI2Game {
     // ---------------------------------- Standard round ----------------------------------
     // |Human: selectDomOnNextBank| -> |Human: setOnBoard| -> |Bots do their turn| -> |Banks will be drawn from stack|
     //  => Repeat as long as there are dominos in the stack, then endRound()
-
     /**
      * Human selects a domino on the gui: Game has already started - Human
      * Player selects a domino from the next round bank (given idx) - Human
@@ -277,7 +275,7 @@ public class Game implements GUI2Game {
      * as the current domino - Gui displays current domino
      *
      * @param idx index of the domino the human player wants to select on the
-     *            next round bank
+     * next round bank
      */
     @Override
     public void selectDomOnNextBank(int idx) {
@@ -300,12 +298,14 @@ public class Game implements GUI2Game {
      * set up by nextRound()
      *
      * @param pos position where the Human player wants to display his current
-     *            domino
+     * domino
      */
     @Override
     public void setOnBoard(Pos pos) {
         this.currDomino.setPos(new Pos(pos.x(), pos.y()));
         this.players[HUMAN_PLAYER_IDX].showOnBoard(currDomino);
+        this.gui.showPointsForPlayer(HUMAN_PLAYER_IDX, this.players[HUMAN_PLAYER_IDX].getBoardPoints());
+        
         Logger.printAndSafe("HUMAN put " + this.currDomino.toString() + " to " + pos.toString());
         setToChooseBox(null);
         // bots do turns until round is over
@@ -339,7 +339,6 @@ public class Game implements GUI2Game {
 
     // ---------------------------------- Helping methods ----------------------------------
     // --- Init game ---
-
     /**
      * Creates a new Player array. Used to initialize the players field.
      *
@@ -384,7 +383,6 @@ public class Game implements GUI2Game {
     }
 
     // --- Do necessary turns / Setting up banks for next round ---
-
     /**
      * Iterates through the selected players from the current bank until the
      * selected player is the Human player. If the round is finished (the last
@@ -407,7 +405,6 @@ public class Game implements GUI2Game {
 //            setupNextRound(); // also determines if game is over, will call endRound() if necessary
 //        }
 //    }
-
     private int botsDoTheirTurn(int bankIdx) {
         if (!isValidPlayerIdx(bankIdx)) {
             setupNextRound();
@@ -415,13 +412,15 @@ public class Game implements GUI2Game {
         }
         Player currPlayerInstance = this.currentRoundBank.getSelectedPlayer(bankIdx);
         if (currPlayerInstance instanceof BotBehavior) {
+            this.gui.showWhosTurn(currPlayerInstance.getIdxInPlayerArray());
             ((BotBehavior) currPlayerInstance).doStandardTurn(this.currentRoundBank, this.nextRoundBank);
-            return botsDoTheirTurn(bankIdx + 1);
+            bankIdx++;
+            return botsDoTheirTurn(bankIdx);
         }
         // selected player on bankIdx is the human player
+        this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
         return bankIdx;
     }
-
 
     /**
      * Ends game or setts up the banks for the next round: - draw new dominos, -
@@ -452,7 +451,6 @@ public class Game implements GUI2Game {
     }
 
     // --- Human interaction ---
-
     /**
      * Checks if a player index is valid
      *
