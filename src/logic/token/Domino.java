@@ -70,7 +70,8 @@ public class Domino implements Comparable{
      * @param rotation rotation of the domino
      */
     public Domino(Tiles tiles, Pos posFst, int rotation) {
-        assert null != tiles && null != posFst && isValidRot(rotation);
+        // pos may be null, will be later on disposed if pos is not filled
+        assert null != tiles && isValidRot(rotation);
         this.rotation = rotation;
         this.tiles = tiles;
         this.posFst = posFst;

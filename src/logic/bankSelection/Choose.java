@@ -65,20 +65,25 @@ public class Choose {
     /**
      * Compares the given chose objects and returns the object with the highest number of points
      * @param chooseDom chose objects that will be examined
-     * @return the object with the highest number of points
+     * @return the object with the highest number of points, null if list is empty
      */
     public static Choose max(List<Choose> chooseDom) {
+        assert null != chooseDom;
         int maxPoints = INIT_VALUE_MAX_POINTS;
+        Domino lestValue;
         Choose output = null;
         for(Choose currChoose : chooseDom) {
+            // evaluates possible points
             if(currChoose.potentialPointsOnBoard > maxPoints) {
                    output = currChoose;
                    maxPoints = currChoose.potentialPointsOnBoard;
             }
         }
+        // TODO situation for tie -> Very Important. Write tests
         return output;
     }
 
+    // TODO write Javadoc when it's clear what this method actually does :)
     public static Choose max(Choose fstChoose, Choose sndChoose) {
         if(null == fstChoose) {
             return sndChoose;
@@ -91,6 +96,20 @@ public class Choose {
         } else {
             return sndChoose;
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final Choose other = (Choose) obj;
+        return this.domWithPosAndRot.equals(other.domWithPosAndRot)
+                && this.idxOnBank == other.idxOnBank
+                && this.potentialPointsOnBoard == other.potentialPointsOnBoard;
     }
 
 
