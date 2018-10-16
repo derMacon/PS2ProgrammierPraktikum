@@ -1,5 +1,7 @@
 package logic.playerState;
 
+import logic.bankSelection.Bank;
+import logic.bankSelection.Entry;
 import other.FakeGUI;
 import logic.dataPreservation.Logger;
 import logic.playerTypes.DefaultAIPlayer;
@@ -11,6 +13,10 @@ import static logic.token.SingleTile.A0;
 import static logic.token.SingleTile.P0;
 
 import org.junit.Test;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 
 import static logic.token.SingleTile.*;
 import static org.junit.Assert.*;
@@ -111,10 +117,51 @@ public class DefaultAIPlayerTest {
         DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
                 "-- -- H1 H1 -- --\n" +
                         "H1 -- P0 S0 -- --\n" +
-                        "-- -- -- ---- --\n");
+                        "-- -- -- -- -- --\n");
         Domino expectedOutput = new Domino(Tiles.genTile(P0, A0), new Pos(1, 2), 2);
         Domino actualOutput = player.updateDominoPos(new Domino(Tiles.genTile(P0, A0)));
         assertEquals(expectedOutput, actualOutput);
     }
+
+
+    // --- error occurred during manual testing ---
+    // All screenshots can be found in the documentation
+    // TODO put Screenshots in docu
+    @Test
+    public void testSelectFromBank_Screenshot1() {
+        DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- -- -- -- --\n" +
+                        "-- H0 H0  -- --\n" +
+                        "-- -- CC P0 O1\n" +
+                        "-- --  -- -- --\n" +
+                        "-- --  -- -- --\n");
+        Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(Tiles.genTile(H1, P0)))}, new Random());
+
+        Domino wrongOutput = new Domino(Tiles.genTile(H1, P0), new Pos(0, 0), 0);
+        Domino expectedOutput = new Domino(Tiles.genTile(H1, P0), new Pos(0, 0), 2);
+        Domino actualOutput = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
+        assertNotEquals(wrongOutput, actualOutput);
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testSelectFromBank_Screenshot2() {
+        DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- -- -- -- --\n" +
+                        "-- I1 P0  -- --\n" +
+                        "-- -- CC -- --\n" +
+                        "-- --  -- -- --\n" +
+                        "-- --  -- -- --\n");
+        Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(Tiles.genTile(H1, P0)))}, new Random());
+
+        Domino wrongOutput = new Domino(Tiles.genTile(A1, P0), new Pos(0, 0), 0);
+        Domino expectedOutput = new Domino(Tiles.genTile(H1, P0), new Pos(2, 0), 2);
+        Domino actualOutput = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
+        assertNotEquals(wrongOutput, actualOutput);
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+
+
 
 }

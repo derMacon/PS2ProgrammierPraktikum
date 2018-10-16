@@ -89,7 +89,7 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </GridPane.margin>
                             <top>
-                                <Label fx:id="lblPlayer3" text="Spieler 3: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
+                                <Label fx:id="lblPlayer3" textFill="WHITE" BorderPane.alignment="CENTER">
                                     <font>
                                         <Font name="Papyrus" size="17.0" />
                                     </font>
@@ -132,7 +132,7 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </GridPane.margin>
                             <top>
-                                <Label fx:id="lblPlayer4" text="Spieler 4: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
+                                <Label fx:id="lblPlayer4" textFill="WHITE" BorderPane.alignment="CENTER">
                                     <font>
                                         <Font name="Papyrus" size="17.0" />
                                     </font>
@@ -175,7 +175,7 @@
                                 </GridPane>
                             </center>
                             <top>
-                                <Label fx:id="lblPlayer2" text="Spieler 2: 0 Punkte" textFill="WHITE" BorderPane.alignment="CENTER">
+                                <Label fx:id="lblPlayer2" textFill="WHITE" BorderPane.alignment="CENTER">
                                     <font>
                                         <Font name="Papyrus" size="17.0" />
                                     </font>
@@ -196,7 +196,7 @@
                     <center>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <top>
-                                <Label fx:id="lblPlayer1" text="Spieler 1: 0 Punkte" textFill="WHITE" BorderPane.alignment="TOP_LEFT">
+                                <Label fx:id="lblPlayer1" contentDisplay="CENTER" textFill="WHITE" BorderPane.alignment="TOP_CENTER">
                                     <font>
                                         <Font name="Papyrus" size="17.0" />
                                     </font>
@@ -355,7 +355,7 @@
                                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                   </rowConstraints>
                                   <children>
-                                      <Label fx:id="lblTurn" alignment="TOP_CENTER" prefHeight="43.0" prefWidth="156.0" text="Am Zug: Spieler 1">
+                                      <Label fx:id="lblTurn" alignment="TOP_CENTER" prefHeight="43.0" prefWidth="156.0">
                                           <font>
                                               <Font name="Papyrus" size="17.0" />
                                           </font>

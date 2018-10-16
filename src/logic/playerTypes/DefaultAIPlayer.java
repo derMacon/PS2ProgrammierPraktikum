@@ -51,7 +51,8 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         bank.selectEntry(this, overallBestChoose.getIdxOnBank());
         // update gui
         this.gui.selectDomino(ordBank, overallBestChoose.getIdxOnBank(), this.idxInPlayerArray);
-        // return the bank, although bank reference is modified internally (just to make sure is is evident)
+        // return the bank, although bank reference is modified internally (just to make sure it is evident, pos and rot
+        // modified)
         return bank;
     }
 
@@ -59,7 +60,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     public void doStandardTurn(Bank currBank, Bank nextBank) {
         Bank nexBank = selectFromBank(nextBank, Game.NEXT_BANK_IDX);
         Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
-        this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getSelectedDominoIdx(this)); 
+        this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getSelectedDominoIdx(this));
         showOnBoard(playersSelectedDomino);
     }
 
@@ -76,13 +77,16 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         for (int y = 0; y < this.board.getSizeY(); y++) {
             for (int x = 0; x < this.board.getSizeX(); x++) {
                 domino.setPos(new Pos(x, y));
-                if (this.board.fits(domino)) {
-                    currChoose = genChoose(domino, bankSlotIndex);
-                    maxChoose = Choose.max(maxChoose, currChoose);
+                for (int i = 0; i < 4; i++) {
+                    if (this.board.fits(domino)) {
+                        currChoose = genChoose(domino, bankSlotIndex);
+                        maxChoose = Choose.max(maxChoose, currChoose);
+                    }
+                    domino.incRot();
                 }
-                // TODO else branch, what happens if domino doesn't fit anywhere
             }
         }
+        // TODO else branch, what happens if domino doesn't fit anywhere -> maybe disposed ???
         return maxChoose;
     }
 
@@ -98,6 +102,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 
     @Override
     public Domino updateDominoPos(Domino domino) {
+        // Pos and rot already determined when considering the option to choose
         return domino; // Method is needed for other Bot types...
     }
 

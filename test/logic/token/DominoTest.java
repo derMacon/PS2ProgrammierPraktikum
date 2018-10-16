@@ -83,11 +83,9 @@ public class DominoTest {
         new Domino(null, new Pos(0, 0), 0);
     }
 
-    @Test
+    @Test(expected = AssertionError.class)
     public void testDifferentConstructors_NullParam1b() {
-        Domino dom = new Domino(Tiles.P0H0_Val13, null, 0);
-        assertNull(dom.getFstPos());
-        assertNull(dom.getSndPos());
+        new Domino(Tiles.P0H0_Val13, null, 0);
     }
 
     @Test(expected = AssertionError.class)
@@ -95,11 +93,9 @@ public class DominoTest {
         new Domino(null, new Pos(0, 0));
     }
 
-    @Test
+    @Test(expected = AssertionError.class)
     public void testDifferentConstructors_NullParam2b() {
-        Domino dom = new Domino(Tiles.P0H0_Val13, null);
-        assertNull(dom.getFstPos());
-        assertNull(dom.getSndPos());
+        new Domino(Tiles.P0H0_Val13, null);
     }
 
     @Test(expected = AssertionError.class)
@@ -188,16 +184,9 @@ public class DominoTest {
         assertEquals(new Pos(1, 0), dom.getSndPos());
     }
 
-    @Test
+    @Test (expected = AssertionError.class)
     public void testIncRot_NullPos() {
-        Domino dom = new Domino(Tiles.P0H0_Val13, null);
-        assertEquals(0, dom.getRot());
-        dom.incRot();
-        assertEquals(1, dom.getRot());
-        assertEquals(P0, dom.getFstVal());
-        assertEquals(H0, dom.getSndVal());
-        assertNull(dom.getFstPos());
-        assertNull(dom.getSndPos());
+        new Domino(Tiles.P0H0_Val13, null);
     }
 
 
@@ -220,6 +209,26 @@ public class DominoTest {
         };
         Domino[] actualOutput = domInput.toArray(new Domino[0]);
         assertArrayEquals(expectedOutput, actualOutput);
+    }
+
+    // --- equals ---
+    @Test
+    public void testEquals_NullParam() {
+        assertFalse(new Domino(Tiles.genTile(P0, H0)).equals(null));
+    }
+
+    @Test
+    public void testEquals_VaildConstr() {
+        assertTrue(new Domino(Tiles.genTile(P0, H0)).equals(new Domino(Tiles.genTile(P0, H0))));
+        assertTrue(new Domino(Tiles.genTile(P0, H0)).equals(new Domino(Tiles.genTile(P0, H0), 0)));
+        assertTrue(new Domino(Tiles.genTile(P0, H0), 0).equals(new Domino(Tiles.genTile(P0, H0))));
+    }
+
+    @Test
+    public void testEquals_InvaildConstr() {
+        assertFalse(new Domino(Tiles.genTile(P0, H0),1).equals(new Domino(Tiles.genTile(P0, H0))));
+        assertFalse(new Domino(Tiles.genTile(P0, H0), 1).equals(new Domino(Tiles.genTile(P0, H0), 0)));
+        assertFalse(new Domino(Tiles.genTile(P0, H0)).equals(new Domino(Tiles.genTile(P0, H0), 1)));
     }
 
 

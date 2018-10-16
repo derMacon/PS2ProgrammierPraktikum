@@ -71,6 +71,6 @@ public class FakeGUI implements GUIConnector {
 
     @Override
     public void showPointsForPlayer(int ordPlayer, int boardPoints) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
     }
 }

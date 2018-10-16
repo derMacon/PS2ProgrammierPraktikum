@@ -252,7 +252,7 @@ public class Domino implements Comparable{
             return false;
         }
         final Domino other = (Domino) obj;
-        return this.tiles == other.tiles;
+        return this.tiles == other.tiles && this.posFst.equals(other.posFst) && this.rotation == other.rotation;
     }
 
 

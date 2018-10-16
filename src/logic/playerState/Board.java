@@ -225,6 +225,7 @@ public class Board {
             List<Pos> fstTouchingNeighbour = genTouchingCells(posFst);
             List<Pos> sndTouchingNeighbour = genTouchingCells(posSnd);
 
+            // TODO delete before final commit - used for debugging
             boolean sum = !fstTouchingNeighbour.isEmpty() || !sndTouchingNeighbour.isEmpty();
             boolean fstNeighbours = checkIfNeighborsAreValid(domino.getFstVal(), fstTouchingNeighbour);
             boolean sndNeighbours = checkIfNeighborsAreValid(domino.getSndVal(), sndTouchingNeighbour);
