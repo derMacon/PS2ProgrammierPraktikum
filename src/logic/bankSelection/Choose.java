@@ -1,16 +1,18 @@
 package logic.bankSelection;
 
+import logic.playerState.Board;
 import logic.token.Domino;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class Choose {
-    
+
     /**
-     * Value with which the maxvalue local variable in the max method will be 
+     * Value with which the maxvalue local variable in the max method will be
      * initialized with
      */
-    public static final int INIT_VALUE_MAX_POINTS = -1; 
+    public static final int INIT_VALUE_MAX_POINTS = -1;
 
     /**
      * Domino with a position and rotation
@@ -29,7 +31,8 @@ public class Choose {
 
     /**
      * Constructor setting both fields
-     * @param domWithPosAndRot Domino with a position and rotation
+     *
+     * @param domWithPosAndRot       Domino with a position and rotation
      * @param potentialPointsOnBoard sum of potential points for domino when layed at the right pos / rot
      */
     public Choose(Domino domWithPosAndRot, int potentialPointsOnBoard, int idxOnBank) {
@@ -40,6 +43,7 @@ public class Choose {
 
     /**
      * Getter for the domino
+     *
      * @return
      */
     public Domino getDomWithPosAndRot() {
@@ -48,6 +52,7 @@ public class Choose {
 
     /**
      * Getter for the points
+     *
      * @return
      */
     public int getPotentialPointsOnBoard() {
@@ -56,6 +61,7 @@ public class Choose {
 
     /**
      * Getter for the index of the domino on the bank
+     *
      * @return index of the domino on the bank
      */
     public int getIdxOnBank() {
@@ -64,34 +70,75 @@ public class Choose {
 
     /**
      * Compares the given chose objects and returns the object with the highest number of points
+     *
      * @param chooseDom chose objects that will be examined
      * @return the object with the highest number of points, null if list is empty
      */
-    public static Choose max(List<Choose> chooseDom) {
+//    public static Choose max(List<Choose> chooseDom) {
+//        assert null != chooseDom;
+//        int maxPoints = INIT_VALUE_MAX_POINTS;
+//        Domino lestValue;
+//        Choose output = null;
+//
+//        for(Choose currChoose : chooseDom) {
+//            // evaluates possible points
+//            if(currChoose.potentialPointsOnBoard > maxPoints) {
+//                   output = currChoose;
+//                   maxPoints = currChoose.potentialPointsOnBoard;
+//            }
+//        }
+//        // TODO situation for tie -> Very Important. Write tests
+//        return output;
+//    }
+    public static Choose max(List<Choose> chooseDom, Board board) {
         assert null != chooseDom;
         int maxPoints = INIT_VALUE_MAX_POINTS;
-        Domino lestValue;
-        Choose output = null;
-        for(Choose currChoose : chooseDom) {
+        List<Choose> possibleOutput = new LinkedList<>();
+        for (Choose currChoose : chooseDom) {
             // evaluates possible points
-            if(currChoose.potentialPointsOnBoard > maxPoints) {
-                   output = currChoose;
-                   maxPoints = currChoose.potentialPointsOnBoard;
+            if (currChoose.potentialPointsOnBoard > maxPoints) {
+                possibleOutput = new LinkedList<>();
+            }
+            if (currChoose.potentialPointsOnBoard >= maxPoints) {
+                possibleOutput.add(currChoose);
+                maxPoints = currChoose.potentialPointsOnBoard;
             }
         }
         // TODO situation for tie -> Very Important. Write tests
-        return output;
+        return possibleOutput.size() == 1 ? possibleOutput.get(0) : genMostEfficientChoose(possibleOutput, board);
     }
+
+
+    /**
+     *
+     * @param input
+     * @param board
+     * @return
+     */
+    // protected for testing
+    protected static Choose genMostEfficientChoose(List<Choose> input, Board board) {
+        // TODO assert input is sorted
+        int i = 0;
+        boolean isEfficient = false;
+        Choose currChoose;
+        do {
+            currChoose = input.get(i);
+            isEfficient = board.isEfficient(currChoose);
+            i++;
+        } while(!isEfficient && i < input.size());
+        return isEfficient ? currChoose : input.get(0);
+    }
+
 
     // TODO write Javadoc when it's clear what this method actually does :)
     public static Choose max(Choose fstChoose, Choose sndChoose) {
-        if(null == fstChoose) {
+        if (null == fstChoose) {
             return sndChoose;
         }
-        if(null == sndChoose) {
+        if (null == sndChoose) {
             return fstChoose;
         }
-        if(fstChoose.potentialPointsOnBoard >= sndChoose.potentialPointsOnBoard) {
+        if (fstChoose.potentialPointsOnBoard >= sndChoose.potentialPointsOnBoard) {
             return fstChoose;
         } else {
             return sndChoose;

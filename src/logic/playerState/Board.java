@@ -1,11 +1,11 @@
 package logic.playerState;
 
+import logic.bankSelection.Choose;
 import logic.token.DistrictType;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -53,6 +53,7 @@ public class Board {
 
     /**
      * Copy constructor, used for deep copyWithoutSelection for generating the potential points on the board (DefaultAIPlayer)
+     *
      * @param other board to copyWithoutSelection
      */
     public Board(Board other) {
@@ -274,16 +275,20 @@ public class Board {
      * @return true if all neighbor positions hold a singletile value that is compatible with the given singletile
      */
     private boolean checkIfNeighborsAreValid(SingleTile domTile, List<Pos> touchingDominos) {
-        if(touchingDominos.size() == 0) {
+        if (touchingDominos.size() == 0) {
             return true;
         }
-        boolean onlyValidNeighbors;
+        boolean onlyValidNeighbors = true;
         DistrictType currTileDistrictType;
         int counter = 0;
         do {
             Pos currPos = touchingDominos.get(counter);
-            currTileDistrictType = this.cells[currPos.x()][currPos.y()].getDistrictType();
-            onlyValidNeighbors = domTile.getDistrictType() == currTileDistrictType || currTileDistrictType == DistrictType.CENTER;
+            if (isValidPos(currPos)) {
+                currTileDistrictType = this.cells[currPos.x()][currPos.y()].getDistrictType();
+                onlyValidNeighbors = domTile.getDistrictType() == currTileDistrictType
+                        || currTileDistrictType == DistrictType.CENTER
+                        || currTileDistrictType == DistrictType.EMPTY_CELL;
+            }
             counter++;
         } while (onlyValidNeighbors && counter < touchingDominos.size());
         return onlyValidNeighbors;
@@ -335,6 +340,7 @@ public class Board {
 
     /**
      * Checks if a given objects holds the same data as the current instance (modified from ueb09)
+     *
      * @param obj object to be examined
      * @return true if equals, false if not or if given obj is a null pointer
      */
@@ -355,6 +361,82 @@ public class Board {
             }
         }
         return areSame;
+    }
+
+    /**
+     * Checks if a given domino with it's pos and rot generates any empty cells.
+     * Gets the neighbors of both domino positions and evaluates the neighbor positions with the following conditions
+     * - pos is out of bound
+     * - pos is in bound and filled
+     * - pos is in bound and neighbors math types
+     *
+     * @param choose given domino to check board for
+     * @return true if no empty cells are generated
+     */
+    public boolean isEfficient(Choose choose) {
+        assert null != choose;
+        Domino chooseDom = choose.getDomWithPosAndRot();
+        assert fits(chooseDom);
+        // Generate two lists of positions for the direct neighbors of the given domino which do NOT contain on of the
+        // domino positions
+        Pos fstPos = chooseDom.getFstPos();
+        Pos sndPos = chooseDom.getSndPos();
+        List<Pos> fstPosNeighhors = fstPos.getNeighbours();
+        fstPosNeighhors.remove(sndPos);
+        List<Pos> sndPosNeighhors = sndPos.getNeighbours();
+        sndPosNeighhors.remove(fstPos);
+
+        // Check the specific tiles with the given conditions from the javadoc
+        SingleTile fstTile = chooseDom.getFstVal();
+        SingleTile sndTile = chooseDom.getSndVal();
+        int i = 0;
+        boolean neighborsNeighborsAreValid;
+        do {
+            neighborsNeighborsAreValid = isOutOfBoundOrisFilledOrNeighborsAreValid(fstTile, fstPosNeighhors.get(i))
+                    && isOutOfBoundOrisFilledOrNeighborsAreValid(sndTile, sndPosNeighhors.get(i));
+
+            // See journal why this isn't possible
+//            neighborsNeighborsAreValid = checkIfNeighborsAreValid(fstTile, fstPosNeighhors.get(i).getNeighbours())
+//                    && checkIfNeighborsAreValid(sndTile, sndPosNeighhors.get(i).getNeighbours());
+            i++;
+        } while (neighborsNeighborsAreValid && i < 3); // 3 since the other dom pos was deleted earlier on
+        return neighborsNeighborsAreValid;
+    }
+
+
+
+    /**
+     * Checks if
+     * - pos is out of bound
+     * - pos is in bound and filled
+     * - pos is in bound and neighbors math types
+     *
+     * @param sTile
+     * @param pos
+     * @return
+     */
+    private boolean isOutOfBoundOrisFilledOrNeighborsAreValid(SingleTile sTile, Pos pos) {
+        // TODO delete following lines before final commit - only for debugging
+        boolean notIsValid = !isValidPos(pos);
+        boolean notisEmpty = (isValidPos(pos) && !isEmpty(pos));
+        boolean notvalidN = (isValidPos(pos) && checkIfNeighborsAreValid(sTile, pos.getNeighbours()));
+        /*
+            x = in bound
+            y = empty
+            z = valid neighbors
+            x y z output
+            0 0 0 1
+            0 0 1 1
+            0 1 0 1
+            0 1 1 1
+            1 0 0 0
+            1 0 1 1
+            1 1 0 1
+            1 1 1 1
+         */
+        return !isValidPos(pos) || (isValidPos(pos) && !isEmpty(pos)) || (isValidPos(pos) && checkIfNeighborsAreValid(sTile, pos.getNeighbours()));
+        // TODO optimize
+//        return !isValidPos(pos) || isEmpty(pos) || checkIfNeighborsAreValid(sTile, pos.getNeighbours());
     }
 
 

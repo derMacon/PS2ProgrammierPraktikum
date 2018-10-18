@@ -32,6 +32,14 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         super(gui, idx, strBoard);
     }
 
+    /**
+     * Approach:
+     *  - Find domino with highest number of possible points
+     *  - If multtiple dominos share the highest score the one with the most efficient domino will be selected
+     * @param bank the bank that the player will select from
+     * @param ordBank ordinal value of the bank
+     * @return the edited bank
+     */
     @Override
     public Bank selectFromBank(Bank bank, int ordBank) {
         // bank copyWithoutSelection, serves as temporary bank
@@ -44,7 +52,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
             }
         }
         // evaluate which choose is best
-        Choose overallBestChoose = Choose.max(bestChoosesForEachPossibleBankSlot);
+        Choose overallBestChoose = Choose.max(bestChoosesForEachPossibleBankSlot, this.board);
         // update domino (rotation and position) of the best choose
         bank.updateDomino(overallBestChoose.getIdxOnBank(), overallBestChoose.getDomWithPosAndRot());
         // actually select a domino from the bank

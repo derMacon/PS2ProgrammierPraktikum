@@ -1,5 +1,6 @@
 package logic.playerState;
 
+import logic.bankSelection.Choose;
 import logic.playerState.Board;
 import logic.token.Domino;
 import logic.token.Pos;
@@ -368,6 +369,58 @@ public class BoardTest {
     }
 
 
+    // --- isEfficient ---
+    @Test
+    public void testIsEfficient_InCorner_NotEfficient() {
+        Board board = new Board(
+                        "-- -- P1\n" +
+                        "-- CC A0\n");
+        Domino dom = new Domino(Tiles.genTile(P0, I3), 3);
+        Choose choose = new Choose(dom, 6, 0);
+        assertTrue(board.fits(dom));
+        assertFalse(board.isEfficient(choose));
+    }
+
+    @Test
+    public void testIsEfficient_InCorner_Efficient() {
+        Board board = new Board(
+                        "-- -- P1\n" +
+                        "-- CC A0\n");
+        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.DOWN_ROT); // rotation has been modified
+        Choose choose = new Choose(dom, 6, 0);
+        assertTrue(board.fits(dom));
+        assertTrue(board.isEfficient(choose));
+    }
+
+    @Test
+    public void testIsEfficient_InCorner_Efficient_MultipleCell() {
+        Board board = new Board(
+                        "-- -- P1\n" +
+                        "-- CC A0\n" +
+                        "-- I1 --");
+        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.DOWN_ROT); // rotation has been modified
+        Choose choose = new Choose(dom, 6, 0);
+        assertTrue(board.fits(dom));
+        assertTrue(board.isEfficient(choose));
+    }
+
+    @Test
+    public void testIsEfficient_InCorner_NotEfficient_MultipleCell() {
+        Board board = new Board(
+                        "-- -- P1\n" +
+                        "-- CC A0\n" +
+                        "-- I1 --");
+        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.UP_ROT); // rotation has been modified
+        Choose choose = new Choose(dom, 6, 0);
+        assertTrue(board.fits(dom));
+        assertFalse(board.isEfficient(choose));
+    }
+
+    // --- checkIfNeighborsAreValid ---
+    @Test
+    public void testcheckIfNeighborsAreValid() {
+
+    }
 
 
 }
