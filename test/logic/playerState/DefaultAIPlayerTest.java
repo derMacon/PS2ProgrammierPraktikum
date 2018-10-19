@@ -23,22 +23,38 @@ import static org.junit.Assert.*;
 
 /**
  * Testclass for the default bot
- *  - Checks if position for the next domino
- *  - Checks if the right domino was choosen
- *  - Further tests that appeared during manual testing
+ * - Checks if position for the next domino
+ * - Checks if the right domino was choosen
+ * - Further tests that appeared during manual testing
  */
 public class DefaultAIPlayerTest {
 
-    // Checks if position for the next domino
     // --- 5. updateDominoPos, Modified tests from ueb09 ---
+    // only one domino in bank -> no decision has to be made, just check if position for the next domino was modified
+    // correctly
+    @Test
+    public void testUpdateDominoPos_EmptyBank() {
+        DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- -- -- -- -- --\n"
+                        + "-- -- S0 P0 -- --\n"
+                        + "-- -- -- -- -- --\n");
+        Bank nextBank = new Bank(new Entry[]{}, new Random());
+        Bank emptyBank = player.selectFromBank(nextBank, 1);
+        assertSame(nextBank, emptyBank);
+        assertNull(emptyBank.getPlayerSelectedDomino(player));
+    }
+
     @Test
     public void testUpdateDominoPos_rot0_above() {
         DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
                 "-- -- -- -- -- --\n"
                         + "-- -- S0 P0 -- --\n"
                         + "-- -- -- -- -- --\n");
-        Domino expectedOutput = new Domino(Tiles.genTile(P0, A0), new Pos(3, 0), 0);
-        Domino actualOutput = player.updateDominoPos(new Domino(Tiles.genTile(P0, A0)));
+        Tiles domTiles = Tiles.genTile(P0, A0);
+        Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
+        Domino selectedDom = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
+        Domino expectedOutput = new Domino(domTiles, new Pos(3, 0), 0);
+        Domino actualOutput = player.updateDominoPos(selectedDom);
         assertEquals(expectedOutput, actualOutput);
     }
 
@@ -65,7 +81,7 @@ public class DefaultAIPlayerTest {
         Tiles domTiles = Tiles.genTile(P0, A0);
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
-        Domino expectedOutput = new Domino(domTiles, new Pos(4, 0), 0);
+        Domino expectedOutput = new Domino(domTiles, new Pos(4, 0), 2);
         Domino actualOutput = player.updateDominoPos(selectedDom);
         assertEquals(expectedOutput, actualOutput);
     }
@@ -120,7 +136,7 @@ public class DefaultAIPlayerTest {
         Tiles domTiles = Tiles.genTile(P0, A0);
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
-        Domino expectedOutput = new Domino(domTiles, new Pos(3, 0), 1);
+        Domino expectedOutput = new Domino(domTiles, new Pos(3, 0), 0);
         Domino actualOutput = player.updateDominoPos(selectedDom);
         assertEquals(expectedOutput, actualOutput);
     }
@@ -154,12 +170,62 @@ public class DefaultAIPlayerTest {
     }
 
 
-    // Checks if the right domino was choosen
+    // Checks if the right domino was chosen
     // --- selectFromBank ---
+    // 1. tests for most points
     @Test
-    public void testSelectFromBank() {
-
+    public void testSelectFromBank_TwoDomsOnBank_UniquePosToLayDominos() {
+        DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- P0 O0\n"
+                        + "-- CC O0\n"
+                        + "-- A0 O0\n");
+        Tiles mostValuableTiles = Tiles.genTile(A1, P0);
+        Bank nextBank = new Bank(new Entry[]{
+                new Entry(new Domino(Tiles.genTile(P0, A0))),
+                new Entry(new Domino(mostValuableTiles))
+        }, new Random());
+        Domino selectedDom = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
+        Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 1), Pos.UP_ROT);
+        Domino actualOutput = player.updateDominoPos(selectedDom);
+        assertEquals(expectedOutput, actualOutput);
     }
+
+    @Test
+    public void testSelectFromBank_TwoDomsOnBank_DomWithTokenMakesMorePointsThanDomWithoutToken() {
+        DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- P0 P1\n"
+                        + "-- CC P0\n"
+                        + "-- A0 O0\n");
+        Tiles mostValuableTiles = Tiles.genTile(A1, P0);
+        Bank nextBank = new Bank(new Entry[]{
+                new Entry(new Domino(Tiles.genTile(P0, A0))),
+                new Entry(new Domino(mostValuableTiles))
+        }, new Random());
+        Domino selectedDom = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
+        Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.UP_ROT);
+        Domino actualOutput = player.updateDominoPos(selectedDom);
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testSelectFromBank_TwoDomsOnBank_DomWithTokenMakesLessPointsThanDomWithoutToken() {
+        DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- P0 P1\n"
+                        + "-- CC P1\n"
+                        + "-- A0 O0\n");
+        Tiles mostValuableTiles = Tiles.genTile(P0, A0);
+        Bank nextBank = new Bank(new Entry[]{
+                new Entry(new Domino(mostValuableTiles)),
+                new Entry(new Domino(Tiles.genTile(A1, H0)))
+        }, new Random());
+        Domino selectedDom = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
+        Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.DOWN_ROT);
+        Domino actualOutput = player.updateDominoPos(selectedDom);
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+    // tests for tie
+    // TODO write tests for draw / tie
 
     // --- error occurred during manual testing ---
     // All screenshots can be found in the documentation

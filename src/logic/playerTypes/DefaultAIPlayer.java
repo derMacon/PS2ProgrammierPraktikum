@@ -42,6 +42,9 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      */
     @Override
     public Bank selectFromBank(Bank bank, int ordBank) {
+        if(bank.isEmpty()) {
+            return bank;
+        }
         // bank copyWithoutSelection, serves as temporary bank
         Bank bankCopy = bank.copy();
         // Generate potentially best Choose for each possible domino on the given bank

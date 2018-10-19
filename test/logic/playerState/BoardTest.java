@@ -416,11 +416,6 @@ public class BoardTest {
         assertFalse(board.isEfficient(choose));
     }
 
-    // --- checkIfNeighborsAreValid ---
-    @Test
-    public void testcheckIfNeighborsAreValid() {
-
-    }
 
 
 }

@@ -417,7 +417,7 @@ public class Board {
      */
     private boolean isOutOfBoundOrisFilledOrNeighborsAreValid(SingleTile sTile, Pos pos) {
         // TODO delete following lines before final commit - only for debugging
-        boolean notIsValid = !isValidPos(pos);
+        boolean notIsValid = isValidPos(pos);
         boolean notisEmpty = (isValidPos(pos) && !isEmpty(pos));
         boolean notvalidN = (isValidPos(pos) && checkIfNeighborsAreValid(sTile, pos.getNeighbours()));
         /*
@@ -425,18 +425,19 @@ public class Board {
             y = empty
             z = valid neighbors
             x y z output
-            0 0 0 1
-            0 0 1 1
-            0 1 0 1
-            0 1 1 1
-            1 0 0 0
-            1 0 1 1
-            1 1 0 1
-            1 1 1 1
+            0 0 0 1 // out of bound
+            0 0 1 1 // out of bound
+            0 1 0 1 // out of bound
+            0 1 1 1 // out of bound
+            1 0 0 1 // cell filled
+            1 0 1 1 // cell filled
+            1 1 0 0 // indirect neighbors don't fit
+            1 1 1 1 // indirect neighbors fit
          */
-        return !isValidPos(pos) || (isValidPos(pos) && !isEmpty(pos)) || (isValidPos(pos) && checkIfNeighborsAreValid(sTile, pos.getNeighbours()));
-        // TODO optimize
-//        return !isValidPos(pos) || isEmpty(pos) || checkIfNeighborsAreValid(sTile, pos.getNeighbours());
+        System.out.println(notIsValid + "\n" + notisEmpty + "\n" + notvalidN + "\n\n");
+//        return !isValidPos(pos) || (isValidPos(pos) && !isEmpty(pos)) || (isValidPos(pos) && checkIfNeighborsAreValid(sTile, pos.getNeighbours()));
+        // TODO put in docu
+        return !isValidPos(pos) || !isEmpty(pos) || checkIfNeighborsAreValid(sTile, pos.getNeighbours());
     }
 
 
