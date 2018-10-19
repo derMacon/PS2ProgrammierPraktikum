@@ -226,6 +226,22 @@ public class DefaultAIPlayerTest {
 
     // tests for tie
     // TODO write tests for draw / tie
+    @Test
+    public void testSelectFromBank_TieBetweenTwoDominos() {
+        DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- P0 P1\n"
+                        + "-- CC O0\n"
+                        + "-- A0 A1\n");
+        Tiles mostValuableTiles = Tiles.genTile(P1, H0);
+        Bank nextBank = new Bank(new Entry[]{
+                new Entry(new Domino(mostValuableTiles)),
+                new Entry(new Domino(Tiles.genTile(A1, H0)))
+        }, new Random());
+        Domino selectedDom = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
+        Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.DOWN_ROT);
+        Domino actualOutput = player.updateDominoPos(selectedDom);
+        assertEquals(expectedOutput, actualOutput);
+    }
 
     // --- error occurred during manual testing ---
     // All screenshots can be found in the documentation

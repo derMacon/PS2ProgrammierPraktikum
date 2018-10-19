@@ -34,15 +34,16 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 
     /**
      * Approach:
-     *  - Find domino with highest number of possible points
-     *  - If multtiple dominos share the highest score the one with the most efficient domino will be selected
-     * @param bank the bank that the player will select from
+     * - Find domino with highest number of possible points
+     * - If multtiple dominos share the highest score the one with the most efficient domino will be selected
+     *
+     * @param bank    the bank that the player will select from
      * @param ordBank ordinal value of the bank
      * @return the edited bank
      */
     @Override
     public Bank selectFromBank(Bank bank, int ordBank) {
-        if(bank.isEmpty()) {
+        if (bank.isEmpty()) {
             return bank;
         }
         // bank copyWithoutSelection, serves as temporary bank
@@ -55,7 +56,14 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
             }
         }
         // evaluate which choose is best
-        Choose overallBestChoose = Choose.max(bestChoosesForEachPossibleBankSlot, this.board);
+        Choose overallBestChoose;
+        if(bestChoosesForEachPossibleBankSlot.isEmpty()) {
+            // no possible dom on bank fits on board
+            overallBestChoose = Choose.genLowOrderChoose(bank);
+        } else {
+            // at least one domino on the bank fits on the board
+            overallBestChoose = Choose.max(bestChoosesForEachPossibleBankSlot, this.board);
+        }
         // update domino (rotation and position) of the best choose
         bank.updateDomino(overallBestChoose.getIdxOnBank(), overallBestChoose.getDomWithPosAndRot());
         // actually select a domino from the bank
@@ -79,8 +87,9 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * Generates the max. points available on the board for a given domino.
      * Iterates through board -> sets copyWithoutSelection on every pos -> gets the board points -> find max
      *
-     * @param domino
-     * @return
+     * @param domino domino to check
+     * @return domino with a modified pos to match the most valuable spot on the board. If the
+     * domino does not fit anywhere null will be returned
      */
     private Choose genBestChoose(Domino domino, int bankSlotIndex) {
         Choose currChoose;

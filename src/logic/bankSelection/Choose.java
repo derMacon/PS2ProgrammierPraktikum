@@ -71,7 +71,7 @@ public class Choose {
     /**
      * Compares the given chose objects and returns the object with the highest number of points
      *
-     * @param chooseDom chose objects that will be examined
+     * @param chooseDom chose objects that will be examined, objects may be null
      * @return the object with the highest number of points, null if list is empty
      */
 //    public static Choose max(List<Choose> chooseDom) {
@@ -91,15 +91,18 @@ public class Choose {
 //        return output;
 //    }
     public static Choose max(List<Choose> chooseDom, Board board) {
-        assert null != chooseDom;
+        assert null != chooseDom && null != board;
+        if(chooseDom.isEmpty()) {
+            return null;
+        }
         int maxPoints = INIT_VALUE_MAX_POINTS;
         List<Choose> possibleOutput = new LinkedList<>();
         for (Choose currChoose : chooseDom) {
-            // evaluates possible points
-            if (currChoose.potentialPointsOnBoard > maxPoints) {
-                possibleOutput = new LinkedList<>();
-            }
-            if (currChoose.potentialPointsOnBoard >= maxPoints) {
+            if (null != currChoose && currChoose.potentialPointsOnBoard >= maxPoints) {
+                // if new highscore -> output list reseted
+                if (currChoose.potentialPointsOnBoard > maxPoints) {
+                    possibleOutput = new LinkedList<>();
+                }
                 possibleOutput.add(currChoose);
                 maxPoints = currChoose.potentialPointsOnBoard;
             }
@@ -110,22 +113,27 @@ public class Choose {
 
 
     /**
+     * Takes in an ordered List of possible Chose obj., checks for the first domino that fits on
+     * a board and doesn't generate any spare single cells that cannot be used later on in the
+     * game. If there is not such case, the firts list element will be returned. (Least fallout
+     * -> can choose earlier on in the next round)
      *
-     * @param input
-     * @param board
-     * @return
+     * @param input ordered List of possible Chose obj
+     * @param board board to check the positions for
+     * @return most efficient choose obj.
      */
     // protected for testing
     protected static Choose genMostEfficientChoose(List<Choose> input, Board board) {
-        // TODO assert input is sorted
+        // TODO assert input is sorted, assert input dominos have the same value
+        assert null != input && null != board && input.size() > 1;
         int i = 0;
-        boolean isEfficient = false;
+        boolean isEfficient;
         Choose currChoose;
         do {
             currChoose = input.get(i);
             isEfficient = board.isEfficient(currChoose);
             i++;
-        } while(!isEfficient && i < input.size());
+        } while (!isEfficient && i < input.size());
         return isEfficient ? currChoose : input.get(0);
     }
 
@@ -157,6 +165,20 @@ public class Choose {
         return this.domWithPosAndRot.equals(other.domWithPosAndRot)
                 && this.idxOnBank == other.idxOnBank
                 && this.potentialPointsOnBoard == other.potentialPointsOnBoard;
+    }
+
+    public static Choose genLowOrderChoose(Bank bank) {
+        int idxOnBank = 0;
+        Choose output = null;
+        Domino currDomino;
+        while(idxOnBank < bank.getBankSize() && null == output) {
+            currDomino = bank.getDomino(idxOnBank);
+            if(null != currDomino) {
+                output = new Choose(currDomino, 0, idxOnBank);
+            }
+            idxOnBank++;
+        }
+        return output;
     }
 
 

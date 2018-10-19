@@ -434,7 +434,7 @@ public class Board {
             1 1 0 0 // indirect neighbors don't fit
             1 1 1 1 // indirect neighbors fit
          */
-        System.out.println(notIsValid + "\n" + notisEmpty + "\n" + notvalidN + "\n\n");
+//        System.out.println(notIsValid + "\n" + notisEmpty + "\n" + notvalidN + "\n\n");
 //        return !isValidPos(pos) || (isValidPos(pos) && !isEmpty(pos)) || (isValidPos(pos) && checkIfNeighborsAreValid(sTile, pos.getNeighbours()));
         // TODO put in docu
         return !isValidPos(pos) || !isEmpty(pos) || checkIfNeighborsAreValid(sTile, pos.getNeighbours());

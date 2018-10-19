@@ -341,4 +341,20 @@ public class Bank {
         return new Bank(copyEntries, this.rand);
     }
 
+    /**
+     * Getter for the domino with the lowest value
+     * @return domino with the lowest value, null if bank is empty
+     */
+    public Domino getLowOrderDomino() {
+        int i = 0;
+        Domino output = null;
+        while(i < this.bankSize) {
+            if(null != this.entries[i].getDomino()) {
+                output = this.entries[i].getDomino();
+            }
+            i++;
+        }
+        return output;
+    }
+
 }
