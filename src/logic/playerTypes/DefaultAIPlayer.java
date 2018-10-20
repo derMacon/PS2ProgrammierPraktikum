@@ -57,7 +57,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         }
         // evaluate which choose is best
         Choose overallBestChoose;
-        if(bestChoosesForEachPossibleBankSlot.isEmpty()) {
+        if (bestChoosesForEachPossibleBankSlot.isEmpty()) {
             // no possible dom on bank fits on board
             overallBestChoose = Choose.genLowOrderChoose(bank);
         } else {
@@ -77,7 +77,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 
     @Override
     public void doStandardTurn(Bank currBank, Bank nextBank) {
-        Bank nexBank = selectFromBank(nextBank, Game.NEXT_BANK_IDX);
+        Bank out = selectFromBank(nextBank, Game.NEXT_BANK_IDX);
         Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
         this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getSelectedDominoIdx(this));
         showOnBoard(playersSelectedDomino);
@@ -89,7 +89,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      *
      * @param domino domino to check
      * @return domino with a modified pos to match the most valuable spot on the board. If the
-     * domino does not fit anywhere null will be returned
+     * domino does not fit anywhere the pos will be set to null and the points will be set to 0
      */
     private Choose genBestChoose(Domino domino, int bankSlotIndex) {
         Choose currChoose;
@@ -107,7 +107,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
             }
         }
         // TODO else branch, what happens if domino doesn't fit anywhere -> maybe disposed ???
-        return maxChoose;
+        return null == maxChoose ? genChoose(domino.setPos(new Pos(0, 0)), bankSlotIndex) : maxChoose;
     }
 
     /**

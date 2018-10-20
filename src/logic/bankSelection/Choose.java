@@ -92,13 +92,13 @@ public class Choose {
 //    }
     public static Choose max(List<Choose> chooseDom, Board board) {
         assert null != chooseDom && null != board;
-        if(chooseDom.isEmpty()) {
+        if (chooseDom.isEmpty()) {
             return null;
         }
         int maxPoints = INIT_VALUE_MAX_POINTS;
         List<Choose> possibleOutput = new LinkedList<>();
         for (Choose currChoose : chooseDom) {
-            if (null != currChoose && currChoose.potentialPointsOnBoard >= maxPoints) {
+            if (null != currChoose.getDomWithPosAndRot().getFstPos() && currChoose.potentialPointsOnBoard >= maxPoints) {
                 // if new highscore -> output list reseted
                 if (currChoose.potentialPointsOnBoard > maxPoints) {
                     possibleOutput = new LinkedList<>();
@@ -138,11 +138,11 @@ public class Choose {
     }
 
     public static boolean isSorted(List<Choose> input) {
-        if(input.isEmpty()) {
+        if (input.isEmpty()) {
             return true;
         }
         int i = 0;
-        while(i < input.size() - 1 && input.get(i).getDomWithPosAndRot().compareTo(input.get(i + 1).getDomWithPosAndRot()) < 0) {
+        while (i < input.size() - 1 && input.get(i).getDomWithPosAndRot().compareTo(input.get(i + 1).getDomWithPosAndRot()) < 0) {
             i++;
         }
         return i == input.size() - 1;
@@ -182,9 +182,9 @@ public class Choose {
         int idxOnBank = 0;
         Choose output = null;
         Domino currDomino;
-        while(idxOnBank < bank.getBankSize() && null == output) {
+        while (idxOnBank < bank.getBankSize() && null == output) {
             currDomino = bank.getDomino(idxOnBank);
-            if(null != currDomino) {
+            if (null != currDomino) {
                 output = new Choose(currDomino, 0, idxOnBank);
             }
             idxOnBank++;

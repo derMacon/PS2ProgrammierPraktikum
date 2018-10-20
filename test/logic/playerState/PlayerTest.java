@@ -24,8 +24,9 @@ public class PlayerTest {
 
     /**
      * Setts up a district from a given SingleTile array and another Pos array
+     *
      * @param tiles tiles of the district
-     * @param pos positions of the district
+     * @param pos   positions of the district
      * @return a district from a given SingleTile array and another Pos array
      */
     private District setupDistrict(SingleTile[] tiles, Pos[] pos) {
@@ -35,6 +36,7 @@ public class PlayerTest {
 
     /**
      * Checks if two districts match with their respective content
+     *
      * @param fstDistrict first district to check against
      * @param sndDistrict second district to check against
      * @return true if districts match
@@ -130,6 +132,30 @@ public class PlayerTest {
 
 
     // --- lay ---
+    @Test
+    public void testLay_DisposableDomino() {
+        // expected output
+        Board expectedBoard = new Board(
+                "-- -- --\n" +
+                        "-- CC P1\n" +
+                        "-- -- S0\n");
+        List<District> expectedDistricts = new LinkedList<>();
+        expectedDistricts.add(new District(SingleTile.P1, new Pos(2, 1)));
+        expectedDistricts.add(new District(SingleTile.S0, new Pos(2, 2)));
+
+        // actual output
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- -- --\n" +
+                        "-- CC P1\n" +
+                        "-- -- S0\n");
+        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.O0, SingleTile.I2), null, 1));
+        Board actualBoard = player.getBoard();
+        List<District> actualDistricts = player.getDistricts();
+
+        assertEquals(expectedBoard, actualBoard);
+        assertEquals(expectedDistricts, actualDistricts);
+    }
+
 
     /**
      * Board

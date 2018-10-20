@@ -100,11 +100,12 @@ public abstract class Player {
     /**
      * Generates the sum of points the districts represent
      * //TODO delete this method -> use genDistrictPoints
+     *
      * @return
      */
     public int getBoardPoints() {
-        if(this.districts == null || this.districts.isEmpty()) {
-            return 0; 
+        if (this.districts == null || this.districts.isEmpty()) {
+            return 0;
         }
         int sum = 0;
         for (District currDistrict : this.districts) {
@@ -192,19 +193,32 @@ public abstract class Player {
      */
     public void showOnBoard(Domino playerSelectedDomino) {
         assert null != playerSelectedDomino;
-        // update board
-        this.board.lay(playerSelectedDomino);
-        // update districts
-        this.districts = updatedDistricts(this.districts, playerSelectedDomino);
+        if (!shouldBeDisposed(playerSelectedDomino)) {
+            // update board
+            this.board.lay(playerSelectedDomino);
+            // update districts
+            this.districts = updatedDistricts(this.districts, playerSelectedDomino);
 
 //        this.districts = addToAppropriateDistrict(playerSelectedDomino.getFstVal(),
 //                playerSelectedDomino.getFstPos(), this.districts);
 //        this.districts = addToAppropriateDistrict(playerSelectedDomino.getSndVal(),
 //                playerSelectedDomino.getSndPos(), this.districts);
-        // update gui
-        this.gui.showOnGrid(this.idxInPlayerArray, playerSelectedDomino);
-        this.gui.showPointsForPlayer(this.idxInPlayerArray, getBoardPoints());
+            // update gui
+            this.gui.showOnGrid(this.idxInPlayerArray, playerSelectedDomino);
+            this.gui.showPointsForPlayer(this.idxInPlayerArray, getBoardPoints());
+        }
     }
+
+    /**
+     * Determines if a given domino has a defined position
+     *
+     * @param dom domino to check
+     * @return true if domino has a defined position
+     */
+    private boolean shouldBeDisposed(Domino dom) {
+        return null != dom && null == dom.getFstPos();
+    }
+
 
     /**
      * Generates a deep copyWithoutSelection of the given districts and adds the domino to it at the appropriate slot
