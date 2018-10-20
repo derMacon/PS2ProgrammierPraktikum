@@ -227,7 +227,7 @@ public class DefaultAIPlayerTest {
     // tests for tie
     // TODO write tests for draw / tie
     @Test
-    public void testSelectFromBank_TieBetweenTwoDominos() {
+    public void testSelectFromBank_TieBetweenTwoDominos_BothInefficient() {
         DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
                 "-- P0 P1\n"
                         + "-- CC O0\n"
@@ -242,6 +242,44 @@ public class DefaultAIPlayerTest {
         Domino actualOutput = player.updateDominoPos(selectedDom);
         assertEquals(expectedOutput, actualOutput);
     }
+
+    @Test
+    public void testSelectFromBank_TieBetweenTwoDominos_FstEfficient() {
+        DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- S0 P1\n"
+                        + "-- CC O0\n"
+                        + "-- P0 A1\n");
+        Tiles mostValuableTiles = Tiles.genTile(P0, S2);
+        Bank nextBank = new Bank(new Entry[]{
+                new Entry(new Domino(mostValuableTiles)),
+                new Entry(new Domino(Tiles.genTile(A0, S2)))
+        }, new Random());
+        Domino selectedDom = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
+        Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.UP_ROT);
+        Domino actualOutput = player.updateDominoPos(selectedDom);
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testSelectFromBank_TieBetweenTwoDominos_SndEfficient() {
+        DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- S0 P1\n"
+                        + "-- CC O0\n"
+                        + "-- A0 A1\n");
+        Tiles mostValuableTiles = Tiles.genTile(A0, S2);
+        Bank nextBank = new Bank(new Entry[]{
+                new Entry(new Domino(Tiles.genTile(P0, S2))),
+                new Entry(new Domino(mostValuableTiles))
+        }, new Random());
+        Domino selectedDom = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
+        Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.UP_ROT);
+        Domino actualOutput = player.updateDominoPos(selectedDom);
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+    // TODO more tests for tie
+
+
 
     // --- error occurred during manual testing ---
     // All screenshots can be found in the documentation

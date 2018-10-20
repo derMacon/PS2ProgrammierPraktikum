@@ -125,7 +125,7 @@ public class Choose {
     // protected for testing
     protected static Choose genMostEfficientChoose(List<Choose> input, Board board) {
         // TODO assert input is sorted, assert input dominos have the same value
-        assert null != input && null != board && input.size() > 1;
+        assert null != input && null != board && input.size() > 1 && isSorted(input);
         int i = 0;
         boolean isEfficient;
         Choose currChoose;
@@ -135,6 +135,17 @@ public class Choose {
             i++;
         } while (!isEfficient && i < input.size());
         return isEfficient ? currChoose : input.get(0);
+    }
+
+    public static boolean isSorted(List<Choose> input) {
+        if(input.isEmpty()) {
+            return true;
+        }
+        int i = 0;
+        while(i < input.size() - 1 && input.get(i).getDomWithPosAndRot().compareTo(input.get(i + 1).getDomWithPosAndRot()) < 0) {
+            i++;
+        }
+        return i == input.size() - 1;
     }
 
 

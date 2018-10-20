@@ -115,6 +115,31 @@ public class ChooseTest {
         Choose.genMostEfficientChoose(Arrays.asList(fstChoose), null);
     }
 
+    // --- isSorted ---
+    @Test
+    public void testIsSorted_EmptyList() {
+        assertTrue(Choose.isSorted(new LinkedList<>()));
+    }
+
+
+    @Test
+    public void testIsSorted_SortedList_OneElement() {
+        List<Choose> list = Arrays.asList(
+                new Choose(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.P0)), 0, 1)
+        );
+        assertTrue(Choose.isSorted(list));
+    }
+
+    @Test
+    public void testIsSorted_SortedList_ThreeElements() {
+        List<Choose> list = Arrays.asList(
+                new Choose(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.P0)), 0, 1),
+                new Choose(new Domino(Tiles.genTile(SingleTile.H1, SingleTile.P0)), 0, 1),
+                new Choose(new Domino(Tiles.genTile(SingleTile.O0, SingleTile.I2)), 0, 1)
+        );
+        assertTrue(Choose.isSorted(list));
+    }
+
 
     // --- max with List<Domino> ---
     @Test(expected = AssertionError.class)
@@ -130,7 +155,18 @@ public class ChooseTest {
 
     @Test
     public void testListMax_EmptyList() {
-        assertNull(Choose.max(new LinkedList<>(), new Board(1,1)));
+        assertNull(Choose.max(new LinkedList<>(), new Board(1, 1)));
+    }
+
+    // TODO Singletile - correct import
+    @Test(expected = AssertionError.class)
+    public void testListMax_UnorderedList() {
+        List<Choose> incorrectList = Arrays.asList(
+                new Choose(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.P0)), 0, 1),
+                new Choose(new Domino(Tiles.genTile(SingleTile.O0, SingleTile.I2)), 0, 1),
+                new Choose(new Domino(Tiles.genTile(SingleTile.H1, SingleTile.P0)), 0, 1)
+        );
+        Choose.max(incorrectList, new Board(1, 1));
     }
 
     @Test
