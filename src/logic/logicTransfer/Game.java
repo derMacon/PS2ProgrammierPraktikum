@@ -309,10 +309,8 @@ public class Game implements GUI2Game {
         this.currDomino.setPos(new Pos(pos.x(), pos.y()));
         this.players[HUMAN_PLAYER_IDX].showOnBoard(currDomino);
 
-        Logger.printAndSafe("HUMAN put " + this.currDomino.toString() + " to " + pos.toString());
-        setToChooseBox(null);
-        // bots do turns until round is over
-        this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
+        Logger.getInstance().printAndSafe("HUMAN put " + this.currDomino.toString() + " to " + pos.toString());
+        setupCurrDomAndBotsDoTurn();
     }
 
     // ---------------------------------- Further interactions with the board / game ----------------------------------
@@ -349,6 +347,8 @@ public class Game implements GUI2Game {
     @Override
     public void disposeCurrDomino() {
         setToChooseBox(null);
+//        Logger.getInstance().printAndSafe("HUMAN disposed " + this.currDomino.toString());
+        setupCurrDomAndBotsDoTurn();
     }
 
     // ---------------------------------- Helping methods ----------------------------------
@@ -421,6 +421,13 @@ public class Game implements GUI2Game {
 //            setupNextRound(); // also determines if game is over, will call endRound() if necessary
 //        }
 //    }
+
+    private void setupCurrDomAndBotsDoTurn() {
+        setToChooseBox(null);
+        // bots do turns until round is over
+        this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
+    }
+
     private int botsDoTheirTurn(int bankIdx) {
         if (!isValidPlayerIdx(bankIdx)) {
             setupNextRound();
@@ -468,7 +475,8 @@ public class Game implements GUI2Game {
      * Ends round and displays the result of all players
      */
     private void endRound() {
-
+        Result res = new Result(this.players);
+        System.out.println(res);
     }
 
     // --- Human interaction ---
@@ -493,7 +501,7 @@ public class Game implements GUI2Game {
         this.gui.showInChooseBox(currDomino);
         this.currDomino = currDomino;
         this.gui.deleteDomFromBank(CURRENT_BANK_IDX, this.currentRoundBank.getSelectedDominoIdx(this.players[HUMAN_PLAYER_IDX]));
-        Logger.printAndSafe(currDomino + " put to rotation box");
+        Logger.getInstance().printAndSafe(currDomino + " put to rotation box");
     }
 
 }

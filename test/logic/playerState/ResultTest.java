@@ -14,6 +14,8 @@ import static org.junit.Assert.*;
 
 public class ResultTest {
 
+    // TODO test equals method
+
     @Test
     public void testGetWinner_OnlyOnePlayerHasPoints() {
         Player expWinner = new DefaultAIPlayer(new FakeGUI(), 0,
@@ -21,11 +23,14 @@ public class ResultTest {
                         "-- CC P1\n" +
                         "-- -- H0");
         Player[] players = new Player[] {expWinner, new DefaultAIPlayer(new FakeGUI(), 1, 3, 2),
-                new DefaultAIPlayer(new FakeGUI(), 1, 3, 2)};
-        Result res = new Result(players);
-        assertNotNull(res.getWinner());
-        assertEquals(1, res.getWinner().size());
-        assertEquals(expWinner, res.getWinner().get(0));
+                new DefaultAIPlayer(new FakeGUI(), 2, 3, 2)};
+        List<ResultRanking> expectedRankedList = Arrays.asList(
+            new ResultRanking(1, new Player[] {players[0]}),
+            new ResultRanking(2, new Player[] {players[1], players[2]})
+        );
+        List<ResultRanking> actualRankedList = new Result(players).getRankedList();
+        assertEquals(expectedRankedList.get(0), actualRankedList.get(0));
+        assertEquals(expectedRankedList.get(1), actualRankedList.get(1));
     }
 
 
@@ -54,9 +59,7 @@ public class ResultTest {
         assertEquals(expectedRankedList.get(0), actualRankedList.get(0));
         assertEquals(expectedRankedList.get(1), actualRankedList.get(1));
         assertEquals(expectedRankedList.get(2), actualRankedList.get(2));
-//        assertEquals(expectedRankedList, actualRankedList);
-//        assertEquals(expWinner, result.getWinner());
-//        assertSame(expWinner, result.getWinner());
+        assertEquals(expectedRankedList, actualRankedList);
     }
 
     @Test

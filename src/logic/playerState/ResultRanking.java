@@ -74,7 +74,9 @@ public class ResultRanking {
             boolean samePlayers = true;
             int i = 0;
             do {
-                samePlayers = this.rankedPlayers.get(i).equals(other.rankedPlayers.get(i));
+//                samePlayers = this.rankedPlayers.get(i).equals(other.rankedPlayers.get(i));
+                samePlayers = this.rankedPlayers.contains(other.rankedPlayers.get(i))
+                        && other.rankedPlayers.contains(this.rankedPlayers.get(i));
                 i++;
             } while (samePlayers && i < this.rankedPlayers.size());
             return samePlayers;

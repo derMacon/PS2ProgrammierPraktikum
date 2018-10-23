@@ -65,7 +65,7 @@ public class Logger {
     }
 
     // Actual logger method, prints the given message and then saves it to a given File
-    public static void printAndSafe(String inputLog) {
+    public void printAndSafe(String inputLog) {
         System.out.println(inputLog);
 //        appendFileWithNewMove(inputLog);
     }

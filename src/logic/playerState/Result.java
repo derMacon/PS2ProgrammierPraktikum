@@ -29,6 +29,7 @@ public class Result {
 
     /**
      * Constructor used for testing
+     *
      * @param ranking
      */
     public Result(List<ResultRanking> ranking) {
@@ -38,6 +39,7 @@ public class Result {
 
     /**
      * Getter for the ranked list
+     *
      * @return the ranked list of the game
      */
     public List<ResultRanking> getRankedList() {
@@ -58,92 +60,56 @@ public class Result {
 
         return orderRanking(new LinkedList<>(), rankedWithoutEqualTemperedPlayers);
 
-
-
-
-        // list now sorted descending
-//        Collections.reverse(rankedWithoutEqualTemperedPlayers);
-
-//        int rank = 1;
-////        int idxPlayer = 0;
-////        do {
-////            ResultRanking currRank = new ResultRanking(rank);
-////            currRank.addPlayer();
-////        }
-//        List<ResultRanking> equallyTemperedOutput = new LinkedList<>();
-//        Player lastPlayer = null;
-//        ResultRanking currRanking = null;
-////        for (Iterator<Player> iter = rankedWithoutEqualTemperedPlayers.iterator(); iter.hasNext(); ) {
-//
-//
-////        Iterator<Player> iter = rankedWithoutEqualTemperedPlayers.iterator();
-////        Player currPlayer = null;
-////        while (iter.hasNext()) {
-////            while (iter.hasNext() && (null == currPlayer || currPlayer.compareTo(lastPlayer) == 0)) {
-////                // TODO check if allowed
-////                if (null == currPlayer || currPlayer.compareTo(lastPlayer) != 0) {
-////                    currRanking = new ResultRanking(rank);
-////                    rank++;
-////                }
-////                currRanking.addPlayer(currPlayer);
-////                lastPlayer = currPlayer;
-////                currPlayer = iter.next();
-////            }
-////            equallyTemperedOutput.add(currRanking);
-////        }
-////        return equallyTemperedOutput;
-
-
-//        return null;
-
     }
 
     private LinkedList<ResultRanking> orderRanking(LinkedList<ResultRanking> output,
-                                              LinkedList<Player> players) {
+                                                   LinkedList<Player> players) {
         assert null != output && null != players;
         // exit condition -> sorted when no players are left
-        if(players.isEmpty()) {
+        if (players.isEmpty()) {
             return output;
         }
         // output is empty -> first initialize Result Ranking in List,
-        if(output.isEmpty()) {
+        if (output.isEmpty()) {
             ResultRanking resRank = new ResultRanking(1);
             output.add(resRank);
             return orderRanking(output, players);
         }
         // Put highest ranking player in ResultRanking
-        if(output.getLast().isEmpty()) {
+        if (output.getLast().isEmpty()) {
             ResultRanking resRank = output.getLast();
             resRank.addPlayer(players.removeLast());
             return orderRanking(output, players);
         }
         // last player always most valuable one, matches current ranking
-        if(output.getLast().matchesRank(players.getLast())) {
+        if (output.getLast().matchesRank(players.getLast())) {
             output.getLast().addPlayer(players.removeLast());
             return orderRanking(output, players);
         }
         // last player doesn't match last rank in list
         output.add(new ResultRanking(output.getLast().getRankingPosition() + 1));
         return orderRanking(output, players);
-
-
     }
 
 
     public List<Player> getWinner() {
-        // TODO insert code
-        return null;
+        return this.ranking.get(0).getRankedPlayers();
     }
 
     @Override
     public String toString() {
         // TODO adjust method
-//        StringBuilder output = new StringBuilder();
-//        for (int i = 0; i < this.winner.size(); i++) {
-//            output.append("Result{" + "points=" + this.winner.get(i).getBoardPoints() + ", winner=" + winner + '}' + "\n");
-//        }
-//        return output.toString();
-        return null;
+        StringBuilder output = new StringBuilder("Ordered Ranking:\n");
+        Player currPlayer = null;
+        for (int i = 0; i < this.ranking.size(); i++) {
+            output.append(i + ". Spot");
+            for (int j = 0; j < this.ranking.get(i).getRankedPlayers().size(); j++) {
+                currPlayer = this.ranking.get(i).getRankedPlayers().get(j);
+                output.append("Player " + j + " Result{" + "points=" + this.ranking.get(i).getRankedPlayers().get(j).getBoardPoints()
+                        + '}' + "\n");
+            }
+        }
+        return output.toString();
     }
 
 }
