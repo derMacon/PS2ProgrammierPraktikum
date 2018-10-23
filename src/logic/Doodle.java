@@ -12,7 +12,6 @@ import java.util.Random;
 public class Doodle {
 
     public static void main(String[] args) {
-        Random rand = new Random(); 
-        System.out.println(rand.nextInt(0));
+        System.out.println((-1) % 3);
     }
 }

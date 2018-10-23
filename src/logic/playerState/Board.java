@@ -11,6 +11,15 @@ import java.util.List;
 
 public class Board {
 
+    public static final int LEFT_MOVE = 0;
+
+    public static final int UP_MOVE = 1;
+
+    public static final int RIGHT_MOVE = 2;
+
+    public static final int DOWN_MOVE = 3;
+
+
     /**
      * String representation for an empty cell
      */
@@ -96,9 +105,8 @@ public class Board {
      * @return input array filled with empty tiles
      */
     private SingleTile[][] fillEmptyCellsWithTile(SingleTile[][] input) {
-        System.out.println(input[0].length);
-        for (int y = 0; y < input.length; y++) {
-            for (int x = 0; x < input[0].length; x++) {
+        for (int y = 0; y < this.sizeY; y++) {
+            for (int x = 0; x < this.sizeX; x++) {
                 if (null == input[x][y]) {
                     input[x][y] = SingleTile.EC;
                 }
@@ -399,10 +407,10 @@ public class Board {
 //            neighborsNeighborsAreValid = checkIfNeighborsAreValid(fstTile, fstPosNeighhors.get(i).getNeighbours())
 //                    && checkIfNeighborsAreValid(sndTile, sndPosNeighhors.get(i).getNeighbours());
             i++;
-        } while (neighborsNeighborsAreValid && i < 3); // 3 since the other dom pos was deleted earlier on
+        }
+        while (neighborsNeighborsAreValid && i < 3); // 3 since the other dom pos was deleted earlier on
         return neighborsNeighborsAreValid;
     }
-
 
 
     /**
@@ -439,6 +447,111 @@ public class Board {
         // TODO put in docu
         return !isValidPos(pos) || !isEmpty(pos) || checkIfNeighborsAreValid(sTile, pos.getNeighbours());
     }
+
+    /**
+     * Moves Board to desired position. Returns true if board movement was done successful.
+     *
+     * @param direction direction to move the board to
+     * @return new board reference (easier for other Bots to evaluate which dir to choose to
+     * score max. points)
+     */
+    public Board moveBoard(int direction) {
+        assert canMoveBoardToDir(direction);
+        boolean canMove;
+        Board outputBoard = new Board(this.sizeX, this.sizeY);
+        switch (direction) {
+            case LEFT_MOVE:
+                for (int x = 0; x < this.sizeX; x++) {
+                    outputBoard.cells[x] = this.cells[(x + 1) % this.sizeX].clone();
+                }
+                break;
+            case UP_MOVE:
+                for (int x = 0; x < this.sizeX; x++) {
+                    for (int y = 0; y < this.sizeY; y++) {
+                        outputBoard.cells[x][y] = this.cells[x][(y + 1) % this.sizeY];
+                    }
+                }
+                break;
+            case RIGHT_MOVE:
+                for (int x = 0; x < this.sizeX; x++) {
+                    outputBoard.cells[x] = this.cells[(x == 0) ? this.sizeX - 1 : (x - 1)].clone();
+                }
+                break;
+            case DOWN_MOVE:
+                for (int x = 0; x < this.sizeX; x++) {
+                    for (int y = 0; y < this.sizeY; y++) {
+                        outputBoard.cells[x][y] = this.cells[x][(y == 0) ? this.sizeY - 1 : y - 1];
+                    }
+                }
+                break;
+            default:
+                System.err.println("Wrong direction");
+
+        }
+        return outputBoard;
+    }
+
+    public boolean canMoveBoardToDir(int direction) {
+        return horizontalCheckPossibleBoardMove(direction) || verticalCheckPossibleBoardMove(direction);
+    }
+
+    private boolean horizontalCheckPossibleBoardMove(int direction) {
+        boolean columnIsEmpty;
+        int xIndex;
+        // determine which column should be examined
+        if (LEFT_MOVE == direction) {
+            xIndex = 0;
+        } else if (RIGHT_MOVE == direction) {
+            xIndex = this.sizeX - 1;
+        } else {
+            return false; // not a vertical direction
+        }
+        // determine which column should be examined
+        if (LEFT_MOVE == direction) {
+            xIndex = 0;
+        } else if (RIGHT_MOVE == direction) {
+            xIndex = this.sizeX - 1;
+        } else {
+            return false; // not a vertical direction
+        }
+        // actually examine the generated column
+        int y = 0;
+        do {
+            columnIsEmpty = this.cells[xIndex][y] == SingleTile.EC;
+            y++;
+        } while (columnIsEmpty && y < this.sizeX);
+        return columnIsEmpty;
+    }
+
+    private boolean verticalCheckPossibleBoardMove(int direction) {
+        boolean rowIsEmpty;
+        int yIndex;
+        // determine which row should be examined
+        if (UP_MOVE == direction) {
+            yIndex = 0;
+        } else if (DOWN_MOVE == direction) {
+            yIndex = this.sizeY - 1;
+        } else {
+            return false; // not a vertical direction
+        }
+        // actually examine the generated column
+        int x = 0;
+        do {
+            rowIsEmpty = this.cells[x][yIndex] == SingleTile.EC;
+            x++;
+        } while (rowIsEmpty && x < this.sizeX);
+        return rowIsEmpty;
+    }
+
+    // TODO maybe isolate movement to avoid redundant code
+//    private Board moveHorizontal(int direction) {
+//
+//        Board outputBoard = new Board(this.sizeX, this.sizeY);
+//        for (int x = 0; x < this.sizeX; x++) {
+//            outputBoard.cells[x] = this.cells[(x + 1) % this.sizeX].clone();
+//        }
+//        return outputBoard;
+//    }
 
 
 }

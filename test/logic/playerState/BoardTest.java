@@ -2,16 +2,179 @@ package logic.playerState;
 
 import logic.bankSelection.Choose;
 import logic.playerState.Board;
-import logic.token.Domino;
-import logic.token.Pos;
-import logic.token.SingleTile;
-import logic.token.Tiles;
+import logic.token.*;
 import org.junit.Test;
 
 import static logic.token.SingleTile.*;
 import static org.junit.Assert.*;
 
 public class BoardTest {
+
+    // --- moveBoard ---
+    @Test
+    public void testMoveBoard_CheckReferences() {
+        Board inputBoard = new Board(
+                "-- -- --\n" +
+                        "-- CC --\n" +
+                        "-- -- --\n" +
+                        "-- -- --\n"
+        );
+        Board actualOutputBoard = inputBoard.moveBoard(Board.LEFT_MOVE);
+        // new board reference
+        assertNotSame(inputBoard, actualOutputBoard);
+        // new cell reference
+        assertNotSame(inputBoard.getCells(), actualOutputBoard.getCells());
+        // new cell column reference
+        assertNotSame(inputBoard.getCells()[0], actualOutputBoard.getCells()[0]);
+        assertNotSame(inputBoard.getCells()[2], actualOutputBoard.getCells()[2]);
+        // inputBoard not touched
+        assertEquals(DistrictType.CENTER, inputBoard.getCells()[1][1].getDistrictType());
+    }
+
+    // --- valid board moves ---
+    @Test
+    public void testMoveBoard_MoveLeft_ValidMove() {
+        Board inputBoard = new Board(
+                "-- H0 --\n" +
+                        "-- CC H1\n" +
+                        "-- -- H2\n"
+        );
+        Board expectedOutputBoard = new Board(
+                "H0 -- --\n" +
+                        "CC H1 --\n" +
+                        "-- H2 --\n"
+        );
+        Board actualOutputBoard = inputBoard.moveBoard(Board.LEFT_MOVE);
+        assertEquals(expectedOutputBoard, actualOutputBoard);
+    }
+
+    @Test
+    public void testMoveBoard_MoveUp_ValidMove() {
+        Board inputBoard = new Board(
+                "-- -- --\n" +
+                        "H1 CC H0\n" +
+                        "H2 -- --\n"
+        );
+        Board expectedOutputBoard = new Board(
+                "H1 CC H0\n" +
+                        "H2 -- --\n" +
+                        "-- -- --\n"
+        );
+        Board actualOutputBoard = inputBoard.moveBoard(Board.UP_MOVE);
+        assertEquals(expectedOutputBoard, actualOutputBoard);
+    }
+
+    @Test
+    public void testMoveBoard_MoveRight_ValidMove() {
+        Board inputBoard = new Board(
+                "-- H0 --\n" +
+                        "H1 CC --\n" +
+                        "H2 -- --\n"
+        );
+        Board expectedOutputBoard = new Board(
+                "-- -- H0\n" +
+                        "-- H1 CC\n" +
+                        "-- H2 --\n"
+        );
+        Board actualOutputBoard = inputBoard.moveBoard(Board.RIGHT_MOVE);
+        assertEquals(expectedOutputBoard, actualOutputBoard);
+    }
+
+    @Test
+    public void testMoveBoard_MoveDown_ValidMove() {
+        Board inputBoard = new Board(
+                "-- H1 H2\n" +
+                        "H0 CC --\n" +
+                        "-- -- --\n"
+        );
+        Board expectedOutputBoard = new Board(
+                "-- -- --\n" +
+                        "-- H1 H2\n" +
+                        "H0 CC --\n"
+        );
+        Board actualOutputBoard = inputBoard.moveBoard(Board.DOWN_MOVE);
+        assertEquals(expectedOutputBoard, actualOutputBoard);
+    }
+
+
+    // --- canMoveBoardToDir ---
+    @Test
+    public void testCanMoveBoardToDir_ValidAllDirections() {
+        Board inputBoard = new Board(
+                "-- -- --\n" +
+                        "-- CC --\n" +
+                        "-- -- --\n"
+        );
+        assertTrue(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+    }
+
+    @Test
+    public void testCanMoveBoardToDir_InvalidDir_LEFT() {
+        Board inputBoard = new Board(
+                "-- -- --\n" +
+                        "H0 CC --\n" +
+                        "-- -- --\n"
+        );
+        assertFalse(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+    }
+
+    @Test
+    public void testCanMoveBoardToDir_InvalidDir_UP() {
+        Board inputBoard = new Board(
+                "-- H0 --\n" +
+                        "-- CC --\n" +
+                        "-- -- --\n"
+        );
+        assertTrue(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
+        assertFalse(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+    }
+
+    @Test
+    public void testCanMoveBoardToDir_InvalidDir_RIGHT() {
+        Board inputBoard = new Board(
+                "-- -- --\n" +
+                        "-- CC H0\n" +
+                        "-- -- --\n"
+        );
+        assertTrue(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
+        assertFalse(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+    }
+
+    @Test
+    public void testCanMoveBoardToDir_InvalidDir_DOWN() {
+        Board inputBoard = new Board(
+                "-- -- --\n" +
+                        "-- CC --\n" +
+                        "-- H0 --\n"
+        );
+        assertTrue(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
+        assertFalse(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+    }
+
+    @Test
+    public void testCanMoveBoardToDir_OneValidHor_OneValidVerti() {
+        Board inputBoard = new Board(
+                "-- -- --\n" +
+                        "-- CC H1\n" +
+                        "-- H0 --\n"
+        );
+        assertTrue(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
+        assertFalse(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
+        assertFalse(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+    }
 
     // --- 1. Constructor - used for game ---
     @Test(expected = AssertionError.class)
@@ -373,7 +536,7 @@ public class BoardTest {
     @Test
     public void testIsEfficient_InCorner_NotEfficient() {
         Board board = new Board(
-                        "-- -- P1\n" +
+                "-- -- P1\n" +
                         "-- CC A0\n");
         Domino dom = new Domino(Tiles.genTile(P0, I3), 3);
         Choose choose = new Choose(dom, 6, 0);
@@ -384,7 +547,7 @@ public class BoardTest {
     @Test
     public void testIsEfficient_InCorner_Efficient() {
         Board board = new Board(
-                        "-- -- P1\n" +
+                "-- -- P1\n" +
                         "-- CC A0\n");
         Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.DOWN_ROT); // rotation has been modified
         Choose choose = new Choose(dom, 6, 0);
@@ -395,7 +558,7 @@ public class BoardTest {
     @Test
     public void testIsEfficient_InCorner_Efficient_MultipleCell() {
         Board board = new Board(
-                        "-- -- P1\n" +
+                "-- -- P1\n" +
                         "-- CC A0\n" +
                         "-- I1 --");
         Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.DOWN_ROT); // rotation has been modified
@@ -407,7 +570,7 @@ public class BoardTest {
     @Test
     public void testIsEfficient_InCorner_NotEfficient_MultipleCell() {
         Board board = new Board(
-                        "-- -- P1\n" +
+                "-- -- P1\n" +
                         "-- CC A0\n" +
                         "-- I1 --");
         Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.UP_ROT); // rotation has been modified
@@ -415,7 +578,6 @@ public class BoardTest {
         assertTrue(board.fits(dom));
         assertFalse(board.isEfficient(choose));
     }
-
 
 
 }

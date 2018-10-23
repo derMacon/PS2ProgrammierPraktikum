@@ -21,6 +21,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.logicTransfer.GUI2Game;
 import logic.logicTransfer.Game;
+import logic.playerState.Board;
 import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 
@@ -667,7 +668,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void moveBoardUp() {
-
+        this.game.moveBoard(Board.UP_MOVE);
     }
 
     /**
@@ -675,7 +676,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void moveBoardRight() {
-
+        this.game.moveBoard(Board.RIGHT_MOVE);
     }
 
     /**
@@ -683,7 +684,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void moveBoardDown() {
-
+        this.game.moveBoard(Board.DOWN_MOVE);
     }
 
     /**
@@ -691,7 +692,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void moveBoardLeft() {
-
+        this.game.moveBoard(Board.LEFT_MOVE);
     }
 
 

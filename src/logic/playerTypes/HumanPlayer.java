@@ -43,4 +43,9 @@ public class HumanPlayer extends Player {
         super(gui, idx, strBoard);
     }
 
+    // only human player needs this setter, since each Bot handles the movement locally
+    public void updateBoard(Board board) {
+        this.board = board;
+    }
+
 }
