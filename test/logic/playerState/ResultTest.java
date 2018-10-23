@@ -7,6 +7,9 @@ import logic.playerState.Player;
 import logic.playerState.Result;
 import org.junit.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class ResultTest {
@@ -32,18 +35,28 @@ public class ResultTest {
         Player expWinner = new DefaultAIPlayer(fakeGui, 0,
                 "-- -- --\n" +
                         "-- CC P1\n" +
-                        "-- -- H1");
+                        "-- H1 H1");
         Player loser1 = new DefaultAIPlayer(fakeGui, 1,
                 "-- -- --\n" +
                         "-- CC P1\n" +
-                        "-- -- H0");
+                        "-- H0 H0");
         Player loser2 = new DefaultAIPlayer(fakeGui, 2,
                 "-- -- --\n" +
                         "-- CC P1\n" +
                         "-- -- H0");
-        Result result = new Result(new Player[] {expWinner, loser1, loser2});
-        assertEquals(expWinner, result.getWinner());
-        assertSame(expWinner, result.getWinner());
+        List<ResultRanking> expectedRankedList = Arrays.asList(
+                new ResultRanking(1, new Player[] {expWinner}),
+                new ResultRanking(2, new Player[] {loser1}),
+                new ResultRanking(3, new Player[] {loser2})
+        );
+        List<ResultRanking> actualRankedList = new Result(new Player[] {expWinner,
+                loser1, loser2}).getRankedList();
+        assertEquals(expectedRankedList.get(0), actualRankedList.get(0));
+        assertEquals(expectedRankedList.get(1), actualRankedList.get(1));
+        assertEquals(expectedRankedList.get(2), actualRankedList.get(2));
+//        assertEquals(expectedRankedList, actualRankedList);
+//        assertEquals(expWinner, result.getWinner());
+//        assertSame(expWinner, result.getWinner());
     }
 
     @Test
@@ -90,9 +103,5 @@ public class ResultTest {
 
     }
 
-    @Test (expected = AssertionError.class)
-    public void testGetWinner_NullParam() {
-        new Result(null);
-    }
 
 }
