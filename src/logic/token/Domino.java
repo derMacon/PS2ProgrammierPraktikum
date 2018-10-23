@@ -16,7 +16,7 @@ import java.util.List;
  *
  * @author GeritKaleck
  */
-public class Domino implements Comparable{
+public class Domino implements Comparable {
 
     /**
      * Number of possiblities a domino can be rotated
@@ -279,13 +279,14 @@ public class Domino implements Comparable{
     public int compareTo(Object o) {
         assert null != o && (o instanceof Domino);
         Domino other = (Domino)o;
-        if(other.tiles.getValue() > this.tiles.getValue()) {
-            return -1;
-        } else if (other.tiles.getValue() == this.tiles.getValue()) {
-            return 0;
-        } else {
-            return 1;
-        }
+//        if(other.tiles.getValue() > this.tiles.getValue()) {
+//            return -1;
+//        } else if (other.tiles.getValue() == this.tiles.getValue()) {
+//            return 0;
+//        } else {
+//            return 1;
+//        }
+        return this.tiles.getValue() - other.tiles.getValue();
     }
     
 }

@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
-public abstract class Player {
+public abstract class Player implements Comparable {
 
     /**
      * Board of the player
@@ -239,11 +239,29 @@ public abstract class Player {
         return output;
     }
 
-
+    public int getLargestDistrictSize() {
+        assert null != this.districts;
+        int maxSize = 0;
+        for(District currDistrict : this.districts) {
+            maxSize = currDistrict.getTilePositions().size();
+        }
+        return maxSize;
+    }
 
     @Override
     public String toString() {
         return this.board.toString();
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        assert null != o && (o instanceof Player);
+        Player other = (Player) o;
+        if(other.getBoardPoints() == this.getBoardPoints()) {
+            return this.getLargestDistrictSize() - other.getLargestDistrictSize();
+        } else {
+            return this.getBoardPoints() - other.getBoardPoints();
+        }
     }
 
 }

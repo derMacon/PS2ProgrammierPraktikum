@@ -598,4 +598,49 @@ public class PlayerTest {
         assertEquals(10, player.getBoardPoints());
     }
 
+
+    // --- compareTo ---
+    @Test
+    public void testCompareTo_OnePlayerMaxPoints() {
+        Player player1 = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- S1 S1\n" +
+                        "-- CC --\n" +
+                        "-- H1 --\n");
+        Player player2 = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- S1 S1\n" +
+                        "-- CC --\n" +
+                        "-- H1 H0\n");
+        assertTrue(player1.compareTo(player2) < 0);
+        assertTrue(player2.compareTo(player1) > 0);
+    }
+
+    @Test
+    public void testCompareTo_BothPlayersEqualPoints_EqualDistrictsSizes() {
+        Player player1 = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- S1 S1\n" +
+                        "-- CC --\n" +
+                        "-- H1 H0\n");
+        Player player2 = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- S1 S1\n" +
+                        "-- CC --\n" +
+                        "-- H1 H0\n");
+        assertTrue(player1.compareTo(player2) == 0);
+        assertTrue(player2.compareTo(player1) == 0);
+    }
+
+    @Test
+    public void testCompareTo_BothPlayersEqualPoints_NotEqualDistrictsSizes() {
+        Player player1 = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- S1 S1\n" +
+                        "-- CC --\n" +
+                        "-- H1 H0\n");
+        Player player2 = new DefaultAIPlayer(new FakeGUI(), 1,
+                "S1 S1 S1\n" +
+                        "-- CC --\n" +
+                        "-- -- --\n");
+        assertTrue(player1.compareTo(player2) < 0);
+        assertTrue(player2.compareTo(player1) > 0);
+    }
+
+
 }

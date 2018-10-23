@@ -444,8 +444,13 @@ public class Game implements GUI2Game {
      */
     private void setupNextRound() {
         this.currPlayerIdx = 0;
-        copyAndRemoveNextRoundBankToCurrentBank();
-        randomlyDrawNewDominosForNextRound();
+        System.out.println("Test output: " + this.stack.size() + " cards in stack");
+        if(this.stack.isEmpty()) {
+            endRound();
+        } else {
+            copyAndRemoveNextRoundBankToCurrentBank();
+            randomlyDrawNewDominosForNextRound();
+        }
     }
 
     private void copyAndRemoveNextRoundBankToCurrentBank() {
