@@ -234,16 +234,6 @@ public class JavaFXGUI implements GUIConnector {
      * to present a horizontal domino.
      */
     private void setPnSelectedHorizontal() {
-//        this.pnSelected.setLayoutX(17.0);
-//        this.pnSelected.setLayoutY(44.0);
-//        this.pnSelected.setPrefHeight(42.0);
-//        this.pnSelected.setPrefWidth(72.0);
-//
-//        AnchorPane.setTopAnchor(pnSelected, 40.0);
-//        AnchorPane.setBottomAnchor(pnSelected, 27.0);
-//        AnchorPane.setLeftAnchor(pnSelected, 21.0);
-//        AnchorPane.setRightAnchor(pnSelected, 26.0);
-
         this.pnSelected.setLayoutX(17.0);
         this.pnSelected.setLayoutY(44.0);
         this.pnSelected.setPrefHeight(42.0);
@@ -260,16 +250,6 @@ public class JavaFXGUI implements GUIConnector {
      * to present a vertical domino.
      */
     private void setPnSelectedVertical() {
-//        this.pnSelected.setLayoutX(45.0);
-//        this.pnSelected.setLayoutY(21.0);
-//        this.pnSelected.setPrefHeight(71.0);
-//        this.pnSelected.setPrefWidth(42.0);
-//
-//        AnchorPane.setTopAnchor(pnSelected, 29.0);
-//        AnchorPane.setBottomAnchor(pnSelected, 10.0);
-//        AnchorPane.setLeftAnchor(pnSelected, 40.0);
-//        AnchorPane.setRightAnchor(pnSelected, 45.0);
-
         this.pnSelected.setLayoutX(45.0);
         this.pnSelected.setLayoutY(21.0);
         this.pnSelected.setPrefHeight(71.0);
