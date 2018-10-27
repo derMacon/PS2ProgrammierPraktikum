@@ -270,7 +270,7 @@
                                             <children>
                                                 <AnchorPane prefHeight="190.0" prefWidth="191.0">
                                                     <children>
-                                                        <Pane fx:id="pnSelected" layoutX="32.0" layoutY="63.0" onDragDetected="#onDragDetectedPnSelected" onMouseClicked="#onClickPnSelected" prefHeight="54.0" prefWidth="128.0" BorderPane.alignment="CENTER" />
+                                                        <Pane fx:id="pnSelected" layoutX="53.0" layoutY="62.0" onDragDetected="#onDragDetectedPnSelected" onMouseClicked="#onClickPnSelected" prefHeight="47.0" prefWidth="95.0" BorderPane.alignment="CENTER" />
                                                     </children>
                                                 </AnchorPane>
                                             </children>
