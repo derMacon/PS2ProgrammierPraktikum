@@ -19,6 +19,10 @@ import logic.token.SingleTile;
 import logic.token.Tiles;
 
 import java.util.EmptyStackException;
+import javafx.scene.Scene;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.stage.Stage;
 
 
 public class JavaFXGUI implements GUIConnector {
@@ -164,6 +168,24 @@ public class JavaFXGUI implements GUIConnector {
         this.lblPlayerNameAndPoints[ordPlayer].setText("Spieler ");
         this.lblPlayerNameAndPoints[ordPlayer].setText("Spieler " + (ordPlayer + 1) + ": " + boardPoints + " Punkte");
         System.out.println(boardPoints);
+    }
+    
+    @Override
+    public void displayResult(Result res) {
+        TreeItem<String> rootItem = new TreeItem<>("Spieler nach Plaetzen sortiert");
+        rootItem.setExpanded(true);
+        TreeItem<String> item = new TreeItem<>("Message");
+
+        rootItem.getChildren().add(item);
+
+        TreeView<String> trVvResults = new TreeView<>(rootItem);
+        
+        StackPane root = new StackPane();
+        root.getChildren().add(trVvResults);
+
+        Stage resultStage = new Stage(); 
+        resultStage.setScene(new Scene(root, 300, 250));
+        resultStage.show();
     }
 
 

@@ -1,5 +1,15 @@
 package other;
 
+import gui.FXMLDocumentController;
+import gui.JavaFXGUI;
+import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 import logic.playerState.Result;
 import logic.bankSelection.Bank;
 import logic.logicTransfer.GUIConnector;
@@ -71,6 +81,27 @@ public class FakeGUI implements GUIConnector {
 
     @Override
     public void showPointsForPlayer(int ordPlayer, int boardPoints) {
+
+    }
+
+    @Override
+    public void displayResult(Result res) {
+
+//            System.out.println("Bis hier hin und nicht weiter");
+//            TreeItem<String> rootItem = new TreeItem<>("Spieler nach Plaetzen sortiert");
+//            rootItem.setExpanded(true);
+//            TreeItem<String> item = new TreeItem<>("Message");
+//
+//            rootItem.getChildren().add(item);
+//
+//            TreeView<String> trVvResults = new TreeView<>(rootItem);
+//
+//            StackPane root = new StackPane();
+//            root.getChildren().add(trVvResults);
+//
+//            Stage resultStage = new Stage();
+//            resultStage.setScene(new Scene(root, 300, 250));
+//            resultStage.show();
 
     }
 }

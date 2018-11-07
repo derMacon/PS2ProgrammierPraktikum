@@ -24,6 +24,24 @@ public class Main extends Application {
     // Test Result output
     @Override
     public void start(Stage introStage) throws Exception {
+        FXMLIntroController.openRootPane();
+//        TreeItem<String> rootItem = new TreeItem<>("Spieler nach Plaetzen sortiert");
+//        rootItem.setExpanded(true);
+//        TreeItem<String> item = new TreeItem<>("Message");
+//
+//        rootItem.getChildren().add(item);
+//
+//        TreeView<String> trVvResults = new TreeView<>(rootItem);
+//        
+//        StackPane root = new StackPane();
+//        root.getChildren().add(trVvResults);
+//
+//        Stage resultStage = new Stage(); 
+//        resultStage.setScene(new Scene(root, 300, 250));
+//        resultStage.show();
+    }
+    
+    public static void openRootPane() {
         TreeItem<String> rootItem = new TreeItem<>("Spieler nach Plaetzen sortiert");
         rootItem.setExpanded(true);
         TreeItem<String> item = new TreeItem<>("Message");
