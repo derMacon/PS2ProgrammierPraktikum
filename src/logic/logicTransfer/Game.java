@@ -473,7 +473,7 @@ public class Game implements GUI2Game {
      */
     // TODO make private
     public void endRound() {
-        Result res = new Result(this.players);
+//        Result res = new Result(this.players);
 //        Logger.getInstance().printAndSafe(res.toString());
         
         // Rootitem as the main node to which every player is directed
@@ -490,20 +490,18 @@ public class Game implements GUI2Game {
 //            rootItem.getChildren().add(currRankingNodeGroup); 
 //        }
 
-//        TreeItem<String> rootItem = new TreeItem<String> ("Inbox");
-//        rootItem.setExpanded(true);
-//        for (int i = 1; i < 6; i++) {
-//            TreeItem<String> item = new TreeItem<String> ("Message" + i);            
-//            rootItem.getChildren().add(item);
-//        }        
-//        TreeView<String> tree = new TreeView<String>(rootItem);        
-//        StackPane root = new StackPane();
-//        root.getChildren().add(tree);
-//        Stage primaryStage = new Stage(); 
-//        primaryStage.setScene(new Scene(root, 300, 250));
-//        primaryStage.show();
-
-        gui.displayResult(res);
+        TreeItem<String> rootItem = new TreeItem<String> ("Inbox");
+        rootItem.setExpanded(true);
+        for (int i = 1; i < 6; i++) {
+            TreeItem<String> item = new TreeItem<String> ("Message" + i);            
+            rootItem.getChildren().add(item);
+        }        
+        TreeView<String> tree = new TreeView<String>(rootItem);        
+        StackPane root = new StackPane();
+        root.getChildren().add(tree);
+        Stage primaryStage = new Stage(); 
+        primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.show();
 
 
 

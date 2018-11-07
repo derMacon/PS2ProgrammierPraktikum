@@ -1,13 +1,25 @@
 package other;
 
-import logic.playerState.Result;
+import gui.FXMLDocumentController;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import logic.bankSelection.Bank;
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Board;
 import logic.playerState.Player;
+import logic.playerState.Result;
 import logic.token.Domino;
 
-public class FakeGUI implements GUIConnector {
+import java.io.IOException;
+
+public class FXMLTesterGUI implements GUIConnector {
+
+    @Override
+    public void showWhosTurn(int ordPlayer) {
+
+    }
 
     @Override
     public void setToBank(int ordBank, Bank bank) {
@@ -31,6 +43,11 @@ public class FakeGUI implements GUIConnector {
 
     @Override
     public void showResult(Result result) {
+
+    }
+
+    @Override
+    public void showPointsForPlayer(int ordPlayer, int boardPoints) {
 
     }
 
@@ -65,12 +82,20 @@ public class FakeGUI implements GUIConnector {
     }
 
     @Override
-    public void showWhosTurn(int ordPlayer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+    public void displayResult(Result res) {
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("FXMLResult.fxml"));
+            loader.load();
 
-    @Override
-    public void showPointsForPlayer(int ordPlayer, int boardPoints) {
-
+            Parent root = loader.getRoot();
+            Stage mainStage = new Stage();
+            mainStage.getIcons().add(FXMLDocumentController.LOGO_ICON_TEXTURE);
+            mainStage.setTitle("PS2 Programmierpraktikum: City-Domino");
+            mainStage.setScene(new Scene(root, 1200, 900));
+            mainStage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -101,7 +101,6 @@ public interface GUIConnector {
     void blurBank(int ordBank);
 
 
-    void displayResult(Result res);
 
 
 }

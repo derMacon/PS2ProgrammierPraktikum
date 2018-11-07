@@ -17,9 +17,6 @@ import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
-import javafx.scene.layout.StackPane;
 
 public class FXMLIntroController implements Initializable {
 
@@ -135,25 +132,6 @@ public class FXMLIntroController implements Initializable {
         ((Stage) this.btnStartGame.getScene().getWindow()).close();
     }
 
-    
-    public static void openRootPane() {
-        TreeItem<String> rootItem = new TreeItem<>("Spieler nach Plaetzen sortiert");
-        rootItem.setExpanded(true);
-        TreeItem<String> item = new TreeItem<>("Message");
-
-        rootItem.getChildren().add(item);
-
-        TreeView<String> trVvResults = new TreeView<>(rootItem);
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(trVvResults);
-
-        Stage resultStage = new Stage(); 
-        resultStage.setScene(new Scene(root, 300, 250));
-        resultStage.show();
-    }
-    
-    
     /**
      * Converts a given array of choose boxes to an array of the different PlayerTypes
      *

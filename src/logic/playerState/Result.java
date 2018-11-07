@@ -1,11 +1,6 @@
 package logic.playerState;
 
 import java.util.*;
-import javafx.scene.Scene;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
 
 /**
  * Class that compares the results of all players and generates the winner.
@@ -117,21 +112,4 @@ public class Result {
         return output.toString();
     }
 
-    public static void openRootPane() {
-        TreeItem<String> rootItem = new TreeItem<>("Spieler nach Plaetzen sortiert");
-        rootItem.setExpanded(true);
-        TreeItem<String> item = new TreeItem<>("Message");
-
-        rootItem.getChildren().add(item);
-
-        TreeView<String> trVvResults = new TreeView<>(rootItem);
-        
-        StackPane root = new StackPane();
-        root.getChildren().add(trVvResults);
-
-        Stage resultStage = new Stage(); 
-        resultStage.setScene(new Scene(root, 300, 250));
-        resultStage.show();
-    }
-    
 }
