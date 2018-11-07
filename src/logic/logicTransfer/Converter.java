@@ -42,7 +42,6 @@ public class Converter {
      */
     public static final String SUCCESSFUL_READ_MESSAGE = "Laden erfolgreich";
 
-
     // --- fields that will be filled by this class -> Will be transfered to the game via Getter
     /**
      * Players of the game
@@ -68,10 +67,12 @@ public class Converter {
     private List<Domino> possibleDominos = Domino.fill(new LinkedList<Domino>());
 
     /**
-     * Reads string input and converts it into the appropriate game instance fields
+     * Reads string input and converts it into the appropriate game instance
+     * fields
      *
      * @param input input to convert
-     * @return String message containing the error messages, SUCCESSFUL_READ_MESSAGE if reading String was successful
+     * @return String message containing the error messages,
+     * SUCCESSFUL_READ_MESSAGE if reading String was successful
      */
     public String readStr(GUIConnector gui, String input) {
         String[][] descriptionBlocks = genDescriptiveField(input);
@@ -115,30 +116,24 @@ public class Converter {
         return stack;
     }
 
-
     /**
-     * Takes a given String and extracts the information about the game. The data structure can be described as follows:
+     * Takes a given String and extracts the information about the game. The
+     * data structure can be described as follows:
      *
-     * <Spielfeld>\n
-     * text
-     * <Spielfeld>\n
-     * text
-     * <Spielfeld>\n
-     * text
-     * <Spielfeld>\n
-     * text
-     * <Bänke>\n
-     * text\n
-     * <Beutel>\n
-     * text
+     * <Spielfeld>\n text
+     * <Spielfeld>\n text
+     * <Spielfeld>\n text
+     * <Spielfeld>\n text
+     * <Bänke>\n text\n
+     * <Beutel>\n text
      * <p>
-     * Procedure:
-     * - Genereate a 2-dim String array containing a the tag for the information in the first field of a array entry and
-     * the actual data in the second.
-     * - Data is seperated from the corresponding identifier
+     * Procedure: - Genereate a 2-dim String array containing a the tag for the
+     * information in the first field of a array entry and the actual data in
+     * the second. - Data is seperated from the corresponding identifier
      *
      * @param input String to extract data from
-     * @return String array containing the name of the field in the first slot and the actual data in the second
+     * @return String array containing the name of the field in the first slot
+     * and the actual data in the second
      */
     public String[][] genDescriptiveField(String input) {
         List<String> blocks = new LinkedList<>();
@@ -152,6 +147,11 @@ public class Converter {
         String[][] output = new String[blocks.size()][2];
         for (int i = 0; i < blocks.size(); i++) {
             output[i] = blocks.get(i).split(">\n");
+            System.out.println(i);
+            // if any args are empty
+            if (output[i].length < 2) {
+               output[i] = new String[] {output[i][0], ""};   
+            }
         }
         //<editor-fold defaultstate="collapsed" desc="Alternative">
 //        // First element of the list is useless
@@ -166,8 +166,8 @@ public class Converter {
     }
 
     /**
-     * Generates the data for the fields. Iterates through the given description blocks, checks the title to chose which
-     * conversion method will be called
+     * Generates the data for the fields. Iterates through the given description
+     * blocks, checks the title to chose which conversion method will be called
      *
      * @param descriptionBlocks
      * @param gui
@@ -193,15 +193,17 @@ public class Converter {
     }
 
     // --- convert players ----
-
     /**
-     * Generates the default playertype from a given playertype and calls the convertStrToPlayer method to convert the
-     * given String to the players board.
+     * Generates the default playertype from a given playertype and calls the
+     * convertStrToPlayer method to convert the given String to the players
+     * board.
      *
-     * @param input          board for the player
-     * @param idxPlayerArray index of the player that later on will be instanciated
-     * @param gui            reference to the gui
-     * @return a fully instanciated Player containing a board and the corresponding districts
+     * @param input board for the player
+     * @param idxPlayerArray index of the player that later on will be
+     * instanciated
+     * @param gui reference to the gui
+     * @return a fully instanciated Player containing a board and the
+     * corresponding districts
      */
     private Player convertStrToPlayerWithDefaultOccupancy(String input, int idxPlayerArray, GUIConnector gui) {
         PlayerType defaultPlayerTypeRelativeToIdx = 0 == idxPlayerArray ? PlayerType.HUMAN : PlayerType.DEFAULT;
@@ -209,12 +211,16 @@ public class Converter {
     }
 
     /**
-     * Method calls the static factory method to instanciate a the desired player with the given information.
-     * @param input          board for the player
+     * Method calls the static factory method to instanciate a the desired
+     * player with the given information.
+     *
+     * @param input board for the player
      * @param type type of the player that will be instanciated
-     * @param idxPlayerArray index of the player that later on will be instanciated
-     * @param gui            reference to the gui
-     * @return a fully instanciated Player containing a board and the corresponding districts
+     * @param idxPlayerArray index of the player that later on will be
+     * instanciated
+     * @param gui reference to the gui
+     * @return a fully instanciated Player containing a board and the
+     * corresponding districts
      */
     private Player convertStrToPlayer(String input, PlayerType type, int idxPlayerArray, GUIConnector gui) {
         // TODO update possible dominos list
@@ -224,10 +230,16 @@ public class Converter {
     // --- convert bank ---
     /**
      * Converts a String to two bank types.
+     *
      * @param input String representation of the boards content
      * @return both Bank types in a Bank array
      */
     private Bank[] convertStrToBanks(String input) {
+        if (input.length() == 0 || input.equals("\n")) {
+            return new Bank[]{new Bank(this.players.size()),
+                new Bank(this.players.size())};
+        }
+        // TODO ueberarbeiten
         String[] bothBanks = input.split("\n");
         Bank[] output = new Bank[2];
         output[Game.CURRENT_BANK_IDX] = new Bank(bothBanks[0], this.players);
@@ -237,9 +249,9 @@ public class Converter {
     }
 
     // --- convert stack ---
-
     /**
      * Converts a String to the stack of the game
+     *
      * @param input String representation of the stacks content
      * @return a fully instanciated stack
      */

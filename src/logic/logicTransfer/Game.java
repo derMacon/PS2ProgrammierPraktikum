@@ -11,6 +11,19 @@ import logic.token.Domino;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+import javafx.application.Application;
+import javafx.scene.Node;
+import javafx.scene.Scene;
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
 public class Game implements GUI2Game {
 
@@ -399,35 +412,19 @@ public class Game implements GUI2Game {
 
     // --- Do necessary turns / Setting up banks for next round ---
 
-    /**
-     * Iterates through the selected players from the current bank until the
-     * selected player is the Human player. If the round is finished (the last
-     * bank slot was evaluated) the next round will be setup (banks will be
-     * loaded)
-     */
-//    private void botsDoTheirTurn() {
-//        Player currPlayerInstance = this.currentRoundBank.getSelectedPlayer(this.currPlayerIdx);
-////        while(HUMAN_PLAYER_IDX != currPlayerInstance.getIdxInPlayerArray()) {
-//        while (null != currPlayerInstance && currPlayerInstance instanceof BotBehavior) {
-//            ((BotBehavior) currPlayerInstance).doStandardTurn(this.currentRoundBank, this.nextRoundBank);
-//            this.currPlayerIdx++;
-//            if(!isValidPlayerIdx(this.currPlayerIdx)) {
-//                setupNextRound();
-//            }
-//            currPlayerInstance = this.currentRoundBank.getSelectedPlayer(this.currPlayerIdx);
-//        }
-////        if (this.players.length <= this.currPlayerIdx) {
-//        if (null == currPlayerInstance) {
-//            setupNextRound(); // also determines if game is over, will call endRound() if necessary
-//        }
-//    }
-
+    
     private void setupCurrDomAndBotsDoTurn() {
         setToChooseBox(null);
         // bots do turns until round is over
         this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
     }
 
+    /**
+     * Iterates through the selected players from the current bank until the
+     * selected player is the Human player. If the round is finished (the last
+     * bank slot was evaluated) the next round will be setup (banks will be
+     * loaded)
+     */
     private int botsDoTheirTurn(int bankIdx) {
         if (!isValidPlayerIdx(bankIdx)) {
             setupNextRound();
@@ -474,9 +471,51 @@ public class Game implements GUI2Game {
     /**
      * Ends round and displays the result of all players
      */
-    private void endRound() {
-        Result res = new Result(this.players);
-        System.out.println(res);
+    // TODO make private
+    public void endRound() {
+//        Result res = new Result(this.players);
+//        Logger.getInstance().printAndSafe(res.toString());
+        
+        // Rootitem as the main node to which every player is directed
+//        TreeItem<String> rootItem = new TreeItem<>("Spieler nach Plaetzen sortiert");
+//        rootItem.setExpanded(true);
+        
+        // iterating through the rankings
+//        for(ResultRanking currRanking : res.getRankedList()) {
+//            TreeItem<String> currRankingNodeGroup = new TreeItem<>(String.valueOf(currRanking.getRankingPosition()));
+//            currRankingNodeGroup.setExpanded(true);
+//            for(Player currPlayer : currRanking.getRankedPlayers()) {
+//                currRankingNodeGroup.getChildren().add(new TreeItem<>(currPlayer.toString()));
+//            }
+//            rootItem.getChildren().add(currRankingNodeGroup); 
+//        }
+
+        TreeItem<String> rootItem = new TreeItem<String> ("Inbox");
+        rootItem.setExpanded(true);
+        for (int i = 1; i < 6; i++) {
+            TreeItem<String> item = new TreeItem<String> ("Message" + i);            
+            rootItem.getChildren().add(item);
+        }        
+        TreeView<String> tree = new TreeView<String>(rootItem);        
+        StackPane root = new StackPane();
+        root.getChildren().add(tree);
+        Stage primaryStage = new Stage(); 
+        primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.show();
+
+
+
+//        TreeItem<String> item = new TreeItem<String>();
+//        rootItem.getChildren().add(item);
+//
+//        TreeView<String> trVvResults = new TreeView<>(rootItem);
+//        
+//        StackPane root = new StackPane();
+//        root.getChildren().add(trVvResults);
+//
+//        Stage resultStage = new Stage(); 
+//        resultStage.setScene(new Scene(root, 300, 250));
+//        resultStage.show();
     }
 
     // --- Human interaction ---
