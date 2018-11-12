@@ -1,7 +1,7 @@
 # PS2ProgrammierPraktikum
 Loesung fuer das Programmierpraktikum 2018 der FH-Wedel (Fach: Programmstrukturen 2)
 
-## Aktueller Stand der Gui: ([Verlauf der Entwicklung](https://github.com/derMacon/PS2ProgrammierPraktikum/tree/master/otherDocs/GUIScreenshot))
+### Aktueller Stand der Gui: ([Verlauf der Entwicklung](https://github.com/derMacon/PS2ProgrammierPraktikum/tree/master/otherDocs/GUIScreenshot))
 
 ![alt text](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/GUIScreenshot/Intro121018.png)
 ![alt text](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/GUIScreenshot/Main141018.png)
