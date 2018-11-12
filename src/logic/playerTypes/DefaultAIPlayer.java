@@ -16,8 +16,7 @@ import java.util.List;
 import logic.token.SingleTile;
 
 /**
- * Default bot logic rules:
- * TODO fill in the bots logic rules
+ * Default bot logic rules: TODO fill in the bots logic rules
  */
 public class DefaultAIPlayer extends Player implements BotBehavior {
 
@@ -34,11 +33,11 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     }
 
     /**
-     * Approach:
-     * - Find domino with highest number of possible points
-     * - If multtiple dominos share the highest score the one with the most efficient domino will be selected
+     * Approach: - Find domino with highest number of possible points - If
+     * multtiple dominos share the highest score the one with the most efficient
+     * domino will be selected
      *
-     * @param bank    the bank that the player will select from
+     * @param bank the bank that the player will select from
      * @param ordBank ordinal value of the bank
      * @return the edited bank
      */
@@ -77,26 +76,41 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     }
 
     @Override
+    public Bank doInitialSelect(Bank currBank, int bankOrd) {
+        Bank output = selectFromBank(currBank, bankOrd);
+        Domino playerSelectedDomino = currBank.getPlayerSelectedDomino(this);
+        // update board -> has to be done to prevent the bot from laying the 
+        // second draft directly on the first domino 
+        this.board.lay(playerSelectedDomino);
+        // update districts
+//        this.districts = updatedDistricts(this.districts, playerSelectedDomino);
+        return output; 
+    }
+
+    @Override
     public void doStandardTurn(Bank currBank, Bank nextBank) {
         Bank out = selectFromBank(nextBank, Game.NEXT_BANK_IDX);
         Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
         this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getSelectedDominoIdx(this));
-//        System.out.println("Player " + this.idxInPlayerArray + " grid: " + this.board.toString());
-        for(District currDistrict : this.districts) {
-            for(SingleTile currTile : currDistrict.getSingleTiles()) {
-                System.out.println(this.idxInPlayerArray + "Districts: " + currTile.toString());
-            }
-        }
+
+        // TODO debug info, delete before final commit
+//        for (District currDistrict : this.districts) {
+//            for (SingleTile currTile : currDistrict.getSingleTiles()) {
+//                System.out.println(this.idxInPlayerArray + "Districts: " + currTile.toString());
+//            }
+//        }
         showOnBoard(playersSelectedDomino);
     }
 
     /**
      * Generates the max. points available on the board for a given domino.
-     * Iterates through board -> sets copyWithoutSelection on every pos -> gets the board points -> find max
+     * Iterates through board -> sets copyWithoutSelection on every pos -> gets
+     * the board points -> find max
      *
      * @param domino domino to check
-     * @return domino with a modified pos to match the most valuable spot on the board. If the
-     * domino does not fit anywhere the pos will be set to null and the points will be set to 0
+     * @return domino with a modified pos to match the most valuable spot on the
+     * board. If the domino does not fit anywhere the pos will be set to null
+     * and the points will be set to 0
      */
     private Choose genBestChoose(Domino domino, int bankSlotIndex) {
         Choose currChoose;
@@ -126,7 +140,6 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         return new Choose(domino.copy(), genDistrictPoints(updatedDeepCopy), bankSlotIndex);
     }
 
-
     @Override
     public Domino updateDominoPos(Domino domino) {
         // Pos and rot already determined when considering the option to choose
@@ -136,6 +149,5 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     private Domino trySpecificDomino(Domino domino) {
         return null;
     }
-
 
 }

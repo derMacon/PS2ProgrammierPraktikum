@@ -545,6 +545,7 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void mnTmSaveGame(ActionEvent event) throws MalformedURLException {
         try {
+            // TODO Filechoose implementieren
             this.game.safeGame(new URI("test"));
         } catch (URISyntaxException e) {
             e.printStackTrace();

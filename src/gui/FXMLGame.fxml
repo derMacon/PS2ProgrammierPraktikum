@@ -89,7 +89,7 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </GridPane.margin>
                             <top>
-                                <Label fx:id="lblPlayer3" textFill="WHITE" BorderPane.alignment="CENTER">
+                                <Label fx:id="lblPlayer3" text="Spieler 2:" textFill="WHITE" BorderPane.alignment="CENTER">
                                     <font>
                                         <Font name="Papyrus" size="17.0" />
                                     </font>
@@ -132,7 +132,7 @@
                                 <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                             </GridPane.margin>
                             <top>
-                                <Label fx:id="lblPlayer4" textFill="WHITE" BorderPane.alignment="CENTER">
+                                <Label fx:id="lblPlayer4" text="Spieler 3:" textFill="WHITE" BorderPane.alignment="CENTER">
                                     <font>
                                         <Font name="Papyrus" size="17.0" />
                                     </font>
@@ -175,7 +175,7 @@
                                 </GridPane>
                             </center>
                             <top>
-                                <Label fx:id="lblPlayer2" textFill="WHITE" BorderPane.alignment="CENTER">
+                                <Label fx:id="lblPlayer2" text="Spieler 2:" textFill="WHITE" BorderPane.alignment="CENTER">
                                     <font>
                                         <Font name="Papyrus" size="17.0" />
                                     </font>
@@ -196,7 +196,7 @@
                     <center>
                         <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                             <top>
-                                <Label fx:id="lblPlayer1" contentDisplay="CENTER" textFill="WHITE" BorderPane.alignment="TOP_CENTER">
+                                <Label fx:id="lblPlayer1" contentDisplay="CENTER" text="Spieler 1:" textFill="WHITE" BorderPane.alignment="TOP_CENTER">
                                     <font>
                                         <Font name="Papyrus" size="17.0" />
                                     </font>

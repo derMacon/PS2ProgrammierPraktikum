@@ -664,17 +664,13 @@ public class PlayerTest {
                 + "-- -- --\n");
         List<District> expectedDistricts = new LinkedList<>();
         List<District> actualDistricts = player.getDistricts();
-        expectedDistricts.add(new District(Arrays.asList(new SingleTile[] {P0}), 
-                Arrays.asList(new Pos[] {new Pos(0,0)})));
-        expectedDistricts.add(new District(Arrays.asList(new SingleTile[] {A0}), 
-                Arrays.asList(new Pos[] {new Pos(1,0)})));
-        assertEquals(expectedDistricts, actualDistricts);
 
         Tiles domTiles = Tiles.genTile(P1, H0);
         Domino domino = new Domino(domTiles, new Pos(0,1), Pos.DOWN_ROT); 
-        
-        expectedDistricts.add(new District(Arrays.asList(new SingleTile[] {P1}), 
-                Arrays.asList(new Pos[] {new Pos(0, 1)})));
+        expectedDistricts.add(new District(Arrays.asList(new SingleTile[] {A0}), 
+                Arrays.asList(new Pos[] {new Pos(1,0)})));
+        expectedDistricts.add(new District(Arrays.asList(new SingleTile[] {P0, P1}), 
+                Arrays.asList(new Pos[] {new Pos(0,0), new Pos(0, 1)})));
         expectedDistricts.add(new District(Arrays.asList(new SingleTile[] {H0}), 
                 Arrays.asList(new Pos[] {new Pos(0, 2)})));
         actualDistricts = player.updatedDistricts(actualDistricts, domino);

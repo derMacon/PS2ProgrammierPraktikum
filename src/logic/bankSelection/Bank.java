@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import logic.randomizer.PseudoRandAlwaysHighestVal;
 
 public class Bank {
 
@@ -43,7 +44,8 @@ public class Bank {
     public Bank(int playerCnt) {
         this.entries = new Entry[playerCnt];
         this.bankSize = playerCnt;
-        this.rand = new Random();
+//        this.rand = new Random();
+        this.rand = new PseudoRandAlwaysHighestVal();
     }
 
     /**

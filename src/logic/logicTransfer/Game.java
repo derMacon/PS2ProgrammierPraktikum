@@ -405,7 +405,9 @@ public class Game implements GUI2Game {
     private void botsDoInitialSelect() {
         for (int i = 1; i < this.players.length; i++) {
             // rest of the players HAVE to be bots
-            this.currentRoundBank = ((BotBehavior) this.players[i]).selectFromBank(this.currentRoundBank, CURRENT_BANK_IDX);
+//            this.currentRoundBank = ((BotBehavior) this.players[i]).selectFromBank(this.currentRoundBank, CURRENT_BANK_IDX);
+            this.currentRoundBank = ((BotBehavior) this.players[i]).doInitialSelect(currentRoundBank, CURRENT_BANK_IDX);
+            
             // TODO insert code -> show Who's Turn
         }
     }

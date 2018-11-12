@@ -18,3 +18,7 @@ Hilfmethode isOutOfBoundOrIsFilled.... notwendig um folgende Situation abzudecke
 Wenn ein Tile neben ein gefuelltes Feld gesetzt wird ist das Feld hinter dem gefuellten Feld irrelevant
 fuer die Typpruefung. Daher kann man nicht stumpf die Nachbarn der direkten Nachbarn pruefen. Siehe
 auskommentierte Zeilen in Methode isEfficient().
+
+- initialSelect in Player Klasse notwendig um zu gewaehrleisten, dass das zweite Selektieren der Bots funktioniert. Hierbei muss schliesslich beachtet werden welche Dominos auf dem Board liegen. 
+
+- Screenshot 3 Problem somit geklaert. 
