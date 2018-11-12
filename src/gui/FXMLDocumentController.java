@@ -334,6 +334,8 @@ public class FXMLDocumentController implements Initializable {
      * Array serving as blueprint for the playertypes in the game
      */
     private PlayerType[] chosenPlayerTypes;
+    @FXML
+    private GridPane grdPnPlayersAI;
 
 
 

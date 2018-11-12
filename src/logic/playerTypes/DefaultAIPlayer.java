@@ -13,6 +13,7 @@ import logic.token.Pos;
 
 import java.util.LinkedList;
 import java.util.List;
+import logic.token.SingleTile;
 
 /**
  * Default bot logic rules:
@@ -80,6 +81,12 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         Bank out = selectFromBank(nextBank, Game.NEXT_BANK_IDX);
         Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
         this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getSelectedDominoIdx(this));
+//        System.out.println("Player " + this.idxInPlayerArray + " grid: " + this.board.toString());
+        for(District currDistrict : this.districts) {
+            for(SingleTile currTile : currDistrict.getSingleTiles()) {
+                System.out.println(this.idxInPlayerArray + "Districts: " + currTile.toString());
+            }
+        }
         showOnBoard(playersSelectedDomino);
     }
 
