@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5326c4db-27d3-4a99-b149-4fba7b183704" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../actualProject/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Logic.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainWindowFXML.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainWindowFXMLController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/CityDominoSilasHoffmann.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/checkstyle-idea.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/checkstyleidea-libs/readme.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../manifest.mf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/.svn/all-wcprops" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/.svn/entries" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/.svn/text-base/build-impl.xml.netbeans-base" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/.svn/text-base/build-impl.xml.svn-base" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/.svn/text-base/genfiles.properties.svn-base" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/.svn/text-base/project.properties.svn-base" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/.svn/text-base/project.xml.svn-base" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/build-impl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/genfiles.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/private/.svn/all-wcprops" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/private/.svn/entries" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/private/.svn/text-base/private.properties.svn-base" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/private/private.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/private/private.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/project.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../nbproject/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/FXMLDocumentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/FXMLGame.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/FXMLIntro.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/FXMLIntroController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/FXMLResult.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/FXMLResultController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/GuiDoodle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/JavaFXGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Amusement_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Amusement_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Amusement_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Amusement_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/CityHall_Empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Home_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Home_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Home_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Home_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Industry_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Industry_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Industry_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Industry_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Office_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Office_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Office_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Office_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Park_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Park_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Park_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Park_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Shopping_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Shopping_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Shopping_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/img/Shopping_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/AOEmptyCellV1Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ArrowDownV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ArrowDownV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ArrowDownV3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ArrowLeftV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ArrowRightV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ArrowUpV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/BackgroundV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/BackgroundV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/BackgroundV3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/BackgroundV4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/BackgroundV5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/BackgroundV6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ChipPlayer1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ChipPlayer2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ChipPlayer3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ChipPlayer4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ChipV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/ChipV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/EmptyV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/EmptyV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/EmptyV3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/LargeBoxV1Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/LargeBoxV1AlphaRotated.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/LargeBoxV2Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/LargeBoxV3Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/LogoIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/LogoIconV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/RotationIconV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/SelectBoxV4Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/SelectBoxV7Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/SelectBoxV7AlphaRotated.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/SelectedBoxV4Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/SelectedBoxV5Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/SelectedBoxV6Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/SeperatorV1Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/SeperatorV2Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/SeperatorV2AlphaRotated.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/gui/textures/TrashIconV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/Doodle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/bankSelection/Bank.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/bankSelection/Choose.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/bankSelection/Entry.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/dataPreservation/Logger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/logicTransfer/Converter.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/logicTransfer/GUI2Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/logicTransfer/GUIConnector.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/logicTransfer/Game.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/playerState/Board.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/playerState/BotBehavior.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/playerState/District.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/playerState/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/playerState/Result.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/playerState/ResultRanking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/playerTypes/DefaultAIPlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/playerTypes/HumanPlayer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/playerTypes/PlayerType$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/playerTypes/PlayerType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/randomizer/PseudoRandAlwaysHighestVal.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/randomizer/PseudoRandZeroResidueClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/token/DistrictType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/token/Domino.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/token/Pos.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/token/PseudoRandom.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/token/SingleTile.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/production/CityDominoSilasHoffmann/logic/token/Tiles.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/PS2PPTestUebersicht.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/gui/ResultPopUpWindowGUITest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/bankSelection/BankTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/bankSelection/ChooseTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/bankSelection/EntryTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/logicTransfer/GameLoadingConstructorTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/logicTransfer/GameTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/playerState/BoardTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/playerState/DefaultAIPlayerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/playerState/DistrictTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/playerState/PlayerTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/playerState/ResultTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/randomizer/PseudoRandResidueClassTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/token/DominoTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/logic/token/TilesTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/other/FXMLTesterGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../out/test/CityDominoSilasHoffmann/other/FakeGUI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/FXMLDocumentController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/FXMLGame.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/FXMLIntro.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/FXMLIntroController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/FXMLResult.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/FXMLResultController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/GuiDoodle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/JavaFXGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Amusement_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Amusement_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Amusement_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Amusement_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/CityHall_Empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Empty.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Home_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Home_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Home_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Home_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Industry_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Industry_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Industry_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Industry_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Office_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Office_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Office_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Office_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Park_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Park_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Park_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Park_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Shopping_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Shopping_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Shopping_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/img/Shopping_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/AOEmptyCellV1Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ArrowDownV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ArrowDownV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ArrowDownV3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ArrowLeftV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ArrowRightV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ArrowUpV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/BackgroundV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/BackgroundV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/BackgroundV3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/BackgroundV4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/BackgroundV5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/BackgroundV6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ChipPlayer1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ChipPlayer2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ChipPlayer3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ChipPlayer4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ChipV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/ChipV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/EmptyV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/EmptyV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/EmptyV3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/LargeBoxV1Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/LargeBoxV1AlphaRotated.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/LargeBoxV2Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/LargeBoxV3Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/LogoIcon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/LogoIconV2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/RotationIconV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/SelectBoxV4Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/SelectBoxV7Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/SelectBoxV7AlphaRotated.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/SelectedBoxV4Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/SelectedBoxV5Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/SelectedBoxV6Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/SeperatorV1Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/SeperatorV2Alpha.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/SeperatorV2AlphaRotated.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/gui/textures/TrashIconV1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/Doodle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/bankSelection/Bank.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/bankSelection/Choose.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/bankSelection/Entry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/dataPreservation/Logger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/logicTransfer/Converter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/logicTransfer/GUI2Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/logicTransfer/GUIConnector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/logicTransfer/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/playerState/Board.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/playerState/BotBehavior.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/playerState/District.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/playerState/Player.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/playerState/Result.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/playerState/ResultRanking.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/playerTypes/DefaultAIPlayer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/playerTypes/HumanPlayer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/playerTypes/PlayerType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/randomizer/PseudoRandAlwaysHighestVal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/randomizer/PseudoRandZeroResidueClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/token/DistrictType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/token/Domino.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/token/Pos.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/token/PseudoRandom.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/token/SingleTile.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../src/logic/token/Tiles.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/PS2PPTestUebersicht.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/1.TODO.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/1..txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/Neues Textdokument.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankAfterFstTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankAfterPlayerReferenceNum.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankAfterSeperator.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankAfterSndTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankAfterThrdTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankBeforeFstTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankBeforeSndTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankBeforeThrdTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankBetweenBoardElems.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankInBankEnum.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankInBoardElemEmpty.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankInBoardElemEnum.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankInFstTagBeginning.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankInFstTagEnd.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/blankInFstTagMiddle.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/doublePlayerReference.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/lineBreakAfterThrdTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/lineBreakBeforeFstTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/lineBreakBeforeSndTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/lineBreakBeforeThrdTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/lineBreakInBoardDescr.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/noBankTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/noBoardTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/noStackTag.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/playerReferenceNumOutOfBound1.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/invalidFiles/playerReferenceNumOutOfBound2.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/fileTests/validFiles/exampleTestFromExcercise.txt.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/bankSelection/BankTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/bankSelection/ChooseTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/bankSelection/EntryTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/logicTransfer/GameLoadingConstructorTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/logicTransfer/GameTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/playerState/BoardTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/playerState/DefaultAIPlayerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/playerState/DistrictTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/playerState/PlayerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/playerState/ResultPopUpWindowGUITest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/playerState/ResultTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/randomizer/PseudoRandResidueClassTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/token/DominoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/logic/token/TilesTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/other/FXMLTesterGUI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../test/other/FakeGUI.java" beforeDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/out/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CheckStyle-IDEA-workspace">
+    <option name="configuration">
+      <map>
+        <entry key="last-active-plugin-version" value="5.23.0" />
+      </map>
+    </option>
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="1239880396">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="fxml" value="1" />
+          <entry key="java" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="4" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="fxml" value="1" />
+          <entry key="java" value="1066" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="1066" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/Main.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="234">
+                  <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/MainWindowFXML.fxml">
+              <provider editor-type-id="JavaFX-Scene-Builder" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="216">
+                  <caret line="26" selection-start-line="26" selection-end-line="26" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/MainWindowFXMLController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="450">
+                  <caret line="25" selection-start-line="25" selection-end-line="25" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/Logic.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="648">
+                  <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/MainWindowFXML.fxml" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/MainWindowFXMLController.java" />
+        <option value="$PROJECT_DIR$/src/Logic.java" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="305" />
+    <option name="y" value="-12" />
+    <option name="width" value="1278" />
+    <option name="height" value="982" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="FileIOTestProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FileIOTestProject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FileIOTestProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FileIOTestProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542147241076" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="FileIOTestProject" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5326c4db-27d3-4a99-b149-4fba7b183704" name="Default Changelist" comment="" />
+      <created>1542144956498</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1542144956498</updated>
+      <workItem from="1542144960564" duration="2282000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="2282000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="UI Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="CheckStyle" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3299532" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/MainWindowFXML.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/MainWindowFXMLController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="25" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="13" column="48" selection-start-line="13" selection-start-column="48" selection-end-line="13" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Logic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="648">
+          <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>FileIOTestProject</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
