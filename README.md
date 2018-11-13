@@ -47,7 +47,6 @@ Zu implementieren ist ein Dominospiel, bei dem vier Spieler jeweils ihre eigene 
 ### game - class
 - Farbliche Hervorhebung ueberdenken, vielleicht Schalter zwischen Schwarz/Weiss und Farbe
 - selectFromBank mit Rueckgabetyp Bank um klarzustellen, dass die Bank modifiziert wird. Dasselbe gilt fuer drawFromStack().
-
 - dispose fehlt
 - setupnextround mit Aktualisierung der punkte
 - boxclicked println muss weg
