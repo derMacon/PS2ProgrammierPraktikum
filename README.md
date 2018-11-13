@@ -7,11 +7,11 @@ Zu implementieren ist ein Dominospiel, bei dem vier Spieler jeweils ihre eigene 
 - Link zur Website: http://intern.fh-wedel.de/mitarbeiter/klk/programmierpraktikum-java/
 
 ### Aktueller Stand der Gui: 
-[Verlauf der Entwicklung](https://github.com/derMacon/PS2ProgrammierPraktikum/tree/master/otherDocs/GUIScreenshot)
 
 ![alt text](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/GUIScreenshot/Intro121018.png)
 ![alt text](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/GUIScreenshot/Main141018.png)
 
+[Verlauf der Entwicklung](https://github.com/derMacon/PS2ProgrammierPraktikum/tree/master/otherDocs/GUIScreenshot)
 
 ## Was noch fehlt: 
 
