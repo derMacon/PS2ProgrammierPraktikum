@@ -27,8 +27,13 @@ public class MainWindowFXMLController implements Initializable {
     }
 
     @FXML
-    void openFile(ActionEvent event) {
+    public void saveFileAs(ActionEvent event) {
+        logic.saveFileAs(txtFlMainWindow.getText());
+    }
 
+    @FXML
+    void openFile(ActionEvent event) {
+        this.txtFlMainWindow.setText(logic.openFile());
     }
 
 }

@@ -4,14 +4,12 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.util.Scanner;
-
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("MainWindowFXML.fxml"));
-        primaryStage.setTitle("Auswahl: Gegnertypen");
+        primaryStage.setTitle("Simple Editor");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }
