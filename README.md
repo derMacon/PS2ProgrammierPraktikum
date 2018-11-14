@@ -1,5 +1,5 @@
 # PS2ProgrammierPraktikum
-Loesung fuer das Programmierpraktikum 2018 der FH-Wedel (Fach: Programmstrukturen 2)
+**Loesung fuer das Programmierpraktikum 2018 der FH-Wedel (Fach: Programmstrukturen 2)**
 ### Aufgabenstellung:
 Zu implementieren ist ein Dominospiel, bei dem vier Spieler jeweils ihre eigene Stadt gestalten. Ziel des Spiels ist es, möglichst viele Stadtteile mit Prestige zu gestalten. ([komplette Aufgabenstellung](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/InfosProgrammierpraktikum/Aufgabenstellung_SS18_%20CityDomino.pdf))
 # Links
