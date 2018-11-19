@@ -19,12 +19,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import logic.dataPreservation.Loader;
 import logic.logicTransfer.GUI2Game;
 import logic.logicTransfer.Game;
 import logic.playerState.Board;
 import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URI;
@@ -236,7 +238,6 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private GridPane grdPnOverallBackgroundTexture;
 
-
     /**
      * Grid pnae setting up the texture for the label showing who's turn it is
      */
@@ -260,7 +261,6 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private GridPane grdPnLargeBoxOutlay;
-
 
     /**
      * Grid pane setting up the texture for the board from player1
@@ -319,6 +319,9 @@ public class FXMLDocumentController implements Initializable {
     private GridPane grdPnSeperator3Texture;
 
 
+    @FXML
+    private GridPane grdPnPlayersAI;
+
     // --- actual fields ---
     /**
      * Reference to the game that will be played
@@ -334,8 +337,11 @@ public class FXMLDocumentController implements Initializable {
      * Array serving as blueprint for the playertypes in the game
      */
     private PlayerType[] chosenPlayerTypes;
-    @FXML
-    private GridPane grdPnPlayersAI;
+    /**
+     * Loader used for the user interaction in terms of choosing a file
+     */
+    private Loader loader;
+
 
 
 
@@ -356,6 +362,7 @@ public class FXMLDocumentController implements Initializable {
                 addImageViewsToGrid(grdPnFutureselectiveGroup), addImageViewsToGrid(grdPnNextRoundSelection), 
                 new Label[] {this.lblPlayer1, this.lblPlayer2, this.lblPlayer3, this.lblPlayer4});
         this.game = new Game(gui, DEFAULT_PLAYER_COUNT);
+        this.loader = new Loader();
     }
 
     /**
@@ -554,11 +561,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void mnTmLoadGame(ActionEvent event) throws MalformedURLException {
-//        try {
-//            this.game = new Game(new FakeGUI(), new URI("test"));
-//        } catch (URISyntaxException e) {
-//            e.printStackTrace();
-//        }
+        this.game = new Game(this.gui, this.loader.openFile());
     }
 
     /**

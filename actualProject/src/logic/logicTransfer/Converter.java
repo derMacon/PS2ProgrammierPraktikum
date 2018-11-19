@@ -38,6 +38,10 @@ public class Converter {
     public static final String STACK_IDENTIFIER = "Beutel";
 
     /**
+     * String message for displaying an unsuccessful read from the given data
+     */
+    public static final String UNSUCCESSFUL_READ_MESSAGE = "Laden nicht erfolgreich";
+    /**
      * String message for displaying a successful read from the given data
      */
     public static final String SUCCESSFUL_READ_MESSAGE = "Laden erfolgreich";
@@ -75,9 +79,14 @@ public class Converter {
      * SUCCESSFUL_READ_MESSAGE if reading String was successful
      */
     public String readStr(GUIConnector gui, String input) {
-        String[][] descriptionBlocks = genDescriptiveField(input);
-        fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui);
-        return SUCCESSFUL_READ_MESSAGE;
+        // TODO Fehlerbehandlung erweitern
+        if(input == null || input.length() == 0) {
+            return UNSUCCESSFUL_READ_MESSAGE;
+        } else {
+            String[][] descriptionBlocks = genDescriptiveField(input);
+            fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui);
+            return SUCCESSFUL_READ_MESSAGE;
+        }
     }
 
     /**

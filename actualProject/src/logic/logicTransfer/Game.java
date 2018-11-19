@@ -1,6 +1,7 @@
 package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
+import logic.dataPreservation.Loader;
 import logic.dataPreservation.Logger;
 import logic.playerState.*;
 import logic.playerTypes.HumanPlayer;
@@ -8,6 +9,7 @@ import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 import logic.token.Domino;
 
+import java.io.File;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
@@ -118,6 +120,18 @@ public class Game implements GUI2Game {
         initTestingLoadingConstructor(gui, players, currPlayerIdx, currentRoundBank, nextRoundBank, stack, currDomino);
     }
 
+    // --- saving / loading game ---
+/*
+    /**
+     * Constructor used to laod game out of a file with a given path
+     *
+     * @param file file from which the game will be loaded
+    public Game(GUIConnector gui, File file) {
+        // TODO insert code - load String from text file and initialize new objects with their constructors with String
+        this(gui, Loader.loadFile(file));
+        // parameters
+    }
+
     /**
      * Constructor used for Loading
      *
@@ -128,20 +142,11 @@ public class Game implements GUI2Game {
         Converter gameContent = new Converter();
         // TODO use error message - error message used for treatment, maybe with a new Pop-Up Window or just in the log-File.
         String returnMessage = gameContent.readStr(gui, input);
-        initTestingLoadingConstructor(gui, gameContent.getPlayers(), HUMAN_PLAYER_IDX, gameContent.getCurrentBank(),
-                gameContent.getNextBank(), gameContent.getStack(), null);
-    }
-
-    // --- saving / loading game ---
-
-    /**
-     * Constructor used to laod game out of a file with a given path
-     *
-     * @param filePath path of the file from which the game will be loaded
-     */
-    public Game(GUIConnector gui, URI filePath) {
-        // TODO insert code - load String from text file and initialize new objects with their constructors with String
-        // parameters
+        System.out.println(returnMessage);
+        if(Converter.SUCCESSFUL_READ_MESSAGE == returnMessage) {
+            initTestingLoadingConstructor(gui, gameContent.getPlayers(), HUMAN_PLAYER_IDX, gameContent.getCurrentBank(),
+                    gameContent.getNextBank(), gameContent.getStack(), null);
+        }
     }
 
     /**
