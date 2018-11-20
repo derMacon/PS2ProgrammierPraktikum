@@ -97,7 +97,14 @@ public class Entry {
      */
     @Override
     public String toString() {
-        return this.selectedPlayer.getIdxInPlayerArray() + " " + this.domino.toString();
+        // TODO tertiary operator
+        String selectedPlayer;
+        if(null == this.selectedPlayer) {
+            selectedPlayer = "-";
+        } else {
+            selectedPlayer = String.valueOf(this.selectedPlayer.getIdxInPlayerArray());
+        }
+        return selectedPlayer + " " + this.domino.toString();
     }
 
     /**

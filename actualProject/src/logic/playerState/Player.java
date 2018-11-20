@@ -114,6 +114,10 @@ public abstract class Player implements Comparable {
         return sum;
     }
 
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
 
     public int genDistrictPoints(List<District> districts) {
         int sum = 0;

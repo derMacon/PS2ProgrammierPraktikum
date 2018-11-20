@@ -146,7 +146,21 @@ public class Game implements GUI2Game {
         if(Converter.SUCCESSFUL_READ_MESSAGE == returnMessage) {
             initTestingLoadingConstructor(gui, gameContent.getPlayers(), HUMAN_PLAYER_IDX, gameContent.getCurrentBank(),
                     gameContent.getNextBank(), gameContent.getStack(), null);
+
+
+
+            Board humanBoard = this.players[HUMAN_PLAYER_IDX].getBoard();
+            loadGuiAfterLoadingFile(genDefaultPlayerTypeArray(this.players.length), humanBoard.getSizeX(), humanBoard.getSizeY());
         }
+    }
+
+    private void loadGuiAfterLoadingFile(PlayerType[] playerTypes, int sizeX, int sizeY) {
+        // update boards
+        for (int i = 0; i < this.players.length; i++) {
+            this.gui.updatePlayer(this.players[i], i);
+        }
+        this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
+        this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
     }
 
     /**
@@ -241,6 +255,7 @@ public class Game implements GUI2Game {
         }
 
         // fill stack
+        // TODO Problem beim Laden, Stack wird einfach ueberschrieben
         this.stack = Domino.fill(this.stack);
 
         // fill current bank
@@ -548,6 +563,30 @@ public class Game implements GUI2Game {
         this.currDomino = currDomino;
         this.gui.deleteDomFromBank(CURRENT_BANK_IDX, this.currentRoundBank.getSelectedDominoIdx(this.players[HUMAN_PLAYER_IDX]));
         Logger.getInstance().printAndSafe(currDomino + " put to rotation box");
+    }
+
+
+    @Override
+    public String toString() {
+        StringBuilder strbOutput = new StringBuilder();
+        // all player boards to String
+        for(Player currPlayer : this.players) {
+            strbOutput.append("<" + Converter.BOARD_IDENTIFIER + ">\n");
+            strbOutput.append(currPlayer.getBoard().toString());
+        }
+        // all banks to String (current round Bank first)
+        strbOutput.append("<" + Converter.BANK_IDENTIFIER + ">\n");
+        strbOutput.append(this.currentRoundBank.toString() + "\n");
+        strbOutput.append(this.nextRoundBank.toString() + "\n");
+        // stack to String
+        strbOutput.append("<" + Converter.STACK_IDENTIFIER + ">\n");
+        for (int i = 0; i < this.stack.size(); i++) {
+            strbOutput.append(this.stack.get(i));
+            if(i <= this.stack.size() - 1) {
+                strbOutput.append(",");
+            }
+        }
+        return strbOutput.toString();
     }
 
 }

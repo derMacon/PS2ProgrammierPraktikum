@@ -30,7 +30,8 @@ public class Converter {
     /**
      * Identifier for both banks
      */
-    public static final String BANK_IDENTIFIER = "Bänke";
+    // TODO Problem mit dem ä beim Einlesen
+    public static final String BANK_IDENTIFIER = "Bänke"; //"B�nke";
 
     /**
      * Identifier for the stack
@@ -196,7 +197,7 @@ public class Converter {
                     this.stack = convertStrToStack(descriptionBlocks[i][DATA_IDX]);
                     break;
                 default:
-                    System.out.println("Not a valid identifier at idx " + i);
+                    System.out.println("Not a valid identifier at idx " + i + " -> " + descriptionBlocks[i][0] + descriptionBlocks[i][1]);
             }
         }
     }

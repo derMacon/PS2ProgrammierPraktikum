@@ -22,3 +22,6 @@ auskommentierte Zeilen in Methode isEfficient().
 - initialSelect in Player Klasse notwendig um zu gewaehrleisten, dass das zweite Selektieren der Bots funktioniert. Hierbei muss schliesslich beachtet werden welche Dominos auf dem Board liegen. 
 
 - Screenshot 3 Problem somit geklaert. 
+
+- Abwaegung Loader im Game einbezogen -
+- con: 

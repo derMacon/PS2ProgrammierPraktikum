@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 public class Logic {
 
+	/**
+	 * Default directory for the filechooser
+	 */
     private static String DEFAULT_DIRECTORY = "./dataOutput";
 
     /**

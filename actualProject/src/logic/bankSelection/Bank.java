@@ -313,8 +313,11 @@ public class Bank {
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder();
-        for(Entry currEntry : this.entries) {
-            output.append(currEntry.toString());
+        for (int i = 0; i < this.entries.length; i++) {
+            output.append(this.entries[i] == null ? "" : this.entries[i].toString());
+            if(i < this.entries.length - 1) {
+                output.append(",");
+            }
         }
         return output.toString();
     }

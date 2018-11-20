@@ -46,7 +46,7 @@ public class GameLoadingConstructorTest {
                         "-- -- -- -- --\n" +
                         "<Bänke>\n" +
                         "0 H1P0,2 P0O1,3 I1P0\n" +
-                        "- P0P0,- A0A0,1 H0A0,- P1H0" +
+                        "- P0P0,- A0A0,1 H0A0,- P1H0\n" +
                         "<Beutel>\n" +
                         "P0P0,P0P0,A1H0,I2P0";
 

@@ -340,7 +340,8 @@ public class FXMLDocumentController implements Initializable {
     /**
      * Loader used for the user interaction in terms of choosing a file
      */
-    private Loader loader;
+    // TODO delete before final commit -> Loader uses sinleton pattern
+//    private Loader loader;
 
 
 
@@ -362,7 +363,7 @@ public class FXMLDocumentController implements Initializable {
                 addImageViewsToGrid(grdPnFutureselectiveGroup), addImageViewsToGrid(grdPnNextRoundSelection), 
                 new Label[] {this.lblPlayer1, this.lblPlayer2, this.lblPlayer3, this.lblPlayer4});
         this.game = new Game(gui, DEFAULT_PLAYER_COUNT);
-        this.loader = new Loader();
+//        this.loader = new Loader();
     }
 
     /**
@@ -551,17 +552,18 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void mnTmSaveGame(ActionEvent event) throws MalformedURLException {
-        try {
-            // TODO Filechoose implementieren
-            this.game.safeGame(new URI("test"));
-        } catch (URISyntaxException e) {
-            e.printStackTrace();
-        }
+        Loader.getInstance().saveFileAs(this.game.toString());
+//        try {
+//            // TODO Filechoose implementieren
+//            this.game.safeGame(new URI("test"));
+//        } catch (URISyntaxException e) {
+//            e.printStackTrace();
+//        }
     }
 
     @FXML
     private void mnTmLoadGame(ActionEvent event) throws MalformedURLException {
-        this.game = new Game(this.gui, this.loader.openFile());
+        this.game = new Game(this.gui, Loader.getInstance().openFile());
     }
 
     /**

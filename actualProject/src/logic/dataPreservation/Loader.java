@@ -14,6 +14,13 @@ import java.util.Scanner;
  */
 public class Loader {
 
+
+    /**
+     * Single instance of the logger. Initialized with null, can be returned with the corresponding getter.
+     */
+    private static Loader singleInstance = null;
+
+
     /**
      * Default directory for the filechooser
      * //TODO must create directory if not existent
@@ -49,13 +56,23 @@ public class Loader {
     }
 
     /**
+     * Getter for the logger instance
+     */
+    public static Loader getInstance() {
+        if (null == singleInstance) {
+            singleInstance = new Loader();
+        }
+        return singleInstance;
+    }
+
+    /**
      * Opens an output stream, writes the text into the file and closes the stream afterwards
      * @param output file to which the data will be written
      * @param text data that will be written
      */
     private void actualSavingProcess(File output, String text) {
         try {
-            PrintWriter outputStream = new PrintWriter(file);
+            PrintWriter outputStream = new PrintWriter(output);
             outputStream.println(text);
             outputStream.close();
         } catch (FileNotFoundException e) {
@@ -104,7 +121,8 @@ public class Loader {
         Scanner in = null;
         StringBuilder sb = new StringBuilder();
         try {
-            in = new Scanner(new FileReader(this.file));
+//            in = new Scanner(new FileReader(this.file));
+            in = new Scanner(this.file, "UTF8");
             while(in.hasNextLine()) {
                 sb.append(in.nextLine() + "\n");
             }

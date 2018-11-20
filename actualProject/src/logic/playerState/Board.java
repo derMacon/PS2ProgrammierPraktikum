@@ -331,7 +331,7 @@ public class Board {
         for (int y = 0; y < this.sizeY; y++) {
             for (int x = 0; x < this.sizeX; x++) {
                 output.append(this.cells[x][y]);
-                if (x == this.sizeX - 1) {
+                if (x != this.sizeX - 1) {
                     output.append(" ");
                 }
             }
