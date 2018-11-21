@@ -112,16 +112,16 @@ public class Loader {
      *
      * @return String value saved in the selected file
      */
-    public String openFile() {
+    public String openFileChooser() {
         this.file = fChooser.showOpenDialog(stage);
+        return openGivenFile(this.file);
+    }
 
-        /*
-        TODO pick different scanner type
-         */
+    public String openGivenFile(File file) {
         Scanner in = null;
         StringBuilder sb = new StringBuilder();
         try {
-//            in = new Scanner(new FileReader(this.file));
+            // has to be UTF8 to read german "Umlaute"
             in = new Scanner(this.file, "UTF8");
             while(in.hasNextLine()) {
                 sb.append(in.nextLine() + "\n");

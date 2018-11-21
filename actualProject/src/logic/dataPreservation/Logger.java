@@ -5,8 +5,6 @@
  */
 package logic.dataPreservation;
 
-import logic.token.Domino;
-
 import java.io.File;
 
 /**
@@ -24,7 +22,7 @@ public class Logger {
     /**
      * Default file path for the file to which the data will be saved.
      */
-    private static final File DEFAULT_FILE_PATH = new File("xxx");
+    private static final File DEFAULT_FILE = new File("./dataOutput/logFile.txt");
 
     /**
      * Path to dir where log data should be stored
@@ -35,7 +33,7 @@ public class Logger {
      * Cosntructor only setting the playerCnt, taking a default path as the file path for the data
      */
     private Logger(){
-        this.dir = DEFAULT_FILE_PATH;
+        this.dir = DEFAULT_FILE;
     }
 
     /**
@@ -67,7 +65,7 @@ public class Logger {
     // Actual logger method, prints the given message and then saves it to a given File
     public void printAndSafe(String inputLog) {
         System.out.println(inputLog);
-//        appendFileWithNewMove(inputLog);
+        appendFileWithNewMove(inputLog);
     }
 
 
@@ -78,6 +76,7 @@ public class Logger {
 
     private void appendFileWithNewMove(String moveDescription) {
         // TODO insert code
+
     }
 
 }

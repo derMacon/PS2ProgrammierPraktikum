@@ -26,11 +26,8 @@ import logic.playerState.Board;
 import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -563,7 +560,7 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void mnTmLoadGame(ActionEvent event) throws MalformedURLException {
-        this.game = new Game(this.gui, Loader.getInstance().openFile());
+        this.game = new Game(this.gui, Loader.getInstance().openFileChooser());
     }
 
     /**

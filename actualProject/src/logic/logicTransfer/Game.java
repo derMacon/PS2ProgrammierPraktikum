@@ -581,6 +581,7 @@ public class Game implements GUI2Game {
         // stack to String
         strbOutput.append("<" + Converter.STACK_IDENTIFIER + ">\n");
         for (int i = 0; i < this.stack.size(); i++) {
+            System.out.println("int i : " + i);
             strbOutput.append(this.stack.get(i));
             if(i <= this.stack.size() - 1) {
                 strbOutput.append(",");
