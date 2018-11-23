@@ -55,6 +55,19 @@ public class Loader {
         stage = new Stage();
     }
 
+//    public static getTestingInstance() {
+//        if(null == this.singleInstance) {
+//            this.singleInstance =
+//        }
+//    }
+//
+//    /**
+//     * Testing Constructor, Junit does not make it possible to set stages during testing (normal constructor)
+//     */
+//    public Loader() {
+//
+//    }
+
     /**
      * Getter for the logger instance
      */
@@ -76,6 +89,7 @@ public class Loader {
             outputStream.println(text);
             outputStream.close();
         } catch (FileNotFoundException e) {
+            Logger.getInstance().printAndSafe("Could not save Image");
             e.printStackTrace();
         }
     }
@@ -85,6 +99,7 @@ public class Loader {
      * beforehand the method saveFileAs(...) will be called.
      * @param txtFldInput text that will be saved
      */
+    //TODO insert following method into xsml with scenebuilder
     public void saveFile(String txtFldInput) {
         if(null == this.file) {
             saveFileAs(txtFldInput);
@@ -98,7 +113,9 @@ public class Loader {
      * Opens a Filechooser and saves the given input to the desired location with a given name.
      * @param txtFldInput text that will be saved
      */
+    // TODO find out why never called when requested to write file
     public void saveFileAs(String txtFldInput) {
+        System.out.println("hello worldd");
         this.file = fChooser.showSaveDialog(stage);
         actualSavingProcess(this.file, txtFldInput);
     }
@@ -117,12 +134,12 @@ public class Loader {
         return openGivenFile(this.file);
     }
 
-    public String openGivenFile(File file) {
+    public static String openGivenFile(File file) {
         Scanner in = null;
         StringBuilder sb = new StringBuilder();
         try {
             // has to be UTF8 to read german "Umlaute"
-            in = new Scanner(this.file, "UTF8");
+            in = new Scanner(file, "UTF8");
             while(in.hasNextLine()) {
                 sb.append(in.nextLine() + "\n");
             }

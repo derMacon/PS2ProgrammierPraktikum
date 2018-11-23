@@ -268,8 +268,12 @@ public class Converter {
     private List<Domino> convertStrToStack(String input) {
         String[] dominosStr = input.split(",");
         List<Domino> output = new LinkedList<>();
-        for (String currDomStr : dominosStr) {
-            output.add(new Domino(Tiles.fromString(currDomStr)));
+//        for (String currDomStr : dominosStr) {
+//            output.add(new Domino(Tiles.fromString(currDomStr)));
+//        }
+        // Last element is \n so it doesn't have to be evaluated
+        for (int i = 0; i < dominosStr.length - 1; i++) {
+            output.add(new Domino(Tiles.fromString(dominosStr[i])));
         }
         return output;
     }
