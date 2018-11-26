@@ -91,7 +91,7 @@ public class Converter {
     }
 
     /**
-     * Getter for the players
+     * getter for the players
      *
      * @return the player array
      */
@@ -271,9 +271,11 @@ public class Converter {
 //        for (String currDomStr : dominosStr) {
 //            output.add(new Domino(Tiles.fromString(currDomStr)));
 //        }
-        // Last element is \n so it doesn't have to be evaluated
-        for (int i = 0; i < dominosStr.length - 1; i++) {
-            output.add(new Domino(Tiles.fromString(dominosStr[i])));
+        // Last elements \n doesn't have to to be evaluated
+        String temp;
+        for (int i = 0; i < dominosStr.length; i++) {
+            temp = dominosStr[i].substring(0, 4);
+            output.add(new Domino(Tiles.fromString(temp)));
         }
         return output;
     }
