@@ -25,7 +25,8 @@ public class GameConstructorFileIOTest {
     @Test
     public void testFileInputConstructor() {
         FakeGUI fakeGui = new FakeGUI();
-        String fileInput = Loader.openGivenFile(new File("test1.txt"));
+//        String fileInput = Loader.openGivenFile(new File("test1.txt"));
+        String fileInput = Loader.openGivenFile(new File("test2WithComment.txt"));
         Game game = new Game(fakeGui, fileInput);
 
         // Boards

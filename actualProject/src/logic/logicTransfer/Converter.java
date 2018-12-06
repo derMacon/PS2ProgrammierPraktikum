@@ -47,6 +47,9 @@ public class Converter {
      */
     public static final String SUCCESSFUL_READ_MESSAGE = "Laden erfolgreich";
 
+    public static final String TAG_OPENER = "<";
+    public static final String TAG_CLOSER = ">";
+
     // --- fields that will be filled by this class -> Will be transfered to the game via Getter
     /**
      * Players of the game
@@ -126,6 +129,26 @@ public class Converter {
         return stack;
     }
 
+    private String genTag(String input) {
+        if(null == input) {
+            return null;
+        }
+        String modifiedInput = input.replaceAll("\n", " ");
+        // Only boards with comment on who own it (regex: ".*" meaning take all
+        if(modifiedInput.matches(BOARD_IDENTIFIER + ".*" + TAG_CLOSER + ".*")) {
+            modifiedInput = BOARD_IDENTIFIER;
+        } else if(modifiedInput.matches(BANK_IDENTIFIER + TAG_CLOSER + ".*")) {
+            modifiedInput = BANK_IDENTIFIER;
+        } else if(modifiedInput.matches(STACK_IDENTIFIER + TAG_CLOSER + ".*")) {
+            modifiedInput = STACK_IDENTIFIER;
+        }
+        return modifiedInput;
+    }
+
+    private String genData(String input) {
+        return null == input ? null : input.replaceAll("["+BOARD_IDENTIFIER +"|" + BANK_IDENTIFIER +"|" +STACK_IDENTIFIER+"]" + ".*" + TAG_CLOSER + "\n", "");
+    }
+
     /**
      * Takes a given String and extracts the information about the game. The
      * data structure can be described as follows:
@@ -156,12 +179,14 @@ public class Converter {
         // Data seperated from Identifier
         String[][] output = new String[blocks.size()][2];
         for (int i = 0; i < blocks.size(); i++) {
-            output[i] = blocks.get(i).split(">\n");
-            System.out.println(i);
-            // if any args are empty
-            if (output[i].length < 2) {
-               output[i] = new String[] {output[i][0], ""};   
-            }
+            output[i][DESCRIPTION_IDX] = genTag(blocks.get(i));
+            output[i][DATA_IDX] = genData(blocks.get(i));
+//            output[i] = blocks.get(i).split(">\n");
+//            System.out.println(i);
+//            // if any args are empty
+//            if (output[i].length < 2) {
+//               output[i] = new String[] {output[i][0], ""};
+//            }
         }
         //<editor-fold defaultstate="collapsed" desc="Alternative">
 //        // First element of the list is useless
@@ -174,6 +199,36 @@ public class Converter {
         //</editor-fold>
         return output;
     }
+
+//    public String[][] genDescriptiveField(String input) {
+//        List<String> blocks = new LinkedList<>();
+//        // overall sections (board/banks/stack) are seperated
+//        for (String currBlock : input.split("<")) {
+//            blocks.add(currBlock);
+//        }
+//        blocks.remove(""); // First element may be empty because of split()
+//
+//        // Data seperated from Identifier
+//        String[][] output = new String[blocks.size()][2];
+//        for (int i = 0; i < blocks.size(); i++) {
+//            output[i] = blocks.get(i).split(">\n");
+//            System.out.println(i);
+//            // if any args are empty
+//            if (output[i].length < 2) {
+//                output[i] = new String[] {output[i][0], ""};
+//            }
+//        }
+//        //<editor-fold defaultstate="collapsed" desc="Alternative">
+////        // First element of the list is useless
+////        int usefullElemCnt = blocks.get(0).equals("") ? blocks.size() - 1 : blocks.size();
+////        // overall sections modified: title in first field, data in second
+////        String[][] output = new String[usefullElemCnt][2];
+////        for (int i = 0; i < usefullElemCnt; i++) {
+////            output[i] = (blocks.get(i + 1).split(">\n"));
+////        }
+//        //</editor-fold>
+//        return output;
+//    }
 
     /**
      * Generates the data for the fields. Iterates through the given description
@@ -234,6 +289,7 @@ public class Converter {
      */
     private Player convertStrToPlayer(String input, PlayerType type, int idxPlayerArray, GUIConnector gui) {
         // TODO update possible dominos list
+        System.out.println(input);
         return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(type, new Board(input), idxPlayerArray, gui);
     }
 
