@@ -174,7 +174,7 @@ public class Converter {
         for (String currBlock : input.split("<")) {
             blocks.add(currBlock);
         }
-        blocks.remove(""); // First element may be empty because of split()
+        blocks.remove(0); // First element may be empty because of split()
 
         // Data seperated from Identifier
         String[][] output = new String[blocks.size()][2];
@@ -238,6 +238,8 @@ public class Converter {
      * @param gui
      */
     public void fillFieldsWithDescriptiveBlocks(String[][] descriptionBlocks, GUIConnector gui) {
+        // TODO delete before final commit
+        int debugStop = 0;
         for (int i = 0; i < descriptionBlocks.length; i++) {
             switch (descriptionBlocks[i][DESCRIPTION_IDX]) {
                 case BOARD_IDENTIFIER:
@@ -322,16 +324,16 @@ public class Converter {
      * @return a fully instanciated stack
      */
     private List<Domino> convertStrToStack(String input) {
-        String[] dominosStr = input.split(",");
+        // Stay maybe empty -> must be checked
         List<Domino> output = new LinkedList<>();
-//        for (String currDomStr : dominosStr) {
-//            output.add(new Domino(Tiles.fromString(currDomStr)));
-//        }
-        // Last elements \n doesn't have to to be evaluated
-        String temp;
-        for (int i = 0; i < dominosStr.length; i++) {
-            temp = dominosStr[i].substring(0, 4);
-            output.add(new Domino(Tiles.fromString(temp)));
+        if(0 < input.length()) {
+            String[] dominosStr = input.split(",");
+            // Last elements \n doesn't have to to be evaluated
+            String temp;
+            for (int i = 0; i < dominosStr.length; i++) {
+                temp = dominosStr[i].substring(0, 4);
+                output.add(new Domino(Tiles.fromString(temp)));
+            }
         }
         return output;
     }
