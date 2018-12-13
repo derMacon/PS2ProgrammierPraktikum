@@ -1,5 +1,6 @@
 package logic.bankSelection;
 
+import logic.playerState.Board;
 import logic.token.Domino;
 import logic.playerState.Player;
 
@@ -360,6 +361,25 @@ public class Bank {
             i++;
         }
         return output;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final Bank other = (Bank)obj;
+        boolean isEqual = null != this.entries && null != other.entries;
+        int i = 0;
+        while (isEqual && i < this.entries.length) {
+            isEqual = null != this.entries[i] && null != other.entries[i]
+                    && this.entries[i].equals(other.entries[i]);
+            i++;
+        }
+        return isEqual;
     }
 
 }

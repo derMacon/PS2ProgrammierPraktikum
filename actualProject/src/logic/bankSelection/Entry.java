@@ -126,4 +126,20 @@ public class Entry {
         return new Entry(this.domino.copy(), this.selectedPlayer);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final Entry other = (Entry)obj;
+        boolean debugDom = this.domino.getTile() == other.domino.getTile();
+        boolean debugPl = this.selectedPlayer.getIdxInPlayerArray() == other.selectedPlayer.getIdxInPlayerArray();
+        return this.selectedPlayer.getIdxInPlayerArray() == other.selectedPlayer.getIdxInPlayerArray()
+                && this.domino.getTile() == other.domino.getTile();
+//                && this.domino.equals(other.domino);
+    }
+
 }
