@@ -1,3 +1,0 @@
-- Nachschauen ob Board, Bank und Stapel ueberhaupt gegeben sein muessen. 
-- Invalide Playerrefernzen pruefen (z.B. out of bound, negative, etc.)
-- Gedoppelte Referenzen ueberpruefen (verschiedene Baenke)

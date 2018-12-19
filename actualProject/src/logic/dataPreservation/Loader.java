@@ -2,6 +2,7 @@ package logic.dataPreservation;
 
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import logic.logicTransfer.Game;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -83,15 +84,19 @@ public class Loader {
      * @param output file to which the data will be written
      * @param text data that will be written
      */
-    private void actualSavingProcess(File output, String text) {
+    private static void actualSavingProcess(File output, String text) {
         try {
             PrintWriter outputStream = new PrintWriter(output);
-            outputStream.println(text);
+            outputStream.print(text);
             outputStream.close();
         } catch (FileNotFoundException e) {
             Logger.getInstance().printAndSafe("Could not save Image");
             e.printStackTrace();
         }
+    }
+
+    public static void saveWithoutGUI(String filename, Game game) {
+        actualSavingProcess(new File(filename), game.toString());
     }
 
     /**
@@ -120,6 +125,8 @@ public class Loader {
         actualSavingProcess(this.file, txtFldInput);
     }
 
+
+
     /**
      * Method to convert a file to a String
      * Opens a filechooser and the user can then select the file he want to load. Besides
@@ -132,6 +139,10 @@ public class Loader {
     public String openFileChooser() {
         this.file = fChooser.showOpenDialog(stage);
         return openGivenFile(this.file);
+    }
+
+    public static String openGivenFile(String filePath) {
+        return openGivenFile(new File(filePath));
     }
 
     public static String openGivenFile(File file) {

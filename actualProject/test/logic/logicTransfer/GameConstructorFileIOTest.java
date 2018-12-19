@@ -33,29 +33,29 @@ public class GameConstructorFileIOTest {
 
         // Boards
         Board expBoard1 = new Board(
-                "EC EC EC EC EC\n" +
-                "EC EC EC EC EC\n" +
-                "EC EC CC P0 S2\n" +
-                "EC EC I2 P0 EC\n" +
-                "EC EC EC EC EC\n");
+                "-- -- -- -- --\n" +
+                "-- -- -- -- --\n" +
+                "-- -- CC P0 S2\n" +
+                "-- -- I2 P0 --\n" +
+                "-- -- -- -- --\n");
         Board expBoard2 = new Board(
-            "EC EC P0 EC EC\n" +
-                    "EC EC I3 EC EC\n" +
-                    "A0 S1 CC EC EC\n" +
-                    "EC EC EC EC EC\n" +
-                    "EC EC EC EC EC\n");
+            "-- -- P0 -- --\n" +
+                    "-- -- I3 -- --\n" +
+                    "A0 S1 CC -- --\n" +
+                    "-- -- -- -- --\n" +
+                    "-- -- -- -- --\n");
         Board expBoard3 = new Board(
-                "EC EC O0 EC EC\n" +
-                "EC EC I2 EC EC\n" +
-                "A0 S2 CC EC EC\n" +
-                "EC EC EC EC EC\n" +
-                "EC EC EC EC EC\n");
+                "-- -- O0 -- --\n" +
+                "-- -- I2 -- --\n" +
+                "A0 S2 CC -- --\n" +
+                "-- -- -- -- --\n" +
+                "-- -- -- -- --\n");
         Board expBoard4 = new Board(
-                "P0 O1 O0 EC EC\n" +
-                "EC EC I2 EC EC\n" +
-                "EC EC CC EC EC\n" +
-                "EC EC EC EC EC\n" +
-                "EC EC EC EC EC\n");
+                "P0 O1 O0 -- --\n" +
+                "-- -- I2 -- --\n" +
+                "-- -- CC -- --\n" +
+                "-- -- -- -- --\n" +
+                "-- -- -- -- --\n");
         assertEquals(expBoard1, game.getPlayers()[0].getBoard());
         assertEquals(expBoard2, game.getPlayers()[1].getBoard());
         assertEquals(expBoard3, game.getPlayers()[2].getBoard());
@@ -96,29 +96,29 @@ public class GameConstructorFileIOTest {
 
         // Boards
         Board expBoard1 = new Board(
-                "EC EC EC EC EC\n" +
-                "EC EC EC EC EC\n" +
-                "EC EC CC P0 S2\n" +
-                "EC EC I2 P0 EC\n" +
-                "EC EC EC EC EC\n");
+                "-- -- -- -- --\n" +
+                "-- -- -- -- --\n" +
+                "-- -- CC P0 S2\n" +
+                "-- -- I2 P0 --\n" +
+                "-- -- -- -- --\n");
         Board expBoard2 = new Board(
-            "EC EC P0 EC EC\n" +
-                    "EC EC I3 EC EC\n" +
-                    "A0 S1 CC EC EC\n" +
-                    "EC EC EC EC EC\n" +
-                    "EC EC EC EC EC\n");
+            "-- -- P0 -- --\n" +
+                    "-- -- I3 -- --\n" +
+                    "A0 S1 CC -- --\n" +
+                    "-- -- -- -- --\n" +
+                    "-- -- -- -- --\n");
         Board expBoard3 = new Board(
-                "EC EC O0 EC EC\n" +
-                "EC EC I2 EC EC\n" +
-                "A0 S2 CC EC EC\n" +
-                "EC EC EC EC EC\n" +
-                "EC EC EC EC EC\n");
+                "-- -- O0 -- --\n" +
+                "-- -- I2 -- --\n" +
+                "A0 S2 CC -- --\n" +
+                "-- -- -- -- --\n" +
+                "-- -- -- -- --\n");
         Board expBoard4 = new Board(
-                "P0 O1 O0 EC EC\n" +
-                "EC EC I2 EC EC\n" +
-                "EC EC CC EC EC\n" +
-                "EC EC EC EC EC\n" +
-                "EC EC EC EC EC\n");
+                "P0 O1 O0 -- --\n" +
+                "-- -- I2 -- --\n" +
+                "-- -- CC -- --\n" +
+                "-- -- -- -- --\n" +
+                "-- -- -- -- --\n");
         assertEquals(expBoard1, game.getPlayers()[0].getBoard());
         assertEquals(expBoard2, game.getPlayers()[1].getBoard());
         assertEquals(expBoard3, game.getPlayers()[2].getBoard());

@@ -571,7 +571,7 @@ public class Game implements GUI2Game {
         StringBuilder strbOutput = new StringBuilder();
         // all player boards to String
         for(Player currPlayer : this.players) {
-            strbOutput.append("<" + Converter.BOARD_IDENTIFIER + ">\n");
+            strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " " + (currPlayer.getIdxInPlayerArray() + 1) + ">\n");
             strbOutput.append(currPlayer.getBoard().toString());
         }
         // all banks to String (current round Bank first)
@@ -590,4 +590,25 @@ public class Game implements GUI2Game {
         return strbOutput.toString();
     }
 
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final Game other = (Game)obj;
+        boolean hasEqualPlayers;
+        int i = 0;
+        do {
+            hasEqualPlayers = this.players[i].equals(other.players[i]);
+        } while(hasEqualPlayers && i < this.players.length);
+
+        return hasEqualPlayers && this.currentRoundBank.equals(other.currentRoundBank)
+                && this.nextRoundBank.equals(other.nextRoundBank)
+                && this.stack.equals(other.stack);
+    }
 }
