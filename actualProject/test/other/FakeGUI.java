@@ -66,7 +66,6 @@ public class FakeGUI implements GUIConnector {
 
     @Override
     public void showWhosTurn(int ordPlayer) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override

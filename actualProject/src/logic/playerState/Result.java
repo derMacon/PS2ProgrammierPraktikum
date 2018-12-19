@@ -112,4 +112,24 @@ public class Result {
         return output.toString();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final Result other = (Result)obj;
+        // TODO Use iterator
+        int i = 0;
+        int thisSize = this.ranking.size();
+        boolean equals = thisSize == other.ranking.size();
+        while(equals && i < thisSize) {
+            equals = this.ranking.get(i).equals(other.ranking.get(i));
+            i++;
+        }
+        return equals;
+    }
+
 }

@@ -330,7 +330,11 @@ public class Board {
         StringBuilder output = new StringBuilder();
         for (int y = 0; y < this.sizeY; y++) {
             for (int x = 0; x < this.sizeX; x++) {
-                output.append(this.cells[x][y]);
+                if(this.cells[x][y] == SingleTile.EC) {
+                    output.append("--");
+                } else {
+                    output.append(this.cells[x][y]);
+                }
                 if (x != this.sizeX - 1) {
                     output.append(" ");
                 }

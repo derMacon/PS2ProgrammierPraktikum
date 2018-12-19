@@ -495,6 +495,7 @@ public class Game implements GUI2Game {
      */
     // TODO make private
     public void endRound() {
+        System.out.println("end round");
 //        Result res = new Result(this.players);
 //        Logger.getInstance().printAndSafe(res.toString());
         
