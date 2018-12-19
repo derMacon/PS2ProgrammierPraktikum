@@ -6,13 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="a35e8ce1-009a-4daf-9449-6b01f63d4d17" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/playerState/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/playerState/Board.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/playerState/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/playerState/Result.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/other/FakeGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/other/FakeGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test2WithComment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test3NoStack.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Board.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Result.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/CityDominoSilasHoffmann/other/FakeGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CityDominoSilasHoffmann/other/FakeGUI.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -152,7 +149,7 @@
     <session id="-2008921624">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="19" />
+          <entry key="project.closed" value="20" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="2" />
@@ -193,14 +190,14 @@
         <counts>
           <entry key="class" value="8" />
           <entry key="java" value="10241" />
-          <entry key="txt" value="156" />
+          <entry key="txt" value="187" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="8" />
           <entry key="JAVA" value="10241" />
-          <entry key="PLAIN_TEXT" value="156" />
+          <entry key="PLAIN_TEXT" value="187" />
         </counts>
       </usages-collector>
     </session>
@@ -1011,7 +1008,7 @@
     <property name="SearchEverywhereHistoryKey" value="equals&#9;PSI&#9;JAVA://logic.bankSelection.Choose#equals&#10;AiP&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerTypes/DefaultAIPlayer.java&#10;platest&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/test/logic/playerState/DefaultAIPlayerTest.java&#10;board&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerState/Board.java&#10;neigh&#9;PSI&#9;JAVA://logic.playerState.Board#checkIfNeighborsAreValid" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545227934151" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545228016326" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -1185,7 +1182,7 @@
       <workItem from="1545134410597" duration="2447000" />
       <workItem from="1545198110583" duration="3126000" />
       <workItem from="1545201903758" duration="4113000" />
-      <workItem from="1545222396716" duration="1914000" />
+      <workItem from="1545222396716" duration="2015000" />
     </task>
     <task id="LOCAL-00001" summary="Einlesen getestet, Test ohne Kommentar schlaegt noch fehl.">
       <created>1544712454222</created>
@@ -1208,7 +1205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1545211746004</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Fileausgabe funktioniert :)">
+      <created>1545228011362</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1545228011362</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1244,7 +1248,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151761000" />
+    <option name="totallyTimeSpent" value="151862000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -1257,7 +1261,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.32467532" visible="true" weight="0.19798657" />
       <window_info id="Structure" order="1" sideWeight="0.6753247" side_tool="true" weight="0.2181208" />
@@ -1268,8 +1271,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4986577" weight="0.28794327" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.44026846" visible="true" weight="0.28368795" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.55973154" side_tool="true" visible="true" weight="0.28368795" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.40536913" weight="0.28368795" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.5946309" side_tool="true" weight="0.28368795" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32907802" />
@@ -1338,7 +1341,8 @@
     <MESSAGE value="Einlesen getestet, Test ohne Kommentar schlaegt noch fehl." />
     <MESSAGE value="Einlesen jetzt auch mit Kommentaren." />
     <MESSAGE value="TestToolkit erstmals funktionsfaehig." />
-    <option name="LAST_COMMIT_MESSAGE" value="TestToolkit erstmals funktionsfaehig." />
+    <MESSAGE value="Fileausgabe funktioniert :)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fileausgabe funktioniert :)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
