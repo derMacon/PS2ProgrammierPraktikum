@@ -92,7 +92,6 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         Bank out = selectFromBank(nextBank, Game.NEXT_BANK_IDX);
         Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
         this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getSelectedDominoIdx(this));
-
         // TODO debug info, delete before final commit
 //        for (District currDistrict : this.districts) {
 //            for (SingleTile currTile : currDistrict.getSingleTiles()) {

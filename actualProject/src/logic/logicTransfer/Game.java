@@ -441,6 +441,8 @@ public class Game implements GUI2Game {
         // bots do turns until round is over
         if(this.nextRoundBank.isEmpty()) {
             this.currPlayerIdx = botsDoLastTurn(this.currPlayerIdx+1);
+            this.currentRoundBank = new Bank(4);
+            this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
             endRound();
         } else {
             this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
@@ -525,7 +527,7 @@ public class Game implements GUI2Game {
             return botsDoLastTurn(bankIdx);
         }
         // end is not reached yet
-        if(this.currentRoundBank.getSelectedPlayer(bankIdx).getIdxInPlayerArray() == HUMAN_PLAYER_IDX) {
+        if(bankIdx < 4 && this.currentRoundBank.getSelectedPlayer(bankIdx).getIdxInPlayerArray() == HUMAN_PLAYER_IDX) {
             // selected player on bankIdx is the human player
             this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
             setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[HUMAN_PLAYER_IDX]));

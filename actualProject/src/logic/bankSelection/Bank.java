@@ -211,6 +211,14 @@ public class Bank {
         this.entries[entryIdx] = null;
     }
 
+    public void deleteEntry(Player player) {
+        for (int i = 0; i < bankSize; i++) {
+            if(this.entries[i].getSelectedPlayer() == player) {
+                this.entries[i] = null;
+            }
+        }
+    }
+
 
     /**
      * Selects a entry at a given bank index
@@ -347,6 +355,8 @@ public class Bank {
         }
         return new Bank(copyEntries, this.rand);
     }
+
+
 
     /**
      * Getter for the domino with the lowest value
