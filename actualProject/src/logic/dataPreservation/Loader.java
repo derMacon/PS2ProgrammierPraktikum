@@ -26,7 +26,7 @@ public class Loader {
      * Default directory for the filechooser
      * //TODO must create directory if not existent
      */
-    private static String DEFAULT_DIRECTORY = "./dataOutput";
+    private static String DEFAULT_DIRECTORY = "./test/fileTests/expected_results";
 
     /**
      * File to save to or read from

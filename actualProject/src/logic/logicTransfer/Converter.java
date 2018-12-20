@@ -57,6 +57,11 @@ public class Converter {
     private List<Player> players = new LinkedList<>();
 
     /**
+     * The current player position on the current round bank (slot idx)
+     */
+    private int currBankPos;
+
+    /**
      * The current round's bank
      */
     private Bank currentBank;
@@ -100,6 +105,14 @@ public class Converter {
      */
     public Player[] getPlayers() {
         return players.toArray(new Player[0]);
+    }
+
+    /**
+     * Getter for the current bank position (currPlayerIdx)
+     * @return
+     */
+    public int getCurrBankPos() {
+        return currBankPos;
     }
 
     /**
@@ -249,6 +262,8 @@ public class Converter {
                     Bank[] banks = convertStrToBanks(descriptionBlocks[i][DATA_IDX]);
                     this.currentBank = banks[Game.CURRENT_BANK_IDX];
                     this.nextBank = banks[Game.NEXT_BANK_IDX];
+                    // TODO Konstante verwenden (4 ist eine magic number)
+                    this.currBankPos = 4 - descriptionBlocks[Game.CURRENT_BANK_IDX].length;
                     break;
                 case STACK_IDENTIFIER:
                     this.stack = convertStrToStack(descriptionBlocks[i][DATA_IDX]);

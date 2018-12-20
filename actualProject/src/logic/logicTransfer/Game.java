@@ -81,6 +81,7 @@ public class Game implements GUI2Game {
 
     /**
      * Logger for this game
+     * // TODO delete - not necessary due to singleton pattern
      */
     private Logger logger;
 
@@ -144,7 +145,7 @@ public class Game implements GUI2Game {
         String returnMessage = gameContent.readStr(gui, input);
         System.out.println(returnMessage);
         if(Converter.SUCCESSFUL_READ_MESSAGE == returnMessage) {
-            initTestingLoadingConstructor(gui, gameContent.getPlayers(), HUMAN_PLAYER_IDX, gameContent.getCurrentBank(),
+            initTestingLoadingConstructor(gui, gameContent.getPlayers(), gameContent.getCurrBankPos(), gameContent.getCurrentBank(),
                     gameContent.getNextBank(), gameContent.getStack(), null);
 
 

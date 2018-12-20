@@ -104,8 +104,8 @@ public class Bank {
     }
 
     /**
+     * // TODO Javadoc ueberarbeiten
      * Returns the index of a given domino reference in this bank
-     * @param domino domino reference to check the bank for
      * @return the index of a given domino reference in this bank, -1 (const: INVALID_OUTPUT) if not found.
      */
 //    public int getDominoIdx(Domino domino) {
@@ -126,7 +126,7 @@ public class Bank {
         // TODO write tests
         int i = 0;
         do {
-            if(this.entries[i].getSelectedPlayer() == player) { // actually checking for reference
+            if(null != this.entries[i] && this.entries[i].getSelectedPlayer() == player) { // actually checking for reference
                 return i;
             }
             i++;
