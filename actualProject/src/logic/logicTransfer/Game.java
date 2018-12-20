@@ -439,7 +439,12 @@ public class Game implements GUI2Game {
     private void setupCurrDomAndBotsDoTurn() {
         setToChooseBox(null);
         // bots do turns until round is over
-        this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
+        if(this.nextRoundBank.isEmpty()) {
+            this.currPlayerIdx = botsDoLastTurn(this.currPlayerIdx+1);
+            endRound();
+        } else {
+            this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
+        }
     }
 
     /**
@@ -472,12 +477,61 @@ public class Game implements GUI2Game {
     private void setupNextRound() {
         this.currPlayerIdx = 0;
         System.out.println("Test output: " + this.stack.size() + " cards in stack");
-        if(this.stack.isEmpty()) {
-            endRound();
-        } else {
-            copyAndRemoveNextRoundBankToCurrentBank();
+//        if(this.stack.isEmpty()) {
+//            if(this.nextRoundBank.isEmpty() && this.currentRoundBank.isEmpty()) {
+//                endRound();
+//            } else {
+//                copyAndRemoveNextRoundBankToCurrentBank();
+//                // TODO delete nextBank - preferably in method
+//                this.nextRoundBank = new Bank(this.players.length);
+//                this.gui.setToBank(NEXT_BANK_IDX, nextRoundBank);
+//                // TODO vielleicht botsdolas... mit Player als Rueckgabewert?
+//                this.currPlayerIdx = botsDoLastTurn(this.currPlayerIdx);
+//                System.out.println("debug setup next round" + this.currentRoundBank.getPlayerSelectedDomino(this.players[currPlayerIdx]));
+//                setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[currPlayerIdx]));
+//            }
+//        } else {
+        copyAndRemoveNextRoundBankToCurrentBank();
+        if(!this.stack.isEmpty()) {
             randomlyDrawNewDominosForNextRound();
+        } else {
+            this.nextRoundBank = new Bank(this.players.length);
+            this.gui.setToBank(NEXT_BANK_IDX, nextRoundBank);
+            setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[currPlayerIdx]));
         }
+
+    }
+
+//    private void setupNextRound() {
+//        this.currPlayerIdx = 0;
+//        System.out.println("Test output: " + this.stack.size() + " cards in stack");
+//        if(this.stack.isEmpty()) {
+//            copyAndRemoveNextRoundBankToCurrentBank();
+//            // TODO delete currBank - preferably in method
+//            endRound();
+//        } else {
+//            copyAndRemoveNextRoundBankToCurrentBank();
+//            randomlyDrawNewDominosForNextRound();
+//        }
+//    }
+
+    private int botsDoLastTurn(int bankIdx) {
+        Player currPlayerInstance = this.currentRoundBank.getSelectedPlayer(bankIdx);
+        // Bots iterate until human player has to do his turn or the end of the bank is reached
+        if (currPlayerInstance instanceof BotBehavior && HUMAN_PLAYER_IDX != bankIdx && isValidPlayerIdx(bankIdx)) {
+            this.gui.showWhosTurn(currPlayerInstance.getIdxInPlayerArray());
+            ((BotBehavior) currPlayerInstance).doStandardTurn(this.currentRoundBank, this.nextRoundBank);
+            bankIdx++;
+            return botsDoLastTurn(bankIdx);
+        }
+        // end is not reached yet
+        if(this.currentRoundBank.getSelectedPlayer(bankIdx).getIdxInPlayerArray() == HUMAN_PLAYER_IDX) {
+            // selected player on bankIdx is the human player
+            this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
+            setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[HUMAN_PLAYER_IDX]));
+        }
+        this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
+        return bankIdx;
     }
 
     private void copyAndRemoveNextRoundBankToCurrentBank() {

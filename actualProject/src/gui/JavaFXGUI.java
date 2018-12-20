@@ -104,17 +104,23 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void setToBank(int ordBank, Bank bank) {
-        Domino[] dominos = bank.getAllDominos();
-        Player currPlayer;
-        for (int i = 0; i < dominos.length; i++) {
-            setToBank(ordBank, i, dominos[i]);
-            currPlayer = bank.getSelectedPlayer(i);
-            if (null != currPlayer) {
-                selectDomino(ordBank, i, currPlayer.getIdxInPlayerArray());
-            } else {
-                selectDomino(ordBank, i, NOT_SELECTED);
+        if(bank.isEmpty()) {
+            // delete everything
+            for (int i = 0; i < bank.getBankSize(); i++) {
+                deleteDomFromBank(ordBank, i);
             }
         }
+            Domino[] dominos = bank.getAllDominos();
+            Player currPlayer;
+            for (int i = 0; i < dominos.length; i++) {
+                setToBank(ordBank, i, dominos[i]);
+                currPlayer = bank.getSelectedPlayer(i);
+                if (null != currPlayer) {
+                    selectDomino(ordBank, i, currPlayer.getIdxInPlayerArray());
+                } else {
+                    selectDomino(ordBank, i, NOT_SELECTED);
+                }
+            }
     }
 
 

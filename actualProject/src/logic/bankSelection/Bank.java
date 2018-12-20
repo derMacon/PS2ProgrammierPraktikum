@@ -12,6 +12,7 @@ import logic.randomizer.PseudoRandAlwaysHighestVal;
 
 public class Bank {
 
+
     /**
      * Seperator constant that's used to read from a file and write into it
      */
