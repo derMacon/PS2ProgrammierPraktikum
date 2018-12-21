@@ -1,5 +1,7 @@
 package logic.playerState;
 
+import javafx.scene.control.TreeItem;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -56,6 +58,15 @@ public class ResultRanking {
 
     public boolean rankInitializedButNoPlayerAddedYet() {
         return null == this.rankedPlayers || this.rankedPlayers.isEmpty();
+    }
+
+    public TreeItem<String> genTreeItem() {
+        TreeItem<String> parent = new TreeItem<>(this.rankingPosition + ". Platz");
+        parent.setExpanded(true);
+        for(Player currPlayer : this.rankedPlayers) {
+            parent.getChildren().add(currPlayer.toTreeView());
+        }
+        return parent;
     }
 
     @Override

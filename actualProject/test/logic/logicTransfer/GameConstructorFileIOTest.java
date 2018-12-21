@@ -18,6 +18,7 @@ import logic.token.Tiles;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -88,11 +89,12 @@ public class GameConstructorFileIOTest {
     }
 
     @Test
-    public void testFileNoStack() {
+    public void testFileNoStack() throws WrongSyntaxException, IOException {
         FakeGUI fakeGui = new FakeGUI();
 //        String fileInput = Loader.openGivenFile(new File("test1.txt"));
-        String fileInput = Loader.openGivenFile(new File("test3NoStack.txt"));
-        Game game = new Game(fakeGui, fileInput);
+//        String fileInput = Loader.openGivenFile(new File("test3NoStack.txt"));
+        Game game = TestToolkit.read("val_test3NoStack");
+//        Game game = new Game(fakeGui, fileInput);
 
         // Boards
         Board expBoard1 = new Board(

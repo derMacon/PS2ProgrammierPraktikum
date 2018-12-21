@@ -1,5 +1,7 @@
 package logic.playerState;
 
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
 import logic.logicTransfer.GUIConnector;
 import logic.token.Domino;
 import logic.token.Pos;
@@ -125,6 +127,14 @@ public abstract class Player implements Comparable {
             sum += currDistrict.genPoints();
         }
         return sum;
+    }
+
+    /**
+     * // TOOD Javadoc
+     * @return
+     */
+    public int genAllDistrictPoints() {
+        return genDistrictPoints(genDistrictsFromBoard(this.board));
     }
 
 
@@ -255,6 +265,11 @@ public abstract class Player implements Comparable {
     @Override
     public String toString() {
         return this.board.toString();
+    }
+
+    public TreeItem<String> toTreeView() {
+        // TODO schauen ob genAllDistrictpoints auch in game Klasse benoetigt werden kann.
+        return new TreeItem<>("Spieler " + (this.idxInPlayerArray + 1) + " -> " + genAllDistrictPoints() + " Punkte");
     }
 
     @Override

@@ -552,50 +552,31 @@ public class Game implements GUI2Game {
      */
     // TODO make private
     public void endRound() {
-        System.out.println("end round");
-//        Result res = new Result(this.players);
-//        Logger.getInstance().printAndSafe(res.toString());
-        
-        // Rootitem as the main node to which every player is directed
-//        TreeItem<String> rootItem = new TreeItem<>("Spieler nach Plaetzen sortiert");
-//        rootItem.setExpanded(true);
-        
-        // iterating through the rankings
-//        for(ResultRanking currRanking : res.getRankedList()) {
-//            TreeItem<String> currRankingNodeGroup = new TreeItem<>(String.valueOf(currRanking.getRankingPosition()));
-//            currRankingNodeGroup.setExpanded(true);
-//            for(Player currPlayer : currRanking.getRankedPlayers()) {
-//                currRankingNodeGroup.getChildren().add(new TreeItem<>(currPlayer.toString()));
-//            }
-//            rootItem.getChildren().add(currRankingNodeGroup); 
-//        }
+        Logger.getInstance().printAndSafe("end round");
 
-        TreeItem<String> rootItem = new TreeItem<String> ("Inbox");
-        rootItem.setExpanded(true);
-        for (int i = 1; i < 6; i++) {
-            TreeItem<String> item = new TreeItem<String> ("Message" + i);            
-            rootItem.getChildren().add(item);
-        }        
-        TreeView<String> tree = new TreeView<String>(rootItem);        
+
         StackPane root = new StackPane();
-        root.getChildren().add(tree);
+        root.getChildren().add(new Result(this.players).toTreeView());
         Stage primaryStage = new Stage(); 
         primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.setTitle("Ergebnisse");
         primaryStage.show();
 
 
-
-//        TreeItem<String> item = new TreeItem<String>();
-//        rootItem.getChildren().add(item);
-//
-//        TreeView<String> trVvResults = new TreeView<>(rootItem);
-//        
+//        TreeItem<String> rootItem = new TreeItem<String> ("Ranking");
+//        rootItem.setExpanded(true);
+//        for (int i = 1; i < 6; i++) {
+//            TreeItem<String> item = new TreeItem<String> ("Message" + i);
+//            rootItem.getChildren().add(item);
+//        }
+//        TreeView<String> tree = new TreeView<String>(rootItem);
 //        StackPane root = new StackPane();
-//        root.getChildren().add(trVvResults);
-//
-//        Stage resultStage = new Stage(); 
-//        resultStage.setScene(new Scene(root, 300, 250));
-//        resultStage.show();
+//        root.getChildren().add(new Result(this.players).toTreeView());
+//        Stage primaryStage = new Stage();
+//        primaryStage.setScene(new Scene(root, 300, 250));
+//        primaryStage.show();
+
+
     }
 
     // --- Human interaction ---

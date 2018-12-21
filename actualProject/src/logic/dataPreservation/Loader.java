@@ -41,7 +41,7 @@ public class Loader {
     /**
      * Stage that will be used to display the filechoose
      */
-    private final Stage stage;
+    private Stage stage;
 
 
     /**
@@ -53,7 +53,7 @@ public class Loader {
         fChooser.setTitle("Open Resource File");
         fChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT", "*.txt"));
         fChooser.setInitialDirectory(new File(DEFAULT_DIRECTORY));
-        stage = new Stage();
+//        stage = new Stage(); // TODO entfernen -> mag er beim Testen nicht
     }
 
 //    public static getTestingInstance() {
@@ -99,6 +99,8 @@ public class Loader {
         actualSavingProcess(new File(filename), game.toString());
     }
 
+
+
     /**
      * Saves a given input to an already chosen directory. If no directory was selected
      * beforehand the method saveFileAs(...) will be called.
@@ -121,6 +123,9 @@ public class Loader {
     // TODO find out why never called when requested to write file
     public void saveFileAs(String txtFldInput) {
         System.out.println("hello worldd");
+        if(null == stage) {
+            this.stage = new Stage();
+        }
         this.file = fChooser.showSaveDialog(stage);
         actualSavingProcess(this.file, txtFldInput);
     }

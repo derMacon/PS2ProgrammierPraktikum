@@ -21,6 +21,8 @@ import other.FakeGUI;
  */
 public class TestToolkit {
 
+    private static final String FILE_ENDING = ".txt";
+
     /**
      * Ermittelt, ob der Inhalt der Dateien fileName1 und fileName2 identisch
      * ist.
@@ -56,7 +58,7 @@ public class TestToolkit {
     public static Game read(String filename) throws IOException,
             WrongSyntaxException {
         Loader l = Loader.getInstance();
-        return new Game(new FakeGUI(), l.openGivenFile("test/testdata/" + filename));
+        return new Game(new FakeGUI(), l.openGivenFile("test" + File.separator + "fileTests"+ File.separator + "testdata" + File.separator + filename + FILE_ENDING));
     }
 
     /**

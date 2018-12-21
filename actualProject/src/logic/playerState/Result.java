@@ -1,5 +1,8 @@
 package logic.playerState;
 
+import javafx.scene.control.TreeItem;
+import javafx.scene.control.TreeView;
+
 import java.util.*;
 
 /**
@@ -110,6 +113,16 @@ public class Result {
             }
         }
         return output.toString();
+    }
+
+    public TreeView<String> toTreeView() {
+        TreeItem<String> rootItem = new TreeItem<> ("Ranking");
+        rootItem.setExpanded(true);
+        for(ResultRanking currRanking : this.ranking ) {
+            rootItem.getChildren().add(currRanking.genTreeItem());
+        }
+        return new TreeView<>(rootItem);
+
     }
 
     @Override
