@@ -208,15 +208,11 @@ public abstract class Player implements Comparable {
     public void showOnBoard(Domino playerSelectedDomino) {
         assert null != playerSelectedDomino && this.board.fits(playerSelectedDomino);
         if (!shouldBeDisposed(playerSelectedDomino)) {
-            // update board
-            this.board.lay(playerSelectedDomino);
+            // update board -> already happened in selecting dom from bank
+
             // update districts
             this.districts = updatedDistricts(this.districts, playerSelectedDomino);
 
-//        this.districts = addToAppropriateDistrict(playerSelectedDomino.getFstVal(),
-//                playerSelectedDomino.getFstPos(), this.districts);
-//        this.districts = addToAppropriateDistrict(playerSelectedDomino.getSndVal(),
-//                playerSelectedDomino.getSndPos(), this.districts);
             // update gui
             this.gui.showOnGrid(this.idxInPlayerArray, playerSelectedDomino);
             this.gui.showPointsForPlayer(this.idxInPlayerArray, getBoardPoints());

@@ -68,6 +68,8 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         bank.updateDomino(overallBestChoose.getIdxOnBank(), overallBestChoose.getDomWithPosAndRot());
         // actually select a domino from the bank
         bank.selectEntry(this, overallBestChoose.getIdxOnBank());
+        // put domino on board without showing it on the gui
+        this.board.lay(overallBestChoose.getDomWithPosAndRot());
         // update gui
         this.gui.selectDomino(ordBank, overallBestChoose.getIdxOnBank(), this.idxInPlayerArray);
         // return the bank, although bank reference is modified internally (just to make sure it is evident, pos and rot
