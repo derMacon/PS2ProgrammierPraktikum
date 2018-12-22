@@ -206,9 +206,11 @@ public abstract class Player implements Comparable {
      * @param playerSelectedDomino domino to display
      */
     public void showOnBoard(Domino playerSelectedDomino) {
-        assert null != playerSelectedDomino && this.board.fits(playerSelectedDomino);
+        assert null != playerSelectedDomino;
         if (!shouldBeDisposed(playerSelectedDomino)) {
             // update board -> already happened in selecting dom from bank
+            // for testing purpose redundand implementation
+            this.board.lay(playerSelectedDomino);
 
             // update districts
             this.districts = updatedDistricts(this.districts, playerSelectedDomino);
@@ -277,6 +279,18 @@ public abstract class Player implements Comparable {
         } else {
             return this.getBoardPoints() - other.getBoardPoints();
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        final Player other = (Player) obj;
+        return this.idxInPlayerArray == other.idxInPlayerArray;
     }
 
 }

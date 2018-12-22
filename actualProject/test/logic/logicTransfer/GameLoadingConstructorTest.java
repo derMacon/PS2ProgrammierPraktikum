@@ -20,25 +20,25 @@ public class GameLoadingConstructorTest {
         // test to generate a game.
 
         String testGameRepresentation =
-                "<Spielfeld>\n" +
+                "<Spielfeld 1>\n" +
                         "-- -- -- -- --\n" +
                         "-- -- H1 P0 --\n" +
                         "-- -- CC -- --\n" +
                         "-- -- -- -- --\n" +
                         "-- -- -- -- --\n" +
-                        "<Spielfeld>\n" +
+                        "<Spielfeld >\n" +
                         "-- -- -- -- --\n" +
                         "-- -- H1 P0 P1\n" +
                         "-- -- CC -- --\n" +
                         "-- -- -- -- --\n" +
                         "-- -- -- -- --\n" +
-                        "<Spielfeld>\n" +
+                        "<Spielfeld 3>\n" +
                         "-- -- -- P1 --\n" +
                         "-- -- H1 P0 --\n" +
                         "-- -- CC -- --\n" +
                         "-- -- -- -- --\n" +
                         "-- -- -- -- --\n" +
-                        "<Spielfeld>\n" +
+                        "<Spielfeld 4>\n" +
                         "-- -- -- -- --\n" +
                         "-- -- H1 P0 --\n" +
                         "-- -- CC P1 --\n" +
@@ -63,15 +63,6 @@ public class GameLoadingConstructorTest {
                 {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC}
         };
 
-        //<editor-fold defaultstate="collapsed" desc="Old version with nullpointers for the empty fields">
-//                {null, null, null, null, null},
-//                {null, null, SingleTile.H1, SingleTile.P0, null},
-//                {null, null, SingleTile.CC, null, null},
-//                {null, null, null, null, null},
-//                {null, null, null, null, null}
-//        };
-        //</editor-fold>
-
         SingleTile[][] actualCells = gameTestingConstr.getPlayers()[0].getBoard().getCells();
         assertArrayEquals(expectedCells[0], actualCells[0]);
         assertArrayEquals(expectedCells[1], actualCells[1]);
@@ -80,7 +71,7 @@ public class GameLoadingConstructorTest {
 
         // Bot 3 board
         expectedCells = new SingleTile[][]{
-                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC,},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.P0, SingleTile.I1,},
                 {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC,},
                 {SingleTile.EC, SingleTile.H1, SingleTile.CC, SingleTile.EC, SingleTile.EC},
                 {SingleTile.EC, SingleTile.P0, SingleTile.P1, SingleTile.EC, SingleTile.EC},

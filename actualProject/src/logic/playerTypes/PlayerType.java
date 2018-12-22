@@ -39,7 +39,8 @@ public enum PlayerType {
      * @param gui reference to the gui
      * @return a player of the given type
      */
-    public static Player loadPlayerInstanceWithGivenTypeAndBoard(PlayerType type, Board board, int idx, GUIConnector gui) {
+    public static Player loadPlayerInstanceWithGivenTypeAndBoard(PlayerType type, String board,
+                                                                 int idx, GUIConnector gui) {
         Player output = null;
         switch (type) {
             case HUMAN:

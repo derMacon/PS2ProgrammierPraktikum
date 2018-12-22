@@ -274,6 +274,10 @@ public class Domino implements Comparable {
         return 0 <= rot && ROTATION_CNT > rot;
     }
 
+    public void setRotation(int rotation) {
+        this.rotation = rotation;
+    }
+
     /**
      * Provides a deep copyWithoutSelection of this domino
      * @return a deep copyWithoutSelection of this domino

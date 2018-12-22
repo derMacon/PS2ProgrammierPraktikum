@@ -2,6 +2,7 @@ package logic.playerTypes;
 
 import logic.bankSelection.Bank;
 import logic.bankSelection.Choose;
+import logic.bankSelection.Entry;
 import logic.logicTransfer.GUIConnector;
 import logic.logicTransfer.Game;
 import logic.playerState.Board;
@@ -42,8 +43,8 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * @return the edited bank
      */
     @Override
-    public Bank selectFromBank(Bank bank, int ordBank) {
-        if (bank.isEmpty()) {
+    public Bank selectFromBank(Bank bank, int ordBank, boolean displayOnGui) {
+        if (null == bank || bank.isEmpty()) {
             return bank;
         }
         // bank copyWithoutSelection, serves as temporary bank
@@ -71,15 +72,35 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // put domino on board without showing it on the gui
         this.board.lay(overallBestChoose.getDomWithPosAndRot());
         // update gui
-        this.gui.selectDomino(ordBank, overallBestChoose.getIdxOnBank(), this.idxInPlayerArray);
+        if(displayOnGui) {
+            this.gui.selectDomino(ordBank, overallBestChoose.getIdxOnBank(), this.idxInPlayerArray);
+        }
         // return the bank, although bank reference is modified internally (just to make sure it is evident, pos and rot
         // modified)
         return bank;
     }
 
     @Override
+    public void updateSelectedDom(Bank currBank) {
+        // Construct a bank containing only the already selected Entry of the player -> now
+        // method selectFromBank(...) can be used to find pos on board, etc.
+        Domino dom = currBank.getPlayerSelectedDomino(this);
+        Bank temp;
+        if(null != dom) {
+            temp = new Bank(new Entry[]{new Entry(dom)},
+                    currBank.getRand());
+            Domino tempDom =
+                    selectFromBank(temp, Game.CURRENT_BANK_IDX, false).getPlayerSelectedDomino(this);
+
+            dom.setPos(tempDom.getFstPos());
+            dom.setRotation(tempDom.getRot());
+        }
+
+    }
+
+    @Override
     public Bank doInitialSelect(Bank currBank, int bankOrd) {
-        Bank output = selectFromBank(currBank, bankOrd);
+        Bank output = selectFromBank(currBank, bankOrd, true);
         Domino playerSelectedDomino = currBank.getPlayerSelectedDomino(this);
         // update board -> has to be done to prevent the bot from laying the 
         // second draft directly on the first domino 
@@ -91,7 +112,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 
     @Override
     public void doStandardTurn(Bank currBank, Bank nextBank) {
-        Bank out = selectFromBank(nextBank, Game.NEXT_BANK_IDX);
+        Bank out = selectFromBank(nextBank, Game.NEXT_BANK_IDX, true);
         Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
         this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getSelectedDominoIdx(this));
         // TODO debug info, delete before final commit
@@ -102,6 +123,15 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 //        }
         showOnBoard(playersSelectedDomino);
     }
+
+    // TODO call in standardturn
+    @Override
+    public void doLastTurn(Bank currBank) {
+        Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
+        this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getSelectedDominoIdx(this));
+        showOnBoard(playersSelectedDomino);
+    }
+
 
     /**
      * Generates the max. points available on the board for a given domino.

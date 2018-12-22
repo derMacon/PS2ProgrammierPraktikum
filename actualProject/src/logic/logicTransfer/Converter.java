@@ -308,7 +308,7 @@ public class Converter {
     private Player convertStrToPlayer(String input, PlayerType type, int idxPlayerArray, GUIConnector gui) {
         // TODO update possible dominos list
         System.out.println(input);
-        return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(type, new Board(input), idxPlayerArray, gui);
+        return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(type, input, idxPlayerArray, gui);
     }
 
     // --- convert bank ---

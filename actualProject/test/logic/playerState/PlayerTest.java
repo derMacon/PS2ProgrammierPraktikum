@@ -131,6 +131,24 @@ public class PlayerTest {
         assertEquals(expectedDistricts, actualDistricts);
     }
 
+//    @Test
+//    public void testConstructor_MultipleTokensSameVal() {
+//        // expected districts
+//        List<District> expectedDistricts = new LinkedList<>();
+//        expectedDistricts.add(new District(new District[]{
+//            new District(SingleTile.P0, new Pos(0, 0)),
+//            new District(SingleTile.P1, new Pos(1, 0))
+//        }));
+//        // actual districts
+//        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+//                "P0 P1 --\n"
+//                + "-- CC --\n"
+//                + "-- -- --\n");
+//        List<District> actualDistricts = player.getDistricts();
+//        // testing
+//        assertEquals(expectedDistricts, actualDistricts);
+//    }
+
     // --- lay ---
     @Test
     public void testLay_DisposableDomino() {
@@ -236,14 +254,17 @@ public class PlayerTest {
         assertEquals(expectedDistricts, actualDistricts);
     }
 
-    @Test(expected = AssertionError.class)
+    @Test
     public void testLay_CannotLayWrongType() {
-        // actual output
-        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+        String input =
                 "-- -- --\n"
                 + "S1 CC --\n"
-                + "S2 -- --\n");
+                + "S2 -- --\n";
+        // actual output
+        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
+               input);
         player.showOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), 0)); // difference to previous test
+        assertEquals(input, player.getBoard().toString());
     }
 
     @Test
