@@ -61,7 +61,14 @@ public class Bank {
         this.bankSize = entries.length;
     }
 
-    public Bank(String preallocation, List<Player> players) {
+    /**
+     * Constructor used for testing / fileIO.
+     * @param preallocation String representation of the dominos in the bank
+     * @param players List of players to which the entries will be linked. Number of players
+     *                determines the bank size.
+     * @param rand random object used when drawing dominos for the next round
+     */
+    public Bank(String preallocation, List<Player> players, Random rand) {
         String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
         this.bankSize = players.size();
         int offsetEmptySlots = this.bankSize > singleEntries.length ? this.bankSize - singleEntries.length : 0;
@@ -79,6 +86,9 @@ public class Bank {
         } else {
             this.entries = temp;
         }
+
+        // Setting up random generator
+        this.rand = rand;
 
     }
 
@@ -383,11 +393,13 @@ public class Bank {
             return false;
         }
         final Bank other = (Bank)obj;
-        boolean isEqual = null != this.entries && null != other.entries;
+        boolean isEqual =
+                null != this.entries && null != other.entries && this.bankSize == other.bankSize;
         int i = 0;
         while (isEqual && i < this.entries.length) {
-            isEqual = null != this.entries[i] && null != other.entries[i]
-                    && this.entries[i].equals(other.entries[i]);
+            isEqual = (null == this.entries[i] && null == other.entries[i])
+                        || (null != this.entries[i] && null != other.entries[i]
+                            && this.entries[i].equals(other.entries[i]));
             i++;
         }
         return isEqual;

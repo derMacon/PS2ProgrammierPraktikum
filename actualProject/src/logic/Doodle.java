@@ -18,10 +18,9 @@ import java.util.Random;
 public class Doodle {
 
     public static void main(String[] args) {
-        String tag = "Spielfeld";
-        String input1 = "Spielfeld 1>\n87987 98 <";
-        System.out.println(input1.replaceAll("\n", " ").matches(tag + ".*>.*"));
-        String[] out = input1.split("\n");
+        String temp1 = null;
+        String temp2 = "hello";
+        System.out.println(temp2.equals(temp2));
 
 
     }

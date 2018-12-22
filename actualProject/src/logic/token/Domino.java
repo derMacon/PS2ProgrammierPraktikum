@@ -239,7 +239,13 @@ public class Domino implements Comparable {
 
 
     /**
-     * dominos are equal if the have the same tile (rotation may differ)
+     * dominos are equal if the have the same tile (rotation may differ), exact reference as well
+     * as the token value does not matter.
+     *
+     * Meaning:
+     * - domino a with the reference -> #123; value -> HOHO_VAL13; rotation -> 1
+     * - domino a with the reference -> #124; value -> HOHO_VAL14; rotation -> 0
+     * Both dominoes are equal
      *
      * @param obj
      * @return
@@ -253,7 +259,9 @@ public class Domino implements Comparable {
             return false;
         }
         final Domino other = (Domino) obj;
-        return this.tiles == other.tiles && this.posFst.equals(other.posFst) && this.rotation == other.rotation;
+        return (this.tiles.getFst() == other.tiles.getFst() || this.tiles.getFst() == other.tiles.getSnd())
+                && (this.tiles.getSnd() == other.tiles.getFst() || this.tiles.getSnd() == other.tiles.getSnd());
+//        return this.tiles == other.tiles && this.posFst.equals(other.posFst) && this.rotation == other.rotation;
     }
 
 

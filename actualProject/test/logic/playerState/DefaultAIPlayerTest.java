@@ -350,11 +350,10 @@ public class DefaultAIPlayerTest {
         Tiles domTiles = Tiles.genTile(H1, P0);
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
 
-        Domino wrongOutput = new Domino(domTiles, new Pos(0, 0), 0);
         Domino expectedOutput = new Domino(domTiles, new Pos(0, 0), 2);
         Domino actualOutput = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
-        assertNotEquals(wrongOutput, actualOutput);
         assertEquals(expectedOutput, actualOutput);
+        assertEquals(2, actualOutput.getRot());
     }
 
     @Test
@@ -368,11 +367,10 @@ public class DefaultAIPlayerTest {
         Tiles domTiles = Tiles.genTile(H1, P0);
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
 
-        Domino wrongOutput = new Domino(domTiles, new Pos(0, 0), 0);
         Domino expectedOutput = new Domino(domTiles, new Pos(2, 0), 2);
         Domino actualOutput = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
-        assertNotEquals(wrongOutput, actualOutput);
         assertEquals(expectedOutput, actualOutput);
+        assertEquals(2, actualOutput.getRot());
     }
 
     @Test
@@ -386,13 +384,30 @@ public class DefaultAIPlayerTest {
         Tiles domTiles = Tiles.genTile(S0, S0);
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
 
-        Domino wrongOutput1 = new Domino(domTiles, new Pos(0, 1), 0);
-        Domino wrongOutput2 = new Domino(domTiles, new Pos(0, 1), 2);
         Domino expectedOutput = new Domino(domTiles, new Pos(0, 2), 0);
         Domino actualOutput = player.selectFromBank(nextBank, 1).getPlayerSelectedDomino(player);
-        assertNotEquals(wrongOutput1, actualOutput);
-        assertNotEquals(wrongOutput2, actualOutput);
         assertEquals(expectedOutput, actualOutput);
+        assertEquals(new Pos(0,2), actualOutput.getFstPos());
+        assertEquals(new Pos(1,2), actualOutput.getSndPos());
+        assertEquals(0, actualOutput.getRot());
+    }
+
+    @Test
+    public void testGenPoints_Screenshot4() {
+        DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
+                "-- -- P0 -- --\n"
+                        + "-- -- I3  -- --\n"
+                        + "-- -- CC -- --\n"
+                        + "-- --  -- -- --\n"
+                        + "-- --  -- -- --\n");
+        assertEquals(3, player.getBoardPoints());
+        Tiles domTiles = Tiles.genTile(A0, S1);
+        Bank currBank = new Bank(new Entry[]{new Entry(new Domino(domTiles, new Pos(0,2)), player)},
+                new Random());
+        Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(Tiles.I1P0_Val40))},
+                new Random());
+        player.doStandardTurn(currBank, nextBank);
+        assertEquals(4, player.getBoardPoints());
     }
 
 }

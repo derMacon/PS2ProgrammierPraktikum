@@ -9,6 +9,7 @@ import logic.token.Tiles;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class Converter {
 
@@ -325,8 +326,9 @@ public class Converter {
         // TODO ueberarbeiten
         String[] bothBanks = input.split("\n");
         Bank[] output = new Bank[2];
-        output[Game.CURRENT_BANK_IDX] = new Bank(bothBanks[0], this.players);
-        output[Game.NEXT_BANK_IDX] = new Bank(bothBanks[1], this.players);
+        // TODO eventuell Schnittstelle fuer Randomobj anlegen
+        output[Game.CURRENT_BANK_IDX] = new Bank(bothBanks[0], this.players, new Random());
+        output[Game.NEXT_BANK_IDX] = new Bank(bothBanks[1], this.players, new Random());
         // TODO update possible dominos list
         return output;
     }

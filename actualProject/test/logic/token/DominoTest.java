@@ -235,10 +235,10 @@ public class DominoTest {
         assertTrue(new Domino(Tiles.genTile(P0, H0), 0).equals(new Domino(Tiles.genTile(P0, H0))));
     }
     @Test
-    public void testEquals_InvaildConstr() {
-        assertFalse(new Domino(Tiles.genTile(P0, H0),1).equals(new Domino(Tiles.genTile(P0, H0))));
-        assertFalse(new Domino(Tiles.genTile(P0, H0), 1).equals(new Domino(Tiles.genTile(P0, H0), 0)));
-        assertFalse(new Domino(Tiles.genTile(P0, H0)).equals(new Domino(Tiles.genTile(P0, H0), 1)));
+    public void testEquals_ValidConstr() {
+        assertTrue(new Domino(Tiles.genTile(P0, H0),1).equals(new Domino(Tiles.genTile(P0, H0))));
+        assertTrue(new Domino(Tiles.genTile(P0, H0), 1).equals(new Domino(Tiles.genTile(P0, H0), 0)));
+        assertTrue(new Domino(Tiles.genTile(P0, H0)).equals(new Domino(Tiles.genTile(P0, H0), 1)));
     }
 
 

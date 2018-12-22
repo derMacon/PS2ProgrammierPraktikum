@@ -70,6 +70,11 @@ public class Game implements GUI2Game {
     private int currPlayerIdx;
 
     /**
+     * Current slot und notice
+     */
+    private int currBankIdx;
+
+    /**
      * the current domino of the human player (displayed in the rotation box)
      */
     private Domino currDomino;

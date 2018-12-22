@@ -26,11 +26,10 @@ import java.util.Random;
 public class GameConstructorFileIOTest {
 
     @Test
-    public void testFileInputConstructor() {
+    public void testFileInputConstructor() throws IOException, WrongSyntaxException {
         FakeGUI fakeGui = new FakeGUI();
 //        String fileInput = Loader.openGivenFile(new File("test1.txt"));
-        String fileInput = Loader.openGivenFile(new File("test2WithComment.txt"));
-        Game game = new Game(fakeGui, fileInput);
+        Game game = TestToolkit.read("val_test2WithComment");
 
         // Boards
         Board expBoard1 = new Board(
@@ -70,8 +69,7 @@ public class GameConstructorFileIOTest {
 //        1 A0S1,3 P0O1,0 S0O1,2 I1P0
 //        3 A1H0,- A1H0,- A1H0,1 P0S1
         Entry[] testBankInput = new Entry[] {
-                new Entry(new Domino(Tiles.A0S1_Val37), p1),
-                new Entry(new Domino(Tiles.P0O1_Val38), p3),
+                null, null,
                 new Entry(new Domino(Tiles.S0O1_Val39), p0),
                 new Entry(new Domino(Tiles.I1P0_Val40), p2)
         };
@@ -134,8 +132,8 @@ public class GameConstructorFileIOTest {
 //        1 A0S1,3 P0O1,0 S0O1,2 I1P0
 //        3 A1H0,- A1H0,- A1H0,1 P0S1
         Entry[] testBankInput = new Entry[] {
-                new Entry(new Domino(Tiles.A0S1_Val37), p1),
-                new Entry(new Domino(Tiles.P0O1_Val38), p3),
+                null,
+                null,
                 new Entry(new Domino(Tiles.S0O1_Val39), p0),
                 new Entry(new Domino(Tiles.I1P0_Val40), p2)
         };

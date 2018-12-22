@@ -135,11 +135,18 @@ public class Entry {
             return false;
         }
         final Entry other = (Entry)obj;
-        boolean debugDom = this.domino.getTile() == other.domino.getTile();
-        boolean debugPl = this.selectedPlayer.getIdxInPlayerArray() == other.selectedPlayer.getIdxInPlayerArray();
-        return this.selectedPlayer.getIdxInPlayerArray() == other.selectedPlayer.getIdxInPlayerArray()
-                && this.domino.getTile() == other.domino.getTile();
-//                && this.domino.equals(other.domino);
+        // TODO loeschen, mit Vorsicht zu geniessen -> Nicht Nullpointer resistent.
+//        boolean debugDom = this.domino.getTile() == other.domino.getTile();
+//        boolean debugPl = this.selectedPlayer.getIdxInPlayerArray() == other.selectedPlayer.getIdxInPlayerArray();
+
+        // Players can be empty if entry wasn't selected in the previous turns
+        return null != this.selectedPlayer && null != other.selectedPlayer
+                // players have to be the same
+                && this.selectedPlayer.getIdxInPlayerArray() == other.selectedPlayer.getIdxInPlayerArray()
+                // domino tiles have to be match their token not the reference
+                && this.domino.equals(other.domino);
+//                && this.domino.getTile() == other.domino.getTile();
+
     }
 
 }

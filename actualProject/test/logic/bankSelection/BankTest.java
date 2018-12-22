@@ -1,6 +1,8 @@
 package logic.bankSelection;
 
 import java.util.Arrays;
+
+import logic.logicTransfer.GUIConnector;
 import other.FakeGUI;
 import logic.bankSelection.Bank;
 import logic.bankSelection.Entry;
@@ -210,8 +212,6 @@ public class BankTest {
     public void testFill_Valid() {
         List<Domino> stack = new LinkedList<>();
         Bank bank = genBankFromStack(stack);
-        // Just to make sure... checking before setting
-        assertNotEquals(stack.get(4), bank.getDomino(3));
 
         bank.fill(stack.get(4), 3);
         assertEquals(stack.get(4), bank.getDomino(3));
@@ -336,6 +336,36 @@ public class BankTest {
         assertEquals(dominos[1], bankDom[1]);
         assertEquals(dominos[2], bankDom[2]);
         assertEquals(dominos[3], bankDom[3]);
+    }
+
+    // --- equals ---
+    @Test
+    public void testEquals_DifferentSizes() {
+        assertFalse(new Bank(4).equals(new Bank(3)));
+        assertFalse(new Bank(3).equals(new Bank(4)));
+    }
+
+    @Test
+    public void testEquals_OneBankContainsEmptySlots() {
+        GUIConnector fakeGui = new FakeGUI();
+        List<Player> players = Arrays.asList(new Player[] {
+                new DefaultAIPlayer(fakeGui, 0, 1,2),
+                new DefaultAIPlayer(fakeGui, 1, 1,2),
+                new DefaultAIPlayer(fakeGui, 2, 1,2),
+                new DefaultAIPlayer(fakeGui, 3, 1,2)
+        });
+
+        Bank bank1 = new Bank("0 S0O1,2 I1P0", players, new Random());
+        Bank bank2 = new Bank("0 S0O1,2 I1P0,1 P0S1", players, new Random());
+
+        Entry[] entries = new Entry[] {
+                null, null,
+                new Entry(new Domino(Tiles.S0O1_Val39), players.get(0)),
+                new Entry(new Domino(Tiles.I1P0_Val40), players.get(2))
+        };
+        Bank bank3 = new Bank(entries, new Random());
+
+        assertEquals(bank1, bank3);
     }
 
 }
