@@ -206,7 +206,7 @@ public abstract class Player implements Comparable {
      * @param playerSelectedDomino domino to display
      */
     public void showOnBoard(Domino playerSelectedDomino) {
-        assert null != playerSelectedDomino;
+        assert null != playerSelectedDomino && this.board.fits(playerSelectedDomino);
         if (!shouldBeDisposed(playerSelectedDomino)) {
             // update board
             this.board.lay(playerSelectedDomino);

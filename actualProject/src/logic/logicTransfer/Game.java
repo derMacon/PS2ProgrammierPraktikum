@@ -102,6 +102,7 @@ public class Game implements GUI2Game {
         this.nextRoundBank = new Bank(playerCnt);
         this.stack = new LinkedList<>();
         this.currPlayerIdx = 0;
+        this.currBankIdx = 0;
         this.currDomino = null;
         this.logger = Logger.getInstance();
     }
@@ -194,6 +195,7 @@ public class Game implements GUI2Game {
         this.stack = stack;
         this.currDomino = currDomino;
         this.currPlayerIdx = currPlayerIdx;
+
         // TODO check if setting values was successful
         return Converter.SUCCESSFUL_READ_MESSAGE;
     }
@@ -269,6 +271,7 @@ public class Game implements GUI2Game {
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
 
         this.currPlayerIdx = 0;
+        this.currBankIdx = 0;
         this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
 
         // TODO insert code - update all players
@@ -296,7 +299,8 @@ public class Game implements GUI2Game {
         botsDoInitialSelect();
         randomlyDrawNewDominosForNextRound();
 //        this.currPlayerIdx = idx + 1;
-        this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
+//        this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
+        this.currBankIdx = botsDoTheirTurn(this.currBankIdx);
 
         // TODO delete lines before final commit
         // Only for demonstrative purpose -> will be deleted before final commit (belongs in selectDomOnNextBank()
@@ -450,7 +454,8 @@ public class Game implements GUI2Game {
             this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
             endRound();
         } else {
-            this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
+//            this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
+            this.currBankIdx = botsDoTheirTurn(this.currBankIdx + 1);
         }
     }
 
@@ -543,7 +548,7 @@ public class Game implements GUI2Game {
 
     private void copyAndRemoveNextRoundBankToCurrentBank() {
         this.currentRoundBank = this.nextRoundBank.copy();
-//        this.nextRoundBank.clearAllEntries();
+        this.nextRoundBank.clearAllEntries();
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
     }
 
