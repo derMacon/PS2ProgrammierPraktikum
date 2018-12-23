@@ -19,6 +19,31 @@ import java.util.List;
 public class Domino implements Comparable {
 
     /**
+     * Delimiter to define starting point of the the string representation from the domino
+     */
+    public static final String STR_OPENING_TAG = "[";
+
+    /**
+     * Delimiter to define end point of the the string representation from the domino
+     */
+    public static final String STR_CLOSING_TAG = "]";
+
+    /**
+     * Separator to isolate the first and second tile of the domino.
+     */
+    public static final String STR_SEPARATOR = ",";
+
+    /**
+     * Delimiter zu display a vertical allignment in a common String representation
+     */
+    public static final String STR_VERTI = "vertical";
+
+    /**
+     * Delimiter zu display a horizontal allignment in a common String representation
+     */
+    public static final String STR_HORI = "horizontal";
+
+    /**
      * Number of possiblities a domino can be rotated
      */
     public static final int ROTATION_CNT = 4;
@@ -128,6 +153,10 @@ public class Domino implements Comparable {
      */
     public int getRot() {
         return rotation;
+    }
+
+    public String getStrAllignment() {
+        return this.rotation % 2 == 0 ? STR_HORI : STR_VERTI;
     }
 
     /**
@@ -261,12 +290,19 @@ public class Domino implements Comparable {
         final Domino other = (Domino) obj;
         return (this.tiles.getFst() == other.tiles.getFst() || this.tiles.getFst() == other.tiles.getSnd())
                 && (this.tiles.getSnd() == other.tiles.getFst() || this.tiles.getSnd() == other.tiles.getSnd());
-//        return this.tiles == other.tiles && this.posFst.equals(other.posFst) && this.rotation == other.rotation;
     }
 
-
-    @Override
     public String toString() {
+        return STR_OPENING_TAG + this.getFstVal() + STR_SEPARATOR + this.getSndVal() + STR_CLOSING_TAG;
+    }
+
+    /**
+     * String representation used in the fileIO.
+     * Depending on the rotation the upper / left tile will be displayed as the first singletile
+     * before the separator, and the right / lower tile as the second.
+     * @return String representation of the domino used in the fileIO
+     */
+    public String toFile() {
         return tiles.toString();
     }
 
@@ -291,13 +327,6 @@ public class Domino implements Comparable {
     public int compareTo(Object o) {
         assert null != o && (o instanceof Domino);
         Domino other = (Domino)o;
-//        if(other.tiles.getValue() > this.tiles.getValue()) {
-//            return -1;
-//        } else if (other.tiles.getValue() == this.tiles.getValue()) {
-//            return 0;
-//        } else {
-//            return 1;
-//        }
         return this.tiles.getValue() - other.tiles.getValue();
     }
     

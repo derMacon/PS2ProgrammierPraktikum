@@ -11,6 +11,21 @@ import java.util.List;
 public class Pos {
 
     /**
+     * Delimiter displaying the opening tag of a pos object
+     */
+    public static final String OPENING_DELIMITER = "(";
+
+    /**
+     * Delimiter displaying the closing tag of a pos object
+     */
+    public static final String CLOSING_DELIMITER = ")";
+
+    /**
+     * Delimiter displaying the separator tag between both komponents of a pos object
+     */
+    public static final String SEPARATOR = ",";
+
+    /**
      * Constant determining the leftward rotation
      */
     public static final int LEFT_ROT = 0;
@@ -111,12 +126,12 @@ public class Pos {
     }
 
     /**
-     * x/y
+     * (x,y)
      *
-     * @return x/y
+     * @return (x,y)
      */
     @Override
     public String toString() {
-        return x + "/" + y;
+        return OPENING_DELIMITER + this.x + SEPARATOR + this.y + CLOSING_DELIMITER;
     }
 }

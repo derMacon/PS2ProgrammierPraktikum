@@ -60,6 +60,5 @@ public class ResultPopUpWindowGUITest {
 
         Game game = new Game(new FakeGUI(), testGameRepresentation);
         game.endRound();
-        System.out.println("Bis hier hin kommt er");
     }
 }

@@ -16,6 +16,11 @@ import logic.token.Pos;
 public class HumanPlayer extends Player {
 
     /**
+     * Prefix that will be displayed before each call of the printing Method of the Logger instance
+     */
+    public static final String NAME_PREFIX = "HUMAN";
+
+    /**
      * Constructor used in the game, sets the gui and the board dimensions for the player.
      * @param gui gui reference
      * @param boardSizeX width of the board
@@ -41,6 +46,10 @@ public class HumanPlayer extends Player {
      */
     public HumanPlayer(GUIConnector gui, int idx, String strBoard) {
         super(gui, idx, strBoard);
+    }
+
+    public String getName() {
+        return NAME_PREFIX;
     }
 
     // only human player needs this setter, since each Bot handles the movement locally

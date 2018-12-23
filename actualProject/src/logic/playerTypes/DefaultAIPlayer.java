@@ -3,6 +3,7 @@ package logic.playerTypes;
 import logic.bankSelection.Bank;
 import logic.bankSelection.Choose;
 import logic.bankSelection.Entry;
+import logic.dataPreservation.Logger;
 import logic.logicTransfer.GUIConnector;
 import logic.logicTransfer.Game;
 import logic.playerState.Board;
@@ -14,14 +15,18 @@ import logic.token.Pos;
 
 import java.util.LinkedList;
 import java.util.List;
-import logic.token.SingleTile;
 
 /**
  * Default bot logic rules: TODO fill in the bots logic rules
  */
 public class DefaultAIPlayer extends Player implements BotBehavior {
 
-    public DefaultAIPlayer(GUIConnector gui, int idx, int boardSizeX, int boardSizeY) {
+    /**
+     * Prefix that will be displayed before each call of the printing Method of the Logger instance
+     */
+    public static final String NAME_PREFIX = "BOT";
+
+       public DefaultAIPlayer(GUIConnector gui, int idx, int boardSizeX, int boardSizeY) {
         super(gui, idx, boardSizeX, boardSizeY);
     }
 
@@ -31,6 +36,10 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 
     public DefaultAIPlayer(GUIConnector gui, int idx, String strBoard) {
         super(gui, idx, strBoard);
+    }
+
+    public String getName() {
+        return NAME_PREFIX + (this.idxInPlayerArray + 1);
     }
 
     /**
@@ -69,6 +78,9 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         bank.updateDomino(overallBestChoose.getIdxOnBank(), overallBestChoose.getDomWithPosAndRot());
         // actually select a domino from the bank
         bank.selectEntry(this, overallBestChoose.getIdxOnBank());
+        Logger.getInstance().printAndSafe(String.format(Logger.selectionLoggerFormat,
+                getName(), overallBestChoose.getDomWithPosAndRot().toString(),
+                overallBestChoose.getIdxOnBank(), "next"));
         // put domino on board without showing it on the gui
         this.board.lay(overallBestChoose.getDomWithPosAndRot());
         // update gui
@@ -105,6 +117,13 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // update board -> has to be done to prevent the bot from laying the 
         // second draft directly on the first domino 
         this.board.lay(playerSelectedDomino);
+        Logger.getInstance().printAndSafe(String.format(Logger.selectionLoggerFormat,
+                getName(),
+                playerSelectedDomino,
+                currBank.getSelectedDominoIdx(this),
+                "current") + System.lineSeparator()
+        );
+
         // update districts
 //        this.districts = updatedDistricts(this.districts, playerSelectedDomino);
         return output; 
@@ -112,15 +131,11 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 
     @Override
     public void doStandardTurn(Bank currBank, Bank nextBank) {
-        Bank out = selectFromBank(nextBank, Game.NEXT_BANK_IDX, true);
+        // nextBank reference will be modified
+        selectFromBank(nextBank, Game.NEXT_BANK_IDX, true);
         Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
         this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getSelectedDominoIdx(this));
-        // TODO debug info, delete before final commit
-//        for (District currDistrict : this.districts) {
-//            for (SingleTile currTile : currDistrict.getSingleTiles()) {
-//                System.out.println(this.idxInPlayerArray + "Districts: " + currTile.toString());
-//            }
-//        }
+
         showOnBoard(playersSelectedDomino);
     }
 

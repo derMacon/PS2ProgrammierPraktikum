@@ -1,7 +1,6 @@
 package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
-import logic.dataPreservation.Loader;
 import logic.dataPreservation.Logger;
 import logic.playerState.*;
 import logic.playerTypes.HumanPlayer;
@@ -9,21 +8,10 @@ import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 import logic.token.Domino;
 
-import java.io.File;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
 import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-
-import javafx.application.Application;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
@@ -128,16 +116,6 @@ public class Game implements GUI2Game {
     }
 
     // --- saving / loading game ---
-/*
-    /**
-     * Constructor used to laod game out of a file with a given path
-     *
-     * @param file file from which the game will be loaded
-    public Game(GUIConnector gui, File file) {
-        // TODO insert code - load String from text file and initialize new objects with their constructors with String
-        this(gui, Loader.loadFile(file));
-        // parameters
-    }
 
     /**
      * Constructor used for Loading
@@ -208,11 +186,6 @@ public class Game implements GUI2Game {
 
         // TODO check if setting values was successful
         return Converter.SUCCESSFUL_READ_MESSAGE;
-    }
-
-    @Override
-    public void safeGame(URI filePath) {
-        // TODO insert code - get String representation from necessary objects by calling toString()
     }
 
     // --- Setter / Getter ---
@@ -305,19 +278,15 @@ public class Game implements GUI2Game {
         // update human player selection
         this.currentRoundBank.selectEntry(this.players[HUMAN_PLAYER_IDX], idx);
         this.gui.selectDomino(CURRENT_BANK_IDX, idx, HUMAN_PLAYER_IDX);
+        Logger.getInstance().printAndSafe(String.format(Logger.selectionLoggerFormat,
+                this.players[HUMAN_PLAYER_IDX].getName(), this.currentRoundBank.getDomino(idx), idx,
+                "current") + "\n");
 
         botsDoInitialSelect();
         randomlyDrawNewDominosForNextRound();
 //        this.currPlayerIdx = idx + 1;
 //        this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
         this.currBankIdx = botsDoTheirTurn(this.currBankIdx);
-
-        // TODO delete lines before final commit
-        // Only for demonstrative purpose -> will be deleted before final commit (belongs in selectDomOnNextBank()
-        // beacause the player has to select a domino on the next round before it is possible to rotate the preselected one.)
-//        this.currDomino = this.currentRoundBank.getDomino(idx);
-//        this.gui.showInChooseBox(this.currDomino);
-//        this.gui.deleteDomFromBank(0, idx);
         // TODO blur out boxes which are not accessible when user participates in the upcomming standard round
     }
 
@@ -337,12 +306,15 @@ public class Game implements GUI2Game {
     @Override
     public void selectDomOnNextBank(int idx) {
         assert null == this.currDomino;
+        Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
         // Human player selects domino on next bank
-        this.nextRoundBank.selectEntry(this.players[HUMAN_PLAYER_IDX], idx);
+        this.nextRoundBank.selectEntry(humanPlayer, idx);
         this.gui.selectDomino(NEXT_BANK_IDX, idx, HUMAN_PLAYER_IDX);
-        setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[HUMAN_PLAYER_IDX]));
+        setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(humanPlayer));
         this.currPlayerIdx++;
-
+        Logger.getInstance().printAndSafe(String.format(Logger.selectionLoggerFormat,
+                humanPlayer.getName(), this.nextRoundBank.getDomino(idx).toString(),
+                idx, "next"));
     }
 
     /**
@@ -362,7 +334,7 @@ public class Game implements GUI2Game {
         this.currDomino.setPos(new Pos(pos.x(), pos.y()));
         this.players[HUMAN_PLAYER_IDX].showOnBoard(currDomino);
 
-        Logger.getInstance().printAndSafe("HUMAN put " + this.currDomino.toString() + " to " + pos.toString());
+//        Logger.getInstance().printAndSafe("HUMAN put " + this.currDomino.toFile() + " to " + pos.toString());
         setupCurrDomAndBotsDoTurn();
     }
 
@@ -370,7 +342,6 @@ public class Game implements GUI2Game {
     @Override
     public void boxClicked() {
         if (null != this.currDomino) {
-            System.out.println("Rot box clicked");
             this.currDomino.incRot();
             this.gui.showInChooseBox(this.currDomino);
         }
@@ -398,9 +369,14 @@ public class Game implements GUI2Game {
     }
 
     @Override
+    public void safeGame(URI filePath) {
+
+    }
+
+    @Override
     public void disposeCurrDomino() {
         setToChooseBox(null);
-//        Logger.getInstance().printAndSafe("HUMAN disposed " + this.currDomino.toString());
+//        Logger.getInstance().printAndSafe("HUMAN disposed " + this.currDomino.toFile());
         setupCurrDomAndBotsDoTurn();
     }
 
@@ -445,9 +421,7 @@ public class Game implements GUI2Game {
     private void botsDoInitialSelect() {
         for (int i = 1; i < this.players.length; i++) {
             // rest of the players HAVE to be bots
-//            this.currentRoundBank = ((BotBehavior) this.players[i]).selectFromBank(this.currentRoundBank, CURRENT_BANK_IDX);
             this.currentRoundBank = ((BotBehavior) this.players[i]).doInitialSelect(currentRoundBank, CURRENT_BANK_IDX);
-            
             // TODO insert code -> show Who's Turn
         }
     }
@@ -491,8 +465,7 @@ public class Game implements GUI2Game {
         if (currPlayerInstance instanceof BotBehavior) {
             this.gui.showWhosTurn(currPlayerInstance.getIdxInPlayerArray());
             ((BotBehavior) currPlayerInstance).doStandardTurn(this.currentRoundBank, this.nextRoundBank);
-            bankIdx++;
-            return botsDoTheirTurn(bankIdx);
+            return botsDoTheirTurn(bankIdx + 1);
         }
         // selected player on bankIdx is the human player
         this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
@@ -505,7 +478,6 @@ public class Game implements GUI2Game {
      */
     private void setupNextRound() {
         this.currPlayerIdx = 0;
-        System.out.println("Test output: " + this.stack.size() + " cards in stack");
 //        if(this.stack.isEmpty()) {
 //            if(this.nextRoundBank.isEmpty() && this.currentRoundBank.isEmpty()) {
 //                endRound();
@@ -606,7 +578,6 @@ public class Game implements GUI2Game {
         this.gui.showInChooseBox(currDomino);
         this.currDomino = currDomino;
         this.gui.deleteDomFromBank(CURRENT_BANK_IDX, this.currentRoundBank.getSelectedDominoIdx(this.players[HUMAN_PLAYER_IDX]));
-        Logger.getInstance().printAndSafe(currDomino + " put to rotation box");
     }
 
 
@@ -625,7 +596,6 @@ public class Game implements GUI2Game {
         // stack to String
         strbOutput.append("<" + Converter.STACK_IDENTIFIER + ">\n");
         for (int i = 0; i < this.stack.size(); i++) {
-            System.out.println("int i : " + i);
             strbOutput.append(this.stack.get(i));
             if(i <= this.stack.size() - 1) {
                 strbOutput.append(",");

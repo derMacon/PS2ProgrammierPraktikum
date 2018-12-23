@@ -104,7 +104,7 @@ public class Entry {
         } else {
             selectedPlayer = String.valueOf(this.selectedPlayer.getIdxInPlayerArray());
         }
-        return selectedPlayer + " " + this.domino.toString();
+        return selectedPlayer + " " + this.domino.toFile();
     }
 
     /**

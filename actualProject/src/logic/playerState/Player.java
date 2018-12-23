@@ -2,6 +2,7 @@ package logic.playerState;
 
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
+import logic.dataPreservation.Logger;
 import logic.logicTransfer.GUIConnector;
 import logic.token.Domino;
 import logic.token.Pos;
@@ -33,6 +34,16 @@ public abstract class Player implements Comparable {
      * that it is possible to display with its simple array index.
      */
     protected final int idxInPlayerArray;
+
+
+
+    private final String selectionLoggerFormat = "%s chose %s at index %d for %s round";
+
+    private final String depositLoggerFormat = "%s put %s %s to %s";
+
+
+
+
 
     /**
      * Constructor setting up the gui
@@ -218,8 +229,18 @@ public abstract class Player implements Comparable {
             // update gui
             this.gui.showOnGrid(this.idxInPlayerArray, playerSelectedDomino);
             this.gui.showPointsForPlayer(this.idxInPlayerArray, getBoardPoints());
+
+            // update logger
+            Logger.getInstance().printAndSafe(String.format(this.depositLoggerFormat, getName(),
+                    playerSelectedDomino.toString(),
+                    playerSelectedDomino.getStrAllignment(),
+                    playerSelectedDomino.getFstPos().toString())
+                    + "\n"
+            );
         }
     }
+
+    public abstract String getName();
 
     /**
      * Determines if a given domino has a defined position

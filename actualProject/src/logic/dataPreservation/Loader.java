@@ -122,7 +122,6 @@ public class Loader {
      */
     // TODO find out why never called when requested to write file
     public void saveFileAs(String txtFldInput) {
-        System.out.println("hello worldd");
         if(null == stage) {
             this.stage = new Stage();
         }
@@ -163,7 +162,6 @@ public class Loader {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(sb);
         return sb.toString();
     }
 

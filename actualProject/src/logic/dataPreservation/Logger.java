@@ -24,6 +24,8 @@ public class Logger {
      */
     private static final File DEFAULT_FILE = new File("./dataOutput/logFile.txt");
 
+    public static final String selectionLoggerFormat = "%s chose %s at index %d for %s round";
+
     /**
      * Path to dir where log data should be stored
      */
@@ -61,6 +63,8 @@ public class Logger {
     public void setPath(String path) {
         this.dir = new File(path);
     }
+
+
 
     // Actual logger method, prints the given message and then saves it to a given File
     public void printAndSafe(String inputLog) {

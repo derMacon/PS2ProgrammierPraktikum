@@ -168,7 +168,6 @@ public class JavaFXGUI implements GUIConnector {
     public void showPointsForPlayer(int ordPlayer, int boardPoints) {
         this.lblPlayerNameAndPoints[ordPlayer].setText("Spieler ");
         this.lblPlayerNameAndPoints[ordPlayer].setText("Spieler " + (ordPlayer + 1) + ": " + boardPoints + " Punkte");
-        System.out.println(boardPoints);
     }
 
 
@@ -307,7 +306,6 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void showOnGrid(int ordPlayer, Domino domino) {
-        System.out.println("show on grid -> javafxgui");
         ImageView[][] board = 0 == ordPlayer ? this.imgVwsPlayerBoard : this.imgWwsAIBoards[ordPlayer - 1];
         showCellOnGrid(board, domino.getFstPos(), domino.getFstVal().ordinal());
         showCellOnGrid(board, domino.getSndPos(), domino.getSndVal().ordinal());
@@ -503,7 +501,6 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void selectDomino(int ordBank, int idxDom, int ordPlayer) {
-        System.out.println("Select " + idxDom);
         ImageView[][] imgVwsGivenBank = Game.CURRENT_BANK_IDX == ordBank ? this.imgVwsCurrentBankSelection : this.imgVwsNextBankSelection;
         switch (ordPlayer) {
             case Game.HUMAN_PLAYER_IDX:

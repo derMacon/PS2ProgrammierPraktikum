@@ -642,12 +642,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void onClickPnSelected(MouseEvent event) {
         game.boxClicked();
-        System.out.println("Auswahlbox auswgewaehlt...");
     }
 
     @FXML
     private void onDragDetectedPnSelected(MouseEvent event) {
-        System.out.println("Drag");
         /* drag was detected, start a drag-and-drop gesture*/
         /* allow any transfer mode */
         Dragboard db = this.pnSelected.startDragAndDrop(TransferMode.MOVE);
