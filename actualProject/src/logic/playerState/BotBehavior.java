@@ -14,7 +14,7 @@ public interface BotBehavior {
      * @param bank the bank that the player will select from
      * @return the selected bank index
      */
-    Bank selectFromBank(Bank bank, int ordBank);
+    Bank selectFromBank(Bank bank, int ordBank, boolean displayOnGui);
 
     /**
      * Bot searches for a position on the board where it is possible to lay a domino.
@@ -25,7 +25,13 @@ public interface BotBehavior {
     Domino updateDominoPos(Domino domino);
 
     void doStandardTurn(Bank currBank, Bank nextBank);
+
+    void doLastTurn(Bank currBank);
     
-    Bank doInitialSelect(Bank currBank, int bankOrd); 
+    Bank doInitialSelect(Bank currBank, int bankOrd);
+
+    void updateSelectedDom(Bank currBank);
+
+
 
 }

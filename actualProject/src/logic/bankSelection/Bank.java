@@ -405,4 +405,7 @@ public class Bank {
         return isEqual;
     }
 
+    public Random getRand() {
+        return rand;
+    }
 }

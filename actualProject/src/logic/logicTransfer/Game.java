@@ -155,9 +155,16 @@ public class Game implements GUI2Game {
                     gameContent.getNextBank(), gameContent.getStack(), null);
 
 
-
             Board humanBoard = this.players[HUMAN_PLAYER_IDX].getBoard();
             loadGuiAfterLoadingFile(genDefaultPlayerTypeArray(this.players.length), humanBoard.getSizeX(), humanBoard.getSizeY());
+            // Selected Doms in Bank don't have any set position on each player's board -> must
+            // be set through calling updateSelectedDom(...)
+            for(Player player : this.players) {
+                if(player instanceof BotBehavior) {
+                    ((BotBehavior) player).updateSelectedDom(this.currentRoundBank);
+                    ((BotBehavior) player).updateSelectedDom(this.nextRoundBank);
+                }
+            }
         }
     }
 
@@ -174,10 +181,9 @@ public class Game implements GUI2Game {
      * Helping method, called for initializing the Testing / Loading
      * constructor. Necessary for avoiding code doubling in the Loading
      * constructor.
-     *
+     * // TODO javadoc parameters
      * @param gui              gui for the game
      * @param players          players participating in this game
-     * @param currPlayerIdx    index of the current player
      * @param currentRoundBank current round bank
      * @param nextRoundBank    next round bank
      * @param stack            stack of dominos used to fill banks
@@ -185,7 +191,7 @@ public class Game implements GUI2Game {
      * @return String message containing the error messages,
      * SUCCESSFUL_READ_MESSAGE if reading String was successful
      */
-    private String initTestingLoadingConstructor(GUIConnector gui, Player[] players, int currPlayerIdx,
+    private String initTestingLoadingConstructor(GUIConnector gui, Player[] players, int currBankIdx,
                                                  Bank currentRoundBank, Bank nextRoundBank, List<Domino> stack,
                                                  Domino currDomino) {
         this.gui = gui;
@@ -193,8 +199,10 @@ public class Game implements GUI2Game {
         this.currentRoundBank = currentRoundBank;
         this.nextRoundBank = nextRoundBank;
         this.stack = stack;
+        this.currPlayerIdx = 0;
+        this.currBankIdx = currBankIdx;
         this.currDomino = currDomino;
-        this.currPlayerIdx = currPlayerIdx;
+        setToChooseBox(currDomino);
 
         // TODO check if setting values was successful
         return Converter.SUCCESSFUL_READ_MESSAGE;
@@ -448,11 +456,18 @@ public class Game implements GUI2Game {
     private void setupCurrDomAndBotsDoTurn() {
         setToChooseBox(null);
         // bots do turns until round is over
+//        if(this.nextRoundBank.isEmpty()) {
         if(this.nextRoundBank.isEmpty()) {
-            this.currPlayerIdx = botsDoLastTurn(this.currPlayerIdx+1);
-            this.currentRoundBank = new Bank(4);
-            this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
-            endRound();
+            if(!this.nextRoundBank.isEmpty()) {
+                copyAndRemoveNextRoundBankToCurrentBank();
+                this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
+            }
+            this.currBankIdx = botsDoLastTurn(this.currBankIdx + 1);
+//            this.currentRoundBank.clearAllEntries();
+//            this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
+//            if(this.currBankIdx >= this.currentRoundBank.getBankSize()) {
+//                endRound();
+//            }
         } else {
 //            this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
             this.currBankIdx = botsDoTheirTurn(this.currBankIdx + 1);
@@ -507,43 +522,31 @@ public class Game implements GUI2Game {
         if(!this.stack.isEmpty()) {
             randomlyDrawNewDominosForNextRound();
         } else {
-            this.nextRoundBank = new Bank(this.players.length);
+            this.nextRoundBank.clearAllEntries();
             this.gui.setToBank(NEXT_BANK_IDX, nextRoundBank);
             setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[currPlayerIdx]));
         }
 
     }
 
-//    private void setupNextRound() {
-//        this.currPlayerIdx = 0;
-//        System.out.println("Test output: " + this.stack.size() + " cards in stack");
-//        if(this.stack.isEmpty()) {
-//            copyAndRemoveNextRoundBankToCurrentBank();
-//            // TODO delete currBank - preferably in method
-//            endRound();
-//        } else {
-//            copyAndRemoveNextRoundBankToCurrentBank();
-//            randomlyDrawNewDominosForNextRound();
-//        }
-//    }
 
     private int botsDoLastTurn(int bankIdx) {
+        if(bankIdx >= this.currentRoundBank.getBankSize()) {
+            endRound();
+        }
         Player currPlayerInstance = this.currentRoundBank.getSelectedPlayer(bankIdx);
         // Bots iterate until human player has to do his turn or the end of the bank is reached
-        if (currPlayerInstance instanceof BotBehavior && HUMAN_PLAYER_IDX != bankIdx && isValidPlayerIdx(bankIdx)) {
+        if (currPlayerInstance instanceof BotBehavior) {
             this.gui.showWhosTurn(currPlayerInstance.getIdxInPlayerArray());
-            ((BotBehavior) currPlayerInstance).doStandardTurn(this.currentRoundBank, this.nextRoundBank);
-            bankIdx++;
-            return botsDoLastTurn(bankIdx);
-        }
-        // end is not reached yet
-        if(bankIdx < 4 && this.currentRoundBank.getSelectedPlayer(bankIdx).getIdxInPlayerArray() == HUMAN_PLAYER_IDX) {
+            ((BotBehavior) currPlayerInstance).doLastTurn(this.currentRoundBank);
+            return botsDoLastTurn(bankIdx + 1);
+        } else {
             // selected player on bankIdx is the human player
             this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
             setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[HUMAN_PLAYER_IDX]));
         }
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
-        return bankIdx;
+        return bankIdx + 1;
     }
 
     private void copyAndRemoveNextRoundBankToCurrentBank() {
@@ -562,31 +565,21 @@ public class Game implements GUI2Game {
      */
     // TODO make private
     public void endRound() {
-        Logger.getInstance().printAndSafe("end round");
+        this.currentRoundBank.clearAllEntries();
+        this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
+        this.nextRoundBank.clearAllEntries();
+        this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
+        this.currDomino = null;
 
+        Logger.getInstance().printAndSafe("end round");
 
         StackPane root = new StackPane();
         root.getChildren().add(new Result(this.players).toTreeView());
         Stage primaryStage = new Stage(); 
         primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.setResizable(false);
         primaryStage.setTitle("Ergebnisse");
         primaryStage.show();
-
-
-//        TreeItem<String> rootItem = new TreeItem<String> ("Ranking");
-//        rootItem.setExpanded(true);
-//        for (int i = 1; i < 6; i++) {
-//            TreeItem<String> item = new TreeItem<String> ("Message" + i);
-//            rootItem.getChildren().add(item);
-//        }
-//        TreeView<String> tree = new TreeView<String>(rootItem);
-//        StackPane root = new StackPane();
-//        root.getChildren().add(new Result(this.players).toTreeView());
-//        Stage primaryStage = new Stage();
-//        primaryStage.setScene(new Scene(root, 300, 250));
-//        primaryStage.show();
-
-
     }
 
     // --- Human interaction ---

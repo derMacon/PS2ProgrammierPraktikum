@@ -304,15 +304,16 @@ public class Board {
 
 
     /**
-     * Lays a domino on the board
+     * Lays a domino on the board, if position equals null or if domino doesn't fit at the given
+     * position it will not be layed / disposed
      *
      * @param domino domino to lay on the board
      */
     public void lay(Domino domino) {
-        assert null != domino && fits(domino);
+        assert null != domino;
         Pos posFstTile = domino.getFstPos();
         Pos posSndTile = domino.getSndPos();
-        if (isValidPos(posFstTile) && isValidPos(posSndTile)) {
+        if (isValidPos(posFstTile) && isValidPos(posSndTile) && fits(domino)) {
             this.cells[posFstTile.x()][posFstTile.y()] = domino.getFstVal();
             this.cells[posSndTile.x()][posSndTile.y()] = domino.getSndVal();
         }
