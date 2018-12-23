@@ -19,6 +19,13 @@ public class Board {
 
     public static final int DOWN_MOVE = 3;
 
+    public enum Direction {
+        LEFT_MOVE,
+        UP_MOVE,
+        RIGHT_MOVE,
+        DOWN_MOVE
+    }
+
 
     /**
      * String representation for an empty cell

@@ -235,7 +235,6 @@ public abstract class Player implements Comparable {
                     playerSelectedDomino.toString(),
                     playerSelectedDomino.getStrAllignment(),
                     playerSelectedDomino.getFstPos().toString())
-                    + "\n"
             );
         }
     }
@@ -287,8 +286,12 @@ public abstract class Player implements Comparable {
     }
 
     public TreeItem<String> toTreeView() {
+        TreeItem<String> parent = new TreeItem<>("Spieler " + (this.idxInPlayerArray + 1) + " -> " + genAllDistrictPoints() + " Punkte insgesamt");
+        for(District currDistrict : this.districts) {
+            parent.getChildren().add(currDistrict.toTreeItem());
+        }
         // TODO schauen ob genAllDistrictpoints auch in game Klasse benoetigt werden kann.
-        return new TreeItem<>("Spieler " + (this.idxInPlayerArray + 1) + " -> " + genAllDistrictPoints() + " Punkte");
+        return parent;
     }
 
     @Override
@@ -313,5 +316,7 @@ public abstract class Player implements Comparable {
         final Player other = (Player) obj;
         return this.idxInPlayerArray == other.idxInPlayerArray;
     }
+
+
 
 }

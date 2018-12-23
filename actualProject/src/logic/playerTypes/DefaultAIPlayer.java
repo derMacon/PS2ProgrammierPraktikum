@@ -78,9 +78,10 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         bank.updateDomino(overallBestChoose.getIdxOnBank(), overallBestChoose.getDomWithPosAndRot());
         // actually select a domino from the bank
         bank.selectEntry(this, overallBestChoose.getIdxOnBank());
-        Logger.getInstance().printAndSafe(String.format(Logger.selectionLoggerFormat,
+        String roundIdentifier = ordBank == 0 ? "current" : "next";
+        Logger.getInstance().printAndSafe("\n" + String.format(Logger.selectionLoggerFormat,
                 getName(), overallBestChoose.getDomWithPosAndRot().toString(),
-                overallBestChoose.getIdxOnBank(), "next"));
+                overallBestChoose.getIdxOnBank(), roundIdentifier));
         // put domino on board without showing it on the gui
         this.board.lay(overallBestChoose.getDomWithPosAndRot());
         // update gui
@@ -114,17 +115,10 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     public Bank doInitialSelect(Bank currBank, int bankOrd) {
         Bank output = selectFromBank(currBank, bankOrd, true);
         Domino playerSelectedDomino = currBank.getPlayerSelectedDomino(this);
-        // update board -> has to be done to prevent the bot from laying the 
-        // second draft directly on the first domino 
+        // update board -> has to be done to prevent the bot from laying the
+        // second draft directly on the first domino
         this.board.lay(playerSelectedDomino);
-        Logger.getInstance().printAndSafe(String.format(Logger.selectionLoggerFormat,
-                getName(),
-                playerSelectedDomino,
-                currBank.getSelectedDominoIdx(this),
-                "current") + System.lineSeparator()
-        );
-
-        // update districts
+                // update districts
 //        this.districts = updatedDistricts(this.districts, playerSelectedDomino);
         return output; 
     }

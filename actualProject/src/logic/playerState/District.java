@@ -2,6 +2,7 @@ package logic.playerState;
 
 import java.util.*;
 
+import javafx.scene.control.TreeItem;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
@@ -216,5 +217,7 @@ public class District {
         return new District(copyTiles, copyPos);
     }
 
-
+    public TreeItem<String> toTreeItem() {
+        return new TreeItem<>( genPoints() + " Punkte" + "\t" + this.singleTiles.get(0).getDistrictType());
+    }
 }

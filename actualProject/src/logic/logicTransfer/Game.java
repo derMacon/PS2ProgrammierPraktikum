@@ -280,7 +280,7 @@ public class Game implements GUI2Game {
         this.gui.selectDomino(CURRENT_BANK_IDX, idx, HUMAN_PLAYER_IDX);
         Logger.getInstance().printAndSafe(String.format(Logger.selectionLoggerFormat,
                 this.players[HUMAN_PLAYER_IDX].getName(), this.currentRoundBank.getDomino(idx), idx,
-                "current") + "\n");
+                "current") );
 
         botsDoInitialSelect();
         randomlyDrawNewDominosForNextRound();
@@ -312,7 +312,7 @@ public class Game implements GUI2Game {
         this.gui.selectDomino(NEXT_BANK_IDX, idx, HUMAN_PLAYER_IDX);
         setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(humanPlayer));
         this.currPlayerIdx++;
-        Logger.getInstance().printAndSafe(String.format(Logger.selectionLoggerFormat,
+        Logger.getInstance().printAndSafe("\n" + String.format(Logger.selectionLoggerFormat,
                 humanPlayer.getName(), this.nextRoundBank.getDomino(idx).toString(),
                 idx, "next"));
     }
@@ -420,10 +420,12 @@ public class Game implements GUI2Game {
 
     private void botsDoInitialSelect() {
         for (int i = 1; i < this.players.length; i++) {
+
             // rest of the players HAVE to be bots
             this.currentRoundBank = ((BotBehavior) this.players[i]).doInitialSelect(currentRoundBank, CURRENT_BANK_IDX);
             // TODO insert code -> show Who's Turn
         }
+        Logger.getInstance().printAndSafe("\n");
     }
 
     // --- Do necessary turns / Setting up banks for next round ---

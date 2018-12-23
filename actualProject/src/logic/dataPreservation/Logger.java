@@ -5,7 +5,12 @@
  */
 package logic.dataPreservation;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 
 /**
  * Logger for the game. Uses the singleton pattern, so that there can only be one single instance of this logger.
@@ -25,6 +30,9 @@ public class Logger {
     private static final File DEFAULT_FILE = new File("./dataOutput/logFile.txt");
 
     public static final String selectionLoggerFormat = "%s chose %s at index %d for %s round";
+
+    public static final String CURR_ROUND_IDENTIFIER = "current";
+    public static final String NEXT_ROUND_IDENTIFIER = "next";
 
     /**
      * Path to dir where log data should be stored
@@ -78,8 +86,17 @@ public class Logger {
         // TODO insert code
     }
 
-    private void appendFileWithNewMove(String moveDescription) {
+    private void appendFileWithNewMove(String logInput) {
         // TODO insert code
+        try {
+            Writer outputStream = new BufferedWriter(new FileWriter(this.dir, true));
+            outputStream.write(logInput + "\n");
+            outputStream.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
