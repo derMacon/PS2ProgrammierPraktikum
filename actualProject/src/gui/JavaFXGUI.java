@@ -166,7 +166,6 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void showPointsForPlayer(int ordPlayer, int boardPoints) {
-        
         this.lblPlayerNameAndPoints[ordPlayer].setText("Spieler ");
         this.lblPlayerNameAndPoints[ordPlayer].setText("Spieler " + (ordPlayer + 1) + ": " + boardPoints + " Punkte");
         System.out.println(boardPoints);

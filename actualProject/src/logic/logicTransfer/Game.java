@@ -172,9 +172,11 @@ public class Game implements GUI2Game {
         // update boards
         for (int i = 0; i < this.players.length; i++) {
             this.gui.updatePlayer(this.players[i], i);
+            this.gui.showPointsForPlayer(i, this.players[i].getBoardPoints());
         }
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
         this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
+        this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
     }
 
     /**
