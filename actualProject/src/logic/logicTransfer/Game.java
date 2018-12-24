@@ -353,7 +353,7 @@ public class Game implements GUI2Game {
     }
 
     @Override
-    public void moveBoard(int dir) {
+    public void moveBoard(Board.Direction dir) {
         Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
         if (humanPlayer.getBoard().canMoveBoardToDir(dir) && (humanPlayer instanceof HumanPlayer)) {
             HumanPlayer humanInstance = (HumanPlayer) humanPlayer; // only Human player has a

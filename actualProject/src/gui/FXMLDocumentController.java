@@ -671,7 +671,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void moveBoardUp() {
-        this.game.moveBoard(Board.UP_MOVE);
+        this.game.moveBoard(Board.Direction.UP_MOVE);
     }
 
     /**
@@ -679,7 +679,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void moveBoardRight() {
-        this.game.moveBoard(Board.RIGHT_MOVE);
+        this.game.moveBoard(Board.Direction.RIGHT_MOVE);
     }
 
     /**
@@ -687,7 +687,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void moveBoardDown() {
-        this.game.moveBoard(Board.DOWN_MOVE);
+        this.game.moveBoard(Board.Direction.DOWN_MOVE);
     }
 
     /**
@@ -695,7 +695,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void moveBoardLeft() {
-        this.game.moveBoard(Board.LEFT_MOVE);
+        this.game.moveBoard(Board.Direction.LEFT_MOVE);
     }
 
 

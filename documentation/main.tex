@@ -1,0 +1,89 @@
+%\documentclass[11pt]{report}
+%\documentclass[a4paper, 11pt]{article}
+\documentclass[a4paper]{scrartcl}
+%\usepackage{fullpage}
+
+%Packages fuer die Darstellung von Quellcode
+\usepackage{beramono} %schoene Schriftart
+\usepackage{color}
+\usepackage{listings}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english, ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\usepackage{fancyhdr}
+
+\usepackage{blindtext}
+
+
+
+%Quellcodestyle Spezifikationen
+\definecolor{DarkPurple}{rgb}{0.4,0.1,0.4}
+\definecolor{DarkCyan}{rgb}{0.0,0.5,0.4}
+\definecolor{LightLime}{rgb}{0.3,0.5,0.4}
+\definecolor{Blue}{rgb}{0.0,0.0,1.0}
+
+\lstdefinestyle{CodeHighlighting} 
+{
+language=Java, %mit mehreren Sprachen moeglich, ermoeglicht Syntaxhighlighting
+columns=flexible,
+numbers=left,
+frame=single,
+frameround=tttt,
+showstringspaces=false,
+basicstyle=\footnotesize\ttfamily,
+keywordstyle=\bfseries\color{DarkPurple},
+commentstyle=\itshape\color{lightLime},
+stringstyle=\color{Blue}
+}
+
+
+\title{\includegraphics[width=\linewidth]{pics/LogoIconLargeV1}}
+\author{Silas Hoffmann, inf103088}
+\date{\today}
+
+
+\begin{document}
+\maketitle
+
+\vfill
+\begin{center}
+	Dokumentation
+	
+	\vspace{0.5cm}
+	\Large
+	\textbf{Programmierpraktikum}
+	\normalsize
+	
+	\vspace{0.3cm}
+	im Windersemester 2018/19
+	
+	\vspace{0.5cm}
+	Dozent: Prof. Dr. Andreas Häuslein
+	
+	\vfill
+	\small
+	Fachbereich Informatik
+	
+	\vspace{0.3cm}
+	Fachhochschule Wedel
+\end{center}
+
+
+\thispagestyle{empty}
+
+\newpage
+\tableofcontents
+\newpage
+
+\blindtext
+
+\input{test/neu}
+
+
+\end{document}

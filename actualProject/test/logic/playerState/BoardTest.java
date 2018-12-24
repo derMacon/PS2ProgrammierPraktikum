@@ -19,7 +19,7 @@ public class BoardTest {
                         "-- -- --\n" +
                         "-- -- --\n"
         );
-        Board actualOutputBoard = inputBoard.moveBoard(Board.LEFT_MOVE);
+        Board actualOutputBoard = inputBoard.moveBoard(Board.Direction.LEFT_MOVE);
         // new board reference
         assertNotSame(inputBoard, actualOutputBoard);
         // new cell reference
@@ -44,7 +44,7 @@ public class BoardTest {
                         "CC H1 --\n" +
                         "-- H2 --\n"
         );
-        Board actualOutputBoard = inputBoard.moveBoard(Board.LEFT_MOVE);
+        Board actualOutputBoard = inputBoard.moveBoard(Board.Direction.LEFT_MOVE);
         assertEquals(expectedOutputBoard, actualOutputBoard);
     }
 
@@ -60,7 +60,7 @@ public class BoardTest {
                         "H2 -- --\n" +
                         "-- -- --\n"
         );
-        Board actualOutputBoard = inputBoard.moveBoard(Board.UP_MOVE);
+        Board actualOutputBoard = inputBoard.moveBoard(Board.Direction.UP_MOVE);
         assertEquals(expectedOutputBoard, actualOutputBoard);
     }
 
@@ -76,7 +76,7 @@ public class BoardTest {
                         "-- H1 CC\n" +
                         "-- H2 --\n"
         );
-        Board actualOutputBoard = inputBoard.moveBoard(Board.RIGHT_MOVE);
+        Board actualOutputBoard = inputBoard.moveBoard(Board.Direction.RIGHT_MOVE);
         assertEquals(expectedOutputBoard, actualOutputBoard);
     }
 
@@ -92,7 +92,7 @@ public class BoardTest {
                         "-- H1 H2\n" +
                         "H0 CC --\n"
         );
-        Board actualOutputBoard = inputBoard.moveBoard(Board.DOWN_MOVE);
+        Board actualOutputBoard = inputBoard.moveBoard(Board.Direction.DOWN_MOVE);
         assertEquals(expectedOutputBoard, actualOutputBoard);
     }
 
@@ -105,10 +105,10 @@ public class BoardTest {
                         "-- CC --\n" +
                         "-- -- --\n"
         );
-        assertTrue(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.LEFT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.UP_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.RIGHT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.DOWN_MOVE));
     }
 
     @Test
@@ -118,10 +118,10 @@ public class BoardTest {
                         "H0 CC --\n" +
                         "-- -- --\n"
         );
-        assertFalse(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+        assertFalse(inputBoard.canMoveBoardToDir(Board.Direction.LEFT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.UP_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.RIGHT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.DOWN_MOVE));
     }
 
     @Test
@@ -131,10 +131,10 @@ public class BoardTest {
                         "-- CC --\n" +
                         "-- -- --\n"
         );
-        assertTrue(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
-        assertFalse(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.LEFT_MOVE));
+        assertFalse(inputBoard.canMoveBoardToDir(Board.Direction.UP_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.RIGHT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.DOWN_MOVE));
     }
 
     @Test
@@ -144,10 +144,10 @@ public class BoardTest {
                         "-- CC H0\n" +
                         "-- -- --\n"
         );
-        assertTrue(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
-        assertFalse(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.LEFT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.UP_MOVE));
+        assertFalse(inputBoard.canMoveBoardToDir(Board.Direction.RIGHT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.DOWN_MOVE));
     }
 
     @Test
@@ -157,10 +157,10 @@ public class BoardTest {
                         "-- CC --\n" +
                         "-- H0 --\n"
         );
-        assertTrue(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
-        assertFalse(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.LEFT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.UP_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.RIGHT_MOVE));
+        assertFalse(inputBoard.canMoveBoardToDir(Board.Direction.DOWN_MOVE));
     }
 
     @Test
@@ -170,10 +170,10 @@ public class BoardTest {
                         "-- CC H1\n" +
                         "-- H0 --\n"
         );
-        assertTrue(inputBoard.canMoveBoardToDir(Board.LEFT_MOVE));
-        assertTrue(inputBoard.canMoveBoardToDir(Board.UP_MOVE));
-        assertFalse(inputBoard.canMoveBoardToDir(Board.RIGHT_MOVE));
-        assertFalse(inputBoard.canMoveBoardToDir(Board.DOWN_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.LEFT_MOVE));
+        assertTrue(inputBoard.canMoveBoardToDir(Board.Direction.UP_MOVE));
+        assertFalse(inputBoard.canMoveBoardToDir(Board.Direction.RIGHT_MOVE));
+        assertFalse(inputBoard.canMoveBoardToDir(Board.Direction.DOWN_MOVE));
     }
 
     // --- 1. Constructor - used for game ---

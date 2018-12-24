@@ -1,3 +1,8 @@
 /build/
 /dist/
 /nbproject/private/
+*.aux
+*.dvi
+*.log
+*synctex.gz
+*.toc

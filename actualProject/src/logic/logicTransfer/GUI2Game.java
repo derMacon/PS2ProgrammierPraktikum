@@ -72,7 +72,7 @@ public interface GUI2Game {
     /**
      * Moves Board one box in the given direction
      */
-    void moveBoard(int dir);
+    void moveBoard(Board.Direction dir);
 
     /**
      * Saves the current game in a .txt file at the selected path

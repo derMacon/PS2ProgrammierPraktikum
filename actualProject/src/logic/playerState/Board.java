@@ -20,10 +20,17 @@ public class Board {
     public static final int DOWN_MOVE = 3;
 
     public enum Direction {
-        LEFT_MOVE,
-        UP_MOVE,
-        RIGHT_MOVE,
-        DOWN_MOVE
+        LEFT_MOVE("left"),
+        UP_MOVE("up"),
+        RIGHT_MOVE("right"),
+        DOWN_MOVE("down");
+
+        private final String description;
+
+        Direction(String description) {
+            this.description = description;
+        }
+
     }
 
 
@@ -467,9 +474,9 @@ public class Board {
      * @return new board reference (easier for other Bots to evaluate which dir to choose to
      * score max. points)
      */
-    public Board moveBoard(int direction) {
+    public Board moveBoard(Direction direction) {
         assert canMoveBoardToDir(direction);
-        boolean canMove;
+        Pos ccPos = findCCPos();
         Board outputBoard = new Board(this.sizeX, this.sizeY);
         switch (direction) {
             case LEFT_MOVE:
@@ -503,25 +510,27 @@ public class Board {
         return outputBoard;
     }
 
-    public boolean canMoveBoardToDir(int direction) {
+
+
+    public boolean canMoveBoardToDir(Direction direction) {
         return horizontalCheckPossibleBoardMove(direction) || verticalCheckPossibleBoardMove(direction);
     }
 
-    private boolean horizontalCheckPossibleBoardMove(int direction) {
+    private boolean horizontalCheckPossibleBoardMove(Direction direction) {
         boolean columnIsEmpty;
         int xIndex;
         // determine which column should be examined
-        if (LEFT_MOVE == direction) {
+        if (Direction.LEFT_MOVE== direction) {
             xIndex = 0;
-        } else if (RIGHT_MOVE == direction) {
+        } else if (Direction.RIGHT_MOVE == direction) {
             xIndex = this.sizeX - 1;
         } else {
             return false; // not a vertical direction
         }
         // determine which column should be examined
-        if (LEFT_MOVE == direction) {
+        if (Direction.LEFT_MOVE == direction) {
             xIndex = 0;
-        } else if (RIGHT_MOVE == direction) {
+        } else if (Direction.RIGHT_MOVE == direction) {
             xIndex = this.sizeX - 1;
         } else {
             return false; // not a vertical direction
@@ -535,13 +544,13 @@ public class Board {
         return columnIsEmpty;
     }
 
-    private boolean verticalCheckPossibleBoardMove(int direction) {
+    private boolean verticalCheckPossibleBoardMove(Direction direction) {
         boolean rowIsEmpty;
         int yIndex;
         // determine which row should be examined
-        if (UP_MOVE == direction) {
+        if (Direction.UP_MOVE == direction) {
             yIndex = 0;
-        } else if (DOWN_MOVE == direction) {
+        } else if (Direction.DOWN_MOVE == direction) {
             yIndex = this.sizeY - 1;
         } else {
             return false; // not a vertical direction
