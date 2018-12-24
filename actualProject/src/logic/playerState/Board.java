@@ -1,6 +1,7 @@
 package logic.playerState;
 
 import logic.bankSelection.Choose;
+import logic.dataPreservation.Logger;
 import logic.token.DistrictType;
 import logic.token.Domino;
 import logic.token.Pos;
@@ -476,7 +477,6 @@ public class Board {
      */
     public Board moveBoard(Direction direction) {
         assert canMoveBoardToDir(direction);
-        Pos ccPos = findCCPos();
         Board outputBoard = new Board(this.sizeX, this.sizeY);
         switch (direction) {
             case LEFT_MOVE:
@@ -510,7 +510,18 @@ public class Board {
         return outputBoard;
     }
 
-
+    public findPos(SingleTile tile) {
+        assert null != tile;
+        Pos output = null;
+        for (int x = 0; x < this.getSizeX(); x++) {
+            for (int y = 0; y < this.getSizeY(); y++) {
+                if(this.cells[x][y] == tile) {
+                    output = new Pos(x, y);
+                }
+            }
+        }
+        return output;
+    }
 
     public boolean canMoveBoardToDir(Direction direction) {
         return horizontalCheckPossibleBoardMove(direction) || verticalCheckPossibleBoardMove(direction);

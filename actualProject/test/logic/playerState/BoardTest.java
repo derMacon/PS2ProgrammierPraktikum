@@ -580,4 +580,25 @@ public class BoardTest {
     }
 
 
+    // --- findPos ---
+    @Test (expected = AssertionError.class)
+    public void testFindPos_NullParam() {
+        new Board("CC").findPos(SingleTile.P0);
+    }
+
+    @Test
+    public void testFindPos_Valid() {
+        Pos expOutput = new Pos(2, 1);
+        Pos actOutput = new Board("-- -- -- \n -- -- CC").findPos(CC);
+        assertEquals(expOutput, actOutput);
+    }
+
+
+    @Test
+    public void testFindPos_Invalid() {
+        Pos expOutput = null;
+        Pos actOutput = new Board("-- -- -- \n -- -- CC").findPos(P0);
+        assertEquals(expOutput, actOutput);
+    }
+
 }
