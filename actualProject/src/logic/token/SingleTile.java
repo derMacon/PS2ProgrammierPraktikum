@@ -28,7 +28,8 @@ public enum SingleTile {
     /**
      * Constructor to set the district type of the values.
      *
-     * @param disctrictType
+     * @param disctrictType district type of the single tile
+     * @param tokenCnt number of tokens on the single tile
      */
     SingleTile(DistrictType disctrictType, int tokenCnt) {
         this.districtType = disctrictType;
@@ -38,7 +39,7 @@ public enum SingleTile {
     /**
      * Getter for the overall district type.
      *
-     * @return
+     * @return overall district type for the single tile
      */
     public DistrictType getDistrictType() {
         return this.districtType;

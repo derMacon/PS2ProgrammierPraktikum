@@ -218,6 +218,7 @@ public class District {
     }
 
     public TreeItem<String> toTreeItem() {
-        return new TreeItem<>( genPoints() + " Punkte" + "\t" + this.singleTiles.get(0).getDistrictType());
+        return new TreeItem<>( genPoints() + " Punkte" + "\t"
+                + this.singleTiles.get(0).getDistrictType());
     }
 }

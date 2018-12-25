@@ -62,7 +62,8 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         List<Choose> bestChoosesForEachPossibleBankSlot = new LinkedList<>();
         for (int i = 0; i < bank.getBankSize(); i++) {
             if (bank.isNotSelected(i)) {
-                bestChoosesForEachPossibleBankSlot.add(genBestChoose(bankCopy.getDomino(i).copy(), i));
+                bestChoosesForEachPossibleBankSlot.add(
+                        genBestChoose(bankCopy.getDomino(i).copy(), i));
             }
         }
         // evaluate which choose is best
@@ -75,7 +76,8 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
             overallBestChoose = Choose.max(bestChoosesForEachPossibleBankSlot, this.board);
         }
         // update domino (rotation and position) of the best choose
-        bank.updateDomino(overallBestChoose.getIdxOnBank(), overallBestChoose.getDomWithPosAndRot());
+        bank.updateDomino(overallBestChoose.getIdxOnBank(),
+                overallBestChoose.getDomWithPosAndRot());
         // actually select a domino from the bank
         bank.selectEntry(this, overallBestChoose.getIdxOnBank());
         String roundIdentifier = ordBank == 0 ? "current" : "next";
@@ -88,8 +90,8 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         if(displayOnGui) {
             this.gui.selectDomino(ordBank, overallBestChoose.getIdxOnBank(), this.idxInPlayerArray);
         }
-        // return the bank, although bank reference is modified internally (just to make sure it is evident, pos and rot
-        // modified)
+        // return the bank, although bank reference is modified internally
+        // (just to make sure it is evident, pos and rot modified)
         return bank;
     }
 
@@ -102,8 +104,8 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         if(null != dom) {
             temp = new Bank(new Entry[]{new Entry(dom)},
                     currBank.getRand());
-            Domino tempDom =
-                    selectFromBank(temp, Game.CURRENT_BANK_IDX, false).getPlayerSelectedDomino(this);
+            Domino tempDom = selectFromBank(temp, Game.CURRENT_BANK_IDX, false).
+                            getPlayerSelectedDomino(this);
 
             dom.setPos(tempDom.getFstPos());
             dom.setRotation(tempDom.getRot());
@@ -128,7 +130,8 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // nextBank reference will be modified
         selectFromBank(nextBank, Game.NEXT_BANK_IDX, true);
         Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
-        this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX, currBank.getSelectedDominoIdx(this));
+        this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX,
+                currBank.getSelectedDominoIdx(this));
 
         showOnBoard(playersSelectedDomino);
     }

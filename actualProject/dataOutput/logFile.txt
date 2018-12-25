@@ -509,3 +509,513 @@ BOT4 put [H1,S0] horizontal to (3,2)
 
 BOT3 chose [A0,H1] at index 3 for next round
 BOT3 put [P0,A1] vertical to (1,2)
+2018-12-25T13:03:41.916+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+HUMAN dragged center to (2,3)
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T13:12:13.617+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T13:12:13.617+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T13:12:13.617+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T13:12:13.617+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T13:12:13.617+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-25T13:12:13.617+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,A0] at index 2 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,A0] at index 1 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T13:12:53.558+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T13:12:53.558+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T13:12:53.558+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T13:12:53.558+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T13:12:53.558+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-25T13:12:53.558+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,A0] at index 2 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,A0] at index 1 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T15:16:37.794+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T15:16:37.794+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T15:16:37.794+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T15:16:37.794+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T15:16:37.794+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-25T15:16:37.794+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,A0] at index 2 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,A0] at index 1 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T16:25:25.355+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T16:25:25.355+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T16:25:25.355+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T16:25:25.355+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T16:25:25.355+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-25T16:25:25.355+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,A0] at index 2 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,A0] at index 1 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T16:25:34.513+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T16:25:34.513+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T16:25:34.513+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T16:25:34.513+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+2018-12-25T16:25:34.513+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-25T16:25:34.513+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,A0] at index 2 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,A0] at index 1 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)

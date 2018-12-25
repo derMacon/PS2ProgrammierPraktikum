@@ -114,8 +114,8 @@ public class Domino implements Comparable {
 
     /**
      * creates a domino with a given tile and rotation
-     * @param tiles
-     * @param rot
+     * @param tiles tiles of the domino
+     * @param rot rotation of the domino
      */
     public Domino(Tiles tiles, int rot) {
         this(tiles, DEFAULT_POS, rot);
@@ -129,15 +129,7 @@ public class Domino implements Comparable {
         this(tiles, DEFAULT_POS, DEFAULT_ROT);
     }
 
-    /**
-     * Copy constructor, used for deep copyWithoutSelection for generating the potential points on the board (DefaultAIPlayer)
-     * @param domino domino to copyWithoutSelection
-     */
-//    public Domino(Domino domino) {
-//        this(domino.tiles);
-//    }
-
-    /**
+     /**
      * gets the tile
      *
      * @return the tile
@@ -147,7 +139,7 @@ public class Domino implements Comparable {
     }
 
     /**
-     * gets the rotation
+     * Getter for the rotation
      *
      * @return the rotation
      */
@@ -155,6 +147,11 @@ public class Domino implements Comparable {
         return rotation;
     }
 
+    /**
+     * Generates a String representing the rotation of a domino
+     * @return STR_HORI when domino is not rotated or is rotated twice, STR_VERTI if the domino is
+     * rotated once or three times.
+     */
     public String getStrAllignment() {
         return this.rotation % 2 == 0 ? STR_HORI : STR_VERTI;
     }
@@ -177,7 +174,8 @@ public class Domino implements Comparable {
     public DistrictType genTileDistrictType(int idx) {
         DistrictType output = null;
         if (FST_TILE_IDX == idx || SND_TILE_IDX == idx) {
-            output = FST_TILE_IDX == idx ? this.tiles.getFst().getDistrictType() : this.tiles.getSnd().getDistrictType();
+            output = FST_TILE_IDX == idx ? this.tiles.getFst().getDistrictType()
+                    : this.tiles.getSnd().getDistrictType();
         }
         return output;
     }
@@ -189,7 +187,7 @@ public class Domino implements Comparable {
      */
     public Domino incRot() {
         this.rotation++;
-        this.rotation %= 4;
+        this.rotation %= ROTATION_CNT;
         return this;
     }
 
@@ -214,7 +212,7 @@ public class Domino implements Comparable {
     /**
      * Getter for the first position of the domino (top / left tile)
      *
-     * @return
+     * @return the position of the first domino tile
      */
     public Pos getFstPos() {
         return this.posFst;
@@ -222,7 +220,7 @@ public class Domino implements Comparable {
 
     /**
      * Getter for the second position of the domino (bottom / right tile)
-     * @return
+     * @return the position of the second domino
      */
     public Pos getSndPos() {
         if (null == this.posFst) {
@@ -233,11 +231,13 @@ public class Domino implements Comparable {
         int y = this.posFst.y();
         switch (rotation) {
             case 0:
-            case 2: x = this.posFst.x() + 1;
+            case 2:
+                x = this.posFst.x() + 1;
                 y = this.posFst.y();
                 break;
             case 1:
-            case 3: x = this.posFst.x();
+            case 3:
+                x = this.posFst.x();
                 y = this.posFst.y() + 1;
                 break;
             default:
@@ -276,8 +276,9 @@ public class Domino implements Comparable {
      * - domino a with the reference -> #124; value -> HOHO_VAL14; rotation -> 0
      * Both dominoes are equal
      *
-     * @param obj
-     * @return
+     * @param obj object to evaluate
+     * @return true if the given arg is a domino with the same tile comibination (rotation may
+     * differ)
      */
     @Override
     public boolean equals(Object obj) {
@@ -288,12 +289,16 @@ public class Domino implements Comparable {
             return false;
         }
         final Domino other = (Domino) obj;
-        return (this.tiles.getFst() == other.tiles.getFst() || this.tiles.getFst() == other.tiles.getSnd())
-                && (this.tiles.getSnd() == other.tiles.getFst() || this.tiles.getSnd() == other.tiles.getSnd());
+        return (this.tiles.getFst() == other.tiles.getFst()
+                || this.tiles.getFst() == other.tiles.getSnd())
+                && (this.tiles.getSnd() == other.tiles.getFst()
+                || this.tiles.getSnd() == other.tiles.getSnd());
     }
 
+    @Override
     public String toString() {
-        return STR_OPENING_TAG + this.getFstVal() + STR_SEPARATOR + this.getSndVal() + STR_CLOSING_TAG;
+        return STR_OPENING_TAG + this.getFstVal() + STR_SEPARATOR + this.getSndVal()
+                + STR_CLOSING_TAG;
     }
 
     /**
@@ -306,10 +311,19 @@ public class Domino implements Comparable {
         return tiles.toString();
     }
 
+    /**
+     * Evaluates if the given int value represents a valid rotation count
+     * @param rot rotation to be evaluated
+     * @return true if given value represents a valid rotation
+     */
     private boolean isValidRot(int rot) {
         return 0 <= rot && ROTATION_CNT > rot;
     }
 
+    /**
+     * Setter for the rotation
+     * @param rotation rotation to be set for the current domino
+     */
     public void setRotation(int rotation) {
         this.rotation = rotation;
     }
@@ -326,7 +340,7 @@ public class Domino implements Comparable {
     @Override
     public int compareTo(Object o) {
         assert null != o && (o instanceof Domino);
-        Domino other = (Domino)o;
+        Domino other = (Domino) o;
         return this.tiles.getValue() - other.tiles.getValue();
     }
     

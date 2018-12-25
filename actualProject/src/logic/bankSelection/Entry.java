@@ -7,8 +7,8 @@ import logic.token.Tiles;
 import java.util.List;
 
 /**
- * Class that implements an Entry of a bank. An entry consists out of a reference to a domino and a reference to the
- * player which selected this specific domino. Both fields may be null.
+ * Class that implements an Entry of a bank. An entry consists out of a reference to a domino and a
+ * reference to the player which selected this specific domino. Both fields may be null.
  */
 public class Entry {
 
@@ -30,7 +30,9 @@ public class Entry {
 
     /**
      * Constructor of this class
-     * @param domino domino to be stored in the bank entry and later be selected by a player participating in the game.
+     *
+     * @param domino         domino to be stored in the bank entry and later be selected by a player
+     *                       participating in the game.
      * @param selectedPlayer player who selected the domino of the bank entry
      */
     public Entry(Domino domino, Player selectedPlayer) {
@@ -39,13 +41,22 @@ public class Entry {
     }
 
     /**
-     * Constructor used in the actual game. Its setting a the domino reference but leaves out the player reference
+     * Constructor used in the actual game. Its setting a the domino reference but leaves out the
+     * player reference
+     *
      * @param domino domino stored in the bank entry
      */
     public Entry(Domino domino) {
         this(domino, null);
     }
 
+    /**
+     * Entry for setting up preallocation in form of a String
+     *
+     * @param preallocation the preallocation follows the the following structure: "<idx of
+     *                      player in player array> <domino in String format>"
+     * @param players       list of players needed to set the reference in the entry
+     */
     public Entry(String preallocation, List<Player> players) {
         String[] components = preallocation.split(BLANK_SEPERATOR);
 
@@ -61,7 +72,8 @@ public class Entry {
 
     /**
      * Getter for the domino of this entry
-     * @return
+     *
+     * @return domino reference
      */
     public Domino getDomino() {
         return domino;
@@ -69,6 +81,7 @@ public class Entry {
 
     /**
      * Getter for the player which selected this bank entry
+     *
      * @return reference to the which selected this bank entry
      */
     public Player getSelectedPlayer() {
@@ -77,6 +90,7 @@ public class Entry {
 
     /**
      * Setter for the domino
+     *
      * @param dom domino to be setted
      */
     public void setDomino(Domino dom) {
@@ -85,6 +99,7 @@ public class Entry {
 
     /**
      * Setter for the player reference of this bank entry
+     *
      * @param player player to select this bank entry
      */
     public void selectEntry(Player player) {
@@ -93,13 +108,14 @@ public class Entry {
 
     /**
      * Generates a String that can be saved in a .txt document
+     *
      * @return String representation of this object
      */
     @Override
     public String toString() {
         // TODO tertiary operator
         String selectedPlayer;
-        if(null == this.selectedPlayer) {
+        if (null == this.selectedPlayer) {
             selectedPlayer = "-";
         } else {
             selectedPlayer = String.valueOf(this.selectedPlayer.getIdxInPlayerArray());
@@ -109,6 +125,7 @@ public class Entry {
 
     /**
      * Generates a Entry from a given String
+     *
      * @param input input String from which a new Entry will be generated
      * @return Entry object
      */
@@ -118,8 +135,10 @@ public class Entry {
     }
 
     /**
-     * Provides a copyWithoutSelection, where the domino is copied with a real deep copyWithoutSelection but the player is not. It is only necessary to
-     * copyWithoutSelection the domino, because it will later on be modified.
+     * Provides a copyWithoutSelection, where the domino is copied with a real deep
+     * copyWithoutSelection but the player is not. It is only necessary to copyWithoutSelection the
+     * domino, because it will later on be modified.
+     *
      * @return copyWithoutSelection of the entry
      */
     public Entry copy() {
@@ -134,19 +153,16 @@ public class Entry {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        final Entry other = (Entry)obj;
-        // TODO loeschen, mit Vorsicht zu geniessen -> Nicht Nullpointer resistent.
-//        boolean debugDom = this.domino.getTile() == other.domino.getTile();
-//        boolean debugPl = this.selectedPlayer.getIdxInPlayerArray() == other.selectedPlayer.getIdxInPlayerArray();
-
+        final Entry other = (Entry) obj;
+        // TODO mit Vorsicht zu geniessen -> Nicht Nullpointer resistent.
         // Players can be empty if entry wasn't selected in the previous turns
         return null != this.selectedPlayer && null != other.selectedPlayer
                 // players have to be the same
-                && this.selectedPlayer.getIdxInPlayerArray() == other.selectedPlayer.getIdxInPlayerArray()
+                && this.selectedPlayer.getIdxInPlayerArray()
+                == other.selectedPlayer.getIdxInPlayerArray()
                 // domino tiles have to be match their token not the reference
                 && this.domino.equals(other.domino);
 //                && this.domino.getTile() == other.domino.getTile();
-
     }
 
 }

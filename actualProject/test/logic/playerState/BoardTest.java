@@ -583,7 +583,7 @@ public class BoardTest {
     // --- findPos ---
     @Test (expected = AssertionError.class)
     public void testFindPos_NullParam() {
-        new Board("CC").findPos(SingleTile.P0);
+        new Board("CC").findPos(null);
     }
 
     @Test

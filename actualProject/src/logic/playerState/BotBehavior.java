@@ -19,8 +19,9 @@ public interface BotBehavior {
     /**
      * Bot searches for a position on the board where it is possible to lay a domino.
      *
-     * @param domino domino with an updated position where it is possible to lay a domino on the board. If he chooses
-     *               to dispose the domino or if there is no valid position possible a null pointer will be returned.
+     * @param domino domino with an updated position where it is possible to lay a domino on the
+     *               board. If he chooses to dispose the domino or if there is no valid position
+     *               possible a null pointer will be returned.
      */
     Domino updateDominoPos(Domino domino);
 

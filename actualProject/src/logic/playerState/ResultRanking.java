@@ -60,7 +60,7 @@ public class ResultRanking {
         return null == this.rankedPlayers || this.rankedPlayers.isEmpty();
     }
 
-    public TreeItem<String> genTreeItem() {
+    public TreeItem<String> toTreeItem() {
         TreeItem<String> parent = new TreeItem<>(this.rankingPosition + ". Platz");
         parent.setExpanded(true);
         for(Player currPlayer : this.rankedPlayers) {

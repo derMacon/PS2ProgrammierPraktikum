@@ -6,6 +6,9 @@ import logic.token.Domino;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Class that implements the selection of a domino a player has chosen.
+ */
 public class Choose {
 
     /**
@@ -33,7 +36,9 @@ public class Choose {
      * Constructor setting both fields
      *
      * @param domWithPosAndRot       Domino with a position and rotation
-     * @param potentialPointsOnBoard sum of potential points for domino when layed at the right pos / rot
+     * @param potentialPointsOnBoard sum of potential points for domino when layed at the right pos
+     *                               / rot
+     * @param idxOnBank index of the domino on the bank
      */
     public Choose(Domino domWithPosAndRot, int potentialPointsOnBoard, int idxOnBank) {
         this.domWithPosAndRot = domWithPosAndRot;
@@ -44,7 +49,7 @@ public class Choose {
     /**
      * Getter for the domino
      *
-     * @return
+     * @return domino of the chose with its position and rotation
      */
     public Domino getDomWithPosAndRot() {
         return this.domWithPosAndRot;
@@ -53,7 +58,7 @@ public class Choose {
     /**
      * Getter for the points
      *
-     * @return
+     * @return potential points on board
      */
     public int getPotentialPointsOnBoard() {
         return this.potentialPointsOnBoard;
@@ -72,24 +77,10 @@ public class Choose {
      * Compares the given chose objects and returns the object with the highest number of points
      *
      * @param chooseDom chose objects that will be examined, objects may be null
+     * @param board board from which the most efficient chose will be generated from
+     *
      * @return the object with the highest number of points, null if list is empty
      */
-//    public static Choose max(List<Choose> chooseDom) {
-//        assert null != chooseDom;
-//        int maxPoints = INIT_VALUE_MAX_POINTS;
-//        Domino lestValue;
-//        Choose output = null;
-//
-//        for(Choose currChoose : chooseDom) {
-//            // evaluates possible points
-//            if(currChoose.potentialPointsOnBoard > maxPoints) {
-//                   output = currChoose;
-//                   maxPoints = currChoose.potentialPointsOnBoard;
-//            }
-//        }
-//        // TODO situation for tie -> Very Important. Write tests
-//        return output;
-//    }
     public static Choose max(List<Choose> chooseDom, Board board) {
         assert null != chooseDom && null != board;
         if (chooseDom.isEmpty()) {
@@ -98,7 +89,8 @@ public class Choose {
         int maxPoints = INIT_VALUE_MAX_POINTS;
         List<Choose> possibleOutput = new LinkedList<>();
         for (Choose currChoose : chooseDom) {
-            if (null != currChoose.getDomWithPosAndRot().getFstPos() && currChoose.potentialPointsOnBoard >= maxPoints) {
+            if (null != currChoose.getDomWithPosAndRot().getFstPos()
+                    && currChoose.potentialPointsOnBoard >= maxPoints) {
                 // if new highscore -> output list reseted
                 if (currChoose.potentialPointsOnBoard > maxPoints) {
                     possibleOutput = new LinkedList<>();
@@ -108,7 +100,8 @@ public class Choose {
             }
         }
         // TODO situation for tie -> Very Important. Write tests
-        return possibleOutput.size() == 1 ? possibleOutput.get(0) : genMostEfficientChoose(possibleOutput, board);
+        return possibleOutput.size() == 1 ? possibleOutput.get(0)
+                : genMostEfficientChoose(possibleOutput, board);
     }
 
 
@@ -137,6 +130,11 @@ public class Choose {
         return isEfficient ? currChoose : input.get(0);
     }
 
+    /**
+     * Evaluates if a list of choose objects is sorted or not
+     * @param input list of choose object to be evaluated
+     * @return true if list is sorted or if it's empty
+     */
     public static boolean isSorted(List<Choose> input) {
         if (input.isEmpty()) {
             return true;
@@ -178,6 +176,11 @@ public class Choose {
                 && this.potentialPointsOnBoard == other.potentialPointsOnBoard;
     }
 
+    /**
+     * Generates a choose object with the lowest possible domino that is available on the given bank
+     * @param bank bank from which the lowest domino will be used to generate a new choose object
+     * @return choose object with the lowest possible domino that is available on the given bank
+     */
     public static Choose genLowOrderChoose(Bank bank) {
         int idxOnBank = 0;
         Choose output = null;

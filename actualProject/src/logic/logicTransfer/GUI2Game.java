@@ -5,10 +5,8 @@
  */
 package logic.logicTransfer;
 
-import com.sun.jndi.toolkit.url.Uri;
 import logic.playerState.Board;
 import logic.playerTypes.PlayerType;
-import logic.token.Domino;
 import logic.token.Pos;
 
 import java.net.URI;

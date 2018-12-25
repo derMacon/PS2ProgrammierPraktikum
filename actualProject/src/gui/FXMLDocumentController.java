@@ -44,12 +44,14 @@ public class FXMLDocumentController implements Initializable {
      */
     public static final Image BANK_BOX_TEXTURE = new Image("gui/textures/LargeBoxV1Alpha.png");
 
-    public static final Image LARGE_BOX_OUTLAY_TEXTURE = new Image("gui/textures/LargeBoxV3Alpha.png");
+    public static final Image LARGE_BOX_OUTLAY_TEXTURE =
+            new Image("gui/textures/LargeBoxV3Alpha.png");
 
     /**
      * Background for the selection box containing the current- / nextRoundBank (rotated)
      */
-    public static final Image BANK_BOX_TEXTURE_ROTATED = new Image("gui/textures/LargeBoxV1AlphaRotated.png");
+    public static final Image BANK_BOX_TEXTURE_ROTATED =
+            new Image("gui/textures/LargeBoxV1AlphaRotated.png");
 
     /**
      * Overall Background for the whole main window
@@ -59,7 +61,8 @@ public class FXMLDocumentController implements Initializable {
     /**
      * Background for the individual player boards
      */
-    public static final Image BOARD_BACKGROUND_TEXTURE = new Image("gui/textures/SelectedBoxV5Alpha.png");
+    public static final Image BOARD_BACKGROUND_TEXTURE =
+            new Image("gui/textures/SelectedBoxV5Alpha.png");
 
     /**
      * Background for the rotation box
@@ -69,12 +72,14 @@ public class FXMLDocumentController implements Initializable {
     /**
      * Texture for the vertical seperatorors between the different secotions of the window
      */
-    public static final Image SEPERATOR_TEXTURE_VERTICAL = new Image("gui/textures/SeperatorV2Alpha.png");
+    public static final Image SEPERATOR_TEXTURE_VERTICAL =
+            new Image("gui/textures/SeperatorV2Alpha.png");
 
     /**
      * Texture for the horizontal seperator between the different secotions of the window
      */
-    public static final Image SEPERATOR_TEXTURE_HORIZONTAL = new Image("gui/textures/SeperatorV2AlphaRotated.png");
+    public static final Image SEPERATOR_TEXTURE_HORIZONTAL =
+            new Image("gui/textures/SeperatorV2AlphaRotated.png");
 
     /**
      * Texture for the chip representing the selection of player 1

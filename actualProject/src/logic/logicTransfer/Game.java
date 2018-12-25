@@ -551,15 +551,17 @@ public class Game implements GUI2Game {
         this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
         this.currDomino = null;
 
-        Logger.getInstance().printAndSafe("end round");
+        Result res = new Result(this.players);
 
         StackPane root = new StackPane();
-        root.getChildren().add(new Result(this.players).toTreeView());
-        Stage primaryStage = new Stage(); 
+        root.getChildren().add(res.toTreeView());
+        Stage primaryStage = new Stage();
         primaryStage.setScene(new Scene(root, 300, 250));
         primaryStage.setResizable(false);
         primaryStage.setTitle("Ergebnisse");
         primaryStage.show();
+
+        Logger.getInstance().printAndSafe("round ended\n" + res.toString());
     }
 
     // --- Human interaction ---

@@ -1,7 +1,6 @@
 package logic.playerState;
 
 import logic.bankSelection.Choose;
-import logic.dataPreservation.Logger;
 import logic.token.DistrictType;
 import logic.token.Domino;
 import logic.token.Pos;
@@ -10,6 +9,10 @@ import logic.token.SingleTile;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Class implements a players board containing cells with Tiles where the dominos can be layed on
+ * to.
+ */
 public class Board {
 
     public static final int LEFT_MOVE = 0;
@@ -20,6 +23,9 @@ public class Board {
 
     public static final int DOWN_MOVE = 3;
 
+    /**
+     * Directions the board can be dragged to
+     */
     public enum Direction {
         LEFT_MOVE("left"),
         UP_MOVE("up"),
@@ -28,6 +34,11 @@ public class Board {
 
         private final String description;
 
+        /**
+         * Constructor combining the enum members with their corresponding String representations
+         *
+         * @param description String representation for the directions
+         */
         Direction(String description) {
             this.description = description;
         }
@@ -74,9 +85,43 @@ public class Board {
         this.cells = fillEmptyCellsWithTile(this.cells);
     }
 
+    /**
+     * Constructor setting a string as the board. Single chars represent the
+     * ordinal values of the SingleTiles in the individual cells. Used for
+     * testing. Empty String is not allowed (Assertion Error)
+     *
+     * @param input String representing the ordinal values of the individual
+     *              board elements. -1 for an empty cell.
+     */
+    public Board(String input) {
+        assert input != null && input.length() > 0;
+        // filled input String
+        String[] lines = input.split("\n");
+        String[][] inputCells = new String[lines.length][];
+        for (int i = 0; i < lines.length; i++) {
+            inputCells[i] = lines[i].trim().split("\\s+");
+        }
+
+        // Setting the actual SingleTile cells field
+        this.sizeX = inputCells[0].length;
+        this.sizeY = inputCells.length;
+        this.cells = new SingleTile[sizeX][sizeY];
+        for (int y = 0; y < sizeY; y++) {
+            assert inputCells[y].length == sizeX;
+            for (int x = 0; x < sizeX; x++) {
+                String currentElement = inputCells[y][x];
+                if (currentElement.equals(STRING_EMPTY_CELL)) {
+                    cells[x][y] = SingleTile.EC;
+                } else {
+                    this.cells[x][y] = SingleTile.valueOf(currentElement);
+                }
+            }
+        }
+    }
 
     /**
-     * Copy constructor, used for deep copyWithoutSelection for generating the potential points on the board (DefaultAIPlayer)
+     * Copy constructor, used for deep copyWithoutSelection for generating the potential points on
+     * the board (DefaultAIPlayer)
      *
      * @param other board to copyWithoutSelection
      */
@@ -131,40 +176,6 @@ public class Board {
     }
 
     /**
-     * Constructor setting a string as the board. Single chars represent the
-     * ordinal values of the SingleTiles in the individual cells. Used for
-     * testing. Empty String is not allowed (Assertion Error)
-     *
-     * @param input String representing the ordinal values of the individual
-     *              board elements. -1 for an empty cell.
-     */
-    public Board(String input) {
-        assert input != null && input.length() > 0;
-        // filled input String
-        String[] lines = input.split("\n");
-        String[][] inputCells = new String[lines.length][];
-        for (int i = 0; i < lines.length; i++) {
-            inputCells[i] = lines[i].trim().split("\\s+");
-        }
-
-        // Setting the actual SingleTile cells field
-        this.sizeX = inputCells[0].length;
-        this.sizeY = inputCells.length;
-        this.cells = new SingleTile[sizeX][sizeY];
-        for (int y = 0; y < sizeY; y++) {
-            assert inputCells[y].length == sizeX;
-            for (int x = 0; x < sizeX; x++) {
-                String currentElement = inputCells[y][x];
-                if (currentElement.equals(STRING_EMPTY_CELL)) {
-                    cells[x][y] = SingleTile.EC;
-                } else {
-                    this.cells[x][y] = SingleTile.valueOf(currentElement);
-                }
-            }
-        }
-    }
-
-    /**
      * Getter for x dimension
      *
      * @return number of columns
@@ -184,6 +195,8 @@ public class Board {
 
     /**
      * Getter for the cells
+     *
+     * @return cells of the board
      */
     public SingleTile[][] getCells() {
         return this.cells;
@@ -199,17 +212,6 @@ public class Board {
         return null != pos
                 && isValidXValue(pos.x())
                 && isValidYValue(pos.y());
-    }
-
-    /**
-     * Initializes the list containing the String represenetation of all SingleTile elements
-     */
-    private List<String> initListWithStrForSingleTiles() {
-        List<String> output = new LinkedList<>();
-        for (SingleTile currTile : SingleTile.values()) {
-            output.add(currTile.name());
-        }
-        return output;
     }
 
     /**
@@ -251,8 +253,8 @@ public class Board {
 
             // TODO delete before final commit - used for debugging
             boolean sum = !fstTouchingNeighbour.isEmpty() || !sndTouchingNeighbour.isEmpty();
-            boolean fstNeighbours = checkIfNeighborsAreValid(domino.getFstVal(), fstTouchingNeighbour);
-            boolean sndNeighbours = checkIfNeighborsAreValid(domino.getSndVal(), sndTouchingNeighbour);
+            boolean fstNei = checkIfNeighborsAreValid(domino.getFstVal(), fstTouchingNeighbour);
+            boolean sndNei = checkIfNeighborsAreValid(domino.getSndVal(), sndTouchingNeighbour);
 
 
             return (!fstTouchingNeighbour.isEmpty() || !sndTouchingNeighbour.isEmpty())
@@ -295,7 +297,8 @@ public class Board {
      *
      * @param domTile         single tile from a domino to examine
      * @param touchingDominos list of neighbor positions to examine
-     * @return true if all neighbor positions hold a singletile value that is compatible with the given singletile
+     * @return true if all neighbor positions hold a singletile value that is compatible with the
+     * given singletile
      */
     private boolean checkIfNeighborsAreValid(SingleTile domTile, List<Pos> touchingDominos) {
         if (touchingDominos.size() == 0) {
@@ -346,7 +349,7 @@ public class Board {
         StringBuilder output = new StringBuilder();
         for (int y = 0; y < this.sizeY; y++) {
             for (int x = 0; x < this.sizeX; x++) {
-                if(this.cells[x][y] == SingleTile.EC) {
+                if (this.cells[x][y] == SingleTile.EC) {
                     output.append("--");
                 } else {
                     output.append(this.cells[x][y]);
@@ -360,10 +363,6 @@ public class Board {
         return output.toString();
     }
 
-    public Board fromString(String input) {
-        // TODO insert code
-        return null;
-    }
 
 
     /**
@@ -393,7 +392,8 @@ public class Board {
 
     /**
      * Checks if a given domino with it's pos and rot generates any empty cells.
-     * Gets the neighbors of both domino positions and evaluates the neighbor positions with the following conditions
+     * Gets the neighbors of both domino positions and evaluates the neighbor positions with the
+     * following conditions:
      * - pos is out of bound
      * - pos is in bound and filled
      * - pos is in bound and neighbors math types
@@ -405,8 +405,8 @@ public class Board {
         assert null != choose;
         Domino chooseDom = choose.getDomWithPosAndRot();
         assert fits(chooseDom);
-        // Generate two lists of positions for the direct neighbors of the given domino which do NOT contain on of the
-        // domino positions
+        // Generate two lists of positions for the direct neighbors of the given domino which do
+        // NOT contain on of the domino positions
         Pos fstPos = chooseDom.getFstPos();
         Pos sndPos = chooseDom.getSndPos();
         List<Pos> fstPosNeighhors = fstPos.getNeighbours();
@@ -420,7 +420,8 @@ public class Board {
         int i = 0;
         boolean neighborsNeighborsAreValid;
         do {
-            neighborsNeighborsAreValid = isOutOfBoundOrisFilledOrNeighborsAreValid(fstTile, fstPosNeighhors.get(i))
+            neighborsNeighborsAreValid =
+                    isOutOfBoundOrisFilledOrNeighborsAreValid(fstTile, fstPosNeighhors.get(i))
                     && isOutOfBoundOrisFilledOrNeighborsAreValid(sndTile, sndPosNeighhors.get(i));
 
             // See journal why this isn't possible
@@ -428,7 +429,8 @@ public class Board {
 //                    && checkIfNeighborsAreValid(sndTile, sndPosNeighhors.get(i).getNeighbours());
             i++;
         }
-        while (neighborsNeighborsAreValid && i < 3); // 3 since the other dom pos was deleted earlier on
+        // 3 since the other dom pos was deleted earlier on
+        while (neighborsNeighborsAreValid && i < 3);
         return neighborsNeighborsAreValid;
     }
 
@@ -447,7 +449,8 @@ public class Board {
         // TODO delete following lines before final commit - only for debugging
         boolean notIsValid = isValidPos(pos);
         boolean notisEmpty = (isValidPos(pos) && !isEmpty(pos));
-        boolean notvalidN = (isValidPos(pos) && checkIfNeighborsAreValid(sTile, pos.getNeighbours()));
+        boolean notvalidN = (isValidPos(pos)
+                && checkIfNeighborsAreValid(sTile, pos.getNeighbours()));
         /*
             x = in bound
             y = empty
@@ -462,10 +465,9 @@ public class Board {
             1 1 0 0 // indirect neighbors don't fit
             1 1 1 1 // indirect neighbors fit
          */
-//        System.out.println(notIsValid + "\n" + notisEmpty + "\n" + notvalidN + "\n\n");
-//        return !isValidPos(pos) || (isValidPos(pos) && !isEmpty(pos)) || (isValidPos(pos) && checkIfNeighborsAreValid(sTile, pos.getNeighbours()));
         // TODO put in docu
-        return !isValidPos(pos) || !isEmpty(pos) || checkIfNeighborsAreValid(sTile, pos.getNeighbours());
+        return !isValidPos(pos) || !isEmpty(pos)
+                || checkIfNeighborsAreValid(sTile, pos.getNeighbours());
     }
 
     /**
@@ -515,7 +517,7 @@ public class Board {
         Pos output = null;
         for (int x = 0; x < this.getSizeX(); x++) {
             for (int y = 0; y < this.getSizeY(); y++) {
-                if(this.cells[x][y] == tile) {
+                if (this.cells[x][y] == tile) {
                     output = new Pos(x, y);
                 }
             }
@@ -524,14 +526,15 @@ public class Board {
     }
 
     public boolean canMoveBoardToDir(Direction direction) {
-        return horizontalCheckPossibleBoardMove(direction) || verticalCheckPossibleBoardMove(direction);
+        return horizontalCheckPossibleBoardMove(direction)
+                || verticalCheckPossibleBoardMove(direction);
     }
 
     private boolean horizontalCheckPossibleBoardMove(Direction direction) {
         boolean columnIsEmpty;
         int xIndex;
         // determine which column should be examined
-        if (Direction.LEFT_MOVE== direction) {
+        if (Direction.LEFT_MOVE == direction) {
             xIndex = 0;
         } else if (Direction.RIGHT_MOVE == direction) {
             xIndex = this.sizeX - 1;

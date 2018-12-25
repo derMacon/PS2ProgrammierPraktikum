@@ -108,7 +108,7 @@ public class Result {
             output.append(i + ". Spot");
             for (int j = 0; j < this.ranking.get(i).getRankedPlayers().size(); j++) {
                 currPlayer = this.ranking.get(i).getRankedPlayers().get(j);
-                output.append("Player " + j + " Result{" + "points=" + this.ranking.get(i).getRankedPlayers().get(j).getBoardPoints()
+                output.append("\tPlayer " + j + " Result{" + "points=" + this.ranking.get(i).getRankedPlayers().get(j).getBoardPoints()
                         + '}' + "\n");
             }
         }
@@ -119,7 +119,7 @@ public class Result {
         TreeItem<String> rootItem = new TreeItem<> ("Ranking");
         rootItem.setExpanded(true);
         for(ResultRanking currRanking : this.ranking ) {
-            rootItem.getChildren().add(currRanking.genTreeItem());
+            rootItem.getChildren().add(currRanking.toTreeItem());
         }
         return new TreeView<>(rootItem);
 

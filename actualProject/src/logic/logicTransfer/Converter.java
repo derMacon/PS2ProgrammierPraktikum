@@ -1,12 +1,12 @@
 package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
-import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerTypes.PlayerType;
 import logic.token.Domino;
 import logic.token.Tiles;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -77,8 +77,11 @@ public class Converter {
      */
     private List<Domino> stack;
 
-    // stack of possible dominos, only for internal purposes -> no gettter, every method has to delete the used dominos
+    // stack of possible dominos, only for internal purposes
+    // -> no gettter, every method has to delete the used dominos
     private List<Domino> possibleDominos = Domino.fill(new LinkedList<Domino>());
+
+    private int boardScale;
 
     /**
      * Reads string input and converts it into the appropriate game instance
@@ -90,12 +93,15 @@ public class Converter {
      */
     public String readStr(GUIConnector gui, String input) {
         // TODO Fehlerbehandlung erweitern
-        if(input == null || input.length() == 0) {
-            return UNSUCCESSFUL_READ_MESSAGE;
-        } else {
+        try {
+            if (input == null || input.length() == 0) {
+                throw new IOException(UNSUCCESSFUL_READ_MESSAGE);
+            }
             String[][] descriptionBlocks = genDescriptiveField(input);
             fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui);
             return SUCCESSFUL_READ_MESSAGE;
+        } catch (Exception e) {
+            return e.getMessage();
         }
     }
 
@@ -110,6 +116,7 @@ public class Converter {
 
     /**
      * Getter for the current bank position (currPlayerIdx)
+     *
      * @return
      */
     public int getCurrBankPos() {
@@ -144,23 +151,25 @@ public class Converter {
     }
 
     private String genTag(String input) {
-        if(null == input) {
+        if (null == input) {
             return null;
         }
         String modifiedInput = input.replaceAll("\n", " ");
         // Only boards with comment on who own it (regex: ".*" meaning take all
-        if(modifiedInput.matches(BOARD_IDENTIFIER + ".*" + TAG_CLOSER + ".*")) {
+        if (modifiedInput.matches(BOARD_IDENTIFIER + ".*" + TAG_CLOSER + ".*")) {
             modifiedInput = BOARD_IDENTIFIER;
-        } else if(modifiedInput.matches(BANK_IDENTIFIER + TAG_CLOSER + ".*")) {
+        } else if (modifiedInput.matches(BANK_IDENTIFIER + TAG_CLOSER + ".*")) {
             modifiedInput = BANK_IDENTIFIER;
-        } else if(modifiedInput.matches(STACK_IDENTIFIER + TAG_CLOSER + ".*")) {
+        } else if (modifiedInput.matches(STACK_IDENTIFIER + TAG_CLOSER + ".*")) {
             modifiedInput = STACK_IDENTIFIER;
         }
         return modifiedInput;
     }
 
     private String genData(String input) {
-        return null == input ? null : input.replaceAll("["+BOARD_IDENTIFIER +"|" + BANK_IDENTIFIER +"|" +STACK_IDENTIFIER+"]" + ".*" + TAG_CLOSER + "\n", "");
+        return null == input ? null : input.replaceAll("[" + BOARD_IDENTIFIER + "|"
+                + BANK_IDENTIFIER + "|" + STACK_IDENTIFIER + "]" + ".*" + TAG_CLOSER
+                + "\n", "");
     }
 
     /**
@@ -214,35 +223,6 @@ public class Converter {
         return output;
     }
 
-//    public String[][] genDescriptiveField(String input) {
-//        List<String> blocks = new LinkedList<>();
-//        // overall sections (board/banks/stack) are seperated
-//        for (String currBlock : input.split("<")) {
-//            blocks.add(currBlock);
-//        }
-//        blocks.remove(""); // First element may be empty because of split()
-//
-//        // Data seperated from Identifier
-//        String[][] output = new String[blocks.size()][2];
-//        for (int i = 0; i < blocks.size(); i++) {
-//            output[i] = blocks.get(i).split(">\n");
-//            System.out.println(i);
-//            // if any args are empty
-//            if (output[i].length < 2) {
-//                output[i] = new String[] {output[i][0], ""};
-//            }
-//        }
-//        //<editor-fold defaultstate="collapsed" desc="Alternative">
-////        // First element of the list is useless
-////        int usefullElemCnt = blocks.get(0).equals("") ? blocks.size() - 1 : blocks.size();
-////        // overall sections modified: title in first field, data in second
-////        String[][] output = new String[usefullElemCnt][2];
-////        for (int i = 0; i < usefullElemCnt; i++) {
-////            output[i] = (blocks.get(i + 1).split(">\n"));
-////        }
-//        //</editor-fold>
-//        return output;
-//    }
 
     /**
      * Generates the data for the fields. Iterates through the given description
@@ -251,13 +231,15 @@ public class Converter {
      * @param descriptionBlocks
      * @param gui
      */
-    public void fillFieldsWithDescriptiveBlocks(String[][] descriptionBlocks, GUIConnector gui) {
+    public void fillFieldsWithDescriptiveBlocks(String[][] descriptionBlocks, GUIConnector gui)
+            throws WrongTagException {
         // TODO delete before final commit
         int debugStop = 0;
         for (int i = 0; i < descriptionBlocks.length; i++) {
             switch (descriptionBlocks[i][DESCRIPTION_IDX]) {
                 case BOARD_IDENTIFIER:
-                    this.players.add(i, convertStrToPlayerWithDefaultOccupancy(descriptionBlocks[i][DATA_IDX], i, gui));
+                    this.players.add(i, convertStrToPlayerWithDefaultOccupancy(
+                            descriptionBlocks[i][DATA_IDX], i, gui));
                     break;
                 case BANK_IDENTIFIER:
                     Bank[] banks = convertStrToBanks(descriptionBlocks[i][DATA_IDX]);
@@ -270,26 +252,31 @@ public class Converter {
                     this.stack = convertStrToStack(descriptionBlocks[i][DATA_IDX]);
                     break;
                 default:
-                    System.out.println("Not a valid identifier at idx " + i + " -> " + descriptionBlocks[i][0] + descriptionBlocks[i][1]);
+                    throw new WrongTagException(String.format(WrongTagException.DEFAULT_MESSAGE,
+                            descriptionBlocks[i][DESCRIPTION_IDX]));
             }
         }
     }
 
+
     // --- convert players ----
+
     /**
      * Generates the default playertype from a given playertype and calls the
      * convertStrToPlayer method to convert the given String to the players
      * board.
      *
-     * @param input board for the player
+     * @param input          board for the player
      * @param idxPlayerArray index of the player that later on will be
-     * instanciated
-     * @param gui reference to the gui
+     *                       instanciated
+     * @param gui            reference to the gui
      * @return a fully instanciated Player containing a board and the
      * corresponding districts
      */
-    private Player convertStrToPlayerWithDefaultOccupancy(String input, int idxPlayerArray, GUIConnector gui) {
-        PlayerType defaultPlayerTypeRelativeToIdx = 0 == idxPlayerArray ? PlayerType.HUMAN : PlayerType.DEFAULT;
+    private Player convertStrToPlayerWithDefaultOccupancy(String input, int idxPlayerArray,
+                                                          GUIConnector gui) {
+        PlayerType defaultPlayerTypeRelativeToIdx = 0 == idxPlayerArray ? PlayerType.HUMAN
+                : PlayerType.DEFAULT;
         return convertStrToPlayer(input, defaultPlayerTypeRelativeToIdx, idxPlayerArray, gui);
     }
 
@@ -297,11 +284,11 @@ public class Converter {
      * Method calls the static factory method to instanciate a the desired
      * player with the given information.
      *
-     * @param input board for the player
-     * @param type type of the player that will be instanciated
+     * @param input          board for the player
+     * @param type           type of the player that will be instanciated
      * @param idxPlayerArray index of the player that later on will be
-     * instanciated
-     * @param gui reference to the gui
+     *                       instanciated
+     * @param gui            reference to the gui
      * @return a fully instanciated Player containing a board and the
      * corresponding districts
      */
@@ -311,6 +298,7 @@ public class Converter {
     }
 
     // --- convert bank ---
+
     /**
      * Converts a String to two bank types.
      *
@@ -320,7 +308,7 @@ public class Converter {
     private Bank[] convertStrToBanks(String input) {
         if (input.length() == 0 || input.equals("\n")) {
             return new Bank[]{new Bank(this.players.size()),
-                new Bank(this.players.size())};
+                    new Bank(this.players.size())};
         }
         // TODO ueberarbeiten
         String[] bothBanks = input.split("\n");
@@ -333,6 +321,7 @@ public class Converter {
     }
 
     // --- convert stack ---
+
     /**
      * Converts a String to the stack of the game
      *
@@ -342,7 +331,7 @@ public class Converter {
     private List<Domino> convertStrToStack(String input) {
         // Stay maybe empty -> must be checked
         List<Domino> output = new LinkedList<>();
-        if(0 < input.length()) {
+        if (0 < input.length()) {
             String[] dominosStr = input.split(",");
             // Last elements \n doesn't have to to be evaluated
             String temp;

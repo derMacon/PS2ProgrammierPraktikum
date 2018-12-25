@@ -1,6 +1,5 @@
 package logic.bankSelection;
 
-import logic.playerState.Board;
 import logic.token.Domino;
 import logic.playerState.Player;
 
@@ -10,18 +9,20 @@ import java.util.List;
 import java.util.Random;
 import logic.randomizer.PseudoRandAlwaysHighestVal;
 
+/**
+ * Bank holding an array of entries (information about the selected dominos)
+ */
 public class Bank {
-
 
     /**
      * Seperator constant that's used to read from a file and write into it
      */
-    private final String SEPERATOR_STRING_REPRESENTATION = ",";
+    private static final String SEPERATOR_STRING_REPRESENTATION = ",";
 
     /**
      * Constant that is used to show an invalid int output
      */
-    public final int INVALID_OUTPUT = -1;
+    public static final int INVALID_OUTPUT = -1;
 
     /**
      * Number of entries in this bank
@@ -34,18 +35,21 @@ public class Bank {
     private Random rand;
 
     /**
-     * Array of entries which contain the domino as well as a flag for which player selected this domino.
+     * Array of entries which contain the domino as well as a flag for which player selected this
+     * domino.
      */
     private Entry[] entries;
 
     /**
      * Constructor setting the player count, used in the game.
      *
-     * @param playerCnt
+     * @param playerCnt number of players participating in the game is equivalent to the number
+     *                  of bank slots required
      */
     public Bank(int playerCnt) {
         this.entries = new Entry[playerCnt];
         this.bankSize = playerCnt;
+        // TODO uncomment before final commit
 //        this.rand = new Random();
         this.rand = new PseudoRandAlwaysHighestVal();
     }
@@ -54,6 +58,7 @@ public class Bank {
      * Constructor setting the entries. Used for testing.
      *
      * @param entries entries of the bank
+     * @param pseudoRandom random object of the bank (for testing purpose)
      */
     public Bank(Entry[] entries, Random pseudoRandom) {
         this.entries = entries;
@@ -71,7 +76,8 @@ public class Bank {
     public Bank(String preallocation, List<Player> players, Random rand) {
         String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
         this.bankSize = players.size();
-        int offsetEmptySlots = this.bankSize > singleEntries.length ? this.bankSize - singleEntries.length : 0;
+        int offsetEmptySlots = this.bankSize > singleEntries.length
+                ? this.bankSize - singleEntries.length : 0;
 
         // convert to String array to entries array -> length to this.entries may differ
         Entry[] temp = new Entry[singleEntries.length];
@@ -79,7 +85,8 @@ public class Bank {
             temp[i] = new Entry(singleEntries[i], players);
         }
 
-        // if there are empty slots in the given preallocation, they will be put in front of the other bank entries
+        // if there are empty slots in the given preallocation, they will be put in front of the
+        // other bank entries
         if (0 < offsetEmptySlots) {
             this.entries = new Entry[this.bankSize];
             System.arraycopy(temp, 0, this.entries, offsetEmptySlots, temp.length);
@@ -110,34 +117,26 @@ public class Bank {
         return this.entries;
     }
 
+    /**
+     * Getter for a specific Entry
+     * @param entryIdx index of the entry that will be returned
+     * @return entry at the given index
+     */
     public Entry getSpecificEntry(int entryIdx) {
         return this.entries[entryIdx];
     }
 
     /**
-     * // TODO Javadoc ueberarbeiten
-     * Returns the index of a given domino reference in this bank
-     * @return the index of a given domino reference in this bank, -1 (const: INVALID_OUTPUT) if not found.
+     * Getter for a specific domino selected by the given player
+     * @param player player who selected the desired domino
+     * @return domino which the given player selected
      */
-//    public int getDominoIdx(Domino domino) {
-//        // TODO write tests
-//        Domino currEntryDom;
-//        int i = 0;
-//        do {
-//            currEntryDom = this.entries[i].getDomino();
-//            if(currEntryDom == domino) { // actually checking for reference
-//                return i;
-//            }
-//            i++;
-//        } while (i < this.entries.length);
-//        return INVALID_OUTPUT;
-//    }
-    
     public int getSelectedDominoIdx(Player player) {
         // TODO write tests
         int i = 0;
         do {
-            if(null != this.entries[i] && this.entries[i].getSelectedPlayer() == player) { // actually checking for reference
+            // actually checking for reference
+            if (null != this.entries[i] && this.entries[i].getSelectedPlayer() == player) {
                 return i;
             }
             i++;
@@ -147,8 +146,9 @@ public class Bank {
 
 
     /**
-     * Generates an array of dominos from objects entry array. Used to for copying banks. Empty slots are denoted by a
-     * nullpointer. An array might look like this: new Domino[] {null, new Domino(...), null, null};
+     * Generates an array of dominos from objects entry array. Used to for copying banks. Empty
+     * slots are denoted by a nullpointer. An array might look like this: new Domino[] {null, new
+     * Domino(...), null, null};
      *
      * @return dominos on this bank, null for empty slots
      */
@@ -167,25 +167,29 @@ public class Bank {
      * @return the domino at the given index, null if index is invalid or the slot is empty.
      */
     public Domino getDomino(int idx) {
-        return isValidBankIdx(idx) && null != this.entries[idx] ? this.entries[idx].getDomino() : null;
+        return isValidBankIdx(idx) && null != this.entries[idx] ? this.entries[idx].getDomino()
+                : null;
     }
 
     /**
      * Generates the player who selected the domino at a given position
      *
      * @param idx idx of the domino which was selected
-     * @return
+     * @return selected player from a given index
      */
     public Player getSelectedPlayer(int idx) {
-        return isValidBankIdx(idx) && !isNotSelected(idx) && null != this.entries[idx] ? this.entries[idx].getSelectedPlayer() : null;
+        return isValidBankIdx(idx) && !isNotSelected(idx) && null != this.entries[idx]
+                ? this.entries[idx].getSelectedPlayer() : null;
     }
 
+    /**
+     * Setter for a given Domino at the given bank index
+     * @param bankIdx bank index at which the domino will be updated
+     * @param dom domino reference to override the current domino instance
+     */
     public void updateDomino(int bankIdx, Domino dom) {
         this.entries[bankIdx].setDomino(dom);
     }
-
-
-
 
     /**
      * Determinies if the bank is empty or not
@@ -214,21 +218,24 @@ public class Bank {
     /**
      * Deletes a specific entry with a given index
      *
-     * @param entryIdx
+     * @param entryIdx index of the entry that will deleted
      */
     public void deleteEntry(int entryIdx) {
         assert isValidBankIdx(entryIdx) && this.entries != null;
         this.entries[entryIdx] = null;
     }
 
+    /**
+     * Deleted a speceific entry of a given player
+     * @param player refernce of a player whos entry will be deleted
+     */
     public void deleteEntry(Player player) {
         for (int i = 0; i < bankSize; i++) {
-            if(this.entries[i].getSelectedPlayer() == player) {
+            if (this.entries[i].getSelectedPlayer() == player) {
                 this.entries[i] = null;
             }
         }
     }
-
 
     /**
      * Selects a entry at a given bank index
@@ -237,7 +244,8 @@ public class Bank {
      * @param bankIdx index for the domino on the bank
      *                <p>
      *                TODO find out how to tag a precondition
-     * @precondition player must be unequal to null, bankIdx must be a valid bank index, and the slot which the player
+     * @pre player must be unequal to null, bankIdx must be a valid bank index, and the
+     * slot which the player
      * wants to select hold a domino (you can't select an empty slot)
      */
     public void selectEntry(Player player, int bankIdx) {
@@ -269,7 +277,8 @@ public class Bank {
         Domino output = null;
         int counter = 0;
         while (counter < bankSize && null == output) {
-            if (null != this.entries[counter] && player.equals(this.entries[counter].getSelectedPlayer())) {
+            if (null != this.entries[counter] && player.equals(
+                    this.entries[counter].getSelectedPlayer())) {
                 output = this.entries[counter].getDomino();
             }
             counter++;
@@ -281,6 +290,8 @@ public class Bank {
      * Draws a random domino from the given stack
      *
      * @param stack list of dominos currently in the stack
+     * @return List of dominos equivalent to the banksize. (Dominos will be sorted and removed
+     * from the input stack)
      */
     public List<Domino> randomlyDrawFromStack(List<Domino> stack) {
         assert null != stack;
@@ -335,7 +346,7 @@ public class Bank {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < this.entries.length; i++) {
             output.append(this.entries[i] == null ? "" : this.entries[i].toString());
-            if(i < this.entries.length - 1) {
+            if (i < this.entries.length - 1) {
                 output.append(",");
             }
         }
@@ -353,8 +364,10 @@ public class Bank {
     }
 
     /**
+     * // TODO Javadoc ueberarbeiten
      * Makes a copyWithoutSelection of the bank, references to the individual entries stay the same
-     * @return a copyWithoutSelection of the bank, references to the individual entries stay the same
+     * @return a copyWithoutSelection of the bank, references to the individual entries stay the
+     * same
      */
     public Bank copy() {
         Entry[] copyEntries = new Entry[this.entries.length];
@@ -366,8 +379,6 @@ public class Bank {
         return new Bank(copyEntries, this.rand);
     }
 
-
-
     /**
      * Getter for the domino with the lowest value
      * @return domino with the lowest value, null if bank is empty
@@ -375,8 +386,8 @@ public class Bank {
     public Domino getLowOrderDomino() {
         int i = 0;
         Domino output = null;
-        while(i < this.bankSize) {
-            if(null != this.entries[i].getDomino()) {
+        while (i < this.bankSize) {
+            if (null != this.entries[i].getDomino()) {
                 output = this.entries[i].getDomino();
             }
             i++;
@@ -392,7 +403,7 @@ public class Bank {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        final Bank other = (Bank)obj;
+        final Bank other = (Bank) obj;
         boolean isEqual =
                 null != this.entries && null != other.entries && this.bankSize == other.bankSize;
         int i = 0;
@@ -405,6 +416,10 @@ public class Bank {
         return isEqual;
     }
 
+    /**
+     * Getter for the random object
+     * @return the random object of the bank
+     */
     public Random getRand() {
         return rand;
     }

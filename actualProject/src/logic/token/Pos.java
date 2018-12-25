@@ -93,8 +93,8 @@ public class Pos {
     public boolean isNextTo(Pos p) {
         int xDiff = Math.abs(x - p.x());
         int yDiff = Math.abs(y - p.y());
-        return (xDiff == 1 && yDiff == 0 ||
-                xDiff == 0 && yDiff == 1);
+        return (xDiff == 1 && yDiff == 0
+                || xDiff == 0 && yDiff == 1);
     }
 
     /**
@@ -114,15 +114,15 @@ public class Pos {
     /**
      * two positions are equal if the x-values and y-values are equal
      *
-     * @param obj
+     * @param obj object to evaluate
      * @return true, if the x-values and y-values are equal
      */
     @Override
     public boolean equals(Object obj) {
-        return obj != null &&
-                obj.getClass() == this.getClass() &&
-                ((Pos) obj).x == this.x &&
-                ((Pos) obj).y == this.y;
+        return obj != null
+                && obj.getClass() == this.getClass()
+                && ((Pos) obj).x == this.x
+                && ((Pos) obj).y == this.y;
     }
 
     /**

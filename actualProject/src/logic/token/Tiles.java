@@ -3,6 +3,9 @@ package logic.token;
 
 import static logic.token.SingleTile.*;
 
+/**
+ * Enum for the different Tile combinations
+ */
 public enum Tiles {
     P0P0_Val1(P0, P0, 1),
     P0P0_Val2(P0, P0, 2),
@@ -60,6 +63,12 @@ public enum Tiles {
 
     private final int value;
 
+    /**
+     * Constructor setting the values of the tile combinations
+     * @param fst first Tile of the combination
+     * @param snd second Tile of the combination
+     * @param value value of the combination (used for sorting the stack)
+     */
     Tiles(SingleTile fst, SingleTile snd, int value) {
         this.fst = fst;
         this.snd = snd;
@@ -68,7 +77,7 @@ public enum Tiles {
 
     /**
      * Getter for the first tile
-     * @return
+     * @return first Tile of the combination
      */
     public SingleTile getFst() {
         return this.fst;
@@ -76,7 +85,7 @@ public enum Tiles {
 
     /**
      * Getter for the second tile
-     * @return
+     * @return second Tile of the combination
      */
     public SingleTile getSnd() {
         return this.snd;
@@ -84,7 +93,7 @@ public enum Tiles {
 
     /**
      * Getter for the value of the tile
-     * @return
+     * @return value of the combination
      */
     public int getValue() {
         return this.value;
@@ -95,7 +104,8 @@ public enum Tiles {
      *
      * @param fstTileOrd ordinal value of the first tile
      * @param sndTileOrd ordinal value of the second tile
-     * @return the first Enum member with the same ordinal values as the input, null if there is no such tile.
+     * @return the first Enum member with the same ordinal values as the input, null if there is no
+     * such tile.
      */
     public static Tiles genTile(int fstTileOrd, int sndTileOrd) {
         Tiles[] possibleTiles = Tiles.values();
@@ -134,7 +144,7 @@ public enum Tiles {
         Tiles output = null;
         Tiles[] possibleTiles = values();
         int i = 0;
-        while(null == output && i < possibleTiles.length) {
+        while (null == output && i < possibleTiles.length) {
             output = possibleTiles[i].toString().equals(input) ? possibleTiles[i] : null;
             i++;
         }
@@ -146,7 +156,5 @@ public enum Tiles {
         // takes first 4 letters of the enum name
         return this.name().substring(0, 4);
     }
-
-
 
 }
