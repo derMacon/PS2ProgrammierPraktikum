@@ -11,6 +11,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.time.ZonedDateTime;
 
 /**
  * Logger for the game. Uses the singleton pattern, so that there can only be one single instance of this logger.
@@ -32,6 +33,11 @@ public class Logger {
     public static final String selectionLoggerFormat = "%s chose %s at index %d for %s round";
 
     public static final String ccDragLoggerFormat = "%s dragged center to %s";
+
+    public static final String dismissalLoggerFormat = "%s did not use %s";
+
+    public static final String GAME_SEPARATOR = ZonedDateTime.now().toString() +
+        "\n-----------------------------------";
 
     public static final String CURR_ROUND_IDENTIFIER = "current";
     public static final String NEXT_ROUND_IDENTIFIER = "next";

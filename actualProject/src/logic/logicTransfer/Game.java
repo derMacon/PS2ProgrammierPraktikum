@@ -14,6 +14,7 @@ import java.util.List;
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import logic.token.SingleTile;
 
 public class Game implements GUI2Game {
 
@@ -144,6 +145,7 @@ public class Game implements GUI2Game {
                 }
             }
         }
+        Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nSpiel geladen:" + returnMessage);
     }
 
     private void loadGuiAfterLoadingFile(PlayerType[] playerTypes, int sizeX, int sizeY) {
@@ -183,7 +185,6 @@ public class Game implements GUI2Game {
         this.currBankIdx = currBankIdx;
         this.currDomino = currDomino;
         setToChooseBox(currDomino);
-
         // TODO check if setting values was successful
         return Converter.SUCCESSFUL_READ_MESSAGE;
     }
@@ -256,6 +257,8 @@ public class Game implements GUI2Game {
         this.currPlayerIdx = 0;
         this.currBankIdx = 0;
         this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
+
+        Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nNeues Spiel gestartet\n");
 
         // TODO insert code - update all players
         // TODO blur out boxes which are not accessible when user selects the first domino from the current bank
@@ -357,11 +360,11 @@ public class Game implements GUI2Game {
         Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
         if (humanPlayer.getBoard().canMoveBoardToDir(dir) && (humanPlayer instanceof HumanPlayer)) {
             HumanPlayer humanInstance = (HumanPlayer) humanPlayer; // only Human player has a
-            // setter for the board -> need to cast
+            // setter for the board -> needs to cast
             humanInstance.updateBoard(humanInstance.getBoard().moveBoard(dir));
-//            this.gui.updateGrid(HUMAN_PLAYER_IDX, humanBoard); // TODO evaluate if updateGrid
-            // method is really necessray
             this.gui.updatePlayer(players[HUMAN_PLAYER_IDX], HUMAN_PLAYER_IDX);
+            Logger.getInstance().printAndSafe(String.format(Logger.ccDragLoggerFormat,
+                    humanInstance.getName(), humanInstance.getBoard().findPos(SingleTile.CC)));
         } else {
             // TODO implement gui response to invalid move
         }
@@ -375,8 +378,9 @@ public class Game implements GUI2Game {
 
     @Override
     public void disposeCurrDomino() {
+        Logger.getInstance().printAndSafe(String.format(Logger.dismissalLoggerFormat, "HUMAN",
+                this.currDomino.toString()));
         setToChooseBox(null);
-//        Logger.getInstance().printAndSafe("HUMAN disposed " + this.currDomino.toFile());
         setupCurrDomAndBotsDoTurn();
     }
 

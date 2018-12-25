@@ -662,7 +662,6 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void dispose(MouseEvent event) {
-        System.out.println("dispose");
         this.game.disposeCurrDomino();
     }
 

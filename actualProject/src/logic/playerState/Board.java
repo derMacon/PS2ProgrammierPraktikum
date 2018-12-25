@@ -510,7 +510,7 @@ public class Board {
         return outputBoard;
     }
 
-    public findPos(SingleTile tile) {
+    public Pos findPos(SingleTile tile) {
         assert null != tile;
         Pos output = null;
         for (int x = 0; x < this.getSizeX(); x++) {
