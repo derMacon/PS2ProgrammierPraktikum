@@ -11,6 +11,7 @@ import logic.token.Tiles;
 import org.junit.Test;
 import other.FakeGUI;
 
+import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Random;
 
@@ -19,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 public class ValidFileReadTests {
 
     @Test
-    public void test_noStack() {
+    public void test_noStack() throws IOException {
         GUIConnector fakeGui = new FakeGUI();
         Board board1 = new Board(
                 "-- -- -- -- --\n" +
@@ -73,6 +74,7 @@ public class ValidFileReadTests {
                 new LinkedList<>(), null);
         Game actOutput = TestToolkit.read("val_noStack");
         assertEquals(expOutput, actOutput);
+        TestToolkit.writeAndAssert(actOutput, "noStack");
     }
 
 }

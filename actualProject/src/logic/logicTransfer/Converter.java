@@ -94,9 +94,14 @@ public class Converter {
     public String readStr(GUIConnector gui, String input) {
         // TODO Fehlerbehandlung erweitern
         try {
+
             if (input == null || input.length() == 0) {
                 throw new IOException(UNSUCCESSFUL_READ_MESSAGE);
             }
+            if (!input.matches(TAG_OPENER + "(?s).*")) {
+                throw new WrongTagException("Document does not start with <");
+            }
+
             String[][] descriptionBlocks = genDescriptiveField(input);
             fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui);
             return SUCCESSFUL_READ_MESSAGE;
@@ -150,18 +155,33 @@ public class Converter {
         return stack;
     }
 
-    private String genTag(String input) {
+    private String genTag(String input) throws WrongTagException {
         if (null == input) {
             return null;
         }
-        String modifiedInput = input.replaceAll("\n", " ");
+        String modifiedInput = input.replaceAll(TAG_CLOSER + "(?s).*", "");
         // Only boards with comment on who own it (regex: ".*" meaning take all
-        if (modifiedInput.matches(BOARD_IDENTIFIER + ".*" + TAG_CLOSER + ".*")) {
-            modifiedInput = BOARD_IDENTIFIER;
-        } else if (modifiedInput.matches(BANK_IDENTIFIER + TAG_CLOSER + ".*")) {
-            modifiedInput = BANK_IDENTIFIER;
-        } else if (modifiedInput.matches(STACK_IDENTIFIER + TAG_CLOSER + ".*")) {
-            modifiedInput = STACK_IDENTIFIER;
+//        if (modifiedInput.matches(BOARD_IDENTIFIER + ".*" + TAG_CLOSER + ".*")) {
+//            modifiedInput = BOARD_IDENTIFIER;
+//        } else if (modifiedInput.matches(BANK_IDENTIFIER + TAG_CLOSER + ".*")) {
+//            modifiedInput = BANK_IDENTIFIER;
+//        } else if (modifiedInput.matches(STACK_IDENTIFIER + TAG_CLOSER + ".*")) {
+//            modifiedInput = STACK_IDENTIFIER;
+//        } else {
+//            throw new WrongTagException(input.replaceAll("\n.*", ""));
+//        }
+        switch (modifiedInput) {
+            case BOARD_IDENTIFIER:
+                modifiedInput = BOARD_IDENTIFIER;
+                break;
+            case BANK_IDENTIFIER:
+                modifiedInput = BANK_IDENTIFIER;
+                break;
+            case STACK_IDENTIFIER:
+                modifiedInput = STACK_IDENTIFIER;
+                break;
+            default:
+                throw new WrongTagException();
         }
         return modifiedInput;
     }
