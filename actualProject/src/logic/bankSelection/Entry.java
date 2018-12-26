@@ -154,9 +154,18 @@ public class Entry {
             return false;
         }
         final Entry other = (Entry) obj;
-        // TODO mit Vorsicht zu geniessen -> Nicht Nullpointer resistent.
+
+        // TODO delete before final commit
+        if(null != this.selectedPlayer && null != other.selectedPlayer) {
+            boolean debugplayeridx = this.selectedPlayer.getIdxInPlayerArray()
+                    == other.selectedPlayer.getIdxInPlayerArray();
+            boolean debugDom = this.domino.equals(other.domino);
+        }
+
         // Players can be empty if entry wasn't selected in the previous turns
-        return null != this.selectedPlayer && null != other.selectedPlayer
+        // TODO mit Vorsicht zu geniessen -> Nicht Nullpointer resistent.
+        return (null == this.selectedPlayer && null == other.selectedPlayer)
+                || null != this.selectedPlayer && null != other.selectedPlayer
                 // players have to be the same
                 && this.selectedPlayer.getIdxInPlayerArray()
                 == other.selectedPlayer.getIdxInPlayerArray()

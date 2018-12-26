@@ -94,7 +94,7 @@ public class GameLoadingConstructorTest {
     @Test
     public void testStringConstructor_GetBank() {
         String testGameRepresentation =
-                "<Spielfeld>\n" +
+                "<Spielfeld 1>\n" +
                         "-- -- -- -- --\n" +
                         "-- -- H1 P0 --\n" +
                         "-- -- CC -- --\n" +
@@ -158,25 +158,25 @@ public class GameLoadingConstructorTest {
     @Test
     public void testStringConstructor_GetStack() {
         String testGameRepresentation =
-                "<Spielfeld>\n" +
+                "<Spielfeld 1>\n" +
                         "-- -- -- -- --\n" +
                         "-- -- H1 P0 --\n" +
                         "-- -- CC -- --\n" +
                         "-- -- -- -- --\n" +
                         "-- -- -- -- --\n" +
-                        "<Spielfeld>\n" +
+                        "<Spielfeld 2>\n" +
                         "-- -- -- -- --\n" +
                         "-- -- H1 P0 P1\n" +
                         "-- -- CC -- --\n" +
                         "-- -- -- -- --\n" +
                         "-- -- -- -- --\n" +
-                        "<Spielfeld>\n" +
+                        "<Spielfeld 3>\n" +
                         "-- -- -- P1 --\n" +
                         "-- -- H1 P0 --\n" +
                         "-- -- CC -- --\n" +
                         "-- -- -- -- --\n" +
                         "-- -- -- -- --\n" +
-                        "<Spielfeld>\n" +
+                        "<Spielfeld 4>\n" +
                         "-- -- -- -- --\n" +
                         "-- -- H1 P0 --\n" +
                         "-- -- CC P1 --\n" +

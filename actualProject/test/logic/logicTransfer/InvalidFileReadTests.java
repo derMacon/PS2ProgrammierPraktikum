@@ -1,6 +1,5 @@
 package logic.logicTransfer;
 
-import logic.dataPreservation.Loader;
 import org.junit.Test;
 import other.FakeGUI;
 

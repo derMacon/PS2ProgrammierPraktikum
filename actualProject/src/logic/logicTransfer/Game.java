@@ -623,14 +623,24 @@ public class Game implements GUI2Game {
             return false;
         }
         final Game other = (Game)obj;
-        boolean hasEqualPlayers;
+        boolean equals;
         int i = 0;
         do {
-            hasEqualPlayers = this.players[i].equals(other.players[i]);
-        } while(hasEqualPlayers && i < this.players.length);
+            equals = this.players[i].equals(other.players[i]);
+            i++;
+        } while(equals && i < this.players.length);
 
-        return hasEqualPlayers && this.currentRoundBank.equals(other.currentRoundBank)
-                && this.nextRoundBank.equals(other.nextRoundBank)
-                && this.stack.equals(other.stack);
+        equals = this.stack.size() == other.stack.size();
+        i = 0;
+        while(equals && i < this.stack.size()) {
+            equals = this.stack.get(i).equals(other.stack.get(i));
+        }
+
+        // TODO Delete before final commit
+        boolean debugBankCurr = this.currentRoundBank.equals(other.currentRoundBank);
+        boolean debugBankNext = this.nextRoundBank.equals(other.nextRoundBank);
+
+        return equals && this.currentRoundBank.equals(other.currentRoundBank)
+                && this.nextRoundBank.equals(other.nextRoundBank);
     }
 }

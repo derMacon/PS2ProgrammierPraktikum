@@ -166,12 +166,17 @@ public class Converter {
         return modifiedInput;
     }
 
-    private String genData(String input) throws WrongTagException {
-        String pattern = "[" + BOARD_IDENTIFIER + "|"
-                + BANK_IDENTIFIER + "|" + STACK_IDENTIFIER + "]" + ".*" + TAG_CLOSER
-                + "\n";
+    protected String genData(String input) throws WrongTagException {
+        // (?s).* to match all chars (including the linebreak)
+        String pattern1 = "[" + BOARD_IDENTIFIER + "(?s).*|" + BANK_IDENTIFIER + "|"
+                + STACK_IDENTIFIER + "]" + TAG_CLOSER + "(?s).*";
+        String pattern = BOARD_IDENTIFIER + "(?s).*" + TAG_CLOSER + "\n(?s)" + ".*" +
+                "|" + BANK_IDENTIFIER + TAG_CLOSER + "\n(?s).*" +
+                "|" + STACK_IDENTIFIER + TAG_CLOSER + "\n(?s).*";
+        ;
         if (null != input && input.matches(pattern)) {
-            return input.replaceAll(pattern, "");
+            String[] tempBlock = input.split(TAG_CLOSER + "\n");
+            return tempBlock.length > 1 ? tempBlock[1] : "";
         } else {
             throw new WrongTagException(input.replaceAll("\n.*", ""));
         }

@@ -57,40 +57,13 @@ public class Doodle {
 
     public static void main(String[] args) {
 
-        String input = "Spielfeld 1>\nasdfasdf";
+
+
+        String input = "Spielfeld 1>\n";
+        String[] temp = input.split(">\n");
         System.out.println(input);
 
-        input = input.replaceAll("[" + BOARD_IDENTIFIER + "|"
-                + BANK_IDENTIFIER + "|" + STACK_IDENTIFIER + "]" + ".*" + TAG_CLOSER
-                + "\n", "");
 
-        System.out.println(input);
-
-        try {
-            System.out.println("ä");
-
-            String filename = "inv_blankAfterPlayerReferenceNum";
-            String temp = String.format(PATH_FORMAT, filename);
-            File fileDir = new File(temp);
-
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(
-                            new FileInputStream(fileDir), "UTF-8"));
-
-            String str;
-
-            while ((str = in.readLine()) != null) {
-                System.out.println(str);
-            }
-
-            in.close();
-        } catch (UnsupportedEncodingException e) {
-            System.out.println(e.getMessage());
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
     }
 
 }
