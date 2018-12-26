@@ -166,10 +166,15 @@ public class Converter {
         return modifiedInput;
     }
 
-    private String genData(String input) {
-        return null == input ? null : input.replaceAll("[" + BOARD_IDENTIFIER + "|"
+    private String genData(String input) throws WrongTagException {
+        String pattern = "[" + BOARD_IDENTIFIER + "|"
                 + BANK_IDENTIFIER + "|" + STACK_IDENTIFIER + "]" + ".*" + TAG_CLOSER
-                + "\n", "");
+                + "\n";
+        if (null != input && input.matches(pattern)) {
+            return input.replaceAll(pattern, "");
+        } else {
+            throw new WrongTagException(input.replaceAll("\n.*", ""));
+        }
     }
 
     /**
@@ -191,7 +196,7 @@ public class Converter {
      * @return String array containing the name of the field in the first slot
      * and the actual data in the second
      */
-    public String[][] genDescriptiveField(String input) {
+    public String[][] genDescriptiveField(String input) throws WrongTagException {
         List<String> blocks = new LinkedList<>();
         // overall sections (board/banks/stack) are seperated
         for (String currBlock : input.split("<")) {

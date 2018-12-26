@@ -26,8 +26,45 @@ public class Doodle {
             "test" + File.separator + "fileTests" + File.separator + "testdata" + File.separator + "%s" + ".txt";
 
 
+
+    /**
+     * Index for the Description in the two-dim String array
+     */
+    public static final int DESCRIPTION_IDX = 0;
+
+    /**
+     * Index for the Data in the two-dim String array
+     */
+    public static final int DATA_IDX = 1;
+
+    /**
+     * Identifier for the boards
+     */
+    public static final String BOARD_IDENTIFIER = "Spielfeld";
+
+    /**
+     * Identifier for both banks
+     */
+    // TODO Problem mit dem ä beim Einlesen
+    public static final String BANK_IDENTIFIER = "Bänke"; //"B�nke";
+
+    /**
+     * Identifier for the stack
+     */
+    public static final String STACK_IDENTIFIER = "Beutel";
+    public static final String TAG_CLOSER = ">";
+
+
     public static void main(String[] args) {
 
+        String input = "Spielfeld 1>\nasdfasdf";
+        System.out.println(input);
+
+        input = input.replaceAll("[" + BOARD_IDENTIFIER + "|"
+                + BANK_IDENTIFIER + "|" + STACK_IDENTIFIER + "]" + ".*" + TAG_CLOSER
+                + "\n", "");
+
+        System.out.println(input);
 
         try {
             System.out.println("ä");

@@ -1,4 +1,4 @@
-<Spielfeld> 
+<Spielfeld >
 -- -- -- -- --
 -- -- H1 P0 --
 -- -- CC -- --

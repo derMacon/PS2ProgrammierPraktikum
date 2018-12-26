@@ -1019,3 +1019,173 @@ BOT2 put [P1,S0] vertical to (2,1)
 BOT2 put [S0,S0] horizontal to (1,0)
 BOT2 put [P0,S0] horizontal to (2,1)
 BOT2 put [P0,S0] horizontal to (0,0)
+2018-12-25T23:58:44.443+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T23:58:44.443+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-25T23:59:49.332+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-25T23:59:49.332+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-26T02:13:33.704+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-26T02:13:33.704+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-26T02:13:47.523+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-26T02:15:21.757+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+2018-12-26T02:27:29.646+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+2018-12-26T02:30:31.756+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+2018-12-26T02:30:31.756+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden nicht erfolgreich
+2018-12-26T02:48:11.594+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-26T02:48:11.594+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-26T02:48:33.474+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-26T02:48:33.474+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-26T02:52:39.617+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+2018-12-26T02:52:39.617+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden nicht erfolgreich
+2018-12-26T02:58:48.246+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+2018-12-26T03:02:06.411+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-26T03:02:06.411+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-26T03:02:06.411+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden nicht erfolgreich
+2018-12-26T03:04:00.452+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+2018-12-26T03:05:15.744+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+2018-12-26T03:05:15.744+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden nicht erfolgreich
+2018-12-26T03:06:21.251+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-26T03:06:21.251+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich
+2018-12-26T03:20:39.780+01:00[Europe/Berlin]
+-----------------------------------
+Neues Spiel gestartet
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+2018-12-26T03:20:39.780+01:00[Europe/Berlin]
+-----------------------------------
+Spiel geladen:Laden erfolgreich

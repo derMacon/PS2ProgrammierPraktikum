@@ -5,7 +5,7 @@ public class WrongTagException extends Exception {
     /**
      * Standardfehlermeldung.
      */
-    public static final String DEFAULT_MESSAGE = "Wrong tag identifier: %s";
+    public static final String DEFAULT_MESSAGE = "Wrong tag identifier: ";
 
     /**
      * Exception mit individueller Fehlermeldung.

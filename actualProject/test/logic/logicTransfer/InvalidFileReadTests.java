@@ -10,7 +10,7 @@ public class InvalidFileReadTests {
 
     @Test
     public void test_blankAfterFstTag() {
-        String expOutput = String.format(WrongTagException.DEFAULT_MESSAGE, "<Spielfeld> ");
+        String expOutput = WrongTagException.DEFAULT_MESSAGE + "Spielfeld 1> ";
         String fileOutput = TestToolkit.readAsString("inv_blankAfterFstTag");
         String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
         assertEquals(expOutput, actOutput);
