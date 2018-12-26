@@ -26,6 +26,7 @@ import logic.playerState.Board;
 import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -564,7 +565,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void mnTmLoadGame(ActionEvent event) throws MalformedURLException {
+    private void mnTmLoadGame(ActionEvent event) throws FileNotFoundException {
         this.game = new Game(this.gui, Loader.getInstance().openFileChooser());
     }
 

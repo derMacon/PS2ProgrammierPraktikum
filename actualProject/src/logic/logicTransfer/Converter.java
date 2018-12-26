@@ -204,22 +204,8 @@ public class Converter {
         for (int i = 0; i < blocks.size(); i++) {
             output[i][DESCRIPTION_IDX] = genTag(blocks.get(i));
             output[i][DATA_IDX] = genData(blocks.get(i));
-//            output[i] = blocks.get(i).split(">\n");
-//            System.out.println(i);
-//            // if any args are empty
-//            if (output[i].length < 2) {
-//               output[i] = new String[] {output[i][0], ""};
-//            }
         }
-        //<editor-fold defaultstate="collapsed" desc="Alternative">
-//        // First element of the list is useless
-//        int usefullElemCnt = blocks.get(0).equals("") ? blocks.size() - 1 : blocks.size();
-//        // overall sections modified: title in first field, data in second
-//        String[][] output = new String[usefullElemCnt][2];
-//        for (int i = 0; i < usefullElemCnt; i++) {
-//            output[i] = (blocks.get(i + 1).split(">\n"));
-//        }
-        //</editor-fold>
+
         return output;
     }
 

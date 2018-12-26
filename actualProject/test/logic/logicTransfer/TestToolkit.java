@@ -1,6 +1,7 @@
 package logic.logicTransfer;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,6 +10,8 @@ import java.io.StringWriter;
 import logic.dataPreservation.Loader;
 import org.junit.Assert;
 import other.FakeGUI;
+
+import static org.junit.Assert.assertTrue;
 
 /**
  * Klasse mit (statischen) (Hilfs-)methoden für JUnit-Tests. Die Klasse
@@ -22,6 +25,10 @@ import other.FakeGUI;
 public class TestToolkit {
 
     private static final String FILE_ENDING = ".txt";
+
+
+    private static final String PATH_FORMAT =
+            "test" + File.separator + "fileTests"+ File.separator + "testdata" + File.separator + "%s" + FILE_ENDING;
 
     /**
      * Ermittelt, ob der Inhalt der Dateien fileName1 und fileName2 identisch
@@ -55,10 +62,27 @@ public class TestToolkit {
      * @throws WrongSyntaxException Syntaktischer Fehler beim Einlesen der Datei
      *
      */
-    public static Game read(String filename) throws IOException,
-            WrongSyntaxException {
-        Loader l = Loader.getInstance();
-        return new Game(new FakeGUI(), l.openGivenFile("test" + File.separator + "fileTests"+ File.separator + "testdata" + File.separator + filename + FILE_ENDING));
+    /**
+     * Liest eine Datei mit dem Namen filename aus dem test-Verzeichnis ein.
+     *
+     * @param filename Dateiname
+     * @return DBTable Datenbanktabelle
+     *
+     * @throws IOException Dateifehler
+     * @throws WrongSyntaxException Syntaktischer Fehler beim Einlesen der Datei
+     *
+     */
+    public static Game read(String filename) {
+        return new Game(new FakeGUI(), readAsString(filename));
+    }
+
+    public static String readAsString(String filename) {
+        try {
+            File file = new File(String.format(PATH_FORMAT, filename));
+            return Loader.getInstance().openGivenFile(file.getPath());
+        } catch (FileNotFoundException e) {
+            return e.getMessage();
+        }
     }
 
     /**
@@ -68,11 +92,15 @@ public class TestToolkit {
      * @param filename Dateiname ohne Endung
      */
     public static void assertFilesEqual(String filename) {
+        try {
             File fileResult = new File("test" + File.separator + "fileTests" + File.separator
                     + "results" + File.separator + filename + ".txt");
             File fileExpectedResult = new File("test" + File.separator + "fileTests" + File.separator
-                                    + "expected_results" + File.separator + filename + ".txt");
+                    + "expected_results" + File.separator + filename + ".txt");
             Assert.assertEquals(Loader.openGivenFile(fileResult), Loader.openGivenFile(fileExpectedResult));
+        } catch (FileNotFoundException e) {
+            assertTrue(false);
+        }
     }
 
     /**

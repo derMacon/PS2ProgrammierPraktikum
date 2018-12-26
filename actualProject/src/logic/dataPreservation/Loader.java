@@ -140,16 +140,17 @@ public class Loader {
      *
      * @return String value saved in the selected file
      */
-    public String openFileChooser() {
+    public String openFileChooser() throws FileNotFoundException {
         this.file = fChooser.showOpenDialog(stage);
         return openGivenFile(this.file);
     }
 
-    public static String openGivenFile(String filePath) {
+    public static String openGivenFile(String filePath) throws FileNotFoundException {
         return openGivenFile(new File(filePath));
     }
 
-    public static String openGivenFile(File file) {
+    public static String openGivenFile(File file) throws FileNotFoundException {
+        assert file.isFile();
         Scanner in = null;
         StringBuilder sb = new StringBuilder();
         try {
@@ -160,7 +161,7 @@ public class Loader {
             }
             in.close();
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            throw new FileNotFoundException("Platzhalter");
         }
         return sb.toString();
     }
