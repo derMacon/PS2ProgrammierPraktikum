@@ -23,6 +23,8 @@ public class Board {
 
     public static final int DOWN_MOVE = 3;
 
+    public static final String EMPTY_CELL = "--";
+
     /**
      * Directions the board can be dragged to
      */
@@ -350,7 +352,7 @@ public class Board {
         for (int y = 0; y < this.sizeY; y++) {
             for (int x = 0; x < this.sizeX; x++) {
                 if (this.cells[x][y] == SingleTile.EC) {
-                    output.append("--");
+                    output.append(EMPTY_CELL);
                 } else {
                     output.append(this.cells[x][y]);
                 }

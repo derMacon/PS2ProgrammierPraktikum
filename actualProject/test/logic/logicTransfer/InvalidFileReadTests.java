@@ -235,7 +235,39 @@ public class InvalidFileReadTests {
     @Test
     public void test_misspelledBoardElem1() {
         String expOutput = WrongBoardSyntaxException.DEFAULT_MESSAGE;
-        String fileOutput = TestToolkit.readAsString("inv_misspelledTag6");
+        String fileOutput = TestToolkit.readAsString("inv_misspelledBoardElem1");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_misspelledBoardElem2() {
+        String expOutput = WrongBoardSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_misspelledBoardElem2");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_misspelledBoardElem3() {
+        String expOutput = WrongBoardSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_misspelledBoardElem3");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_misspelledBoardElem4() {
+        String expOutput = WrongBoardSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_misspelledBoardElem4");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_misspelledBoardElem5() {
+        String expOutput = WrongBoardSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_misspelledBoardElem5");
         String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
         assertEquals(expOutput, actOutput);
     }

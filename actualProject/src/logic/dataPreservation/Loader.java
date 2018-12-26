@@ -90,7 +90,7 @@ public class Loader {
             outputStream.print(text);
             outputStream.close();
         } catch (FileNotFoundException e) {
-            Logger.getInstance().printAndSafe("Could not save Image");
+            Logger.getInstance().printAndSafe("Could not save file");
             e.printStackTrace();
         }
     }
@@ -163,7 +163,21 @@ public class Loader {
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException("Platzhalter");
         }
-        return sb.toString();
+        return removeUTF8BOM(sb.toString());
+    }
+
+    public static final String UTF8_BOM = "\uFEFF";
+
+    /**
+     * https://stackoverflow.com/questions/21891578/removing-bom-characters-using-java
+     * @param s
+     * @return
+     */
+    private static String removeUTF8BOM(String s) {
+        if (s.startsWith(UTF8_BOM)) {
+            s = s.substring(1);
+        }
+        return s;
     }
 
 

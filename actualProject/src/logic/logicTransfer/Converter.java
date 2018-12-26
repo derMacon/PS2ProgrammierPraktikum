@@ -13,6 +13,8 @@ import java.util.Random;
 
 public class Converter {
 
+    private static final int NOT_INITIALIZED = -1;
+
     /**
      * Index for the Description in the two-dim String array
      */
@@ -98,7 +100,8 @@ public class Converter {
             if (input == null || input.length() == 0) {
                 throw new IOException(UNSUCCESSFUL_READ_MESSAGE);
             }
-            if (!input.matches(TAG_OPENER + "(?s).*")) {
+            if (!input.startsWith("<")) {
+                System.out.println(input);
                 throw new WrongTagException("Document does not start with <");
             }
 
@@ -170,20 +173,14 @@ public class Converter {
 //        } else {
 //            throw new WrongTagException(input.replaceAll("\n.*", ""));
 //        }
-        switch (modifiedInput) {
-            case BOARD_IDENTIFIER:
-                modifiedInput = BOARD_IDENTIFIER;
-                break;
-            case BANK_IDENTIFIER:
-                modifiedInput = BANK_IDENTIFIER;
-                break;
-            case STACK_IDENTIFIER:
-                modifiedInput = STACK_IDENTIFIER;
-                break;
-            default:
-                throw new WrongTagException();
+        if (modifiedInput.matches(BOARD_IDENTIFIER + ".*")) {
+            return BOARD_IDENTIFIER;
         }
-        return modifiedInput;
+        if(modifiedInput.equals(BANK_IDENTIFIER)
+                || modifiedInput.equals(STACK_IDENTIFIER)) {
+            return modifiedInput;
+        }
+        throw new WrongTagException();
     }
 
     protected String genData(String input) throws WrongTagException {
@@ -198,7 +195,7 @@ public class Converter {
             String[] tempBlock = input.split(TAG_CLOSER + "\n");
             return tempBlock.length > 1 ? tempBlock[1] : "";
         } else {
-            throw new WrongTagException(input.replaceAll("\n.*", ""));
+            throw new WrongTagException();
         }
     }
 
@@ -248,12 +245,14 @@ public class Converter {
      * @param gui
      */
     public void fillFieldsWithDescriptiveBlocks(String[][] descriptionBlocks, GUIConnector gui)
-            throws WrongTagException {
+            throws WrongTagException, WrongBoardSyntaxException {
         // TODO delete before final commit
-        int debugStop = 0;
+        Integer xDimension = NOT_INITIALIZED;
+        Integer yDimension = NOT_INITIALIZED;
         for (int i = 0; i < descriptionBlocks.length; i++) {
             switch (descriptionBlocks[i][DESCRIPTION_IDX]) {
                 case BOARD_IDENTIFIER:
+//                    checkBoardSyntax(xDimension, yDimension, descriptionBlocks[i][DATA_IDX]);
                     this.players.add(i, convertStrToPlayerWithDefaultOccupancy(
                             descriptionBlocks[i][DATA_IDX], i, gui));
                     break;
@@ -272,6 +271,43 @@ public class Converter {
                             descriptionBlocks[i][DESCRIPTION_IDX]));
             }
         }
+    }
+
+    /**
+     * Checks if Board syntax matches the following pattern:
+     * // TODO pattern angeben.
+     * @param xDim x-Dimension of the first Board. All other boards have to have the same
+     *             dimension. Integer pointer to return value for future boards.
+     * @param yDim y-Dimension
+     * @param board board to check for syntax errors
+     * @throws WrongBoardSyntaxException exception that will be thrown if anything was found.
+     */
+    private void checkBoardSyntax(Integer xDim, Integer yDim, String board) throws WrongBoardSyntaxException {
+        String[] lines = board.split("\n");
+        String[] elems = null;
+        if (yDim != lines.length) {
+            if (yDim == NOT_INITIALIZED) {
+                yDim = lines.length;
+            } else {
+                throw new WrongBoardSyntaxException();
+            }
+        }
+        for (String currLine : lines) {
+            elems = currLine.split(" ");
+            if (xDim != elems.length) {
+                if (xDim == NOT_INITIALIZED) {
+                    xDim = elems.length;
+                } else {
+                    throw new WrongBoardSyntaxException();
+                }
+            }
+            for(String currElem : elems) {
+                if (!Tiles.isValidTile(currElem)) {
+                    throw new WrongBoardSyntaxException();
+                }
+            }
+        }
+
     }
 
 

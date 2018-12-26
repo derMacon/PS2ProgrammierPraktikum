@@ -74,7 +74,7 @@ public class ValidFileReadTests {
                 new LinkedList<>(), null);
         Game actOutput = TestToolkit.read("val_noStack");
         assertEquals(expOutput, actOutput);
-        TestToolkit.writeAndAssert(actOutput, "noStack");
+//        TestToolkit.writeAndAssert(actOutput, "noStack");
     }
 
 }

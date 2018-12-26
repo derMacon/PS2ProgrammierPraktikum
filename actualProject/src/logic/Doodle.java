@@ -58,10 +58,42 @@ public class Doodle {
     public static void main(String[] args) {
 
 
+        String input = "<Spielfeld 1>\n" +
+                "-- -- -- -- --\n" +
+                "-- -- -- -- --\n" +
+                "-- -- CC P0 S2\n" +
+                "-- -- I2 P0 --\n" +
+                "-- -- -- -- --\n" +
+                "<Spielfeld 2>\n" +
+                "-- -- P0 -- --\n" +
+                "-- -- I3 -- --\n" +
+                "A0 S1 CC -- --\n" +
+                "-- -- -- -- --\n" +
+                "-- -- -- -- --\n" +
+                "<Spielfeld 3>\n" +
+                "-- -- O0 -- --\n" +
+                "-- -- I2 -- --\n" +
+                "A0 S2 CC -- --\n" +
+                "-- -- -- -- --\n" +
+                "-- -- -- -- --\n" +
+                "<Spielfeld 4>\n" +
+                "P0 O1 O0 -- --\n" +
+                "-- -- I2 -- --\n" +
+                "-- -- CC -- --\n" +
+                "-- -- -- -- --\n" +
+                "-- -- -- -- --\n" +
+                "<Bänke>\n" +
+                "0 S0O1,2 I1P0\n" +
+                "3 A1H0,- A1H0,- A1H0,1 P0S1\n" +
+                "<Beutel>\n";
 
-        String input = "Spielfeld 1>\n";
+
+
+        System.out.println(input.startsWith("\uFEFF<"));
+
         String[] temp = input.split(">\n");
-        System.out.println(input);
+        System.out.println(input.matches("Spielfeld.*>(?s)[^>]*"));
+        System.out.println(">".matches("[^>]*"));
 
 
     }

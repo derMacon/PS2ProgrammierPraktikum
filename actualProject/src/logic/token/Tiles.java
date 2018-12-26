@@ -1,6 +1,8 @@
 package logic.token;
 
 
+import logic.playerState.Board;
+
 import static logic.token.SingleTile.*;
 
 /**
@@ -149,6 +151,10 @@ public enum Tiles {
             i++;
         }
         return output;
+    }
+
+    public static boolean isValidTile(String elem) {
+        return Board.EMPTY_CELL.equals(elem) || null != fromString(elem);
     }
 
     @Override
