@@ -66,6 +66,10 @@ public class Bank {
         this.bankSize = entries.length;
     }
 
+    public void setRand(Random rand) {
+        this.rand = rand;
+    }
+
     /**
      * Constructor used for testing / fileIO.
      * @param preallocation String representation of the dominos in the bank
@@ -274,6 +278,9 @@ public class Bank {
      */
     public Domino getPlayerSelectedDomino(Player player) {
         assert null != player;
+        if(this.isEmpty()) {
+            return null;
+        }
         Domino output = null;
         int counter = 0;
         while (counter < bankSize && null == output) {

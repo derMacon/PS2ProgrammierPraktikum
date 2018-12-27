@@ -11,6 +11,7 @@ import logic.token.Domino;
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
+
 import javafx.scene.Scene;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
@@ -129,7 +130,7 @@ public class Game implements GUI2Game {
         // TODO use error message - error message used for treatment, maybe with a new Pop-Up Window or just in the log-File.
         String returnMessage = gameContent.readStr(gui, input);
         System.out.println(returnMessage);
-        if(Converter.SUCCESSFUL_READ_MESSAGE == returnMessage) {
+        if (Converter.SUCCESSFUL_READ_MESSAGE == returnMessage) {
             initTestingLoadingConstructor(gui, gameContent.getPlayers(), gameContent.getCurrBankPos(), gameContent.getCurrentBank(),
                     gameContent.getNextBank(), gameContent.getStack(), null);
 
@@ -138,8 +139,8 @@ public class Game implements GUI2Game {
             loadGuiAfterLoadingFile(genDefaultPlayerTypeArray(this.players.length), humanBoard.getSizeX(), humanBoard.getSizeY());
             // Selected Doms in Bank don't have any set position on each player's board -> must
             // be set through calling updateSelectedDom(...)
-            for(Player player : this.players) {
-                if(player instanceof BotBehavior) {
+            for (Player player : this.players) {
+                if (player instanceof BotBehavior) {
                     ((BotBehavior) player).updateSelectedDom(this.currentRoundBank);
                     ((BotBehavior) player).updateSelectedDom(this.nextRoundBank);
                 }
@@ -164,6 +165,7 @@ public class Game implements GUI2Game {
      * constructor. Necessary for avoiding code doubling in the Loading
      * constructor.
      * // TODO javadoc parameters
+     *
      * @param gui              gui for the game
      * @param players          players participating in this game
      * @param currentRoundBank current round bank
@@ -283,7 +285,7 @@ public class Game implements GUI2Game {
         this.gui.selectDomino(CURRENT_BANK_IDX, idx, HUMAN_PLAYER_IDX);
         Logger.getInstance().printAndSafe(String.format(Logger.selectionLoggerFormat,
                 this.players[HUMAN_PLAYER_IDX].getName(), this.currentRoundBank.getDomino(idx), idx,
-                "current") );
+                "current"));
 
         botsDoInitialSelect();
         randomlyDrawNewDominosForNextRound();
@@ -434,13 +436,13 @@ public class Game implements GUI2Game {
 
     // --- Do necessary turns / Setting up banks for next round ---
 
-    
+
     private void setupCurrDomAndBotsDoTurn() {
         setToChooseBox(null);
         // bots do turns until round is over
 //        if(this.nextRoundBank.isEmpty()) {
-        if(this.nextRoundBank.isEmpty()) {
-            if(!this.nextRoundBank.isEmpty()) {
+        if (this.nextRoundBank.isEmpty()) {
+            if (!this.nextRoundBank.isEmpty()) {
                 copyAndRemoveNextRoundBankToCurrentBank();
                 this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
             }
@@ -499,7 +501,7 @@ public class Game implements GUI2Game {
 //            }
 //        } else {
         copyAndRemoveNextRoundBankToCurrentBank();
-        if(!this.stack.isEmpty()) {
+        if (!this.stack.isEmpty()) {
             randomlyDrawNewDominosForNextRound();
         } else {
             this.nextRoundBank.clearAllEntries();
@@ -511,7 +513,7 @@ public class Game implements GUI2Game {
 
 
     private int botsDoLastTurn(int bankIdx) {
-        if(bankIdx >= this.currentRoundBank.getBankSize()) {
+        if (bankIdx >= this.currentRoundBank.getBankSize()) {
             endRound();
         }
         Player currPlayerInstance = this.currentRoundBank.getSelectedPlayer(bankIdx);
@@ -591,51 +593,63 @@ public class Game implements GUI2Game {
 
     @Override
     public String toString() {
-        StringBuilder strbOutput = new StringBuilder();
-        // all player boards to String
-        for(Player currPlayer : this.players) {
-            strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " " + (currPlayer.getIdxInPlayerArray() + 1) + ">\n");
-            strbOutput.append(currPlayer.getBoard().toString());
-        }
-        // all banks to String (current round Bank first)
-        strbOutput.append("<" + Converter.BANK_IDENTIFIER + ">\n");
-        strbOutput.append(this.currentRoundBank.toString() + "\n");
-        strbOutput.append(this.nextRoundBank.toString() + "\n");
-        // stack to String
-        strbOutput.append("<" + Converter.STACK_IDENTIFIER + ">\n");
-        for (int i = 0; i < this.stack.size(); i++) {
-            strbOutput.append(this.stack.get(i).toFile());
-            if(i < this.stack.size() - 1) {
-                strbOutput.append(",");
-            }
-        }
-        return strbOutput.toString();
+        return genString(false);
+//        StringBuilder strbOutput = new StringBuilder();
+//        // all player boards to String
+//        for (Player currPlayer : this.players) {
+//            strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " " + (currPlayer.getIdxInPlayerArray() + 1) + ">\n");
+//            strbOutput.append(currPlayer.getBoard().toString());
+//        }
+//        // all banks to String (current round Bank first)
+//        strbOutput.append("<" + Converter.BANK_IDENTIFIER + ">\n");
+//        strbOutput.append(this.currentRoundBank.toString() + "\n");
+//        strbOutput.append(this.nextRoundBank.toString() + "\n");
+//        // stack to String
+//        strbOutput.append("<" + Converter.STACK_IDENTIFIER + ">\n");
+//        for (int i = 0; i < this.stack.size(); i++) {
+//            strbOutput.append(this.stack.get(i).toFile());
+//            if (i < this.stack.size() - 1) {
+//                strbOutput.append(",");
+//            }
+//        }
+//        return strbOutput.toString();
     }
 
     public String toFile() {
+        return genString(true);
+    }
+
+    private String genString(boolean forFileRepresentation) {
         StringBuilder strbOutput = new StringBuilder();
         // all player boards to String
-        for(Player currPlayer : this.players) {
+        for (Player currPlayer : this.players) {
             strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " " + (currPlayer.getIdxInPlayerArray() + 1) + ">\n");
-            strbOutput.append(currPlayer.getBoard().toFile(currPlayer,
-                    this.currentRoundBank,
-                    this.nextRoundBank));
+            if (forFileRepresentation) {
+                strbOutput.append(currPlayer.getBoard().toFile(currPlayer,
+                        this.currentRoundBank,
+                        this.nextRoundBank));
+            } else {
+                strbOutput.append(currPlayer.getBoard().toString());
+            }
         }
         // all banks to String (current round Bank first)
         strbOutput.append("<" + Converter.BANK_IDENTIFIER + ">\n");
         strbOutput.append(this.currentRoundBank.toString() + "\n");
-        strbOutput.append(this.nextRoundBank.toString() + "\n");
+        if(this.nextRoundBank == null) {
+            strbOutput.append("\n");
+        } else {
+            strbOutput.append(this.nextRoundBank.toString() + "\n");
+        }
         // stack to String
         strbOutput.append("<" + Converter.STACK_IDENTIFIER + ">\n");
         for (int i = 0; i < this.stack.size(); i++) {
             strbOutput.append(this.stack.get(i).toFile());
-            if(i < this.stack.size() - 1) {
+            if (i < this.stack.size() - 1) {
                 strbOutput.append(",");
             }
         }
         return strbOutput.toString();
     }
-
 
 
     @Override
@@ -646,18 +660,19 @@ public class Game implements GUI2Game {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        final Game other = (Game)obj;
+        final Game other = (Game) obj;
         boolean equals;
         int i = 0;
         do {
             equals = this.players[i].equals(other.players[i]);
             i++;
-        } while(equals && i < this.players.length);
+        } while (equals && i < this.players.length);
 
         equals = this.stack.size() == other.stack.size();
         i = 0;
-        while(equals && i < this.stack.size()) {
+        while (equals && i < this.stack.size()) {
             equals = this.stack.get(i).equals(other.stack.get(i));
+            i++;
         }
 
         // TODO Delete before final commit

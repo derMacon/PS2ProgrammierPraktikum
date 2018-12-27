@@ -9,10 +9,13 @@ import logic.token.SingleTile;
 import logic.token.Tiles;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class Converter {
 
@@ -285,11 +288,16 @@ public class Converter {
             String[] elems = null;
             String[] currSlotArr = null;
 
+
+            Set<Integer> playerIdxs = new HashSet<>();
             // check if every player has selected something
             for (int i = 0; i < playerCnt; i++) {
                 if(!banks.contains(i + " ")) {
-                    throw new WrongBankSyntaxException();
+                    playerIdxs.add(i);
                 }
+            }
+            if(playerIdxs.size() != playerCnt && playerIdxs.size() != 0) {
+                throw new WrongBankSyntaxException();
             }
 
             int temp;
@@ -324,7 +332,7 @@ public class Converter {
         if (0 < stack.length()) {
             String[] elems = stack.split(",");
             for (String currElem : elems) {
-                if (!Tiles.contains(currElem)) {
+                if (!Tiles.contains(currElem.replaceAll("\n", ""))) {
                     throw new WrongStackSyntaxException();
                 }
             }
@@ -415,6 +423,7 @@ public class Converter {
      * @return both Bank types in a Bank array
      */
     private Bank[] convertStrToBanks(String input) {
+        assert null != input && input.contains("\n");
         if (input.length() == 0 || input.equals("\n")) {
             return new Bank[]{new Bank(this.players.size()),
                     new Bank(this.players.size())};
@@ -422,9 +431,13 @@ public class Converter {
         // TODO ueberarbeiten
         String[] bothBanks = input.split("\n");
         Bank[] output = new Bank[2];
-        // TODO eventuell Schnittstelle fuer Randomobj anlegen
         output[Game.CURRENT_BANK_IDX] = new Bank(bothBanks[0], this.players, new Random());
-        output[Game.NEXT_BANK_IDX] = new Bank(bothBanks[1], this.players, new Random());
+
+        if(bothBanks.length > 1) {
+            output[Game.NEXT_BANK_IDX] = new Bank(bothBanks[1], this.players, new Random());
+        } else {
+            output[Game.NEXT_BANK_IDX] = new Bank(this.players.size());
+        }
         // TODO update possible dominos list
         return output;
     }

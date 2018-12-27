@@ -97,20 +97,21 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 
     @Override
     public void updateSelectedDom(Bank currBank) {
-        // Construct a bank containing only the already selected Entry of the player -> now
-        // method selectFromBank(...) can be used to find pos on board, etc.
-        Domino dom = currBank.getPlayerSelectedDomino(this);
-        Bank temp;
-        if(null != dom) {
-            temp = new Bank(new Entry[]{new Entry(dom)},
-                    currBank.getRand());
-            Domino tempDom = selectFromBank(temp, Game.CURRENT_BANK_IDX, false).
-                            getPlayerSelectedDomino(this);
+        if(null != currBank) {
+            // Construct a bank containing only the already selected Entry of the player -> now
+            // method selectFromBank(...) can be used to find pos on board, etc.
+            Domino dom = currBank.getPlayerSelectedDomino(this);
+            Bank temp;
+            if (null != dom) {
+                temp = new Bank(new Entry[]{new Entry(dom)},
+                        currBank.getRand());
+                Domino tempDom = selectFromBank(temp, Game.CURRENT_BANK_IDX, false).
+                        getPlayerSelectedDomino(this);
 
-            dom.setPos(tempDom.getFstPos());
-            dom.setRotation(tempDom.getRot());
+                dom.setPos(tempDom.getFstPos());
+                dom.setRotation(tempDom.getRot());
+            }
         }
-
     }
 
     @Override

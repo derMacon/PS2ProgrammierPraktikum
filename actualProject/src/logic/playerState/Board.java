@@ -380,6 +380,7 @@ public class Board {
         if(!(player instanceof BotBehavior)) {
             return toString();
         } else {
+            // find player selected domino from both banks -> null if not found
             Domino playerSelectedDom = currRoundBank.getPlayerSelectedDomino(player);
             playerSelectedDom = null == playerSelectedDom ?
                     nextRoundBank.getPlayerSelectedDomino(player) : playerSelectedDom;
@@ -389,12 +390,18 @@ public class Board {
     }
 
 
+    /**
+     * Removes a given domino from the board. The domino may be empty, then nothing will be deleted
+     * @param dom domino to remove from the bank
+     * @return the board instance without the given domino
+     */
     private Board remove(Domino dom) {
-        assert dom != null;
-        Pos fstPos = dom.getFstPos();
-        Pos sndPos = dom.getSndPos();
-        this.cells[fstPos.x()][fstPos.y()] = SingleTile.EC;
-        this.cells[sndPos.x()][sndPos.y()] = SingleTile.EC;
+        if(null != dom) {
+            Pos fstPos = dom.getFstPos();
+            Pos sndPos = dom.getSndPos();
+            this.cells[fstPos.x()][fstPos.y()] = SingleTile.EC;
+            this.cells[sndPos.x()][sndPos.y()] = SingleTile.EC;
+        }
         return this;
     }
 
