@@ -346,7 +346,7 @@ public class Bank {
         StringBuilder output = new StringBuilder();
         for (int i = 0; i < this.entries.length; i++) {
             output.append(this.entries[i] == null ? "" : this.entries[i].toString());
-            if (i < this.entries.length - 1) {
+            if (i < this.entries.length - 1 && this.entries[i] != null) {
                 output.append(",");
             }
         }

@@ -612,6 +612,30 @@ public class Game implements GUI2Game {
         return strbOutput.toString();
     }
 
+    public String toFile() {
+        StringBuilder strbOutput = new StringBuilder();
+        // all player boards to String
+        for(Player currPlayer : this.players) {
+            strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " " + (currPlayer.getIdxInPlayerArray() + 1) + ">\n");
+            strbOutput.append(currPlayer.getBoard().toFile(currPlayer,
+                    this.currentRoundBank,
+                    this.nextRoundBank));
+        }
+        // all banks to String (current round Bank first)
+        strbOutput.append("<" + Converter.BANK_IDENTIFIER + ">\n");
+        strbOutput.append(this.currentRoundBank.toString() + "\n");
+        strbOutput.append(this.nextRoundBank.toString() + "\n");
+        // stack to String
+        strbOutput.append("<" + Converter.STACK_IDENTIFIER + ">\n");
+        for (int i = 0; i < this.stack.size(); i++) {
+            strbOutput.append(this.stack.get(i).toFile());
+            if(i < this.stack.size() - 1) {
+                strbOutput.append(",");
+            }
+        }
+        return strbOutput.toString();
+    }
+
 
 
     @Override

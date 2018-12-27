@@ -1,5 +1,6 @@
 package logic.playerState;
 
+import logic.bankSelection.Bank;
 import logic.bankSelection.Choose;
 import logic.token.DistrictType;
 import logic.token.Domino;
@@ -365,6 +366,37 @@ public class Board {
         return output.toString();
     }
 
+    /**
+     * Generates a String representation of the board to be presented in the file. Since the board already stores a
+     * players selected domino in its cells the moment a player selects the particular domino it is necessary to
+     * remove it before displaying it in a file.
+     * @param player
+     * @param currRoundBank
+     * @param nextRoundBank
+     * @return
+     */
+    public String toFile(Player player, Bank currRoundBank, Bank nextRoundBank) {
+        assert null != player && null != currRoundBank && null != nextRoundBank;
+        if(!(player instanceof BotBehavior)) {
+            return toString();
+        } else {
+            Domino playerSelectedDom = currRoundBank.getPlayerSelectedDomino(player);
+            playerSelectedDom = null == playerSelectedDom ?
+                    nextRoundBank.getPlayerSelectedDomino(player) : playerSelectedDom;
+            return  new Board(this).remove(playerSelectedDom).toString();
+        }
+
+    }
+
+
+    private Board remove(Domino dom) {
+        assert dom != null;
+        Pos fstPos = dom.getFstPos();
+        Pos sndPos = dom.getSndPos();
+        this.cells[fstPos.x()][fstPos.y()] = SingleTile.EC;
+        this.cells[sndPos.x()][sndPos.y()] = SingleTile.EC;
+        return this;
+    }
 
 
     /**

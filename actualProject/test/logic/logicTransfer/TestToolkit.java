@@ -97,7 +97,7 @@ public class TestToolkit {
                     + "results" + File.separator + filename + ".txt");
             File fileExpectedResult = new File("test" + File.separator + "fileTests" + File.separator
                     + "expected_results" + File.separator + filename + ".txt");
-            Assert.assertEquals(Loader.openGivenFile(fileResult), Loader.openGivenFile(fileExpectedResult));
+            Assert.assertEquals(Loader.openGivenFile(fileExpectedResult), Loader.openGivenFile(fileResult));
         } catch (FileNotFoundException e) {
             assertTrue(false);
         }

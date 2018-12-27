@@ -103,7 +103,8 @@ public class Converter {
             if (input == null || input.length() == 0) {
                 throw new IOException(UNSUCCESSFUL_READ_MESSAGE);
             }
-            if (!input.startsWith(TAG_OPENER)) {
+            if (!input.matches("(<Spielfeld[^>]*>\n(?s)[^<,>]*)*<Bänke>\n(?s)" +
+                    "[^<>]*<Beutel>\n[^<>]*")) {
                 System.out.println(input);
                 throw new WrongTagException();
             }
@@ -260,7 +261,7 @@ public class Converter {
                             descriptionBlocks[i][DATA_IDX], i, gui));
                     break;
                 case BANK_IDENTIFIER:
-                    checkBankSyntax(descriptionBlocks[i][DATA_IDX]);
+                    checkBankSyntax(descriptionBlocks[i][DATA_IDX], this.players.size());
                     Bank[] banks = convertStrToBanks(descriptionBlocks[i][DATA_IDX]);
                     this.currentBank = banks[Game.CURRENT_BANK_IDX];
                     this.nextBank = banks[Game.NEXT_BANK_IDX];
@@ -278,12 +279,19 @@ public class Converter {
         }
     }
 
-    private void checkBankSyntax(String banks) throws WrongBankSyntaxException {
+    private void checkBankSyntax(String banks, int playerCnt) throws WrongBankSyntaxException {
         try {
-            int playerCnt = this.players.size();
             String[] individualBanks = banks.split("\n");
             String[] elems = null;
             String[] currSlotArr = null;
+
+            // check if every player has selected something
+            for (int i = 0; i < playerCnt; i++) {
+                if(!banks.contains(i + " ")) {
+                    throw new WrongBankSyntaxException();
+                }
+            }
+
             int temp;
             for (String currBank : individualBanks) {
                 elems = currBank.split(",");

@@ -96,7 +96,7 @@ public class Loader {
     }
 
     public static void saveWithoutGUI(String filename, Game game) {
-        actualSavingProcess(new File(filename), game.toString());
+        actualSavingProcess(new File(filename), game.toFile());
     }
 
 
