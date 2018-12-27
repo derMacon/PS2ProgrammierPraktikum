@@ -1,4 +1,4 @@
-﻿<Spielfeld 1>
+<Spielfeld 1>
 -- -- -- -- --
 -- -- -- -- --
 -- -- CC P0 S2
