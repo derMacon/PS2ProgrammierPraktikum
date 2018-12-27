@@ -1,12 +1,15 @@
 package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
+import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerTypes.PlayerType;
 import logic.token.Domino;
+import logic.token.SingleTile;
 import logic.token.Tiles;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
@@ -100,9 +103,9 @@ public class Converter {
             if (input == null || input.length() == 0) {
                 throw new IOException(UNSUCCESSFUL_READ_MESSAGE);
             }
-            if (!input.startsWith("<")) {
+            if (!input.startsWith(TAG_OPENER)) {
                 System.out.println(input);
-                throw new WrongTagException("Document does not start with <");
+                throw new WrongTagException();
             }
 
             String[][] descriptionBlocks = genDescriptiveField(input);
@@ -176,7 +179,7 @@ public class Converter {
         if (modifiedInput.matches(BOARD_IDENTIFIER + ".*")) {
             return BOARD_IDENTIFIER;
         }
-        if(modifiedInput.equals(BANK_IDENTIFIER)
+        if (modifiedInput.equals(BANK_IDENTIFIER)
                 || modifiedInput.equals(STACK_IDENTIFIER)) {
             return modifiedInput;
         }
@@ -245,18 +248,19 @@ public class Converter {
      * @param gui
      */
     public void fillFieldsWithDescriptiveBlocks(String[][] descriptionBlocks, GUIConnector gui)
-            throws WrongTagException, WrongBoardSyntaxException {
+            throws WrongTagException, WrongBoardSyntaxException, WrongBankSyntaxException,
+            WrongStackSyntaxException {
         // TODO delete before final commit
-        Integer xDimension = NOT_INITIALIZED;
-        Integer yDimension = NOT_INITIALIZED;
+        int[] dimensions = new int[]{NOT_INITIALIZED, NOT_INITIALIZED};
         for (int i = 0; i < descriptionBlocks.length; i++) {
             switch (descriptionBlocks[i][DESCRIPTION_IDX]) {
                 case BOARD_IDENTIFIER:
-//                    checkBoardSyntax(xDimension, yDimension, descriptionBlocks[i][DATA_IDX]);
+                    dimensions = checkBoardSyntax(dimensions, descriptionBlocks[i][DATA_IDX]);
                     this.players.add(i, convertStrToPlayerWithDefaultOccupancy(
                             descriptionBlocks[i][DATA_IDX], i, gui));
                     break;
                 case BANK_IDENTIFIER:
+                    checkBankSyntax(descriptionBlocks[i][DATA_IDX]);
                     Bank[] banks = convertStrToBanks(descriptionBlocks[i][DATA_IDX]);
                     this.currentBank = banks[Game.CURRENT_BANK_IDX];
                     this.nextBank = banks[Game.NEXT_BANK_IDX];
@@ -264,6 +268,7 @@ public class Converter {
                     this.currBankPos = 4 - descriptionBlocks[Game.CURRENT_BANK_IDX].length;
                     break;
                 case STACK_IDENTIFIER:
+                    checkStackSyntax(descriptionBlocks[i][DATA_IDX]);
                     this.stack = convertStrToStack(descriptionBlocks[i][DATA_IDX]);
                     break;
                 default:
@@ -273,41 +278,85 @@ public class Converter {
         }
     }
 
+    private void checkBankSyntax(String banks) throws WrongBankSyntaxException {
+        try {
+            int playerCnt = this.players.size();
+            String[] individualBanks = banks.split("\n");
+            String[] elems = null;
+            String[] currSlotArr = null;
+            int temp;
+            for (String currBank : individualBanks) {
+                elems = currBank.split(",");
+                for (String currElem : elems) {
+                    if (currElem.startsWith(" ") || currElem.endsWith(" ")) {
+                        throw new WrongBankSyntaxException();
+                    }
+
+                    // check playerreference (index)
+                    currSlotArr = currElem.split(" ");
+                    if (!currSlotArr[0].equals("-")) {
+                        temp = Integer.parseInt(currSlotArr[0]);
+                        if (temp < 0 || temp >= playerCnt) {
+                            throw new WrongBankSyntaxException();
+                        }
+                    }
+                    // check domino
+                    if (!Tiles.contains(currSlotArr[1])) {
+                        throw new WrongBankSyntaxException();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            throw new WrongBankSyntaxException();
+        }
+    }
+
+    private void checkStackSyntax(String stack) throws WrongStackSyntaxException {
+        // Stack may be empty
+        if (0 < stack.length()) {
+            String[] elems = stack.split(",");
+            for (String currElem : elems) {
+                if (!Tiles.contains(currElem)) {
+                    throw new WrongStackSyntaxException();
+                }
+            }
+        }
+    }
+
+
     /**
      * Checks if Board syntax matches the following pattern:
      * // TODO pattern angeben.
-     * @param xDim x-Dimension of the first Board. All other boards have to have the same
-     *             dimension. Integer pointer to return value for future boards.
-     * @param yDim y-Dimension
+     *
      * @param board board to check for syntax errors
      * @throws WrongBoardSyntaxException exception that will be thrown if anything was found.
      */
-    private void checkBoardSyntax(Integer xDim, Integer yDim, String board) throws WrongBoardSyntaxException {
+    private int[] checkBoardSyntax(int[] dimensions, String board) throws WrongBoardSyntaxException {
         String[] lines = board.split("\n");
         String[] elems = null;
-        if (yDim != lines.length) {
-            if (yDim == NOT_INITIALIZED) {
-                yDim = lines.length;
+        if (dimensions[1] != lines.length) {
+            if (dimensions[1] == NOT_INITIALIZED) {
+                dimensions[1] = lines.length;
             } else {
                 throw new WrongBoardSyntaxException();
             }
         }
         for (String currLine : lines) {
             elems = currLine.split(" ");
-            if (xDim != elems.length) {
-                if (xDim == NOT_INITIALIZED) {
-                    xDim = elems.length;
+            if (dimensions[0] != elems.length) {
+                if (dimensions[0] == NOT_INITIALIZED) {
+                    dimensions[0] = elems.length;
                 } else {
                     throw new WrongBoardSyntaxException();
                 }
             }
-            for(String currElem : elems) {
-                if (!Tiles.isValidTile(currElem)) {
+            for (String currElem : elems) {
+                if (!Board.EMPTY_CELL.equals(currElem) && !SingleTile.contains(currElem)) {
                     throw new WrongBoardSyntaxException();
                 }
             }
         }
-
+        return dimensions;
     }
 
 

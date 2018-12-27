@@ -36,8 +36,8 @@ public class Logger {
 
     public static final String dismissalLoggerFormat = "%s did not use %s";
 
-    public static final String GAME_SEPARATOR = ZonedDateTime.now().toString() +
-        "\n-----------------------------------";
+    public static final String GAME_SEPARATOR =  "-----------------------------------\n" +
+            ZonedDateTime.now().toString();
 
     public static final String CURR_ROUND_IDENTIFIER = "current";
     public static final String NEXT_ROUND_IDENTIFIER = "next";

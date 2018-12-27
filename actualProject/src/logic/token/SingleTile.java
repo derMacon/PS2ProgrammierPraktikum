@@ -1,5 +1,7 @@
 package logic.token;
 
+import logic.playerState.Board;
+
 import static logic.token.DistrictType.*;
 
 /**
@@ -52,4 +54,14 @@ public enum SingleTile {
     public int getTokenCnt() {
         return this.tokenCnt;
     }
+
+    public static boolean contains(String input) {
+        for(SingleTile c : SingleTile.values()) {
+            if(c.name().equals(input)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

@@ -153,8 +153,8 @@ public enum Tiles {
         return output;
     }
 
-    public static boolean isValidTile(String elem) {
-        return Board.EMPTY_CELL.equals(elem) || null != fromString(elem);
+    public static boolean contains(String input) {
+        return null != fromString(input);
     }
 
     @Override

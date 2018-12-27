@@ -12,7 +12,7 @@ public class InvalidFileReadTests {
 
     @Test
     public void test_noTagOpenerAtBeginningOfDoc() {
-        String expOutput = WrongTagException.DEFAULT_MESSAGE + "Document does not start with <";
+        String expOutput = WrongTagException.DEFAULT_MESSAGE;
         String fileOutput = TestToolkit.readAsString("inv_noTagOpenerAtBeginningOfDoc");
         String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
         assertEquals(expOutput, actOutput);
@@ -126,7 +126,7 @@ public class InvalidFileReadTests {
 
     @Test
     public void test_blankBeforeFstTag() {
-        String expOutput = WrongTagException.DEFAULT_MESSAGE + "Document does not start with <";
+        String expOutput = WrongTagException.DEFAULT_MESSAGE;
         String fileOutput = TestToolkit.readAsString("inv_blankBeforeFstTag");
         String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
         assertEquals(expOutput, actOutput);
@@ -272,5 +272,251 @@ public class InvalidFileReadTests {
         assertEquals(expOutput, actOutput);
     }
 
+
+    @Test
+    public void test_wrongBoardDimensions1() {
+        String expOutput = WrongBoardSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBoardDimensions1");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBoardDimensions2() {
+        String expOutput = WrongBoardSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBoardDimensions2");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBoardDimensions3() {
+        String expOutput = WrongBoardSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBoardDimensions3");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBoardDimensions4() {
+        String expOutput = WrongBoardSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBoardDimensions4");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+
+    // --- bank ---
+
+    @Test
+    public void test_wrongBank_blankAtBeginning() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_blankAtBeginning");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_blankAtEnd() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_blankAtEnd");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_commaAtBeginning() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_commaAtBeginning");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_commaAtEnd() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_blankAtEnd");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_tooManyBlanks() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_tooManyBlanks");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_tooFewBlanks1() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_tooFewBlanks1");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_tooFewBlanks2() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_tooFewBlanks2");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_onlyOneBank() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_onlyOneBank");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_negativePlayerNum() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_negativePlayerNum");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_tooLargePlayerNum() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_tooLargePlayerNum");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_onePlayerHasNotSelectedAnything() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_onePlayerHasNotSelectedAnything");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_nextBankSmallerThenCurrBank() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_nextBankSmallerThenCurrBank");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_bothBankTooSmall() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_bothBankTooSmall");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_oneBankTooLarge() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_oneBankTooLarge");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_letterAsPlayerNum() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_letterAsPlayerNum");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongBank_thirdBankInArray() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongBank_thirdBankInArray");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+
+    // --- Stack ---
+
+    @Test
+    public void test_wrongStack_blankAtBeginning() {
+        String expOutput = WrongStackSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongStack_blankAtBeginning");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongStack_blankAtEnd() {
+        String expOutput = WrongStackSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongStack_blankAtEnd");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongStack_commaAtBeginning() {
+        String expOutput = WrongStackSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongStack_commaAtBeginning");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongStack_commaAtEnd() {
+        String expOutput = WrongStackSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongStack_commaAtEnd");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongStack_blankAfterElem1() {
+        String expOutput = WrongStackSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongStack_blankAfterElem1");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongStack_blankAfterElem2() {
+        String expOutput = WrongStackSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongStack_blankAfterElem2");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongStack_blankBeforeElem() {
+        String expOutput = WrongStackSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongStack_blankBeforeElem");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongStack_EmptyElem() {
+        String expOutput = WrongStackSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongStack_EmptyElem");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongStack_OneSingletile() {
+        String expOutput = WrongStackSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongStack_OneSingletile");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
+
+    @Test
+    public void test_wrongStack_cntNotDividableByPlayerCnt() {
+        String expOutput = WrongStackSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_wrongStack_cntNotDividableByPlayerCnt");
+        String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
+        assertEquals(expOutput, actOutput);
+    }
 
 }
