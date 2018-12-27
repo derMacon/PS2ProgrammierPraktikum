@@ -81,8 +81,9 @@ public class Loader {
 
     /**
      * Opens an output stream, writes the text into the file and closes the stream afterwards
+     *
      * @param output file to which the data will be written
-     * @param text data that will be written
+     * @param text   data that will be written
      */
     private static void actualSavingProcess(File output, String text) {
         try {
@@ -100,15 +101,15 @@ public class Loader {
     }
 
 
-
     /**
      * Saves a given input to an already chosen directory. If no directory was selected
      * beforehand the method saveFileAs(...) will be called.
+     *
      * @param txtFldInput text that will be saved
      */
     //TODO insert following method into xsml with scenebuilder
     public void saveFile(String txtFldInput) {
-        if(null == this.file) {
+        if (null == this.file) {
             saveFileAs(txtFldInput);
         } else {
             actualSavingProcess(this.file, txtFldInput);
@@ -118,31 +119,48 @@ public class Loader {
 
     /**
      * Opens a Filechooser and saves the given input to the desired location with a given name.
+     *
      * @param txtFldInput text that will be saved
      */
-    // TODO find out why never called when requested to write file
     public void saveFileAs(String txtFldInput) {
-        if(null == stage) {
+        if (null == stage) {
             this.stage = new Stage();
         }
+        if (null != this.file) {
+            this.fChooser.setInitialDirectory(this.file.getParentFile());
+        }
         this.file = fChooser.showSaveDialog(stage);
-        actualSavingProcess(this.file, txtFldInput);
-    }
+        if (null == this.file) {
+            Logger.getInstance().printAndSafe(Logger.TERMINATION_DELIMITER +
+                    "\nUser aborted the saving process\n" + Logger.TERMINATION_DELIMITER + "\n");
+        } else {
+            actualSavingProcess(this.file, txtFldInput);
+            Logger.getInstance().printAndSafe("User saved the game as \"" + this.file.getName() + "\" to "
+                    + this.file.getPath() + "\n");
+        }
 
+    }
 
 
     /**
      * Method to convert a file to a String
      * Opens a filechooser and the user can then select the file he want to load. Besides
      * returning the String value, the file attribut in the Loader class will be updated
-     *
+     * <p>
      * Source: https://stackoverflow.com/questions/4716503/reading-a-plain-text-file-in-java
      *
      * @return String value saved in the selected file
      */
     public String openFileChooser() throws FileNotFoundException {
         this.file = fChooser.showOpenDialog(stage);
-        return openGivenFile(this.file);
+        if(null == this.file) {
+            Logger.getInstance().printAndSafe("\nUser aborted reading process\n");
+            return "";
+        } else {
+            Logger.getInstance().printAndSafe("User opended the game \"" + this.file.getName() + "\" from "
+                + this.file.getAbsolutePath() + "\n");
+            return openGivenFile(this.file);
+        }
     }
 
     public static String openGivenFile(String filePath) throws FileNotFoundException {
@@ -156,7 +174,7 @@ public class Loader {
         try {
             // has to be UTF8 to read german "Umlaute"
             in = new Scanner(file, "UTF8");
-            while(in.hasNextLine()) {
+            while (in.hasNextLine()) {
                 sb.append(in.nextLine() + "\n");
             }
             in.close();
@@ -170,6 +188,7 @@ public class Loader {
 
     /**
      * https://stackoverflow.com/questions/21891578/removing-bom-characters-using-java
+     *
      * @param s
      * @return
      */

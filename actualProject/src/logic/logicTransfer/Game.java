@@ -146,7 +146,7 @@ public class Game implements GUI2Game {
                 }
             }
         }
-        Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nSpiel geladen:" + returnMessage);
+        Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nLoading process: " + returnMessage);
     }
 
     private void loadGuiAfterLoadingFile(PlayerType[] playerTypes, int sizeX, int sizeY) {
@@ -260,7 +260,7 @@ public class Game implements GUI2Game {
         this.currBankIdx = 0;
         this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
 
-        Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nNeues Spiel gestartet\n");
+        Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nStarted new game\n");
 
         // TODO insert code - update all players
         // TODO blur out boxes which are not accessible when user selects the first domino from the current bank

@@ -2862,3 +2862,280 @@ Neues Spiel gestartet
 2018-12-27T21:39:59.268+01:00[Europe/Berlin]
 Neues Spiel gestartet
 
+-----------------------------------
+2018-12-27T21:49:44.953+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+-----------------------------------
+2018-12-27T21:51:31.096+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+
+HUMAN chose [A0,S2] at index 1 for next round
+HUMAN put [O0,I2] horizontal to (0,2)
+
+BOT4 chose [S0,O2] at index 3 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S2,P0] at index 0 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT2 chose [P0,I1] at index 3 for next round
+BOT2 put [S2,P0] horizontal to (0,1)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN put [A0,S2] horizontal to (3,2)
+-----------------------------------
+2018-12-27T21:58:08.768+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+HUMAN chose [O0,I2] at index 2 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 1 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+-----------------------------------
+2018-12-27T21:59:42.951+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+-----------------------------------
+2018-12-27T22:01:45.719+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+-----------------------------------
+2018-12-27T22:03:45.319+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+-----------------------------------
+2018-12-27T22:05:23.623+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+-----------------------------------
+2018-12-27T22:10:22.612+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+User saved the game to F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt with the name "out.txt"
+-----------------------------------
+2018-12-27T22:12:16.458+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+User aborted the saving process
+-----------------------------------
+2018-12-27T22:12:54.915+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+User aborted the saving process
+-----------------------------------
+2018-12-27T22:14:36.886+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+User aborted the saving process
+-----------------------------------
+2018-12-27T22:17:40.362+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+User aborted reading process
+-----------------------------------
+2018-12-27T22:17:40.362+01:00[Europe/Berlin]
+Spiel geladen:Laden nicht erfolgreich
+-----------------------------------
+2018-12-27T22:25:32.500+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+User aborted the saving process
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+-----------------------------------
+2018-12-27T22:26:20.252+01:00[Europe/Berlin]
+Neues Spiel gestartet
+
+User aborted the saving process
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+-----------------------------------
+2018-12-27T22:27:30.004+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+User aborted the saving process
+
+-----------------------------------
+2018-12-27T22:28:32.415+01:00[Europe/Berlin]
+Started new game
+
+
+User aborted the saving process
+
+-----------------------------------
+2018-12-27T22:29:07.696+01:00[Europe/Berlin]
+Started new game
+
+User aborted the saving process
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+User aborted the saving process
+
+-----------------------------------
+2018-12-27T22:30:19.443+01:00[Europe/Berlin]
+Started new game
+
+User aborted the saving process
+
+...............................
+User aborted reading process
+...............................
+
+-----------------------------------
+2018-12-27T22:30:19.443+01:00[Europe/Berlin]
+Loading process: Loading unsuccessful
+-----------------------------------
+2018-12-27T22:32:22.111+01:00[Europe/Berlin]
+Started new game
+
+...................................
+User aborted the saving process
+...................................
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+...................................
+User aborted the saving process
+...................................
+
+-----------------------------------
+2018-12-27T22:35:39.410+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-27T22:35:54.881+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round

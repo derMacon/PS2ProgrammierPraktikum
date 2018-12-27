@@ -44,7 +44,7 @@
                                         <MenuItem mnemonicParsing="false" onAction="#onClickSelectPlayerTypes" text="Mit benutzerdefinierten Gegnern" />
                                     </items>
                                 </Menu>
-                        <MenuItem onAction="#mnTmSaveGame" text="_Speichern unter">
+                        <MenuItem onAction="#mnTmSaveGameAs" text="_Speichern unter">
                            <accelerator>
                               <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP" />
                            </accelerator>

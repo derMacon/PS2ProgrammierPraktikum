@@ -50,7 +50,7 @@ public class Converter {
     /**
      * String message for displaying an unsuccessful read from the given data
      */
-    public static final String UNSUCCESSFUL_READ_MESSAGE = "Laden nicht erfolgreich";
+    public static final String UNSUCCESSFUL_READ_MESSAGE = "Loading unsuccessful";
     /**
      * String message for displaying a successful read from the given data
      */

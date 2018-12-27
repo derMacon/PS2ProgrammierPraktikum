@@ -554,14 +554,13 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
-    private void mnTmSaveGame(ActionEvent event) throws MalformedURLException {
+    private void mnTmSaveGame(ActionEvent event) {
+        Loader.getInstance().saveFile(this.game.toString());
+    }
+
+    @FXML
+    private void mnTmSaveGameAs(ActionEvent event) {
         Loader.getInstance().saveFileAs(this.game.toString());
-//        try {
-//            // TODO Filechoose implementieren
-//            this.game.safeGame(new URI("test"));
-//        } catch (URISyntaxException e) {
-//            e.printStackTrace();
-//        }
     }
 
     @FXML
