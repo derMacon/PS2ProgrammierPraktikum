@@ -1,11 +1,15 @@
 package gui;
 
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import logic.bankSelection.Bank;
 import logic.logicTransfer.Game;
 import logic.playerState.Board;
@@ -22,11 +26,11 @@ import java.util.EmptyStackException;
 
 
 public class JavaFXGUI implements GUIConnector {
-    
+
     /**
      * Sentence that will be completed and shown in the appropriate label
      */
-    public static final String WHOS_TURN_SENTENCE = "Am Zug: Spieler "; 
+    public static final String WHOS_TURN_SENTENCE = "Am Zug: Spieler ";
 
     //26 images for each face of a half (0..25)
     private static int IMG_COUNT = 26;
@@ -73,12 +77,12 @@ public class JavaFXGUI implements GUIConnector {
 
     private ImageView[][] imgVwsCurrentBankSelection;
     private ImageView[][] imgVwsNextBankSelection;
-    
-    private Label[] lblPlayerNameAndPoints; 
+
+    private Label[] lblPlayerNameAndPoints;
 
     public JavaFXGUI(Pane pnSelected, Label lblTurn, ImageView[][] imgWssPlayerBoard, ImageView[][][] imgWwsAIBoards,
                      ImageView[][] imgVwsCurrentBank, ImageView[][] imgVwsCurrentBankSelection,
-                     ImageView[][] imgVwsNextBank, ImageView[][] imgVwsNextBankSelection, 
+                     ImageView[][] imgVwsNextBank, ImageView[][] imgVwsNextBankSelection,
                      Label[] lblPlayerNameAndPoints) {
         this.pnSelected = pnSelected;
         this.lblTurn = lblTurn;
@@ -90,8 +94,8 @@ public class JavaFXGUI implements GUIConnector {
 
         this.imgVwsCurrentBankSelection = imgVwsCurrentBankSelection;
         this.imgVwsNextBankSelection = imgVwsNextBankSelection;
-        
-        this.lblPlayerNameAndPoints = lblPlayerNameAndPoints; 
+
+        this.lblPlayerNameAndPoints = lblPlayerNameAndPoints;
 
         //loadAllImages
         imgs = new Image[IMG_COUNT];
@@ -104,23 +108,23 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void setToBank(int ordBank, Bank bank) {
-        if(bank.isEmpty()) {
+        if (bank.isEmpty()) {
             // delete everything
             for (int i = 0; i < bank.getBankSize(); i++) {
                 deleteDomFromBank(ordBank, i);
             }
         }
-            Domino[] dominos = bank.getAllDominos();
-            Player currPlayer;
-            for (int i = 0; i < dominos.length; i++) {
-                setToBank(ordBank, i, dominos[i]);
-                currPlayer = bank.getSelectedPlayer(i);
-                if (null != currPlayer) {
-                    selectDomino(ordBank, i, currPlayer.getIdxInPlayerArray());
-                } else {
-                    selectDomino(ordBank, i, NOT_SELECTED);
-                }
+        Domino[] dominos = bank.getAllDominos();
+        Player currPlayer;
+        for (int i = 0; i < dominos.length; i++) {
+            setToBank(ordBank, i, dominos[i]);
+            currPlayer = bank.getSelectedPlayer(i);
+            if (null != currPlayer) {
+                selectDomino(ordBank, i, currPlayer.getIdxInPlayerArray());
+            } else {
+                selectDomino(ordBank, i, NOT_SELECTED);
             }
+        }
     }
 
 
@@ -339,8 +343,15 @@ public class JavaFXGUI implements GUIConnector {
     }
 
     @Override
-    public void showResult(Result result) {
-        // TODO insert code
+    public void showResult(Result res) {
+        StackPane root = new StackPane();
+        root.getChildren().add(res.toTreeView());
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.setMaxWidth(300);
+        primaryStage.setMaxHeight(500);
+        primaryStage.setTitle("Ergebnisse");
+        primaryStage.show();
     }
 
 
@@ -548,5 +559,18 @@ public class JavaFXGUI implements GUIConnector {
     @Override
     public void blurBank(int ordBank) {
 
+    }
+
+    @Override
+    public void showPopUp(String text) {
+        final Stage dialog = new Stage();
+        StackPane pane = new StackPane();
+        Text input = new Text(text);
+        pane.getChildren().add(input);
+        pane.setAlignment(input, javafx.geometry.Pos.CENTER);
+        Scene dialogScene = new Scene(pane, 200, 80);
+        dialog.setScene(dialogScene);
+        dialog.setTitle("Error");
+        dialog.show();
     }
 }

@@ -101,6 +101,8 @@ public interface GUIConnector {
     void blurBank(int ordBank);
 
 
+    void showPopUp(String text);
+
 
 
 }

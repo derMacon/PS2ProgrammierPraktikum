@@ -65,6 +65,11 @@ public class FakeGUI implements GUIConnector {
     }
 
     @Override
+    public void showPopUp(String text) {
+
+    }
+
+    @Override
     public void showWhosTurn(int ordPlayer) {
     }
 

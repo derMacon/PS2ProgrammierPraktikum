@@ -3139,3 +3139,271 @@ BOT3 chose [S2,P0] at index 0 for next round
 BOT3 put [I2,P0] vertical to (2,0)
 
 HUMAN chose [P0,O2] at index 2 for next round
+-----------------------------------
+2018-12-27T23:17:40.465+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag3.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag3.txt
+
+-----------------------------------
+2018-12-27T23:17:40.465+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-27T23:18:34.681+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag1.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag1.txt
+
+-----------------------------------
+2018-12-27T23:18:34.681+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:09:43.741+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+HUMAN dragged center to (3,2)
+HUMAN dragged center to (2,2)
+-----------------------------------
+2018-12-28T00:20:58.513+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag3.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag3.txt
+
+-----------------------------------
+2018-12-28T00:21:37.668+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag2.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag2.txt
+
+-----------------------------------
+2018-12-28T00:22:52.355+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag3.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag3.txt
+
+-----------------------------------
+2018-12-28T00:23:32.419+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag4.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag4.txt
+
+-----------------------------------
+2018-12-28T00:24:15.231+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag5.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag5.txt
+
+-----------------------------------
+2018-12-28T00:26:21.507+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag6.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag6.txt
+
+-----------------------------------
+2018-12-28T00:26:21.507+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:32:34.057+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag4.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag4.txt
+
+-----------------------------------
+2018-12-28T00:32:34.057+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:35:17.416+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag2.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag2.txt
+
+-----------------------------------
+2018-12-28T00:35:17.416+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:38:45.967+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag4.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag4.txt
+
+-----------------------------------
+2018-12-28T00:38:45.967+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:40:19.141+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag4.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag4.txt
+
+-----------------------------------
+2018-12-28T00:40:19.141+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:41:01.057+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag6.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag6.txt
+
+-----------------------------------
+2018-12-28T00:41:01.057+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:41:44.516+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankBeforeFstTag.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankBeforeFstTag.txt
+
+-----------------------------------
+2018-12-28T00:41:44.516+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:42:34.928+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag3.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag3.txt
+
+-----------------------------------
+2018-12-28T00:42:34.928+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:43:01.364+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag3.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag3.txt
+
+-----------------------------------
+2018-12-28T00:43:01.364+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:45:37.660+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag4.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag4.txt
+
+-----------------------------------
+2018-12-28T00:45:37.660+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:46:15.161+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag5.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag5.txt
+
+-----------------------------------
+2018-12-28T00:46:15.161+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-28T00:48:53.604+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "exp_noStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\exp_noStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-28T00:48:53.604+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [O1,S0] vertical to (4,0)
+
+BOT3 chose [H0,A1] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+BOT4 put [A1,H0] horizontal to (0,2)
+BOT3 put [H0,A1] vertical to (0,0)
+HUMAN put [A1,H0] horizontal to (0,2)
+BOT2 put [S1,P0] horizontal to (1,3)
+round ended
+Ordered Ranking:
+0. Spot	Player 0 Result{points=10}
+1. Spot	Player 0 Result{points=8}
+2. Spot	Player 0 Result{points=7}
+3. Spot	Player 0 Result{points=5}
+
+-----------------------------------
+2018-12-28T00:53:28.067+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T01:04:25.718+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "exp_noStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\exp_noStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-28T01:04:25.718+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+HUMAN chose [A1,H0] at index 2 for next round
+-----------------------------------
+2018-12-28T01:06:11.765+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+-----------------------------------
+2018-12-28T01:09:23.876+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,O2] at index 2 for next round
+-----------------------------------
+2018-12-28T01:18:21.226+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [S0,O2] at index 3 for next round

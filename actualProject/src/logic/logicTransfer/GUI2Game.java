@@ -77,6 +77,8 @@ public interface GUI2Game {
      */
     void safeGame(URI filePath);
 
+     boolean isInBoundHumanBoard(Pos pos);
+
 //    /**
 //     * loads / generates a game out of the .txt file at the selected path
 //     */

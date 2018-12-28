@@ -74,7 +74,7 @@ public class Domino implements Comparable {
     private final Tiles tiles;
     /**
      * the rotation of the tile
-     * rotation 0 - horizontally - not rotated         - snd is right of fst
+     * rotation 0 - horizontally - not rotated - snd is right of fst
      * 1 - vertically   - rotated  90 degrees - snd is bottom of fst
      * 2 - horizontally - rotated 180 degrees - snd is left of fst
      * 3 - vertically   - rotated 270 degrees - snd is top of fst
@@ -90,8 +90,8 @@ public class Domino implements Comparable {
     /**
      * creates a tiles with the given tile, position and rotation
      *
-     * @param tiles tiles of the domino
-     * @param posFst first position of the domino
+     * @param tiles    tiles of the domino
+     * @param posFst   first position of the domino
      * @param rotation rotation of the domino
      */
     public Domino(Tiles tiles, Pos posFst, int rotation) {
@@ -106,7 +106,7 @@ public class Domino implements Comparable {
      * creates a domino with the given tile, position and rotation 0
      *
      * @param tiles to set
-     * @param pos  position of the first domino tile (top left)
+     * @param pos   position of the first domino tile (top left)
      */
     public Domino(Tiles tiles, Pos pos) {
         this(tiles, pos, DEFAULT_ROT);
@@ -114,8 +114,9 @@ public class Domino implements Comparable {
 
     /**
      * creates a domino with a given tile and rotation
+     *
      * @param tiles tiles of the domino
-     * @param rot rotation of the domino
+     * @param rot   rotation of the domino
      */
     public Domino(Tiles tiles, int rot) {
         this(tiles, DEFAULT_POS, rot);
@@ -123,13 +124,14 @@ public class Domino implements Comparable {
 
     /**
      * creates a domino with a given tile
-      * @param tiles to set
+     *
+     * @param tiles to set
      */
     public Domino(Tiles tiles) {
         this(tiles, DEFAULT_POS, DEFAULT_ROT);
     }
 
-     /**
+    /**
      * gets the tile
      *
      * @return the tile
@@ -149,6 +151,7 @@ public class Domino implements Comparable {
 
     /**
      * Generates a String representing the rotation of a domino
+     *
      * @return STR_HORI when domino is not rotated or is rotated twice, STR_VERTI if the domino is
      * rotated once or three times.
      */
@@ -158,6 +161,7 @@ public class Domino implements Comparable {
 
     /**
      * Setter for the position
+     *
      * @param posFst new position
      * @return reference to this domino
      */
@@ -168,7 +172,8 @@ public class Domino implements Comparable {
 
     /**
      * Generates the district type for the first or second tile of the domino
-      * @param idx index of the tile
+     *
+     * @param idx index of the tile
      * @return the district type of the tile at the given index, null if index is invalid
      */
     public DistrictType genTileDistrictType(int idx) {
@@ -183,6 +188,7 @@ public class Domino implements Comparable {
     /**
      * increments the rotation by one. The roation is 0..3.
      * updated the second position.
+     *
      * @return reference to the domino
      */
     public Domino incRot() {
@@ -220,6 +226,7 @@ public class Domino implements Comparable {
 
     /**
      * Getter for the second position of the domino (bottom / right tile)
+     *
      * @return the position of the second domino
      */
     public Pos getSndPos() {
@@ -270,7 +277,7 @@ public class Domino implements Comparable {
     /**
      * dominos are equal if the have the same tile (rotation may differ), exact reference as well
      * as the token value does not matter.
-     *
+     * <p>
      * Meaning:
      * - domino a with the reference -> #123; value -> HOHO_VAL13; rotation -> 1
      * - domino a with the reference -> #124; value -> HOHO_VAL14; rotation -> 0
@@ -305,6 +312,7 @@ public class Domino implements Comparable {
      * String representation used in the fileIO.
      * Depending on the rotation the upper / left tile will be displayed as the first singletile
      * before the separator, and the right / lower tile as the second.
+     *
      * @return String representation of the domino used in the fileIO
      */
     public String toFile() {
@@ -313,6 +321,7 @@ public class Domino implements Comparable {
 
     /**
      * Evaluates if the given int value represents a valid rotation count
+     *
      * @param rot rotation to be evaluated
      * @return true if given value represents a valid rotation
      */
@@ -322,6 +331,7 @@ public class Domino implements Comparable {
 
     /**
      * Setter for the rotation
+     *
      * @param rotation rotation to be set for the current domino
      */
     public void setRotation(int rotation) {
@@ -330,6 +340,7 @@ public class Domino implements Comparable {
 
     /**
      * Provides a deep copyWithoutSelection of this domino
+     *
      * @return a deep copyWithoutSelection of this domino
      */
     public Domino copy() {
@@ -343,5 +354,5 @@ public class Domino implements Comparable {
         Domino other = (Domino) o;
         return this.tiles.getValue() - other.tiles.getValue();
     }
-    
+
 }

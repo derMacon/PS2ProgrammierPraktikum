@@ -324,7 +324,9 @@ public class BoardTest {
                         "-- -- A1 A1 A1 A1 --\n" +
                         "-- -- -- -- -- -- --\n");
         Domino dom = new Domino(Tiles.genTile(P0, A0));
-        // expected horiz P0_A0_Val14
+        assertFalse(board.fits(dom.setPos(new Pos (6, 0))));
+        assertFalse(board.fits(dom.setPos(new Pos (6, 6))));
+        // expected hori P0_A0_Val14
         assertEquals(14, dom.getTile().getValue());
         assertTrue(board.fits(dom.setPos(new Pos(2, 1))));  // above end (P0)
         assertFalse(board.fits(dom.setPos(new Pos(3, 2)))); // between P0 - S0

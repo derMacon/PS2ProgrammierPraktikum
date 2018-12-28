@@ -1,6 +1,7 @@
 package logic;
 
 import gui.FXMLDocumentController;
+import gui.JavaFXGUI;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -56,6 +57,8 @@ public class Doodle {
 
 
     public static void main(String[] args) {
+
+
 
 //
 //        String input = "<Spielfeld 1>\n" +

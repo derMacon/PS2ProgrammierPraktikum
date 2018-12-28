@@ -1,6 +1,6 @@
 %\documentclass[11pt]{report}
 %\documentclass[a4paper, 11pt]{article}
-\documentclass[a4paper]{scrartcl}
+\documentclass[a4paper, 11pt]{scrartcl}
 %\usepackage{fullpage}
 
 %Packages fuer die Darstellung von Quellcode
@@ -14,13 +14,32 @@
 \usepackage{lmodern}
 \usepackage{graphicx}
 \usepackage{enumitem}
-\usepackage[a4paper, total={6in, 8in}]{geometry}
-
-\usepackage{fancyhdr}
-
+%\usepackage[a4paper, total={6in, 8.5in}]{geometry}
+\usepackage[a4paper, bottom=2cm,includeheadfoot]{geometry}
+\usepackage{afterpage} %Um Titelseite mit gesonderter Formatierung zu belegen
 \usepackage{blindtext}
 
 
+% Einfacheres Navigieren im PDF/Web
+\usepackage{url}
+% Verweise jetzt nicht nur auf Ueberschrift sondern auf label
+%\usepackage[all]{hypcap} 
+\usepackage{hyperref}
+\hypersetup{
+pdfstartview={FitH}, %Doc fuellt automatisch die horizontale Achse aus
+pdftitle={City Domino Dokumentation},
+pdfauthor={Silas Hoffmann, inf103088}
+}
+
+
+% Header Informationen festgelegt
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\rightmark}
+\chead{{\thepart}
+\lhead\leftmark}
+\cfoot{\thepage}
 
 %Quellcodestyle Spezifikationen
 \definecolor{DarkPurple}{rgb}{0.4,0.1,0.4}
@@ -28,6 +47,7 @@
 \definecolor{LightLime}{rgb}{0.3,0.5,0.4}
 \definecolor{Blue}{rgb}{0.0,0.0,1.0}
 
+% Syntaxhighlighting festgelegt
 \lstdefinestyle{CodeHighlighting} 
 {
 language=Java, %mit mehreren Sprachen moeglich, ermoeglicht Syntaxhighlighting
@@ -43,6 +63,7 @@ stringstyle=\color{Blue}
 }
 
 
+% Titelseite
 \title{\includegraphics[width=\linewidth]{pics/LogoIconLargeV1}}
 \author{Silas Hoffmann, inf103088
 \normalsize
@@ -52,6 +73,7 @@ stringstyle=\color{Blue}
 
 
 \begin{document}
+\newgeometry{a4paper, bottom=5cm}
 \maketitle
 
 \vfill
@@ -76,17 +98,37 @@ stringstyle=\color{Blue}
 	\vspace{0.3cm}
 	Fachhochschule Wedel
 \end{center}
-
-
 \thispagestyle{empty}
+\restoregeometry
 
+% Inhaltsverzeichnis
 \newpage
 \tableofcontents
+%\thispagestyle{empty}
 \newpage
 
-\blindtext
 
-\input{test/neu}
+\part{Benutzerhandbuch}
+\section{Ablaufbedingungen}
+\section{Programminstallation / Programmstart}
+\section{Bedienungsanleitung}
+
+\clearpage
+\part{Programmierhandbuch}
+\section{Entwicklungskonfiguration}
+\section{Problemanalyse und Realisation}
+\section{Beschreibung grundlegender Klassen}
+\section{Programmorganisationsplan}
+\section{Programmtests}
+
+
+
+
+\include{test/neu}
+
+\section{abc}
+\subsection{asdf}
+\blindtext
 
 
 \clearpage

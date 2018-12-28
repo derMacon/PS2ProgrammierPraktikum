@@ -7,15 +7,12 @@ import logic.playerTypes.HumanPlayer;
 import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 import logic.token.Domino;
+import logic.token.SingleTile;
 
 import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
 
-import javafx.scene.Scene;
-import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-import logic.token.SingleTile;
 
 public class Game implements GUI2Game {
 
@@ -126,6 +123,7 @@ public class Game implements GUI2Game {
      * @param input String input setting up the whole game
      */
     public Game(GUIConnector gui, String input) {
+        this.gui = gui;
         Converter gameContent = new Converter();
         // TODO use error message - error message used for treatment, maybe with a new Pop-Up Window or just in the log-File.
         String returnMessage = gameContent.readStr(gui, input);
@@ -145,6 +143,8 @@ public class Game implements GUI2Game {
                     ((BotBehavior) player).updateSelectedDom(this.nextRoundBank);
                 }
             }
+        } else {
+            this.gui.showPopUp(returnMessage);
         }
         Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nLoading process: " + returnMessage);
     }
@@ -242,8 +242,6 @@ public class Game implements GUI2Game {
         // instanciate players with given playertypes
         this.players = createNewPlayers(playerTypes, sizeX, sizeY);
 
-        // TODO delete next line before final commit
-//        this.gui.updatePlayer(this.players[HUMAN_PLAYER_IDX], HUMAN_PLAYER_IDX);
         for (int i = 0; i < this.players.length; i++) {
             this.gui.updatePlayer(this.players[i], i);
         }
@@ -355,6 +353,13 @@ public class Game implements GUI2Game {
     @Override
     public boolean fits(Pos pos) {
         return this.players[HUMAN_PLAYER_IDX].getBoard().fits(this.currDomino.setPos(pos));
+    }
+
+    @Override
+    public boolean isInBoundHumanBoard(Pos pos) {
+        assert null != pos;
+        Board board = this.players[HUMAN_PLAYER_IDX].getBoard();
+        return board.getSizeX() - 1> pos.x() && board.getSizeY() - 1> pos.y();
     }
 
     @Override
@@ -554,15 +559,7 @@ public class Game implements GUI2Game {
         this.currDomino = null;
 
         Result res = new Result(this.players);
-
-        StackPane root = new StackPane();
-        root.getChildren().add(res.toTreeView());
-        Stage primaryStage = new Stage();
-        primaryStage.setScene(new Scene(root, 300, 250));
-        primaryStage.setResizable(false);
-        primaryStage.setTitle("Ergebnisse");
-        primaryStage.show();
-
+        this.gui.showResult(res);
         Logger.getInstance().printAndSafe("round ended\n" + res.toString());
     }
 

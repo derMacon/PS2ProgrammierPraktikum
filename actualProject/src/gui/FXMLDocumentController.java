@@ -28,7 +28,6 @@ import logic.token.Pos;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -473,19 +472,22 @@ public class FXMLDocumentController implements Initializable {
                     Pos pos = new Pos(fx, fy);
                     if (this.game.fits(pos)) {
                         this.gui.highlightDominoPosGreen(pos);
-                    } else {
+                    } else if(this.game.isInBoundHumanBoard(pos)){
                         this.gui.highlightDominoPosRed(pos);
                     }
                     event.consume();
                 });
                 imgVws[x][y].setOnDragExited((EventHandler<DragEvent>) (DragEvent event) -> {
-                    this.gui.removeHighlightDominoPos(new Pos(fx, fy));
-                    event.consume();
+                    Pos pos = new Pos(fx, fy);
+                    if(this.game.isInBoundHumanBoard(pos)) {
+                        this.gui.removeHighlightDominoPos(pos);
+                        event.consume();
+                    }
                 });
                 imgVws[x][y].setOnDragDropped((EventHandler<DragEvent>) (DragEvent event) -> {
                     boolean success = false;
                     Pos pos = new Pos(fx, fy);
-                    if (this.game.fits(pos)) {
+                    if (this.game.fits(pos) && this.game.isInBoundHumanBoard(pos)) {
                         success = true;
                         this.gui.removeHighlightDominoPos(pos);
                         this.game.setOnBoard(pos);
