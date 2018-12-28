@@ -184,6 +184,7 @@ public class Game implements GUI2Game {
         this.currBankIdx = currBankIdx;
         this.currDomino = currDomino;
         this.currField = null == this.currField ? PossibleField.NEXT_BANK : PossibleField.CURR_DOM;
+        this.gui.blurOtherFields(this.currField);
         setToChooseBox(currDomino);
         // TODO check if setting values was successful
         return Converter.SUCCESSFUL_READ_MESSAGE;
@@ -287,7 +288,7 @@ public class Game implements GUI2Game {
             randomlyDrawNewDominosForNextRound();
             this.currBankIdx = botsDoTheirTurn(this.currBankIdx);
             this.currField = PossibleField.NEXT_BANK;
-            this.gui.greyOutOtherFields(this.currField);
+            this.gui.blurOtherFields(this.currField);
         } else {
             Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nHUMAN tried to select a domino from the " +
                     "current bank\n" + Logger.ERROR_DELIMITER + "\n");
@@ -319,7 +320,7 @@ public class Game implements GUI2Game {
             setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(humanPlayer));
             this.currPlayerIdx++;
             this.currField = PossibleField.CURR_DOM;
-            this.gui.greyOutOtherFields(this.currField);
+            this.gui.blurOtherFields(this.currField);
             Logger.getInstance().printAndSafe("\n" + String.format(Logger.selectionLoggerFormat,
                     humanPlayer.getName(), this.nextRoundBank.getDomino(idx).toString(),
                     idx, "next"));
@@ -347,8 +348,7 @@ public class Game implements GUI2Game {
             this.currDomino.setPos(new Pos(pos.x(), pos.y()));
             this.players[HUMAN_PLAYER_IDX].showOnBoard(currDomino);
             this.currField = PossibleField.NEXT_BANK;
-
-//        Logger.getInstance().printAndSafe("HUMAN put " + this.currDomino.toFile() + " to " + pos.toString());
+            this.gui.blurOtherFields(this.currField);
             setupCurrDomAndBotsDoTurn();
         } else {
             Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "HUMAN tried to make an impossible bank " +
@@ -374,7 +374,7 @@ public class Game implements GUI2Game {
     public boolean isInBoundHumanBoard(Pos pos) {
         assert null != pos;
         Board board = this.players[HUMAN_PLAYER_IDX].getBoard();
-        return board.getSizeX() - 1> pos.x() && board.getSizeY() - 1> pos.y();
+        return board.getSizeX()> pos.x() && board.getSizeY()> pos.y();
     }
 
     @Override
@@ -453,7 +453,6 @@ public class Game implements GUI2Game {
 
     private void botsDoInitialSelect() {
         for (int i = 1; i < this.players.length; i++) {
-
             // rest of the players HAVE to be bots
             this.currentRoundBank = ((BotBehavior) this.players[i]).doInitialSelect(currentRoundBank, CURRENT_BANK_IDX);
             // TODO insert code -> show Who's Turn
@@ -467,20 +466,13 @@ public class Game implements GUI2Game {
     private void setupCurrDomAndBotsDoTurn() {
         setToChooseBox(null);
         // bots do turns until round is over
-//        if(this.nextRoundBank.isEmpty()) {
         if (this.nextRoundBank.isEmpty()) {
             if (!this.nextRoundBank.isEmpty()) {
                 copyAndRemoveNextRoundBankToCurrentBank();
                 this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
             }
             this.currBankIdx = botsDoLastTurn(this.currBankIdx + 1);
-//            this.currentRoundBank.clearAllEntries();
-//            this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
-//            if(this.currBankIdx >= this.currentRoundBank.getBankSize()) {
-//                endRound();
-//            }
         } else {
-//            this.currPlayerIdx = botsDoTheirTurn(this.currPlayerIdx);
             this.currBankIdx = botsDoTheirTurn(this.currBankIdx + 1);
         }
     }
@@ -513,20 +505,6 @@ public class Game implements GUI2Game {
      */
     private void setupNextRound() {
         this.currPlayerIdx = 0;
-//        if(this.stack.isEmpty()) {
-//            if(this.nextRoundBank.isEmpty() && this.currentRoundBank.isEmpty()) {
-//                endRound();
-//            } else {
-//                copyAndRemoveNextRoundBankToCurrentBank();
-//                // TODO delete nextBank - preferably in method
-//                this.nextRoundBank = new Bank(this.players.length);
-//                this.gui.setToBank(NEXT_BANK_IDX, nextRoundBank);
-//                // TODO vielleicht botsdolas... mit Player als Rueckgabewert?
-//                this.currPlayerIdx = botsDoLastTurn(this.currPlayerIdx);
-//                System.out.println("debug setup next round" + this.currentRoundBank.getPlayerSelectedDomino(this.players[currPlayerIdx]));
-//                setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[currPlayerIdx]));
-//            }
-//        } else {
         copyAndRemoveNextRoundBankToCurrentBank();
         if (!this.stack.isEmpty()) {
             randomlyDrawNewDominosForNextRound();
@@ -534,6 +512,7 @@ public class Game implements GUI2Game {
             this.nextRoundBank.clearAllEntries();
             this.gui.setToBank(NEXT_BANK_IDX, nextRoundBank);
             setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[currPlayerIdx]));
+            this.currField = PossibleField.CURR_DOM;
         }
 
     }

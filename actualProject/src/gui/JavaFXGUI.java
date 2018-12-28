@@ -3,11 +3,12 @@ package gui;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
+import javafx.scene.effect.Effect;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logic.bankSelection.Bank;
@@ -22,8 +23,6 @@ import logic.logicTransfer.GUIConnector;
 import logic.token.Domino;
 import logic.token.SingleTile;
 import logic.token.Tiles;
-
-import java.util.EmptyStackException;
 
 
 public class JavaFXGUI implements GUIConnector {
@@ -104,6 +103,10 @@ public class JavaFXGUI implements GUIConnector {
             this.imgs[i] = this.loadImage(i);
         }
 
+    }
+
+    public Domino getCurrDomino() {
+        return this.currDomino;
     }
 
 
@@ -501,14 +504,17 @@ public class JavaFXGUI implements GUIConnector {
      *               is value is null any previous effects are removed.
      */
     private void addEffectToDominoPos(Pos pos, ColorAdjust effect) {
-        if (this.currDomino != null) {
+        // TODO code inserted here
+        if (this.currDomino != null && this.isValidPosOnGameGrid(this.imgVwsPlayerBoard, this.currDomino.getSndPos())) {
             this.imgVwsPlayerBoard[pos.x()][pos.y()].setEffect(effect);
-            if (this.currDomino.getRot() % 2 == 0) {
-                this.imgVwsPlayerBoard[pos.x() + 1][pos.y()].setEffect(effect);
-            } else {
-                this.imgVwsPlayerBoard[pos.x()][pos.y() + 1].setEffect(effect);
+
+                if (this.currDomino.getRot() % 2 == 0) {
+                    this.imgVwsPlayerBoard[pos.x() + 1][pos.y()].setEffect(effect);
+                } else {
+                    this.imgVwsPlayerBoard[pos.x()][pos.y() + 1].setEffect(effect);
+                }
             }
-        }
+
     }
 
     @Override
@@ -576,48 +582,40 @@ public class JavaFXGUI implements GUIConnector {
     }
 
     @Override
-    public void greyOutOtherFields(PossibleField saturatedField) {
-        greyOutCurrBank();
+    public void blurOtherFields(PossibleField saturatedField) {
         switch (saturatedField) {
             case CURR_DOM:
-                greyOutCurrBank();
-                greyOUtNextBank();
+                blurImageView(this.imgVwsCurrentBank);
+                blurImageView(this.imgVwsNextBank);
                 break;
             case CURR_BANK:
-                greyOutBoard();
-                greyOUtNextBank();
-                blurRotSymbol();
-                blurTrashCan();
+                focusImageView(this.imgVwsCurrentBank);
+                blurImageView(this.imgVwsNextBank);
                 break;
             case NEXT_BANK:
-                greyOutBoard();
-                greyOutCurrBank();
-                blurRotSymbol();
-                blurTrashCan();
+                focusImageView(this.imgVwsNextBank);
+                blurImageView(this.imgVwsCurrentBank);
                 break;
         }
     }
 
-    private void greyOutCurrBank() {
-        ColorAdjust grayscale = new ColorAdjust();
-        grayscale.setSaturation(-1);
-        this.imgVwsCurrentBank[1][0].setEffect(grayscale);
+    private void blurImageView(ImageView[][] bank) {
+        assert null != bank && 0 < bank.length;
+        Effect blur = new GaussianBlur(4);
+        for (int i = 0; i < bank.length; i++) {
+            for (int j = 0; j < bank[0].length; j++) {
+                bank[i][j].setEffect(blur);
+            }
+        }
     }
 
-    private void greyOUtNextBank() {
-
-    }
-
-    private void greyOutBoard() {
-
-    }
-
-    private void blurRotSymbol() {
-
-    }
-
-    private void blurTrashCan() {
-
+    private void focusImageView(ImageView[][] bank) {
+        assert null != bank && 0 < bank.length;
+        for (int i = 0; i < bank.length; i++) {
+            for (int j = 0; j < bank[0].length; j++) {
+                bank[i][j].setEffect(null);
+            }
+        }
     }
 
 }

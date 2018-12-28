@@ -457,6 +457,55 @@ public class FXMLDocumentController implements Initializable {
 
     // --- Setting up interactive gui ---
 
+//    private void addDragAndDropHandlers(ImageView[][] imgVws) {
+//        for (int x = 0; x < imgVws.length; x++) {
+//            for (int y = 0; y < imgVws[x].length; y++) {
+//                final int fx = x;
+//                final int fy = y;
+//                imgVws[x][y].setOnDragOver((EventHandler<DragEvent>) (DragEvent event) -> {
+//                    if (event.getGestureSource() == pnSelected) {
+//                        event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
+//                    }
+//                    event.consume();
+//                });
+//                imgVws[x][y].setOnDragEntered((EventHandler<DragEvent>) (DragEvent event) -> {
+//                    Pos pos = new Pos(fx, fy);
+//
+//                                        System.out.println(this.gui == null);
+//                    System.out.println(this.gui.getCurrDomino() == null);
+//
+//                    int rotation = this.gui.getCurrDomino().getRot();
+//                    final Pos sndPos = rotation % 2 == 0 ? new Pos(fx + 1, fy) : new Pos(fx, fy + 1);
+//
+//                    if (this.game.fits(pos)) {
+//                        this.gui.highlightDominoPosGreen(pos);
+//                    } else if(this.game.isInBoundHumanBoard(pos) && this.game.isInBoundHumanBoard(sndPos)){
+//                        this.gui.highlightDominoPosRed(pos);
+//                    }
+//                    event.consume();
+//                });
+//                imgVws[x][y].setOnDragExited((EventHandler<DragEvent>) (DragEvent event) -> {
+//                    Pos pos = new Pos(fx, fy);
+//
+//                        this.gui.removeHighlightDominoPos(pos);
+//                        event.consume();
+//
+//                });
+//                imgVws[x][y].setOnDragDropped((EventHandler<DragEvent>) (DragEvent event) -> {
+//                    boolean success = false;
+//                    Pos pos = new Pos(fx, fy);
+//                    if (this.game.fits(pos) && this.game.isInBoundHumanBoard(pos)) {
+//                        success = true;
+//                        this.gui.removeHighlightDominoPos(pos);
+//                        this.game.setOnBoard(pos);
+//                    }
+//                    event.setDropCompleted(success);
+//                    event.consume();
+//                });
+//            }
+//        }
+//    }
+
     private void addDragAndDropHandlers(ImageView[][] imgVws) {
         for (int x = 0; x < imgVws.length; x++) {
             for (int y = 0; y < imgVws[x].length; y++) {
@@ -472,22 +521,19 @@ public class FXMLDocumentController implements Initializable {
                     Pos pos = new Pos(fx, fy);
                     if (this.game.fits(pos)) {
                         this.gui.highlightDominoPosGreen(pos);
-                    } else if(this.game.isInBoundHumanBoard(pos)){
+                    } else {
                         this.gui.highlightDominoPosRed(pos);
                     }
                     event.consume();
                 });
                 imgVws[x][y].setOnDragExited((EventHandler<DragEvent>) (DragEvent event) -> {
-                    Pos pos = new Pos(fx, fy);
-                    if(this.game.isInBoundHumanBoard(pos)) {
-                        this.gui.removeHighlightDominoPos(pos);
-                        event.consume();
-                    }
+                    this.gui.removeHighlightDominoPos(new Pos(fx, fy));
+                    event.consume();
                 });
                 imgVws[x][y].setOnDragDropped((EventHandler<DragEvent>) (DragEvent event) -> {
                     boolean success = false;
                     Pos pos = new Pos(fx, fy);
-                    if (this.game.fits(pos) && this.game.isInBoundHumanBoard(pos)) {
+                    if (this.game.fits(pos)) {
                         success = true;
                         this.gui.removeHighlightDominoPos(pos);
                         this.game.setOnBoard(pos);

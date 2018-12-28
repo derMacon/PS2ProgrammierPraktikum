@@ -71,7 +71,7 @@ public class FakeGUI implements GUIConnector {
     }
 
     @Override
-    public void greyOutOtherFields(PossibleField saturatedField) {
+    public void blurOtherFields(PossibleField saturatedField) {
 
     }
 
