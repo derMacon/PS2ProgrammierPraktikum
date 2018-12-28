@@ -19,6 +19,8 @@
 \usepackage{afterpage} %Um Titelseite mit gesonderter Formatierung zu belegen
 \usepackage{blindtext}
 
+\usepackage{import}
+
 
 % Einfacheres Navigieren im PDF/Web
 \usepackage{url}
@@ -103,8 +105,9 @@ stringstyle=\color{Blue}
 
 % Inhaltsverzeichnis
 \newpage
+\pagestyle{plain}
 \tableofcontents
-%\thispagestyle{empty}
+%\pagestyle{main}
 \newpage
 
 \input{benutzerhandbuch/benutzerhandbuchMain}
