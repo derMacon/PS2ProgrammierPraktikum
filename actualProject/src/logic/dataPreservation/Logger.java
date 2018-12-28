@@ -39,7 +39,7 @@ public class Logger {
     public static final String GAME_SEPARATOR =  "-----------------------------------\n" +
             ZonedDateTime.now().toString();
 
-    public static final String TERMINATION_DELIMITER = "...................................";
+    public static final String ERROR_DELIMITER = "...................................";
 
     public static final String CURR_ROUND_IDENTIFIER = "current";
     public static final String NEXT_ROUND_IDENTIFIER = "next";

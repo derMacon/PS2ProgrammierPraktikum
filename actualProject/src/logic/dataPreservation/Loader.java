@@ -6,7 +6,6 @@ import logic.logicTransfer.Game;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -131,8 +130,8 @@ public class Loader {
         }
         this.file = fChooser.showSaveDialog(stage);
         if (null == this.file) {
-            Logger.getInstance().printAndSafe(Logger.TERMINATION_DELIMITER +
-                    "\nUser aborted the saving process\n" + Logger.TERMINATION_DELIMITER + "\n");
+            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER +
+                    "\nUser aborted the saving process\n" + Logger.ERROR_DELIMITER + "\n");
         } else {
             actualSavingProcess(this.file, txtFldInput);
             Logger.getInstance().printAndSafe("User saved the game as \"" + this.file.getName() + "\" to "

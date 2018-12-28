@@ -12,6 +12,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logic.bankSelection.Bank;
 import logic.logicTransfer.Game;
+import logic.logicTransfer.PossibleField;
 import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerState.Result;
@@ -71,7 +72,7 @@ public class JavaFXGUI implements GUIConnector {
     private Label lblTurn;
     private ImageView[][] imgVwsPlayerBoard;
     private ImageView[][][] imgWwsAIBoards;
-    //    private ImageView[][][] imgVwsProvidedBank;
+
     private ImageView[][] imgVwsCurrentBank;
     private ImageView[][] imgVwsNextBank;
 
@@ -88,7 +89,7 @@ public class JavaFXGUI implements GUIConnector {
         this.lblTurn = lblTurn;
         this.imgVwsPlayerBoard = imgWssPlayerBoard;
         this.imgWwsAIBoards = imgWwsAIBoards;
-//        this.imgVwsProvidedBank = imgVwsProvidedBank;
+
         this.imgVwsCurrentBank = imgVwsCurrentBank;
         this.imgVwsNextBank = imgVwsNextBank;
 
@@ -573,4 +574,50 @@ public class JavaFXGUI implements GUIConnector {
         dialog.setTitle("Error");
         dialog.show();
     }
+
+    @Override
+    public void greyOutOtherFields(PossibleField saturatedField) {
+        greyOutCurrBank();
+        switch (saturatedField) {
+            case CURR_DOM:
+                greyOutCurrBank();
+                greyOUtNextBank();
+                break;
+            case CURR_BANK:
+                greyOutBoard();
+                greyOUtNextBank();
+                blurRotSymbol();
+                blurTrashCan();
+                break;
+            case NEXT_BANK:
+                greyOutBoard();
+                greyOutCurrBank();
+                blurRotSymbol();
+                blurTrashCan();
+                break;
+        }
+    }
+
+    private void greyOutCurrBank() {
+        ColorAdjust grayscale = new ColorAdjust();
+        grayscale.setSaturation(-1);
+        this.imgVwsCurrentBank[1][0].setEffect(grayscale);
+    }
+
+    private void greyOUtNextBank() {
+
+    }
+
+    private void greyOutBoard() {
+
+    }
+
+    private void blurRotSymbol() {
+
+    }
+
+    private void blurTrashCan() {
+
+    }
+
 }

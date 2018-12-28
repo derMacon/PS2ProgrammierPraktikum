@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import logic.logicTransfer.Converter;
+import logic.logicTransfer.PossibleField;
 import logic.token.Tiles;
 
 import java.util.Collections;
@@ -58,6 +59,7 @@ public class Doodle {
 
     public static void main(String[] args) {
 
+        System.out.println(PossibleField.CURR_DOM.incField());
 
 
 //

@@ -103,6 +103,6 @@ public interface GUIConnector {
 
     void showPopUp(String text);
 
-
+    void greyOutOtherFields(PossibleField saturatedField);
 
 }

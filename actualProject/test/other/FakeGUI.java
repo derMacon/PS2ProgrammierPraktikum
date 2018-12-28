@@ -1,5 +1,6 @@
 package other;
 
+import logic.logicTransfer.PossibleField;
 import logic.playerState.Result;
 import logic.bankSelection.Bank;
 import logic.logicTransfer.GUIConnector;
@@ -66,6 +67,11 @@ public class FakeGUI implements GUIConnector {
 
     @Override
     public void showPopUp(String text) {
+
+    }
+
+    @Override
+    public void greyOutOtherFields(PossibleField saturatedField) {
 
     }
 

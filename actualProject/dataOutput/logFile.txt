@@ -3549,3 +3549,505 @@ BOT4 put [A0,S2] horizontal to (0,2)
 
 BOT2 chose [A0,S1] at index 0 for next round
 BOT2 put [O2,P0] horizontal to (0,0)
+-----------------------------------
+2018-12-28T17:24:40.249+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T17:53:16.346+01:00[Europe/Berlin]
+Started new game
+
+...................................
+HUMAN tried to select a domino from the next bank
+HUMAN chose [O0,I2] at index 2 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 1 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+...................................
+HUMAN tried to select a domino from the current bank
+
+HUMAN chose [A0,S2] at index 1 for next round
+-----------------------------------
+2018-12-28T17:55:41.369+01:00[Europe/Berlin]
+Started new game
+
+...................................
+HUMAN tried to dispose the current domino
+...................................
+HUMAN tried to select a domino from the next bank
+...................................
+HUMAN tried to select a domino from the next bank
+HUMAN dragged center to (2,3)
+-----------------------------------
+2018-12-28T17:57:17.095+01:00[Europe/Berlin]
+Started new game
+
+...................................
+HUMAN tried to select a domino from the next bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the next bank
+...................................
+
+...................................
+HUMAN tried to dispose the current domino
+...................................
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+...................................
+HUMAN tried to select a domino from the next bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the next bank
+...................................
+
+HUMAN did not use [I2,P0]
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the next bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the next bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the next bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+-----------------------------------
+2018-12-28T17:59:30.358+01:00[Europe/Berlin]
+Started new game
+
+...................................
+HUMAN tried to select a domino from the wrong bank
+...................................
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+...................................
+HUMAN tried to select a domino from the wrong bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the wrong bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+...................................
+HUMAN tried to select a domino from the wrong bank
+...................................
+
+-----------------------------------
+2018-12-28T18:25:24.845+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+-----------------------------------
+2018-12-28T18:25:24.845+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+HUMAN put [O0,I2] horizontal to (0,2)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [S2,P0] horizontal to (0,1)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+...................................
+HUMAN tried to make an impossible bank selection
+...................................
+
+...................................
+HUMAN tried to make an impossible bank selection
+...................................
+
+-----------------------------------
+2018-12-28T18:25:24.845+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN put [I2,P0] horizontal to (0,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+-----------------------------------
+2018-12-28T18:28:37.516+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T18:28:55.718+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [A0,S2] at index 1 for next round
+HUMAN put [O0,I2] horizontal to (0,2)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [S2,P0] horizontal to (0,1)
+...................................
+HUMAN tried to make an impossible bank selection
+...................................
+
+-----------------------------------
+2018-12-28T18:31:29.275+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+HUMAN put [O0,I2] horizontal to (0,2)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [S2,P0] horizontal to (0,1)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN put [P0,O2] horizontal to (3,2)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [S1,P0] at index 3 for next round
+BOT2 put [A0,S1] vertical to (0,0)
+
+BOT4 chose [A1,H0] at index 0 for next round
+BOT4 put [P0,O1] horizontal to (0,0)
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [S0,O1] vertical to (2,0)
+
+BOT3 chose [A1,H0] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,0)
+
+BOT4 chose [H1,S0] at index 0 for next round
+BOT4 put [A1,H0] vertical to (0,3)
+
+BOT3 chose [P0,A1] at index 1 for next round
+BOT3 put [A1,H0] horizontal to (3,2)
+
+HUMAN chose [A1,P0] at index 2 for next round
+HUMAN put [A1,H0] vertical to (2,3)
+
+BOT2 chose [A1,H0] at index 3 for next round
+BOT2 put [S1,P0] vertical to (0,3)
+
+BOT4 chose [H1,P0] at index 0 for next round
+BOT4 put [H1,S0] horizontal to (3,2)
+
+BOT3 chose [A0,H1] at index 3 for next round
+BOT3 put [P0,A1] vertical to (1,2)
+...................................
+HUMAN tried to dispose the current domino
+...................................
+
+
+HUMAN chose [H1,P0] at index 2 for next round
+HUMAN did not use [A1,P0]
+
+BOT2 chose [P0,H1] at index 1 for next round
+BOT2 put [A1,H0] horizontal to (3,2)
+
+BOT4 chose [P0,H1] at index 3 for next round
+BOT4 put [H1,P0] horizontal to (1,4)
+
+BOT2 chose [P1,S0] at index 0 for next round
+BOT2 put [P0,H1] horizontal to (3,0)
+...................................
+HUMAN tried to make an impossible bank selection
+...................................
+
+...................................
+HUMAN tried to make an impossible bank selection
+...................................
+
+-----------------------------------
+2018-12-28T18:32:46.575+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [S0,O2] at index 3 for next round
+HUMAN did not use [I2,P0]
+
+BOT3 chose [P0,S2] at index 0 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [O2,P0] at index 2 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [P0,S2] horizontal to (0,2)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [O2,P0] horizontal to (0,0)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [A1,H0] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT4 chose [S1,P0] at index 3 for next round
+BOT4 put [P0,O1] horizontal to (0,0)
+-----------------------------------
+2018-12-28T18:32:46.575+01:00[Europe/Berlin]
+Started new game
+
+...................................
+HUMAN tried to make an impossible bank selection
+...................................
+
+HUMAN chose [P0,I3] at index 3 for current round
+
+BOT2 chose [I2,P0] at index 0 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT2 chose [S2,P0] at index 0 for next round
+BOT2 put [I2,P0] vertical to (2,0)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+-----------------------------------
+2018-12-28T18:32:46.575+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [S0,O2] at index 3 for next round
+HUMAN did not use [I2,P0]
+
+BOT3 chose [P0,S2] at index 0 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [O2,P0] at index 2 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [P0,S2] horizontal to (0,2)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [O2,P0] horizontal to (0,0)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [A1,H0] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT4 chose [S1,P0] at index 3 for next round
+BOT4 put [P0,O1] horizontal to (0,0)
+HUMAN dragged center to (2,3)
+HUMAN dragged center to (2,4)
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
