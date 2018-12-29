@@ -2,6 +2,7 @@ package logic.bankSelection;
 
 import logic.playerState.Board;
 import logic.token.Domino;
+import logic.token.Pos;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -100,6 +101,17 @@ public class Choose {
         } while (!isEfficient && i < input.size());
         return isEfficient ? currChoose : input.get(0);
     }
+
+
+//    protected countEmptySingleCells(Choose input, Board board) {
+//        int res = 0;
+//        List<Pos> neighbors = input.domWithPosAndRot.getFstPos().getNeighbours();
+//        neighbors.addAll(input.domWithPosAndRot.getSndPos().getNeighbours());
+//
+//        board.getD
+//
+//    }
+
 
     /**
      * Evaluates if a list of choose objects is sorted or not

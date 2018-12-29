@@ -2,7 +2,9 @@ package logic.bankSelection;
 
 import logic.playerState.Player;
 import logic.randomizer.PseudoRandAlwaysHighestVal;
+import logic.randomizer.PseudoRandZeroResidueClass;
 import logic.token.Domino;
+import logic.token.PseudoRandom;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -50,6 +52,7 @@ public class Bank {
         // TODO uncomment before final commit
 //        this.rand = new Random();
         this.rand = new PseudoRandAlwaysHighestVal();
+//        this.rand = new PseudoRandZeroResidueClass(2);
     }
 
     /**

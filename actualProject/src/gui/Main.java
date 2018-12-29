@@ -4,8 +4,12 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import logic.playerTypes.PlayerType;
+
+import java.util.Optional;
 
 public class Main extends Application {
 
@@ -20,6 +24,8 @@ public class Main extends Application {
 //        introStage.setScene(new Scene(root));
 //        introStage.show();
 //    }
+//
+
 
     public static void main(String[] args) {
         launch(args);
@@ -48,6 +54,7 @@ public class Main extends Application {
         // TODO min size
         mainStage.show();
     }
+
 
 
 

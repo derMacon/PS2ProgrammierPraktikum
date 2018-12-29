@@ -11,7 +11,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.SnapshotParameters;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
@@ -33,11 +35,13 @@ import logic.playerState.Board;
 import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 
+import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class FXMLDocumentController implements Initializable {
@@ -584,11 +588,26 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void mnTmLoadGame(ActionEvent event) throws FileNotFoundException {
-        if (this.game.equalsStr(Loader.openSavedFile())) {
-            this.game = new Game(this.gui, Loader.getInstance().openFileChooser());
-        } else {
-            System.out.println("Debug 1: Instanz noch nicht abgespeichert");
-            //TODO Dialogfenster mit anschliessendem Filechooser (falls erwuenscht)
+        if (!this.game.equalsStr(Loader.openSavedFile())) {
+            showConfirmationDialog(event);
+        }
+        this.game = new Game(this.gui, Loader.getInstance().openFileChooser());
+    }
+
+    /**
+     * https://code.makery.ch/blog/javafx-dialogs-official/
+     * @param event
+     * @return
+     */
+    private void showConfirmationDialog(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Verwerfen des Spielstandes");
+        alert.setHeaderText("Sie haben den aktuellen Spielstand noch nicht abgespeichert.");
+        alert.setContentText("Wollen Sie dies jetzt nachholen?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == ButtonType.OK){
+            mnTmSaveGameAs(event);
         }
     }
 
@@ -597,12 +616,10 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void exitGame(ActionEvent event) {
-        if (this.game.equalsStr(Loader.openSavedFile())) {
-            System.exit(0);
-        } else {
-            System.out.println("Debug 1: Instanz noch nicht abgespeichert");
-            //TODO Dialogfenster mit anschliessendem Filechooser (falls erwuenscht)
+        if (!this.game.equalsStr(Loader.openSavedFile())) {
+            showConfirmationDialog(event);
         }
+        System.exit(0);
     }
 
     /**
