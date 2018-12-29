@@ -28,11 +28,10 @@ public interface BotBehavior {
     void doStandardTurn(Bank currBank, Bank nextBank);
 
     void doLastTurn(Bank currBank);
-    
+
     Bank doInitialSelect(Bank currBank, int bankOrd);
 
     void updateSelectedDom(Bank currBank);
-
 
 
 }

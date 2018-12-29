@@ -1,15 +1,12 @@
 package logic.logicTransfer;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-
 import logic.dataPreservation.Loader;
 import org.junit.Assert;
 import other.FakeGUI;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import static org.junit.Assert.assertTrue;
 
@@ -17,7 +14,7 @@ import static org.junit.Assert.assertTrue;
  * Klasse mit (statischen) (Hilfs-)methoden für JUnit-Tests. Die Klasse
  * beinhaltet unter anderem Methoden zum Vergleichen von Dateien und zum
  * Ermitteln des Stack-Trace einer Exception als Zeichenkette.
- *
+ * <p>
  * // TODO javadoc erweitern (alle Methoden)
  *
  * @author eg, ur, kar
@@ -28,7 +25,7 @@ public class TestToolkit {
 
 
     private static final String PATH_FORMAT =
-            "test" + File.separator + "fileTests"+ File.separator + "testdata" + File.separator + "%s" + FILE_ENDING;
+            "test" + File.separator + "fileTests" + File.separator + "testdata" + File.separator + "%s" + FILE_ENDING;
 
     /**
      * Ermittelt, ob der Inhalt der Dateien fileName1 und fileName2 identisch
@@ -36,17 +33,15 @@ public class TestToolkit {
      *
      * @param fileName1 erste Datei.
      * @param fileName2 zweite Datei.
-     *
      * @return boolscher Wert, der angibt, ob der Inhalt der Dateien fileName1
-     *         und fileName2 identisch ist.
-     *
+     * und fileName2 identisch ist.
      * @throws InterruptedException Externer Fehler
-     * @throws IOException Dateifehler
+     * @throws IOException          Dateifehler
      */
 
     public static boolean filesAreEqual(String fileName1, String fileName2)
             throws InterruptedException, IOException {
-        if(null == fileName1 || null == fileName2) {
+        if (null == fileName1 || null == fileName2) {
             throw new IOException("arg nullpointer");
         }
         return new File(fileName1).equals(new File(fileName2));
@@ -67,10 +62,8 @@ public class TestToolkit {
      *
      * @param filename Dateiname
      * @return DBTable Datenbanktabelle
-     *
-     * @throws IOException Dateifehler
+     * @throws IOException          Dateifehler
      * @throws WrongSyntaxException Syntaktischer Fehler beim Einlesen der Datei
-     *
      */
     public static Game read(String filename) {
         return new Game(new FakeGUI(), readAsString(filename));
@@ -108,12 +101,11 @@ public class TestToolkit {
      * auf Gleichheit. Wenn der Ordner results in dem die Ausgabedateien liegen
      * sollen noch nicht vorhanden ist, wird er erzeugt.
      *
-     *
      * @param filename Dateiname ohne Endung
      * @throws IOException Dateifehler
      */
     public static void writeAndAssert(Game game, String filename) throws IOException {
-        File resultsDir = new File("test" + File.separator + "filetests" +  File.separator + "results");
+        File resultsDir = new File("test" + File.separator + "filetests" + File.separator + "results");
         resultsDir.mkdir();
 
         Loader.saveWithoutGUI("test" + File.separator + "fileTests" + File.separator + "results" + File.separator + filename + ".txt", game);

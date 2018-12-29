@@ -5,10 +5,13 @@ import logic.bankSelection.Choose;
 import logic.bankSelection.Entry;
 import logic.logicTransfer.GUIConnector;
 import logic.logicTransfer.Game;
-import logic.playerState.Board;
 import logic.playerTypes.DefaultAIPlayer;
 import logic.playerTypes.HumanPlayer;
-import logic.token.*;
+import logic.token.DistrictType;
+import logic.token.Domino;
+import logic.token.Pos;
+import logic.token.SingleTile;
+import logic.token.Tiles;
 import org.junit.Test;
 import other.FakeGUI;
 
@@ -220,7 +223,8 @@ public class BoardTest {
     @Test
     public void testConstructor_WithCCInMiddle_SymmetricalDimensionsEven_SmallesPossibleValue() {
         Board board = new Board(2, 2);
-        SingleTile[][] expectedOutput = new SingleTile[][]{{SingleTile.CC, SingleTile.EC}, {SingleTile.EC, SingleTile.EC}};
+        SingleTile[][] expectedOutput = new SingleTile[][]{{SingleTile.CC, SingleTile.EC}, {SingleTile.EC,
+                SingleTile.EC}};
         SingleTile[][] actualOutput = board.getCells();
         assertArrayEquals(expectedOutput, actualOutput);
     }
@@ -324,8 +328,8 @@ public class BoardTest {
                         "-- -- A1 A1 A1 A1 --\n" +
                         "-- -- -- -- -- -- --\n");
         Domino dom = new Domino(Tiles.genTile(P0, A0));
-        assertFalse(board.fits(dom.setPos(new Pos (6, 0))));
-        assertFalse(board.fits(dom.setPos(new Pos (6, 6))));
+        assertFalse(board.fits(dom.setPos(new Pos(6, 0))));
+        assertFalse(board.fits(dom.setPos(new Pos(6, 6))));
         // expected hori P0_A0_Val14
         assertEquals(14, dom.getTile().getValue());
         assertTrue(board.fits(dom.setPos(new Pos(2, 1))));  // above end (P0)
@@ -593,7 +597,7 @@ public class BoardTest {
 
 
     // --- findPos ---
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testFindPos_NullParam() {
         new Board("CC").findPos(null);
     }
@@ -652,14 +656,14 @@ public class BoardTest {
                 new DefaultAIPlayer(fakeGui, 3, board4)
         };
 
-        Entry[] currRoundEntries = new Entry[] {
+        Entry[] currRoundEntries = new Entry[]{
                 null, null,
                 new Entry(new Domino(Tiles.S0O1_Val39), expPlayers[0]),
                 new Entry(new Domino(Tiles.I1P0_Val40), expPlayers[2])
         };
         Bank currBank = new Bank(currRoundEntries, new Random());
 
-        Entry[] nextRoundEntries = new Entry[] {
+        Entry[] nextRoundEntries = new Entry[]{
                 new Entry(new Domino(Tiles.A1H0_Val32), expPlayers[3]),
                 new Entry(new Domino(Tiles.A1H0_Val33)),
                 new Entry(new Domino(Tiles.A1H0_Val34)),

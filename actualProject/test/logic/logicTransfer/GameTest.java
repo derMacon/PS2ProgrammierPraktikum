@@ -1,18 +1,15 @@
 package logic.logicTransfer;
 
-import other.FakeGUI;
 import logic.bankSelection.Bank;
 import logic.bankSelection.Entry;
-import logic.logicTransfer.GUIConnector;
-import logic.logicTransfer.Game;
+import logic.playerState.Player;
 import logic.playerTypes.DefaultAIPlayer;
 import logic.playerTypes.HumanPlayer;
-import logic.playerState.Player;
 import logic.playerTypes.PlayerType;
 import logic.token.Domino;
-import logic.token.SingleTile;
 import logic.token.Tiles;
 import org.junit.Test;
+import other.FakeGUI;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -151,7 +148,6 @@ public class GameTest {
         assertEquals(pl3.getBoard(), gameTestingConstr.getPlayers()[2].getBoard());
         assertEquals(pl4.getBoard(), gameTestingConstr.getPlayers()[3].getBoard());
     }
-
 
 
 }

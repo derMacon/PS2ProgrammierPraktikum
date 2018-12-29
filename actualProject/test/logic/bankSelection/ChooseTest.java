@@ -1,13 +1,11 @@
 package logic.bankSelection;
 
 import logic.playerState.Board;
-import logic.playerTypes.DefaultAIPlayer;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
 import logic.token.Tiles;
 import org.junit.Test;
-import other.FakeGUI;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -149,7 +147,8 @@ public class ChooseTest {
 
     @Test(expected = AssertionError.class)
     public void testListMax_NullParam2() {
-        List<Choose> listChoose = Arrays.asList(new Choose(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.H0)), 0, 1));
+        List<Choose> listChoose = Arrays.asList(new Choose(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.H0)), 0
+                , 1));
         Choose.max(listChoose, null);
     }
 
@@ -171,7 +170,8 @@ public class ChooseTest {
 
     @Test
     public void testListMax_OneElementInList() {
-        List<Choose> listChoose = Arrays.asList(new Choose(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.H0)), 0, 1));
+        List<Choose> listChoose = Arrays.asList(new Choose(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.H0)), 0
+                , 1));
         assertEquals(listChoose.get(0), Choose.max(listChoose, new Board("-- -- CC")));
     }
 

@@ -132,6 +132,25 @@ public class Domino implements Comparable {
     }
 
     /**
+     * gets all values of Tiles in a list. All existing dominos in list have
+     * to be removed so each domino is single in list.
+     *
+     * @param list list to be cleared and added to
+     * @return same list with all dominos once each
+     */
+    public static List<Domino> fill(List<Domino> list) {
+        if (null == list) {
+            list = new LinkedList<Domino>();
+        } else {
+            list.clear();
+        }
+        for (Tiles tile : Tiles.values()) {
+            list.add(new Domino(tile, DEFAULT_POS));
+        }
+        return list;
+    }
+
+    /**
      * gets the tile
      *
      * @return the tile
@@ -252,27 +271,6 @@ public class Domino implements Comparable {
         }
         return new Pos(x, y);
     }
-
-
-    /**
-     * gets all values of Tiles in a list. All existing dominos in list have
-     * to be removed so each domino is single in list.
-     *
-     * @param list list to be cleared and added to
-     * @return same list with all dominos once each
-     */
-    public static List<Domino> fill(List<Domino> list) {
-        if (null == list) {
-            list = new LinkedList<Domino>();
-        } else {
-            list.clear();
-        }
-        for (Tiles tile : Tiles.values()) {
-            list.add(new Domino(tile, DEFAULT_POS));
-        }
-        return list;
-    }
-
 
     /**
      * dominos are equal if the have the same tile (rotation may differ), exact reference as well

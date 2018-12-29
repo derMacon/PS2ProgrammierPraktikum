@@ -1,10 +1,9 @@
 package logic.token;
 
-import logic.token.SingleTile;
-import logic.token.Tiles;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+
 public class TilesTest {
 
     // --- genTile ---
@@ -15,12 +14,12 @@ public class TilesTest {
         assertEquals(expectedOutput, actualOutput);
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testGenTile_NullParam1() {
         Tiles.genTile(null, SingleTile.P0);
     }
 
-    @Test (expected = AssertionError.class)
+    @Test(expected = AssertionError.class)
     public void testGenTile_NullParam2() {
         Tiles.genTile(SingleTile.P0, null);
     }

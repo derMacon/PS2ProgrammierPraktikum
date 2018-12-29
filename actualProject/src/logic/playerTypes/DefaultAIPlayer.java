@@ -26,7 +26,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      */
     public static final String NAME_PREFIX = "BOT";
 
-       public DefaultAIPlayer(GUIConnector gui, int idx, int boardSizeX, int boardSizeY) {
+    public DefaultAIPlayer(GUIConnector gui, int idx, int boardSizeX, int boardSizeY) {
         super(gui, idx, boardSizeX, boardSizeY);
     }
 
@@ -47,7 +47,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * multtiple dominos share the highest score the one with the most efficient
      * domino will be selected
      *
-     * @param bank the bank that the player will select from
+     * @param bank    the bank that the player will select from
      * @param ordBank ordinal value of the bank
      * @return the edited bank
      */
@@ -87,7 +87,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // put domino on board without showing it on the gui
         this.board.lay(overallBestChoose.getDomWithPosAndRot());
         // update gui
-        if(displayOnGui) {
+        if (displayOnGui) {
             this.gui.selectDomino(ordBank, overallBestChoose.getIdxOnBank(), this.idxInPlayerArray);
         }
         // return the bank, although bank reference is modified internally
@@ -97,7 +97,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 
     @Override
     public void updateSelectedDom(Bank currBank) {
-        if(null != currBank) {
+        if (null != currBank) {
             // Construct a bank containing only the already selected Entry of the player -> now
             // method selectFromBank(...) can be used to find pos on board, etc.
             Domino dom = currBank.getPlayerSelectedDomino(this);
@@ -121,9 +121,9 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // update board -> has to be done to prevent the bot from laying the
         // second draft directly on the first domino
         this.board.lay(playerSelectedDomino);
-                // update districts
+        // update districts
 //        this.districts = updatedDistricts(this.districts, playerSelectedDomino);
-        return output; 
+        return output;
     }
 
     @Override

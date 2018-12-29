@@ -3,7 +3,10 @@ package logic.playerState;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Class that compares the results of all players and generates the winner.
@@ -52,13 +55,13 @@ public class Result {
     /**
      * https://stackoverflow.com/questions/18410035/ways-to-iterate-over-a-list-in-java
      *
-     * @param player
+     * @param players
      * @return
      */
-    private List<ResultRanking> genResultRankingList(Player[] player) {
-        assert player.length > 0;
+    private List<ResultRanking> genResultRankingList(Player[] players) {
+        assert players.length > 0;
         LinkedList<Player> rankedWithoutEqualTemperedPlayers =
-                new LinkedList<>(Arrays.asList(player));
+                new LinkedList<>(Arrays.asList(players));
         Collections.sort(rankedWithoutEqualTemperedPlayers);
 
         return orderRanking(new LinkedList<>(), rankedWithoutEqualTemperedPlayers);
@@ -116,9 +119,9 @@ public class Result {
     }
 
     public TreeView<String> toTreeView() {
-        TreeItem<String> rootItem = new TreeItem<> ("Ranking");
+        TreeItem<String> rootItem = new TreeItem<>("Ranking");
         rootItem.setExpanded(true);
-        for(ResultRanking currRanking : this.ranking ) {
+        for (ResultRanking currRanking : this.ranking) {
             rootItem.getChildren().add(currRanking.toTreeItem());
         }
         return new TreeView<>(rootItem);
@@ -133,12 +136,12 @@ public class Result {
         if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
-        final Result other = (Result)obj;
+        final Result other = (Result) obj;
         // TODO Use iterator
         int i = 0;
         int thisSize = this.ranking.size();
         boolean equals = thisSize == other.ranking.size();
-        while(equals && i < thisSize) {
+        while (equals && i < thisSize) {
             equals = this.ranking.get(i).equals(other.ranking.get(i));
             i++;
         }

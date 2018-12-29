@@ -63,7 +63,7 @@ public class ResultRanking {
     public TreeItem<String> toTreeItem() {
         TreeItem<String> parent = new TreeItem<>(this.rankingPosition + ". Platz");
         parent.setExpanded(true);
-        for(Player currPlayer : this.rankedPlayers) {
+        for (Player currPlayer : this.rankedPlayers) {
             parent.getChildren().add(currPlayer.toTreeView());
         }
         return parent;
@@ -78,10 +78,10 @@ public class ResultRanking {
             return false;
         }
         final ResultRanking other = (ResultRanking) obj;
-        if(this.rankedPlayers.size() != other.getRankedPlayers().size()) {
+        if (this.rankedPlayers.size() != other.getRankedPlayers().size()) {
             return false;
         }
-        if(this.rankingPosition == other.rankingPosition) {
+        if (this.rankingPosition == other.rankingPosition) {
             boolean samePlayers = true;
             int i = 0;
             do {

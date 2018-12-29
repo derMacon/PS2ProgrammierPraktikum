@@ -1,9 +1,5 @@
 package logic.token;
 
-import logic.token.DistrictType;
-import logic.token.Domino;
-import logic.token.Pos;
-import logic.token.Tiles;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -11,7 +7,8 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import static logic.token.SingleTile.*;
+import static logic.token.SingleTile.H0;
+import static logic.token.SingleTile.P0;
 import static org.junit.Assert.*;
 
 public class DominoTest {
@@ -212,7 +209,7 @@ public class DominoTest {
                 overallStack.get(6)}
         );
         Collections.sort(domInput);
-        Domino[] expectedOutput = new Domino[] {
+        Domino[] expectedOutput = new Domino[]{
                 overallStack.get(1),
                 overallStack.get(5),
                 overallStack.get(6),
@@ -228,15 +225,17 @@ public class DominoTest {
     public void testEquals_NullParam() {
         assertFalse(new Domino(Tiles.genTile(P0, H0)).equals(null));
     }
+
     @Test
     public void testEquals_VaildConstr() {
         assertTrue(new Domino(Tiles.genTile(P0, H0)).equals(new Domino(Tiles.genTile(P0, H0))));
         assertTrue(new Domino(Tiles.genTile(P0, H0)).equals(new Domino(Tiles.genTile(P0, H0), 0)));
         assertTrue(new Domino(Tiles.genTile(P0, H0), 0).equals(new Domino(Tiles.genTile(P0, H0))));
     }
+
     @Test
     public void testEquals_ValidConstr() {
-        assertTrue(new Domino(Tiles.genTile(P0, H0),1).equals(new Domino(Tiles.genTile(P0, H0))));
+        assertTrue(new Domino(Tiles.genTile(P0, H0), 1).equals(new Domino(Tiles.genTile(P0, H0))));
         assertTrue(new Domino(Tiles.genTile(P0, H0), 1).equals(new Domino(Tiles.genTile(P0, H0), 0)));
         assertTrue(new Domino(Tiles.genTile(P0, H0)).equals(new Domino(Tiles.genTile(P0, H0), 1)));
     }

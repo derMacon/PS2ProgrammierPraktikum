@@ -27,8 +27,8 @@ public class ValidFileReadTests {
         Game expOutput = new Game(new FakeGUI(), 4);
         // test only possible if random obj. in banks are pseudorandom
         expOutput.getCurrentRoundBank().setRand(new PseudoRandAlwaysHighestVal());
-        expOutput.startGame(new PlayerType[] {PlayerType.HUMAN, PlayerType.DEFAULT, PlayerType.DEFAULT,
-                PlayerType.DEFAULT}, 5,5);
+        expOutput.startGame(new PlayerType[]{PlayerType.HUMAN, PlayerType.DEFAULT, PlayerType.DEFAULT,
+                PlayerType.DEFAULT}, 5, 5);
         Game actOutput = TestToolkit.read("val_newGame_noNextBankYet");
         assertEquals(expOutput, actOutput);
         TestToolkit.writeAndAssert(actOutput, "exp_newGame_noNextBankYet");
@@ -71,7 +71,7 @@ public class ValidFileReadTests {
                 new DefaultAIPlayer(fakeGui, 3, board4)
         };
 
-        Entry[] currRoundEntries = new Entry[] {
+        Entry[] currRoundEntries = new Entry[]{
                 new Entry(new Domino(Tiles.P0P0_Val1)),
                 new Entry(new Domino(Tiles.P0P0_Val2)),
                 new Entry(new Domino(Tiles.S0O1_Val39)),
@@ -79,7 +79,7 @@ public class ValidFileReadTests {
         };
         Bank expCurrBank = new Bank(currRoundEntries, new Random());
 
-        Entry[] nextRoundEntries = new Entry[] {
+        Entry[] nextRoundEntries = new Entry[]{
                 new Entry(new Domino(Tiles.A1H0_Val32), expPlayers[3]),
                 new Entry(new Domino(Tiles.A1H0_Val33), expPlayers[0]),
                 new Entry(new Domino(Tiles.A1H0_Val34), expPlayers[2]),
@@ -138,14 +138,14 @@ public class ValidFileReadTests {
                 new DefaultAIPlayer(fakeGui, 3, board4)
         };
 
-        Entry[] currRoundEntries = new Entry[] {
+        Entry[] currRoundEntries = new Entry[]{
                 null, null,
                 new Entry(new Domino(Tiles.S0O1_Val39), expPlayers[0]),
                 new Entry(new Domino(Tiles.I1P0_Val40), expPlayers[2])
         };
         Bank expCurrBank = new Bank(currRoundEntries, new Random());
 
-        Entry[] nextRoundEntries = new Entry[] {
+        Entry[] nextRoundEntries = new Entry[]{
                 new Entry(new Domino(Tiles.A1H0_Val32), expPlayers[3]),
                 new Entry(new Domino(Tiles.A1H0_Val33)),
                 new Entry(new Domino(Tiles.A1H0_Val34)),

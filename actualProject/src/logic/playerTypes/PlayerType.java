@@ -1,9 +1,6 @@
 package logic.playerTypes;
 
-import logic.dataPreservation.Logger;
 import logic.logicTransfer.GUIConnector;
-import logic.logicTransfer.Game;
-import logic.playerState.Board;
 import logic.playerState.Player;
 
 /**
@@ -21,15 +18,6 @@ public enum PlayerType {
 
     PlayerType(String guiRepresentation) {
         this.guiRepresentation = guiRepresentation;
-    }
-
-    /**
-     * Getter for the String representation of a single element
-     *
-     * @return
-     */
-    public String getStringRepresentation() {
-        return guiRepresentation;
     }
 
     /**
@@ -57,7 +45,6 @@ public enum PlayerType {
         return output;
     }
 
-
     /**
      * Static factory for the players of a game (used for playing actual game)
      *
@@ -81,6 +68,15 @@ public enum PlayerType {
                 System.out.println("Not supported yet -> cannot instanciate desired playertype");
         }
         return output;
+    }
+
+    /**
+     * Getter for the String representation of a single element
+     *
+     * @return
+     */
+    public String getStringRepresentation() {
+        return guiRepresentation;
     }
 
 }

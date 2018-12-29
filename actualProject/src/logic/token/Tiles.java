@@ -1,8 +1,6 @@
 package logic.token;
 
 
-import logic.playerState.Board;
-
 import static logic.token.SingleTile.*;
 
 /**
@@ -67,38 +65,15 @@ public enum Tiles {
 
     /**
      * Constructor setting the values of the tile combinations
-     * @param fst first Tile of the combination
-     * @param snd second Tile of the combination
+     *
+     * @param fst   first Tile of the combination
+     * @param snd   second Tile of the combination
      * @param value value of the combination (used for sorting the stack)
      */
     Tiles(SingleTile fst, SingleTile snd, int value) {
         this.fst = fst;
         this.snd = snd;
         this.value = value;
-    }
-
-    /**
-     * Getter for the first tile
-     * @return first Tile of the combination
-     */
-    public SingleTile getFst() {
-        return this.fst;
-    }
-
-    /**
-     * Getter for the second tile
-     * @return second Tile of the combination
-     */
-    public SingleTile getSnd() {
-        return this.snd;
-    }
-
-    /**
-     * Getter for the value of the tile
-     * @return value of the combination
-     */
-    public int getValue() {
-        return this.value;
     }
 
     /**
@@ -138,6 +113,7 @@ public enum Tiles {
 
     /**
      * Converts a given String to a tile
+     *
      * @param input String to convert to tile
      * @return the enum member corresponding with this String, null if no tile matches
      */
@@ -155,6 +131,33 @@ public enum Tiles {
 
     public static boolean contains(String input) {
         return null != fromString(input);
+    }
+
+    /**
+     * Getter for the first tile
+     *
+     * @return first Tile of the combination
+     */
+    public SingleTile getFst() {
+        return this.fst;
+    }
+
+    /**
+     * Getter for the second tile
+     *
+     * @return second Tile of the combination
+     */
+    public SingleTile getSnd() {
+        return this.snd;
+    }
+
+    /**
+     * Getter for the value of the tile
+     *
+     * @return value of the combination
+     */
+    public int getValue() {
+        return this.value;
     }
 
     @Override

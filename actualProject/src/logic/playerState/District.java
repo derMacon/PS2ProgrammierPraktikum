@@ -1,11 +1,13 @@
 package logic.playerState;
 
-import java.util.*;
-
 import javafx.scene.control.TreeItem;
-import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * class representing the players points. A district holds a number of cells
@@ -41,13 +43,14 @@ public class District {
 
     /**
      * Constructor taking in a list of districts and forms a new district containing all given districts
+     *
      * @param districts list of districts that will be merged
      */
     public District(List<District> districts) {
         assert null != districts;
         this.singleTiles = new LinkedList<>();
         this.tilePositions = new LinkedList<>();
-        for(District currDistrict : districts) {
+        for (District currDistrict : districts) {
             this.singleTiles.addAll(currDistrict.singleTiles);
             this.tilePositions.addAll(currDistrict.tilePositions);
         }
@@ -67,6 +70,7 @@ public class District {
 
     /**
      * Constructor used for testing
+     *
      * @param testDistricts districts that will be merged
      */
     public District(District[] testDistricts) {
@@ -95,14 +99,13 @@ public class District {
      * Adds another single tile at the given position to the district
      *
      * @param newTile new tile added to the district
-     * @param newPos new position added to the district, local pos list cannot already contain given pos
+     * @param newPos  new position added to the district, local pos list cannot already contain given pos
      */
     public void add(SingleTile newTile, Pos newPos) {
         assert null != newTile && null != newPos && !this.tilePositions.contains(newPos);
         this.singleTiles.add(newTile);
         this.tilePositions.add(newPos);
     }
-
 
 
     /**
@@ -132,7 +135,7 @@ public class District {
      */
     public int genPoints() {
         int tokenCnt = 0;
-        for(SingleTile currTile : this.singleTiles) {
+        for (SingleTile currTile : this.singleTiles) {
             tokenCnt += currTile.getTokenCnt();
         }
         return tokenCnt * this.singleTiles.size();
@@ -143,7 +146,7 @@ public class District {
      * members
      *
      * @param tile tile that will be checked
-     * @param pos pos that will be checked
+     * @param pos  pos that will be checked
      * @return true if one district member is next to the given pos and the
      * district type matches, position cannot be already contained in the district (AssertionError)
      */
@@ -159,6 +162,7 @@ public class District {
 
     /**
      * Checks if a given Tiles district type matches the overall district type of the current district
+     *
      * @param tile
      * @return
      */
@@ -168,6 +172,7 @@ public class District {
 
     /**
      * Iterates through the district positions and check if any element has the appropriate group of neighbors
+     *
      * @param pos Position to examine
      * @return true if pos is next to existing district member pos
      */
@@ -177,12 +182,13 @@ public class District {
         do {
             isNextToDistrictMember = this.tilePositions.get(i).getNeighbours().contains(pos);
             i++;
-        } while(!isNextToDistrictMember && i < this.tilePositions.size());
+        } while (!isNextToDistrictMember && i < this.tilePositions.size());
         return isNextToDistrictMember;
     }
 
     /**
      * TODO Mainly used for testing, maybe consider to delete this method
+     *
      * @param obj other object to examine
      * @return true if both districts hold the same information
      */
@@ -195,16 +201,19 @@ public class District {
         District currDistrict = (District) obj;
 
         // TODO delete next two lines- only for testing
-        boolean sameTiles = null != currDistrict.getSingleTiles() && this.singleTiles.equals(currDistrict.getSingleTiles());
-        boolean samePos = null != currDistrict.getTilePositions() && this.tilePositions.equals(currDistrict.getTilePositions());
+        boolean sameTiles =
+                null != currDistrict.getSingleTiles() && this.singleTiles.equals(currDistrict.getSingleTiles());
+        boolean samePos =
+                null != currDistrict.getTilePositions() && this.tilePositions.equals(currDistrict.getTilePositions());
 
         return null != currDistrict.getSingleTiles() && this.singleTiles.equals(currDistrict.getSingleTiles())
-            && null != currDistrict.getTilePositions() && this.tilePositions.equals(currDistrict.getTilePositions());
+                && null != currDistrict.getTilePositions() && this.tilePositions.equals(currDistrict.getTilePositions());
 
     }
 
     /**
      * Makes a deep copyWithoutSelection of the current District
+     *
      * @return a deep copyWithoutSelection of the current District
      */
     public District copy() {
@@ -218,7 +227,7 @@ public class District {
     }
 
     public TreeItem<String> toTreeItem() {
-        return new TreeItem<>( genPoints() + " Punkte" + "\t"
+        return new TreeItem<>(genPoints() + " Punkte" + "\t"
                 + this.singleTiles.get(0).getDistrictType());
     }
 }

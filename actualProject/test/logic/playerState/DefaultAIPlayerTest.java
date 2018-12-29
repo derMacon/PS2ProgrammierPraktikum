@@ -2,20 +2,13 @@ package logic.playerState;
 
 import logic.bankSelection.Bank;
 import logic.bankSelection.Entry;
-import other.FakeGUI;
-import logic.dataPreservation.Logger;
 import logic.playerTypes.DefaultAIPlayer;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.Tiles;
-
-import static logic.token.SingleTile.A0;
-import static logic.token.SingleTile.P0;
-
 import org.junit.Test;
+import other.FakeGUI;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 import static logic.token.SingleTile.*;
@@ -182,7 +175,7 @@ public class DefaultAIPlayerTest {
         Tiles mostValuableTiles = Tiles.genTile(O0, I2);
         Bank nextBank = new Bank(new Entry[]{
                 new Entry(new Domino(Tiles.genTile(P0, A0)), new DefaultAIPlayer(new FakeGUI(), 2
-                        , new Board(1,1))),
+                        , new Board(1, 1))),
                 new Entry(new Domino(mostValuableTiles))
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
@@ -336,7 +329,6 @@ public class DefaultAIPlayerTest {
     // TODO more tests for tie
 
 
-
     // --- error occurred during manual testing ---
     // All screenshots can be found in the documentation
     // TODO put Screenshots in docu
@@ -388,8 +380,8 @@ public class DefaultAIPlayerTest {
         Domino expectedOutput = new Domino(domTiles, new Pos(0, 2), 0);
         Domino actualOutput = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         assertEquals(expectedOutput, actualOutput);
-        assertEquals(new Pos(0,2), actualOutput.getFstPos());
-        assertEquals(new Pos(1,2), actualOutput.getSndPos());
+        assertEquals(new Pos(0, 2), actualOutput.getFstPos());
+        assertEquals(new Pos(1, 2), actualOutput.getSndPos());
         assertEquals(0, actualOutput.getRot());
     }
 
@@ -403,7 +395,7 @@ public class DefaultAIPlayerTest {
                         + "-- --  -- -- --\n");
         assertEquals(3, player.getBoardPoints());
         Tiles domTiles = Tiles.genTile(A0, S1);
-        Bank currBank = new Bank(new Entry[]{new Entry(new Domino(domTiles, new Pos(0,2)), player)},
+        Bank currBank = new Bank(new Entry[]{new Entry(new Domino(domTiles, new Pos(0, 2)), player)},
                 new Random());
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(Tiles.I1P0_Val40))},
                 new Random());

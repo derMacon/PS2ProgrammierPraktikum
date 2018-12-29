@@ -12,14 +12,25 @@
 \usepackage[english, ngerman]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{lmodern}
-\usepackage{graphicx}
+
 \usepackage{enumitem}
 %\usepackage[a4paper, total={6in, 8.5in}]{geometry}
 \usepackage[a4paper, bottom=2cm,includeheadfoot]{geometry}
 \usepackage{afterpage} %Um Titelseite mit gesonderter Formatierung zu belegen
 \usepackage{blindtext}
+\usepackage{todonotes}
 
+
+% Noetig fuer verschachtelte Imports 
 \usepackage{import}
+\usepackage{subcaption}
+% Noetig fuer 2 x 2 Bilder in einer Figureumgebung
+\usepackage{mwe}
+
+% Bilder
+\usepackage{graphicx}
+% Standardbreite um Text und Bilder gem. darzustellen
+\setkeys{Gin}{width=0.8\linewidth}
 
 
 % Einfacheres Navigieren im PDF/Web
@@ -73,6 +84,7 @@ stringstyle=\color{Blue}
 \\3.Verwaltungssemeter}
 \date{\today}
 
+\newcommand{\prefWidth}{width=0.8\linewidth}
 
 \begin{document}
 \newgeometry{a4paper, bottom=5cm}
@@ -107,9 +119,11 @@ stringstyle=\color{Blue}
 \newpage
 \pagestyle{plain}
 \tableofcontents
+\listoffigures
 %\pagestyle{main}
 \newpage
 
+\pagestyle{fancy}
 \input{benutzerhandbuch/benutzerhandbuchMain}
 
 \clearpage

@@ -1,25 +1,19 @@
 package logic.bankSelection;
 
-import java.util.Arrays;
-
 import logic.logicTransfer.GUIConnector;
-import other.FakeGUI;
-import logic.bankSelection.Bank;
-import logic.bankSelection.Entry;
-import logic.dataPreservation.Logger;
-import logic.playerTypes.DefaultAIPlayer;
 import logic.playerState.Player;
+import logic.playerTypes.DefaultAIPlayer;
+import logic.randomizer.PseudoRandAlwaysHighestVal;
+import logic.randomizer.PseudoRandZeroResidueClass;
 import logic.token.Domino;
+import logic.token.Tiles;
+import org.junit.Test;
+import other.FakeGUI;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-import logic.randomizer.PseudoRandAlwaysHighestVal;
-import logic.randomizer.PseudoRandZeroResidueClass;
-import logic.token.SingleTile;
-
-import logic.token.Tiles;
-import org.junit.Test;
 
 import static org.junit.Assert.*;
 
@@ -28,11 +22,12 @@ public class BankTest {
     public static final int DEFAULT_TEST_BANK_SIZE = 4;
 
     //<editor-fold defaultstate="collapsed" desc="Helping Method - Setting up tests">
+
     /**
      * Fills a given list with the stack of dominos and generates a bank from
      * the first len dominos of the stack. Dominos are NOT randomized.
      *
-     * @param len size of the bank
+     * @param len   size of the bank
      * @param stack input list serving as the stack
      * @return bank with the first 4 dominos from the newly filled stack.
      */
@@ -48,7 +43,8 @@ public class BankTest {
     private Bank genBankFromStack(List<Domino> stack) {
         //<editor-fold defaultstate="collapsed" desc="Alternative">
 //        stack = Domino.fill(stack);
-//        Entry[] entries = new Entry[]{new Entry(stack.get(0)), new Entry(stack.get(1)), new Entry(stack.get(2)), new Entry(stack.get(3))};
+//        Entry[] entries = new Entry[]{new Entry(stack.get(0)), new Entry(stack.get(1)), new Entry(stack.get(2)),
+// new Entry(stack.get(3))};
 //        Bank bank = new Bank(entries);
 //        return bank;
         //</editor-fold>
@@ -287,22 +283,22 @@ public class BankTest {
     public void testRandomlyDrawFromStack_CheckLeftoverStack() {
         List<Domino> expectedOutput = Domino.fill(new LinkedList<>());
         // expected left over stack
-        int fstValue = expectedOutput.remove(0).getTile().getValue(); 
-        int sndValue = expectedOutput.remove(3).getTile().getValue(); 
-        int thrdValue = expectedOutput.remove(6).getTile().getValue(); 
-        int frthValue = expectedOutput.remove(9).getTile().getValue(); 
+        int fstValue = expectedOutput.remove(0).getTile().getValue();
+        int sndValue = expectedOutput.remove(3).getTile().getValue();
+        int thrdValue = expectedOutput.remove(6).getTile().getValue();
+        int frthValue = expectedOutput.remove(9).getTile().getValue();
         List<Domino> bankInputStack = Domino.fill(new LinkedList<>());
         Bank bank = new Bank(new Entry[4], new PseudoRandZeroResidueClass(3));
         List<Domino> actualOutput = bank.randomlyDrawFromStack(bankInputStack);
         assertArrayEquals(expectedOutput.toArray(new Domino[0]), actualOutput.toArray(new Domino[0]));
     }
-    
+
     @Test
     public void testRandomlyDrawFromStack_CheckBankValues() {
         List<Domino> expectedOutput = Domino.fill(new LinkedList<>());
-        int fstValue = expectedOutput.remove(0).getTile().getValue(); 
-        int sndValue = expectedOutput.remove(3).getTile().getValue(); 
-        int thrdValue = expectedOutput.remove(6).getTile().getValue(); 
+        int fstValue = expectedOutput.remove(0).getTile().getValue();
+        int sndValue = expectedOutput.remove(3).getTile().getValue();
+        int thrdValue = expectedOutput.remove(6).getTile().getValue();
         int frthValue = expectedOutput.remove(9).getTile().getValue();
         List<Domino> bankInputStack = Domino.fill(new LinkedList<>());
         Bank bank = new Bank(new Entry[4], new PseudoRandZeroResidueClass(3));
@@ -312,25 +308,25 @@ public class BankTest {
         assertEquals(thrdValue, bank.getSpecificEntry(2).getDomino().getTile().getValue());
         assertEquals(frthValue, bank.getSpecificEntry(3).getDomino().getTile().getValue());
     }
-    
+
     @Test
     public void testRandomlyDrawFromStack_CorrectOrder() {
-        List<Domino> overallStack = Domino.fill(new LinkedList<>()); 
+        List<Domino> overallStack = Domino.fill(new LinkedList<>());
         // expected dominos in correct order
-        Domino[] dominos = new Domino[] {
-            overallStack.get(overallStack.size() - 4), 
-            overallStack.get(overallStack.size() - 3), 
-            overallStack.get(overallStack.size() - 2), 
-            overallStack.get(overallStack.size() - 1), 
-        }; 
-        Bank bank = new Bank(new Entry[4], new PseudoRandAlwaysHighestVal()); 
-        overallStack = bank.randomlyDrawFromStack(overallStack); 
-        Domino[] bankDom = bank.getAllDominos(); 
+        Domino[] dominos = new Domino[]{
+                overallStack.get(overallStack.size() - 4),
+                overallStack.get(overallStack.size() - 3),
+                overallStack.get(overallStack.size() - 2),
+                overallStack.get(overallStack.size() - 1),
+        };
+        Bank bank = new Bank(new Entry[4], new PseudoRandAlwaysHighestVal());
+        overallStack = bank.randomlyDrawFromStack(overallStack);
+        Domino[] bankDom = bank.getAllDominos();
         // check if right dominos were selected 
-        assertFalse(overallStack.contains(bankDom[0])); 
-        assertFalse(overallStack.contains(bankDom[1])); 
-        assertFalse(overallStack.contains(bankDom[2])); 
-        assertFalse(overallStack.contains(bankDom[3])); 
+        assertFalse(overallStack.contains(bankDom[0]));
+        assertFalse(overallStack.contains(bankDom[1]));
+        assertFalse(overallStack.contains(bankDom[2]));
+        assertFalse(overallStack.contains(bankDom[3]));
         // check order
         assertEquals(dominos[0], bankDom[0]);
         assertEquals(dominos[1], bankDom[1]);
@@ -348,17 +344,17 @@ public class BankTest {
     @Test
     public void testEquals_OneBankContainsEmptySlots() {
         GUIConnector fakeGui = new FakeGUI();
-        List<Player> players = Arrays.asList(new Player[] {
-                new DefaultAIPlayer(fakeGui, 0, 1,2),
-                new DefaultAIPlayer(fakeGui, 1, 1,2),
-                new DefaultAIPlayer(fakeGui, 2, 1,2),
-                new DefaultAIPlayer(fakeGui, 3, 1,2)
+        List<Player> players = Arrays.asList(new Player[]{
+                new DefaultAIPlayer(fakeGui, 0, 1, 2),
+                new DefaultAIPlayer(fakeGui, 1, 1, 2),
+                new DefaultAIPlayer(fakeGui, 2, 1, 2),
+                new DefaultAIPlayer(fakeGui, 3, 1, 2)
         });
 
         Bank bank1 = new Bank("0 S0O1,2 I1P0", players, new Random());
         Bank bank2 = new Bank("0 S0O1,2 I1P0,1 P0S1", players, new Random());
 
-        Entry[] entries = new Entry[] {
+        Entry[] entries = new Entry[]{
                 null, null,
                 new Entry(new Domino(Tiles.S0O1_Val39), players.get(0)),
                 new Entry(new Domino(Tiles.I1P0_Val40), players.get(2))

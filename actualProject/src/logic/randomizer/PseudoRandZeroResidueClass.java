@@ -3,7 +3,6 @@ package logic.randomizer;
 import java.util.Random;
 
 /**
- *
  * @author silas
  */
 public class PseudoRandZeroResidueClass extends Random {

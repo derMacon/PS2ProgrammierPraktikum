@@ -1,48 +1,36 @@
 package logic.playerState;
 
 import javafx.scene.control.TreeItem;
-import javafx.scene.control.TreeView;
 import logic.dataPreservation.Logger;
 import logic.logicTransfer.GUIConnector;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
 
-import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract class Player implements Comparable {
 
     /**
-     * Board of the player
-     */
-    protected Board board;
-
-    /**
-     * List of districts containing the game statistics
-     */
-    protected List<District> districts;
-
-    /**
-     * Gui reference to show
-     */
-    protected GUIConnector gui;
-
-    /**
      * Index of player in player array of the game. Used when game will be loaded / saved / displayed on the gui, so
      * that it is possible to display with its simple array index.
      */
     protected final int idxInPlayerArray;
-
-
-
     private final String selectionLoggerFormat = "%s chose %s at index %d for %s round";
-
     private final String depositLoggerFormat = "%s put %s %s to %s";
-
-
-
+    /**
+     * Board of the player
+     */
+    protected Board board;
+    /**
+     * List of districts containing the game statistics
+     */
+    protected List<District> districts;
+    /**
+     * Gui reference to show
+     */
+    protected GUIConnector gui;
 
 
     /**
@@ -92,6 +80,10 @@ public abstract class Player implements Comparable {
         return this.board;
     }
 
+    public void setBoard(Board board) {
+        this.board = board;
+    }
+
     /**
      * Getter for the player index
      *
@@ -127,11 +119,6 @@ public abstract class Player implements Comparable {
         return sum;
     }
 
-    public void setBoard(Board board) {
-        this.board = board;
-    }
-
-
     public int genDistrictPoints(List<District> districts) {
         int sum = 0;
         for (District currDistrict : districts) {
@@ -142,6 +129,7 @@ public abstract class Player implements Comparable {
 
     /**
      * // TOOD Javadoc
+     *
      * @return
      */
     public int genAllDistrictPoints() {
@@ -274,7 +262,7 @@ public abstract class Player implements Comparable {
     public int getLargestDistrictSize() {
         assert null != this.districts;
         int maxSize = 0;
-        for(District currDistrict : this.districts) {
+        for (District currDistrict : this.districts) {
             maxSize = currDistrict.getTilePositions().size();
         }
         return maxSize;
@@ -286,8 +274,10 @@ public abstract class Player implements Comparable {
     }
 
     public TreeItem<String> toTreeView() {
-        TreeItem<String> parent = new TreeItem<>("Spieler " + (this.idxInPlayerArray + 1) + " -> " + genAllDistrictPoints() + " Punkte insgesamt");
-        for(District currDistrict : this.districts) {
+        TreeItem<String> parent =
+                new TreeItem<>("Spieler " + (this.idxInPlayerArray + 1) + " -> " + genAllDistrictPoints() + " Punkte " +
+                        "insgesamt");
+        for (District currDistrict : this.districts) {
             parent.getChildren().add(currDistrict.toTreeItem());
         }
         // TODO schauen ob genAllDistrictpoints auch in game Klasse benoetigt werden kann.
@@ -298,7 +288,7 @@ public abstract class Player implements Comparable {
     public int compareTo(Object o) {
         assert null != o && (o instanceof Player);
         Player other = (Player) o;
-        if(other.getBoardPoints() == this.getBoardPoints()) {
+        if (other.getBoardPoints() == this.getBoardPoints()) {
             return this.getLargestDistrictSize() - other.getLargestDistrictSize();
         } else {
             return this.getBoardPoints() - other.getBoardPoints();
@@ -316,7 +306,6 @@ public abstract class Player implements Comparable {
         final Player other = (Player) obj;
         return this.idxInPlayerArray == other.idxInPlayerArray;
     }
-
 
 
 }

@@ -1,7 +1,5 @@
 package logic.token;
 
-import logic.playerState.Board;
-
 import static logic.token.DistrictType.*;
 
 /**
@@ -31,11 +29,20 @@ public enum SingleTile {
      * Constructor to set the district type of the values.
      *
      * @param disctrictType district type of the single tile
-     * @param tokenCnt number of tokens on the single tile
+     * @param tokenCnt      number of tokens on the single tile
      */
     SingleTile(DistrictType disctrictType, int tokenCnt) {
         this.districtType = disctrictType;
         this.tokenCnt = tokenCnt;
+    }
+
+    public static boolean contains(String input) {
+        for (SingleTile c : SingleTile.values()) {
+            if (c.name().equals(input)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -49,19 +56,11 @@ public enum SingleTile {
 
     /**
      * Getter for the number of tokens this singletile is valid
+     *
      * @return the number of tokens this singletile is valid
      */
     public int getTokenCnt() {
         return this.tokenCnt;
-    }
-
-    public static boolean contains(String input) {
-        for(SingleTile c : SingleTile.values()) {
-            if(c.name().equals(input)) {
-                return true;
-            }
-        }
-        return false;
     }
 
 }

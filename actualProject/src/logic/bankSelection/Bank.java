@@ -1,13 +1,13 @@
 package logic.bankSelection;
 
-import logic.token.Domino;
 import logic.playerState.Player;
+import logic.randomizer.PseudoRandAlwaysHighestVal;
+import logic.token.Domino;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-import logic.randomizer.PseudoRandAlwaysHighestVal;
 
 /**
  * Bank holding an array of entries (information about the selected dominos)
@@ -15,15 +15,13 @@ import logic.randomizer.PseudoRandAlwaysHighestVal;
 public class Bank {
 
     /**
-     * Seperator constant that's used to read from a file and write into it
-     */
-    private static final String SEPERATOR_STRING_REPRESENTATION = ",";
-
-    /**
      * Constant that is used to show an invalid int output
      */
     public static final int INVALID_OUTPUT = -1;
-
+    /**
+     * Seperator constant that's used to read from a file and write into it
+     */
+    private static final String SEPERATOR_STRING_REPRESENTATION = ",";
     /**
      * Number of entries in this bank
      */
@@ -57,7 +55,7 @@ public class Bank {
     /**
      * Constructor setting the entries. Used for testing.
      *
-     * @param entries entries of the bank
+     * @param entries      entries of the bank
      * @param pseudoRandom random object of the bank (for testing purpose)
      */
     public Bank(Entry[] entries, Random pseudoRandom) {
@@ -66,16 +64,13 @@ public class Bank {
         this.bankSize = entries.length;
     }
 
-    public void setRand(Random rand) {
-        this.rand = rand;
-    }
-
     /**
      * Constructor used for testing / fileIO.
+     *
      * @param preallocation String representation of the dominos in the bank
-     * @param players List of players to which the entries will be linked. Number of players
-     *                determines the bank size.
-     * @param rand random object used when drawing dominos for the next round
+     * @param players       List of players to which the entries will be linked. Number of players
+     *                      determines the bank size.
+     * @param rand          random object used when drawing dominos for the next round
      */
     public Bank(String preallocation, List<Player> players, Random rand) {
         String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
@@ -104,6 +99,17 @@ public class Bank {
     }
 
     /**
+     * Generates a Bank from a given String
+     *
+     * @param input input String from which a new Bank will be generated
+     * @return Bank object
+     */
+    public static Bank fromString(String input) {
+        // TODO insert code
+        return null;
+    }
+
+    /**
      * Getter for the bank size
      *
      * @return bank size
@@ -123,6 +129,7 @@ public class Bank {
 
     /**
      * Getter for a specific Entry
+     *
      * @param entryIdx index of the entry that will be returned
      * @return entry at the given index
      */
@@ -132,6 +139,7 @@ public class Bank {
 
     /**
      * Getter for a specific domino selected by the given player
+     *
      * @param player player who selected the desired domino
      * @return domino which the given player selected
      */
@@ -188,8 +196,9 @@ public class Bank {
 
     /**
      * Setter for a given Domino at the given bank index
+     *
      * @param bankIdx bank index at which the domino will be updated
-     * @param dom domino reference to override the current domino instance
+     * @param dom     domino reference to override the current domino instance
      */
     public void updateDomino(int bankIdx, Domino dom) {
         this.entries[bankIdx].setDomino(dom);
@@ -231,6 +240,7 @@ public class Bank {
 
     /**
      * Deleted a speceific entry of a given player
+     *
      * @param player refernce of a player whos entry will be deleted
      */
     public void deleteEntry(Player player) {
@@ -278,7 +288,7 @@ public class Bank {
      */
     public Domino getPlayerSelectedDomino(Player player) {
         assert null != player;
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             return null;
         }
         Domino output = null;
@@ -315,6 +325,7 @@ public class Bank {
 
     /**
      * Fills all entries with a given list
+     *
      * @param domList list to set the entries with
      */
     public void fill(List<Domino> domList) {
@@ -346,6 +357,7 @@ public class Bank {
 
     /**
      * Generates a String that can be saved in a .txt document
+     *
      * @return String representation of this object
      */
     @Override
@@ -361,24 +373,15 @@ public class Bank {
     }
 
     /**
-     * Generates a Bank from a given String
-     * @param input input String from which a new Bank will be generated
-     * @return Bank object
-     */
-    public static Bank fromString(String input) {
-        // TODO insert code
-        return null;
-    }
-
-    /**
      * // TODO Javadoc ueberarbeiten
      * Makes a copyWithoutSelection of the bank, references to the individual entries stay the same
+     *
      * @return a copyWithoutSelection of the bank, references to the individual entries stay the
      * same
      */
     public Bank copy() {
         Entry[] copyEntries = new Entry[this.entries.length];
-        Entry temp; 
+        Entry temp;
         for (int i = 0; i < this.entries.length; i++) {
             temp = this.entries[i];
             copyEntries[i] = null == temp ? null : temp.copy();
@@ -388,6 +391,7 @@ public class Bank {
 
     /**
      * Getter for the domino with the lowest value
+     *
      * @return domino with the lowest value, null if bank is empty
      */
     public Domino getLowOrderDomino() {
@@ -416,8 +420,8 @@ public class Bank {
         int i = 0;
         while (isEqual && i < this.entries.length) {
             isEqual = (null == this.entries[i] && null == other.entries[i])
-                        || (null != this.entries[i] && null != other.entries[i]
-                            && this.entries[i].equals(other.entries[i]));
+                    || (null != this.entries[i] && null != other.entries[i]
+                    && this.entries[i].equals(other.entries[i]));
             i++;
         }
         return isEqual;
@@ -425,9 +429,14 @@ public class Bank {
 
     /**
      * Getter for the random object
+     *
      * @return the random object of the bank
      */
     public Random getRand() {
         return rand;
+    }
+
+    public void setRand(Random rand) {
+        this.rand = rand;
     }
 }

@@ -9,44 +9,38 @@ import logic.token.SingleTile;
 import logic.token.Tiles;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 import java.util.Set;
 
+/**
+ * Class that implements the Conversion from plain text to all game components
+ */
 public class Converter {
-
-    private static final int NOT_INITIALIZED = -1;
 
     /**
      * Index for the Description in the two-dim String array
      */
     public static final int DESCRIPTION_IDX = 0;
-
     /**
      * Index for the Data in the two-dim String array
      */
     public static final int DATA_IDX = 1;
-
     /**
      * Identifier for the boards
      */
     public static final String BOARD_IDENTIFIER = "Spielfeld";
-
     /**
      * Identifier for both banks
      */
     // TODO Problem mit dem ä beim Einlesen
     public static final String BANK_IDENTIFIER = "Bänke"; //"B�nke";
-
     /**
      * Identifier for the stack
      */
     public static final String STACK_IDENTIFIER = "Beutel";
-
     /**
      * String message for displaying an unsuccessful read from the given data
      */
@@ -55,9 +49,9 @@ public class Converter {
      * String message for displaying a successful read from the given data
      */
     public static final String SUCCESSFUL_READ_MESSAGE = "Laden erfolgreich";
-
     public static final String TAG_OPENER = "<";
     public static final String TAG_CLOSER = ">";
+    private static final int NOT_INITIALIZED = -1;
 
     // --- fields that will be filled by this class -> Will be transfered to the game via Getter
     /**
@@ -292,11 +286,11 @@ public class Converter {
             Set<Integer> playerIdxs = new HashSet<>();
             // check if every player has selected something
             for (int i = 0; i < playerCnt; i++) {
-                if(!banks.contains(i + " ")) {
+                if (!banks.contains(i + " ")) {
                     playerIdxs.add(i);
                 }
             }
-            if(playerIdxs.size() != playerCnt && playerIdxs.size() != 0) {
+            if (playerIdxs.size() != playerCnt && playerIdxs.size() != 0) {
                 throw new WrongBankSyntaxException();
             }
 
@@ -433,7 +427,7 @@ public class Converter {
         Bank[] output = new Bank[2];
         output[Game.CURRENT_BANK_IDX] = new Bank(bothBanks[0], this.players, new Random());
 
-        if(bothBanks.length > 1) {
+        if (bothBanks.length > 1) {
             output[Game.NEXT_BANK_IDX] = new Bank(bothBanks[1], this.players, new Random());
         } else {
             output[Game.NEXT_BANK_IDX] = new Bank(this.players.size());

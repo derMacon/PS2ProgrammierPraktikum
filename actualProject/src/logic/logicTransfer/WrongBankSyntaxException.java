@@ -5,7 +5,7 @@ public class WrongBankSyntaxException extends Exception {
     /**
      * Standardfehlermeldung.
      */
-    public static final String DEFAULT_MESSAGE = "Invalid bank syntax";
+    public static final String DEFAULT_MESSAGE = "Invalide Bank-Syntax";
 
     public WrongBankSyntaxException() {
         super(DEFAULT_MESSAGE);

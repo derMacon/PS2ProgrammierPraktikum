@@ -1,0 +1,178 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><help_text>Exceptions
+Space for diagram notes</help_text><element><id>UMLPackage</id><coordinates><x>100</x><y>118</y><w>440</w><h>600</h></coordinates><panel_attributes>logicTransfer
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>110</x><y>158</y><w>240</w><h>200</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+GUIConnector
+--
+# Methoden benoetigt um internen 
+# Spielstand auf GUI darzustellen
++ showWhosTurn(ordPlayer : int)
++ setToBank(ordBank : int, bank : Bank)
++ showOnGrid(ordPlayer : int, 
+   domino : Domino)
++ selectDomino(ordBank : int, 
+   idxDom : int, ordPlayer : int)
++ showPopUp(text : String)
++ blurOtherFields(currField : PossibleField)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>388</y><w>100</w><h>90</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+PossibleField
+--
++ NEXT_BANK
++ CURR_BANK
++ CURR_DOM</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>110</x><y>538</y><w>410</w><h>170</h></coordinates><panel_attributes>Exceptions
+bg=yellow</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>568</y><w>190</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Exception&gt;&gt;
+WrongBankSyntaxException
+--
++ DEFAULT_MESSAGE : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>120</x><y>638</y><w>190</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Exception&gt;&gt;
+WrongBoardSyntaxException
+--
++ DEFAULT_MESSAGE : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>568</y><w>190</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Exception&gt;&gt;
+WrongStackSyntaxException
+--
++ DEFAULT_MESSAGE : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>320</x><y>638</y><w>190</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Exception&gt;&gt;
+WrongTagSyntaxException
+--
++ DEFAULT_MESSAGE : String</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>573</x><y>118</y><w>250</w><h>650</h></coordinates><panel_attributes>token
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>158</y><w>200</w><h>150</h></coordinates><panel_attributes>&lt;&lt;enumerator&gt;&gt;
+Tiles
+--
++ Alle moeglichen SingleTile-
+   Kombinationen
+--
+- fst : SingleTile
+- snd : SingleTile
+- value : int
+--
++ contains(input : String) : boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>318</y><w>170</w><h>80</h></coordinates><panel_attributes>&lt;&lt;enumerator&gt;&gt;
+DistrictType
+--
++ Alle moeglichen Arten von 
+   Distrikttypen</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>408</y><w>220</w><h>110</h></coordinates><panel_attributes>Domino
+--
+- tiles : Tiles
+- rotation : int
+- posFst : Pos
+--
++ incRot() : Domino
++ fill(list : List&lt;Domino&gt;) : List&lt;Domino&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>528</y><w>220</w><h>110</h></coordinates><panel_attributes>Pos
+--
+- x : int
+- y : int
+--
++ incRot() : Domino
++ fill(list : List&lt;Domino&gt;) : List&lt;Domino&gt;
++ getNeighbours() : List&lt;Pos&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>590</x><y>648</y><w>200</w><h>100</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+SingleTile
+--
+- districtType : DistrictType
+- tokenCnt : int
+--
++ contains(input : String) : boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>880</x><y>108</y><w>360</w><h>990</h></coordinates><panel_attributes>EmptyPackage
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>148</y><w>310</w><h>160</h></coordinates><panel_attributes>Board
+--
+- sizeX : int 
+- sizeY : int 
+- cells : SingleTile[][]
+--
++ fits(domino : Domino)
++ lay(domino : Domino)
++ isEfficient(choose : Choose)
++ moveBoard(direction : Direction) : Board
++ canMoveBoardToDir(direction : Direction) : boolean
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>328</y><w>310</w><h>150</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+BotBehavior
+--
++ selectFromBank(bank : Bank, ordBank : int, 
+   displayOnGui : boolean) : Bank
++ updateDominoPos(domino : Domino) : Domino
++ doStandardTurn(currBank : Bank, nextBank : Bank) 
++ doLastTurn(currBank : Bank)
++ doInitialSelect(currBank : Bank, bankOrd : int) : Bank
++ updateSelectedDeom(currBank : Bank)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>498</y><w>310</w><h>150</h></coordinates><panel_attributes>District
+--
+- tilePositions : List&lt;Pos&gt;
+- singleTiles : List&lt;SingleTile&gt;
+--
++ add(newTile : SingleTile, newPos : Pos)
++ merge(other : District)
++ genPoints()
++ typeAndPosMatchCurrDistrict(tile : SingleTile, 
+   pos : Pos)
++ toTreeItem()</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>658</y><w>280</w><h>210</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+Player
+--
+- board : Board 
+- districts : List&lt;District&gt;
+- gui : GUIConnector
+- idxInPlayerArray : int 
+--
++ getBoardPoints() : int 
++ addToAppropriateDistrict(tile : SingleTile, 
+   pos : Pos, districts : List&lt;District&gt;)
++ showOnBoard(playerSelectedDomino : Domino)
++ updateDistricts
++ toTreeView() : TreeItem&lt;String&gt;</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>878</y><w>330</w><h>80</h></coordinates><panel_attributes>Result
+--
+- ranking : List&lt;ResultRanking&gt;
+--
+- genResultRanking(players : Player[]) : List&lt;ResultRanking&gt;
++ toTreeView() : TreeView&lt;String&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>890</x><y>978</y><w>330</w><h>100</h></coordinates><panel_attributes>ResultRanking
+--
+- rankingPosition : int
+- rankedPlayers : List&lt;Player&gt;
+--
++ matchesRank(player : Player) : boolean 
++ toTreeItem : TreeItem&lt;String&gt;
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1290</x><y>100</y><w>270</w><h>340</h></coordinates><panel_attributes>EmptyPackage
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1300</x><y>130</y><w>180</w><h>170</h></coordinates><panel_attributes>Loader
+--
+- singleInstance : Loader
+- file : File 
+- fChooser : FileChooser
+- stage : Stage
+--
++ getinstance() : Loader
++ saveFile(input : String)
++ saveFileAs(input : String)
++ openFileChooser() : String
+- removeUTF8BOM(s : String)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1300</x><y>330</y><w>250</w><h>100</h></coordinates><panel_attributes>Logger
+--
+- singleInstance : Logger
+- dir : File
+--
++ printAndSafe(inputLog : String)
+- appendFileWithNewMove(logInput : String)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1610</x><y>110</y><w>380</w><h>460</h></coordinates><panel_attributes>EmptyPackage
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1620</x><y>150</y><w>350</w><h>190</h></coordinates><panel_attributes>Bank
+--
+- bankSize : int 
+- rand : Random
+- entries : Entry[]
+--
++ isEmpty() : boolean
++ clearAllEntries()
++ selectEntry(player : Player, bankIdx : int)
++ isNotSelected(domIdx : int) : boolean
++ getPlayerSelectedDomino(player : Player) : Domino
++ randomlyDrawFromStack(stack : List&lt;Domino&gt;) : List&lt;Domino
++ fill(domList : List&lt;Domino&gt;)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1620</x><y>360</y><w>350</w><h>130</h></coordinates><panel_attributes>Choose
+--
+- domWithPosAndrot : Domino
+- potentialPointsOnBoard : int
+- idxOnBank : int 
+--
++ max(chooseDom : List&lt;Choose&gt;, board Board) : Choose
+- genMostEfficientchoose(input : List&lt;Choose&gt;, board : Board)
++ genLowOrderChoose(bank : Bank)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1620</x><y>500</y><w>150</w><h>60</h></coordinates><panel_attributes>Entry
+--
+- domino : Domino
+- selectedPlayer : Player</panel_attributes><additional_attributes></additional_attributes></element></diagram>

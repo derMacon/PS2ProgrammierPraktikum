@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class FXMLResultController extends Application {
@@ -28,7 +27,7 @@ public class FXMLResultController extends Application {
 //        
 //        primaryStage.setScene(new Scene(root, 300, 250));
 //        primaryStage.show();
-        
+
     }
 
     public TreeItem<String> makeBranch(TreeItem<String> parent, String title) {

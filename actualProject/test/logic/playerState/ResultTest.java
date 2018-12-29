@@ -1,16 +1,14 @@
 package logic.playerState;
 
-import other.FakeGUI;
-import logic.dataPreservation.Logger;
 import logic.playerTypes.DefaultAIPlayer;
-import logic.playerState.Player;
-import logic.playerState.Result;
 import org.junit.Test;
+import other.FakeGUI;
 
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class ResultTest {
 
@@ -22,11 +20,11 @@ public class ResultTest {
                 "-- -- --\n" +
                         "-- CC P1\n" +
                         "-- -- H0");
-        Player[] players = new Player[] {expWinner, new DefaultAIPlayer(new FakeGUI(), 1, 3, 2),
+        Player[] players = new Player[]{expWinner, new DefaultAIPlayer(new FakeGUI(), 1, 3, 2),
                 new DefaultAIPlayer(new FakeGUI(), 2, 3, 2)};
         List<ResultRanking> expectedRankedList = Arrays.asList(
-            new ResultRanking(1, new Player[] {players[0]}),
-            new ResultRanking(2, new Player[] {players[1], players[2]})
+                new ResultRanking(1, new Player[]{players[0]}),
+                new ResultRanking(2, new Player[]{players[1], players[2]})
         );
         List<ResultRanking> actualRankedList = new Result(players).getRankedList();
         assertEquals(expectedRankedList.get(0), actualRankedList.get(0));
@@ -50,11 +48,11 @@ public class ResultTest {
                         "-- CC P1\n" +
                         "-- -- H0");
         List<ResultRanking> expectedRankedList = Arrays.asList(
-                new ResultRanking(1, new Player[] {expWinner}),
-                new ResultRanking(2, new Player[] {loser1}),
-                new ResultRanking(3, new Player[] {loser2})
+                new ResultRanking(1, new Player[]{expWinner}),
+                new ResultRanking(2, new Player[]{loser1}),
+                new ResultRanking(3, new Player[]{loser2})
         );
-        List<ResultRanking> actualRankedList = new Result(new Player[] {expWinner,
+        List<ResultRanking> actualRankedList = new Result(new Player[]{expWinner,
                 loser1, loser2}).getRankedList();
         assertEquals(expectedRankedList.get(0), actualRankedList.get(0));
         assertEquals(expectedRankedList.get(1), actualRankedList.get(1));
@@ -77,9 +75,9 @@ public class ResultTest {
                 "-- -- --\n" +
                         "-- CC P1\n" +
                         "-- -- H0");
-        Player[] playersVersion1 = new Player[] {expWinner, loser1, loser2};
-        Player[] playersVersion2 = new Player[] {loser1, expWinner, loser2};
-        Player[] playersVersion3 = new Player[] {loser1, loser2, expWinner};
+        Player[] playersVersion1 = new Player[]{expWinner, loser1, loser2};
+        Player[] playersVersion2 = new Player[]{loser1, expWinner, loser2};
+        Player[] playersVersion3 = new Player[]{loser1, loser2, expWinner};
         Result res1 = new Result(playersVersion1);
         Result res2 = new Result(playersVersion2);
         Result res3 = new Result(playersVersion3);

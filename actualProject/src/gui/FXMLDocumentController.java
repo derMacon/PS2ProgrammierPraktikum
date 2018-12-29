@@ -1,6 +1,7 @@
 package gui;
 
 //import other.FakeGUI;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,18 +15,26 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
-import javafx.scene.input.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import logic.dataPreservation.Loader;
+import logic.dataPreservation.Logger;
 import logic.logicTransfer.GUI2Game;
 import logic.logicTransfer.Game;
 import logic.playerState.Board;
 import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 
+import java.awt.*;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -37,7 +46,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      * Icon for the game
      */
-    public static final Image LOGO_ICON_TEXTURE = new Image("gui/textures/LogoIconV2.png");
+    public static final Image LOGO_ICON_TEXTURE = new Image("gui/textures/LogoIconLargeV2.png");
 
     /**
      * Background for the selection box containing the current- / nextRoundBank
@@ -95,17 +104,15 @@ public class FXMLDocumentController implements Initializable {
      * Overlay texture for the dispose field
      */
     public static final Image ROTATION_TEXTURE = new Image("gui/textures/RotationIconV1.png");
-
-    public static Image DOWN_ARROW_TEXTURE = new Image("gui/textures/ArrowDownV2.png");
-    public static Image LEFT_ARROW_TEXTURE = new Image("gui/textures/ArrowLeftV2.png");
-    public static Image UP_ARROW_TEXTURE = new Image("gui/textures/ArrowUpV2.png");
-    public static Image RIGHT_ARROW_TEXTURE = new Image("gui/textures/ArrowRightV2.png");
-    //</editor-fold>
-
     /**
      * Default number of players
      */
     public static final int DEFAULT_PLAYER_COUNT = 4;
+    public static Image DOWN_ARROW_TEXTURE = new Image("gui/textures/ArrowDownV2.png");
+    public static Image LEFT_ARROW_TEXTURE = new Image("gui/textures/ArrowLeftV2.png");
+    public static Image UP_ARROW_TEXTURE = new Image("gui/textures/ArrowUpV2.png");
+    //</editor-fold>
+    public static Image RIGHT_ARROW_TEXTURE = new Image("gui/textures/ArrowRightV2.png");
 
 
     // --- Boards ---
@@ -138,30 +145,30 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private Label lblTurn;
-    
+
     /**
      * Label to display the name and the current number of points of the first player
      */
     @FXML
-    private Label lblPlayer1; 
-    
+    private Label lblPlayer1;
+
     /**
      * Label to display the name and the current number of points of the second player
      */
     @FXML
-    private Label lblPlayer2; 
-    
+    private Label lblPlayer2;
+
     /**
      * Label to display the name and the current number of points of the third player
      */
     @FXML
-    private Label lblPlayer3; 
-    
+    private Label lblPlayer3;
+
     /**
      * Label to display the name and the current number of points of the fourth player
      */
     @FXML
-    private Label lblPlayer4; 
+    private Label lblPlayer4;
 
 
     // --- Interactive Items ---
@@ -227,7 +234,8 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * MenuBar containing the menuitem opening the controll panel to select the enemy player type. It is not possible
-     * to get the stage from an menuitem so the Menubar must be signed to detect the stage to make it possible to close it.
+     * to get the stage from an menuitem so the Menubar must be signed to detect the stage to make it possible to
+     * close it.
      */
     @FXML
     private MenuBar mnBAnchorForStage;
@@ -339,6 +347,7 @@ public class FXMLDocumentController implements Initializable {
      * Array serving as blueprint for the playertypes in the game
      */
     private PlayerType[] chosenPlayerTypes;
+
     /**
      * Loader used for the user interaction in terms of choosing a file
      */
@@ -346,10 +355,7 @@ public class FXMLDocumentController implements Initializable {
 //    private Loader loader;
 
 
-
-
     // --- Setting up game ---
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
@@ -358,12 +364,13 @@ public class FXMLDocumentController implements Initializable {
         ImageView[][] imgVwsHumanBoard = addImageViewsToGrid(grdPnHumanBoard);
         this.addDragAndDropHandlers(imgVwsHumanBoard);
 
-        ImageView[][][] imgVwsAIBoards = new ImageView[][][]{addImageViewsToGrid(grdPnBot1Board), addImageViewsToGrid(grdPnBot2Board), addImageViewsToGrid(grdPnBot3Board)};
+        ImageView[][][] imgVwsAIBoards = new ImageView[][][]{addImageViewsToGrid(grdPnBot1Board),
+                addImageViewsToGrid(grdPnBot2Board), addImageViewsToGrid(grdPnBot3Board)};
 
         this.gui = new JavaFXGUI(pnSelected, lblTurn, imgVwsHumanBoard, imgVwsAIBoards,
                 addImageViewsToGrid(grdPnCurrentSelectiveGroup), addImageViewsToGrid(grdPnCurrentRoundSelection),
-                addImageViewsToGrid(grdPnFutureselectiveGroup), addImageViewsToGrid(grdPnNextRoundSelection), 
-                new Label[] {this.lblPlayer1, this.lblPlayer2, this.lblPlayer3, this.lblPlayer4});
+                addImageViewsToGrid(grdPnFutureselectiveGroup), addImageViewsToGrid(grdPnNextRoundSelection),
+                new Label[]{this.lblPlayer1, this.lblPlayer2, this.lblPlayer3, this.lblPlayer4});
         this.game = new Game(gui, DEFAULT_PLAYER_COUNT);
 //        this.loader = new Loader();
     }
@@ -372,9 +379,9 @@ public class FXMLDocumentController implements Initializable {
      * Setter for the PlayerTypes to pass chosen PlayerTypes from other controller
      */
     public void startGame(PlayerType[] chosenPlayerTypes) {
-        this.game.startGame(chosenPlayerTypes, this.grdPnHumanBoard.getColumnConstraints().size(), this.grdPnHumanBoard.getRowConstraints().size());
+        this.game.startGame(chosenPlayerTypes, this.grdPnHumanBoard.getColumnConstraints().size(),
+                this.grdPnHumanBoard.getRowConstraints().size());
     }
-
 
 
     // --- Setting up gui look (textures) ---
@@ -454,57 +461,7 @@ public class FXMLDocumentController implements Initializable {
     }
 
 
-
     // --- Setting up interactive gui ---
-
-//    private void addDragAndDropHandlers(ImageView[][] imgVws) {
-//        for (int x = 0; x < imgVws.length; x++) {
-//            for (int y = 0; y < imgVws[x].length; y++) {
-//                final int fx = x;
-//                final int fy = y;
-//                imgVws[x][y].setOnDragOver((EventHandler<DragEvent>) (DragEvent event) -> {
-//                    if (event.getGestureSource() == pnSelected) {
-//                        event.acceptTransferModes(TransferMode.COPY_OR_MOVE);
-//                    }
-//                    event.consume();
-//                });
-//                imgVws[x][y].setOnDragEntered((EventHandler<DragEvent>) (DragEvent event) -> {
-//                    Pos pos = new Pos(fx, fy);
-//
-//                                        System.out.println(this.gui == null);
-//                    System.out.println(this.gui.getCurrDomino() == null);
-//
-//                    int rotation = this.gui.getCurrDomino().getRot();
-//                    final Pos sndPos = rotation % 2 == 0 ? new Pos(fx + 1, fy) : new Pos(fx, fy + 1);
-//
-//                    if (this.game.fits(pos)) {
-//                        this.gui.highlightDominoPosGreen(pos);
-//                    } else if(this.game.isInBoundHumanBoard(pos) && this.game.isInBoundHumanBoard(sndPos)){
-//                        this.gui.highlightDominoPosRed(pos);
-//                    }
-//                    event.consume();
-//                });
-//                imgVws[x][y].setOnDragExited((EventHandler<DragEvent>) (DragEvent event) -> {
-//                    Pos pos = new Pos(fx, fy);
-//
-//                        this.gui.removeHighlightDominoPos(pos);
-//                        event.consume();
-//
-//                });
-//                imgVws[x][y].setOnDragDropped((EventHandler<DragEvent>) (DragEvent event) -> {
-//                    boolean success = false;
-//                    Pos pos = new Pos(fx, fy);
-//                    if (this.game.fits(pos) && this.game.isInBoundHumanBoard(pos)) {
-//                        success = true;
-//                        this.gui.removeHighlightDominoPos(pos);
-//                        this.game.setOnBoard(pos);
-//                    }
-//                    event.setDropCompleted(success);
-//                    event.consume();
-//                });
-//            }
-//        }
-//    }
 
     private void addDragAndDropHandlers(ImageView[][] imgVws) {
         for (int x = 0; x < imgVws.length; x++) {
@@ -560,7 +517,8 @@ public class FXMLDocumentController implements Initializable {
 
         for (int x = 0; x < colcount; x++) {
             for (int y = 0; y < rowcount; y++) {
-                //creates an imageview with the empty image (for some reasons there needs to an image there for the drag and drop to work :()
+                //creates an imageview with the empty image (for some reasons there needs to an image there for the
+                // drag and drop to work :()
                 imgVwsGame[x][y] = new ImageView(JavaFXGUI.EMPTY_IMG);
 
                 //add the imageview to the cell and
@@ -574,8 +532,6 @@ public class FXMLDocumentController implements Initializable {
         }
         return imgVwsGame;
     }
-
-
 
 
     // --- Menu interaction ---
@@ -602,6 +558,21 @@ public class FXMLDocumentController implements Initializable {
     }
 
     @FXML
+    private void openNewGameInstance(ActionEvent event) throws Exception {
+        if (this.game.equalsStr(Loader.openSavedFile())) {
+            Main main = new Main();
+            main.start(new Stage());
+            // Casts to stage to be able to close the intro stage with code
+            // https://stackoverflow.com/questions/13246211/javafx-how-to-get-stage-from-controller-during
+            // -initialization
+            ((Stage) this.mnBAnchorForStage.getScene().getWindow()).close();
+        } else {
+            System.out.println("Debug 1: Instanz noch nicht abgespeichert");
+            //TODO Dialogfenster mit anschliessendem Filechooser (falls erwuenscht)
+        }
+    }
+
+    @FXML
     private void mnTmSaveGame(ActionEvent event) {
         Loader.getInstance().saveFile(this.game.toString());
     }
@@ -613,7 +584,12 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void mnTmLoadGame(ActionEvent event) throws FileNotFoundException {
-        this.game = new Game(this.gui, Loader.getInstance().openFileChooser());
+        if (this.game.equalsStr(Loader.openSavedFile())) {
+            this.game = new Game(this.gui, Loader.getInstance().openFileChooser());
+        } else {
+            System.out.println("Debug 1: Instanz noch nicht abgespeichert");
+            //TODO Dialogfenster mit anschliessendem Filechooser (falls erwuenscht)
+        }
     }
 
     /**
@@ -621,7 +597,12 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void exitGame(ActionEvent event) {
-        System.exit(0);
+        if (this.game.equalsStr(Loader.openSavedFile())) {
+            System.exit(0);
+        } else {
+            System.out.println("Debug 1: Instanz noch nicht abgespeichert");
+            //TODO Dialogfenster mit anschliessendem Filechooser (falls erwuenscht)
+        }
     }
 
     /**
@@ -637,7 +618,6 @@ public class FXMLDocumentController implements Initializable {
             System.out.println(type.getStringRepresentation());
         }
     }
-
 
 
     // --- Game interactions ---
@@ -748,6 +728,20 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private void moveBoardLeft() {
         this.game.moveBoard(Board.Direction.LEFT_MOVE);
+    }
+
+    @FXML
+    private void openRulesInPdfReader() {
+        if (Desktop.isDesktopSupported()) {
+            try {
+                File myFile = new File("./otherDocs/CityDominoAufgabenstellung.pdf");
+                assert myFile.isFile();
+                Desktop.getDesktop().open(myFile);
+            } catch (IOException ex) {
+                Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
+                        + "\nno application registered for PDFs\n" + Logger.ERROR_DELIMITER);
+            }
+        }
     }
 
 

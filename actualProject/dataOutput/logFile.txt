@@ -5580,3 +5580,588 @@ HUMAN dragged center to (1,2)
 HUMAN tried to move board in an impossible direction
 ...................................
 
+-----------------------------------
+2018-12-28T20:34:51.985+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,O2] at index 2 for next round
+HUMAN did not use [I2,P0]
+
+BOT3 chose [P0,S2] at index 0 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [P0,S2] horizontal to (0,2)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+User opended the game "test3NoStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test3NoStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-28T20:34:51.985+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [O1,S0] vertical to (4,0)
+
+BOT3 chose [H0,A1] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+BOT4 put [A1,H0] horizontal to (0,2)
+BOT3 put [H0,A1] vertical to (0,0)
+-----------------------------------
+2018-12-28T20:35:55.522+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "test3NoStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test3NoStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-28T20:35:55.522+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [O1,S0] vertical to (4,0)
+
+BOT3 chose [H0,A1] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+BOT4 put [A1,H0] horizontal to (0,2)
+BOT3 put [H0,A1] vertical to (0,0)
+-----------------------------------
+2018-12-28T20:38:21.648+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+User opended the game "test3NoStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test3NoStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-28T20:38:21.648+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [O1,S0] vertical to (4,0)
+
+BOT3 chose [H0,A1] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+BOT4 put [A1,H0] horizontal to (0,2)
+BOT3 put [H0,A1] vertical to (0,0)
+User opended the game "test3NoStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test3NoStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-28T20:38:21.648+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [O1,S0] vertical to (4,0)
+
+BOT3 chose [H0,A1] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+BOT4 put [A1,H0] horizontal to (0,2)
+BOT3 put [H0,A1] vertical to (0,0)
+-----------------------------------
+2018-12-28T20:39:25.969+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "test3NoStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test3NoStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-28T20:39:25.969+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+HUMAN chose [A1,H0] at index 1 for next round
+-----------------------------------
+2018-12-28T20:40:16.798+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "test3NoStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test3NoStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-28T20:40:16.798+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [O1,S0] vertical to (4,0)
+
+BOT3 chose [H0,A1] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+BOT4 put [A1,H0] horizontal to (0,2)
+BOT3 put [H0,A1] vertical to (0,0)
+-----------------------------------
+2018-12-28T20:40:43.125+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "test3NoStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test3NoStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-28T20:40:43.125+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [O1,S0] vertical to (4,0)
+
+BOT3 chose [H0,A1] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+BOT4 put [A1,H0] horizontal to (0,2)
+BOT3 put [H0,A1] vertical to (0,0)
+HUMAN put [A1,H0] horizontal to (0,2)
+BOT2 put [S1,P0] horizontal to (1,3)
+round ended
+Ordered Ranking:
+0. Spot	Player 0 Result{points=10}
+1. Spot	Player 0 Result{points=8}
+2. Spot	Player 0 Result{points=7}
+3. Spot	Player 0 Result{points=5}
+
+-----------------------------------
+2018-12-28T21:47:16.253+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [A0,S2] at index 1 for next round
+-----------------------------------
+2018-12-28T21:52:02.952+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:54:16.155+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:55:00.369+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:55:10.648+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:55:26.846+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:56:29.166+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:56:56.430+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:57:43.678+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:57:57.686+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:58:15.216+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:58:31.113+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:59:32.762+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T21:59:51.920+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T22:00:12.961+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T22:00:31.047+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T22:01:10.064+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T22:01:33.887+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T22:20:52.747+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T22:24:34.922+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T22:25:15.252+01:00[Europe/Berlin]
+Started new game
+
+...................................
+User aborted the saving process
+...................................
+
+HUMAN dragged center to (3,2)
+HUMAN dragged center to (2,2)
+HUMAN dragged center to (2,1)
+HUMAN dragged center to (2,2)
+-----------------------------------
+2018-12-28T22:34:32.198+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T22:35:42.469+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T22:36:04.776+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T22:38:15.017+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-28T23:01:25.751+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+-----------------------------------
+2018-12-28T23:18:14.411+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [A0,S2] at index 1 for next round
+HUMAN put [I2,P0] horizontal to (3,2)
+
+BOT3 chose [P0,S2] at index 0 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [P0,S2] horizontal to (0,2)
+...................................
+User aborted the saving process
+...................................
+
+...................................
+User aborted the saving process
+...................................
+
+...................................
+User aborted the saving process
+...................................
+
+...................................
+User aborted the saving process
+...................................
+
+-----------------------------------
+2018-12-29T00:38:49.641+01:00[Europe/Berlin]
+Started new game
+
+...................................
+HUMAN tried to make an impossible bank selection
+...................................
+
+-----------------------------------
+2018-12-29T00:52:21.720+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-29T00:53:01.294+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-29T00:53:12.641+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-29T00:54:40.662+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag3.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag3.txt
+
+-----------------------------------
+2018-12-29T00:54:40.662+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+User opended the game "inv_misspelledBoardElem2.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_misspelledBoardElem2.txt
+
+-----------------------------------
+2018-12-29T00:54:40.662+01:00[Europe/Berlin]
+Loading process: Invalid board syntax
+User opended the game "inv_blankAfterTag5.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag5.txt
+
+-----------------------------------
+2018-12-29T00:54:40.662+01:00[Europe/Berlin]
+Loading process: Wrong tag identifier 
+-----------------------------------
+2018-12-29T01:14:44.368+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankBeforeFstTag.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankBeforeFstTag.txt
+
+-----------------------------------
+2018-12-29T01:14:44.368+01:00[Europe/Berlin]
+Loading process: Invalide Bezeichner-Syntax
+User opended the game "inv_misspelledBoardElem4.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_misspelledBoardElem4.txt
+
+-----------------------------------
+2018-12-29T01:14:44.368+01:00[Europe/Berlin]
+Loading process: Invalide Brett-Syntax
+User opended the game "inv_wrongBank_letterAsPlayerNum.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_wrongBank_letterAsPlayerNum.txt
+
+-----------------------------------
+2018-12-29T01:14:44.368+01:00[Europe/Berlin]
+Loading process: Invalide Bank-Syntax
+User opended the game "inv_wrongStack_OneSingletile.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_wrongStack_OneSingletile.txt
+
+-----------------------------------
+2018-12-29T01:14:44.368+01:00[Europe/Berlin]
+Loading process: Invalide Beutel-Syntax
+-----------------------------------
+2018-12-29T03:14:40.444+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "test3NoStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test3NoStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-29T03:14:40.444+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [O1,S0] vertical to (4,0)
+
+BOT3 chose [H0,A1] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+BOT4 put [A1,H0] horizontal to (0,2)
+BOT3 put [H0,A1] vertical to (0,0)
+-----------------------------------
+2018-12-29T03:14:40.444+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 2 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 1 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+-----------------------------------
+2018-12-29T03:54:08.673+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-29T04:08:41.668+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-29T04:08:41.668+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-29T04:09:09.841+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+-----------------------------------
+2018-12-29T04:09:09.841+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-29T04:19:35.651+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-29T04:20:56.991+01:00[Europe/Berlin]
+Started new game
+
+User saved the game as "out.txt" to F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+-----------------------------------
+2018-12-29T04:35:10.066+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+User saved the game as "out.txt" to F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+-----------------------------------
+2018-12-29T04:36:00.240+01:00[Europe/Berlin]
+Started new game
+
+User saved the game as "out.txt" to F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+-----------------------------------
+2018-12-29T04:38:45.684+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+User saved the game as "out.txt" to F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+-----------------------------------
+2018-12-29T04:42:28.121+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+User saved the game as "out.txt" to F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+-----------------------------------
+2018-12-29T04:48:34.929+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)

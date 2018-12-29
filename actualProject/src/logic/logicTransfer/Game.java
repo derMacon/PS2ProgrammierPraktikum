@@ -2,11 +2,14 @@ package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
 import logic.dataPreservation.Logger;
-import logic.playerState.*;
+import logic.playerState.Board;
+import logic.playerState.BotBehavior;
+import logic.playerState.Player;
+import logic.playerState.Result;
 import logic.playerTypes.HumanPlayer;
 import logic.playerTypes.PlayerType;
-import logic.token.Pos;
 import logic.token.Domino;
+import logic.token.Pos;
 import logic.token.SingleTile;
 
 import java.net.URI;
@@ -122,16 +125,19 @@ public class Game implements GUI2Game {
     public Game(GUIConnector gui, String input) {
         this.gui = gui;
         Converter gameContent = new Converter();
-        // TODO use error message - error message used for treatment, maybe with a new Pop-Up Window or just in the log-File.
+        // TODO use error message - error message used for treatment, maybe with a new Pop-Up Window or just in the
+        // log-File.
         String returnMessage = gameContent.readStr(gui, input);
         System.out.println(returnMessage);
         if (Converter.SUCCESSFUL_READ_MESSAGE == returnMessage) {
-            initTestingLoadingConstructor(gui, gameContent.getPlayers(), gameContent.getCurrBankPos(), gameContent.getCurrentBank(),
+            initTestingLoadingConstructor(gui, gameContent.getPlayers(), gameContent.getCurrBankPos(),
+                    gameContent.getCurrentBank(),
                     gameContent.getNextBank(), gameContent.getStack(), null);
 
 
             Board humanBoard = this.players[HUMAN_PLAYER_IDX].getBoard();
-            loadGuiAfterLoadingFile(genDefaultPlayerTypeArray(this.players.length), humanBoard.getSizeX(), humanBoard.getSizeY());
+            loadGuiAfterLoadingFile(genDefaultPlayerTypeArray(this.players.length), humanBoard.getSizeX(),
+                    humanBoard.getSizeY());
             // Selected Doms in Bank don't have any set position on each player's board -> must
             // be set through calling updateSelectedDom(...)
             for (Player player : this.players) {
@@ -275,7 +281,7 @@ public class Game implements GUI2Game {
      */
     @Override
     public void selectDomOnCurrBank(int idx) {
-        if(PossibleField.CURR_BANK == this.currField && this.currentRoundBank.isNotSelected(idx)) {
+        if (PossibleField.CURR_BANK == this.currField && this.currentRoundBank.isNotSelected(idx)) {
             // TODO check if it's the first round or not (since this method only can be called if it is)
             // update human player selection
             this.currentRoundBank.selectEntry(this.players[HUMAN_PLAYER_IDX], idx);
@@ -311,7 +317,7 @@ public class Game implements GUI2Game {
      */
     @Override
     public void selectDomOnNextBank(int idx) {
-        if(PossibleField.NEXT_BANK == this.currField && this.nextRoundBank.isNotSelected(idx)) {
+        if (PossibleField.NEXT_BANK == this.currField && this.nextRoundBank.isNotSelected(idx)) {
             assert null == this.currDomino;
             Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
             // Human player selects domino on next bank
@@ -344,7 +350,7 @@ public class Game implements GUI2Game {
      */
     @Override
     public void setOnBoard(Pos pos) {
-        if(PossibleField.CURR_DOM == this.currField) {
+        if (PossibleField.CURR_DOM == this.currField) {
             this.currDomino.setPos(new Pos(pos.x(), pos.y()));
             this.players[HUMAN_PLAYER_IDX].showOnBoard(currDomino);
             this.currField = PossibleField.NEXT_BANK;
@@ -374,7 +380,7 @@ public class Game implements GUI2Game {
     public boolean isInBoundHumanBoard(Pos pos) {
         assert null != pos;
         Board board = this.players[HUMAN_PLAYER_IDX].getBoard();
-        return board.getSizeX()> pos.x() && board.getSizeY()> pos.y();
+        return board.getSizeX() > pos.x() && board.getSizeY() > pos.y();
     }
 
     @Override
@@ -401,12 +407,13 @@ public class Game implements GUI2Game {
 
     @Override
     public void disposeCurrDomino() {
-        if(PossibleField.CURR_DOM == this.currField) {
+        if (PossibleField.CURR_DOM == this.currField) {
             Logger.getInstance().printAndSafe(String.format(Logger.dismissalLoggerFormat, "HUMAN",
                     this.currDomino.toString()));
             setToChooseBox(null);
             setupCurrDomAndBotsDoTurn();
             this.currField = PossibleField.NEXT_BANK;
+            this.gui.blurOtherFields(currField);
         } else {
             Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nHUMAN tried to dispose the current " +
                     "domino\n" + Logger.ERROR_DELIMITER + "\n");
@@ -585,7 +592,8 @@ public class Game implements GUI2Game {
     private void setToChooseBox(Domino currDomino) {
         this.gui.showInChooseBox(currDomino);
         this.currDomino = currDomino;
-        this.gui.deleteDomFromBank(CURRENT_BANK_IDX, this.currentRoundBank.getSelectedDominoIdx(this.players[HUMAN_PLAYER_IDX]));
+        this.gui.deleteDomFromBank(CURRENT_BANK_IDX,
+                this.currentRoundBank.getSelectedDominoIdx(this.players[HUMAN_PLAYER_IDX]));
     }
 
 
@@ -595,7 +603,8 @@ public class Game implements GUI2Game {
 //        StringBuilder strbOutput = new StringBuilder();
 //        // all player boards to String
 //        for (Player currPlayer : this.players) {
-//            strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " " + (currPlayer.getIdxInPlayerArray() + 1) + ">\n");
+//            strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " " + (currPlayer.getIdxInPlayerArray() + 1) +
+// ">\n");
 //            strbOutput.append(currPlayer.getBoard().toString());
 //        }
 //        // all banks to String (current round Bank first)
@@ -633,7 +642,7 @@ public class Game implements GUI2Game {
         // all banks to String (current round Bank first)
         strbOutput.append("<" + Converter.BANK_IDENTIFIER + ">\n");
         strbOutput.append(this.currentRoundBank.toString() + "\n");
-        if(this.nextRoundBank == null) {
+        if (this.nextRoundBank == null) {
             strbOutput.append("\n");
         } else {
             strbOutput.append(this.nextRoundBank.toString() + "\n");
@@ -679,5 +688,16 @@ public class Game implements GUI2Game {
 
         return equals && this.currentRoundBank.equals(other.currentRoundBank)
                 && this.nextRoundBank.equals(other.nextRoundBank);
+    }
+
+
+    @Override
+    public boolean equalsStr(String input) {
+        if(null == input) {
+            return false;
+        }
+        System.out.println("this: " + this.toFile());
+        System.out.println("input: "+ input);
+        return (this.toFile()+ "\n").equals(input);
     }
 }

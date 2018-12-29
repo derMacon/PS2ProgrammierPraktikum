@@ -1,27 +1,23 @@
 package logic.logicTransfer;
 
-import static org.junit.Assert.*;
-
+import logic.bankSelection.Bank;
 import logic.bankSelection.Entry;
-import logic.dataPreservation.Loader;
 import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerTypes.HumanPlayer;
-import org.junit.Assert;
-import other.FakeGUI;
-import logic.bankSelection.Bank;
-import logic.dataPreservation.Logger;
-import logic.logicTransfer.Game;
 import logic.token.Domino;
-import logic.token.SingleTile;
 import logic.token.Tiles;
+import org.junit.Assert;
 import org.junit.Test;
+import other.FakeGUI;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class GameConstructorFileIOTest {
 
@@ -34,28 +30,28 @@ public class GameConstructorFileIOTest {
         // Boards
         Board expBoard1 = new Board(
                 "-- -- -- -- --\n" +
-                "-- -- -- -- --\n" +
-                "-- -- CC P0 S2\n" +
-                "-- -- I2 P0 --\n" +
-                "-- -- -- -- --\n");
+                        "-- -- -- -- --\n" +
+                        "-- -- CC P0 S2\n" +
+                        "-- -- I2 P0 --\n" +
+                        "-- -- -- -- --\n");
         Board expBoard2 = new Board(
-            "-- -- P0 -- --\n" +
-                    "-- -- I3 -- --\n" +
-                    "A0 S1 CC -- --\n" +
-                    "-- -- -- -- --\n" +
-                    "-- -- -- -- --\n");
+                "-- -- P0 -- --\n" +
+                        "-- -- I3 -- --\n" +
+                        "A0 S1 CC -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n");
         Board expBoard3 = new Board(
                 "-- -- O0 -- --\n" +
-                "-- -- I2 -- --\n" +
-                "A0 S2 CC -- --\n" +
-                "-- -- -- -- --\n" +
-                "-- -- -- -- --\n");
+                        "-- -- I2 -- --\n" +
+                        "A0 S2 CC -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n");
         Board expBoard4 = new Board(
                 "P0 O1 O0 -- --\n" +
-                "-- -- I2 -- --\n" +
-                "-- -- CC -- --\n" +
-                "-- -- -- -- --\n" +
-                "-- -- -- -- --\n");
+                        "-- -- I2 -- --\n" +
+                        "-- -- CC -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n");
         assertEquals(expBoard1, game.getPlayers()[0].getBoard());
         assertEquals(expBoard2, game.getPlayers()[1].getBoard());
         assertEquals(expBoard3, game.getPlayers()[2].getBoard());
@@ -68,7 +64,7 @@ public class GameConstructorFileIOTest {
         Player p3 = new HumanPlayer(fakeGui, 3, expBoard4);
 //        1 A0S1,3 P0O1,0 S0O1,2 I1P0
 //        3 A1H0,- A1H0,- A1H0,1 P0S1
-        Entry[] testBankInput = new Entry[] {
+        Entry[] testBankInput = new Entry[]{
                 null, null,
                 new Entry(new Domino(Tiles.S0O1_Val39), p0),
                 new Entry(new Domino(Tiles.I1P0_Val40), p2)
@@ -78,7 +74,7 @@ public class GameConstructorFileIOTest {
         assertEquals(expCurrentBank, actCurrentBank);
 
         // Stack
-        List<Domino> expStack = Arrays.asList( new Domino[] {
+        List<Domino> expStack = Arrays.asList(new Domino[]{
                 new Domino(Tiles.fromString("P0P0")),
                 new Domino(Tiles.fromString("P0P0"))
         });
@@ -97,28 +93,28 @@ public class GameConstructorFileIOTest {
         // Boards
         Board expBoard1 = new Board(
                 "-- -- -- -- --\n" +
-                "-- -- -- -- --\n" +
-                "-- -- CC P0 S2\n" +
-                "-- -- I2 P0 --\n" +
-                "-- -- -- -- --\n");
+                        "-- -- -- -- --\n" +
+                        "-- -- CC P0 S2\n" +
+                        "-- -- I2 P0 --\n" +
+                        "-- -- -- -- --\n");
         Board expBoard2 = new Board(
-            "-- -- P0 -- --\n" +
-                    "-- -- I3 -- --\n" +
-                    "A0 S1 CC -- --\n" +
-                    "-- -- -- -- --\n" +
-                    "-- -- -- -- --\n");
+                "-- -- P0 -- --\n" +
+                        "-- -- I3 -- --\n" +
+                        "A0 S1 CC -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n");
         Board expBoard3 = new Board(
                 "-- -- O0 -- --\n" +
-                "-- -- I2 -- --\n" +
-                "A0 S2 CC -- --\n" +
-                "-- -- -- -- --\n" +
-                "-- -- -- -- --\n");
+                        "-- -- I2 -- --\n" +
+                        "A0 S2 CC -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n");
         Board expBoard4 = new Board(
                 "P0 O1 O0 -- --\n" +
-                "-- -- I2 -- --\n" +
-                "-- -- CC -- --\n" +
-                "-- -- -- -- --\n" +
-                "-- -- -- -- --\n");
+                        "-- -- I2 -- --\n" +
+                        "-- -- CC -- --\n" +
+                        "-- -- -- -- --\n" +
+                        "-- -- -- -- --\n");
         assertEquals(expBoard1, game.getPlayers()[0].getBoard());
         assertEquals(expBoard2, game.getPlayers()[1].getBoard());
         assertEquals(expBoard3, game.getPlayers()[2].getBoard());
@@ -131,7 +127,7 @@ public class GameConstructorFileIOTest {
         Player p3 = new HumanPlayer(fakeGui, 3, expBoard4);
 //        1 A0S1,3 P0O1,0 S0O1,2 I1P0
 //        3 A1H0,- A1H0,- A1H0,1 P0S1
-        Entry[] testBankInput = new Entry[] {
+        Entry[] testBankInput = new Entry[]{
                 null,
                 null,
                 new Entry(new Domino(Tiles.S0O1_Val39), p0),
@@ -142,7 +138,7 @@ public class GameConstructorFileIOTest {
         assertEquals(expCurrentBank, actCurrentBank);
 
         // Stack
-        List<Domino> expStack = Arrays.asList( new Domino[] {
+        List<Domino> expStack = Arrays.asList(new Domino[]{
                 new Domino(Tiles.fromString("P0P0")),
                 new Domino(Tiles.fromString("P0P0"))
         });

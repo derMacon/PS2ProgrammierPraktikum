@@ -43,8 +43,8 @@ public interface GUI2Game {
     /**
      * puts the current Domino to the given position on board and removes it
      * from the choose-box and switches to the next player.
-     *
-//     * @param dom domino to be set on board
+     * <p>
+     * //     * @param dom domino to be set on board
      */
     void setOnBoard(Pos pos);
 
@@ -77,7 +77,17 @@ public interface GUI2Game {
      */
     void safeGame(URI filePath);
 
-     boolean isInBoundHumanBoard(Pos pos);
+    boolean isInBoundHumanBoard(Pos pos);
+
+    /**
+     * Needed to check if the saved file is on the most recent state or if it needs to be updated before any new
+     * instance can be loaded. //TODO ueberarbeiten.
+     * @param input
+     * @return
+     */
+    boolean equalsStr(String input);
+
+
 
 //    /**
 //     * loads / generates a game out of the .txt file at the selected path

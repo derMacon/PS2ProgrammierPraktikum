@@ -128,7 +128,7 @@ public class Pos {
     /**
      * (x,y)
      *
-     * @return (x,y)
+     * @return (x, y)
      */
     @Override
     public String toString() {

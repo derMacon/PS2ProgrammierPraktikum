@@ -71,6 +71,17 @@ public class Entry {
     }
 
     /**
+     * Generates a Entry from a given String
+     *
+     * @param input input String from which a new Entry will be generated
+     * @return Entry object
+     */
+    public static Entry fromString(String input) {
+        // TODO insert code
+        return null;
+    }
+
+    /**
      * Getter for the domino of this entry
      *
      * @return domino reference
@@ -80,21 +91,21 @@ public class Entry {
     }
 
     /**
-     * Getter for the player which selected this bank entry
-     *
-     * @return reference to the which selected this bank entry
-     */
-    public Player getSelectedPlayer() {
-        return selectedPlayer;
-    }
-
-    /**
      * Setter for the domino
      *
      * @param dom domino to be setted
      */
     public void setDomino(Domino dom) {
         this.domino = dom;
+    }
+
+    /**
+     * Getter for the player which selected this bank entry
+     *
+     * @return reference to the which selected this bank entry
+     */
+    public Player getSelectedPlayer() {
+        return selectedPlayer;
     }
 
     /**
@@ -124,17 +135,6 @@ public class Entry {
     }
 
     /**
-     * Generates a Entry from a given String
-     *
-     * @param input input String from which a new Entry will be generated
-     * @return Entry object
-     */
-    public static Entry fromString(String input) {
-        // TODO insert code
-        return null;
-    }
-
-    /**
      * Provides a copyWithoutSelection, where the domino is copied with a real deep
      * copyWithoutSelection but the player is not. It is only necessary to copyWithoutSelection the
      * domino, because it will later on be modified.
@@ -156,7 +156,7 @@ public class Entry {
         final Entry other = (Entry) obj;
 
         // TODO delete before final commit
-        if(null != this.selectedPlayer && null != other.selectedPlayer) {
+        if (null != this.selectedPlayer && null != other.selectedPlayer) {
             boolean debugplayeridx = this.selectedPlayer.getIdxInPlayerArray()
                     == other.selectedPlayer.getIdxInPlayerArray();
             boolean debugDom = this.domino.equals(other.domino);

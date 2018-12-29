@@ -1,13 +1,13 @@
 package logic.bankSelection;
 
-import static org.junit.Assert.*;
-
 import logic.playerState.Player;
 import logic.playerTypes.DefaultAIPlayer;
 import logic.token.Domino;
 import logic.token.Tiles;
 import org.junit.Test;
 import other.FakeGUI;
+
+import static org.junit.Assert.*;
 
 
 public class EntryTest {
@@ -44,12 +44,12 @@ public class EntryTest {
     @Test
     public void testEquals_OnePlayerZero_DifferentTokenValues() {
         assertFalse(new Entry(new Domino(Tiles.H0H0_Val4),
-                new DefaultAIPlayer(new FakeGUI(), 1, 2,3)).equals(new Entry(new Domino(Tiles.H0H0_Val3))));
+                new DefaultAIPlayer(new FakeGUI(), 1, 2, 3)).equals(new Entry(new Domino(Tiles.H0H0_Val3))));
     }
 
     @Test
     public void testEquals_PlayersEqual_DifferentTokenValues() {
-        Player inputPlayer = new DefaultAIPlayer(new FakeGUI(), 1, 2,3);
+        Player inputPlayer = new DefaultAIPlayer(new FakeGUI(), 1, 2, 3);
         assertTrue(new Entry(new Domino(Tiles.H0H0_Val4),
                 inputPlayer).equals(new Entry(new Domino(Tiles.H0H0_Val3), inputPlayer)));
     }
@@ -57,9 +57,8 @@ public class EntryTest {
     @Test
     public void testEquals_SamePlayer_DifferentToken() {
         assertFalse(new Entry(new Domino(Tiles.P0I3_Val48),
-                new DefaultAIPlayer(new FakeGUI(), 1, 2,3)).equals(new Entry(new Domino(Tiles.H0H0_Val3))));
+                new DefaultAIPlayer(new FakeGUI(), 1, 2, 3)).equals(new Entry(new Domino(Tiles.H0H0_Val3))));
     }
-
 
 
 }

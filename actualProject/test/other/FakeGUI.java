@@ -1,11 +1,11 @@
 package other;
 
-import logic.logicTransfer.PossibleField;
-import logic.playerState.Result;
 import logic.bankSelection.Bank;
 import logic.logicTransfer.GUIConnector;
+import logic.logicTransfer.PossibleField;
 import logic.playerState.Board;
 import logic.playerState.Player;
+import logic.playerState.Result;
 import logic.token.Domino;
 
 public class FakeGUI implements GUIConnector {

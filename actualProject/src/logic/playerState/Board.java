@@ -25,50 +25,22 @@ public class Board {
     public static final int DOWN_MOVE = 3;
 
     public static final String EMPTY_CELL = "--";
-
-    /**
-     * Directions the board can be dragged to
-     */
-    public enum Direction {
-        LEFT_MOVE("left"),
-        UP_MOVE("up"),
-        RIGHT_MOVE("right"),
-        DOWN_MOVE("down");
-
-        private final String description;
-
-        /**
-         * Constructor combining the enum members with their corresponding String representations
-         *
-         * @param description String representation for the directions
-         */
-        Direction(String description) {
-            this.description = description;
-        }
-
-    }
-
-
     /**
      * String representation for an empty cell
      */
     private static final String STRING_EMPTY_CELL = "--";
-
     /**
      * String representation for the city hall
      */
     private static final String STRING_CITY_HALL = "CC";
-
     /**
      * Number of rows on this board
      */
     private final int sizeX;
-
     /**
      * Number of rows on this board
      */
     private final int sizeY;
-
     /**
      * Board cells containing SingleTiles
      */
@@ -268,7 +240,6 @@ public class Board {
         }
     }
 
-
     /**
      * Collects the touching cells from a given position.
      *
@@ -323,7 +294,6 @@ public class Board {
         return onlyValidNeighbors;
     }
 
-
     /**
      * Lays a domino on the board, if position equals null or if domino doesn't fit at the given
      * position it will not be layed / disposed
@@ -339,8 +309,6 @@ public class Board {
             this.cells[posSndTile.x()][posSndTile.y()] = domino.getSndVal();
         }
     }
-
-    // --- loading / saving ---
 
     /**
      * Generates a string for this object
@@ -366,10 +334,13 @@ public class Board {
         return output.toString();
     }
 
+    // --- loading / saving ---
+
     /**
      * Generates a String representation of the board to be presented in the file. Since the board already stores a
      * players selected domino in its cells the moment a player selects the particular domino it is necessary to
      * remove it before displaying it in a file.
+     *
      * @param player
      * @param currRoundBank
      * @param nextRoundBank
@@ -377,26 +348,26 @@ public class Board {
      */
     public String toFile(Player player, Bank currRoundBank, Bank nextRoundBank) {
         assert null != player && null != currRoundBank && null != nextRoundBank;
-        if(!(player instanceof BotBehavior)) {
+        if (!(player instanceof BotBehavior)) {
             return toString();
         } else {
             // find player selected domino from both banks -> null if not found
             Domino playerSelectedDom = currRoundBank.getPlayerSelectedDomino(player);
             playerSelectedDom = null == playerSelectedDom ?
                     nextRoundBank.getPlayerSelectedDomino(player) : playerSelectedDom;
-            return  new Board(this).remove(playerSelectedDom).toString();
+            return new Board(this).remove(playerSelectedDom).toString();
         }
 
     }
 
-
     /**
      * Removes a given domino from the board. The domino may be empty, then nothing will be deleted
+     *
      * @param dom domino to remove from the bank
      * @return the board instance without the given domino
      */
     private Board remove(Domino dom) {
-        if(null != dom) {
+        if (null != dom) {
             Pos fstPos = dom.getFstPos();
             Pos sndPos = dom.getSndPos();
             this.cells[fstPos.x()][fstPos.y()] = SingleTile.EC;
@@ -404,7 +375,6 @@ public class Board {
         }
         return this;
     }
-
 
     /**
      * Checks if a given objects holds the same data as the current instance (modified from ueb09)
@@ -463,7 +433,7 @@ public class Board {
         do {
             neighborsNeighborsAreValid =
                     isOutOfBoundOrisFilledOrNeighborsAreValid(fstTile, fstPosNeighhors.get(i))
-                    && isOutOfBoundOrisFilledOrNeighborsAreValid(sndTile, sndPosNeighhors.get(i));
+                            && isOutOfBoundOrisFilledOrNeighborsAreValid(sndTile, sndPosNeighhors.get(i));
 
             // See journal why this isn't possible
 //            neighborsNeighborsAreValid = checkIfNeighborsAreValid(fstTile, fstPosNeighhors.get(i).getNeighbours())
@@ -474,7 +444,6 @@ public class Board {
         while (neighborsNeighborsAreValid && i < 3);
         return neighborsNeighborsAreValid;
     }
-
 
     /**
      * Checks if
@@ -617,6 +586,28 @@ public class Board {
             x++;
         } while (rowIsEmpty && x < this.sizeX);
         return rowIsEmpty;
+    }
+
+    /**
+     * Directions the board can be dragged to
+     */
+    public enum Direction {
+        LEFT_MOVE("left"),
+        UP_MOVE("up"),
+        RIGHT_MOVE("right"),
+        DOWN_MOVE("down");
+
+        private final String description;
+
+        /**
+         * Constructor combining the enum members with their corresponding String representations
+         *
+         * @param description String representation for the directions
+         */
+        Direction(String description) {
+            this.description = description;
+        }
+
     }
 
     // TODO maybe isolate movement to avoid redundant code

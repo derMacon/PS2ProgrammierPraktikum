@@ -6,21 +6,26 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
-
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logic.bankSelection.Bank;
+import logic.logicTransfer.GUIConnector;
 import logic.logicTransfer.Game;
 import logic.logicTransfer.PossibleField;
 import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerState.Result;
 import logic.playerTypes.HumanPlayer;
-import logic.token.Pos;
-import logic.logicTransfer.GUIConnector;
 import logic.token.Domino;
+import logic.token.Pos;
 import logic.token.SingleTile;
 import logic.token.Tiles;
 
@@ -31,40 +36,29 @@ public class JavaFXGUI implements GUIConnector {
      * Sentence that will be completed and shown in the appropriate label
      */
     public static final String WHOS_TURN_SENTENCE = "Am Zug: Spieler ";
-
-    //26 images for each face of a half (0..25)
-    private static int IMG_COUNT = 26;
-    protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV3.png");
-
     /**
      * Texture for the chip representing the selection of player 1
      */
     public static final Image SELECTION_PLAYER_1_TEXTURE = new Image("gui/textures/ChipPlayer1.png");
-
     /**
      * Texture for the chip representing the selection of player 1
      */
     public static final Image SELECTION_PLAYER_2_TEXTURE = new Image("gui/textures/ChipPlayer2.png");
-
     /**
      * Texture for the chip representing the selection of player 1
      */
     public static final Image SELECTION_PLAYER_3_TEXTURE = new Image("gui/textures/ChipPlayer3.png");
-
     /**
      * Texture for the chip representing the selection of player 1
      */
     public static final Image SELECTION_PLAYER_4_TEXTURE = new Image("gui/textures/ChipPlayer4.png");
-
-
     public static final int NOT_SELECTED = -1;
-
-
-    private Image[] imgs;
-
+    protected static final Image EMPTY_IMG = new Image("gui/textures/EmptyV3.png");
     private static final int IDX_FST = 0;
     private static final int IDX_SND = 1;
-
+    //26 images for each face of a half (0..25)
+    private static int IMG_COUNT = 26;
+    private Image[] imgs;
     private Domino currDomino = null;
 
     private Pane pnSelected;
@@ -169,7 +163,7 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void showWhosTurn(int ordPlayer) {
-        this.lblTurn.setText(WHOS_TURN_SENTENCE + (ordPlayer));
+        this.lblTurn.setText(WHOS_TURN_SENTENCE + (ordPlayer + 1));
     }
 
     @Override
@@ -302,7 +296,8 @@ public class JavaFXGUI implements GUIConnector {
         int width = board.getSizeX();
         int height = board.getSizeY();
         SingleTile[][] cells = board.getCells();
-        ImageView[][] imgVwsOfPlayer = player instanceof HumanPlayer ? this.imgVwsPlayerBoard : this.imgWwsAIBoards[ordPlayer - 1];
+        ImageView[][] imgVwsOfPlayer = player instanceof HumanPlayer ? this.imgVwsPlayerBoard :
+                this.imgWwsAIBoards[ordPlayer - 1];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 Pos pos = new Pos(x, y);
@@ -508,18 +503,17 @@ public class JavaFXGUI implements GUIConnector {
         if (this.currDomino != null && this.isValidPosOnGameGrid(this.imgVwsPlayerBoard, this.currDomino.getSndPos())) {
             this.imgVwsPlayerBoard[pos.x()][pos.y()].setEffect(effect);
 
-                if (this.currDomino.getRot() % 2 == 0) {
-                    this.imgVwsPlayerBoard[pos.x() + 1][pos.y()].setEffect(effect);
-                } else {
-                    this.imgVwsPlayerBoard[pos.x()][pos.y() + 1].setEffect(effect);
-                }
-            }
+            Pos domPos = this.currDomino.getSndPos();
+            this.imgVwsPlayerBoard[domPos.x()][domPos.y()].setEffect(effect);
+
+        }
 
     }
 
     @Override
     public void selectDomino(int ordBank, int idxDom, int ordPlayer) {
-        ImageView[][] imgVwsGivenBank = Game.CURRENT_BANK_IDX == ordBank ? this.imgVwsCurrentBankSelection : this.imgVwsNextBankSelection;
+        ImageView[][] imgVwsGivenBank = Game.CURRENT_BANK_IDX == ordBank ? this.imgVwsCurrentBankSelection :
+                this.imgVwsNextBankSelection;
         switch (ordPlayer) {
             case Game.HUMAN_PLAYER_IDX:
                 imgVwsGivenBank[0][idxDom].setImage(SELECTION_PLAYER_1_TEXTURE);
@@ -583,6 +577,11 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void blurOtherFields(PossibleField saturatedField) {
+        if (null == saturatedField) {
+            focusImageView(this.imgVwsCurrentBank);
+            focusImageView(this.imgVwsNextBank);
+        }
+
         switch (saturatedField) {
             case CURR_DOM:
                 blurImageView(this.imgVwsCurrentBank);

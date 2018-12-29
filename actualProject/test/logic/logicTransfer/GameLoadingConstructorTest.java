@@ -1,15 +1,13 @@
 package logic.logicTransfer;
 
-import static org.junit.Assert.*;
-
-import other.FakeGUI;
 import logic.bankSelection.Bank;
-import logic.dataPreservation.Logger;
-import logic.logicTransfer.Game;
 import logic.token.Domino;
 import logic.token.SingleTile;
 import logic.token.Tiles;
 import org.junit.Test;
+import other.FakeGUI;
+
+import static org.junit.Assert.*;
 
 
 public class GameLoadingConstructorTest {
@@ -87,7 +85,9 @@ public class GameLoadingConstructorTest {
         assertEquals(4, gameTestingConstr.getNumberOfPlayers());
         assertEquals(4, gameTestingConstr.getCurrentRoundBank().getBankSize());
         assertEquals(4, gameTestingConstr.getNextRoundBank().getBankSize());
-    };
+    }
+
+    ;
 
     // TODO generate districts (individual player points not yet implemented) -> will be also tested here
 

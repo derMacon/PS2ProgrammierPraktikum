@@ -1,13 +1,14 @@
 package logic.randomizer;
 
+import org.junit.Test;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-import org.junit.Test;
-import static org.junit.Assert.*;
+
+import static org.junit.Assert.assertArrayEquals;
 
 /**
- *
  * @author silas
  */
 public class PseudoRandResidueClassTest {
@@ -41,7 +42,7 @@ public class PseudoRandResidueClassTest {
         actualOutput.add(rand.nextInt(3));
         assertArrayEquals(expectedOutput, actualOutput.toArray(new Integer[0]));
     }
-    
+
     @Test
     public void testNextInt_ModOperandGreaterThenOne() {
         Integer[] expectedOutput = new Integer[]{0, 2};
@@ -51,7 +52,7 @@ public class PseudoRandResidueClassTest {
         actualOutput.add(rand.nextInt(3));
         assertArrayEquals(expectedOutput, actualOutput.toArray(new Integer[0]));
     }
-    
+
     @Test
     public void testNextInt_ModOperandGreaterThenOne_Overflow() {
         Integer[] expectedOutput = new Integer[]{0, 3, 1, 4, 2, 0, 3};
@@ -66,7 +67,7 @@ public class PseudoRandResidueClassTest {
         actualOutput.add(rand.nextInt(5));
         assertArrayEquals(expectedOutput, actualOutput.toArray(new Integer[0]));
     }
-   
+
     @Test
     public void testNextInt_ChangingBound() {
         Integer[] expectedOutput = new Integer[]{0, 3, 0, 1, 0, 0, 3};

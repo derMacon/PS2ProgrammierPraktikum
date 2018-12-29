@@ -5,7 +5,7 @@ public class WrongTagException extends Exception {
     /**
      * Standardfehlermeldung.
      */
-    public static final String DEFAULT_MESSAGE = "Wrong tag identifier ";
+    public static final String DEFAULT_MESSAGE = "Invalide Bezeichner-Syntax";
 
     /**
      * Exception mit individueller Fehlermeldung.
