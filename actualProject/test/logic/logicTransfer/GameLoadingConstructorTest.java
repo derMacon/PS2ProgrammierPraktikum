@@ -54,8 +54,8 @@ public class GameLoadingConstructorTest {
 
         // Human player board
         SingleTile[][] expectedCells = new SingleTile[][]{
-                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC,},
-                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC,},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC},
                 {SingleTile.EC, SingleTile.H1, SingleTile.CC, SingleTile.EC, SingleTile.EC},
                 {SingleTile.EC, SingleTile.P0, SingleTile.EC, SingleTile.EC, SingleTile.EC},
                 {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC}
@@ -69,11 +69,11 @@ public class GameLoadingConstructorTest {
 
         // Bot 3 board
         expectedCells = new SingleTile[][]{
-                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.P0, SingleTile.I1,},
-                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC,},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC},
                 {SingleTile.EC, SingleTile.H1, SingleTile.CC, SingleTile.EC, SingleTile.EC},
-                {SingleTile.EC, SingleTile.P0, SingleTile.P1, SingleTile.EC, SingleTile.EC},
-                {SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC, SingleTile.EC}
+                {SingleTile.P0, SingleTile.P0, SingleTile.P1, SingleTile.EC, SingleTile.EC},
+                {SingleTile.EC, SingleTile.I1, SingleTile.EC, SingleTile.EC, SingleTile.EC}
         };
 
         actualCells = gameTestingConstr.getPlayers()[3].getBoard().getCells();

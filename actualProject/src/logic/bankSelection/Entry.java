@@ -71,17 +71,6 @@ public class Entry {
     }
 
     /**
-     * Generates a Entry from a given String
-     *
-     * @param input input String from which a new Entry will be generated
-     * @return Entry object
-     */
-    public static Entry fromString(String input) {
-        // TODO insert code
-        return null;
-    }
-
-    /**
      * Getter for the domino of this entry
      *
      * @return domino reference

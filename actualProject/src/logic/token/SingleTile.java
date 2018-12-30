@@ -1,6 +1,13 @@
 package logic.token;
 
-import static logic.token.DistrictType.*;
+import static logic.token.DistrictType.CENTER;
+import static logic.token.DistrictType.EMPTY_CELL;
+import static logic.token.DistrictType.AMUSEMENT;
+import static logic.token.DistrictType.INDUSTRY;
+import static logic.token.DistrictType.OFFICE;
+import static logic.token.DistrictType.PARK;
+import static logic.token.DistrictType.SHOPPING;
+import static logic.token.DistrictType.HOME;
 
 /**
  * Enum representing the whole label of a token / domino.

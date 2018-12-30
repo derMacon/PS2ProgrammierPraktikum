@@ -548,52 +548,52 @@ public class BoardTest {
     }
 
 
-    // --- isEfficient ---
-    @Test
-    public void testIsEfficient_InCorner_NotEfficient() {
-        Board board = new Board(
-                "-- -- P1\n" +
-                        "-- CC A0\n");
-        Domino dom = new Domino(Tiles.genTile(P0, I3), 3);
-        Choose choose = new Choose(dom, 6, 0);
-        assertTrue(board.fits(dom));
-        assertFalse(board.isEfficient(choose));
-    }
-
-    @Test
-    public void testIsEfficient_InCorner_Efficient() {
-        Board board = new Board(
-                "-- -- P1\n" +
-                        "-- CC A0\n");
-        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.DOWN_ROT); // rotation has been modified
-        Choose choose = new Choose(dom, 6, 0);
-        assertTrue(board.fits(dom));
-        assertTrue(board.isEfficient(choose));
-    }
-
-    @Test
-    public void testIsEfficient_InCorner_Efficient_MultipleCell() {
-        Board board = new Board(
-                "-- -- P1\n" +
-                        "-- CC A0\n" +
-                        "-- I1 --");
-        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.DOWN_ROT); // rotation has been modified
-        Choose choose = new Choose(dom, 6, 0);
-        assertTrue(board.fits(dom));
-        assertTrue(board.isEfficient(choose));
-    }
-
-    @Test
-    public void testIsEfficient_InCorner_NotEfficient_MultipleCell() {
-        Board board = new Board(
-                "-- -- P1\n" +
-                        "-- CC A0\n" +
-                        "-- I1 --");
-        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.UP_ROT); // rotation has been modified
-        Choose choose = new Choose(dom, 6, 0);
-        assertTrue(board.fits(dom));
-        assertFalse(board.isEfficient(choose));
-    }
+//    // --- isEfficient ---
+//    @Test
+//    public void testIsEfficient_InCorner_NotEfficient() {
+//        Board board = new Board(
+//                "-- -- P1\n" +
+//                        "-- CC A0\n");
+//        Domino dom = new Domino(Tiles.genTile(P0, I3), 3);
+//        Choose choose = new Choose(dom, 6, 0);
+//        assertTrue(board.fits(dom));
+//        assertFalse(board.isEfficient(choose));
+//    }
+//
+//    @Test
+//    public void testIsEfficient_InCorner_Efficient() {
+//        Board board = new Board(
+//                "-- -- P1\n" +
+//                        "-- CC A0\n");
+//        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.DOWN_ROT); // rotation has been modified
+//        Choose choose = new Choose(dom, 6, 0);
+//        assertTrue(board.fits(dom));
+//        assertTrue(board.isEfficient(choose));
+//    }
+//
+//    @Test
+//    public void testIsEfficient_InCorner_Efficient_MultipleCell() {
+//        Board board = new Board(
+//                "-- -- P1\n" +
+//                        "-- CC A0\n" +
+//                        "-- I1 --");
+//        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.DOWN_ROT); // rotation has been modified
+//        Choose choose = new Choose(dom, 6, 0);
+//        assertTrue(board.fits(dom));
+//        assertTrue(board.isEfficient(choose));
+//    }
+//
+//    @Test
+//    public void testIsEfficient_InCorner_NotEfficient_MultipleCell() {
+//        Board board = new Board(
+//                "-- -- P1\n" +
+//                        "-- CC A0\n" +
+//                        "-- I1 --");
+//        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.UP_ROT); // rotation has been modified
+//        Choose choose = new Choose(dom, 6, 0);
+//        assertTrue(board.fits(dom));
+//        assertFalse(board.isEfficient(choose));
+//    }
 
 
     // --- findPos ---
@@ -675,20 +675,16 @@ public class BoardTest {
                 new LinkedList<>(), null);
 
         // actual tests
-        String expToString = "-- -- P0 -- --\n" +
-                "-- -- I3 I1 P0\n" +
-                "A0 S1 CC -- --\n" +
-                "-- S1 P0 -- --\n" +
-                "-- -- -- -- --\n";
-        String expToFile = "-- -- P0 -- --\n" +
+        String exp = "-- -- P0 -- --\n" +
                 "-- -- I3 -- --\n" +
                 "A0 S1 CC -- --\n" +
                 "-- S1 P0 -- --\n" +
                 "-- -- -- -- --\n";
 
 
-        assertEquals(expToString, board2.toString());
-        assertEquals(expToFile, board2.toFile(expPlayers[1], currBank, nextBank));
+
+        assertEquals(exp, board2.toString());
+        assertEquals(exp, board2.toFile(expPlayers[1], currBank, nextBank));
 
     }
 

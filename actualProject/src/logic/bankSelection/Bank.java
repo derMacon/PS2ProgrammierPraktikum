@@ -2,9 +2,7 @@ package logic.bankSelection;
 
 import logic.playerState.Player;
 import logic.randomizer.PseudoRandAlwaysHighestVal;
-import logic.randomizer.PseudoRandZeroResidueClass;
 import logic.token.Domino;
-import logic.token.PseudoRandom;
 
 import java.util.Collections;
 import java.util.LinkedList;
@@ -98,18 +96,14 @@ public class Bank {
 
         // Setting up random generator
         this.rand = rand;
-
     }
 
     /**
-     * Generates a Bank from a given String
-     *
-     * @param input input String from which a new Bank will be generated
-     * @return Bank object
+     * Setter for the random object (used in tests)
+     * @param rand random that will be put as the instance's random object
      */
-    public static Bank fromString(String input) {
-        // TODO insert code
-        return null;
+    public void setRand(Random rand) {
+        this.rand = rand;
     }
 
     /**
@@ -376,10 +370,10 @@ public class Bank {
     }
 
     /**
-     * // TODO Javadoc ueberarbeiten
-     * Makes a copyWithoutSelection of the bank, references to the individual entries stay the same
+     * Makes a copy of the bank, references to the individual entries stay the same. Used in game class when the next
+     * round bank entries are copied to the current round bank
      *
-     * @return a copyWithoutSelection of the bank, references to the individual entries stay the
+     * @return a copy of the bank, references to the individual entries stay the
      * same
      */
     public Bank copy() {
@@ -392,23 +386,6 @@ public class Bank {
         return new Bank(copyEntries, this.rand);
     }
 
-    /**
-     * Getter for the domino with the lowest value
-     *
-     * @return domino with the lowest value, null if bank is empty
-     */
-    public Domino getLowOrderDomino() {
-        int i = 0;
-        Domino output = null;
-        while (i < this.bankSize) {
-            if (null != this.entries[i].getDomino()) {
-                output = this.entries[i].getDomino();
-            }
-            i++;
-        }
-        return output;
-    }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -418,8 +395,7 @@ public class Bank {
             return false;
         }
         final Bank other = (Bank) obj;
-        boolean isEqual =
-                null != this.entries && null != other.entries && this.bankSize == other.bankSize;
+        boolean isEqual = null != this.entries && null != other.entries && this.bankSize == other.bankSize;
         int i = 0;
         while (isEqual && i < this.entries.length) {
             isEqual = (null == this.entries[i] && null == other.entries[i])
@@ -439,7 +415,4 @@ public class Bank {
         return rand;
     }
 
-    public void setRand(Random rand) {
-        this.rand = rand;
-    }
 }

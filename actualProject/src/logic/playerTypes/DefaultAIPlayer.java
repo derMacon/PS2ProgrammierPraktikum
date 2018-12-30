@@ -70,11 +70,12 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         Choose overallBestChoose;
         if (bestChoosesForEachPossibleBankSlot.isEmpty()) {
             // no possible dom on bank fits on board
-            overallBestChoose = Choose.genLowOrderChoose(bank);
+            overallBestChoose = genLowOrderChoose(bank);
         } else {
             // at least one domino on the bank fits on the board
-            overallBestChoose = Choose.max(bestChoosesForEachPossibleBankSlot, this.board);
+            overallBestChoose = max(bestChoosesForEachPossibleBankSlot);
         }
+
         // update domino (rotation and position) of the best choose
         bank.updateDomino(overallBestChoose.getIdxOnBank(),
                 overallBestChoose.getDomWithPosAndRot());
@@ -165,7 +166,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
                 for (int i = 0; i < 4; i++) {
                     if (this.board.fits(domino)) {
                         currChoose = genChoose(domino, bankSlotIndex);
-                        maxChoose = Choose.max(maxChoose, currChoose);
+                        maxChoose = max(maxChoose, currChoose);
                     }
                     domino.incRot();
                 }
@@ -174,6 +175,101 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // TODO else branch, what happens if domino doesn't fit anywhere -> maybe disposed ???
         return null == maxChoose ? genChoose(domino.setPos(new Pos(0, 0)), bankSlotIndex) : maxChoose;
     }
+
+    /**
+     * Returns the Choose Object with the most possible points on the board (ignoring the single cell districts it
+     * might create, this must only be dealt with when finding the position of a domino)
+     * @param input
+     * @return
+     */
+    private Choose max(List<Choose> input) {
+        assert !input.isEmpty();
+        Choose out = input.get(0);
+        Choose curr = null;
+        for (int i = 1; i < input.size(); i++) {
+            curr = input.get(i);
+            if(out.getPotentialPointsOnBoard() < curr.getPotentialPointsOnBoard()) {
+                out = curr;
+            }
+        }
+        return out;
+    }
+
+    /**
+     * Return the Choose object with the most possible points on the board. At a tie the one with the least single
+     * tile districts will be returned.
+     * @param fstChoose
+     * @param sndChoose
+     * @return
+     */
+    private Choose max(Choose fstChoose, Choose sndChoose) {
+        if (null == fstChoose) {
+            return sndChoose;
+        }
+        if (null == sndChoose) {
+            return fstChoose;
+        }
+        if (fstChoose.getPotentialPointsOnBoard() > sndChoose.getPotentialPointsOnBoard()) {
+            return fstChoose;
+        } else if (fstChoose.getPotentialPointsOnBoard() < sndChoose.getPotentialPointsOnBoard()) {
+            return sndChoose;
+        } else {
+            // tie
+            int fstSingleCellCount = countSingleCells(fstChoose);
+            int sndSingleCellCount = countSingleCells(sndChoose);
+
+            if (fstSingleCellCount < sndSingleCellCount) {
+                return fstChoose;
+            } else if (fstSingleCellCount > sndSingleCellCount) {
+                return sndChoose;
+            } else {
+                return fstChoose.getDomWithPosAndRot().compareTo(sndChoose.getDomWithPosAndRot()) <= 0 ?
+                        fstChoose : sndChoose;
+            }
+        }
+    }
+
+    /**
+     * Counts how many single tile districts there are on the board after the given choose object was put in the
+     * corresponding district
+     * @param choose
+     * @return
+     */
+    private int countSingleCells(Choose choose) {
+        assert null != choose;
+        List<District> temp = updatedDistricts(this.districts, choose.getDomWithPosAndRot());
+        int out = 0;
+        for(District currDistrict : temp) {
+            if(currDistrict.getTilePositions().size() == 1) {
+                out++;
+            }
+        }
+        return out;
+    }
+
+
+    /**
+     * Generates a choose object with the lowest possible domino that is available on the given bank
+     *
+     * @param bank bank from which the lowest domino will be used to generate a new choose object
+     * @return choose object with the lowest possible domino that is available on the given bank
+     */
+    public static Choose genLowOrderChoose(Bank bank) {
+        int idxOnBank = 0;
+        Choose output = null;
+        Domino currDomino;
+        while (idxOnBank < bank.getBankSize() && null == output) {
+            currDomino = bank.getDomino(idxOnBank);
+            if (null != currDomino) {
+                output = new Choose(currDomino, 0, idxOnBank);
+            }
+            idxOnBank++;
+        }
+        return output;
+    }
+
+
+
 
     /**
      * @param domino

@@ -1,7 +1,6 @@
 package logic.playerState;
 
 import logic.bankSelection.Bank;
-import logic.bankSelection.Choose;
 import logic.token.DistrictType;
 import logic.token.Domino;
 import logic.token.Pos;
@@ -341,10 +340,15 @@ public class Board {
      * players selected domino in its cells the moment a player selects the particular domino it is necessary to
      * remove it before displaying it in a file.
      *
-     * @param player
-     * @param currRoundBank
-     * @param nextRoundBank
-     * @return
+     * @param player        player instance to which the board belongs, used as key for the selected domino in the bank
+     * @param currRoundBank bank for the current round which is needed to remove the selected domino from the
+     *                      internal board representation. (This board does not equal the displayed board on the gui
+     *                      because every selected domino is already layed immediately after selection to avoid
+     *                      multiple dominos on one spot. )
+     * @param nextRoundBank Since the selected domino can be on either one of the banks, both banks need to be passed
+     *                      in order to check both of them.
+     * @return a String representation used for the file in which the board does not contain any previous selected
+     * dominos who have not been explicitly put / layed on the board by the player.
      */
     public String toFile(Player player, Bank currRoundBank, Bank nextRoundBank) {
         assert null != player && null != currRoundBank && null != nextRoundBank;
@@ -353,11 +357,10 @@ public class Board {
         } else {
             // find player selected domino from both banks -> null if not found
             Domino playerSelectedDom = currRoundBank.getPlayerSelectedDomino(player);
-            playerSelectedDom = null == playerSelectedDom ?
-                    nextRoundBank.getPlayerSelectedDomino(player) : playerSelectedDom;
+            playerSelectedDom = null == playerSelectedDom ? nextRoundBank.getPlayerSelectedDomino(player)
+                    : playerSelectedDom;
             return new Board(this).remove(playerSelectedDom).toString();
         }
-
     }
 
     /**
@@ -412,73 +415,75 @@ public class Board {
      * @param choose given domino to check board for
      * @return true if no empty cells are generated
      */
-    public boolean isEfficient(Choose choose) {
-        assert null != choose;
-        Domino chooseDom = choose.getDomWithPosAndRot();
-        assert fits(chooseDom);
-        // Generate two lists of positions for the direct neighbors of the given domino which do
-        // NOT contain on of the domino positions
-        Pos fstPos = chooseDom.getFstPos();
-        Pos sndPos = chooseDom.getSndPos();
-        List<Pos> fstPosNeighhors = fstPos.getNeighbours();
-        fstPosNeighhors.remove(sndPos);
-        List<Pos> sndPosNeighhors = sndPos.getNeighbours();
-        sndPosNeighhors.remove(fstPos);
+//    public boolean isEfficient(Choose choose) {
+//        assert null != choose;
+//        Domino chooseDom = choose.getDomWithPosAndRot();
+//        assert fits(chooseDom);
+//        // Generate two lists of positions for the direct neighbors of the given domino which do
+//        // NOT contain on of the domino positions
+//        Pos fstPos = chooseDom.getFstPos();
+//        Pos sndPos = chooseDom.getSndPos();
+//        List<Pos> fstPosNeighhors = fstPos.getNeighbours();
+//        fstPosNeighhors.remove(sndPos);
+//        List<Pos> sndPosNeighhors = sndPos.getNeighbours();
+//        sndPosNeighhors.remove(fstPos);
+//
+//        // Check the specific tiles with the given conditions from the javadoc
+//        SingleTile fstTile = chooseDom.getFstVal();
+//        SingleTile sndTile = chooseDom.getSndVal();
+//        int i = 0;
+//        boolean neighborsNeighborsAreValid;
+//        do {
+//            neighborsNeighborsAreValid =
+//                    isOutOfBoundOrisFilledOrNeighborsAreValid(fstTile, fstPosNeighhors.get(i))
+//                            && isOutOfBoundOrisFilledOrNeighborsAreValid(sndTile, sndPosNeighhors.get(i));
+//
+//            // See journal why this isn't possible
+////            neighborsNeighborsAreValid = checkIfNeighborsAreValid(fstTile, fstPosNeighhors.get(i).getNeighbours())
+////                    && checkIfNeighborsAreValid(sndTile, sndPosNeighhors.get(i).getNeighbours());
+//            i++;
+//        }
+//        // 3 since the other dom pos was deleted earlier on
+//        while (neighborsNeighborsAreValid && i < 3);
+//        return neighborsNeighborsAreValid;
+//    }
 
-        // Check the specific tiles with the given conditions from the javadoc
-        SingleTile fstTile = chooseDom.getFstVal();
-        SingleTile sndTile = chooseDom.getSndVal();
-        int i = 0;
-        boolean neighborsNeighborsAreValid;
-        do {
-            neighborsNeighborsAreValid =
-                    isOutOfBoundOrisFilledOrNeighborsAreValid(fstTile, fstPosNeighhors.get(i))
-                            && isOutOfBoundOrisFilledOrNeighborsAreValid(sndTile, sndPosNeighhors.get(i));
+//    /**
+//     * Checks if
+//     * - pos is out of bound
+//     * - pos is in bound and filled
+//     * - pos is in bound and neighbors math types
+//     *
+//     * @param sTile
+//     * @param pos
+//     * @return
+//     */
+//    private boolean isOutOfBoundOrisFilledOrNeighborsAreValid(SingleTile sTile, Pos pos) {
+//        // TODO delete following lines before final commit - only for debugging
+//        boolean notIsValid = isValidPos(pos);
+//        boolean notisEmpty = (isValidPos(pos) && !isEmpty(pos));
+//        boolean notvalidN = (isValidPos(pos)
+//                && checkIfNeighborsAreValid(sTile, pos.getNeighbours()));
+//        /*
+//            x = in bound
+//            y = empty
+//            z = valid neighbors
+//            x y z output
+//            0 0 0 1 // out of bound
+//            0 0 1 1 // out of bound
+//            0 1 0 1 // out of bound
+//            0 1 1 1 // out of bound
+//            1 0 0 1 // cell filled
+//            1 0 1 1 // cell filled
+//            1 1 0 0 // indirect neighbors don't fit
+//            1 1 1 1 // indirect neighbors fit
+//         */
+//        // TODO put in docu
+//        return !isValidPos(pos) || !isEmpty(pos)
+//                || checkIfNeighborsAreValid(sTile, pos.getNeighbours());
+//    }
 
-            // See journal why this isn't possible
-//            neighborsNeighborsAreValid = checkIfNeighborsAreValid(fstTile, fstPosNeighhors.get(i).getNeighbours())
-//                    && checkIfNeighborsAreValid(sndTile, sndPosNeighhors.get(i).getNeighbours());
-            i++;
-        }
-        // 3 since the other dom pos was deleted earlier on
-        while (neighborsNeighborsAreValid && i < 3);
-        return neighborsNeighborsAreValid;
-    }
-
-    /**
-     * Checks if
-     * - pos is out of bound
-     * - pos is in bound and filled
-     * - pos is in bound and neighbors math types
-     *
-     * @param sTile
-     * @param pos
-     * @return
-     */
-    private boolean isOutOfBoundOrisFilledOrNeighborsAreValid(SingleTile sTile, Pos pos) {
-        // TODO delete following lines before final commit - only for debugging
-        boolean notIsValid = isValidPos(pos);
-        boolean notisEmpty = (isValidPos(pos) && !isEmpty(pos));
-        boolean notvalidN = (isValidPos(pos)
-                && checkIfNeighborsAreValid(sTile, pos.getNeighbours()));
-        /*
-            x = in bound
-            y = empty
-            z = valid neighbors
-            x y z output
-            0 0 0 1 // out of bound
-            0 0 1 1 // out of bound
-            0 1 0 1 // out of bound
-            0 1 1 1 // out of bound
-            1 0 0 1 // cell filled
-            1 0 1 1 // cell filled
-            1 1 0 0 // indirect neighbors don't fit
-            1 1 1 1 // indirect neighbors fit
-         */
-        // TODO put in docu
-        return !isValidPos(pos) || !isEmpty(pos)
-                || checkIfNeighborsAreValid(sTile, pos.getNeighbours());
-    }
+    // --- gui related stuff ---
 
     /**
      * Moves Board to desired position. Returns true if board movement was done successful.
@@ -522,6 +527,13 @@ public class Board {
         return outputBoard;
     }
 
+    /**
+     * Returns the position of a given tile, null if board does not contain it. Mainly used to display Logger message
+     * when moving the board on the gui.
+     *
+     * @param tile tile to search the board for
+     * @return the position of a given tile, null if board does not contain it
+     */
     public Pos findPos(SingleTile tile) {
         assert null != tile;
         Pos output = null;
@@ -535,30 +547,30 @@ public class Board {
         return output;
     }
 
+    /**
+     * Determines if it is possible for a player to move his board to the given direction.
+     *
+     * @param direction direction to check the bound of the board for
+     * @return true if it is possible for the board to move to the given direction.
+     */
     public boolean canMoveBoardToDir(Direction direction) {
-        return horizontalCheckPossibleBoardMove(direction)
-                || verticalCheckPossibleBoardMove(direction);
+        return horizontalCheckPossibleBoardMove(direction) || verticalCheckPossibleBoardMove(direction);
     }
 
+    /**
+     * Check if the board can be moved horizontally in the given direction.
+     *
+     * @param direction direction to check the boundary for
+     * @return true if it is possible to move the board to the given direction
+     */
     private boolean horizontalCheckPossibleBoardMove(Direction direction) {
+        if (direction.ordinal() % 2 != 0) {
+            return false;
+        }
         boolean columnIsEmpty;
         int xIndex;
         // determine which column should be examined
-        if (Direction.LEFT_MOVE == direction) {
-            xIndex = 0;
-        } else if (Direction.RIGHT_MOVE == direction) {
-            xIndex = this.sizeX - 1;
-        } else {
-            return false; // not a vertical direction
-        }
-        // determine which column should be examined
-        if (Direction.LEFT_MOVE == direction) {
-            xIndex = 0;
-        } else if (Direction.RIGHT_MOVE == direction) {
-            xIndex = this.sizeX - 1;
-        } else {
-            return false; // not a vertical direction
-        }
+        xIndex = Direction.LEFT_MOVE == direction ? 0 : this.sizeX - 1;
         // actually examine the generated column
         int y = 0;
         do {
@@ -568,17 +580,20 @@ public class Board {
         return columnIsEmpty;
     }
 
+    /**
+     * Check if the board can be moved vertically in the given direction.
+     *
+     * @param direction direction to check the boundary for
+     * @return true if it is possible to move the board to the given direction
+     */
     private boolean verticalCheckPossibleBoardMove(Direction direction) {
+        if (direction.ordinal() % 2 == 0) {
+            return false;
+        }
         boolean rowIsEmpty;
         int yIndex;
         // determine which row should be examined
-        if (Direction.UP_MOVE == direction) {
-            yIndex = 0;
-        } else if (Direction.DOWN_MOVE == direction) {
-            yIndex = this.sizeY - 1;
-        } else {
-            return false; // not a vertical direction
-        }
+        yIndex = Direction.UP_MOVE == direction ? 0 : this.sizeY - 1;
         // actually examine the generated column
         int x = 0;
         do {
@@ -609,16 +624,5 @@ public class Board {
         }
 
     }
-
-    // TODO maybe isolate movement to avoid redundant code
-//    private Board moveHorizontal(int direction) {
-//
-//        Board outputBoard = new Board(this.sizeX, this.sizeY);
-//        for (int x = 0; x < this.sizeX; x++) {
-//            outputBoard.cells[x] = this.cells[(x + 1) % this.sizeX].clone();
-//        }
-//        return outputBoard;
-//    }
-
 
 }

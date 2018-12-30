@@ -279,10 +279,10 @@ public class DefaultAIPlayerTest {
                 "-- S0 P1\n"
                         + "-- CC O0\n"
                         + "-- A0 A1\n");
-        Tiles mostValuableTiles = Tiles.genTile(A0, S2);
+        Tiles mostValuableTiles = Tiles.genTile(P0, S2);
         Bank nextBank = new Bank(new Entry[]{
-                new Entry(new Domino(Tiles.genTile(P0, S2))),
-                new Entry(new Domino(mostValuableTiles))
+                new Entry(new Domino(mostValuableTiles)),
+                new Entry(new Domino(Tiles.genTile(A0, S2)))
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.UP_ROT);
@@ -296,11 +296,11 @@ public class DefaultAIPlayerTest {
                 "-- S0 P1\n"
                         + "-- CC O0\n"
                         + "-- A0 A1\n");
-        Tiles mostValuableTiles = Tiles.genTile(A0, S2);
+        Tiles mostValuableTiles = Tiles.genTile(P0, S2);
         Bank nextBank = new Bank(new Entry[]{
-                new Entry(new Domino(Tiles.genTile(P0, S2))),
+                new Entry(new Domino(mostValuableTiles)),
                 new Entry(new Domino(Tiles.genTile(O0, I2))),
-                new Entry(new Domino(mostValuableTiles))
+                new Entry(new Domino(Tiles.genTile(A0, S2)))
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.UP_ROT);
@@ -322,6 +322,24 @@ public class DefaultAIPlayerTest {
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.UP_ROT);
+        Domino actualOutput = player.updateDominoPos(selectedDom);
+        assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void testSelectFromBank_TieBetweenTwoDominos_OneWithNoSingleCells() {
+        DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
+                        "-- CC\n"
+                        + "-- P0\n"
+                        + "-- A0\n"
+                        );
+        Tiles mostValuableTiles = Tiles.genTile(P1, H0);
+        Bank nextBank = new Bank(new Entry[]{
+                new Entry(new Domino(mostValuableTiles)),
+                new Entry(new Domino(Tiles.genTile(P1, A0)))
+        }, new Random());
+        Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
+        Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 1), Pos.DOWN_ROT);
         Domino actualOutput = player.updateDominoPos(selectedDom);
         assertEquals(expectedOutput, actualOutput);
     }
