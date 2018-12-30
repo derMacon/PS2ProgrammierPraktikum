@@ -4,17 +4,17 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 import logic.playerTypes.PlayerType;
 
-import java.util.Optional;
-
+/**
+ * Main Class laoding up the gui and starting the game.
+ */
 public class Main extends Application {
 
     // TODO max. / min. Groessen festlegen.
 
+    //<editor-fold defaultstate="collapsed" desc="Alternative loading screen">
     // Loading intro screen
 //    @Override
 //    public void start(Stage introStage) throws Exception{
@@ -24,12 +24,7 @@ public class Main extends Application {
 //        introStage.setScene(new Scene(root));
 //        introStage.show();
 //    }
-//
-
-
-    public static void main(String[] args) {
-        launch(args);
-    }
+    //</editor-fold>
 
     // Normal startup
     @Override
@@ -53,6 +48,10 @@ public class Main extends Application {
 
         // TODO min size
         mainStage.show();
+    }
+
+    public static void main(String[] args) {
+        launch(args);
     }
 
 

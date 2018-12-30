@@ -21,18 +21,18 @@ public class District {
     /**
      * Tile positions of the district members
      */
-    List<Pos> tilePositions;
+    private List<Pos> tilePositions;
 
     /**
      * All SingleTiles of this district
      */
-    List<SingleTile> singleTiles;
+    private List<SingleTile> singleTiles;
 
     /**
      * constructor for this class
      *
-     * @param fstDistrictMember
-     * @param pos
+     * @param fstDistrictMember first tile of this district
+     * @param pos first position of this district
      */
     public District(SingleTile fstDistrictMember, Pos pos) {
         assert null != fstDistrictMember && null != pos;
@@ -57,10 +57,10 @@ public class District {
     }
 
     /**
-     * Used for testing
+     * Cosntructor used for testing
      *
-     * @param singleTiles
-     * @param pos
+     * @param singleTiles list of singleTiles which form the district
+     * @param pos List of positions from the district
      */
     public District(List<SingleTile> singleTiles, List<Pos> pos) {
         assert null != singleTiles && null != pos;
@@ -80,7 +80,7 @@ public class District {
     /**
      * Getter for the list of positions
      *
-     * @return
+     * @return list of positions saved in the district
      */
     public List<Pos> getTilePositions() {
         return this.tilePositions;
@@ -89,7 +89,7 @@ public class District {
     /**
      * Getter for the list of single tiles
      *
-     * @return
+     * @return list of singleTiles saved in the district
      */
     public List<SingleTile> getSingleTiles() {
         return this.singleTiles;
@@ -163,8 +163,8 @@ public class District {
     /**
      * Checks if a given Tiles district type matches the overall district type of the current district
      *
-     * @param tile
-     * @return
+     * @param tile tile to check the district type with
+     * @return true if the given tile type matches with the district type
      */
     private boolean matchingDistrictTypes(SingleTile tile) {
         return tile.getDistrictType() == this.singleTiles.get(0).getDistrictType();
@@ -187,7 +187,7 @@ public class District {
     }
 
     /**
-     * TODO Mainly used for testing, maybe consider to delete this method
+     * Mainly used for testing, checks if a given object equals this district
      *
      * @param obj other object to examine
      * @return true if both districts hold the same information
@@ -199,15 +199,9 @@ public class District {
             return false;
         }
         District currDistrict = (District) obj;
-
-        // TODO delete next two lines- only for testing
-        boolean sameTiles =
-                null != currDistrict.getSingleTiles() && this.singleTiles.equals(currDistrict.getSingleTiles());
-        boolean samePos =
-                null != currDistrict.getTilePositions() && this.tilePositions.equals(currDistrict.getTilePositions());
-
         return null != currDistrict.getSingleTiles() && this.singleTiles.equals(currDistrict.getSingleTiles())
-                && null != currDistrict.getTilePositions() && this.tilePositions.equals(currDistrict.getTilePositions());
+                && null != currDistrict.getTilePositions()
+                && this.tilePositions.equals(currDistrict.getTilePositions());
 
     }
 
@@ -226,6 +220,10 @@ public class District {
         return new District(copyTiles, copyPos);
     }
 
+    /**
+     * Generates a treeItem which is neeeded when the result of the game should be displayed
+     * @return treeItem containing all the district type and points this district is worth
+     */
     public TreeItem<String> toTreeItem() {
         return new TreeItem<>(genPoints() + " Punkte" + "\t"
                 + this.singleTiles.get(0).getDistrictType());

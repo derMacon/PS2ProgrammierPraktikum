@@ -21,14 +21,15 @@ import java.time.ZonedDateTime;
  */
 public class Logger {
 
+    public static final String depositLoggerFormat = "%s put %s %s to %s";
     public static final String selectionLoggerFormat = "%s chose %s at index %d for %s round";
     public static final String ccDragLoggerFormat = "%s dragged center to %s";
     public static final String dismissalLoggerFormat = "%s did not use %s";
-    public static final String GAME_SEPARATOR = "-----------------------------------\n" +
-            ZonedDateTime.now().toString();
     public static final String ERROR_DELIMITER = "...................................";
     public static final String CURR_ROUND_IDENTIFIER = "current";
     public static final String NEXT_ROUND_IDENTIFIER = "next";
+    public static final String GAME_SEPARATOR = "-----------------------------------\n" +
+            ZonedDateTime.now().toString();
     /**
      * Default file path for the file to which the data will be saved.
      */

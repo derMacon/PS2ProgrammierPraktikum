@@ -1,6 +1,7 @@
 package gui;
 
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.effect.Effect;
@@ -282,14 +283,8 @@ public class JavaFXGUI implements GUIConnector {
         return row;
     }
 
-
     @Override
-    public void updateGrid(int playerOrd, Board board) {
-        // TODO insert code
-    }
-
-    @Override
-    public void updatePlayer(Player player, int ordPlayer) {
+    public void updatePlayer(Player player) {
         // TODO maybe leave ordPlayer out of Parameters since it can be accessed through the
         // player instance
         Board board = player.getBoard();
@@ -297,7 +292,7 @@ public class JavaFXGUI implements GUIConnector {
         int height = board.getSizeY();
         SingleTile[][] cells = board.getCells();
         ImageView[][] imgVwsOfPlayer = player instanceof HumanPlayer ? this.imgVwsPlayerBoard :
-                this.imgWwsAIBoards[ordPlayer - 1];
+                this.imgWwsAIBoards[player.getIdxInPlayerArray() - 1];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 Pos pos = new Pos(x, y);
@@ -537,11 +532,6 @@ public class JavaFXGUI implements GUIConnector {
     }
 
     @Override
-    public void greyOutBank(int ordBank) {
-
-    }
-
-    @Override
     public void deleteDomFromBank(int ordBank, int idx) {
         if (0 == ordBank) {
             this.imgVwsCurrentBank[0][idx].setImage(EMPTY_IMG);
@@ -552,27 +542,18 @@ public class JavaFXGUI implements GUIConnector {
         }
     }
 
-    @Override
-    public void setColorForArrows(int idx, int mode) {
-
-    }
-
-    @Override
-    public void blurBank(int ordBank) {
-
-    }
 
     @Override
     public void showPopUp(String text) {
-        final Stage dialog = new Stage();
-        StackPane pane = new StackPane();
-        Text input = new Text(text);
-        pane.getChildren().add(input);
-        pane.setAlignment(input, javafx.geometry.Pos.CENTER);
-        Scene dialogScene = new Scene(pane, 200, 80);
-        dialog.setScene(dialogScene);
-        dialog.setTitle("Error");
-        dialog.show();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Fehlerhafte Datei");
+        alert.setHeaderText(null);
+        alert.setContentText(text);
+
+        // Get the Stage.
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(FXMLDocumentController.LOGO_ICON_TEXTURE);
+        stage.showAndWait();
     }
 
     @Override

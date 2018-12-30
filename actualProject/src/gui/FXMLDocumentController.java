@@ -35,7 +35,6 @@ import logic.playerState.Board;
 import logic.playerTypes.PlayerType;
 import logic.token.Pos;
 
-import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,7 +43,15 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class to handle the gui gui interaction with the user
+ */
 public class FXMLDocumentController implements Initializable {
+
+    /**
+     * Default number of players
+     */
+    public static final int DEFAULT_PLAYER_COUNT = 4;
 
     //<editor-fold defaultstate="collapsed" desc="Gui textures">
     /**
@@ -108,15 +115,13 @@ public class FXMLDocumentController implements Initializable {
      * Overlay texture for the dispose field
      */
     public static final Image ROTATION_TEXTURE = new Image("gui/textures/RotationIconV1.png");
+
     /**
-     * Default number of players
+     * Overlay texture for the arrow keys
      */
-    public static final int DEFAULT_PLAYER_COUNT = 4;
-    public static Image DOWN_ARROW_TEXTURE = new Image("gui/textures/ArrowDownV2.png");
-    public static Image LEFT_ARROW_TEXTURE = new Image("gui/textures/ArrowLeftV2.png");
-    public static Image UP_ARROW_TEXTURE = new Image("gui/textures/ArrowUpV2.png");
+    public static final Image ARROW_TEXTURE = new Image("gui/textures/ArrowDownV2.png");
+
     //</editor-fold>
-    public static Image RIGHT_ARROW_TEXTURE = new Image("gui/textures/ArrowRightV2.png");
 
 
     // --- Boards ---
@@ -381,6 +386,8 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Setter for the PlayerTypes to pass chosen PlayerTypes from other controller
+     *
+     * @param chosenPlayerTypes array of playertypes which the player players of the game will have
      */
     public void startGame(PlayerType[] chosenPlayerTypes) {
         this.game.startGame(chosenPlayerTypes, this.grdPnHumanBoard.getColumnConstraints().size(),
@@ -413,12 +420,12 @@ public class FXMLDocumentController implements Initializable {
         setPnWithImageAsBackground(this.grdPnSeperator2Texture, SEPERATOR_TEXTURE_VERTICAL);
         setPnWithImageAsBackground(this.grdPnSeperator3Texture, SEPERATOR_TEXTURE_HORIZONTAL);
 
-        this.btnDown.setGraphic(new ImageView(DOWN_ARROW_TEXTURE));
-        this.btnLeft.setGraphic(new ImageView(DOWN_ARROW_TEXTURE));
+        this.btnDown.setGraphic(new ImageView(ARROW_TEXTURE));
+        this.btnLeft.setGraphic(new ImageView(ARROW_TEXTURE));
         this.btnLeft.setRotate(90);
-        this.btnUp.setGraphic(new ImageView(DOWN_ARROW_TEXTURE));
+        this.btnUp.setGraphic(new ImageView(ARROW_TEXTURE));
         this.btnUp.setRotate(180);
-        this.btnRight.setGraphic(new ImageView(DOWN_ARROW_TEXTURE));
+        this.btnRight.setGraphic(new ImageView(ARROW_TEXTURE));
         this.btnRight.setRotate(270);
 
         setPnWithImageAsBackground(this.grdPnOverallBackgroundTexture, BACKGROUND_TEXTURE);
@@ -467,6 +474,10 @@ public class FXMLDocumentController implements Initializable {
 
     // --- Setting up interactive gui ---
 
+    /**
+     * Drag and drop handler used to highlight position of domino while hovering over the board
+     * @param imgVws multidimensional array holding the images of the board
+     */
     private void addDragAndDropHandlers(ImageView[][] imgVws) {
         for (int x = 0; x < imgVws.length; x++) {
             for (int y = 0; y < imgVws[x].length; y++) {
@@ -511,6 +522,7 @@ public class FXMLDocumentController implements Initializable {
      * imageView becomes a child of the gridPane and fills a cell. For proper
      * resizing it is binded to the gridPanes width and height.
      *
+     * @param grdPn parent of the output array
      * @return an array of imageviews added to the gridPane
      */
     private ImageView[][] addImageViewsToGrid(GridPane grdPn) {
@@ -540,6 +552,7 @@ public class FXMLDocumentController implements Initializable {
 
     // --- Menu interaction ---
 
+    // todo loeschen
     /**
      * @param event
      */
@@ -563,17 +576,15 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private void openNewGameInstance(ActionEvent event) throws Exception {
-        if (this.game.equalsStr(Loader.openSavedFile())) {
-            Main main = new Main();
-            main.start(new Stage());
-            // Casts to stage to be able to close the intro stage with code
-            // https://stackoverflow.com/questions/13246211/javafx-how-to-get-stage-from-controller-during
-            // -initialization
-            ((Stage) this.mnBAnchorForStage.getScene().getWindow()).close();
-        } else {
-            System.out.println("Debug 1: Instanz noch nicht abgespeichert");
-            //TODO Dialogfenster mit anschliessendem Filechooser (falls erwuenscht)
+        if (!this.game.equalsStr(Loader.openSavedFile())) {
+            showConfirmationDialog(event);
         }
+        Main main = new Main();
+        main.start(new Stage());
+        // Casts to stage to be able to close the intro stage with code
+        // https://stackoverflow.com/questions/13246211/javafx-how-to-get-stage-from-controller-during
+        // -initialization
+        ((Stage) this.mnBAnchorForStage.getScene().getWindow()).close();
     }
 
     @FXML
@@ -596,17 +607,21 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * https://code.makery.ch/blog/javafx-dialogs-official/
-     * @param event
-     * @return
+     * Show Confirmationdialog window, click on ok to save the file / abbrechen to cancel the whole process
+     *
+     * @param event event which was passed from the calling mathod to make it possible to call the method to save the
+     *             file
      */
     private void showConfirmationDialog(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Verwerfen des Spielstandes");
         alert.setHeaderText("Sie haben den aktuellen Spielstand noch nicht abgespeichert.");
         alert.setContentText("Wollen Sie dies jetzt nachholen?");
-
+        // Get the Stage.
+        Stage stage = (Stage) alert.getDialogPane().getScene().getWindow();
+        stage.getIcons().add(FXMLDocumentController.LOGO_ICON_TEXTURE);
         Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == ButtonType.OK){
+        if (result.get() == ButtonType.OK) {
             mnTmSaveGameAs(event);
         }
     }

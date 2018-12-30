@@ -7829,3 +7829,801 @@ HUMAN tried to move board in an impossible direction
 HUMAN tried to move board in an impossible direction
 ...................................
 
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T02:44:45.593+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T02:44:45.593+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T02:44:45.593+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+-----------------------------------
+2018-12-30T02:44:45.593+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [H0,A1] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T02:44:45.593+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+-----------------------------------
+2018-12-30T02:44:45.593+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T02:44:45.593+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T02:44:45.593+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+-----------------------------------
+2018-12-30T02:47:11.961+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+-----------------------------------
+2018-12-30T02:52:36.677+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,O2] at index 2 for next round
+HUMAN put [I2,P0] horizontal to (3,2)
+
+BOT3 chose [P0,S2] at index 0 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [P0,S2] horizontal to (0,2)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+HUMAN dragged center to (2,3)
+HUMAN dragged center to (2,4)
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+HUMAN dragged center to (1,4)
+HUMAN dragged center to (0,4)
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+HUMAN dragged center to (0,3)
+HUMAN dragged center to (0,2)
+HUMAN dragged center to (0,1)
+HUMAN dragged center to (0,0)
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+HUMAN dragged center to (1,0)
+HUMAN dragged center to (2,0)
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+-----------------------------------
+2018-12-30T02:57:39.911+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T02:57:42.386+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T02:57:42.386+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T02:57:42.386+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+-----------------------------------
+2018-12-30T02:57:42.386+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [H0,A1] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T02:57:42.386+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+-----------------------------------
+2018-12-30T02:57:42.386+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T02:57:42.386+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T02:57:42.386+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+HUMAN dragged center to (2,3)
+HUMAN dragged center to (2,4)
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+HUMAN put [O0,I2] horizontal to (2,3)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [S2,P0] horizontal to (0,1)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN put [P0,O2] vertical to (2,1)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [S1,P0] at index 3 for next round
+BOT2 put [A0,S1] vertical to (0,0)
+
+BOT4 chose [A1,H0] at index 0 for next round
+BOT4 put [P0,O1] horizontal to (0,0)
+-----------------------------------
+2018-12-30T03:17:29.605+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,O2] at index 2 for next round
+HUMAN put [I2,P0] horizontal to (3,2)
+
+BOT3 chose [P0,S2] at index 0 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [P0,S2] horizontal to (0,2)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN put [P0,O2] vertical to (2,0)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [S1,P0] at index 3 for next round
+BOT2 put [A0,S1] vertical to (0,0)
+
+BOT4 chose [A1,H0] at index 0 for next round
+BOT4 put [P0,O1] horizontal to (0,0)
+
+HUMAN chose [A1,H0] at index 1 for next round
+-----------------------------------
+2018-12-30T03:22:01.488+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T03:22:01.488+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "exp_noStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\exp_noStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T03:22:01.488+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+
+HUMAN chose [A1,H0] at index 2 for next round
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+HUMAN put [S0,O1] horizontal to (0,2)
+
+BOT3 chose [H0,A1] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+BOT4 put [A1,H0] horizontal to (0,2)
+BOT3 put [H0,A1] vertical to (0,0)
+-----------------------------------
+2018-12-30T03:24:10.037+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+HUMAN put [O0,I2] horizontal to (3,2)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [S2,P0] horizontal to (0,1)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+User opended the game "exp_noStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\exp_noStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T03:24:10.037+01:00[Europe/Berlin]
+Loading process: Laden erfolgreich
+...................................
+HUMAN tried to make an impossible bank selection
+...................................
+
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [S0,O1] vertical to (2,0)
+
+BOT3 chose [H0,A1] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+BOT4 put [A1,H0] horizontal to (0,2)
+BOT3 put [H0,A1] vertical to (0,0)
+-----------------------------------
+2018-12-30T03:25:01.941+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+User opended the game "exp_noStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\exp_noStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T03:25:01.941+01:00[Europe/Berlin]
+Loading process: Loading successfull
+-----------------------------------
+2018-12-30T03:27:51.158+01:00[Europe/Berlin]
+Started new game
+
+HUMAN dragged center to (2,3)
+HUMAN dragged center to (2,4)
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+...................................
+HUMAN tried to make an impossible bank selection
+...................................
+
+...................................
+HUMAN tried to make an impossible bank selection
+...................................
+
+...................................
+HUMAN tried to make an impossible bank selection
+...................................
+
+HUMAN put [O0,I2] horizontal to (2,3)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [S2,P0] horizontal to (0,1)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+HUMAN dragged center to (3,4)
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+-----------------------------------
+2018-12-30T03:28:39.582+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T03:28:48.097+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T04:03:07.086+01:00[Europe/Berlin]
+Started new game
+
+HUMAN dragged center to (2,3)
+HUMAN dragged center to (2,4)
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+HUMAN dragged center to (1,4)
+HUMAN dragged center to (0,4)
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,O2] at index 2 for next round
+-----------------------------------
+2018-12-30T04:08:08.830+01:00[Europe/Berlin]
+Started new game
+
+HUMAN dragged center to (2,3)
+HUMAN dragged center to (2,4)
+User opended the game "test1MinimalGame.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test1MinimalGame.txt
+
+-----------------------------------
+2018-12-30T04:21:57.488+01:00[Europe/Berlin]
+Started new game
+
+
+User aborted reading process
+
+-----------------------------------
+2018-12-30T04:21:57.488+01:00[Europe/Berlin]
+Loading process: Loading unsuccessful
+-----------------------------------
+2018-12-30T04:23:05.460+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+User aborted reading process
+
+-----------------------------------
+2018-12-30T04:23:05.460+01:00[Europe/Berlin]
+Loading process: Loading unsuccessful
+-----------------------------------
+2018-12-30T04:27:21.756+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+-----------------------------------
+2018-12-30T04:27:21.756+01:00[Europe/Berlin]
+Started new game
+
+
+User aborted reading process
+
+-----------------------------------
+2018-12-30T04:27:21.756+01:00[Europe/Berlin]
+Loading process: Loading unsuccessful
+-----------------------------------
+2018-12-30T04:28:52.156+01:00[Europe/Berlin]
+Started new game
+
+
+User aborted reading process
+
+-----------------------------------
+2018-12-30T04:28:52.156+01:00[Europe/Berlin]
+Loading process: Loading unsuccessful
+-----------------------------------
+2018-12-30T04:29:30.795+01:00[Europe/Berlin]
+Started new game
+
+
+User aborted reading process
+
+-----------------------------------
+2018-12-30T04:29:30.795+01:00[Europe/Berlin]
+Loading process: Loading unsuccessful
+
+User aborted reading process
+
+-----------------------------------
+2018-12-30T04:29:30.795+01:00[Europe/Berlin]
+Loading process: Loading unsuccessful
+-----------------------------------
+2018-12-30T04:30:48.855+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_blankAfterTag3.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_blankAfterTag3.txt
+
+-----------------------------------
+2018-12-30T04:30:48.855+01:00[Europe/Berlin]
+Loading process: Invalide Bezeichner-Syntax
+-----------------------------------
+2018-12-30T04:31:48.010+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_misspelledBoardElem2.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_misspelledBoardElem2.txt
+
+-----------------------------------
+2018-12-30T04:31:48.010+01:00[Europe/Berlin]
+Loading process: Invalide Brett-Syntax
+-----------------------------------
+2018-12-30T04:32:26.893+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_wrongBank_onePlayerHasNotSelectedAnything.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_wrongBank_onePlayerHasNotSelectedAnything.txt
+
+-----------------------------------
+2018-12-30T04:32:26.893+01:00[Europe/Berlin]
+Loading process: Invalide Bank-Syntax
+-----------------------------------
+2018-12-30T04:33:19.080+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "inv_wrongStack_blankAtBeginning.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\testdata\inv_wrongStack_blankAtBeginning.txt
+
+-----------------------------------
+2018-12-30T04:33:19.080+01:00[Europe/Berlin]
+Loading process: Invalide Beutel-Syntax
+-----------------------------------
+2018-12-30T04:38:56.609+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T04:38:56.609+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T04:40:05.637+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T04:40:05.637+01:00[Europe/Berlin]
+Started new game
+

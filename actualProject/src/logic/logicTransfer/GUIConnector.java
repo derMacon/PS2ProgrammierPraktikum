@@ -39,9 +39,8 @@ public interface GUIConnector {
      * updates all data concerning a certain player (board, districts, points, etc.)
      *
      * @param player    player to update gui section for
-     * @param ordPlayer ordinal value of the player
      */
-    void updatePlayer(Player player, int ordPlayer);
+    void updatePlayer(Player player);
 
     /**
      * shows the images corresponding to the two values on grid.
@@ -68,14 +67,6 @@ public interface GUIConnector {
     void showPointsForPlayer(int ordPlayer, int boardPoints);
 
     /**
-     * Updates the board from the given players ordinal value
-     *
-     * @param playerOrd ordinal value of the player
-     * @param board     board to update
-     */
-    void updateGrid(int playerOrd, Board board);
-
-    /**
      * Selects a domino from a given bank with a given index and player
      *
      * @param ordBank   ordinal value of the bank
@@ -83,13 +74,6 @@ public interface GUIConnector {
      * @param ordPlayer ordinal value of the player the domino will be selected with
      */
     void selectDomino(int ordBank, int idxDom, int ordPlayer);
-
-    /**
-     * Greys out a bank with a given ordinal value
-     *
-     * @param ordBank ordinal value of the bank that will be greyed out
-     */
-    void greyOutBank(int ordBank);
 
     /**
      * Deletes a domino from a bank
@@ -100,22 +84,16 @@ public interface GUIConnector {
     void deleteDomFromBank(int ordBank, int idx);
 
     /**
-     * Selects a given mode for the arrow buttons (e.g. red color when it is not possible to move board in a certain
-     * direction)
-     *
-     * @param idx  index of the arrow which will be changed / updated
-     * @param mode mode which the arrow will be changed to (red / green color)
+     * Shows popup window with the given message
+     * @param text masseage to display in the popup window
      */
-    void setColorForArrows(int idx, int mode);
-
-    /**
-     * Blurs a given bank to focus the bank that a player is able to choose
-     */
-    void blurBank(int ordBank);
-
-
     void showPopUp(String text);
 
+    /**
+     * Given Field stays focused but all other fields are blured out to indicate where the human player is supposed
+     * to make his next move
+     * @param saturatedField
+     */
     void blurOtherFields(PossibleField saturatedField);
 
 }

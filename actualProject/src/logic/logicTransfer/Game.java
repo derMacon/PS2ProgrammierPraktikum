@@ -155,7 +155,7 @@ public class Game implements GUI2Game {
     private void loadGuiAfterLoadingFile(PlayerType[] playerTypes, int sizeX, int sizeY) {
         // update boards
         for (int i = 0; i < this.players.length; i++) {
-            this.gui.updatePlayer(this.players[i], i);
+            this.gui.updatePlayer(this.players[i]);
             this.gui.showPointsForPlayer(i, this.players[i].getBoardPoints());
         }
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
@@ -248,7 +248,7 @@ public class Game implements GUI2Game {
         this.players = createNewPlayers(playerTypes, sizeX, sizeY);
 
         for (int i = 0; i < this.players.length; i++) {
-            this.gui.updatePlayer(this.players[i], i);
+            this.gui.updatePlayer(this.players[i]);
         }
 
         // fill stack
@@ -390,7 +390,7 @@ public class Game implements GUI2Game {
             HumanPlayer humanInstance = (HumanPlayer) humanPlayer; // only Human player has a
             // setter for the board -> needs to cast
             humanInstance.updateBoard(humanInstance.getBoard().moveBoard(dir));
-            this.gui.updatePlayer(players[HUMAN_PLAYER_IDX], HUMAN_PLAYER_IDX);
+            this.gui.updatePlayer(players[HUMAN_PLAYER_IDX]);
             Logger.getInstance().printAndSafe(String.format(Logger.ccDragLoggerFormat,
                     humanInstance.getName(), humanInstance.getBoard().findPos(SingleTile.CC)));
         } else {
@@ -600,26 +600,6 @@ public class Game implements GUI2Game {
     @Override
     public String toString() {
         return genString(false);
-//        StringBuilder strbOutput = new StringBuilder();
-//        // all player boards to String
-//        for (Player currPlayer : this.players) {
-//            strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " " + (currPlayer.getIdxInPlayerArray() + 1) +
-// ">\n");
-//            strbOutput.append(currPlayer.getBoard().toString());
-//        }
-//        // all banks to String (current round Bank first)
-//        strbOutput.append("<" + Converter.BANK_IDENTIFIER + ">\n");
-//        strbOutput.append(this.currentRoundBank.toString() + "\n");
-//        strbOutput.append(this.nextRoundBank.toString() + "\n");
-//        // stack to String
-//        strbOutput.append("<" + Converter.STACK_IDENTIFIER + ">\n");
-//        for (int i = 0; i < this.stack.size(); i++) {
-//            strbOutput.append(this.stack.get(i).toFile());
-//            if (i < this.stack.size() - 1) {
-//                strbOutput.append(",");
-//            }
-//        }
-//        return strbOutput.toString();
     }
 
     public String toFile() {

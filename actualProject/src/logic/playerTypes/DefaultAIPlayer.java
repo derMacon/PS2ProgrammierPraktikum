@@ -26,18 +26,47 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      */
     public static final String NAME_PREFIX = "BOT";
 
+    /**
+     * Constructor used in the normal / standard game
+     *
+     * @param gui        gui reference to display changes made by the player
+     * @param idx        index of the player in the player array in the game class
+     * @param boardSizeX width of the board
+     * @param boardSizeY height of the board
+     */
     public DefaultAIPlayer(GUIConnector gui, int idx, int boardSizeX, int boardSizeY) {
         super(gui, idx, boardSizeX, boardSizeY);
     }
 
+    /**
+     * Constructor used for special test cases
+     *
+     * @param gui   gui reference to display changes made by the player
+     * @param idx   index of the player in the player array in the game class
+     * @param board board reference of the player
+     */
     public DefaultAIPlayer(GUIConnector gui, int idx, Board board) {
         super(gui, idx, board);
     }
 
+    /**
+     * Constructor used for the default test cases since the call of the super class constructor with a String
+     * representation of the board automatically generates the districts for the board without any further method
+     * calls required.
+     *
+     * @param gui      gui reference to display changes made by the player
+     * @param idx      index of the player in the player array in the game class
+     * @param strBoard String representation of the players board
+     */
     public DefaultAIPlayer(GUIConnector gui, int idx, String strBoard) {
         super(gui, idx, strBoard);
     }
 
+    /**
+     * Getter for the name (e.g. HUMAN, BOT1, etc.)
+     *
+     * @return The String representation of the player's name.
+     */
     public String getName() {
         return NAME_PREFIX + (this.idxInPlayerArray + 1);
     }
@@ -152,7 +181,9 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * Iterates through board -> sets copyWithoutSelection on every pos -> gets
      * the board points -> find max
      *
-     * @param domino domino to check
+     * @param domino        domino to check
+     * @param bankSlotIndex index of the bank slot from which the domino was taken, needed to generate a valid Choose
+     *                      object
      * @return domino with a modified pos to match the most valuable spot on the
      * board. If the domino does not fit anywhere the pos will be set to null
      * and the points will be set to 0
@@ -163,7 +194,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         for (int y = 0; y < this.board.getSizeY(); y++) {
             for (int x = 0; x < this.board.getSizeX(); x++) {
                 domino.setPos(new Pos(x, y));
-                for (int i = 0; i < 4; i++) {
+                for (int i = 0; i < Board.Direction.values().length; i++) {
                     if (this.board.fits(domino)) {
                         currChoose = genChoose(domino, bankSlotIndex);
                         maxChoose = max(maxChoose, currChoose);
@@ -179,8 +210,10 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     /**
      * Returns the Choose Object with the most possible points on the board (ignoring the single cell districts it
      * might create, this must only be dealt with when finding the position of a domino)
-     * @param input
-     * @return
+     *
+     * @param input input list to evaluate
+     * @return the Choose Object with the most possible points on the board (ignoring the single cell districts it
+     * might create, this must only be dealt with when finding the position of a domino)
      */
     private Choose max(List<Choose> input) {
         assert !input.isEmpty();
@@ -188,7 +221,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         Choose curr = null;
         for (int i = 1; i < input.size(); i++) {
             curr = input.get(i);
-            if(out.getPotentialPointsOnBoard() < curr.getPotentialPointsOnBoard()) {
+            if (out.getPotentialPointsOnBoard() < curr.getPotentialPointsOnBoard()) {
                 out = curr;
             }
         }
@@ -198,9 +231,11 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
     /**
      * Return the Choose object with the most possible points on the board. At a tie the one with the least single
      * tile districts will be returned.
-     * @param fstChoose
-     * @param sndChoose
-     * @return
+     *
+     * @param fstChoose first choose object to evaluate
+     * @param sndChoose second choose object to evaluate
+     * @return the Choose object with the most possible points on the board. At a tie the one with the least single
+     * tile districts will be returned.
      */
     private Choose max(Choose fstChoose, Choose sndChoose) {
         if (null == fstChoose) {
@@ -223,24 +258,26 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
             } else if (fstSingleCellCount > sndSingleCellCount) {
                 return sndChoose;
             } else {
-                return fstChoose.getDomWithPosAndRot().compareTo(sndChoose.getDomWithPosAndRot()) <= 0 ?
-                        fstChoose : sndChoose;
+                return fstChoose.getDomWithPosAndRot().compareTo(sndChoose.getDomWithPosAndRot()) <= 0 ? fstChoose
+                        : sndChoose;
             }
         }
     }
 
     /**
      * Counts how many single tile districts there are on the board after the given choose object was put in the
-     * corresponding district
-     * @param choose
-     * @return
+     * corresponding district. Only temporary, the districts of the player will not be effected since the Method
+     * updateDistricts(...) internally manages a deepcopy of the given reference.
+     *
+     * @param choose choose object containing the domino with which the counting process will be computed
+     * @return number of single tile districts after the choose object was added to the district representation
      */
     private int countSingleCells(Choose choose) {
         assert null != choose;
         List<District> temp = updatedDistricts(this.districts, choose.getDomWithPosAndRot());
         int out = 0;
-        for(District currDistrict : temp) {
-            if(currDistrict.getTilePositions().size() == 1) {
+        for (District currDistrict : temp) {
+            if (currDistrict.getTilePositions().size() == 1) {
                 out++;
             }
         }
@@ -268,26 +305,17 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         return output;
     }
 
-
-
-
     /**
-     * @param domino
-     * @return
+     * Generates a choose object from the given domino with its bank slot index
+     *
+     * @param domino domino to generate the choose object with
+     * @param bankSlotIndex index of the domino on the bank from which it was taken
+     * @return new choose object containing the given domino with its bank slot index and the potential number of
+     * points on the field
      */
     private Choose genChoose(Domino domino, int bankSlotIndex) {
         List<District> updatedDeepCopy = updatedDistricts(this.districts, domino);
         return new Choose(domino.copy(), genDistrictPoints(updatedDeepCopy), bankSlotIndex);
-    }
-
-    @Override
-    public Domino updateDominoPos(Domino domino) {
-        // Pos and rot already determined when considering the option to choose
-        return domino; // Method is needed for other Bot types...
-    }
-
-    private Domino trySpecificDomino(Domino domino) {
-        return null;
     }
 
 }

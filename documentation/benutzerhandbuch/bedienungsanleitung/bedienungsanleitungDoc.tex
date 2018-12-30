@@ -49,8 +49,14 @@ Um den Domino zu verwerfen reicht es per Mausklick einmal auf das Muelleimer-Sym
 
 \paragraph{Menueinteraktion}
 \subparagraph{Starten bzw. Schliessen}
-Um ein neues Spiel zu starten waehlt der Benutzer den Menuepunkt "\emph{Neues Spiel}". Alternativ ist dies auch per Tastenkombination \verb|strg + N| moeglich. Um das geoffnete Fenster zu schliessen und das bestehende Spiel zu verwerfen waehlt der Benutzer den Reiter \emph{Beenden} (Tastenkombination \verb|strg + E|). Falls der Benutzer das Spiel nicht vorher gespeichert hat erscheint hierbei ein weiteres Fenster welches den Benutzer darauf hinweist und ihm die Moeglichkeit gibt dies nachzuholen (siehe folgenden Abschnitt).
-\todo{Muss noch implementiert werden}
+Um ein neues Spiel zu starten waehlt der Benutzer den Menuepunkt "\emph{Neues Spiel}". Alternativ ist dies auch per Tastenkombination \verb|strg + N| moeglich. Um das geoffnete Fenster zu schliessen und das bestehende Spiel zu verwerfen waehlt der Benutzer den Reiter \emph{Beenden} (Tastenkombination \verb|strg + E|). Falls der Benutzer das Spiel nicht vorher gespeichert hat erscheint hierbei ein weiteres Fenster welches den Benutzer darauf hinweist und ihm die Moeglichkeit gibt dies nachzuholen (siehe folgenden Abschnitt). Moechte er fortfahren ohne den aktuellen Spielstand muss der Button mit der Aufschrift \emph{Abbrechen} betaetigt werden (siehe Abbildung \ref{fig:nachtrSpeichern}). 
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.6\linewidth]{screenshots/screenshot_NachtraeglichesAbspeichern}
+	\caption{Nachtraegliches Abspeichern}
+	\label{fig:nachtrSpeichern}
+\end{figure}
 
 \subparagraph{Spielstand abspeichern}
 Um ein Spielstand zu speichern gibt es zwei Reiter mit folgenden Moeglichkeiten.
@@ -65,8 +71,7 @@ Der Reiter \emph{Speichern} ermoeglicht es einen bereits gespeicherten Spielstan
 \subparagraph{Oeffnen}
 Aehnlich wie beim Reiter \emph{Speichern unter} wird hier ein Filechooser geoeffnet. Dieser wird jedoch dazu verwendet eine Datei auszuwaehlen um aus dieser einen Spielstand zu lesen. Falls die Datei nicht der geforderten Syntax entspricht , erscheint eine Fehlermeldung in Form eines Popup-Fensters mit dem einer groben Fehlermeldung wo der Fehler liegt(Siehe ...) 
 \todo{Screenshots der Fehlermeldungen und Referenz auf Erklaerung einfuegen}
-. Falls der Benutzer vor dem Oeffnen eines neuen Spielstands den alten nicht gespeichert hat wird er aehnlich wie beim Beenden darauf hingewiesen und es wird per Filechooser eine Moeglichkeit bereitgestellt dies nachzuholen. 
-\todo{Muss noch implementiert werden}
+. Falls der Benutzer vor dem Oeffnen eines neuen Spielstands den alten nicht gespeichert hat wird er aehnlich wie beim Beenden darauf hingewiesen und es wird per Filechooser eine Moeglichkeit bereitgestellt dies nachzuholen.
 
 \begin{figure}
 	\centering
@@ -124,7 +129,7 @@ Generell gilt es zwischen einem standardmaessig ausgefuehrten Spiel und einem ei
 \subparagraph{Spielbeginn}
 \emph{Ein Spielbeutel für alle Spieler enthält 48 Spielkarten in der Größe von zwei Zellen, die auf ihren zwei Hälften jeweils einen (evtl. auch den gleichen) Stadtteiltyp anzeigen. Die Stadtteiltypen unterscheiden sich durch Bild und Hintergrundfarbe voneinander. Jede Spielkarte besitzt eine definierte Wertigkeit. Auf manchen Stadtteilen sind zusätzlich ein bis drei Prestigesymbole abgebildet. Jeder Spieler besitzt ein eigenes 5*5-Zellen großes Spielfeld und legt zu Beginn sein Stadtzentrum mittig ab}
 \cite{aufgabenstellung}. 
-Dies wird bereits vom Spiel uebernommen, sodass der erste Spielzug des Benutzers das initiales Selektieren vom ersten Auswahlbereich (hier mit \emph{Aktuelle Runde} gekennzeichnet) darstellt. Um einen Domino selektieren zu koennen \emph{ werden vier Karten gezogen und im ersten Auswahlbereich angezeigt. Dabei wird die niederwertigste Karte zuoberst, die höchstwertigste zuunterst einsortiert. Der erste Spieler markiert die Karte im Auswahlbereich, die er gerne nehmen würde, die anderen Spieler treffen ihre Auswahl der Reihe nach ebenfalls und markieren die jeweils gewünschte Karte. Wurden alle Karten markiert, dann werden wieder vier Karten gezogen und ebenso sortiert im zweiten Auswahlbereich angezeigt.} 
+(siehe Abbildung \ref{fig:spielbeginnGui}). Dies wird bereits vom Spiel uebernommen, sodass der erste Spielzug des Benutzers das initiales Selektieren vom ersten Auswahlbereich (hier mit \emph{Aktuelle Runde} gekennzeichnet) darstellt. Um einen Domino selektieren zu koennen \emph{ werden vier Karten gezogen und im ersten Auswahlbereich angezeigt. Dabei wird die niederwertigste Karte zuoberst, die höchstwertigste zuunterst einsortiert. Der erste Spieler markiert die Karte im Auswahlbereich, die er gerne nehmen würde, die anderen Spieler treffen ihre Auswahl der Reihe nach ebenfalls und markieren die jeweils gewünschte Karte. Wurden alle Karten markiert, dann werden wieder vier Karten gezogen und ebenso sortiert im zweiten Auswahlbereich angezeigt.} 
 \cite{aufgabenstellung}
 (Siehe Abbildung \ref{fig:initialesSelektierenOben})
 

@@ -48,7 +48,7 @@ public class Converter {
     /**
      * String message for displaying a successful read from the given data
      */
-    public static final String SUCCESSFUL_READ_MESSAGE = "Laden erfolgreich";
+    public static final String SUCCESSFUL_READ_MESSAGE = "Loading successful";
     public static final String TAG_OPENER = "<";
     public static final String TAG_CLOSER = ">";
     private static final int NOT_INITIALIZED = -1;
@@ -79,22 +79,19 @@ public class Converter {
      */
     private List<Domino> stack;
 
-    // stack of possible dominos, only for internal purposes
-    // -> no gettter, every method has to delete the used dominos
-    private List<Domino> possibleDominos = Domino.fill(new LinkedList<Domino>());
-
-    private int boardScale;
 
     /**
      * Reads string input and converts it into the appropriate game instance
      * fields
      *
+     * @param gui gui implementation to display a players action. Necessary in order to instanciate new Players since
+     *           bots are required to hold a field containing a implementation of the gui interface in order to show
+     *            their moves without cooperating with the main game class.
      * @param input input to convert
      * @return String message containing the error messages,
      * SUCCESSFUL_READ_MESSAGE if reading String was successful
      */
     public String readStr(GUIConnector gui, String input) {
-        // TODO Fehlerbehandlung erweitern
         try {
 
             if (input == null || input.length() == 0) {
@@ -164,16 +161,7 @@ public class Converter {
             return null;
         }
         String modifiedInput = input.replaceAll(TAG_CLOSER + "(?s).*", "");
-        // Only boards with comment on who own it (regex: ".*" meaning take all
-//        if (modifiedInput.matches(BOARD_IDENTIFIER + ".*" + TAG_CLOSER + ".*")) {
-//            modifiedInput = BOARD_IDENTIFIER;
-//        } else if (modifiedInput.matches(BANK_IDENTIFIER + TAG_CLOSER + ".*")) {
-//            modifiedInput = BANK_IDENTIFIER;
-//        } else if (modifiedInput.matches(STACK_IDENTIFIER + TAG_CLOSER + ".*")) {
-//            modifiedInput = STACK_IDENTIFIER;
-//        } else {
-//            throw new WrongTagException(input.replaceAll("\n.*", ""));
-//        }
+
         if (modifiedInput.matches(BOARD_IDENTIFIER + ".*")) {
             return BOARD_IDENTIFIER;
         }

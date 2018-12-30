@@ -48,8 +48,7 @@ public class DefaultAIPlayerTest {
         Domino selectedDom =
                 player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(domTiles, new Pos(3, 0), 0);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -62,8 +61,7 @@ public class DefaultAIPlayerTest {
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(domTiles, new Pos(3, 2), 0);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -76,8 +74,7 @@ public class DefaultAIPlayerTest {
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(domTiles, new Pos(4, 0), 2);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -90,8 +87,7 @@ public class DefaultAIPlayerTest {
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(domTiles, new Pos(1, 0), 0);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -104,8 +100,7 @@ public class DefaultAIPlayerTest {
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(domTiles, new Pos(1, 2), 0);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -118,8 +113,7 @@ public class DefaultAIPlayerTest {
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(domTiles, new Pos(0, 1), 0);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -131,8 +125,7 @@ public class DefaultAIPlayerTest {
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(domTiles, new Pos(3, 0), 0);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -145,8 +138,7 @@ public class DefaultAIPlayerTest {
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(domTiles, new Pos(0, 1), 2);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -159,8 +151,7 @@ public class DefaultAIPlayerTest {
         Bank nextBank = new Bank(new Entry[]{new Entry(new Domino(domTiles))}, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(domTiles, new Pos(1, 2), 2);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
 
@@ -180,8 +171,7 @@ public class DefaultAIPlayerTest {
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.LEFT_ROT);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
 
@@ -199,8 +189,7 @@ public class DefaultAIPlayerTest {
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 1), Pos.UP_ROT);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -216,8 +205,7 @@ public class DefaultAIPlayerTest {
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.UP_ROT);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -233,8 +221,7 @@ public class DefaultAIPlayerTest {
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.DOWN_ROT);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     // tests for tie
@@ -252,8 +239,7 @@ public class DefaultAIPlayerTest {
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.DOWN_ROT);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -269,8 +255,7 @@ public class DefaultAIPlayerTest {
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.UP_ROT);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -286,8 +271,7 @@ public class DefaultAIPlayerTest {
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.UP_ROT);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -304,8 +288,7 @@ public class DefaultAIPlayerTest {
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.UP_ROT);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -322,8 +305,7 @@ public class DefaultAIPlayerTest {
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 0), Pos.UP_ROT);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     @Test
@@ -340,8 +322,7 @@ public class DefaultAIPlayerTest {
         }, new Random());
         Domino selectedDom = player.selectFromBank(nextBank, 1, false).getPlayerSelectedDomino(player);
         Domino expectedOutput = new Domino(mostValuableTiles, new Pos(0, 1), Pos.DOWN_ROT);
-        Domino actualOutput = player.updateDominoPos(selectedDom);
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedOutput, selectedDom);
     }
 
     // TODO more tests for tie

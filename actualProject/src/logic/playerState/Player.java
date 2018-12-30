@@ -10,6 +10,10 @@ import logic.token.SingleTile;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Player class the unites the human player with the bots since both variations need to have a board, districts and a
+ * gui reference.
+ */
 public abstract class Player implements Comparable {
 
     /**
@@ -17,21 +21,23 @@ public abstract class Player implements Comparable {
      * that it is possible to display with its simple array index.
      */
     protected final int idxInPlayerArray;
-    private final String selectionLoggerFormat = "%s chose %s at index %d for %s round";
-    private final String depositLoggerFormat = "%s put %s %s to %s";
+
     /**
      * Board of the player
      */
     protected Board board;
+
     /**
      * List of districts containing the game statistics
      */
     protected List<District> districts;
+
     /**
-     * Gui reference to show
+     * gui implementation to display a players action. Necessary in order to instanciate new Players since
+     * bots are required to hold a field containing a implementation of the gui interface in order
+     * to show their moves without cooperating with the main game class.
      */
     protected GUIConnector gui;
-
 
     /**
      * Constructor setting up the gui
@@ -80,14 +86,10 @@ public abstract class Player implements Comparable {
         return this.board;
     }
 
-    public void setBoard(Board board) {
-        this.board = board;
-    }
-
     /**
      * Getter for the player index
      *
-     * @return
+     * @return index of the player in the game's player array
      */
     public int getIdxInPlayerArray() {
         return this.idxInPlayerArray;
@@ -106,7 +108,7 @@ public abstract class Player implements Comparable {
      * Generates the sum of points the districts represent
      * //TODO delete this method -> use genDistrictPoints
      *
-     * @return
+     * @return the sum of points the districts represent
      */
     public int getBoardPoints() {
         if (this.districts == null || this.districts.isEmpty()) {
@@ -128,9 +130,9 @@ public abstract class Player implements Comparable {
     }
 
     /**
-     * // TOOD Javadoc
+     * Generates the sum of all district points from the player
      *
-     * @return
+     * @return the sum of all district points from the player
      */
     public int genAllDistrictPoints() {
         return genDistrictPoints(genDistrictsFromBoard(this.board));
@@ -219,7 +221,7 @@ public abstract class Player implements Comparable {
             this.gui.showPointsForPlayer(this.idxInPlayerArray, getBoardPoints());
 
             // update logger
-            Logger.getInstance().printAndSafe(String.format(this.depositLoggerFormat, getName(),
+            Logger.getInstance().printAndSafe(String.format(Logger.depositLoggerFormat, getName(),
                     playerSelectedDomino.toString(),
                     playerSelectedDomino.getStrAllignment(),
                     playerSelectedDomino.getFstPos().toString())
