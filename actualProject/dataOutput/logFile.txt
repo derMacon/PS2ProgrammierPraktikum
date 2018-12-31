@@ -8627,3 +8627,1267 @@ Started new game
 2018-12-30T04:40:05.637+01:00[Europe/Berlin]
 Started new game
 
+-----------------------------------
+2018-12-30T22:50:52.860+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+-----------------------------------
+2018-12-30T22:50:52.860+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [A0,S2] at index 1 for next round
+HUMAN put [O0,I2] horizontal to (3,2)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [S2,P0] horizontal to (0,1)
+User opended the game "exp_noStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\exp_noStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T22:50:52.860+01:00[Europe/Berlin]
+Loading process: Loading successful
+User opended the game "test1MinimalGame.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test1MinimalGame.txt
+
+-----------------------------------
+2018-12-30T22:53:27.694+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T22:53:41.447+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "test1MinimalGame.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test1MinimalGame.txt
+
+-----------------------------------
+2018-12-30T22:55:11.835+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "test1MinimalGame.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test1MinimalGame.txt
+
+-----------------------------------
+2018-12-30T22:56:01.855+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T22:56:07.125+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "test1MinimalGame.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test1MinimalGame.txt
+
+-----------------------------------
+2018-12-30T22:57:22.890+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "test1MinimalGame.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test1MinimalGame.txt
+
+-----------------------------------
+2018-12-30T22:59:24.066+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "test1MinimalGame.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test1MinimalGame.txt
+
+-----------------------------------
+2018-12-30T23:00:54.285+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "test1MinimalGame.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test1MinimalGame.txt
+
+-----------------------------------
+2018-12-30T23:00:54.285+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-30T23:48:48.058+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T23:48:48.058+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+-----------------------------------
+2018-12-30T23:49:03.045+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T23:49:03.045+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+-----------------------------------
+2018-12-30T23:49:26.984+01:00[Europe/Berlin]
+Started new game
+
+HUMAN dragged center to (2,3)
+HUMAN dragged center to (2,4)
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+...................................
+HUMAN tried to move board in an impossible direction
+...................................
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [A0,S2] at index 1 for next round
+HUMAN put [I2,P0] horizontal to (3,4)
+
+BOT3 chose [P0,S2] at index 0 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [P0,S2] horizontal to (0,2)
+-----------------------------------
+2018-12-30T23:50:01.455+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T23:50:01.455+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+-----------------------------------
+2018-12-30T23:51:15.663+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T23:51:15.663+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T23:51:26.068+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T23:51:26.068+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T23:51:26.068+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-30T23:51:26.068+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [H0,A1] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T23:51:26.068+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-30T23:51:26.068+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T23:51:26.068+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T23:51:26.068+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T23:52:48.590+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T23:52:48.590+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-30T23:52:48.590+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-30T23:52:48.590+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [H0,A1] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T23:52:48.590+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-30T23:52:48.590+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-30T23:52:48.590+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-30T23:52:48.590+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+-----------------------------------
+2018-12-31T00:02:01.423+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-31T02:25:31.700+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+HUMAN put [O0,I2] horizontal to (3,2)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [S2,P0] horizontal to (0,1)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+User opended the game "test3NoStack.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\expected_results\test3NoStack.txt
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T02:25:31.700+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [S0,O1] horizontal to (0,2)
+
+BOT3 chose [H0,A1] at index 1 for next round
+BOT3 put [I1,P0] horizontal to (3,2)
+BOT4 put [A1,H0] horizontal to (0,3)
+BOT3 put [H0,A1] vertical to (0,0)
+HUMAN put [A1,H0] vertical to (2,0)
+BOT2 put [S1,P0] horizontal to (1,4)
+round ended
+Ordered Ranking:
+0. Spot	Player 0 Result{points=16}
+1. Spot	Player 0 Result{points=12}
+2. Spot	Player 0 Result{points=8}
+3. Spot	Player 0 Result{points=6}
+
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-31T02:26:01.102+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-31T02:26:01.102+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-31T02:26:01.102+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-31T02:26:01.102+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [H0,A1] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T02:26:01.102+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-31T02:26:01.102+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-31T02:26:01.102+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T02:26:01.102+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+-----------------------------------
+2018-12-31T02:27:32.147+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN put [I2,P0] horizontal to (3,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+HUMAN chose [I1,P0] at index 3 for next round
+HUMAN put [P0,S2] vertical to (4,3)
+
+BOT3 chose [P0,O1] at index 1 for next round
+BOT3 put [A0,S2] horizontal to (0,2)
+
+BOT4 chose [O1,S0] at index 2 for next round
+BOT4 put [P0,O2] horizontal to (0,0)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [S1,P0] at index 3 for next round
+BOT2 put [A0,S1] vertical to (0,0)
+
+BOT3 chose [A1,H0] at index 0 for next round
+BOT3 put [P0,O1] horizontal to (0,0)
+
+BOT4 chose [A1,H0] at index 1 for next round
+BOT4 put [O1,S0] horizontal to (3,0)
+
+HUMAN chose [A1,H0] at index 2 for next round
+HUMAN put [I1,P0] horizontal to (3,1)
+
+BOT3 chose [H1,S0] at index 0 for next round
+BOT3 put [A1,H0] vertical to (0,3)
+
+BOT4 chose [A1,P0] at index 1 for next round
+BOT4 put [A1,H0] horizontal to (0,2)
+
+HUMAN chose [A1,P0] at index 2 for next round
+HUMAN put [H0,A1] horizontal to (1,3)
+
+BOT2 chose [A1,H0] at index 3 for next round
+BOT2 put [S1,P0] vertical to (0,3)
+
+BOT3 chose [H1,P0] at index 0 for next round
+BOT3 put [H1,S0] horizontal to (3,2)
+
+BOT4 chose [A0,H1] at index 3 for next round
+BOT4 put [A1,P0] horizontal to (3,2)
+
+HUMAN chose [H1,P0] at index 1 for next round
+HUMAN dragged center to (1,2)
+HUMAN put [A1,P0] vertical to (4,0)
+
+BOT2 chose [P0,H1] at index 2 for next round
+BOT2 put [A1,H0] horizontal to (3,2)
+
+BOT3 chose [P0,H1] at index 3 for next round
+BOT3 put [H1,P0] horizontal to (1,4)
+
+HUMAN chose [P1,S0] at index 0 for next round
+HUMAN put [P0,H1] vertical to (0,1)
+
+BOT2 chose [P1,O0] at index 1 for next round
+BOT2 put [P0,H1] horizontal to (3,0)
+
+BOT4 chose [P1,I0] at index 2 for next round
+BOT4 put [A0,H1] horizontal to (0,3)
+
+HUMAN chose [H0,A0] at index 0 for next round
+HUMAN put [P1,S0] vertical to (4,3)
+
+BOT2 chose [H0,P1] at index 2 for next round
+BOT2 put [P1,O0] horizontal to (1,4)
+
+BOT4 chose [H0,S0] at index 1 for next round
+BOT4 put [P1,I0] vertical to (4,3)
+
+BOT3 chose [P1,A0] at index 3 for next round
+BOT3 put [P0,H1] horizontal to (2,3)
+
+HUMAN chose [P0,H0] at index 0 for next round
+HUMAN put [H0,A0] horizontal to (0,4)
+
+BOT4 chose [P0,O0] at index 3 for next round
+BOT4 put [H0,S0] vertical to (2,3)
+
+BOT2 chose [P0,A0] at index 1 for next round
+BOT2 put [H0,P1] vertical to (4,3)
+
+BOT3 chose [P0,S0] at index 2 for next round
+BOT3 put [P1,A0] horizontal to (0,0)
+
+HUMAN chose [A0,A0] at index 0 for next round
+HUMAN did not use [P0,H0]
+
+BOT2 chose [S0,S0] at index 1 for next round
+BOT2 put [P0,A0] horizontal to (0,0)
+
+BOT3 chose [O0,O0] at index 3 for next round
+BOT3 put [P0,S0] vertical to (4,0)
+
+BOT4 chose [S0,S0] at index 2 for next round
+BOT4 put [P0,O0] horizontal to (0,0)
+
+HUMAN chose [H0,H0] at index 0 for next round
+HUMAN did not use [A0,A0]
+
+BOT2 chose [H0,H0] at index 1 for next round
+BOT2 put [S0,S0] horizontal to (0,0)
+
+BOT4 chose [A0,A0] at index 2 for next round
+BOT4 put [S0,S0] horizontal to (0,0)
+
+BOT3 chose [A0,A0] at index 3 for next round
+BOT3 put [O0,O0] horizontal to (0,0)
+
+HUMAN chose [P0,P0] at index 0 for next round
+HUMAN did not use [H0,H0]
+
+BOT2 chose [P0,P0] at index 1 for next round
+BOT2 put [H0,H0] horizontal to (0,0)
+
+BOT4 chose [H0,H0] at index 2 for next round
+BOT4 put [A0,A0] horizontal to (0,0)
+
+BOT3 chose [H0,H0] at index 3 for next round
+BOT3 put [A0,A0] horizontal to (0,0)
+...................................HUMAN tried to make an impossible bank selection
+...................................
+
+...................................HUMAN tried to make an impossible bank selection
+...................................
+
+...................................HUMAN tried to make an impossible bank selection
+...................................
+
+User saved the game as "out.txt" to F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+-----------------------------------
+2018-12-31T02:27:32.147+01:00[Europe/Berlin]
+Started new game
+
+...................................
+User aborted the saving process
+...................................
+
+User opended the game "out.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+
+BOT2 chose [P0,P0] at index 0 for current round
+
+BOT3 chose [H0,H0] at index 0 for current round
+
+BOT4 chose [H0,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T02:27:32.147+01:00[Europe/Berlin]
+Loading process: Loading successful
+...................................
+HUMAN tried to select a domino from the current bank
+...................................
+
+-----------------------------------
+2018-12-31T02:31:59.686+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "out.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+-----------------------------------
+2018-12-31T02:36:39.784+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "out.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+
+BOT2 chose [P0,P0] at index 0 for current round
+
+BOT3 chose [H0,H0] at index 0 for current round
+
+BOT4 chose [H0,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T02:36:39.784+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-31T02:37:30.720+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "out.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+
+BOT2 chose [P0,P0] at index 0 for current round
+
+BOT3 chose [H0,H0] at index 0 for current round
+
+BOT4 chose [H0,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T02:37:30.720+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-31T02:37:49.972+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "out.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+
+BOT2 chose [P0,P0] at index 0 for current round
+
+BOT3 chose [H0,H0] at index 0 for current round
+
+BOT4 chose [H0,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T02:37:49.972+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-31T02:38:47.232+01:00[Europe/Berlin]
+Started new game
+
+User opended the game "out.txt" from F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\test\fileTests\results\out.txt
+
+
+BOT2 chose [P0,P0] at index 0 for current round
+
+BOT3 chose [H0,H0] at index 0 for current round
+
+BOT4 chose [H0,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T02:38:47.232+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [P0,P0] at index 0 for current round
+
+BOT3 chose [H0,H0] at index 0 for current round
+
+BOT4 chose [H0,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T02:31:59.686+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-31T03:15:39.873+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-31T03:16:21.001+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-31T03:16:21.001+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-31T03:16:21.001+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-31T03:16:21.001+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [H0,A1] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T03:16:21.001+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-31T03:16:21.001+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-31T03:16:21.001+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T03:16:21.001+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-31T03:20:05.023+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-31T03:20:05.023+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2018-12-31T03:20:05.023+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-31T03:20:05.023+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [H0,A1] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T03:20:05.023+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2018-12-31T03:20:05.023+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2018-12-31T03:20:05.023+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2018-12-31T03:20:05.023+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 put [P0,S0] horizontal to (0,0)

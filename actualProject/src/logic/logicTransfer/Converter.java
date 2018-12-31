@@ -3,7 +3,7 @@ package logic.logicTransfer;
 import logic.bankSelection.Bank;
 import logic.playerState.Board;
 import logic.playerState.Player;
-import logic.playerTypes.PlayerType;
+import logic.differentPlayerTypes.PlayerType;
 import logic.token.Domino;
 import logic.token.SingleTile;
 import logic.token.Tiles;
@@ -79,37 +79,13 @@ public class Converter {
      */
     private List<Domino> stack;
 
-
     /**
-     * Reads string input and converts it into the appropriate game instance
-     * fields
-     *
-     * @param gui gui implementation to display a players action. Necessary in order to instanciate new Players since
-     *           bots are required to hold a field containing a implementation of the gui interface in order to show
-     *            their moves without cooperating with the main game class.
-     * @param input input to convert
-     * @return String message containing the error messages,
-     * SUCCESSFUL_READ_MESSAGE if reading String was successful
+     * Field currently in focus
      */
-    public String readStr(GUIConnector gui, String input) {
-        try {
+    private PossibleField currField;
 
-            if (input == null || input.length() == 0) {
-                throw new IOException(UNSUCCESSFUL_READ_MESSAGE);
-            }
-            if (!input.matches("(<Spielfeld[^>]*>\n(?s)[^<,>]*)*<Bänke>\n(?s)" +
-                    "[^<>]*<Beutel>\n[^<>]*")) {
-                System.out.println(input);
-                throw new WrongTagException();
-            }
 
-            String[][] descriptionBlocks = genDescriptiveField(input);
-            fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui);
-            return SUCCESSFUL_READ_MESSAGE;
-        } catch (Exception e) {
-            return e.getMessage();
-        }
-    }
+
 
     /**
      * getter for the players
@@ -154,6 +130,41 @@ public class Converter {
      */
     public List<Domino> getStack() {
         return stack;
+    }
+
+    public PossibleField getCurrField() {
+        return currField;
+    }
+
+    /**
+     * Reads string input and converts it into the appropriate game instance
+     * fields
+     *
+     * @param gui gui implementation to display a players action. Necessary in order to instanciate new Players since
+     *           bots are required to hold a field containing a implementation of the gui interface in order to show
+     *            their moves without cooperating with the main game class.
+     * @param input input to convert
+     * @return String message containing the error messages,
+     * SUCCESSFUL_READ_MESSAGE if reading String was successful
+     */
+    public String readStr(GUIConnector gui, String input) {
+        try {
+
+            if (input == null || input.length() == 0) {
+                throw new IOException(UNSUCCESSFUL_READ_MESSAGE);
+            }
+            if (!input.matches("(<Spielfeld[^>]*>\n(?s)[^<,>]*)*<Bänke>\n(?s)" +
+                    "[^<>]*<Beutel>\n[^<>]*")) {
+                System.out.println(input);
+                throw new WrongTagException();
+            }
+
+            String[][] descriptionBlocks = genDescriptiveField(input);
+            fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui);
+            return SUCCESSFUL_READ_MESSAGE;
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 
     private String genTag(String input) throws WrongTagException {

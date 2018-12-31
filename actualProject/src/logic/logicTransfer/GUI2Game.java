@@ -6,7 +6,7 @@
 package logic.logicTransfer;
 
 import logic.playerState.Board;
-import logic.playerTypes.PlayerType;
+import logic.differentPlayerTypes.PlayerType;
 import logic.token.Pos;
 
 import java.net.URI;
@@ -87,11 +87,5 @@ public interface GUI2Game {
      */
     boolean equalsStr(String input);
 
-
-
-//    /**
-//     * loads / generates a game out of the .txt file at the selected path
-//     */
-//    static void loadGame(Uri filePath);
 
 }

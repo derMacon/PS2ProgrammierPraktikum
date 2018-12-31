@@ -61,7 +61,6 @@ public interface GUIConnector {
     /**
      * Shows players points.
      *
-     * @param pl        reference to the player
      * @param ordPlayer ordinal value of the player
      */
     void showPointsForPlayer(int ordPlayer, int boardPoints);

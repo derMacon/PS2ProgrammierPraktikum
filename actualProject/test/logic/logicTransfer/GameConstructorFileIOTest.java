@@ -4,7 +4,7 @@
 //import logic.bankSelection.Entry;
 //import logic.playerState.Board;
 //import logic.playerState.Player;
-//import logic.playerTypes.HumanPlayer;
+//import logic.differentPlayerTypes.HumanPlayer;
 //import logic.token.Domino;
 //import logic.token.Tiles;
 //import org.junit.Assert;

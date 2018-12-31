@@ -32,7 +32,7 @@ import logic.dataPreservation.Logger;
 import logic.logicTransfer.GUI2Game;
 import logic.logicTransfer.Game;
 import logic.playerState.Board;
-import logic.playerTypes.PlayerType;
+import logic.differentPlayerTypes.PlayerType;
 import logic.token.Pos;
 
 import java.awt.*;
@@ -381,7 +381,6 @@ public class FXMLDocumentController implements Initializable {
                 addImageViewsToGrid(grdPnFutureselectiveGroup), addImageViewsToGrid(grdPnNextRoundSelection),
                 new Label[]{this.lblPlayer1, this.lblPlayer2, this.lblPlayer3, this.lblPlayer4});
         this.game = new Game(gui, DEFAULT_PLAYER_COUNT);
-//        this.loader = new Loader();
     }
 
     /**

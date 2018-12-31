@@ -2,7 +2,7 @@ package logic.bankSelection;
 
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Player;
-import logic.playerTypes.DefaultAIPlayer;
+import logic.differentPlayerTypes.DefaultAIPlayer;
 import logic.randomizer.PseudoRandAlwaysHighestVal;
 import logic.randomizer.PseudoRandZeroResidueClass;
 import logic.token.Domino;

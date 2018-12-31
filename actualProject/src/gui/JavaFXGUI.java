@@ -15,7 +15,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import logic.bankSelection.Bank;
 import logic.logicTransfer.GUIConnector;
@@ -24,7 +23,7 @@ import logic.logicTransfer.PossibleField;
 import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerState.Result;
-import logic.playerTypes.HumanPlayer;
+import logic.differentPlayerTypes.HumanPlayer;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
@@ -533,12 +532,14 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void deleteDomFromBank(int ordBank, int idx) {
-        if (0 == ordBank) {
-            this.imgVwsCurrentBank[0][idx].setImage(EMPTY_IMG);
-            this.imgVwsCurrentBank[1][idx].setImage(EMPTY_IMG);
-        } else if (1 == ordBank) {
-            this.imgVwsNextBank[0][idx].setImage(EMPTY_IMG);
-            this.imgVwsNextBank[1][idx].setImage(EMPTY_IMG);
+        if(0 <= idx && this.imgVwsCurrentBank.length > idx) {
+            if (0 == ordBank) {
+                this.imgVwsCurrentBank[0][idx].setImage(EMPTY_IMG);
+                this.imgVwsCurrentBank[1][idx].setImage(EMPTY_IMG);
+            } else if (1 == ordBank) {
+                this.imgVwsNextBank[0][idx].setImage(EMPTY_IMG);
+                this.imgVwsNextBank[1][idx].setImage(EMPTY_IMG);
+            }
         }
     }
 

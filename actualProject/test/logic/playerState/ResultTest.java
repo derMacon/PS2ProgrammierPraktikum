@@ -1,6 +1,6 @@
 package logic.playerState;
 
-import logic.playerTypes.DefaultAIPlayer;
+import logic.differentPlayerTypes.DefaultAIPlayer;
 import org.junit.Test;
 import other.FakeGUI;
 

@@ -6,8 +6,8 @@ import logic.playerState.Board;
 import logic.playerState.BotBehavior;
 import logic.playerState.Player;
 import logic.playerState.Result;
-import logic.playerTypes.HumanPlayer;
-import logic.playerTypes.PlayerType;
+import logic.differentPlayerTypes.HumanPlayer;
+import logic.differentPlayerTypes.PlayerType;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
@@ -189,7 +189,16 @@ public class Game implements GUI2Game {
         this.currPlayerIdx = 0;
         this.currBankIdx = currBankIdx;
         this.currDomino = currDomino;
-        this.currField = null == this.currField ? PossibleField.NEXT_BANK : PossibleField.CURR_DOM;
+
+        if(null == this.currField) {
+            if(this.nextRoundBank.isEmpty()) {
+                this.currField = PossibleField.CURR_DOM;
+            } else {
+                this.currField = PossibleField.NEXT_BANK;
+            }
+        } else {
+            this.currField = PossibleField.CURR_DOM;
+        }
         this.gui.blurOtherFields(this.currField);
         setToChooseBox(currDomino);
         // TODO check if setting values was successful
@@ -299,7 +308,6 @@ public class Game implements GUI2Game {
             Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nHUMAN tried to select a domino from the " +
                     "current bank\n" + Logger.ERROR_DELIMITER + "\n");
         }
-        // TODO blur out boxes which are not accessible when user participates in the upcomming standard round
     }
 
     // ---------------------------------- Standard round ----------------------------------
@@ -518,7 +526,8 @@ public class Game implements GUI2Game {
         } else {
             this.nextRoundBank.clearAllEntries();
             this.gui.setToBank(NEXT_BANK_IDX, nextRoundBank);
-            setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[currPlayerIdx]));
+            setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[0]));
+//            setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[currPlayerIdx]));
             this.currField = PossibleField.CURR_DOM;
         }
 

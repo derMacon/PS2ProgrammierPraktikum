@@ -5,7 +5,7 @@ import logic.token.Domino;
 /**
  * Class that implements the selection of a domino a player has chosen.
  */
-public class Choose {
+public class Choose implements  Comparable<Choose> {
 
     /**
      * Domino with a position and rotation
@@ -77,5 +77,9 @@ public class Choose {
                 && this.potentialPointsOnBoard == other.potentialPointsOnBoard;
     }
 
-
+    @Override
+    public int compareTo(Choose o) {
+        assert null != o;
+        return this.potentialPointsOnBoard - o.potentialPointsOnBoard;
+    }
 }

@@ -20,7 +20,11 @@ public class FakeGUI implements GUIConnector {
 
     @Override
     public void showInChooseBox(Domino dominoRotated) {
-        System.out.println("showInChooseBox(Domino : " + dominoRotated.toString() + ")");
+        if(dominoRotated == null) {
+            System.out.println("showInChooseBox(Domino : " + null + ")");
+        } else {
+            System.out.println("showInChooseBox(Domino : " + dominoRotated.toString() + ")");
+        }
     }
 
     @Override

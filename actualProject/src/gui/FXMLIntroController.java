@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
-import logic.playerTypes.PlayerType;
+import logic.differentPlayerTypes.PlayerType;
 
 import java.io.IOException;
 import java.net.URL;

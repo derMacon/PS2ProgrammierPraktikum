@@ -1,6 +1,6 @@
 package logic.playerState;
 
-import logic.playerTypes.DefaultAIPlayer;
+import logic.differentPlayerTypes.DefaultAIPlayer;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;

@@ -1,12 +1,11 @@
 package logic.playerState;
 
 import logic.bankSelection.Bank;
-import logic.bankSelection.Choose;
 import logic.bankSelection.Entry;
 import logic.logicTransfer.GUIConnector;
 import logic.logicTransfer.Game;
-import logic.playerTypes.DefaultAIPlayer;
-import logic.playerTypes.HumanPlayer;
+import logic.differentPlayerTypes.DefaultAIPlayer;
+import logic.differentPlayerTypes.HumanPlayer;
 import logic.token.DistrictType;
 import logic.token.Domino;
 import logic.token.Pos;

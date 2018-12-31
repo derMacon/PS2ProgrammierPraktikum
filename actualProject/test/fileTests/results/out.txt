@@ -1,29 +1,28 @@
 <Spielfeld 1>
--- -- -- -- --
--- -- -- -- --
--- -- CC -- --
--- -- -- -- --
--- -- -- -- --
+-- -- -- -- A1
+P0 -- I1 P0 P0
+H1 CC I2 P0 --
+H0 A1 -- P0 P1
+H0 A0 -- S2 S0
 <Spielfeld 2>
--- -- P0 -- --
--- -- I3 -- --
--- -- CC -- --
--- -- -- -- --
--- -- -- -- --
+A0 -- P0 P0 H1
+S1 -- I3 -- --
+S0 O2 CC A1 H0
+S1 -- -- -- H0
+P0 P1 O0 -- P1
 <Spielfeld 3>
--- -- O0 -- --
--- -- I2 -- --
--- -- CC -- --
--- -- -- -- --
--- -- -- -- --
+P0 O1 O0 -- P0
+-- -- I2 -- S0
+A0 S2 CC H1 S0
+A1 -- P0 H1 --
+H0 H1 P0 -- --
 <Spielfeld 4>
--- -- O0 -- --
+P0 O2 O0 O1 S0
 -- -- I2 -- --
--- -- CC -- --
--- -- -- -- --
--- -- -- -- --
+A1 H0 CC A1 P0
+A0 H1 H0 -- P1
+-- -- S0 -- I0
 <Bänke>
-0 I2P0,2 O0I2,3 O0I2,1 P0I3
-- P0S2,- A0S2,- P0O2,- S0O2
+0 P0P0,1 P0P0,3 H0H0,2 H0H0
+
 <Beutel>
-P0P0,P0P0,H0H0,H0H0,H0H0,H0H0,A0A0,A0A0,A0A0,S0S0,S0S0,O0O0,P0H0,P0A0,P0S0,P0O0,H0A0,H0S0,P1H0,P1A0,P1S0,P1O0,P1I0,H1P0,H1P0,H1P0,H1P0,H1A0,H1S0,A1P0,A1P0,A1H0,A1H0,A1H0,A1H0,P0S1,A0S1,P0O1,S0O1,I1P0

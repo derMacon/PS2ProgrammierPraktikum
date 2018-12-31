@@ -1,4 +1,4 @@
-package logic.playerTypes;
+package logic.differentPlayerTypes;
 
 import logic.bankSelection.Bank;
 import logic.bankSelection.Choose;
@@ -13,6 +13,7 @@ import logic.playerState.Player;
 import logic.token.Domino;
 import logic.token.Pos;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -102,7 +103,8 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
             overallBestChoose = genLowOrderChoose(bank);
         } else {
             // at least one domino on the bank fits on the board
-            overallBestChoose = max(bestChoosesForEachPossibleBankSlot);
+//            overallBestChoose = mostEfficient(bestChoosesForEachPossibleBankSlot);
+            overallBestChoose = Collections.max(bestChoosesForEachPossibleBankSlot);
         }
 
         // update domino (rotation and position) of the best choose
@@ -124,6 +126,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // (just to make sure it is evident, pos and rot modified)
         return bank;
     }
+
 
     @Override
     public void updateSelectedDom(Bank currBank) {
@@ -177,9 +180,9 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
 
 
     /**
-     * Generates the max. points available on the board for a given domino.
+     * Generates the mostEfficient. points available on the board for a given domino.
      * Iterates through board -> sets copyWithoutSelection on every pos -> gets
-     * the board points -> find max
+     * the board points -> find mostEfficient
      *
      * @param domino        domino to check
      * @param bankSlotIndex index of the bank slot from which the domino was taken, needed to generate a valid Choose
@@ -197,7 +200,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
                 for (int i = 0; i < Board.Direction.values().length; i++) {
                     if (this.board.fits(domino)) {
                         currChoose = genChoose(domino, bankSlotIndex);
-                        maxChoose = max(maxChoose, currChoose);
+                        maxChoose = mostEfficient(maxChoose, currChoose);
                     }
                     domino.incRot();
                 }
@@ -237,7 +240,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * @return the Choose object with the most possible points on the board. At a tie the one with the least single
      * tile districts will be returned.
      */
-    private Choose max(Choose fstChoose, Choose sndChoose) {
+    private Choose mostEfficient(Choose fstChoose, Choose sndChoose) {
         if (null == fstChoose) {
             return sndChoose;
         }
@@ -291,7 +294,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * @param bank bank from which the lowest domino will be used to generate a new choose object
      * @return choose object with the lowest possible domino that is available on the given bank
      */
-    public static Choose genLowOrderChoose(Bank bank) {
+    private Choose genLowOrderChoose(Bank bank) {
         int idxOnBank = 0;
         Choose output = null;
         Domino currDomino;

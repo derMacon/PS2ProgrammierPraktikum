@@ -1,4 +1,4 @@
-package logic.playerTypes;
+package logic.differentPlayerTypes;
 
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Board;

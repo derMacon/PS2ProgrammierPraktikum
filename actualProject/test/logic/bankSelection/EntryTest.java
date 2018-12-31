@@ -1,7 +1,7 @@
 package logic.bankSelection;
 
 import logic.playerState.Player;
-import logic.playerTypes.DefaultAIPlayer;
+import logic.differentPlayerTypes.DefaultAIPlayer;
 import logic.token.Domino;
 import logic.token.Tiles;
 import org.junit.Test;
