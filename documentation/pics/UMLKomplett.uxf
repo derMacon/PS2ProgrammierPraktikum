@@ -1,0 +1,266 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><help_text>Exceptions
+Space for diagram notes</help_text><element><id>UMLPackage</id><coordinates><x>522</x><y>129</y><w>1090</w><h>830</h></coordinates><panel_attributes>logicTransfer
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>602</x><y>209</y><w>410</w><h>170</h></coordinates><panel_attributes>Exceptions
+bg=yellow
+group=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>612</x><y>239</y><w>190</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Exception&gt;&gt;
+WrongBankSyntaxException
+--
++ DEFAULT_MESSAGE : String
+group=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>612</x><y>309</y><w>190</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Exception&gt;&gt;
+WrongBoardSyntaxException
+--
++ DEFAULT_MESSAGE : String
+group=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>812</x><y>239</y><w>190</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Exception&gt;&gt;
+WrongStackSyntaxException
+--
++ DEFAULT_MESSAGE : String
+group=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>812</x><y>309</y><w>190</w><h>60</h></coordinates><panel_attributes>&lt;&lt;Exception&gt;&gt;
+WrongTagSyntaxException
+--
++ DEFAULT_MESSAGE : String
+group=2</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1645</x><y>399</y><w>800</w><h>560</h></coordinates><panel_attributes>token
+--
+bg=orange
+group=8</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1982</x><y>629</y><w>200</w><h>150</h></coordinates><panel_attributes>&lt;&lt;enumerator&gt;&gt;
+Tiles
+--
++ Alle moeglichen SingleTile-
+   Kombinationen
+--
+- fst : SingleTile
+- snd : SingleTile
+- value : int
+--
++ contains(input : String) : boolean
+group=8</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2252</x><y>829</y><w>170</w><h>80</h></coordinates><panel_attributes>&lt;&lt;enumerator&gt;&gt;
+DistrictType
+--
++ Alle moeglichen Arten von 
+   Distrikttypen
+group=8</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1672</x><y>529</y><w>220</w><h>110</h></coordinates><panel_attributes>Domino
+--
+- tiles : Tiles
+- rotation : int
+- posFst : Pos
+--
++ incRot() : Domino
++ fill(list : List&lt;Domino&gt;) : List&lt;Domino&gt;
+group=8</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1982</x><y>449</y><w>220</w><h>110</h></coordinates><panel_attributes>Pos
+--
+- x : int
+- y : int
+--
++ incRot() : Domino
++ fill(list : List&lt;Domino&gt;) : List&lt;Domino&gt;
++ getNeighbours() : List&lt;Pos&gt;
+group=8</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1982</x><y>829</y><w>200</w><h>100</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+SingleTile
+--
+- districtType : DistrictType
+- tokenCnt : int
+--
++ contains(input : String) : boolean
+group=8</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>522</x><y>979</y><w>1090</w><h>510</h></coordinates><panel_attributes>playerState
+--
+bg=orange
+group=9</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1272</x><y>1019</y><w>310</w><h>160</h></coordinates><panel_attributes>Board
+--
+- sizeX : int 
+- sizeY : int 
+- cells : SingleTile[][]
+--
++ fits(domino : Domino)
++ lay(domino : Domino)
++ isEfficient(choose : Choose)
++ moveBoard(direction : Direction) : Board
++ canMoveBoardToDir(direction : Direction) : boolean
+
+
+group=9</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>542</x><y>1319</y><w>310</w><h>150</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+BotBehavior
+--
++ selectFromBank(bank : Bank, ordBank : int, 
+   displayOnGui : boolean) : Bank
++ updateDominoPos(domino : Domino) : Domino
++ doStandardTurn(currBank : Bank, nextBank : Bank) 
++ doLastTurn(currBank : Bank)
++ doInitialSelect(currBank : Bank, bankOrd : int) : Bank
++ updateSelectedDeom(currBank : Bank)
+group=9</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>542</x><y>1019</y><w>310</w><h>150</h></coordinates><panel_attributes>District
+--
+- tilePositions : List&lt;Pos&gt;
+- singleTiles : List&lt;SingleTile&gt;
+--
++ add(newTile : SingleTile, newPos : Pos)
++ merge(other : District)
++ genPoints()
++ typeAndPosMatchCurrDistrict(tile : SingleTile, 
+   pos : Pos)
++ toTreeItem()
+group=9</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>922</x><y>1019</y><w>280</w><h>210</h></coordinates><panel_attributes>&lt;&lt;abstract&gt;&gt;
+Player
+--
+- board : Board 
+- districts : List&lt;District&gt;
+- gui : GUIConnector
+- idxInPlayerArray : int 
+--
++ getBoardPoints() : int 
++ addToAppropriateDistrict(tile : SingleTile, 
+   pos : Pos, districts : List&lt;District&gt;)
++ showOnBoard(playerSelectedDomino : Domino)
++ updateDistricts
++ toTreeView() : TreeItem&lt;String&gt;
+group=9</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1262</x><y>1229</y><w>330</w><h>80</h></coordinates><panel_attributes>Result
+--
+- ranking : List&lt;ResultRanking&gt;
+--
+- genResultRanking(players : Player[]) : List&lt;ResultRanking&gt;
++ toTreeView() : TreeView&lt;String&gt;
+
+group=9</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1262</x><y>1369</y><w>330</w><h>100</h></coordinates><panel_attributes>ResultRanking
+--
+- rankingPosition : int
+- rankedPlayers : List&lt;Player&gt;
+--
++ matchesRank(player : Player) : boolean 
++ toTreeItem : TreeItem&lt;String&gt;
+
+
+group=9</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1642</x><y>121</y><w>560</w><h>260</h></coordinates><panel_attributes>dataPreservation
+--
+bg=orange
+group=5</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1662</x><y>191</y><w>180</w><h>170</h></coordinates><panel_attributes>Loader
+--
+- singleInstance : Loader
+- file : File 
+- fChooser : FileChooser
+- stage : Stage
+--
++ getinstance() : Loader
++ saveFile(input : String)
++ saveFileAs(input : String)
++ openFileChooser() : String
+- removeUTF8BOM(s : String)
+
+
+group=5</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1902</x><y>191</y><w>250</w><h>100</h></coordinates><panel_attributes>Logger
+--
+- singleInstance : Logger
+- dir : File
+--
++ printAndSafe(inputLog : String)
+- appendFileWithNewMove(logInput : String)
+group=5</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>1642</x><y>981</y><w>610</w><h>420</h></coordinates><panel_attributes>bankSelection
+--
+bg=orange
+group=6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1662</x><y>1021</y><w>350</w><h>190</h></coordinates><panel_attributes>Bank
+--
+- bankSize : int 
+- rand : Random
+- entries : Entry[]
+--
++ isEmpty() : boolean
++ clearAllEntries()
++ selectEntry(player : Player, bankIdx : int)
++ isNotSelected(domIdx : int) : boolean
++ getPlayerSelectedDomino(player : Player) : Domino
++ randomlyDrawFromStack(stack : List&lt;Domino&gt;) : List&lt;Domino
++ fill(domList : List&lt;Domino&gt;)
+
+
+group=6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1662</x><y>1241</y><w>350</w><h>130</h></coordinates><panel_attributes>Choose
+--
+- domWithPosAndrot : Domino
+- potentialPointsOnBoard : int
+- idxOnBank : int 
+--
++ max(chooseDom : List&lt;Choose&gt;, board Board) : Choose
+- genMostEfficientchoose(input : List&lt;Choose&gt;, board : Board)
++ genLowOrderChoose(bank : Bank)
+group=6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>2072</x><y>1021</y><w>150</w><h>60</h></coordinates><panel_attributes>Entry
+--
+- domino : Domino
+- selectedPlayer : Player
+group=6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>522</x><y>1511</y><w>1090</w><h>180</h></coordinates><panel_attributes>diffrentPlayerTypes
+--
+bg=orange</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>542</x><y>1551</y><w>360</w><h>120</h></coordinates><panel_attributes>DefaultPlayer
+--
+--
+- genChoose(domino : Domino, bankSlotIndex : int) : Choose
+- genLowOrderChoose(bank : Bank) : Choose
+- genBestChoose(domino : Domino, bankSlotIdx : int) : Choose
+- countSingleCells(choose : Choose) : int
+- max(fstChoose : Choose, sndChoose : Choose
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1012</x><y>1561</y><w>120</w><h>40</h></coordinates><panel_attributes>HumanPlayer
+--
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1232</x><y>1551</y><w>360</w><h>110</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+PlayerType
+--
++ loadPlayerInstanceWithGivenTypeAndboard(type : PlayerType, 
+   board : String, idx : int, gui : GUIConnector) : Player
++ getPlayerInstanceWithGivenType(type : PLayerType, idx : int, 
+   gui : GUIConnector, boardSizeX : int, boardSizeY : int) : Player
+
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLNote</id><coordinates><x>1073</x><y>171</y><w>500</w><h>240</h></coordinates><panel_attributes>Gui-Schnittstellen
+bg=gray
+group=1</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1083</x><y>201</y><w>230</w><h>200</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt;
+GUI2Game
+--
++ boxClicked()
++ fits(pos : Pos)
++ disposeCurrDomino()
++ setOnBoard(pos : Pos)
++ startGame(playerTypes : PlayerType[], 
+   sizeX : int, sizeY : int)
++ selectDomOnCurrBank(idx : int)
++ selectDomOnNextBank(idx : int)
++ moveBoard(dir : Board.Direction)
++ equalStr(input : String) : boolean
+group=1</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1322</x><y>199</y><w>240</w><h>200</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+GUIConnector
+--
+# Methoden benoetigt um internen 
+# Spielstand auf GUI darzustellen
++ showWhosTurn(ordPlayer : int)
++ setToBank(ordBank : int, bank : Bank)
++ showOnGrid(ordPlayer : int, 
+   domino : Domino)
++ selectDomino(ordBank : int, 
+   idxDom : int, ordPlayer : int)
++ showPopUp(text : String)
++ blurOtherFields(currField : PossibleField)
+group=1</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1172</x><y>554</y><w>340</w><h>330</h></coordinates><panel_attributes>Game
+--
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>652</x><y>544</y><w>340</w><h>330</h></coordinates><panel_attributes>Converter
+--
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1252</x><y>404</y><w>30</w><h>170</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>1423</x><y>401</y><w>30</w><h>170</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>1882</x><y>519</y><w>120</w><h>60</h></coordinates><panel_attributes>lt=&lt;-
+group=8</panel_attributes><additional_attributes>100;10;10;40</additional_attributes></element><element><id>Relation</id><coordinates><x>1882</x><y>599</y><w>120</w><h>70</h></coordinates><panel_attributes>lt=&lt;-
+group=8</panel_attributes><additional_attributes>100;50;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2072</x><y>769</y><w>30</w><h>80</h></coordinates><panel_attributes>lt=&lt;-
+group=8</panel_attributes><additional_attributes>10;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>2172</x><y>839</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
+group=8</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1742</x><y>159</y><w>150</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+group=5</panel_attributes><additional_attributes>10;30;10;10;130;10;130;100;100;100</additional_attributes></element><element><id>Relation</id><coordinates><x>2052</x><y>159</y><w>150</w><h>120</h></coordinates><panel_attributes>lt=&lt;-
+group=5</panel_attributes><additional_attributes>10;30;10;10;130;10;130;100;100;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>872</x><y>419</y><w>100</w><h>90</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+PossibleField
+--
++ NEXT_BANK
++ CURR_BANK
++ CURR_DOM</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>2003</x><y>1041</y><w>90</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
+group=6</panel_attributes><additional_attributes>70;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1413</x><y>1301</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+group=9</panel_attributes><additional_attributes>10;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1193</x><y>1101</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
+group=9</panel_attributes><additional_attributes>80;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>843</x><y>1101</y><w>100</w><h>30</h></coordinates><panel_attributes>lt=&lt;-
+group=9</panel_attributes><additional_attributes>10;10;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1062</x><y>1221</y><w>30</w><h>360</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;340</additional_attributes></element><element><id>Relation</id><coordinates><x>1192</x><y>1191</y><w>90</w><h>90</h></coordinates><panel_attributes>lt=&lt;-
+group=9</panel_attributes><additional_attributes>70;70;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>702</x><y>1461</y><w>30</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>892</x><y>1501</y><w>200</w><h>110</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>180;10;80;10;80;90;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>2132</x><y>921</y><w>30</w><h>120</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;10;100</additional_attributes></element><element><id>UMLNote</id><coordinates><x>1792</x><y>1501</y><w>270</w><h>130</h></coordinates><panel_attributes>Legende
+bg=blue
+group=12</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1792</x><y>1531</y><w>140</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;-
+group=12</panel_attributes><additional_attributes>10;10;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1793</x><y>1561</y><w>140</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;.
+group=12</panel_attributes><additional_attributes>10;10;120;10</additional_attributes></element><element><id>Text</id><coordinates><x>1933</x><y>1561</y><w>140</w><h>30</h></coordinates><panel_attributes>Implementiert
+style=wordwrap
+group=12</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1793</x><y>1591</y><w>140</w><h>30</h></coordinates><panel_attributes>lt=&lt;.
+group=12</panel_attributes><additional_attributes>10;10;120;10</additional_attributes></element><element><id>Text</id><coordinates><x>1933</x><y>1591</y><w>140</w><h>30</h></coordinates><panel_attributes>abhaengig
+style=wordwrap
+group=12</panel_attributes><additional_attributes></additional_attributes></element><element><id>Text</id><coordinates><x>1933</x><y>1531</y><w>140</w><h>30</h></coordinates><panel_attributes>Vererbungsbeziehung
+style=wordwrap
+group=12</panel_attributes><additional_attributes></additional_attributes></element></diagram>

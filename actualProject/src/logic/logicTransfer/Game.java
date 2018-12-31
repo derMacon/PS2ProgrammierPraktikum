@@ -202,7 +202,7 @@ public class Game implements GUI2Game {
         evaluateCurrDom();
         evaluateCurrField();
         this.gui.blurOtherFields(this.currField);
-        setToChooseBox(currDomino);
+        setToChooseBox(this.currDomino);
         // TODO check if setting values was successful
         return Converter.SUCCESSFUL_READ_MESSAGE;
     }
@@ -703,7 +703,7 @@ public class Game implements GUI2Game {
 
         return equals && this.currentRoundBank.equals(other.currentRoundBank)
                 && this.nextRoundBank.equals(other.nextRoundBank)
-                && this.currDomino.equals(other.currDomino)
+                && (this.currDomino == null && other.currDomino == null || this.currDomino.equals(other.currDomino))
                 && this.currField.equals(other.currField);
     }
 
