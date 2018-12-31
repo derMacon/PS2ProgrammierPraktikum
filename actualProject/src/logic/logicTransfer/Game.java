@@ -2,12 +2,12 @@ package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
 import logic.dataPreservation.Logger;
+import logic.differentPlayerTypes.HumanPlayer;
+import logic.differentPlayerTypes.PlayerType;
 import logic.playerState.Board;
 import logic.playerState.BotBehavior;
 import logic.playerState.Player;
 import logic.playerState.Result;
-import logic.differentPlayerTypes.HumanPlayer;
-import logic.differentPlayerTypes.PlayerType;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
@@ -190,20 +190,46 @@ public class Game implements GUI2Game {
         this.currBankIdx = currBankIdx;
         this.currDomino = currDomino;
 
-        if(null == this.currField) {
-            if(this.nextRoundBank.isEmpty()) {
-                this.currField = PossibleField.CURR_DOM;
-            } else {
-                this.currField = PossibleField.NEXT_BANK;
-            }
-        } else {
-            this.currField = PossibleField.CURR_DOM;
-        }
+//        if(null == this.currField) {
+//            if(this.nextRoundBank.isEmpty()) {
+//                this.currField = PossibleField.CURR_DOM;
+//            } else {
+//                this.currField = PossibleField.NEXT_BANK;
+//            }
+//        } else {
+//            this.currField = PossibleField.CURR_DOM;
+//        }
+        evaluateCurrDom();
+        evaluateCurrField();
         this.gui.blurOtherFields(this.currField);
         setToChooseBox(currDomino);
         // TODO check if setting values was successful
         return Converter.SUCCESSFUL_READ_MESSAGE;
     }
+
+    private void evaluateCurrDom() {
+        Player human = this.players[0];
+        // next bank is filled -> either player already selected dom on it or not. Either way dom will be set
+        if(!this.nextRoundBank.isEmpty()) {
+            this.currDomino = this.nextRoundBank.getPlayerSelectedDomino(human);
+        } else if(!this.currentRoundBank.isEmpty()) {
+            this.currDomino = this.currentRoundBank.getPlayerSelectedDomino(human);
+        } else {
+            this.currDomino = null;
+        }
+    }
+
+    private void evaluateCurrField() {
+        if(this.currDomino != null) {
+            this.currField = PossibleField.CURR_DOM;
+        } else if(!this.nextRoundBank.isEmpty()) {
+            this.currField = PossibleField.NEXT_BANK;
+        } else {
+            this.currField = PossibleField.CURR_BANK;
+        }
+    }
+
+
 
     // --- Setter / Getter ---
 
@@ -676,7 +702,9 @@ public class Game implements GUI2Game {
         boolean debugBankNext = this.nextRoundBank.equals(other.nextRoundBank);
 
         return equals && this.currentRoundBank.equals(other.currentRoundBank)
-                && this.nextRoundBank.equals(other.nextRoundBank);
+                && this.nextRoundBank.equals(other.nextRoundBank)
+                && this.currDomino.equals(other.currDomino)
+                && this.currField.equals(other.currField);
     }
 
 

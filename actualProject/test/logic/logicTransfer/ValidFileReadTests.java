@@ -162,4 +162,62 @@ public class ValidFileReadTests {
         TestToolkit.writeAndAssert(actOutput, "exp_noStack");
     }
 
+    @Test
+    public void test_lastTurnInRotBoxk() throws IOException {
+        // setting up game
+        GUIConnector fakeGui = new FakeGUI();
+        Board board1 = new Board(
+                "-- -- -- -- A1\n" +
+                        "P0 -- I1 P0 P0\n" +
+                        "H1 CC I2 P0 --\n" +
+                        "H0 A1 -- P0 P1\n" +
+                        "H0 A0 -- S2 S0");
+        Board board2 = new Board(
+                "A0 -- P0 P0 H1\n" +
+                        "S1 -- I3 -- --\n" +
+                        "S0 O2 CC A1 H0\n" +
+                        "S1 -- -- -- H0\n" +
+                        "P0 P1 O0 -- P1");
+        Board board3 = new Board(
+                "P0 O1 O0 -- P0\n" +
+                        "-- -- I2 -- S0\n" +
+                        "A0 S2 CC H1 S0\n" +
+                        "A1 -- P0 H1 --\n" +
+                        "H0 H1 P0 -- --");
+        Board board4 = new Board(
+                "P0 O2 O0 O1 S0\n" +
+                        "-- -- I2 -- --\n" +
+                        "A1 H0 CC A1 P0\n" +
+                        "A0 H1 H0 -- P1\n" +
+                        "-- -- S0 -- I0");
+
+        Player[] expPlayers = new Player[]{
+                new HumanPlayer(fakeGui, 0, board1),
+                new DefaultAIPlayer(fakeGui, 1, board2),
+                new DefaultAIPlayer(fakeGui, 2, board3),
+                new DefaultAIPlayer(fakeGui, 3, board4)
+        };
+
+        Entry[] currRoundEntries = new Entry[]{
+                new Entry(new Domino(Tiles.P0P0_Val1), expPlayers[0]),
+                new Entry(new Domino(Tiles.P0P0_Val2), expPlayers[1]),
+                new Entry(new Domino(Tiles.H0H0_Val3), expPlayers[3]),
+                new Entry(new Domino(Tiles.H0H0_Val4), expPlayers[2])
+        };
+        Bank expCurrBank = new Bank(currRoundEntries, new Random());
+
+        Entry[] nextRoundEntries = new Entry[]{
+                null, null, null, null
+        };
+        Bank expNextBank = new Bank(nextRoundEntries, new Random());
+
+        Game expOutput = new Game(new FakeGUI(), expPlayers, 0, expCurrBank, expNextBank,
+                new LinkedList<>(), null);
+        Game actOutput = TestToolkit.read("val_lastTurnInRotBox");
+
+        // actual tests
+        assertEquals(expOutput, actOutput);
+//        TestToolkit.writeAndAssert(actOutput, "exp_noStack");
+    }
+
 }
