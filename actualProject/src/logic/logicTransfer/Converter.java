@@ -370,8 +370,9 @@ public class Converter {
      * Checks if Board syntax matches the following pattern:
      * // TODO pattern angeben.
      *
+     * @param dimensions array contaning the width and height of the board that will be checked
      * @param board board to check for syntax errors
-     * @return
+     * @return // TODO check why there is a return value
      * @throws WrongBoardSyntaxException exception that will be thrown if anything was found.
      */
     private int[] checkBoardSyntax(int[] dimensions, String board) throws WrongBoardSyntaxException {

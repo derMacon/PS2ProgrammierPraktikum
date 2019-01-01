@@ -541,8 +541,10 @@ public class FXMLDocumentController implements Initializable {
                 grdPn.add(imgVwsGame[x][y], x, y);
 
                 //the image shall resize when the cell resizes
-                imgVwsGame[x][y].fitWidthProperty().bind(grdPn.widthProperty().divide(colcount).subtract(grdPn.getHgap()));
-                imgVwsGame[x][y].fitHeightProperty().bind(grdPn.heightProperty().divide(rowcount).subtract(grdPn.getVgap()));
+                imgVwsGame[x][y].fitWidthProperty().bind(grdPn.widthProperty().divide(colcount).
+                        subtract(grdPn.getHgap()));
+                imgVwsGame[x][y].fitHeightProperty().bind(grdPn.heightProperty().divide(rowcount).
+                        subtract(grdPn.getVgap()));
             }
         }
         return imgVwsGame;
@@ -573,6 +575,11 @@ public class FXMLDocumentController implements Initializable {
         ((Stage) this.mnBAnchorForStage.getScene().getWindow()).close();
     }
 
+    /**
+     * opens a new game window with a new game instance
+     * @param event user action on the gui
+     * @throws Exception will be thrown if it is not possible to open a new game instance
+     */
     @FXML
     private void openNewGameInstance(ActionEvent event) throws Exception {
         if (!this.game.equalsStr(Loader.openSavedFile())) {
@@ -586,16 +593,30 @@ public class FXMLDocumentController implements Initializable {
         ((Stage) this.mnBAnchorForStage.getScene().getWindow()).close();
     }
 
+    /**
+     * Saves the current game instance to the already specified location. If no location was specified earlier on a
+     * new Filechooser will be opened so that the user can select a new location.
+     * @param event user action on the gui
+     */
     @FXML
     private void mnTmSaveGame(ActionEvent event) {
         Loader.getInstance().saveFile(this.game.toString());
     }
 
+    /**
+     * Opens a filechooser and saves the game to the selected location
+     * @param event user action on the gui
+     */
     @FXML
     private void mnTmSaveGameAs(ActionEvent event) {
         Loader.getInstance().saveFileAs(this.game.toString());
     }
 
+    /**
+     * Loads a game from the specified location
+     * @param event user action on the gui
+     * @throws FileNotFoundException will be thrown if the specified file was not found
+     */
     @FXML
     private void mnTmLoadGame(ActionEvent event) throws FileNotFoundException {
         if (!this.game.equalsStr(Loader.openSavedFile())) {
@@ -627,6 +648,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Exits game
+     * @param event user action on the gui
      */
     @FXML
     private void exitGame(ActionEvent event) {
@@ -641,7 +663,7 @@ public class FXMLDocumentController implements Initializable {
      * Testprint will be deleted in final commit, implemented just to check if the right player types are passed to
      * this controller.
      *
-     * @param event
+     * @param event user action on the gui
      */
     @FXML
     private void testPrintPlayerTypes(ActionEvent event) {
@@ -653,6 +675,10 @@ public class FXMLDocumentController implements Initializable {
 
     // --- Game interactions ---
 
+    /**
+     *
+     * @param event user action on the gui
+     */
     @FXML
     private void onClickGrdPnCurrentBank(MouseEvent event) {
         int x = -1;
@@ -678,6 +704,10 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param event user action on the gui
+     */
     @FXML
     private void onClickGrdPnNextBank(MouseEvent event) {
         int x = -1;
@@ -703,11 +733,19 @@ public class FXMLDocumentController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param event user action on the gui
+     */
     @FXML
     private void onClickPnSelected(MouseEvent event) {
         game.boxClicked();
     }
 
+    /**
+     *
+     * @param event user action on the gui
+     */
     @FXML
     private void onDragDetectedPnSelected(MouseEvent event) {
         /* drag was detected, start a drag-and-drop gesture*/
@@ -724,6 +762,10 @@ public class FXMLDocumentController implements Initializable {
 
     }
 
+    /**
+     *
+     * @param event user action on the gui
+     */
     @FXML
     private void dispose(MouseEvent event) {
         this.game.disposeCurrDomino();

@@ -15,7 +15,9 @@ import logic.token.SingleTile;
 import java.util.LinkedList;
 import java.util.List;
 
-
+/**
+ * Class to organize the whole game procedure
+ */
 public class Game implements GUI2Game {
 
     /**
@@ -79,7 +81,8 @@ public class Game implements GUI2Game {
     /**
      * creates a game, used for the actual game
      *
-     * @param gui gui to display on
+     * @param gui       gui to display the game changes on
+     * @param playerCnt number of players participating in the game
      */
     public Game(GUIConnector gui, int playerCnt) {
         this.gui = gui;
@@ -150,6 +153,12 @@ public class Game implements GUI2Game {
         Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nLoading process: " + returnMessage);
     }
 
+    /**
+     * Loads up gui after loading file //todo ueberarbeiten
+     * @param playerTypes
+     * @param sizeX
+     * @param sizeY
+     */
     private void loadGuiAfterLoadingFile(PlayerType[] playerTypes, int sizeX, int sizeY) {
         // update boards
         for (int i = 0; i < this.players.length; i++) {
@@ -169,6 +178,7 @@ public class Game implements GUI2Game {
      *
      * @param gui              gui for the game
      * @param players          players participating in this game
+     * @param currBankIdx      index of the current bank
      * @param currentRoundBank current round bank
      * @param nextRoundBank    next round bank
      * @param stack            stack of dominos used to fill banks
@@ -204,28 +214,33 @@ public class Game implements GUI2Game {
         return Converter.SUCCESSFUL_READ_MESSAGE;
     }
 
+    /**
+     * Evaluates current domino from looking at the two banks
+     */
     private void evaluateCurrDom() {
         Player human = this.players[0];
         // next bank is filled -> either player already selected dom on it or not. Either way dom will be set
-        if(!this.nextRoundBank.isEmpty()) {
+        if (!this.nextRoundBank.isEmpty()) {
             this.currDomino = this.nextRoundBank.getPlayerSelectedDomino(human);
-        } else if(!this.currentRoundBank.isEmpty()) {
+        } else if (!this.currentRoundBank.isEmpty()) {
             this.currDomino = this.currentRoundBank.getPlayerSelectedDomino(human);
         } else {
             this.currDomino = null;
         }
     }
 
+    /**
+     * Initializes the curr field in focus
+     */
     private void evaluateCurrField() {
-        if(this.currDomino != null) {
+        if (this.currDomino != null) {
             this.currField = PossibleField.CURR_DOM;
-        } else if(!this.nextRoundBank.isEmpty()) {
+        } else if (!this.nextRoundBank.isEmpty()) {
             this.currField = PossibleField.NEXT_BANK;
         } else {
             this.currField = PossibleField.CURR_BANK;
         }
     }
-
 
 
     // --- Setter / Getter ---
@@ -249,9 +264,9 @@ public class Game implements GUI2Game {
     }
 
     /**
-     * Getter for the players array
+     * Getter for the player array
      *
-     * @return
+     * @return the player array
      */
     public Player[] getPlayers() {
         return this.players;
@@ -259,6 +274,7 @@ public class Game implements GUI2Game {
 
     /**
      * Getter for the number of players (including HumanPlayer)
+     * @return number of players participating of in the game
      */
     public int getNumberOfPlayers() {
         return this.players.length;
@@ -267,7 +283,7 @@ public class Game implements GUI2Game {
     /**
      * Getter for the domino stack
      *
-     * @return
+     * @return the domino stack
      */
     public List<Domino> getStack() {
         return this.stack;
@@ -327,8 +343,8 @@ public class Game implements GUI2Game {
             this.currField = PossibleField.NEXT_BANK;
             this.gui.blurOtherFields(this.currField);
         } else {
-            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nHUMAN tried to select a domino from the " +
-                    "current bank\n" + Logger.ERROR_DELIMITER + "\n");
+            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
+                    + "\nHUMAN tried to select a domino from the " + "current bank\n" + Logger.ERROR_DELIMITER + "\n");
         }
     }
 
@@ -360,8 +376,8 @@ public class Game implements GUI2Game {
                     humanPlayer.getName(), this.nextRoundBank.getDomino(idx).toString(),
                     idx, "next"));
         } else {
-            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nHUMAN tried to make an impossible bank " +
-                    "selection\n" + Logger.ERROR_DELIMITER + "\n");
+            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
+                    + "\nHUMAN tried to make an impossible bank " + "selection\n" + Logger.ERROR_DELIMITER + "\n");
         }
     }
 
@@ -386,8 +402,8 @@ public class Game implements GUI2Game {
             this.gui.blurOtherFields(this.currField);
             setupCurrDomAndBotsDoTurn();
         } else {
-            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "HUMAN tried to make an impossible bank " +
-                    "selection\n" + Logger.ERROR_DELIMITER + "\n");
+            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "HUMAN tried to make an impossible bank "
+                    + "selection\n" + Logger.ERROR_DELIMITER + "\n");
         }
     }
 
@@ -416,8 +432,8 @@ public class Game implements GUI2Game {
             Logger.getInstance().printAndSafe(String.format(Logger.CC_DRAG_LOGGER_FORMAT,
                     humanInstance.getName(), humanInstance.getBoard().findPos(SingleTile.CC)));
         } else {
-            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nHUMAN tried to move board in an impossible " +
-                    "direction\n" + Logger.ERROR_DELIMITER + "\n");
+            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
+                    + "\nHUMAN tried to move board in an impossible direction\n" + Logger.ERROR_DELIMITER + "\n");
         }
 
     }
@@ -432,8 +448,8 @@ public class Game implements GUI2Game {
             this.currField = PossibleField.NEXT_BANK;
             this.gui.blurOtherFields(currField);
         } else {
-            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nHUMAN tried to dispose the current " +
-                    "domino\n" + Logger.ERROR_DELIMITER + "\n");
+            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nHUMAN tried to dispose the current "
+                    + "domino\n" + Logger.ERROR_DELIMITER + "\n");
         }
     }
 
@@ -442,6 +458,10 @@ public class Game implements GUI2Game {
 
     /**
      * Creates a new Player array. Used to initialize the players field.
+     *
+     * @param playerTypes instanciates the players of the current field for the game
+     * @param sizeX width if the players' boards
+     * @param sizeY height of the players' boards
      *
      * @return new Player array with the human player on the first index and the
      * default player on the remaining array slots.
@@ -475,6 +495,9 @@ public class Game implements GUI2Game {
         return output;
     }
 
+    /**
+     * Bots do their initial select on the current bank
+     */
     private void botsDoInitialSelect() {
         for (int i = 1; i < this.players.length; i++) {
             // rest of the players HAVE to be bots
@@ -486,7 +509,9 @@ public class Game implements GUI2Game {
 
     // --- Do necessary turns / Setting up banks for next round ---
 
-
+    /**
+     * the current domino will be setup and the bots do their turn
+     */
     private void setupCurrDomAndBotsDoTurn() {
         setToChooseBox(null);
         // bots do turns until round is over
@@ -506,6 +531,9 @@ public class Game implements GUI2Game {
      * selected player is the Human player. If the round is finished (the last
      * bank slot was evaluated) the next round will be setup (banks will be
      * loaded)
+     *
+     * @param bankIdx index of the current bank slot
+     * @return next bank slot
      */
     private int botsDoTheirTurn(int bankIdx) {
         if (!isValidPlayerIdx(bankIdx)) {
@@ -540,7 +568,11 @@ public class Game implements GUI2Game {
 
     }
 
-
+    /**
+     * The bots do their last turn (not selecting anything on the next bank, since it is empty)
+     * @param bankIdx index of the current bank index
+     * @return the next bank slot
+     */
     private int botsDoLastTurn(int bankIdx) {
         if (bankIdx >= this.currentRoundBank.getBankSize()) {
             endRound();
@@ -560,12 +592,18 @@ public class Game implements GUI2Game {
         return bankIdx + 1;
     }
 
+    /**
+     * Copies the next rounds' bank to the current rounds' bank
+     */
     private void copyAndRemoveNextRoundBankToCurrentBank() {
         this.currentRoundBank = this.nextRoundBank.copy();
         this.nextRoundBank.clearAllEntries();
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
     }
 
+    /**
+     * Randomly draws a domino for the next round
+     */
     private void randomlyDrawNewDominosForNextRound() {
         this.stack = this.nextRoundBank.randomlyDrawFromStack(this.stack);
         this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
@@ -618,10 +656,20 @@ public class Game implements GUI2Game {
         return genString(false);
     }
 
+    /**
+     * generates the string representation of the game used in the file format
+      * @return string representation used in the file formation
+     */
     public String toFile() {
         return genString(true);
     }
 
+    /**
+     * generates String representation of the game
+     * @param forFileRepresentation flag that determines if the board will be displayed in file format or in 'normal'
+     *                             string format // todo explain difference
+     * @return string representation of the game
+     */
     private String genString(boolean forFileRepresentation) {
         StringBuilder strbOutput = new StringBuilder();
         // all player boards to String
@@ -691,11 +739,11 @@ public class Game implements GUI2Game {
 
     @Override
     public boolean equalsStr(String input) {
-        if(null == input) {
+        if (null == input) {
             return false;
         }
         System.out.println("this: " + this.toFile());
-        System.out.println("input: "+ input);
-        return (this.toFile()+ "\n").equals(input);
+        System.out.println("input: " + input);
+        return (this.toFile() + "\n").equals(input);
     }
 }
