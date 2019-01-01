@@ -562,6 +562,11 @@ public class FXMLDocumentController implements Initializable {
         System.out.println("Not implemented yet");
     }
 
+    /**
+     *
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void onClickSelectPlayerTypes(ActionEvent event) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLIntro.fxml"));
