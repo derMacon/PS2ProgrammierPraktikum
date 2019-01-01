@@ -1,5 +1,6 @@
 \section{Problemanalyse und Realisation}
-Hierbei habe ich mich einer Technik bedient in der man versucht sich in eine jeweilige Teilkomponente des Problems hineinzuversetzen und anzugeben fuer welchen Teilbereich diese Komponente verantwortlich ist. Anschliessend ist es etwas einfach sowie uebersichtlicher sich auf die Struktur festzulegen, da man saetmliche Nomen als Klassen ansehen kann (hier einmal \colorbox{Apricot}{orange} dargestellt). Verben spiegeln die benoetigten Methoden wieder (hier \colorbox{SpringGreen}{gruen} dargestellt).
+\subsection{Problemanalyse}
+Hierbei habe ich mich einer Technik bedient in der man versucht sich in eine jeweilige Teilkomponente des Problems hineinzuversetzen und anzugeben fuer welchen Teilbereich diese Komponente verantwortlich ist. Anschliessend ist es etwas einfach sowie uebersichtlicher sich auf die Struktur festzulegen, da man s"amtliche Nomen als Klassen ansehen kann (hier einmal \colorbox{Apricot}{orange} dargestellt). Verben spiegeln die benoetigten Methoden wieder (hier \colorbox{SpringGreen}{gruen} dargestellt).
 
 \begin{enumerate}
 	\item Benutzer
@@ -28,15 +29,52 @@ Hierbei habe ich mich einer Technik bedient in der man versucht sich in eine jew
 	\end{enumerate}
 \end{enumerate}
 
+\subsection{Realisationsanalyse}
+\paragraph{Grunds"atzlich ben"otigte Datenstrukturen}
+Um eine Partie spielen zu k"onnen werden erst einmal Spielsteine ben"otigt. Hierbei wurden diverse Klassen eingef"uhrt die im Kapitel 
+\todo{Kapitel mit Beschreibung der Dominos einbinden}
+genauer beschrieben werden. Letztendich bieten diese allerdings s"aemtliche ben"otigte Schnittstellen um einen Domino mit einer bestimmten Aufschrift an mit einer Position zu versehen. 
+
+Diese Dominos k"onnen auf Spielbrettern positioniert werden. Jeder Spieler besitzt hierbei eins, und die Gui ist in der Lage diese ordnungsgem"ass darzustellen. 
+
+Um einen Domino w"ahlen zu k"onnen ist es essentiell ein Konstrukt f"ur eine Bank zu implementieren. Ich habe dabei eine eine Struktur gew"ahlt in der s"amtliche Spieler nicht anhand irgendeines Indices, sondern anhand ihrer Referenz gespeichert werden. Dies erm"oglicht eine genaue Zuordnung, da es ja m"oglicherweise Spieler mit identischem Index geben k"onnte. 
+
+\paragraph{Benutzerschnittstelle}
+Der Punkt Benutzer entspricht in diesem Projekt s"amtlichen Anfragen die ein Benutzer dem Programm stellen kann. Es bietet sich an eine Struktur zu waehlen in der eine Klasse oder Schnittstelle als Anlaufstelle dient ueber die sämtliche Anfragen bearbeitet werden koennen. Hierbei ist nur abzuwaegen ob man eventuell die "Antwort" des Programms gleich in diese
+\todo{Anfuehrungszeichen}
+ Schnittstelle mit aufnimmt. Dies führt allerdings zu unuebersichtlichem Code. 
+
+\paragraph{Spieler}
+Der Punkt Spieler beschreibt die wirklichen Spielteilnehmer. Er muss in der Lage sein selbststaendig oder durch die Interatktion mit der Gui einen Zug vollziehen zu koennen. Hierzu gehoert das auswahlen, drehen und setzen eines Dominos. Hier gilt es abzuwaehlen ob dies durch eine gemeinsame Klasse geschehen soll, ich habe mich allerdings fuer eine Unterteilung entschieden da der menschliche Spieler auf die Eingabe des Benutzers, ueber die Benutzerobflaeche, abarbeitet, waehrend die Bots diese mehr oder weniger ignorieren und isoliert ihre Zuege vollziehen. 
+
+Desweiteren ben"otigt der Spieler ein Spielbrett auf dem er Dominos setzen kann. Man k"onnte das Spielbrett auch der Verwaltung (also der Spiel-Klasse) "uberlassen, dann w"aere ein Spieler aber nicht mehr so unabh"angig vom Spiel wie in diesem Fall. Es ist so m"oglich eine minimale Schnittstelle dem Spiel gegen"uber bereitzustellen, indem der Spieler selbst alle wichtigen Schritte ausf"uhrt um einen Zug zu machen. 
+
+Die Kapsellung des Spielerverhaltens erm"oglicht es ausserdem wartbaren Code zu erzeugen. Es ist einfacher Fehler zu beheben oder bestimmte Prozesse auszutauschen ohne das komplette Programm umstrukturieren zu m"ussen, aber am wichtigsten hierbei ist die M"oglichkeit der Erweiterbarkeit. 
+\todo{Moegliche Erweiterung referenzieren... das intro fenster}
+Durch die Kapselung ist es m"oglich s"amtliche Schritte eines Spielers polymorph zu gestalten. Jede Spielerart reagiert also anders auf eine Anfrage und es nicht n"otig den Aufruf hierf"ur zu ver"andern. All diese M"oglichkeiten w"urden entfallen, wenn man das Spielverhalten der k"unstlichen Spieler in der Spiel-Klasse aufrufen w"urde.
+
+\paragraph{Spiel}
+Dieser Begriff beschreibt koordinierte Abarbeitung der Spielerzuege. Es wird der Benutzeroberflaeche mitgeteilt was angezeigt werden soll. Ausserdem werden saemtliche saemtliche Stapel von Dominos bereitgestellt die fuer ein vollwertiges Spiel genutzt werden sollen (Beutel, Baenke). Alle benoetigten Dateioperationen werden hier eingeleitet aber nicht direkt in dieser Klasse bearbeitet. Durch das ganze Exceptionhandling wird es ziemlich unuebersichtlich alles in das Spiel zu packen, da dieses in erster Linie fuer die uebergeordnete Organisation des ganzen Programms gedacht ist. 
+
+\paragraph{Log}
+Da man vermehrt, und vor allem an vielen verschiedenen Stellen im Code, eine neue Zeile in die Logdatei schreiben beziehungsweise auf der Konsole ausgeben m"ochte, bietet sich f"ur die Implementierung des Loggers das \emph{singleton Muster} an. Dieses Muster verwaltet eine einzige globale Instanz auf die immer wieder drauf zugegriffen wird. Das Muster wird eignet sich besonders gut fuer das Loggen von Daten, da man alles in die selbe Datei schreiben m"ochte und diese nicht jedesmal neu \emph{suchen} muss. Im Logger kann man zum Beispiel einfach ein entsprechendes Feld anlegen. 
+
+\paragraph{Speichern und Laden}
+Auch beim Speichern und Laden wird in diesem Entwurf ein \emph{singleton Muster} verwendet. Da man beim Speichern jeweils den Dateipfad nach erstmaliger Eingabe nicht erneut eingeben m"ochte wenn dies nicht unbedingt erforderlich ist (siehe Abschnitt 
+\todo{Benutzerhandbuch einbinden} 
+\emph{Speichern als} gegen"ueber \emph{Speichern}). Und auch das Speichern und Laden tritt immer wieder vermehrt und verteilt ueber den gesamten Code auf. Alternativ k"onnte man auch ein klassische Klasse verwenden, wegen den genannten Punkten empfiehlt sich aber gerade f"ur diese beiden Anwendungsf"alle dieses Muster. 
+\todo{Verweis auf genauere Beschreibung des Musters einbinden} 
+
+\paragraph{Grobe Klassenuebersicht}
 Mit dieser Uebersicht bin ich zu folgender groben Klassenstruktur gelagt: 
-\begin{enumerate}
+\begin{itemize}
 	\item Interfaces: Waren zwar mehr oder weniger durch die Bonusaufgabe vorgegeben, aber gerade zum Testen des Programms bietet sich die Verwendung dieser Interfaces natuerlich an. 
-	\begin{enumerate}
+	\begin{itemize}
 		\item GUI2Game
 		\item GUIConnector
-	\end{enumerate}
+	\end{itemize}
 	\item Klassen
-	\begin{enumerate}
+	\begin{itemize}
 		\item Game
 		\item Player
 		\item Verschiedene Auspraegungen der abstrakten Spieler-Klasse
@@ -47,11 +85,12 @@ Mit dieser Uebersicht bin ich zu folgender groben Klassenstruktur gelagt:
 		\item Domino
 		\item Pos
 		\item Logger
-	\end{enumerate}
+	\end{itemize}
 	\item Aufzaehlungstypen
-	\begin{enumerate}
+	\begin{itemize}
 		\item Tiles
 		\item SingleTile
 		\item DistrictType
-	\end{enumerate}
-\end{enumerate}
+	\end{itemize}
+\end{itemize}
+
