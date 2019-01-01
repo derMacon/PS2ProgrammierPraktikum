@@ -113,7 +113,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // actually select a domino from the bank
         bank.selectEntry(this, overallBestChoose.getIdxOnBank());
         String roundIdentifier = ordBank == 0 ? "current" : "next";
-        Logger.getInstance().printAndSafe("\n" + String.format(Logger.selectionLoggerFormat,
+        Logger.getInstance().printAndSafe("\n" + String.format(Logger.SELECTION_LOGGER_FORMAT,
                 getName(), overallBestChoose.getDomWithPosAndRot().toString(),
                 overallBestChoose.getIdxOnBank(), roundIdentifier));
         // put domino on board without showing it on the gui

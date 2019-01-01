@@ -1,7 +1,6 @@
 package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
-import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerState.Result;
 import logic.token.Domino;
@@ -62,6 +61,7 @@ public interface GUIConnector {
      * Shows players points.
      *
      * @param ordPlayer ordinal value of the player
+     * @param boardPoints points that should be displayed
      */
     void showPointsForPlayer(int ordPlayer, int boardPoints);
 
@@ -91,7 +91,7 @@ public interface GUIConnector {
     /**
      * Given Field stays focused but all other fields are blured out to indicate where the human player is supposed
      * to make his next move
-     * @param saturatedField
+     * @param saturatedField field that's currently in focus, may be null -> blur will be removed from every field
      */
     void blurOtherFields(PossibleField saturatedField);
 

@@ -12,7 +12,6 @@ import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
 
-import java.net.URI;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -88,7 +87,6 @@ public class Game implements GUI2Game {
         this.currentRoundBank = new Bank(playerCnt);
         this.nextRoundBank = new Bank(playerCnt);
         this.stack = new LinkedList<>();
-        this.currPlayerIdx = 0;
         this.currBankIdx = 0;
         this.currDomino = null;
         this.currField = PossibleField.CURR_BANK;
@@ -186,7 +184,6 @@ public class Game implements GUI2Game {
         this.currentRoundBank = currentRoundBank;
         this.nextRoundBank = nextRoundBank;
         this.stack = stack;
-        this.currPlayerIdx = 0;
         this.currBankIdx = currBankIdx;
         this.currDomino = currDomino;
 
@@ -294,7 +291,6 @@ public class Game implements GUI2Game {
         this.stack = this.currentRoundBank.randomlyDrawFromStack(this.stack);
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
 
-        this.currPlayerIdx = 0;
         this.currBankIdx = 0;
         this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
 
@@ -321,7 +317,7 @@ public class Game implements GUI2Game {
             // update human player selection
             this.currentRoundBank.selectEntry(this.players[HUMAN_PLAYER_IDX], idx);
             this.gui.selectDomino(CURRENT_BANK_IDX, idx, HUMAN_PLAYER_IDX);
-            Logger.getInstance().printAndSafe(String.format(Logger.selectionLoggerFormat,
+            Logger.getInstance().printAndSafe(String.format(Logger.SELECTION_LOGGER_FORMAT,
                     this.players[HUMAN_PLAYER_IDX].getName(), this.currentRoundBank.getDomino(idx), idx,
                     "current"));
 
@@ -358,10 +354,9 @@ public class Game implements GUI2Game {
             this.nextRoundBank.selectEntry(humanPlayer, idx);
             this.gui.selectDomino(NEXT_BANK_IDX, idx, HUMAN_PLAYER_IDX);
             setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(humanPlayer));
-            this.currPlayerIdx++;
             this.currField = PossibleField.CURR_DOM;
             this.gui.blurOtherFields(this.currField);
-            Logger.getInstance().printAndSafe("\n" + String.format(Logger.selectionLoggerFormat,
+            Logger.getInstance().printAndSafe("\n" + String.format(Logger.SELECTION_LOGGER_FORMAT,
                     humanPlayer.getName(), this.nextRoundBank.getDomino(idx).toString(),
                     idx, "next"));
         } else {
@@ -411,13 +406,6 @@ public class Game implements GUI2Game {
     }
 
     @Override
-    public boolean isInBoundHumanBoard(Pos pos) {
-        assert null != pos;
-        Board board = this.players[HUMAN_PLAYER_IDX].getBoard();
-        return board.getSizeX() > pos.x() && board.getSizeY() > pos.y();
-    }
-
-    @Override
     public void moveBoard(Board.Direction dir) {
         Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
         if (humanPlayer.getBoard().canMoveBoardToDir(dir) && (humanPlayer instanceof HumanPlayer)) {
@@ -425,7 +413,7 @@ public class Game implements GUI2Game {
             // setter for the board -> needs to cast
             humanInstance.updateBoard(humanInstance.getBoard().moveBoard(dir));
             this.gui.updatePlayer(players[HUMAN_PLAYER_IDX]);
-            Logger.getInstance().printAndSafe(String.format(Logger.ccDragLoggerFormat,
+            Logger.getInstance().printAndSafe(String.format(Logger.CC_DRAG_LOGGER_FORMAT,
                     humanInstance.getName(), humanInstance.getBoard().findPos(SingleTile.CC)));
         } else {
             Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nHUMAN tried to move board in an impossible " +
@@ -435,14 +423,9 @@ public class Game implements GUI2Game {
     }
 
     @Override
-    public void safeGame(URI filePath) {
-
-    }
-
-    @Override
     public void disposeCurrDomino() {
         if (PossibleField.CURR_DOM == this.currField) {
-            Logger.getInstance().printAndSafe(String.format(Logger.dismissalLoggerFormat, "HUMAN",
+            Logger.getInstance().printAndSafe(String.format(Logger.DISMISSAL_LOGGER_FORMAT, "HUMAN",
                     this.currDomino.toString()));
             setToChooseBox(null);
             setupCurrDomAndBotsDoTurn();
@@ -545,7 +528,6 @@ public class Game implements GUI2Game {
      * copyWithoutSelection banks
      */
     private void setupNextRound() {
-        this.currPlayerIdx = 0;
         copyAndRemoveNextRoundBankToCurrentBank();
         if (!this.stack.isEmpty()) {
             randomlyDrawNewDominosForNextRound();
@@ -553,7 +535,6 @@ public class Game implements GUI2Game {
             this.nextRoundBank.clearAllEntries();
             this.gui.setToBank(NEXT_BANK_IDX, nextRoundBank);
             setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[0]));
-//            setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(this.players[currPlayerIdx]));
             this.currField = PossibleField.CURR_DOM;
         }
 

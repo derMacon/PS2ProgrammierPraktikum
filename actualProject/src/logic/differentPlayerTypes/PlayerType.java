@@ -16,6 +16,10 @@ public enum PlayerType {
 
     private final String guiRepresentation;
 
+    /**
+     * Name of the playertype that will be displayed on the gui
+     * @param guiRepresentation Name of the playertype that will be displayed on the gui
+     */
     PlayerType(String guiRepresentation) {
         this.guiRepresentation = guiRepresentation;
     }
@@ -50,6 +54,7 @@ public enum PlayerType {
      *
      * @param type       Type of the player
      * @param gui        Reference to the gui
+     * @param idx index of the player inside the games' player array
      * @param boardSizeX X - dimension of the board
      * @param boardSizeY Y - dimension of the board
      * @return a player of the given type
@@ -73,7 +78,7 @@ public enum PlayerType {
     /**
      * Getter for the String representation of a single element
      *
-     * @return
+     * @return String representation of a single element
      */
     public String getStringRepresentation() {
         return guiRepresentation;

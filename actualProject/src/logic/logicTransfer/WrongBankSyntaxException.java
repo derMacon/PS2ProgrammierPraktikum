@@ -1,5 +1,8 @@
 package logic.logicTransfer;
 
+/**
+ * Exception that will be thrown if the bank syntax was wrong
+ */
 public class WrongBankSyntaxException extends Exception {
 
     /**

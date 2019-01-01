@@ -20,6 +20,7 @@ public class HumanPlayer extends Player {
      * Constructor used in the game, sets the gui and the board dimensions for the player.
      *
      * @param gui        gui reference
+     * @param idx index of the player in the player array of the game
      * @param boardSizeX width of the board
      * @param boardSizeY height of the board
      */
@@ -31,6 +32,7 @@ public class HumanPlayer extends Player {
      * Constructor setting the gui and board
      *
      * @param gui   reference to the GUIConnector
+     * @param idx index of the player in the player array of the game
      * @param board board to play on
      */
     public HumanPlayer(GUIConnector gui, int idx, Board board) {
@@ -41,17 +43,25 @@ public class HumanPlayer extends Player {
      * Constructor setting the gui and the board (in String formatting), used for testing / reloading.
      *
      * @param gui      reference to the GUIConnector
+     * @param idx index of the player in the player array of the game
      * @param strBoard String representation of the board
      */
     public HumanPlayer(GUIConnector gui, int idx, String strBoard) {
         super(gui, idx, strBoard);
     }
 
+    /**
+     * Getter for the full name of the player
+     * @return the full name of the player
+     */
     public String getName() {
         return NAME_PREFIX;
     }
 
-    // only human player needs this setter, since each Bot handles the movement locally
+    /**
+     * Setter for the board. only human player needs this setter, since each Bot handles the movement locally
+     * @param board board that will be set
+     */
     public void updateBoard(Board board) {
         this.board = board;
     }

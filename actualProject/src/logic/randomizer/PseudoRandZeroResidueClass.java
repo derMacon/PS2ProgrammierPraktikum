@@ -2,8 +2,10 @@ package logic.randomizer;
 
 import java.util.Random;
 
+// TODO delete class before final commit
+
 /**
- * @author silas
+ * Pseude random generator used for testing
  */
 public class PseudoRandZeroResidueClass extends Random {
 
@@ -11,10 +13,17 @@ public class PseudoRandZeroResidueClass extends Random {
 
     private int outputFactor;
 
+    /**
+     * Constructor
+     */
     public PseudoRandZeroResidueClass() {
         this(1);
     }
 
+    /**
+     * Constructor setting the residue class
+     * @param modOperand asdfsadf
+     */
     public PseudoRandZeroResidueClass(int modOperand) {
         super();
         assert 0 < modOperand;

@@ -16,20 +16,19 @@ import java.time.ZonedDateTime;
 /**
  * Logger for the game. Uses the singleton pattern, so that there can only be one single instance of this logger.
  * The constructor is private and the instance can only be retuned be the corresponding static getter method.
- *
- * @author silas
  */
 public class Logger {
 
-    public static final String depositLoggerFormat = "%s put %s %s to %s";
-    public static final String selectionLoggerFormat = "%s chose %s at index %d for %s round";
-    public static final String ccDragLoggerFormat = "%s dragged center to %s";
-    public static final String dismissalLoggerFormat = "%s did not use %s";
+    //<editor-fold defaultstate="collapsed" desc="Format strings used as templates in the different classes">
+    public static final String DEPOSIT_LOGGER_FORMAT = "%s put %s %s to %s";
+    public static final String SELECTION_LOGGER_FORMAT = "%s chose %s at index %d for %s round";
+    public static final String CC_DRAG_LOGGER_FORMAT = "%s dragged center to %s";
+    public static final String DISMISSAL_LOGGER_FORMAT = "%s did not use %s";
     public static final String ERROR_DELIMITER = "...................................";
-    public static final String CURR_ROUND_IDENTIFIER = "current";
-    public static final String NEXT_ROUND_IDENTIFIER = "next";
-    public static final String GAME_SEPARATOR = "-----------------------------------\n" +
-            ZonedDateTime.now().toString();
+    public static final String GAME_SEPARATOR = "-----------------------------------\n"
+            + ZonedDateTime.now().toString();
+    //</editor-fold>
+
     /**
      * Default file path for the file to which the data will be saved.
      */
@@ -52,6 +51,7 @@ public class Logger {
 
     /**
      * Getter for the logger instance
+     * @return logger instance
      */
     public static Logger getInstance() {
         if (null == singleInstance) {
@@ -78,19 +78,19 @@ public class Logger {
         this.dir = new File(path);
     }
 
-
-    // Actual logger method, prints the given message and then saves it to a given File
+    /**
+     * prints the given message and then saves it to a given File
+     * @param inputLog text that will be displayed and saved
+     */
     public void printAndSafe(String inputLog) {
         System.out.println(inputLog);
         appendFileWithNewMove(inputLog);
     }
 
-
-    // --- Methods for organization ---
-    private void initializeNewFile(File file) {
-        // TODO insert code
-    }
-
+    /**
+     * appends the log file with a given message
+     * @param logInput input to attach to the logfile
+     */
     private void appendFileWithNewMove(String logInput) {
         // TODO insert code
         try {

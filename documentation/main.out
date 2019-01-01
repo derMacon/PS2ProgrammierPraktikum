@@ -1,13 +1,23 @@
-\BOOKMARK [-1][-]{part.1}{Benutzerhandbuch}{}% 1
-\BOOKMARK [0][-]{section.1}{Ablaufbedingungen}{part.1}% 2
-\BOOKMARK [1][-]{section.2}{Programminstallation / Programmstart}{section.1}% 3
-\BOOKMARK [1][-]{section.3}{Bedienungsanleitung}{section.1}% 4
-\BOOKMARK [2][-]{subsection.3.1}{Hintergrundinformationen}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.2}{Programmfunktionalitaet}{section.3}% 6
-\BOOKMARK [-1][-]{part.2}{Programmierhandbuch}{}% 7
-\BOOKMARK [0][-]{section.4}{Entwicklungskonfiguration}{part.2}% 8
-\BOOKMARK [1][-]{section.5}{Problemanalyse und Realisation}{section.4}% 9
-\BOOKMARK [2][-]{subsection.5.1}{Problemanalyse}{section.5}% 10
-\BOOKMARK [2][-]{subsection.5.2}{Realisationsanalyse}{section.5}% 11
-\BOOKMARK [1][-]{section.6}{Beschreibung grundlegender Klassen}{section.4}% 12
-\BOOKMARK [1][-]{appendix.A}{Im Anhang Eins}{section.4}% 13
+\BOOKMARK [-1][-]{part.1}{Allgemeine Problemstellung}{}% 1
+\BOOKMARK [0][-]{section.1}{Spielregeln}{part.1}% 2
+\BOOKMARK [1][-]{section.2}{Spielablauf}{section.1}% 3
+\BOOKMARK [1][-]{section.3}{Anlegeregeln}{section.1}% 4
+\BOOKMARK [1][-]{section.4}{Spielende}{section.1}% 5
+\BOOKMARK [1][-]{section.5}{KI}{section.1}% 6
+\BOOKMARK [1][-]{section.6}{Oberfl\344che}{section.1}% 7
+\BOOKMARK [1][-]{section.7}{Karten}{section.1}% 8
+\BOOKMARK [1][-]{section.8}{Log}{section.1}% 9
+\BOOKMARK [1][-]{section.9}{Spielstand}{section.1}% 10
+\BOOKMARK [-1][-]{part.2}{Benutzerhandbuch}{}% 11
+\BOOKMARK [0][-]{section.10}{Ablaufbedingungen}{part.2}% 12
+\BOOKMARK [1][-]{section.11}{Programminstallation / Programmstart}{section.10}% 13
+\BOOKMARK [1][-]{section.12}{Bedienungsanleitung}{section.10}% 14
+\BOOKMARK [2][-]{subsection.12.1}{Hintergrundinformationen}{section.12}% 15
+\BOOKMARK [2][-]{subsection.12.2}{Programmfunktionalitaet}{section.12}% 16
+\BOOKMARK [-1][-]{part.3}{Programmierhandbuch}{}% 17
+\BOOKMARK [0][-]{section.13}{Entwicklungskonfiguration}{part.3}% 18
+\BOOKMARK [1][-]{section.14}{Problemanalyse und Realisation}{section.13}% 19
+\BOOKMARK [2][-]{subsection.14.1}{Problemanalyse}{section.14}% 20
+\BOOKMARK [2][-]{subsection.14.2}{Realisationsanalyse}{section.14}% 21
+\BOOKMARK [1][-]{section.15}{Beschreibung grundlegender Klassen}{section.13}% 22
+\BOOKMARK [1][-]{appendix.A}{Im Anhang Eins}{section.13}% 23

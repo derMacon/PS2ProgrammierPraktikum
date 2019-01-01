@@ -29,7 +29,9 @@ import logic.token.Pos;
 import logic.token.SingleTile;
 import logic.token.Tiles;
 
-
+/**
+ * Class to display the games' changes on the gui
+ */
 public class JavaFXGUI implements GUIConnector {
 
     /**

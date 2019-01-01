@@ -20,11 +20,12 @@ public class Loader {
      * Single instance of the logger. Initialized with null, can be returned with the corresponding getter.
      */
     private static Loader singleInstance = null;
+
     /**
      * Default directory for the filechooser
      * //TODO must create directory if not existent
      */
-    private static String DEFAULT_DIRECTORY = "./test/fileTests/expected_results";
+    private static final String DEFAULT_DIRECTORY = "./test/fileTests/expected_results";
     /**
      * Filechoose that will be used to to save or read the file from
      */
@@ -66,6 +67,7 @@ public class Loader {
 
     /**
      * Getter for the logger instance
+     * @return the logger instance
      */
     public static Loader getInstance() {
         if (null == singleInstance) {
@@ -91,14 +93,32 @@ public class Loader {
         }
     }
 
+    /**
+     * Saving process used in the tests to avoid calling a javafx gui
+     * @param filename name of the directory to which the given Game should be saved. The file is located in the
+     *                 directory defined in the according field of this class.
+     * @param game game instance that should be saved
+     */
     public static void saveWithoutGUI(String filename, Game game) {
         actualSavingProcess(new File(filename), game.toFile());
     }
 
+    /**
+     * opens a the string from the given filepath in its' string representation
+     * @param filePath filepath from which the string should be read
+     * @return string that was saved in the file at the specified location
+     * @throws FileNotFoundException Exception that will be thrown if the file was not found
+     */
     public static String openGivenFile(String filePath) throws FileNotFoundException {
         return openGivenFile(new File(filePath));
     }
 
+    /**
+     * opens a given file
+     * @param file file from which the content should be read
+     * @return content of the file
+     * @throws FileNotFoundException Exception that will be thrown if the file was not found
+     */
     public static String openGivenFile(File file) throws FileNotFoundException {
         assert file.isFile();
         Scanner in = null;
@@ -116,12 +136,17 @@ public class Loader {
         return removeUTF8BOM(sb.toString());
     }
 
+    /**
+     * Checks if a given game equals the game in the file that was saved earlier on
+     * @param game game that should be checked
+     * @return true if a given game equals the game in the file that was saved earlier on
+     */
     public static boolean equalsSavedFile(Game game) {
         String temp = null;
         File file = null;
         try {
             file = Loader.getInstance().file;
-            if(null == file) {
+            if (null == file) {
                 return false;
             }
             temp = openGivenFile(file);
@@ -131,28 +156,16 @@ public class Loader {
         return temp.equals(game.toFile());
     }
 
-//    public static String openSavedFile() {
-//        String temp = null;
-//        File file = null;
-//        try {
-//            file = Loader.getInstance().file;
-//            if(null == file) {
-//                return null;
-//            }
-//            temp = openGivenFile(file);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        return temp;
-//    }
-
-
+    /**
+     * Opens the file that was saved earlier on in the game
+     * @return String that was saved earlier on in the game
+     */
     public static String openSavedFile() {
         String temp = null;
         File file = null;
         try {
             file = Loader.getInstance().file;
-            if(null != file) {
+            if (null != file) {
                 temp = openGivenFile(file);
             }
         } catch (FileNotFoundException e) {
@@ -163,9 +176,10 @@ public class Loader {
 
     /**
      * https://stackoverflow.com/questions/21891578/removing-bom-characters-using-java
+     * Problems occured whith the regex / pattern matching on my system. After delting the BOM Prefix it works fine.
      *
-     * @param s
-     * @return
+     * @param s input string from which the BOM prefix will be deleted
+     * @return input string but without the BOM prefix
      */
     private static String removeUTF8BOM(String s) {
         if (s.startsWith(UTF8_BOM)) {
@@ -203,8 +217,8 @@ public class Loader {
         }
         this.file = fChooser.showSaveDialog(stage);
         if (null == this.file) {
-            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER +
-                    "\nUser aborted the saving process\n" + Logger.ERROR_DELIMITER + "\n");
+            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
+                    + "\nUser aborted the saving process\n" + Logger.ERROR_DELIMITER + "\n");
         } else {
             actualSavingProcess(this.file, input);
             Logger.getInstance().printAndSafe("User saved the game as \"" + this.file.getName() + "\" to "
@@ -221,6 +235,7 @@ public class Loader {
      * Source: https://stackoverflow.com/questions/4716503/reading-a-plain-text-file-in-java
      *
      * @return String value saved in the selected file
+     * @throws FileNotFoundException that will be thrown if the selected file was not found
      */
     public String openFileChooser() throws FileNotFoundException {
         this.file = fChooser.showOpenDialog(stage);

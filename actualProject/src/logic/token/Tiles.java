@@ -1,7 +1,22 @@
 package logic.token;
 
 
-import static logic.token.SingleTile.*;
+import static logic.token.SingleTile.P0;
+import static logic.token.SingleTile.H0;
+import static logic.token.SingleTile.A0;
+import static logic.token.SingleTile.S0;
+import static logic.token.SingleTile.O0;
+import static logic.token.SingleTile.P1;
+import static logic.token.SingleTile.H1;
+import static logic.token.SingleTile.I0;
+import static logic.token.SingleTile.A1;
+import static logic.token.SingleTile.S1;
+import static logic.token.SingleTile.O1;
+import static logic.token.SingleTile.I1;
+import static logic.token.SingleTile.S2;
+import static logic.token.SingleTile.O2;
+import static logic.token.SingleTile.I2;
+import static logic.token.SingleTile.I3;
 
 /**
  * Enum for the different Tile combinations
@@ -129,6 +144,11 @@ public enum Tiles {
         return output;
     }
 
+    /**
+     * Checks if the given string matches any string representation of this enum
+     * @param input input to check
+     * @return true if the given string matches any string representation of this enum
+     */
     public static boolean contains(String input) {
         return null != fromString(input);
     }

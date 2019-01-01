@@ -121,6 +121,11 @@ public abstract class Player implements Comparable {
         return sum;
     }
 
+    /**
+     * Generates the district points of a given district list
+     * @param districts list of districts to which the number of points will be generated
+     * @return number of points the list of districts is worth
+     */
     public int genDistrictPoints(List<District> districts) {
         int sum = 0;
         for (District currDistrict : districts) {
@@ -221,7 +226,7 @@ public abstract class Player implements Comparable {
             this.gui.showPointsForPlayer(this.idxInPlayerArray, getBoardPoints());
 
             // update logger
-            Logger.getInstance().printAndSafe(String.format(Logger.depositLoggerFormat, getName(),
+            Logger.getInstance().printAndSafe(String.format(Logger.DEPOSIT_LOGGER_FORMAT, getName(),
                     playerSelectedDomino.toString(),
                     playerSelectedDomino.getStrAllignment(),
                     playerSelectedDomino.getFstPos().toString())
@@ -229,6 +234,10 @@ public abstract class Player implements Comparable {
         }
     }
 
+    /**
+     * Getter for the full name of the player
+     * @return the full name of the player
+     */
     public abstract String getName();
 
     /**
@@ -261,6 +270,10 @@ public abstract class Player implements Comparable {
         return output;
     }
 
+    /**
+     * Finds the district with the most members
+     * @return number of members the largest district contains
+     */
     public int getLargestDistrictSize() {
         assert null != this.districts;
         int maxSize = 0;
@@ -275,10 +288,14 @@ public abstract class Player implements Comparable {
         return this.board.toString();
     }
 
+    /**
+     * Generates a treeView element of the player (used to display the result)
+     * @return treeView representation of the player
+     */
     public TreeItem<String> toTreeView() {
         TreeItem<String> parent =
-                new TreeItem<>("Spieler " + (this.idxInPlayerArray + 1) + " -> " + genAllDistrictPoints() + " Punkte " +
-                        "insgesamt");
+                new TreeItem<>("Spieler " + (this.idxInPlayerArray + 1) + " -> " + genAllDistrictPoints() + " Punkte "
+                        + "insgesamt");
         for (District currDistrict : this.districts) {
             parent.getChildren().add(currDistrict.toTreeItem());
         }

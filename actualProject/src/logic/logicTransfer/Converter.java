@@ -1,9 +1,9 @@
 package logic.logicTransfer;
 
 import logic.bankSelection.Bank;
+import logic.differentPlayerTypes.PlayerType;
 import logic.playerState.Board;
 import logic.playerState.Player;
-import logic.differentPlayerTypes.PlayerType;
 import logic.token.Domino;
 import logic.token.SingleTile;
 import logic.token.Tiles;
@@ -85,8 +85,6 @@ public class Converter {
     private PossibleField currField;
 
 
-
-
     /**
      * getter for the players
      *
@@ -99,7 +97,7 @@ public class Converter {
     /**
      * Getter for the current bank position (currPlayerIdx)
      *
-     * @return
+     * @return the current bank position (currPlayerIdx)
      */
     public int getCurrBankPos() {
         return currBankPos;
@@ -132,17 +130,14 @@ public class Converter {
         return stack;
     }
 
-    public PossibleField getCurrField() {
-        return currField;
-    }
 
     /**
      * Reads string input and converts it into the appropriate game instance
      * fields
      *
-     * @param gui gui implementation to display a players action. Necessary in order to instanciate new Players since
-     *           bots are required to hold a field containing a implementation of the gui interface in order to show
-     *            their moves without cooperating with the main game class.
+     * @param gui   gui implementation to display a players action. Necessary in order to instanciate new Players since
+     *              bots are required to hold a field containing a implementation of the gui interface in order to show
+     *              their moves without cooperating with the main game class.
      * @param input input to convert
      * @return String message containing the error messages,
      * SUCCESSFUL_READ_MESSAGE if reading String was successful
@@ -153,8 +148,7 @@ public class Converter {
             if (input == null || input.length() == 0) {
                 throw new IOException(UNSUCCESSFUL_READ_MESSAGE);
             }
-            if (!input.matches("(<Spielfeld[^>]*>\n(?s)[^<,>]*)*<Bänke>\n(?s)" +
-                    "[^<>]*<Beutel>\n[^<>]*")) {
+            if (!input.matches("(<Spielfeld[^>]*>\n(?s)[^<,>]*)*<Bänke>\n(?s)[^<>]*<Beutel>\n[^<>]*")) {
                 System.out.println(input);
                 throw new WrongTagException();
             }
@@ -167,38 +161,6 @@ public class Converter {
         }
     }
 
-    private String genTag(String input) throws WrongTagException {
-        if (null == input) {
-            return null;
-        }
-        String modifiedInput = input.replaceAll(TAG_CLOSER + "(?s).*", "");
-
-        if (modifiedInput.matches(BOARD_IDENTIFIER + ".*")) {
-            return BOARD_IDENTIFIER;
-        }
-        if (modifiedInput.equals(BANK_IDENTIFIER)
-                || modifiedInput.equals(STACK_IDENTIFIER)) {
-            return modifiedInput;
-        }
-        throw new WrongTagException();
-    }
-
-    protected String genData(String input) throws WrongTagException {
-        // (?s).* to match all chars (including the linebreak)
-        String pattern1 = "[" + BOARD_IDENTIFIER + "(?s).*|" + BANK_IDENTIFIER + "|"
-                + STACK_IDENTIFIER + "]" + TAG_CLOSER + "(?s).*";
-        String pattern = BOARD_IDENTIFIER + "(?s).*" + TAG_CLOSER + "\n(?s)" + ".*" +
-                "|" + BANK_IDENTIFIER + TAG_CLOSER + "\n(?s).*" +
-                "|" + STACK_IDENTIFIER + TAG_CLOSER + "\n(?s).*";
-        ;
-        if (null != input && input.matches(pattern)) {
-            String[] tempBlock = input.split(TAG_CLOSER + "\n");
-            return tempBlock.length > 1 ? tempBlock[1] : "";
-        } else {
-            throw new WrongTagException();
-        }
-    }
-
     /**
      * Takes a given String and extracts the information about the game. The
      * data structure can be described as follows:
@@ -207,7 +169,7 @@ public class Converter {
      * <Spielfeld>\n text
      * <Spielfeld>\n text
      * <Spielfeld>\n text
-     * <Bänke>\n text\n
+     * <Bänke>\n text \\TODO find out what checkstyle means with parse error
      * <Beutel>\n text
      * <p>
      * Procedure: - Genereate a 2-dim String array containing a the tag for the
@@ -217,6 +179,7 @@ public class Converter {
      * @param input String to extract data from
      * @return String array containing the name of the field in the first slot
      * and the actual data in the second
+     * @throws WrongTagException Exception that will be thrown if the tag syntax was not followed by the input String
      */
     public String[][] genDescriptiveField(String input) throws WrongTagException {
         List<String> blocks = new LinkedList<>();
@@ -236,13 +199,68 @@ public class Converter {
         return output;
     }
 
+    /**
+     * Convert the tag for the given game component into a descriptive tag that will be later used to generate the
+     * values of the component. A tag follows the following syntax: "<" + tagname + ">...
+     *
+     * @param input String containing values with which the output component will be filled later on in the
+     *              conversion process
+     * @return the tagname if the syntax is correct
+     * @throws WrongTagException Exception that will be thrown if the tag syntax was not followed by the input String
+     */
+    private String genTag(String input) throws WrongTagException {
+        if (null == input) {
+            return null;
+        }
+        String modifiedInput = input.replaceAll(TAG_CLOSER + "(?s).*", "");
+
+        if (modifiedInput.matches(BOARD_IDENTIFIER + ".*")) {
+            return BOARD_IDENTIFIER;
+        }
+        if (modifiedInput.equals(BANK_IDENTIFIER)
+                || modifiedInput.equals(STACK_IDENTIFIER)) {
+            return modifiedInput;
+        }
+        throw new WrongTagException();
+    }
+
+    /**
+     * Splits the data for the components from a given string. Checks if the correct syntax was followed
+     *
+     * @param input input from which the data for the components will be split apart from
+     * @return data component of the given string
+     * @throws WrongTagException Syntax containing an error message if syntax was not followed
+     */
+    protected String genData(String input) throws WrongTagException {
+        // (?s).* to match all chars (including the linebreak)
+        String pattern = BOARD_IDENTIFIER + "(?s).*" + TAG_CLOSER + "\n(?s)" + ".*"
+                + "|" + BANK_IDENTIFIER + TAG_CLOSER + "\n(?s).*"
+                + "|" + STACK_IDENTIFIER + TAG_CLOSER + "\n(?s).*";
+        if (null != input && input.matches(pattern)) {
+            String[] tempBlock = input.split(TAG_CLOSER + "\n");
+            return tempBlock.length > 1 ? tempBlock[1] : "";
+        } else {
+            throw new WrongTagException();
+        }
+    }
+
 
     /**
      * Generates the data for the fields. Iterates through the given description
      * blocks, checks the title to chose which conversion method will be called
      *
-     * @param descriptionBlocks
-     * @param gui
+     * @param descriptionBlocks multidimensional array containing a tag name in the respective first field and the
+     *                          data for the component fitting this tag in the second one.
+     * @param gui               gui reference needed for the player to be instanciated
+     * @throws WrongTagException         Exception that will be thrown if the tag syntax was not matched by any given
+     *                                   tag in
+     *                                   the descriptive field array
+     * @throws WrongBoardSyntaxException Exception that will be thrown if the board syntax was not matched by any
+     *                                   given tag in the descriptive field array
+     * @throws WrongBankSyntaxException  Exception that will be thrown if the bank syntax was not matched by any
+     *                                   given tag in the descriptive field array
+     * @throws WrongStackSyntaxException Exception that will be thrown if the stack syntax was not matched by any
+     *                                   given tag in the descriptive field array
      */
     public void fillFieldsWithDescriptiveBlocks(String[][] descriptionBlocks, GUIConnector gui)
             throws WrongTagException, WrongBoardSyntaxException, WrongBankSyntaxException,
@@ -275,6 +293,14 @@ public class Converter {
         }
     }
 
+    /**
+     * Checks if the bank syntax is correct, otherwise a WrongBankSyntaxException will be thrown
+     * \\TODO pattern angeben
+     *
+     * @param banks     string that will be checked
+     * @param playerCnt number of players participating in the game (is equivalent to the number of needed bank slots)
+     * @throws WrongBankSyntaxException Syntax containing an error message if syntax was not followed
+     */
     private void checkBankSyntax(String banks, int playerCnt) throws WrongBankSyntaxException {
         try {
             String[] individualBanks = banks.split("\n");
@@ -320,6 +346,13 @@ public class Converter {
         }
     }
 
+    /**
+     * Checks if a given string matches the necessary stack syntax
+     * \\ TODO pattern angeben
+     *
+     * @param stack string that will be checked
+     * @throws WrongStackSyntaxException Syntax containing an error message if syntax was not followed
+     */
     private void checkStackSyntax(String stack) throws WrongStackSyntaxException {
         // Stack may be empty
         if (0 < stack.length()) {
@@ -338,6 +371,7 @@ public class Converter {
      * // TODO pattern angeben.
      *
      * @param board board to check for syntax errors
+     * @return
      * @throws WrongBoardSyntaxException exception that will be thrown if anything was found.
      */
     private int[] checkBoardSyntax(int[] dimensions, String board) throws WrongBoardSyntaxException {
@@ -417,7 +451,7 @@ public class Converter {
      */
     private Bank[] convertStrToBanks(String input) {
         assert null != input && input.contains("\n");
-        if (input.length() == 0 || input.equals("\n")) {
+        if (input.length() == 0 || "\n".equals(input)) {
             return new Bank[]{new Bank(this.players.size()),
                     new Bank(this.players.size())};
         }

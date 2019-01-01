@@ -36,7 +36,7 @@ public class Result {
     /**
      * Constructor used for testing
      *
-     * @param ranking
+     * @param ranking ranking of the players
      */
     public Result(List<ResultRanking> ranking) {
         assert null != ranking;
@@ -111,13 +111,17 @@ public class Result {
             output.append(i + ". Spot");
             for (int j = 0; j < this.ranking.get(i).getRankedPlayers().size(); j++) {
                 currPlayer = this.ranking.get(i).getRankedPlayers().get(j);
-                output.append("\tPlayer " + j + " Result{" + "points=" + this.ranking.get(i).getRankedPlayers().get(j).getBoardPoints()
-                        + '}' + "\n");
+                output.append("\tPlayer " + j + " Result{" + "points="
+                        + this.ranking.get(i).getRankedPlayers().get(j).getBoardPoints() + '}' + "\n");
             }
         }
         return output.toString();
     }
 
+    /**
+     * Generates a treeView object (used by the gui to show result to the user)
+     * @return a treeView object (used by the gui to show result to the user)
+     */
     public TreeView<String> toTreeView() {
         TreeItem<String> rootItem = new TreeItem<>("Ranking");
         rootItem.setExpanded(true);

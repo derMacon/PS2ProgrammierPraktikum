@@ -5,11 +5,9 @@
  */
 package logic.logicTransfer;
 
-import logic.playerState.Board;
 import logic.differentPlayerTypes.PlayerType;
+import logic.playerState.Board;
 import logic.token.Pos;
-
-import java.net.URI;
 
 /**
  * defines the methods needed by the FXMLController for reacting to the users input.
@@ -44,7 +42,8 @@ public interface GUI2Game {
      * puts the current Domino to the given position on board and removes it
      * from the choose-box and switches to the next player.
      * <p>
-     * //     * @param dom domino to be set on board
+     *
+     * @param pos position to which the human players current domino will be put
      */
     void setOnBoard(Pos pos);
 
@@ -52,38 +51,43 @@ public interface GUI2Game {
      * clears the board. deals the dominos to the banks. <br>
      * gets one of the stacks dominos and sets it to the middle of the board. <br>
      * human player starts.
+     *
+     * @param playerTypes array of playertypes that will be instanciated during the starting process of the game
+     * @param sizeX       width of every players' board
+     * @param sizeY       height of the players' board
      */
     void startGame(PlayerType[] playerTypes, int sizeX, int sizeY);
 
     /**
      * Selects a domino from the current bank, for human player the domino will be put into the special box to rotate
      * if necessary.
+     *
+     * @param idx index of the domino on the current bank that will be selected
      */
     void selectDomOnCurrBank(int idx);
 
     /**
      * Selects a domino from the next bank, for human player the domino will be put into the special box to rotate
      * if necessary.
+     *
+     * @param idx index of the domino on the next bank that will be selected
      */
     void selectDomOnNextBank(int idx);
 
     /**
      * Moves Board one box in the given direction
+     *
+     * @param dir direction to which the board will be moved
      */
     void moveBoard(Board.Direction dir);
 
     /**
-     * Saves the current game in a .txt file at the selected path
-     */
-    void safeGame(URI filePath);
-
-    boolean isInBoundHumanBoard(Pos pos);
-
-    /**
      * Needed to check if the saved file is on the most recent state or if it needs to be updated before any new
      * instance can be loaded. //TODO ueberarbeiten.
-     * @param input
-     * @return
+     *
+     * @param input input to check
+     * @return true  if the saved file is on the most recent state or if it needs to be updated before any new
+     * instance can be loaded.
      */
     boolean equalsStr(String input);
 
