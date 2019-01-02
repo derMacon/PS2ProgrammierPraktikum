@@ -17,13 +17,13 @@ import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import logic.bankSelection.Bank;
+import logic.differentPlayerTypes.HumanPlayer;
 import logic.logicTransfer.GUIConnector;
 import logic.logicTransfer.Game;
 import logic.logicTransfer.PossibleField;
 import logic.playerState.Board;
 import logic.playerState.Player;
 import logic.playerState.Result;
-import logic.differentPlayerTypes.HumanPlayer;
 import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
@@ -59,7 +59,7 @@ public class JavaFXGUI implements GUIConnector {
     private static final int IDX_FST = 0;
     private static final int IDX_SND = 1;
     //26 images for each face of a half (0..25)
-    private static int IMG_COUNT = 26;
+    private static final int IMG_COUNT = 26;
     private Image[] imgs;
     private Domino currDomino = null;
 
@@ -76,6 +76,21 @@ public class JavaFXGUI implements GUIConnector {
 
     private Label[] lblPlayerNameAndPoints;
 
+    /**
+     * Constructor for this class
+     *
+     * @param pnSelected                 pane containing the current domino of the human player
+     * @param lblTurn                    label displaying the information of whos' turn it is
+     * @param imgWssPlayerBoard          multi dimensional image view array representing the human players' board
+     * @param imgWwsAIBoards             multi dimensional image view array representing the Bots' board
+     * @param imgVwsCurrentBank          image view array representing the current rounds' bank
+     * @param imgVwsCurrentBankSelection image view array containing / displaying the selection of the players on the
+     *                                   current rounds' bank
+     * @param imgVwsNextBank             image view array representing the next rounds' bank
+     * @param imgVwsNextBankSelection    image view array containing / displaying the selection of the players on the
+     *                                   next rounds' bank
+     * @param lblPlayerNameAndPoints     label array displaying the name and the points of each player
+     */
     public JavaFXGUI(Pane pnSelected, Label lblTurn, ImageView[][] imgWssPlayerBoard, ImageView[][][] imgWwsAIBoards,
                      ImageView[][] imgVwsCurrentBank, ImageView[][] imgVwsCurrentBankSelection,
                      ImageView[][] imgVwsNextBank, ImageView[][] imgVwsNextBankSelection,
@@ -101,11 +116,6 @@ public class JavaFXGUI implements GUIConnector {
 
     }
 
-    public Domino getCurrDomino() {
-        return this.currDomino;
-    }
-
-
     @Override
     public void setToBank(int ordBank, Bank bank) {
         if (bank.isEmpty()) {
@@ -127,7 +137,12 @@ public class JavaFXGUI implements GUIConnector {
         }
     }
 
-
+    /**
+     * Sets a given domino on the bank with the given ordinal value at the position with the given index
+     * @param ordBank ordinal value of the bank
+     * @param index index of the position on the bank
+     * @param domino domino that will be put on the bank
+     */
     public void setToBank(int ordBank, int index, Domino domino) {
         ImageView[][] imgVwsBank = ordBank == Game.CURRENT_BANK_IDX ? this.imgVwsCurrentBank : this.imgVwsNextBank;
         if (index >= 0 && index < imgVwsBank[IDX_FST].length) {
@@ -292,8 +307,8 @@ public class JavaFXGUI implements GUIConnector {
         int width = board.getSizeX();
         int height = board.getSizeY();
         SingleTile[][] cells = board.getCells();
-        ImageView[][] imgVwsOfPlayer = player instanceof HumanPlayer ? this.imgVwsPlayerBoard :
-                this.imgWwsAIBoards[player.getIdxInPlayerArray() - 1];
+        ImageView[][] imgVwsOfPlayer = player instanceof HumanPlayer ? this.imgVwsPlayerBoard
+                : this.imgWwsAIBoards[player.getIdxInPlayerArray() - 1];
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
                 Pos pos = new Pos(x, y);
@@ -315,6 +330,7 @@ public class JavaFXGUI implements GUIConnector {
      * Shows the image with the given value at the given position on the game
      * grid.
      *
+     * @param imgVwBoard multi dimensional image view array representing a board
      * @param pos   position on the game grid
      * @param value value for which the image should be displayed at pos
      */
@@ -442,7 +458,6 @@ public class JavaFXGUI implements GUIConnector {
             default:
                 img = EMPTY_IMG;
         }
-        ;
         return img;
     }
 
@@ -508,8 +523,8 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void selectDomino(int ordBank, int idxDom, int ordPlayer) {
-        ImageView[][] imgVwsGivenBank = Game.CURRENT_BANK_IDX == ordBank ? this.imgVwsCurrentBankSelection :
-                this.imgVwsNextBankSelection;
+        ImageView[][] imgVwsGivenBank = Game.CURRENT_BANK_IDX == ordBank ? this.imgVwsCurrentBankSelection
+                : this.imgVwsNextBankSelection;
         switch (ordPlayer) {
             case Game.HUMAN_PLAYER_IDX:
                 imgVwsGivenBank[0][idxDom].setImage(SELECTION_PLAYER_1_TEXTURE);
@@ -534,7 +549,7 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void deleteDomFromBank(int ordBank, int idx) {
-        if(0 <= idx && this.imgVwsCurrentBank.length > idx) {
+        if (0 <= idx && this.imgVwsCurrentBank.length > idx) {
             if (0 == ordBank) {
                 this.imgVwsCurrentBank[0][idx].setImage(EMPTY_IMG);
                 this.imgVwsCurrentBank[1][idx].setImage(EMPTY_IMG);
@@ -565,7 +580,6 @@ public class JavaFXGUI implements GUIConnector {
             focusImageView(this.imgVwsCurrentBank);
             focusImageView(this.imgVwsNextBank);
         }
-
         switch (saturatedField) {
             case CURR_DOM:
                 blurImageView(this.imgVwsCurrentBank);
@@ -582,6 +596,10 @@ public class JavaFXGUI implements GUIConnector {
         }
     }
 
+    /**
+     * Puts a gaussian blur effect on every field of a given bank
+     * @param bank multi dimensional image view array representing a bank of the game
+     */
     private void blurImageView(ImageView[][] bank) {
         assert null != bank && 0 < bank.length;
         Effect blur = new GaussianBlur(4);
@@ -592,6 +610,10 @@ public class JavaFXGUI implements GUIConnector {
         }
     }
 
+    /**
+     * Deletes the blur effect from every field of a given bank
+     * @param bank multi dimensional image view array representing a bank of the game
+     */
     private void focusImageView(ImageView[][] bank) {
         assert null != bank && 0 < bank.length;
         for (int i = 0; i < bank.length; i++) {

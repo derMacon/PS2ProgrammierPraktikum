@@ -31,7 +31,6 @@ public enum SingleTile {
      */
     private int tokenCnt;
 
-
     /**
      * Constructor to set the district type of the values.
      *
@@ -41,15 +40,6 @@ public enum SingleTile {
     SingleTile(DistrictType disctrictType, int tokenCnt) {
         this.districtType = disctrictType;
         this.tokenCnt = tokenCnt;
-    }
-
-    public static boolean contains(String input) {
-        for (SingleTile c : SingleTile.values()) {
-            if (c.name().equals(input)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
@@ -70,4 +60,17 @@ public enum SingleTile {
         return this.tokenCnt;
     }
 
+    /**
+     * Checks if the current single tile contains the given enum identifier
+     * @param input enum identifier that should be checked
+     * @return true if the current single tile contains the given enum identifier
+     */
+    public static boolean contains(String input) {
+        for (SingleTile c : SingleTile.values()) {
+            if (c.name().equals(input)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

@@ -165,12 +165,12 @@ public class Converter {
      * Takes a given String and extracts the information about the game. The
      * data structure can be described as follows:
      *
-     * <Spielfeld>\n text
-     * <Spielfeld>\n text
-     * <Spielfeld>\n text
-     * <Spielfeld>\n text
-     * <Bänke>\n text \\TODO find out what checkstyle means with parse error
-     * <Beutel>\n text
+     * &lt;Spielfeld&gt;\n text
+     * &lt;Spielfeld&gt;\n text
+     * &lt;Spielfeld&gt;\n text
+     * &lt;Spielfeld&gt;\n text
+     * &lt;Baenke&gt;\n text \\TODO find out what checkstyle means with parse error
+     * &lt;Beutel&gt;\n text
      * <p>
      * Procedure: - Genereate a 2-dim String array containing a the tag for the
      * information in the first field of a array entry and the actual data in

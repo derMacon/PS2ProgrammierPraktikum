@@ -555,7 +555,7 @@ public class FXMLDocumentController implements Initializable {
 
     // todo loeschen
     /**
-     * @param event
+     * @param event user action on the gui
      */
     @FXML
     private void onClickStartGame(ActionEvent event) {
@@ -563,9 +563,10 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     *
-     * @param event
-     * @throws IOException
+     * Possible Intro Window to determine playertypes, not used in this version of the game since there is only one
+     * type of Bot playertype
+     * @param event user action on the gui
+     * @throws IOException will be thrown if fxml doc cannot be loaded
      */
     @FXML
     private void onClickSelectPlayerTypes(ActionEvent event) throws IOException {
@@ -808,6 +809,9 @@ public class FXMLDocumentController implements Initializable {
         this.game.moveBoard(Board.Direction.LEFT_MOVE);
     }
 
+    /**
+     * Opens the rules of the game in the default pdf reader from the user of the programm
+     */
     @FXML
     private void openRulesInPdfReader() {
         if (Desktop.isDesktopSupported()) {

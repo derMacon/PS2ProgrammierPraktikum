@@ -1,5 +1,6 @@
 package logic.token;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -140,7 +141,7 @@ public class Domino implements Comparable {
      */
     public static List<Domino> fill(List<Domino> list) {
         if (null == list) {
-            list = new LinkedList<Domino>();
+            list = new ArrayList<>();
         } else {
             list.clear();
         }

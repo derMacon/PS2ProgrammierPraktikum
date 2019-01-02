@@ -53,8 +53,8 @@ public class Entry {
     /**
      * Entry for setting up preallocation in form of a String
      *
-     * @param preallocation the preallocation follows the the following structure: "<idx of
-     *                      player in player array> <domino in String format>"
+     * @param preallocation the preallocation follows the the following structure: "&lt;idx of
+     *                      player in player array&gt; &lt;domino in String format&gt;"
      * @param players       list of players needed to set the reference in the entry
      */
     public Entry(String preallocation, List<Player> players) {
@@ -91,7 +91,7 @@ public class Entry {
     /**
      * Getter for the player which selected this bank entry
      *
-     * @return reference to the which selected this bank entry
+     * @return reference of the player who selected this bank entry
      */
     public Player getSelectedPlayer() {
         return selectedPlayer;
