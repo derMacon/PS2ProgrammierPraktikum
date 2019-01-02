@@ -31,9 +31,9 @@ Diese Klasse wurde von der Bonusaufgabe der PS2-"Ubungung "ubernommen. Es wurde 
 (siehe Abschnitt \ref{sec:entwicklungskonfiguration} - \nameref{sec:entwicklungskonfiguration}) 
 folge zu leisten. Dennoch folgt hier ein kurzer "Uberblick "uber diese Klasse: 
 
-Eine Position setzt sich aus einer x- und einer y-Komponente zusammen. Diese sind als \emph{final} deklariert und k"onnen somit nicht ver"andert werden. Neben dem Konstruktor und diversen Gettern gibt es eine Methode um festzustellen ob sich eine gegebene Position neben der Position des Objekts befindet. Dazu wird ein die Differenz der beiden jeweils gleichnamigen Komponenten gebildet und am Ende verglichen ob nur jeweils eine der beiden Differenzen gleich Null ist. 
+Eine Position setzt sich aus einer x- und einer y-Komponente zusammen. Diese sind als \emph{final} deklariert und k"onnen somit nicht ver"andert werden. Neben dem Konstruktor und diversen Gettern gibt es eine Methode um festzustellen ob sich eine gegebene Position neben der Position des Objekts befindet. Dazu wird ein die Differenz der beiden jeweils gleichnamigen Komponenten gebildet und am Ende verglichen ob nur jeweils eine der beiden Differenzen gleich Null ist (siehe Listing \ref{lst:pos_isNextTo}). 
 
-\begin{lstlisting}[style=CodeHighlighting]
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Pos - isNextTo(),label=lst:pos_isNextTo]
 public boolean isNextTo(Pos p) {
     int xDiff = Math.abs(x - p.x());
 	int yDiff = Math.abs(y - p.y());
@@ -42,9 +42,9 @@ public boolean isNextTo(Pos p) {
 }
 \end{lstlisting}
 
-Die Methode \emph{getNeighbours()} liefert eine Arraylist der vier Nachbarn. Hierzu wird eine Liste initialisiert und mit neuen Positionen bef"ullt deren x- und y-Komponenten entsprechend modifiziert werden. 
+Die Methode \emph{getNeighbours()} liefert eine Arraylist der vier Nachbarn. Hierzu wird eine Liste initialisiert und mit neuen Positionen bef"ullt deren x- und y-Komponenten entsprechend modifiziert werden (siehe Listing \ref{lst:pos_getNeighbours}). 
 
-\begin{lstlisting}[style=CodeHighlighting]
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Pos - getNeighbours(),label=lst:pos_getNeighbours]
 public List<Pos> getNeighbours() {
     List<Pos> neighbours = new ArrayList<>();
     neighbours.add(LEFT_ROT, new Pos(this.x - 1, this.y));
@@ -60,10 +60,10 @@ Eine \emph{equals}-Methode ist auch implementiert, diese vergleicht allerdings n
 
 \paragraph{DistrictType}
 \label{par:districtType}
-In diesem Aufz"ahlungstyp werden die m"oglichen Kategorien der Distrikte aufgef"uhrt. Wichtig hierbei, auch ein leeres Feld sowie das Stadtzentrum besitzen einen Typ. 
+In diesem Aufz"ahlungstyp werden die m"oglichen Kategorien der Distrikte aufgef"uhrt. Wichtig hierbei, auch ein leeres Feld sowie das Stadtzentrum besitzen einen Typ (siehe listing \ref{lst:districtType}). 
 Dieser Aufz"ahlungstyp spielt vor allem beim Ausz"ahlen der Punkte beziehungsweise dem verwalten der verschiedenen Distrikte eine wichtige Rolle. 
 
-\begin{lstlisting}[style=CodeHighlighting]
+\begin{lstlisting}[float,style=CodeHighlighting,caption=DistrictType,label=lst:districtType]
 public enum DistrictType {
     EMPTY_CELL, CENTER, AMUSEMENT, INDUSTRY, OFFICE, PARK, SHOPPING, HOME
 }
@@ -74,9 +74,9 @@ public enum DistrictType {
 \label{par:singleTile}
 Dieser Aufz"ahlungstyp repr"asentiert einen Domino Aufdruck. 
 
-Ein Konstruktur verbindet die Enum-Darstellung mit einem Distrikttypen und einem Anzahl an Punkten welche auf dem betrachteten Tile verf"ugbar sind. 
+Ein Konstruktur verbindet die Enum-Darstellung mit einem Distrikttypen und einem Anzahl an Punkten welche auf dem betrachteten Tile verf"ugbar sind (siehe Listing \ref{lst:singleTile}). 
 
-\begin{lstlisting}[style=CodeHighlighting]
+\begin{lstlisting}[style=CodeHighlighting,float,caption=singleTile,label=lst:singleTile]
 CC(CENTER, 0), EC(EMPTY_CELL, 0),
 A0(AMUSEMENT, 0), A1(AMUSEMENT, 1), A2(AMUSEMENT, 2), A3(AMUSEMENT, 3),
 I0(INDUSTRY, 0), I1(INDUSTRY, 1), I2(INDUSTRY, 2), I3(INDUSTRY, 3),

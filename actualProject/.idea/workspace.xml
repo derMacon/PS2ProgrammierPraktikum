@@ -214,7 +214,7 @@
     <session id="1164813950">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="12" />
+          <entry key="project.closed" value="13" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="6" />
           <entry key="project.open.time.11" value="1" />
@@ -1122,7 +1122,7 @@
     <property name="SearchEverywhereHistoryKey" value="equals&#9;PSI&#9;JAVA://logic.bankSelection.Choose#equals&#10;AiP&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerTypes/DefaultAIPlayer.java&#10;platest&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/test/logic/playerState/DefaultAIPlayerTest.java&#10;board&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerState/Board.java&#10;neigh&#9;PSI&#9;JAVA://logic.playerState.Board#checkIfNeighborsAreValid" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546395861815" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546396306319" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/fh-checkstyle-config.xml" />
@@ -1307,7 +1307,7 @@
       <workItem from="1546102306921" duration="29890000" />
       <workItem from="1546206177300" duration="9118000" />
       <workItem from="1546309066410" duration="5377000" />
-      <workItem from="1546380749383" duration="10682000" />
+      <workItem from="1546380749383" duration="11267000" />
     </task>
     <task id="LOCAL-00001" summary="Ein paar Equals Methoden getestet und umgeschrieben.">
       <created>1545498451822</created>
@@ -1429,7 +1429,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="354685000" />
+    <option name="totallyTimeSpent" value="355270000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -1442,7 +1442,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="539" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50230944" visible="true" weight="0.3090615" />
       <window_info id="Structure" order="1" sideWeight="0.49769053" side_tool="true" weight="0.36003235" />
