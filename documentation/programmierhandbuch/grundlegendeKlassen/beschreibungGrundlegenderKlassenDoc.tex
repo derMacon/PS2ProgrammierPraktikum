@@ -1,4 +1,5 @@
 \section{Beschreibung grundlegender Klassen}
+\sectionmark{Grundlegende Klassen}
 Alle Klassen wurden in folgende Packages unterteilt. Im folgenden werden diese vom Gesamtprogram isoliert betrachtet. Eine globale "Ubersicht "uber s"amtliche Zusammenh"ange findet sich erst im Kapitel ...
 \todo{Kapitelref einfuegen}
 \begin{itemize}
@@ -98,9 +99,8 @@ Au"serdem verf"ugt der Aufz"ahlungstyp "uber Getter f"ur beide Felder und eine M
 
 \paragraph{Tiles}
 \label{par:tiles}
-Dieser Aufz"ahlungstyp beschreibt alle m"oglichen \emph{SingleTile}-Kombinationen die im Stapel einer normalen Partie des Spiels m"oglich sind. 
-
-\begin{lstlisting}[style=CodeHighlighting]
+Dieser Aufz"ahlungstyp beschreibt alle m"oglichen \emph{SingleTile}-Kombinationen die im Stapel einer normalen Partie des Spiels m"oglich sind (siehe listing \ref{lst:tiles}). 
+\begin{lstlisting}[style=CodeHighlighting,float,caption=Tiles,label=lst:tiles]
 P0P0_Val1(P0, P0, 1),
 P0P0_Val2(P0, P0, 2),
 ...
@@ -120,14 +120,18 @@ Tiles(SingleTile fst, SingleTile snd, int value) {
     this.value = value;
 }
 \end{lstlisting}
-
 Auch hier gibt es wieder einen Konstruktor der diverse Werte an die jeweiligen Enum-Werte bindet. Es werden neben den beiden SingleTile-Kombinationen auch der Wert dieser spezifischen Kombination gespeichert. Der Wert dient dem Sortieren der B"anke und wurde aus der Aufgabenstellung entnommen (wurde also nicht willk"urliche festgelegt). 
 
 Um einfacher Testen zu k"onnen wurden mehrere Methoden eingef"uhrt um von au"serhalb einfacher bestimmte Tile-Kombinationen zu bekommen. Diese sind allerdings im Hauptprogramm nicht von Bedeutung. Neben sonstigen Gettern besitzt diese Klasse lediglich eine \emph{toString()}-Methode wo nur die ersten 4 Buchstaben der Enum-Werte zur"uckgegeben werden, da diese die Tile-Kombination angeben, der Wert der Kombination entf"allt hierbei (ist aber in dieser Methode auch unbedeutend).
 
-Um eine gegebene Liste zu f"ullen wird die Methode \emph{fill} bereitgestellt. Hierbei wird eine gegebene Liste geleert und mit allen m"oglichen unterschiedlichen Dominos gef"ullt. 
 
-\begin{lstlisting}[style=CodeHighlighting]
+\paragraph{Domino}
+\label{par:domino}
+Diese Klasse vereint s"amtliche zuvor genannten Datenstrukturen. 
+
+Ein Domino besitzt eine bestimmte Kombination aus SingleTiles und eine Rotation sowie Position. Letztere beiden beziehen sich auf ein Board, nicht auf eine Bank oder dergleichen. Um eine gegebene Liste zu f"ullen wird die Methode \emph{fill} bereitgestellt. Hierbei wird eine gegebene Liste geleert und mit allen m"oglichen unterschiedlichen Dominos gef"ullt (siehe listing \ref{lst:domino_fill}, \nameref{lst:domino_fill}). Um einen Domino auf einem Spielfeld zu platzieren muss es m"ogliche sein seine Position sowie Rotation zu ver"andern, dies geschieht "uber die Methoden \emph{setPosition()} und \emph{incRot() / setRotation()}. \emph{incRot()} inkrementiert hierbei die Rotation um neunzig Grad. Au"serdem ist diese Klasse in der Lage mittels der \emph{toFile()}-Methode einen Zeichenfolge zu generieren um die Tile-Kombination des Steins sp"ater abspeichern zu k"onnen. Hierbei wird allerdings \emph{toString()}-Methode der Tile-Kombination aufgerufen. Als Letztes Implementiert die Domino Klasse noch das Interface \emph{Comparable} um sp"ater Dominos per \emph{Collections.sort(...)} einfacher Sortieren zu k"onnen. Hierbei wird jeweils auf den Wert der Tile-Kombination geschaut (siehe \ref{lst:domino_compareTo}, \nameref{lst:domino_compareTo}). 
+
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Domino - fill,label=lst:domino_fill]
 public static List<Domino> fill(List<Domino> list) {
     if (null == list) {
         list = new LinkedList<>();
@@ -141,8 +145,11 @@ public static List<Domino> fill(List<Domino> list) {
 }
 \end{lstlisting}
 
-\paragraph{Domino}
-\label{par:domino}
-Diese Klasse vereint s"amtliche zuvor genannten Datenstrukturen. 
-
-Ein Domino besitzt eine bestimmte Kombination aus SingleTiles und eine Rotation sowie Position. Letztere beiden beziehen sich auf ein Board, nicht auf eine Bank oder dergleichen. 
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Domino - compareTo,label=lst:domino_compareTo]
+@Override
+public int compareTo(Object o) {
+    assert null != o && (o instanceof Domino);
+    Domino other = (Domino) o;
+    return this.tiles.getValue() - other.tiles.getValue();
+}
+\end{lstlisting}

@@ -133,6 +133,35 @@ public class Domino implements Comparable {
     }
 
     /**
+     * gets the tile
+     *
+     * @return the tile
+     */
+    public Tiles getTile() {
+        return tiles;
+    }
+
+    /**
+     * Getter for the rotation
+     *
+     * @return the rotation
+     */
+    public int getRot() {
+        return rotation;
+    }
+
+    /**
+     * Setter for the position
+     *
+     * @param posFst new position
+     * @return reference to this domino
+     */
+    public Domino setPos(Pos posFst) {
+        this.posFst = posFst;
+        return this;
+    }
+
+    /**
      * gets all values of Tiles in a list. All existing dominos in list have
      * to be removed so each domino is single in list.
      *
@@ -152,24 +181,6 @@ public class Domino implements Comparable {
     }
 
     /**
-     * gets the tile
-     *
-     * @return the tile
-     */
-    public Tiles getTile() {
-        return tiles;
-    }
-
-    /**
-     * Getter for the rotation
-     *
-     * @return the rotation
-     */
-    public int getRot() {
-        return rotation;
-    }
-
-    /**
      * Generates a String representing the rotation of a domino
      *
      * @return STR_HORI when domino is not rotated or is rotated twice, STR_VERTI if the domino is
@@ -177,44 +188,6 @@ public class Domino implements Comparable {
      */
     public String getStrAllignment() {
         return this.rotation % 2 == 0 ? STR_HORI : STR_VERTI;
-    }
-
-    /**
-     * Setter for the position
-     *
-     * @param posFst new position
-     * @return reference to this domino
-     */
-    public Domino setPos(Pos posFst) {
-        this.posFst = posFst;
-        return this;
-    }
-
-    /**
-     * Generates the district type for the first or second tile of the domino
-     *
-     * @param idx index of the tile
-     * @return the district type of the tile at the given index, null if index is invalid
-     */
-    public DistrictType genTileDistrictType(int idx) {
-        DistrictType output = null;
-        if (FST_TILE_IDX == idx || SND_TILE_IDX == idx) {
-            output = FST_TILE_IDX == idx ? this.tiles.getFst().getDistrictType()
-                    : this.tiles.getSnd().getDistrictType();
-        }
-        return output;
-    }
-
-    /**
-     * increments the rotation by one. The roation is 0..3.
-     * updated the second position.
-     *
-     * @return reference to the domino
-     */
-    public Domino incRot() {
-        this.rotation++;
-        this.rotation %= ROTATION_CNT;
-        return this;
     }
 
     /**
@@ -271,6 +244,33 @@ public class Domino implements Comparable {
                 assert false : "rotation has to be 0..3 but was " + rotation;
         }
         return new Pos(x, y);
+    }
+
+    /**
+     * Generates the district type for the first or second tile of the domino
+     *
+     * @param idx index of the tile
+     * @return the district type of the tile at the given index, null if index is invalid
+     */
+    public DistrictType genTileDistrictType(int idx) {
+        DistrictType output = null;
+        if (FST_TILE_IDX == idx || SND_TILE_IDX == idx) {
+            output = FST_TILE_IDX == idx ? this.tiles.getFst().getDistrictType()
+                    : this.tiles.getSnd().getDistrictType();
+        }
+        return output;
+    }
+
+    /**
+     * increments the rotation by one. The roation is 0..3.
+     * updated the second position.
+     *
+     * @return reference to the domino
+     */
+    public Domino incRot() {
+        this.rotation++;
+        this.rotation %= ROTATION_CNT;
+        return this;
     }
 
     /**

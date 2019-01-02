@@ -14,43 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a35e8ce1-009a-4daf-9449-6b01f63d4d17" name="Default Changelist" comment="Board Syntax angefangen, noch sehr fehleranfaellig.">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataOutput/logFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataOutput/logFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/gui/FXMLDocumentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/gui/FXMLDocumentController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/gui/JavaFXGUI$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/gui/JavaFXGUI$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/gui/JavaFXGUI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/gui/JavaFXGUI.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/Doodle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/dataPreservation/Loader.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/dataPreservation/Loader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/dataPreservation/Logger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/dataPreservation/Logger.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/differentPlayerTypes/HumanPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/differentPlayerTypes/HumanPlayer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/differentPlayerTypes/PlayerType$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/differentPlayerTypes/PlayerType$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/differentPlayerTypes/PlayerType.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/differentPlayerTypes/PlayerType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/Converter.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/Converter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/Game.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/PossibleField.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/PossibleField.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/WrongBankSyntaxException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/WrongBankSyntaxException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/WrongBoardSyntaxException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/WrongBoardSyntaxException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/WrongStackSyntaxException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/WrongStackSyntaxException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/WrongTagException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/logicTransfer/WrongTagException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Result.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/ResultRanking.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/ResultRanking.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/randomizer/PseudoRandZeroResidueClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/randomizer/PseudoRandZeroResidueClass.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/token/SingleTile.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/token/SingleTile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/token/Tiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/token/Tiles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FXMLDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FXMLDocumentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/JavaFXGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/JavaFXGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/Doodle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/bankSelection/Entry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/bankSelection/Entry.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/logicTransfer/Converter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/logicTransfer/Converter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/token/Domino.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/Domino.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/token/SingleTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/token/SingleTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/main.lof" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.lof" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/main.out" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../documentation/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/entwicklungskonfiguration/entwicklungskonfigurationDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/entwicklungskonfiguration/entwicklungskonfigurationDoc.tex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/beschreibungGrundlegenderKlassenDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/beschreibungGrundlegenderKlassenDoc.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -279,14 +245,14 @@
         <counts>
           <entry key="class" value="2" />
           <entry key="fxml" value="1" />
-          <entry key="java" value="50541" />
+          <entry key="java" value="50550" />
           <entry key="txt" value="721" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="50539" />
+          <entry key="JAVA" value="50548" />
           <entry key="PLAIN_TEXT" value="721" />
           <entry key="RegExp" value="2" />
           <entry key="XML" value="1" />
@@ -371,8 +337,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/token/Domino.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="147" column="43" lean-forward="true" selection-start-line="147" selection-start-column="43" selection-end-line="147" selection-end-column="43" />
+            <state relative-caret-position="566">
+              <caret line="349" column="4" selection-start-line="349" selection-start-column="4" selection-end-line="355" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -1156,7 +1122,7 @@
     <property name="SearchEverywhereHistoryKey" value="equals&#9;PSI&#9;JAVA://logic.bankSelection.Choose#equals&#10;AiP&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerTypes/DefaultAIPlayer.java&#10;platest&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/test/logic/playerState/DefaultAIPlayerTest.java&#10;board&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerState/Board.java&#10;neigh&#9;PSI&#9;JAVA://logic.playerState.Board#checkIfNeighborsAreValid" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546394336046" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546395861815" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/fh-checkstyle-config.xml" />
@@ -1341,7 +1307,7 @@
       <workItem from="1546102306921" duration="29890000" />
       <workItem from="1546206177300" duration="9118000" />
       <workItem from="1546309066410" duration="5377000" />
-      <workItem from="1546380749383" duration="9532000" />
+      <workItem from="1546380749383" duration="10682000" />
     </task>
     <task id="LOCAL-00001" summary="Ein paar Equals Methoden getestet und umgeschrieben.">
       <created>1545498451822</created>
@@ -1463,7 +1429,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="353535000" />
+    <option name="totallyTimeSpent" value="354685000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -2158,8 +2124,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/token/Domino.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="147" column="43" lean-forward="true" selection-start-line="147" selection-start-column="43" selection-end-line="147" selection-end-column="43" />
+        <state relative-caret-position="566">
+          <caret line="349" column="4" selection-start-line="349" selection-start-column="4" selection-end-line="355" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
