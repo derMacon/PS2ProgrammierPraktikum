@@ -92,7 +92,7 @@ public class Logger {
 
     /**
      * appends the log file with a given message
-     * todo link einfuegen
+     * https://www.baeldung.com/java-exceptions
      *
      * @param logInput input to attach to the logfile
      */
@@ -106,7 +106,6 @@ public class Logger {
                 this.loggingPossible = false;
             }
         }
-
     }
 
 }

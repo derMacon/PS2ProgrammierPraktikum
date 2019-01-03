@@ -6,6 +6,11 @@
   \url{http://intern.fh-wedel.de/mitarbeiter/klk/programmierpraktikum-java/aufgabentermine/ss18-citydomino/}.
 \newblock Aufgerufen am: 29-12-2018.
 
+\bibitem{try-with-resources}
+{try-with-resources-Block} erklaerung.
+\newblock \url{https://www.baeldung.com/java-exceptions}.
+\newblock Unterpunkt 4.4, Aufgerufen am: 03-01-2019.
+
 \bibitem{Freeman2006}
 Eric Freeman, Elisabeth Freeman, Kathy Sierra, and Bert Bates.
 \newblock {\em Entwurfsmuster von Kopf bis Fuß -}.
