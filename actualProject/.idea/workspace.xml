@@ -14,15 +14,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a35e8ce1-009a-4daf-9449-6b01f63d4d17" name="Default Changelist" comment="Board Syntax angefangen, noch sehr fehleranfaellig.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataOutput/logFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataOutput/logFile.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/bankSelection/Bank.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/bankSelection/Bank.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/randomizer/PseudoRandAlwaysHighestVal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/randomizer/PseudoRandAlwaysHighestVal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/CityDominoSilasHoffmann/logic/bankSelection/BankTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CityDominoSilasHoffmann/logic/bankSelection/BankTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/bankSelection/Bank.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/bankSelection/Bank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/logic/bankSelection/BankTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/logic/bankSelection/BankTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/bankSelection/bank/bankClassDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/bankSelection/bank/bankClassDoc.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -280,14 +274,14 @@
         <counts>
           <entry key="class" value="2" />
           <entry key="fxml" value="1" />
-          <entry key="java" value="51871" />
+          <entry key="java" value="51885" />
           <entry key="txt" value="721" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="51869" />
+          <entry key="JAVA" value="51883" />
           <entry key="PLAIN_TEXT" value="721" />
           <entry key="RegExp" value="2" />
           <entry key="XML" value="1" />
@@ -346,11 +340,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Bank.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="689">
-              <caret line="106" column="31" lean-forward="true" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
+            <state relative-caret-position="188">
+              <caret line="344" column="53" selection-start-line="344" selection-start-column="53" selection-end-line="344" selection-end-column="53" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -379,12 +373,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Entry.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="293">
-              <caret line="137" column="19" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
-            </state>
+            <state relative-caret-position="-216" />
           </provider>
         </entry>
       </file>
@@ -556,8 +548,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="598" />
-    <option name="y" value="-13" />
+    <option name="x" value="-1287" />
+    <option name="y" value="538" />
     <option name="width" value="1278" />
     <option name="height" value="697" />
   </component>
@@ -1152,7 +1144,7 @@
     <property name="SearchEverywhereHistoryKey" value="equals&#9;PSI&#9;JAVA://logic.bankSelection.Choose#equals&#10;AiP&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerTypes/DefaultAIPlayer.java&#10;platest&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/test/logic/playerState/DefaultAIPlayerTest.java&#10;board&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerState/Board.java&#10;neigh&#9;PSI&#9;JAVA://logic.playerState.Board#checkIfNeighborsAreValid" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546551011337" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546553699182" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/fh-checkstyle-config.xml" />
@@ -1187,7 +1179,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in CityDominoSilasHoffmann">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.Main" />
+      <module name="CityDominoSilasHoffmann" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in CityDominoSilasHoffmann" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CityDominoSilasHoffmann" />
       <option name="PACKAGE_NAME" value="" />
@@ -1206,22 +1211,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="logic.bankSelection" />
       <option name="MAIN_CLASS_NAME" value="logic.bankSelection.BankTest" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="BankTest.testConstructor_NoElems" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="CityDominoSilasHoffmann" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="logic.bankSelection.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="logic.bankSelection" />
-      <option name="MAIN_CLASS_NAME" value="logic.bankSelection.BankTest" />
-      <option name="METHOD_NAME" value="testConstructor_NoElems" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -1260,18 +1249,18 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.BankTest.testConstructor_OneElem" />
-      <item itemvalue="JUnit.BankTest.testConstructor_NoElems" />
       <item itemvalue="JUnit.BankTest" />
       <item itemvalue="JUnit.BankTest.testEquals_OneBankContainsEmptySlots" />
       <item itemvalue="JUnit.All in CityDominoSilasHoffmann" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.All in CityDominoSilasHoffmann" />
         <item itemvalue="JUnit.BankTest" />
         <item itemvalue="JUnit.BankTest.testConstructor_OneElem" />
         <item itemvalue="JUnit.BankTest.testEquals_OneBankContainsEmptySlots" />
-        <item itemvalue="JUnit.BankTest.testConstructor_NoElems" />
       </list>
     </recent_temporary>
   </component>
@@ -1346,7 +1335,7 @@
       <workItem from="1546468325764" duration="7483000" />
       <workItem from="1546486623065" duration="16000" />
       <workItem from="1546527433917" duration="8440000" />
-      <workItem from="1546543513115" duration="4272000" />
+      <workItem from="1546543513115" duration="6399000" />
     </task>
     <task id="LOCAL-00001" summary="Ein paar Equals Methoden getestet und umgeschrieben.">
       <created>1545498451822</created>
@@ -1468,7 +1457,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="383434000" />
+    <option name="totallyTimeSpent" value="385561000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -1480,10 +1469,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
+    <frame x="-1288" y="539" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50230944" visible="true" weight="0.13354531" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.50230944" visible="true" weight="0.27184466" />
       <window_info id="Structure" order="1" sideWeight="0.49769053" side_tool="true" weight="0.36003235" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1492,7 +1481,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4972178" weight="0.25750577" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49514562" visible="true" weight="0.27535102" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49514562" visible="true" weight="0.35334873" />
       <window_info anchor="bottom" x="2560" y="329" width="1280" height="961" id="Debug" order="3" sideWeight="0.5079491" side_tool="true" type="WINDOWED" visible="true" weight="0.28627145" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1701,12 +1690,6 @@
           <line>138</line>
           <properties />
           <option name="timeStamp" value="307" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/logic/bankSelection/Bank.java</url>
-          <line>79</line>
-          <properties />
-          <option name="timeStamp" value="312" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
@@ -2127,13 +2110,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Entry.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="137" column="19" selection-start-line="137" selection-start-column="19" selection-end-line="137" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/junit/junit/4.12/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -2157,12 +2133,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="689">
-          <caret line="106" column="31" lean-forward="true" selection-start-line="106" selection-start-column="31" selection-end-line="106" selection-end-column="31" />
+        <state relative-caret-position="188">
+          <caret line="344" column="53" selection-start-line="344" selection-start-column="53" selection-end-line="344" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/bankSelection/Entry.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-216" />
       </provider>
     </entry>
   </component>

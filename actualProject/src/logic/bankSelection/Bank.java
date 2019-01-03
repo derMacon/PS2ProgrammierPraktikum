@@ -48,9 +48,9 @@ public class Bank {
         this.entries = new Entry[playerCnt];
         this.bankSize = playerCnt;
         // TODO uncomment before final commit
-//        this.rand = new Random();
+    //        this.rand = new Random();
         this.rand = new PseudoRandAlwaysHighestVal();
-//        this.rand = new PseudoRandZeroResidueClass(2);
+    //        this.rand = new PseudoRandZeroResidueClass(2);
     }
 
     /**
@@ -83,28 +83,6 @@ public class Bank {
             for (int i = singleEntries.length - 1; i >= 0; i--) {
                 this.entries[i + offset] = new Entry(singleEntries[i], players);
             }
-
-//            String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
-//            int offsetEmptySlots = this.bankSize > singleEntries.length
-//                    ? this.bankSize - singleEntries.length : 0;
-//
-//            // convert to String array to entries array -> length to this.entries may differ
-//            Entry[] temp = new Entry[singleEntries.length];
-//            for (int i = 0; i < temp.length; i++) {
-//                temp[i] = new Entry(singleEntries[i], players);
-//            }
-//
-//            // if there are empty slots in the given preallocation, they will be put in front of the
-//            // other bank entries
-//            if (0 < offsetEmptySlots) {
-//                this.entries = new Entry[this.bankSize];
-//                System.arraycopy(temp, 0, this.entries, offsetEmptySlots, temp.length);
-//            } else {
-//                this.entries = temp;
-//            }
-//
-//            // Setting up random generator
-//            this.rand = rand;
         }
     }
 
@@ -364,7 +342,7 @@ public class Bank {
     }
 
     /**
-     * Generates a String that can be saved in a .txt document
+     * Generates a String that can be saved in a file
      *
      * @return String representation of this object
      */

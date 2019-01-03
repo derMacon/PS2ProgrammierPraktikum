@@ -5,10 +5,55 @@
 Die Bank-Klasse dient als Datenstruktur auf Basis dessen die Spielteilnehmer Dominos f"ur die aktuelle sowie n"achste Runde w"ahlen k"onnen. Sie verwaltet haupts"achlich einen Array von Entry-Objekten. 
 
 \subparagraph{Konstruktoren}
-Die Klasse verf"ugt "uber drei verschiedene Konstruktoren. 
+Die Klasse verf"ugt "uber drei verschiedene Konstruktoren \lstref{lst:bank_konstruktor}.
 \begin{enumerate}
 	\item Konstruktor: Wird beim standardm"a"sigen Erstellen einer Bank im Spiel genutzt. Es wird lediglich die Anzahl der Spieler gegeben, sodass die Bank entsprechend viele leere Entry-Pl"atze generieren kann. 
 	\item Konstruktor: Wird beim Testen ohne Dateiverarbeitung genutzt. Es wird ein bereits generierter Array aus Entry-Objekten gesetzt. Au"serdem besteht die M"oglichkeit ein beliebiges Random Objekt zu setzen (sehr n"utzlich, um vermehrt die selbe Spielsituation zu generieren zu k"onnen). 
 	\item Konstruktor: Wird zum Testen mit Dateiverarbeitung genutzt. Hierbei wird ein String hereingereicht, welcher derartig verarbeitet wird, dass am Ende eine Liste an validen Entry-Daten zustande kommt. 
 \end{enumerate}
 \todo{Verweis auf Test-Kapitel mit Random-Objekt setzen. (2. Punkt)}
+Bei dem String-Input des Konstruktors wird davon ausgegangen, dass die Syntax stimmt. Diese wird bereits in der Converter-Klasse "uberpr"uft. Bei der Konvertierung des Strings in einen Entry-Array wird der String bei jedem Komma geteilt, sodass es anschlie"send m"oglich ist diesen von hinten nach vorne zu durchlaufen und jeden String-Wert jeweils einem Entry-Konstruktor zu "ubergeben. Dieser ist in der Lage zusammen mit den teilnehmenden Spielern ein g"ultiges Entry-Objekt zu genenrieren. 
+\begin{lstlisting}[style=CodeHighlighting,float,caption=Bank - Konstruktor,label=lst:bank_konstruktor]
+// standard constructor 
+public Bank(int playerCnt) {
+    this.entries = new Entry[playerCnt];
+    this.bankSize = playerCnt;
+        this.rand = new Random();
+}
+
+// testing constructor - no fileIO
+public Bank(Entry[] entries, Random pseudoRandom) {
+    this.entries = entries;
+    this.rand = pseudoRandom;
+    this.bankSize = entries.length;
+}
+
+// testing constructor - with fileIO
+public Bank(String preallocation, List<Player> players, Random rand) {
+    assert null != preallocation && null != players && null != rand;
+    this.bankSize = players.size();
+    this.entries = new Entry[this.bankSize];
+    if (0 < preallocation.length()) {
+        String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
+        int offset = this.bankSize - singleEntries.length;
+        for (int i = singleEntries.length - 1; i >= 0; i--) {
+            this.entries[i + offset] = new Entry(singleEntries[i], players);
+        }
+    }
+}
+\end{lstlisting}
+
+\subparagraph{Methoden}
+Neben zahlreichen Gettern und Settern ist es m"oglich eine Bank aufzul"osen ohne eine neue Instanz anzufordnern indem man die Methode \emph{clearAllEntries} verwendet, welche lediglich alle Entry-Referenzen auf den Null-Pointer setzt, die Bank-Referenz aber unver"andert l"asst. 
+
+Die wohl wichtigste Methode der Bank-Klasse nennt sich \emph{selectEntry} und erm"oglicht es einem Spieler einen gew"unschten domino auszuw"ahlen. Hierf"ur wird der Entry an dem gegebenen Bank-Index mit der Spieler-Referenz belegt \lstref{lst:bank_selectEntry}. 
+
+\todo{noch nicht fertig.}
+
+\begin{lstlisting}[style=CodeHighlighting,float,caption=Bank - selectEntry,label=lst:bank_selectEntry]
+public void selectEntry(Player player, int bankIdx) {
+    assert null != player && isValidBankIdx(bankIdx) && null != this.entries
+            && null != this.entries[bankIdx] && isNotSelected(bankIdx);
+    this.entries[bankIdx].selectEntry(player);
+}
+\end{lstlisting}
