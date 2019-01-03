@@ -16,20 +16,18 @@
     <list default="true" id="a35e8ce1-009a-4daf-9449-6b01f63d4d17" name="Default Changelist" comment="Board Syntax angefangen, noch sehr fehleranfaellig.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dataOutput/logFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataOutput/logFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/dataPreservation/Logger.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/dataPreservation/Logger.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/differentPlayerTypes/DefaultAIPlayer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/differentPlayerTypes/DefaultAIPlayer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Board$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Board$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Board$Direction.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Board$Direction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Board.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Board.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/District.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/District.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Player.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/CityDominoSilasHoffmann/logic/playerState/PlayerTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CityDominoSilasHoffmann/logic/playerState/PlayerTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/differentPlayerTypes/DefaultAIPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/differentPlayerTypes/DefaultAIPlayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/playerState/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/playerState/Board.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/ResultRanking.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/ResultRanking.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/CityDominoSilasHoffmann/logic/playerState/DistrictTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/CityDominoSilasHoffmann/logic/playerState/DistrictTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/logic/playerState/District.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/playerState/District.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/playerState/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/playerState/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/playerState/ResultRanking.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/playerState/ResultRanking.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/logic/playerState/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/logic/playerState/PlayerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/logic/playerState/DistrictTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/logic/playerState/DistrictTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../documentation/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/playerState/player/playerClassMain.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/playerState/player/playerClassMain.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/playerState/playerStatePackageMain.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/playerState/playerStatePackageMain.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../documentation/main.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/playerState/district/districtClassDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/playerState/district/districtClassDoc.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -226,7 +224,7 @@
     <session id="1164813950">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="16" />
+          <entry key="project.closed" value="17" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.10" value="6" />
           <entry key="project.open.time.11" value="1" />
@@ -243,14 +241,14 @@
         <counts>
           <entry key="class" value="12" />
           <entry key="fxml" value="8" />
-          <entry key="java" value="313" />
+          <entry key="java" value="314" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="12" />
-          <entry key="JAVA" value="313" />
+          <entry key="JAVA" value="314" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="8" />
         </counts>
@@ -259,14 +257,14 @@
         <counts>
           <entry key="class" value="2" />
           <entry key="fxml" value="1" />
-          <entry key="java" value="50634" />
+          <entry key="java" value="50793" />
           <entry key="txt" value="721" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CLASS" value="2" />
-          <entry key="JAVA" value="50632" />
+          <entry key="JAVA" value="50791" />
           <entry key="PLAIN_TEXT" value="721" />
           <entry key="RegExp" value="2" />
           <entry key="XML" value="1" />
@@ -307,18 +305,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/logic/dataPreservation/Loader.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4140">
-              <caret line="237" column="89" selection-start-line="237" selection-start-column="89" selection-end-line="237" selection-end-column="89" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logic/dataPreservation/Logger.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -365,8 +351,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/logic/playerState/District.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="155" column="79" lean-forward="true" selection-start-line="155" selection-start-column="79" selection-end-line="155" selection-end-column="79" />
+            <state relative-caret-position="29">
+              <caret line="111" selection-start-line="111" selection-end-line="111" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/logic/playerState/DistrictTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="219" selection-start-line="219" selection-end-line="219" />
             </state>
           </provider>
         </entry>
@@ -475,7 +470,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/test/logic/bankSelection/BankTest.java" />
         <option value="$PROJECT_DIR$/test/logic/playerState/PlayerTest.java" />
         <option value="$PROJECT_DIR$/src/logic/playerTypes/HumanPlayer.java" />
         <option value="$PROJECT_DIR$/src/logic/token/PseudoRandom.java" />
@@ -523,9 +517,10 @@
         <option value="$PROJECT_DIR$/src/logic/token/Domino.java" />
         <option value="$PROJECT_DIR$/src/logic/dataPreservation/Loader.java" />
         <option value="$PROJECT_DIR$/src/logic/dataPreservation/Logger.java" />
-        <option value="$PROJECT_DIR$/src/logic/playerState/District.java" />
         <option value="$PROJECT_DIR$/src/logic/playerState/Player.java" />
         <option value="$PROJECT_DIR$/src/logic/playerState/Board.java" />
+        <option value="$PROJECT_DIR$/test/logic/playerState/DistrictTest.java" />
+        <option value="$PROJECT_DIR$/src/logic/playerState/District.java" />
       </list>
     </option>
   </component>
@@ -1138,7 +1133,7 @@
     <property name="SearchEverywhereHistoryKey" value="equals&#9;PSI&#9;JAVA://logic.bankSelection.Choose#equals&#10;AiP&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerTypes/DefaultAIPlayer.java&#10;platest&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/test/logic/playerState/DefaultAIPlayerTest.java&#10;board&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerState/Board.java&#10;neigh&#9;PSI&#9;JAVA://logic.playerState.Board#checkIfNeighborsAreValid" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546533855821" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546538047108" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/fh-checkstyle-config.xml" />
@@ -1173,7 +1168,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in CityDominoSilasHoffmann">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gui.Main" />
       <module name="CityDominoSilasHoffmann" />
@@ -1195,47 +1190,47 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ValidFileReadTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DistrictTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CityDominoSilasHoffmann" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="logic.logicTransfer.*" />
+          <option name="PATTERN" value="logic.playerState.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="logic.logicTransfer" />
-      <option name="MAIN_CLASS_NAME" value="logic.logicTransfer.ValidFileReadTests" />
+      <option name="PACKAGE_NAME" value="logic.playerState" />
+      <option name="MAIN_CLASS_NAME" value="logic.playerState.DistrictTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ValidFileReadTests.test_lastTurnInRotBoxk" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DistrictTest.testMerge_NullParam" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CityDominoSilasHoffmann" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="logic.logicTransfer.*" />
+          <option name="PATTERN" value="logic.playerState.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="logic.logicTransfer" />
-      <option name="MAIN_CLASS_NAME" value="logic.logicTransfer.ValidFileReadTests" />
-      <option name="METHOD_NAME" value="test_lastTurnInRotBoxk" />
+      <option name="PACKAGE_NAME" value="logic.playerState" />
+      <option name="MAIN_CLASS_NAME" value="logic.playerState.DistrictTest" />
+      <option name="METHOD_NAME" value="testMerge_NullParam" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ValidFileReadTests.test_noStack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DistrictTest.testMerge_ValidOnlyConstr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="CityDominoSilasHoffmann" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="logic.logicTransfer.*" />
+          <option name="PATTERN" value="logic.playerState.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="logic.logicTransfer" />
-      <option name="MAIN_CLASS_NAME" value="logic.logicTransfer.ValidFileReadTests" />
-      <option name="METHOD_NAME" value="test_noStack" />
+      <option name="PACKAGE_NAME" value="logic.playerState" />
+      <option name="MAIN_CLASS_NAME" value="logic.playerState.DistrictTest" />
+      <option name="METHOD_NAME" value="testMerge_ValidOnlyConstr" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -1244,17 +1239,17 @@
     <list>
       <item itemvalue="JUnit.All in CityDominoSilasHoffmann" />
       <item itemvalue="Application.Main" />
-      <item itemvalue="JUnit.ValidFileReadTests" />
-      <item itemvalue="JUnit.ValidFileReadTests.test_lastTurnInRotBoxk" />
-      <item itemvalue="JUnit.ValidFileReadTests.test_noStack" />
+      <item itemvalue="JUnit.DistrictTest.testMerge_ValidOnlyConstr" />
+      <item itemvalue="JUnit.DistrictTest.testMerge_NullParam" />
+      <item itemvalue="JUnit.DistrictTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in CityDominoSilasHoffmann" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.ValidFileReadTests.test_noStack" />
-        <item itemvalue="JUnit.ValidFileReadTests.test_lastTurnInRotBoxk" />
-        <item itemvalue="JUnit.ValidFileReadTests" />
+        <item itemvalue="JUnit.All in CityDominoSilasHoffmann" />
+        <item itemvalue="JUnit.DistrictTest" />
+        <item itemvalue="JUnit.DistrictTest.testMerge_NullParam" />
+        <item itemvalue="JUnit.DistrictTest.testMerge_ValidOnlyConstr" />
       </list>
     </recent_temporary>
   </component>
@@ -1328,7 +1323,7 @@
       <workItem from="1546466478544" duration="608000" />
       <workItem from="1546468325764" duration="7483000" />
       <workItem from="1546486623065" duration="16000" />
-      <workItem from="1546527433917" duration="6122000" />
+      <workItem from="1546527433917" duration="8440000" />
     </task>
     <task id="LOCAL-00001" summary="Ein paar Equals Methoden getestet und umgeschrieben.">
       <created>1545498451822</created>
@@ -1418,21 +1413,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="All_in_CityDominoSilasHoffmann - 2019.01.01 at 03h 25m 03s.xml">
-      <configuration name="All in CityDominoSilasHoffmann" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CityDominoSilasHoffmann - 2019.01.01 at 03h 54m 35s.xml">
-      <configuration name="All in CityDominoSilasHoffmann" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CityDominoSilasHoffmann - 2019.01.01 at 23h 18m 39s.xml">
-      <configuration name="All in CityDominoSilasHoffmann" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CityDominoSilasHoffmann - 2019.01.01 at 23h 27m 57s.xml">
-      <configuration name="All in CityDominoSilasHoffmann" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="All_in_CityDominoSilasHoffmann - 2019.01.02 at 02h 55m 08s.xml">
-      <configuration name="All in CityDominoSilasHoffmann" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="All_in_CityDominoSilasHoffmann - 2019.01.02 at 23h 47m 41s.xml">
       <configuration name="All in CityDominoSilasHoffmann" configurationId="JUnit" />
     </history-entry>
@@ -1448,9 +1428,24 @@
     <history-entry file="All_in_CityDominoSilasHoffmann - 2019.01.03 at 16h 57m 02s.xml">
       <configuration name="All in CityDominoSilasHoffmann" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="DistrictTest_testMerge_ValidOnlyConstr - 2019.01.03 at 18h 49m 39s.xml">
+      <configuration name="DistrictTest.testMerge_ValidOnlyConstr" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DistrictTest_testMerge_NullParam - 2019.01.03 at 18h 50m 34s.xml">
+      <configuration name="DistrictTest.testMerge_NullParam" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DistrictTest - 2019.01.03 at 18h 51m 57s.xml">
+      <configuration name="DistrictTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DistrictTest - 2019.01.03 at 18h 53m 21s.xml">
+      <configuration name="DistrictTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="All_in_CityDominoSilasHoffmann - 2019.01.03 at 18h 53m 56s.xml">
+      <configuration name="All in CityDominoSilasHoffmann" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="376844000" />
+    <option name="totallyTimeSpent" value="379162000" />
   </component>
   <component name="TodoView" selected-index="1">
     <todo-panel id="selected-file">
@@ -1463,9 +1458,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1288" y="562" width="1296" height="1000" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.50230944" visible="true" weight="0.2079288" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.50230944" visible="true" weight="0.2079288" />
       <window_info id="Structure" order="1" sideWeight="0.49769053" side_tool="true" weight="0.36003235" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -1794,13 +1788,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test/logic/logicTransfer/GameConstructorFileIOTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="98" column="46" lean-forward="true" selection-start-line="98" selection-start-column="46" selection-end-line="98" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/logic/token/DominoTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -2125,10 +2112,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/test/logic/playerState/DistrictTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="219" selection-start-line="219" selection-end-line="219" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/playerState/District.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="155" column="79" lean-forward="true" selection-start-line="155" selection-start-column="79" selection-end-line="155" selection-end-column="79" />
+        <state relative-caret-position="29">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
         </state>
       </provider>
     </entry>

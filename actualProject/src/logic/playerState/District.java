@@ -52,6 +52,7 @@ public class District {
         this.singleTiles = new LinkedList<>();
         this.tilePositions = new LinkedList<>();
         for (District currDistrict : districts) {
+            assert null != currDistrict;
             this.singleTiles.addAll(currDistrict.singleTiles);
             this.tilePositions.addAll(currDistrict.tilePositions);
         }
@@ -106,23 +107,6 @@ public class District {
         assert null != newTile && null != newPos && !this.tilePositions.contains(newPos);
         this.singleTiles.add(newTile);
         this.tilePositions.add(newPos);
-    }
-
-
-    /**
-     * Merges two districts if a tile is
-     *
-     * @param other district that will be merged with current one
-     * @return reference to the object (so that the newly merged district can
-     * call the add method for the remaining tile that put those two together
-     * (in the same line -> d1.merge(d2).add(tileX)))
-     */
-    public District merge(District other) {
-        assert null != other && Collections.disjoint(this.tilePositions, other.tilePositions);
-        this.singleTiles.addAll(other.singleTiles);
-        this.tilePositions.addAll(other.tilePositions);
-        other = null; // clear other district -> never used again (just to make sure the reference is clear)
-        return this;
     }
 
     /**
