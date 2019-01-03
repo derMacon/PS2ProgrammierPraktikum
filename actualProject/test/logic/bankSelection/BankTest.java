@@ -1,8 +1,9 @@
 package logic.bankSelection;
 
+import logic.differentPlayerTypes.DefaultAIPlayer;
+import logic.differentPlayerTypes.HumanPlayer;
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Player;
-import logic.differentPlayerTypes.DefaultAIPlayer;
 import logic.randomizer.PseudoRandAlwaysHighestVal;
 import logic.randomizer.PseudoRandZeroResidueClass;
 import logic.token.Domino;
@@ -15,7 +16,14 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 
 public class BankTest {
 
@@ -59,6 +67,113 @@ public class BankTest {
         return genBankFromStack(DEFAULT_TEST_BANK_SIZE, new LinkedList<Domino>());
     }
     //</editor-fold>
+
+    // --- Constructor (String input) ---
+    @Test(expected = AssertionError.class)
+    public void testConstructor_NullParam1() {
+        GUIConnector fakeGui = new FakeGUI();
+        List<Player> players = Arrays.asList(new Player[]{
+                new HumanPlayer(fakeGui, 0, 5, 5),
+                new DefaultAIPlayer(fakeGui, 1, 5, 5),
+                new DefaultAIPlayer(fakeGui, 2, 5, 5),
+                new DefaultAIPlayer(fakeGui, 3, 5, 5),
+        });
+        new Bank(null, players, new Random());
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testConstructor_NullParam2() {
+        GUIConnector fakeGui = new FakeGUI();
+        new Bank("<Bänke>\n" +
+                "0 S0O1,2 I1P0\n" +
+                "3 A1H0,- A1H0,- A1H0,1 P0S1",
+                null, new Random());
+    }
+
+    @Test(expected = AssertionError.class)
+    public void testConstructor_NullParam3() {
+        GUIConnector fakeGui = new FakeGUI();
+        List<Player> players = Arrays.asList(new Player[]{
+                new HumanPlayer(fakeGui, 0, 5, 5),
+                new DefaultAIPlayer(fakeGui, 1, 5, 5),
+                new DefaultAIPlayer(fakeGui, 2, 5, 5),
+                new DefaultAIPlayer(fakeGui, 3, 5, 5),
+        });
+        new Bank("<Bänke>\n" +
+                "0 S0O1,2 I1P0\n" +
+                "3 A1H0,- A1H0,- A1H0,1 P0S1", players, null);
+    }
+
+    @Test
+    public void testConstructor_CurrBankHalfFull() {
+        GUIConnector fakeGui = new FakeGUI();
+        List<Player> players = Arrays.asList(new Player[]{
+                new HumanPlayer(fakeGui, 0, 5, 5),
+                new DefaultAIPlayer(fakeGui, 1, 5, 5),
+                new DefaultAIPlayer(fakeGui, 2, 5, 5),
+                new DefaultAIPlayer(fakeGui, 3, 5, 5),
+        });
+        Bank bank = new Bank("0 S0O1,2 I1P0", players, new Random());
+        Entry[] expEntries = new Entry[] {
+                null, null,
+                new Entry(new Domino(Tiles.S0O1_Val39), players.get(0)),
+                new Entry(new Domino(Tiles.I1P0_Val40), players.get(2))
+        };
+        assertArrayEquals(expEntries, bank.getEntries());
+    }
+
+    @Test
+    public void testConstructor_CurrBankFull() {
+        GUIConnector fakeGui = new FakeGUI();
+        List<Player> players = Arrays.asList(new Player[]{
+                new HumanPlayer(fakeGui, 0, 5, 5),
+                new DefaultAIPlayer(fakeGui, 1, 5, 5),
+                new DefaultAIPlayer(fakeGui, 2, 5, 5),
+                new DefaultAIPlayer(fakeGui, 3, 5, 5),
+        });
+        Bank bank = new Bank("0 S0O1,2 I1P0,3 P0P0,1 P0P0", players, new Random());
+        Entry[] expEntries = new Entry[] {
+                new Entry(new Domino(Tiles.S0O1_Val39), players.get(0)),
+                new Entry(new Domino(Tiles.I1P0_Val40), players.get(2)),
+                new Entry(new Domino(Tiles.P0P0_Val2), players.get(3)),
+                new Entry(new Domino(Tiles.P0P0_Val2), players.get(1))
+        };
+        assertArrayEquals(expEntries, bank.getEntries());
+    }
+
+    @Test
+    public void testConstructor_OneElem() {
+        GUIConnector fakeGui = new FakeGUI();
+        List<Player> players = Arrays.asList(new Player[]{
+                new HumanPlayer(fakeGui, 0, 5, 5),
+                new DefaultAIPlayer(fakeGui, 1, 5, 5),
+                new DefaultAIPlayer(fakeGui, 2, 5, 5),
+                new DefaultAIPlayer(fakeGui, 3, 5, 5),
+        });
+        Bank bank = new Bank("0 S0O1", players, new Random());
+        Entry[] expEntries = new Entry[] {
+                null, null, null,
+                new Entry(new Domino(Tiles.S0O1_Val39), players.get(0))
+        };
+        assertArrayEquals(expEntries, bank.getEntries());
+    }
+
+    @Test
+    public void testConstructor_NoElems() {
+        GUIConnector fakeGui = new FakeGUI();
+        List<Player> players = Arrays.asList(new Player[]{
+                new HumanPlayer(fakeGui, 0, 5, 5),
+                new DefaultAIPlayer(fakeGui, 1, 5, 5),
+                new DefaultAIPlayer(fakeGui, 2, 5, 5),
+                new DefaultAIPlayer(fakeGui, 3, 5, 5),
+        });
+        Bank bank = new Bank("", players, new Random());
+        Entry[] expEntries = new Entry[] {
+                null, null, null, null
+        };
+        assertArrayEquals(expEntries, bank.getEntries());
+    }
+
 
     // --- select / getSelectedPlayer ---
     @Test
@@ -362,6 +477,7 @@ public class BankTest {
         Bank bank3 = new Bank(entries, new Random());
 
         assertEquals(bank1, bank3);
+        assertNotEquals(bank1, bank2);
     }
 
 }

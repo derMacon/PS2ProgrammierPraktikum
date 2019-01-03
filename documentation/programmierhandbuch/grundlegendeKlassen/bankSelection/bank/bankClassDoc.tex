@@ -1,2 +1,14 @@
 \paragraph{Bank}
 \label{par:bank}
+
+\subparagraph{Einleitung}
+Die Bank-Klasse dient als Datenstruktur auf Basis dessen die Spielteilnehmer Dominos f"ur die aktuelle sowie n"achste Runde w"ahlen k"onnen. Sie verwaltet haupts"achlich einen Array von Entry-Objekten. 
+
+\subparagraph{Konstruktoren}
+Die Klasse verf"ugt "uber drei verschiedene Konstruktoren. 
+\begin{enumerate}
+	\item Konstruktor: Wird beim standardm"a"sigen Erstellen einer Bank im Spiel genutzt. Es wird lediglich die Anzahl der Spieler gegeben, sodass die Bank entsprechend viele leere Entry-Pl"atze generieren kann. 
+	\item Konstruktor: Wird beim Testen ohne Dateiverarbeitung genutzt. Es wird ein bereits generierter Array aus Entry-Objekten gesetzt. Au"serdem besteht die M"oglichkeit ein beliebiges Random Objekt zu setzen (sehr n"utzlich, um vermehrt die selbe Spielsituation zu generieren zu k"onnen). 
+	\item Konstruktor: Wird zum Testen mit Dateiverarbeitung genutzt. Hierbei wird ein String hereingereicht, welcher derartig verarbeitet wird, dass am Ende eine Liste an validen Entry-Daten zustande kommt. 
+\end{enumerate}
+\todo{Verweis auf Test-Kapitel mit Random-Objekt setzen. (2. Punkt)}

@@ -74,36 +74,38 @@ public class Bank {
      * @param rand          random object used when drawing dominos for the next round
      */
     public Bank(String preallocation, List<Player> players, Random rand) {
-        String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
+        assert null != preallocation && null != players && null != rand;
         this.bankSize = players.size();
-        int offsetEmptySlots = this.bankSize > singleEntries.length
-                ? this.bankSize - singleEntries.length : 0;
+        this.entries = new Entry[this.bankSize];
+        if (0 < preallocation.length()) {
+            String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
+            int offset = this.bankSize - singleEntries.length;
+            for (int i = singleEntries.length - 1; i >= 0; i--) {
+                this.entries[i + offset] = new Entry(singleEntries[i], players);
+            }
 
-        // convert to String array to entries array -> length to this.entries may differ
-        Entry[] temp = new Entry[singleEntries.length];
-        for (int i = 0; i < temp.length; i++) {
-            temp[i] = new Entry(singleEntries[i], players);
+//            String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
+//            int offsetEmptySlots = this.bankSize > singleEntries.length
+//                    ? this.bankSize - singleEntries.length : 0;
+//
+//            // convert to String array to entries array -> length to this.entries may differ
+//            Entry[] temp = new Entry[singleEntries.length];
+//            for (int i = 0; i < temp.length; i++) {
+//                temp[i] = new Entry(singleEntries[i], players);
+//            }
+//
+//            // if there are empty slots in the given preallocation, they will be put in front of the
+//            // other bank entries
+//            if (0 < offsetEmptySlots) {
+//                this.entries = new Entry[this.bankSize];
+//                System.arraycopy(temp, 0, this.entries, offsetEmptySlots, temp.length);
+//            } else {
+//                this.entries = temp;
+//            }
+//
+//            // Setting up random generator
+//            this.rand = rand;
         }
-
-        // if there are empty slots in the given preallocation, they will be put in front of the
-        // other bank entries
-        if (0 < offsetEmptySlots) {
-            this.entries = new Entry[this.bankSize];
-            System.arraycopy(temp, 0, this.entries, offsetEmptySlots, temp.length);
-        } else {
-            this.entries = temp;
-        }
-
-        // Setting up random generator
-        this.rand = rand;
-    }
-
-    /**
-     * Setter for the random object (used in tests)
-     * @param rand random that will be put as the instance's random object
-     */
-    public void setRand(Random rand) {
-        this.rand = rand;
     }
 
     /**
@@ -189,6 +191,15 @@ public class Bank {
     public Player getSelectedPlayer(int idx) {
         return isValidBankIdx(idx) && !isNotSelected(idx) && null != this.entries[idx]
                 ? this.entries[idx].getSelectedPlayer() : null;
+    }
+
+    /**
+     * Setter for the random object (used in tests)
+     *
+     * @param rand random that will be put as the instance's random object
+     */
+    public void setRand(Random rand) {
+        this.rand = rand;
     }
 
     /**
