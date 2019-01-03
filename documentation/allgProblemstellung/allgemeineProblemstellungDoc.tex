@@ -83,14 +83,16 @@ In einer Datei (gleichzeitig auch auf System.out) sind durchgeführte Aktionen z
 
 \section{Spielstand}
 Der aktuelle Spielstand soll gespeichert und geladen werden können. Laden/Speichern soll nur möglich sein, wenn der menschliche Spieler am Zug ist. Eine Spielstandsdatei enthält die 4 Spielfelder der Spieler in ihrer Reihenfolge (das erste Feld gehört immer dem menschlichen Spieler 0), die zwei Auswahlbereiche und die im Beutel verbliebenen Karten mit folgenden Bereichen:\\
-\begin{center}
+
+\begin{addmargin}[50pt]{0pt}
 <Spielfeld>
 \\<Spielfeld>
 \\<Spielfeld>
 \\<Spielfeld>
-\\<Bänke>
+\\<B"anke>
 \\<Beutel>\\
-\end{center}
+\end{addmargin}
+
 Die einzelnen Bereiche enthalten jeweils eine Einf"uhrungszeile (einen Kommentar) gefolgt von Inhaltsangaben:
 \begin{itemize}
 	\item Ein Spielfeld enthält einen Kommentar, zu wem es gehört, und in Folge für jede Zelle eine Inhaltsangabe:

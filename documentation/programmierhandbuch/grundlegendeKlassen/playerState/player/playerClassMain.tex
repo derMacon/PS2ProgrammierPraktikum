@@ -1,0 +1,91 @@
+\paragraph{player}
+\label{par:Player}
+\subparagraph{Einleitung}
+Diese Klasse legt die Grundfunktionen der einzelnen Spielertypen fest. Sie ist abstrakt da es durch den menschlichen Spieler und den vorgegebenen k"unstlichen Spielertyp mindestens zwei unterschiedliche Spielertypen geben muss. 
+
+\subparagraph{Felder}
+Ein Spieler besitzt einen Index im Array der \emph{Game}-Klasse, welcher in der Player-Instanz selbst gespeichert wird. Dieser dient immer wieder als Anhaltspunkt um welchen Spieler es sich im Augenblick handelt. Weiterhin besitzt ein Spieler ein \emph{Board} auf dem dieser verschiedene Dominos setzen kann. Um die erzielten Punkte jederzeit direkt errechnen zu k"onnen, ohne jedes Mal das Board aufs Neue untersuchen zu m"ussen, verwaltet der Spieler ein Liste von Distrikten. Weiterhin ist der Spieler, durch eine Gui-Referenz, in der Lage seine Z"uge direkt auf der Gui darzustellen. 
+
+\subparagraph{Konstruktor}
+Es gibt drei verschiedene Auspr"agungen des Konstruktors (siehe Listing \ref{lst:player_konstruktor}, \nameref{lst:player_konstruktor}). Bei dem Konstruktor welcher einen String einliest wird ebenfalls eine Liste an Distrikten gebildet. Im Abschnitt \nameref{spar:aufbauDerDistrikte} wird dies n"aher erleutert.
+
+\begin{lstlisting}[style=CodeHighlighting,float,caption=Player - Konstruktoren,label=lst:player_konstruktor]
+\\ Konstruktor zum starten des Spiels
+public Player(GUIConnector gui, int idxInPlayerArray, int boardSizeX, int boardSizeY) {
+    this(gui, idxInPlayerArray, new Board(boardSizeX, boardSizeY));
+}
+
+\\ Konstruktor zum Testen ohne Dateiverarbeitung
+public Player(GUIConnector gui, int idxInPlayerArray, Board board) {
+    this.idxInPlayerArray = idxInPlayerArray;
+    this.districts = new LinkedList<>();
+    this.gui = gui;
+    this.board = board;
+}
+
+\\ Konstruktor zum Testen mit Dateiverarbeitung
+public Player(GUIConnector gui, int idxInPlayerArray, String strBoard) {
+    this(gui, idxInPlayerArray, new Board(strBoard));
+    this.districts = genDistrictsFromBoard(this.board);
+}
+\end{lstlisting}
+
+
+\subparagraph{Aufbau der Distrikte}
+\label{spar:aufbauDerDistrikte}
+In der Methode \emph{genDistrictsFromBoard} werden alle Zeilen eines gegebene Board einzeln untersucht und in eine Liste von Distrikten entsprechend eingeordnet (siehe Listing \ref{lst:player_genDistrictsFromBoard}). Hierzu wird eine Methode namens \emph{addToAppropriateDistrict} aufgerufen (siehe Listing \ref{lst:player_addToAppropriateDistrict}). 
+
+Diese Methode erweitert eine gegebene Liste an Distrikten an der Richtigen Stelle mit einem neuen Element, welches aus dem gegebenen Tile-Objekt und der Position zusammengesetzt wird. Allerdings wird die Liste nur erweitert, wenn das Tile-Objekt ungleich dem der leeren Zelle und dem Stadtzentrum ist. Anschlie"send wird folgendes Schema angewendet:  (siehe Listing \ref{lst:player_addToAppropriateDistrict})
+\begin{itemize}
+	\item Zeile 4: Es werden alle Distrikte zwischengespeichert, welche an die gegebene Position angrenzen und den selben Distrikt-Typen aufweisen wie das gegebene Tile-Objekt. Falls es keine solcher Distrikte geben sollte, wird eine neuer Distrikt erzeugt und ebenfalls zwischengespeichert. 
+	\item Zeile 6: Nun werden alle generierten / gefundenen Distrikte aus der Liste an Distrikten, welche der Player verwaltet, gel"oscht um Duplikate zu vermeiden wenn man sp"ater die Distrikte wieder zusammenf"uhrt.
+	\item Zeile 7: Die Distrikte vom Zwischenergebnis wird per Konstruktoraufruf der Distriktklasse zusammengef"uhrt. Das Zusammenf"uhren \emph{mehrerer} Distrikte tritt nur auf wenn das gegebene Tile-Objekt in mehrere Distrikte passt. 
+	\item Zeile 8: Da das SingleTile-Objekt und die Position bisher nur benutzt wurden um Vergleiche zu bewerkstelligen, werden diese nun in den zusammengef"uhrten Distrikt eingebunden. 
+	\item Zeile 9: Der neu generierte / "uberarbeitete Distrikt wird in die Distrikt-Liste des Spielers "uberf"uhrt. 
+\end{itemize}
+
+\begin{lstlisting}[style=CodeHighlighting,float,caption=Player - genDistrictsFromBoard,label=lst:player_genDistrictsFromBoard]
+private List<District> genDistrictsFromBoard(Board board) {
+    List<District> futureDistrictList = new LinkedList<>();
+    SingleTile[][] cells = board.getCells();
+    for (int y = 0; y < board.getSizeY(); y++) {
+        for (int x = 0; x < board.getSizeX(); x++) {
+            futureDistrictList = addToAppropriateDistrict(cells[x][y], 
+            	new Pos(x, y), futureDistrictList);
+        }
+    }
+    return futureDistrictList;
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=CodeHighlighting,float,caption=Player - addToAppropriateDistrict,label=lst:player_addToAppropriateDistrict]
+private List<District> addToAppropriateDistrict(SingleTile tile, Pos pos, 
+			List<District> districts) {
+    if (SingleTile.EC != tile && SingleTile.CC != tile) {
+        List<District> possibleDistricts = 
+        	findOrCreatePossibleDistricts(tile, pos, districts);
+        districts.removeAll(possibleDistricts); // to avoid duplicates
+        District updatedDistrict = new District(possibleDistricts); // merging districts
+        updatedDistrict.add(tile, pos); // put new element in merged playdistrict
+        districts.add(updatedDistrict);
+    }
+    return districts;
+}
+\end{lstlisting}
+
+\todo{findOrCreate... muss noch im text eingebunden und beschrieben werden}
+
+\begin{lstlisting}[style=CodeHighlighting,float,caption=Player - findOrCreatePossibleDistricts,label=lst:player_findOrCreatePossibleDistricts]
+private List<District> findOrCreatePossibleDistricts(SingleTile tile, Pos pos, 
+		final List<District> districts) {
+    List<District> filteredDistrictList = new LinkedList<>();
+    for (District currDistrict : districts) {
+        if (currDistrict.typeAndPosMatchCurrDistrict(tile, pos)) {
+            filteredDistrictList.add(currDistrict);
+        }
+    }
+    return filteredDistrictList;
+}
+\end{lstlisting}
+
+

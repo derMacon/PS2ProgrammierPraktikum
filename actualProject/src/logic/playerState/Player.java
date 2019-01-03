@@ -58,7 +58,7 @@ public abstract class Player implements Comparable {
      * @param idxInPlayerArray index in the game's player array.
      * @param board            to set dominos / SingleTiles to
      */
-    protected Player(GUIConnector gui, int idxInPlayerArray, Board board) {
+    public Player(GUIConnector gui, int idxInPlayerArray, Board board) {
         this.idxInPlayerArray = idxInPlayerArray;
         this.districts = new LinkedList<>();
         this.gui = gui;
@@ -176,7 +176,7 @@ public abstract class Player implements Comparable {
             List<District> possibleDistricts = findOrCreatePossibleDistricts(tile, pos, districts);
             districts.removeAll(possibleDistricts); // to avoid duplicates
             District updatedDistrict = new District(possibleDistricts); // merging districts
-            updatedDistrict.add(tile, pos); // put new element in merged district
+            updatedDistrict.add(tile, pos); // put new element in merged playdistrict
             districts.add(updatedDistrict);
         }
         return districts;
