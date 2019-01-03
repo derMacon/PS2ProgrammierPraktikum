@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package logic.dataPreservation;
 
 import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
@@ -33,17 +27,24 @@ public class Logger {
      * Default file path for the file to which the data will be saved.
      */
     private static final File DEFAULT_FILE = new File("./dataOutput/logFile.txt");
+
+    /**
+     * Determines if the logfile can be opened / used for logging
+     */
+    private boolean loggingPossible = true;
+
     /**
      * Single instance of the logger. Initialized with null, can be returned with the corresponding getter.
      */
     private static Logger singleInstance = null;
+
     /**
      * Path to dir where log data should be stored
      */
     private File dir;
 
     /**
-     * Cosntructor only setting the playerCnt, taking a default path as the file path for the data
+     * Constructor only setting the playerCnt, taking a default path as the file path for the data
      */
     private Logger() {
         this.dir = DEFAULT_FILE;
@@ -51,6 +52,7 @@ public class Logger {
 
     /**
      * Getter for the logger instance
+     *
      * @return logger instance
      */
     public static Logger getInstance() {
@@ -75,11 +77,12 @@ public class Logger {
      * @param path String representing the file path
      */
     public void setPath(String path) {
-        this.dir = new File(path);
+        setPath(new File(path));
     }
 
     /**
      * prints the given message and then saves it to a given File
+     *
      * @param inputLog text that will be displayed and saved
      */
     public void printAndSafe(String inputLog) {
@@ -89,18 +92,19 @@ public class Logger {
 
     /**
      * appends the log file with a given message
+     * todo link einfuegen
+     *
      * @param logInput input to attach to the logfile
      */
     private void appendFileWithNewMove(String logInput) {
-        // TODO insert code
-        try {
-            Writer outputStream = new BufferedWriter(new FileWriter(this.dir, true));
-            outputStream.write(logInput + "\n");
-            outputStream.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (this.loggingPossible) {
+            try (Writer outputStream = new BufferedWriter(new FileWriter(this.dir, true))) {
+                outputStream.write(logInput + "\n");
+            } catch (IOException e) {
+                System.err.println(ERROR_DELIMITER + "\nThe current game will not have a logfile available:\n"
+                        + e.getMessage() + "\n" + ERROR_DELIMITER + "\n");
+                this.loggingPossible = false;
+            }
         }
 
     }

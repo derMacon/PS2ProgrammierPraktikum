@@ -14,8 +14,11 @@ import java.util.Scanner;
  */
 public class Loader {
 
-
+    /**
+     * Not viewable prefix of a bom file
+     */
     public static final String UTF8_BOM = "\uFEFF";
+
     /**
      * Single instance of the logger. Initialized with null, can be returned with the corresponding getter.
      */
@@ -26,14 +29,17 @@ public class Loader {
      * //TODO must create directory if not existent
      */
     private static final String DEFAULT_DIRECTORY = "./test/fileTests/expected_results";
+
     /**
      * Filechoose that will be used to to save or read the file from
      */
     private final FileChooser fChooser;
+
     /**
      * File to save to or read from
      */
     private File file = null;
+
     /**
      * Stage that will be used to display the filechoose
      */

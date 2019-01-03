@@ -173,17 +173,12 @@ public abstract class Player implements Comparable {
      */
     private List<District> addToAppropriateDistrict(SingleTile tile, Pos pos, List<District> districts) {
         if (SingleTile.EC != tile && SingleTile.CC != tile) {
-            // find possible districts
             List<District> possibleDistricts = findOrCreatePossibleDistricts(tile, pos, districts);
-            // delete possible districts from current district list (to avoid duplicates)
-            districts.removeAll(possibleDistricts);
-            // unit (merge) possible districts
-            District updatedDistrict = new District(possibleDistricts);
-            updatedDistrict.add(tile, pos);
-            // Add updated district to district list
+            districts.removeAll(possibleDistricts); // to avoid duplicates
+            District updatedDistrict = new District(possibleDistricts); // merging districts
+            updatedDistrict.add(tile, pos); // put new element in merged district
             districts.add(updatedDistrict);
         }
-        // return result (future this.districts)
         return districts;
     }
 

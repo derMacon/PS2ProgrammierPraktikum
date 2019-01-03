@@ -152,11 +152,6 @@ public class District {
      */
     public boolean typeAndPosMatchCurrDistrict(SingleTile tile, Pos pos) {
         assert null != tile && null != pos;
-
-        // TODO delete next lines before final commit
-        boolean typeMatching = matchingDistrictTypes(tile);
-        boolean posMatching = elemPosIsNextToExistingElem(pos);
-
         return matchingDistrictTypes(tile) && elemPosIsNextToExistingElem(pos);
     }
 
@@ -178,11 +173,12 @@ public class District {
      */
     private boolean elemPosIsNextToExistingElem(Pos pos) {
         boolean isNextToDistrictMember;
+        int tileCnt = this.tilePositions.size();
         int i = 0;
         do {
             isNextToDistrictMember = this.tilePositions.get(i).getNeighbours().contains(pos);
             i++;
-        } while (!isNextToDistrictMember && i < this.tilePositions.size());
+        } while (!isNextToDistrictMember && i < tileCnt);
         return isNextToDistrictMember;
     }
 
