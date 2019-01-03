@@ -49,8 +49,13 @@ public void add(SingleTile newTile, Pos newPos) {
 
 \subparagraph{Methoden}
 \label{spar:districtMethoden}
-Ansonsten bringt die Klasse Distrikt noch eine Methode namens \emph{typeAndPosMatchCurrDistrict} die zum Beispiel im abstrakten Typ Player verwendet wird um sicherzustellen ob ein SingleTile-Objekt an einer bestimmten Position in einen bestimmten Distrikt passt oder nicht \lstref{lst:district_typeAndPosMatchCurrDistrict}. Hierbei wird geschaut ob die SingleTile Referenz den Distriktyp mit dem aufrufendem Distrikt teilen oder nicht. Dazu wird die Methode \emph{matchingDistrictTypes} verwendet \lstref{lst:district_matchingDistrictTypes}. Um festzustellen ob sich die gegebene Position neben dem aufrufenden Distrikt befindet wird die Methode \emph{elemPosIsNextToExistingElem} verwendet \lstref{lst:district_elemPosIsNextToExistingElem}. Es werden jeweils die Nachbarn der einzelnen Distriktelemente gebildet und nach der gegebenen Position durchsucht. Falls es eine "Ubereinstimmung geben sollte wird die Schleife direkt abgebrochen. In einigen Hilfsmethoden wird au"serdem eine Kopie eines Distrikts verlangt. Hierf"ur gibt es die Methode \emph{copy}, die ein Deep Copy erstellt. Daf"ur werden die Daten der Listen einzeln in neue Ausgabelisten kopiert. Ein neuer Distrikt wird per Konstruktoraufruf geformt und zur"uckgegeben. 
-Um das Ergebnis darstellen zu k"onnen wird ein ein TreeItem generiert das die Punkte sowie den Namen des Distrikts enth"halt. 
+Die Klasse Distrikt besitzt eine Methode namens \emph{typeAndPosMatchCurrDistrict} die, zum Beispiel im abstrakten Typ Player verwendet wird um festzustellen ob ein SingleTile-Objekt an einer bestimmten Position in einen bestimmten Distrikt passt oder nicht \lstref{lst:district_typeAndPosMatchCurrDistrict}. Hierbei wird geschaut ob die SingleTile-Referenz den Distriktyp mit dem aufrufendem Distrikt teilt oder nicht. Dazu wird die Methode \emph{matchingDistrictTypes} verwendet \lstref{lst:district_matchingDistrictTypes}.
+
+Um festzustellen ob sich die gegebene Position neben dem aufrufenden Distrikt befindet wird die Methode \emph{elemPosIsNextToExistingElem} verwendet \lstref{lst:district_elemPosIsNextToExistingElem}. Es werden jeweils die Nachbarn der einzelnen Distriktelemente gebildet und nach der gegebenen Position durchsucht. Falls es eine "Ubereinstimmung geben sollte wird die Schleife direkt abgebrochen. 
+
+In einigen Hilfsmethoden wird au"serdem eine Kopie eines Distrikts verlangt. Hierf"ur gibt es die Methode \emph{copy}, die ein Deep Copy erstellt. Daf"ur werden die Daten der Listen einzeln in neue Ausgabelisten kopiert. Ein neuer Distrikt wird per Konstruktoraufruf geformt und zur"uckgegeben. 
+
+Um das Ergebnis darstellen zu k"onnen wird ein ein TreeItem generiert das die Punkte sowie den Namen des Distrikts enth"alt. 
 
 
 \begin{lstlisting}[style=CodeHighlighting,float,caption=District - typeAndPosMatchCurrDistrict,label=lst:district_typeAndPosMatchCurrDistrict]

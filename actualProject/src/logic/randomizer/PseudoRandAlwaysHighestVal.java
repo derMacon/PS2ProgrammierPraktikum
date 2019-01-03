@@ -8,10 +8,9 @@ package logic.randomizer;
 import java.util.Random;
 
 /**
- * @author silas
+ * Random Object that always returns the highest value. Used for testing.
  */
 public class PseudoRandAlwaysHighestVal extends Random {
-
     @Override
     public int nextInt(int bound) {
         assert 0 < bound;
