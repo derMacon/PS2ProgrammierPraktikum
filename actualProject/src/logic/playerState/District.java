@@ -33,6 +33,7 @@ public class District {
      *
      * @param fstDistrictMember first tile of this district
      * @param pos first position of this district
+     * @pre null != fstDistrictMember && null != pos
      */
     public District(SingleTile fstDistrictMember, Pos pos) {
         assert null != fstDistrictMember && null != pos;
@@ -118,10 +119,6 @@ public class District {
      */
     public District merge(District other) {
         assert null != other && Collections.disjoint(this.tilePositions, other.tilePositions);
-
-        // TODO delete next line before final commit
-        boolean temp = Collections.disjoint(this.singleTiles, other.singleTiles);
-
         this.singleTiles.addAll(other.singleTiles);
         this.tilePositions.addAll(other.tilePositions);
         other = null; // clear other district -> never used again (just to make sure the reference is clear)

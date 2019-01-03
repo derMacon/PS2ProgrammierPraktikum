@@ -155,7 +155,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // second draft directly on the first domino
         this.board.lay(playerSelectedDomino);
         // update districts
-//        this.districts = updatedDistricts(this.districts, playerSelectedDomino);
+//        this.districts = updateDistricts(this.districts, playerSelectedDomino);
         return output;
     }
 
@@ -277,7 +277,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      */
     private int countSingleCells(Choose choose) {
         assert null != choose;
-        List<District> temp = updatedDistricts(this.districts, choose.getDomWithPosAndRot());
+        List<District> temp = updateDistricts(this.districts, choose.getDomWithPosAndRot());
         int out = 0;
         for (District currDistrict : temp) {
             if (currDistrict.getTilePositions().size() == 1) {
@@ -317,7 +317,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * points on the field
      */
     private Choose genChoose(Domino domino, int bankSlotIndex) {
-        List<District> updatedDeepCopy = updatedDistricts(this.districts, domino);
+        List<District> updatedDeepCopy = updateDistricts(this.districts, domino);
         return new Choose(domino.copy(), genDistrictPoints(updatedDeepCopy), bankSlotIndex);
     }
 

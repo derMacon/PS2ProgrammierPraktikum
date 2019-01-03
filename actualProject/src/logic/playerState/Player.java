@@ -105,6 +105,12 @@ public abstract class Player implements Comparable {
     }
 
     /**
+     * Getter for the full name of the player
+     * @return the full name of the player
+     */
+    public abstract String getName();
+
+    /**
      * Generates the sum of points the districts represent
      * //TODO delete this method -> use genDistrictPoints
      *
@@ -173,7 +179,7 @@ public abstract class Player implements Comparable {
      */
     private List<District> addToAppropriateDistrict(SingleTile tile, Pos pos, List<District> districts) {
         if (SingleTile.EC != tile && SingleTile.CC != tile) {
-            List<District> possibleDistricts = findOrCreatePossibleDistricts(tile, pos, districts);
+            List<District> possibleDistricts = findPossibleDistricts(tile, pos, districts);
             districts.removeAll(possibleDistricts); // to avoid duplicates
             District updatedDistrict = new District(possibleDistricts); // merging districts
             updatedDistrict.add(tile, pos); // put new element in merged playdistrict
@@ -191,7 +197,7 @@ public abstract class Player implements Comparable {
      * @param districts list of districts to chose from
      * @return the possible districts from the given district list
      */
-    private List<District> findOrCreatePossibleDistricts(SingleTile tile, Pos pos, final List<District> districts) {
+    private List<District> findPossibleDistricts(SingleTile tile, Pos pos, final List<District> districts) {
         List<District> filteredDistrictList = new LinkedList<>();
         for (District currDistrict : districts) {
             if (currDistrict.typeAndPosMatchCurrDistrict(tile, pos)) {
@@ -214,7 +220,7 @@ public abstract class Player implements Comparable {
             this.board.lay(playerSelectedDomino);
 
             // update districts
-            this.districts = updatedDistricts(this.districts, playerSelectedDomino);
+            this.districts = updateDistricts(this.districts, playerSelectedDomino);
 
             // update gui
             this.gui.showOnGrid(this.idxInPlayerArray, playerSelectedDomino);
@@ -228,12 +234,6 @@ public abstract class Player implements Comparable {
             );
         }
     }
-
-    /**
-     * Getter for the full name of the player
-     * @return the full name of the player
-     */
-    public abstract String getName();
 
     /**
      * Determines if a given domino has a defined position
@@ -253,8 +253,8 @@ public abstract class Player implements Comparable {
      * @param domino    domino to add to the districts
      * @return an updated list of districts
      */
-    protected List<District> updatedDistricts(final List<District> districts, Domino domino) {
-        // deep copyWithoutSelection of whole district list
+    protected List<District> updateDistricts(final List<District> districts, Domino domino) {
+        // deep copy of whole district list
         List<District> output = new LinkedList<>();
         for (District currDistrict : districts) {
             output.add(currDistrict);
@@ -287,14 +287,13 @@ public abstract class Player implements Comparable {
      * Generates a treeView element of the player (used to display the result)
      * @return treeView representation of the player
      */
-    public TreeItem<String> toTreeView() {
+    public TreeItem<String> toTreeItem() {
         TreeItem<String> parent =
                 new TreeItem<>("Spieler " + (this.idxInPlayerArray + 1) + " -> " + genAllDistrictPoints() + " Punkte "
                         + "insgesamt");
         for (District currDistrict : this.districts) {
             parent.getChildren().add(currDistrict.toTreeItem());
         }
-        // TODO schauen ob genAllDistrictpoints auch in game Klasse benoetigt werden kann.
         return parent;
     }
 

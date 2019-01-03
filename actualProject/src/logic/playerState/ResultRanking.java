@@ -96,7 +96,7 @@ public class ResultRanking {
         TreeItem<String> parent = new TreeItem<>(this.rankingPosition + ". Platz");
         parent.setExpanded(true);
         for (Player currPlayer : this.rankedPlayers) {
-            parent.getChildren().add(currPlayer.toTreeView());
+            parent.getChildren().add(currPlayer.toTreeItem());
         }
         return parent;
     }

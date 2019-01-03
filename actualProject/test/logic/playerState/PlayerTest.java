@@ -669,7 +669,7 @@ public class PlayerTest {
                 Arrays.asList(new Pos[]{new Pos(0, 0)})));
         expectedDistricts.add(new District(Arrays.asList(new SingleTile[]{A0}),
                 Arrays.asList(new Pos[]{new Pos(1, 0)})));
-        actualDistricts = player.updatedDistricts(actualDistricts, domino);
+        actualDistricts = player.updateDistricts(actualDistricts, domino);
         assertEquals(expectedDistricts, actualDistricts);
     }
 
@@ -690,7 +690,7 @@ public class PlayerTest {
                 Arrays.asList(new Pos[]{new Pos(0, 0), new Pos(0, 1)})));
         expectedDistricts.add(new District(Arrays.asList(new SingleTile[]{H0}),
                 Arrays.asList(new Pos[]{new Pos(0, 2)})));
-        actualDistricts = player.updatedDistricts(actualDistricts, domino);
+        actualDistricts = player.updateDistricts(actualDistricts, domino);
         assertEquals(expectedDistricts, actualDistricts);
     }
 

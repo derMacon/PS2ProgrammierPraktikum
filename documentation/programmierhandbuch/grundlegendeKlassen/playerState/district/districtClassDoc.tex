@@ -1,0 +1,53 @@
+\paragraph{District}
+\label{par:district}
+\subparagraph{Einleitung}
+Klasse welche die Punkte eines Spielers verwaltet. Hierbei werden die zusammenh"angenden Positionen sowie SingleTiles eines Distrikts in entsprechenden Listen gespeichert. 
+
+\subparagraph{Konstruktoren} 
+\label{spar:districtKonstruktoren}
+Es gibt drei Auspr"agungen des Distrikt-Konstruktors (siehe Listing \ref{district_konstruktoren}, \nameref{district_konstruktoren}). 
+\begin{enumerate}
+	\item Zum erstellen eines neuen Distrikts. Es wird eine neue Liste f"ur die Positionen sowie die SingleTiles erzeugt und die gegebenen Daten werden mithilfe eines Aufrufs der Methode \emph{add} (siehe Listing \ref{district_add}, \nameref{district_add}) in diese eingepflegt. 
+	\item Zum zusammenf"uhren mehrerer gegebener Distrikte. Die gegebenen Distrikte werden hierbei durchlaufen und jede Teilkomponente (SingleTile / Position) wird per Aufruf der Listen-Methode \emph{addAll} in die Listen der aufrufenden Instanz eingepflegt. 
+	\item Zum Testen. Der Programmierer setzt hierbei lediglich die gew"unschten SingleTiles sowie Positionen die in dem Distrikt enthalten sein sollen. Wie bei allen Formen des Konstruktors dieser Klasse wird lediglich erwartet, dass die gegebenen Argumente keine Null-Pointer enthalten, ansonsten werden die Daten aber direkt (und ohne jegliche "Uberpr"ufung) "ubernommen.
+\end{enumerate}
+
+\subparagraph{Methoden}
+\label{spar:districtMethoden}
+
+\begin{lstlisting}[style=CodeHighlighting,float,caption=District - Konstruktoren,label=district_konstruktoren]
+// Constructor used for standard round
+public District(SingleTile fstDistrictMember, Pos pos) {
+    assert null != fstDistrictMember && null != pos;
+    this.tilePositions = new LinkedList<>();
+    this.singleTiles = new LinkedList<>();
+    add(fstDistrictMember, pos);
+}
+
+// Constructor used for merging multiple districts
+public District(List<District> districts) {
+    assert null != districts;
+    this.singleTiles = new LinkedList<>();
+    this.tilePositions = new LinkedList<>();
+    for (District currDistrict : districts) {
+        this.singleTiles.addAll(currDistrict.singleTiles);
+        this.tilePositions.addAll(currDistrict.tilePositions);
+    }
+}
+
+// Constructor used for testing 
+public District(List<SingleTile> singleTiles, List<Pos> pos) {
+    assert null != singleTiles && null != pos;
+    this.singleTiles = singleTiles;
+    this.tilePositions = pos;
+}
+\end{lstlisting}
+
+
+\begin{lstlisting}[style=CodeHighlighting,float,caption=District - add,label=district_add]
+public void add(SingleTile newTile, Pos newPos) {
+    assert null != newTile && null != newPos && !this.tilePositions.contains(newPos);
+    this.singleTiles.add(newTile);
+    this.tilePositions.add(newPos);
+}
+\end{lstlisting}

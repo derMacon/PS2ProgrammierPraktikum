@@ -217,19 +217,12 @@ public class Board {
      * @return true if the domino fits at the given position on the board
      */
     public boolean fits(Domino domino) {
-        // TODO insert code
         assert null != domino;
         Pos posFst = domino.getFstPos();
         Pos posSnd = domino.getSndPos();
         if (isValidPos(posFst) && isValidPos(posSnd) && isEmpty(posFst) && isEmpty(posSnd)) {
             List<Pos> fstTouchingNeighbour = genTouchingCells(posFst);
             List<Pos> sndTouchingNeighbour = genTouchingCells(posSnd);
-
-            // TODO delete before final commit - used for debugging
-            boolean sum = !fstTouchingNeighbour.isEmpty() || !sndTouchingNeighbour.isEmpty();
-            boolean fstNei = checkIfNeighborsAreValid(domino.getFstVal(), fstTouchingNeighbour);
-            boolean sndNei = checkIfNeighborsAreValid(domino.getSndVal(), sndTouchingNeighbour);
-
 
             return (!fstTouchingNeighbour.isEmpty() || !sndTouchingNeighbour.isEmpty())
                     && checkIfNeighborsAreValid(domino.getFstVal(), fstTouchingNeighbour)
