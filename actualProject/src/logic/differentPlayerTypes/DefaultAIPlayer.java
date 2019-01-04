@@ -86,42 +86,73 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         if (null == bank || bank.isEmpty()) {
             return bank;
         }
-        // bank copyWithoutSelection, serves as temporary bank
         Bank bankCopy = bank.copy();
-        // Generate potentially best Choose for each possible domino on the given bank
         List<Choose> bestChoosesForEachPossibleBankSlot = bestChooseForEachDom(bankCopy);
-        // evaluate which choose is best
-        Choose overallBestChoose;
-        // todo refactor into methods
-        if (bestChoosesForEachPossibleBankSlot.isEmpty()) {
-            // no possible dom on bank fits on board
-            overallBestChoose = genLowOrderChoose(bank);
-        } else {
-            // at least one domino on the bank fits on the board
-//            overallBestChoose = mostEfficient(bestChoosesForEachPossibleBankSlot);
-            overallBestChoose = Collections.max(bestChoosesForEachPossibleBankSlot);
-        }
+        Choose overallBestChoose = bestOverallChoose(bankCopy, bestChoosesForEachPossibleBankSlot);
+        doSelect(bank, overallBestChoose);
+        updateBoard(ordBank, displayOnGui, overallBestChoose);
 
-        // update domino (rotation and position) of the best choose
-        bank.updateDomino(overallBestChoose.getIdxOnBank(),
-                overallBestChoose.getDomWithPosAndRot());
-        // actually select a domino from the bank
-        bank.selectEntry(this, overallBestChoose.getIdxOnBank());
+        // log selection
         String roundIdentifier = ordBank == 0 ? "current" : "next";
         Logger.getInstance().printAndSafe("\n" + String.format(Logger.SELECTION_LOGGER_FORMAT,
                 getName(), overallBestChoose.getDomWithPosAndRot().toString(),
                 overallBestChoose.getIdxOnBank(), roundIdentifier));
+
+        // return the bank, although bank reference is modified internally
+        // (just to make sure it is evident, pos and rot modified)
+        return bank;
+    }
+
+    /**
+     * Updates the board with the selected domino
+     * @param ordBank ordinal value of the bank
+     * @param displayOnGui flag determining if the selection should be displayed on the gui or not
+     * @param overallBestChoose choose object containing the domino that should be put on the board
+     */
+    private void updateBoard(int ordBank, boolean displayOnGui, Choose overallBestChoose) {
         // put domino on board without showing it on the gui
         this.board.lay(overallBestChoose.getDomWithPosAndRot());
         // update gui
         if (displayOnGui) {
             this.gui.selectDomino(ordBank, overallBestChoose.getIdxOnBank(), this.idxInPlayerArray);
         }
-        // return the bank, although bank reference is modified internally
-        // (just to make sure it is evident, pos and rot modified)
-        return bank;
     }
 
+    /**
+     * updating / selecting the domino on the actual bank
+     * @param bank bank to select domino from
+     * @param overallBestChoose choose containing the best fitting domino
+     */
+    private void doSelect(Bank bank, Choose overallBestChoose) {
+        // update domino (rotation and position) of the best choose
+        bank.updateDomino(overallBestChoose.getIdxOnBank(), overallBestChoose.getDomWithPosAndRot());
+        // actually select a domino from the bank
+        bank.selectEntry(this, overallBestChoose.getIdxOnBank());
+    }
+
+    /**
+     * Generates the best overall choose from the list of choose objects
+     * @param bank bank to choose lowest domino from if imput list is empty
+     * @param bestChoosesForEachPossibleBankSlot list of best chooses for each bank slot
+     * @return the overall best choose from the given list
+     */
+    private Choose bestOverallChoose(Bank bank, List<Choose> bestChoosesForEachPossibleBankSlot) {
+        Choose overallBestChoose;
+        if (bestChoosesForEachPossibleBankSlot.isEmpty()) {
+            // no possible dom on bank fits on board
+            overallBestChoose = genLowOrderChoose(bank);
+        } else {
+            // at least one domino on the bank fits on the board
+            overallBestChoose = Collections.max(bestChoosesForEachPossibleBankSlot);
+        }
+        return overallBestChoose;
+    }
+
+    /**
+     * Generate potentially best Choose for each possible domino on the given bank
+     * @param bank bank to choose from
+     * @return list of best chooses for the dominos which have a fitting position on the board
+     */
     private List<Choose> bestChooseForEachDom(Bank bank) {
         List<Choose> bestChoosesForEachPossibleBankSlot = new LinkedList<>();
         for (int i = 0; i < bank.getBankSize(); i++) {
@@ -132,7 +163,6 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         }
         return bestChoosesForEachPossibleBankSlot;
     }
-
 
     @Override
     public void updateSelectedDom(Bank currBank) {
@@ -160,8 +190,6 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // update board -> has to be done to prevent the bot from laying the
         // second draft directly on the first domino
         this.board.lay(playerSelectedDomino);
-        // update districts
-//        this.districts = updateDistricts(this.districts, playerSelectedDomino);
         return output;
     }
 
@@ -176,7 +204,6 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         showOnBoard(playersSelectedDomino);
     }
 
-    // TODO call in standardturn
     @Override
     public void doLastTurn(Bank currBank) {
         Domino playersSelectedDomino = currBank.getPlayerSelectedDomino(this);
@@ -212,7 +239,6 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
                 }
             }
         }
-        // TODO else branch, what happens if domino doesn't fit anywhere -> maybe disposed ???
         return null == maxChoose ? genChoose(domino.setPos(new Pos(0, 0)), bankSlotIndex) : maxChoose;
     }
 
@@ -247,31 +273,30 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * tile districts will be returned.
      */
     private Choose mostEfficient(Choose fstChoose, Choose sndChoose) {
-        // todo result var
+        Choose res;
         if (null == fstChoose) {
-            return sndChoose;
-        }
-        if (null == sndChoose) {
-            return fstChoose;
-        }
-        if (fstChoose.getPotentialPointsOnBoard() > sndChoose.getPotentialPointsOnBoard()) {
-            return fstChoose;
+            res = sndChoose;
+        } else if (null == sndChoose) {
+            res = fstChoose;
+        } else if (fstChoose.getPotentialPointsOnBoard() > sndChoose.getPotentialPointsOnBoard()) {
+            res = fstChoose;
         } else if (fstChoose.getPotentialPointsOnBoard() < sndChoose.getPotentialPointsOnBoard()) {
-            return sndChoose;
+            res = sndChoose;
         } else {
             // tie
             int fstSingleCellCount = countSingleCells(fstChoose);
             int sndSingleCellCount = countSingleCells(sndChoose);
 
             if (fstSingleCellCount < sndSingleCellCount) {
-                return fstChoose;
+                res = fstChoose;
             } else if (fstSingleCellCount > sndSingleCellCount) {
-                return sndChoose;
+                res = sndChoose;
             } else {
-                return fstChoose.getDomWithPosAndRot().compareTo(sndChoose.getDomWithPosAndRot()) <= 0 ? fstChoose
+                res = fstChoose.getDomWithPosAndRot().compareTo(sndChoose.getDomWithPosAndRot()) <= 0 ? fstChoose
                         : sndChoose;
             }
         }
+        return res;
     }
 
     /**
