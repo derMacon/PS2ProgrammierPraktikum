@@ -76,7 +76,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * Approach: - Find domino with highest number of possible points - If
      * multtiple dominos share the highest score the one with the most efficient
      * domino will be selected
-     *
+     * todo javadoc woanders hin (interface)
      * @param bank    the bank that the player will select from
      * @param ordBank ordinal value of the bank
      * @return the edited bank
@@ -89,15 +89,10 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // bank copyWithoutSelection, serves as temporary bank
         Bank bankCopy = bank.copy();
         // Generate potentially best Choose for each possible domino on the given bank
-        List<Choose> bestChoosesForEachPossibleBankSlot = new LinkedList<>();
-        for (int i = 0; i < bank.getBankSize(); i++) {
-            if (bank.isNotSelected(i)) {
-                bestChoosesForEachPossibleBankSlot.add(
-                        genBestChoose(bankCopy.getDomino(i).copy(), i));
-            }
-        }
+        List<Choose> bestChoosesForEachPossibleBankSlot = bestChooseForEachDom(bankCopy);
         // evaluate which choose is best
         Choose overallBestChoose;
+        // todo refactor into methods
         if (bestChoosesForEachPossibleBankSlot.isEmpty()) {
             // no possible dom on bank fits on board
             overallBestChoose = genLowOrderChoose(bank);
@@ -125,6 +120,17 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         // return the bank, although bank reference is modified internally
         // (just to make sure it is evident, pos and rot modified)
         return bank;
+    }
+
+    private List<Choose> bestChooseForEachDom(Bank bank) {
+        List<Choose> bestChoosesForEachPossibleBankSlot = new LinkedList<>();
+        for (int i = 0; i < bank.getBankSize(); i++) {
+            if (bank.isNotSelected(i)) {
+                bestChoosesForEachPossibleBankSlot.add(
+                        genBestChoose(bank.getDomino(i).copy(), i));
+            }
+        }
+        return bestChoosesForEachPossibleBankSlot;
     }
 
 
@@ -241,6 +247,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * tile districts will be returned.
      */
     private Choose mostEfficient(Choose fstChoose, Choose sndChoose) {
+        // todo result var
         if (null == fstChoose) {
             return sndChoose;
         }
@@ -293,6 +300,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      *
      * @param bank bank from which the lowest domino will be used to generate a new choose object
      * @return choose object with the lowest possible domino that is available on the given bank
+     * @post at least one domino on the bank has to be available
      */
     private Choose genLowOrderChoose(Bank bank) {
         int idxOnBank = 0;
@@ -305,6 +313,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
             }
             idxOnBank++;
         }
+        assert null != output;
         return output;
     }
 

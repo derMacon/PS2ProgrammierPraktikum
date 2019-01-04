@@ -48,7 +48,7 @@ public class Bank {
         this.entries = new Entry[playerCnt];
         this.bankSize = playerCnt;
         // TODO uncomment before final commit
-    //        this.rand = new Random();
+//            this.rand = new Random();
         this.rand = new PseudoRandAlwaysHighestVal();
     //        this.rand = new PseudoRandZeroResidueClass(2);
     }

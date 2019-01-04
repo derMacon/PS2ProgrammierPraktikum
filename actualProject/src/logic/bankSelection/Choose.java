@@ -13,7 +13,7 @@ public class Choose implements  Comparable<Choose> {
     private Domino domWithPosAndRot;
 
     /**
-     * sum of potential points for domino when layed at the right pos / rot
+     * sum of potential points for domino when put at the right pos / rot
      */
     private int potentialPointsOnBoard;
 

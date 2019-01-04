@@ -216,7 +216,8 @@ public abstract class Player implements Comparable {
         assert null != playerSelectedDomino;
         if (!shouldBeDisposed(playerSelectedDomino)) {
             // update board -> already happened in selecting dom from bank
-            // for testing purpose redundand implementation
+            // for testing purpose redundant implementation
+            // todo nochmal ueberarbeiten
             this.board.lay(playerSelectedDomino);
 
             // update districts
