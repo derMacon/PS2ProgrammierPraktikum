@@ -15,13 +15,15 @@ import java.util.List;
  */
 public class Board {
 
-    public static final int LEFT_MOVE = 0;
-
-    public static final int UP_MOVE = 1;
-
-    public static final int RIGHT_MOVE = 2;
-
-    public static final int DOWN_MOVE = 3;
+    /**
+     * Directions the board can be dragged to
+     */
+    public enum Direction {
+        LEFT_MOVE,
+        UP_MOVE,
+        RIGHT_MOVE,
+        DOWN_MOVE;
+    }
 
     public static final String EMPTY_CELL = "--";
     /**
@@ -133,23 +135,6 @@ public class Board {
     }
 
     /**
-     * Fills the empty fields with the corresponding tile
-     *
-     * @param input input array that will be filled with the empty tile
-     * @return input array filled with empty tiles
-     */
-    private SingleTile[][] fillEmptyCellsWithTile(SingleTile[][] input) {
-        for (int y = 0; y < this.sizeY; y++) {
-            for (int x = 0; x < this.sizeX; x++) {
-                if (null == input[x][y]) {
-                    input[x][y] = SingleTile.EC;
-                }
-            }
-        }
-        return input;
-    }
-
-    /**
      * Getter for x dimension
      *
      * @return number of columns
@@ -174,6 +159,23 @@ public class Board {
      */
     public SingleTile[][] getCells() {
         return this.cells;
+    }
+
+    /**
+     * Fills the empty fields with the corresponding tile
+     *
+     * @param input input array that will be filled with the empty tile
+     * @return input array filled with empty tiles
+     */
+    private SingleTile[][] fillEmptyCellsWithTile(SingleTile[][] input) {
+        for (int y = 0; y < this.sizeY; y++) {
+            for (int x = 0; x < this.sizeX; x++) {
+                if (null == input[x][y]) {
+                    input[x][y] = SingleTile.EC;
+                }
+            }
+        }
+        return input;
     }
 
     /**
@@ -516,27 +518,4 @@ public class Board {
         } while (rowIsEmpty && x < this.sizeX);
         return rowIsEmpty;
     }
-
-    /**
-     * Directions the board can be dragged to
-     */
-    public enum Direction {
-        LEFT_MOVE("left"),
-        UP_MOVE("up"),
-        RIGHT_MOVE("right"),
-        DOWN_MOVE("down");
-
-        private final String description;
-
-        /**
-         * Constructor combining the enum members with their corresponding String representations
-         *
-         * @param description String representation for the directions
-         */
-        Direction(String description) {
-            this.description = description;
-        }
-
-    }
-
 }

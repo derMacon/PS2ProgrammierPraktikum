@@ -5,7 +5,7 @@ import logic.token.Domino;
 /**
  * Class that implements the selection of a domino a player has chosen.
  */
-public class Choose implements  Comparable<Choose> {
+public class Choose implements Comparable<Choose> {
 
     /**
      * Domino with a position and rotation

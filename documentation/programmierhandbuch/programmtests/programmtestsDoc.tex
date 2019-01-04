@@ -1,0 +1,39 @@
+\section{Programmtests}
+
+
+\paragraph{Erkl"arung des Toolkits}
+Um effektiv Tests zum Einlesen sowie Ausgeben von Spielst"anden aus einer .txt Datei zu gestalten, wurde ein Klasse geschrieben welche dies erleichtern soll. Sie nennt sich \emph{TestToolkit}. Bei der Erstellung habe ich mich stark an dem Toolkit aus der "Ubung \emph{Algorithmen und Datenstrukturen} orientiert. 
+\todo{Toolkit noch einfuegen und schreiben wie man dies findet}
+Das gegebene Toolkit ist allerdings nur in der Lage unter einer Unix-Umgebung Dateivergleiche durchzuf"uhren, da das Programm allerdings unter Windows entwickelt wurde, musste viele Methoden ausgetauscht werden. 
+
+Neben einer Festlegung welcher Dateityp bearbeitet werden kann, liefert diese Klasse vor allem einen Pfad an dem s"amtliche Testdateien zu finden sind. Dies geschieht ("ahnlich wie beim Logger) mit einem Formatstring. Um Testdateien zuallererst in Form eines Strings zu lesen wird die Methode \emph{readAsString} verwendet \lstref{lst:testToolkit_readAsString}. Diese verwendet allerdings nur die bereits implementierte Methode der Loader-Klasse. Es war mir trotzdem wichtig sie hier mit aufzunehmen, um eine gemeinsame Schnittstelle f"ur alle Tests f"ur die Dateiverarbeitung zu schaffen. In der Methode \emph{read} wird diese Methode aufgerufen um einen Game Konstruktor zu f"ullen und ein vollwertiges Spiel zur"uckzugeben. 
+
+Eine weitere Funktionalit"at des Toolkits besteht darin zwei gegebene Dateien mit dem selben Namen auf ihre Gleichheit zu pr"ufen \lstref{lst:testToolkit_assertFilesEqual}. Dies geschieht, indem beide Dateien aus den gegebenen Verzeichnissen (\emph{results} sowie \emph{expected\_results}) als Strings ausgelesen und anschlie"send per assertEquals verglichen werden. Die Methode \emph{writeAndAssert} verh"alt sich hier sehr "ahnlich, hierbei wird nur erst das gegebene Spiel in eine Datei geschrieben bevor die assertFilesEqual der Klasse aufgerufen wird. 
+\begin{lstlisting}[float,style=CodeHighlighting,caption=TestToolkit - readAsString,label=lst:testToolkit_readAsString]
+public static String readAsString(String filename) {
+    try {
+        File file = new File(String.format(PATH_FORMAT, filename));
+        return Loader.getInstance().openGivenFile(file.getPath());
+    } catch (FileNotFoundException e) {
+        return e.getMessage();
+    }
+}
+\end{lstlisting}
+\begin{lstlisting}[float,style=CodeHighlighting,caption=TestToolkit - assertFilesEqual,label=lst:testToolkit_assertFilesEqual]
+public static void assertFilesEqual(String filename) {
+    try {
+        File fileResult = new File("test" + File.separator + "fileTests" + File.separator
+                + "results" + File.separator + filename + ".txt");
+        File fileExpectedResult = new File("test" + File.separator + "fileTests" 
+        		+ File.separator + "expected_results" + File.separator + filename 
+        		+ ".txt");
+        Assert.assertEquals(Loader.openGivenFile(fileExpectedResult), 
+        		Loader.openGivenFile(fileResult));
+    } catch (FileNotFoundException e) {
+        assertTrue(false);
+    }
+}
+\end{lstlisting}
+
+\subparagraph{Beschreibung eines Testfalls}
+Im Ordner namens \glqq test\grqq befindet sich ein Unterordner namens \glqq fileTests\grqq . Dies ist der Oberordner, in welchem sich alle Testdateien zum Dateieinlesen / ausgeben befinden. 

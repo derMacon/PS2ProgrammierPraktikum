@@ -56,11 +56,6 @@ public class Game implements GUI2Game {
     private Player[] players;
 
     /**
-     * Index of the current player
-     */
-    private int currPlayerIdx;
-
-    /**
      * Current slot und notice
      */
     private int currBankIdx;
@@ -75,6 +70,9 @@ public class Game implements GUI2Game {
      */
     private GUIConnector gui;
 
+    /**
+     * current field in focus
+     */
     private PossibleField currField;
 
 

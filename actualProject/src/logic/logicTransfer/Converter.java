@@ -79,10 +79,6 @@ public class Converter {
      */
     private List<Domino> stack;
 
-    /**
-     * Field currently in focus
-     */
-    private PossibleField currField;
 
 
     /**

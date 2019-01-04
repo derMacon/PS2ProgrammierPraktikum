@@ -15,15 +15,19 @@ import static org.junit.Assert.assertTrue;
  * beinhaltet unter anderem Methoden zum Vergleichen von Dateien und zum
  * Ermitteln des Stack-Trace einer Exception als Zeichenkette.
  * <p>
- * // TODO javadoc erweitern (alle Methoden)
  *
- * @author eg, ur, kar
+ * @author eg, ur, kar, silas
  */
 public class TestToolkit {
 
+    /**
+     * Standard Dateityp welcher im Kontext der Dateiverarbeitung genutzt wird
+     */
     private static final String FILE_ENDING = ".txt";
 
-
+    /**
+     * Pfad zum uebergeordnetem Pfad
+     */
     private static final String PATH_FORMAT =
             "test" + File.separator + "fileTests" + File.separator + "testdata" + File.separator + "%s" + FILE_ENDING;
 
@@ -38,7 +42,6 @@ public class TestToolkit {
      * @throws InterruptedException Externer Fehler
      * @throws IOException          Dateifehler
      */
-
     public static boolean filesAreEqual(String fileName1, String fileName2)
             throws InterruptedException, IOException {
         if (null == fileName1 || null == fileName2) {
@@ -51,17 +54,6 @@ public class TestToolkit {
      * Liest eine Datei mit dem Namen filename aus dem test-Verzeichnis ein.
      *
      * @param filename Dateiname
-     * @return DBTable Datenbanktabelle
-     *
-     * @throws IOException Dateifehler
-     * @throws WrongSyntaxException Syntaktischer Fehler beim Einlesen der Datei
-     *
-     */
-    /**
-     * Liest eine Datei mit dem Namen filename aus dem test-Verzeichnis ein.
-     *
-     * @param filename Dateiname
-     * @return DBTable Datenbanktabelle
      * @throws IOException          Dateifehler
      * @throws WrongSyntaxException Syntaktischer Fehler beim Einlesen der Datei
      */
@@ -69,6 +61,11 @@ public class TestToolkit {
         return new Game(new FakeGUI(), readAsString(filename));
     }
 
+    /**
+     * Liest eine Datei mit dem Namen filename as dem test-Verzeichnis in Form einer Zeichenkette aus
+     * @param filename Dateiname
+     * @return Inhalt der Datei als Zeichenfolge
+     */
     public static String readAsString(String filename) {
         try {
             File file = new File(String.format(PATH_FORMAT, filename));
