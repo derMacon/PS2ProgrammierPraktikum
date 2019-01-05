@@ -210,11 +210,11 @@ public class Converter {
         }
         String modifiedInput = input.replaceAll(TAG_CLOSER + "(?s).*", "");
 
+        // todo nochmal testen ob Spielfeldabc Fehler wirft
         if (modifiedInput.matches(BOARD_IDENTIFIER + ".*")) {
             return BOARD_IDENTIFIER;
         }
-        if (modifiedInput.equals(BANK_IDENTIFIER)
-                || modifiedInput.equals(STACK_IDENTIFIER)) {
+        if (modifiedInput.equals(BANK_IDENTIFIER) || modifiedInput.equals(STACK_IDENTIFIER)) {
             return modifiedInput;
         }
         throw new WrongTagException();
@@ -407,35 +407,18 @@ public class Converter {
      * convertStrToPlayer method to convert the given String to the players
      * board.
      *
-     * @param input          board for the player
+     * @param boardStr          board for the player
      * @param idxPlayerArray index of the player that later on will be
      *                       instanciated
      * @param gui            reference to the gui
      * @return a fully instanciated Player containing a board and the
      * corresponding districts
      */
-    private Player convertStrToPlayerWithDefaultOccupancy(String input, int idxPlayerArray,
+    private Player convertStrToPlayerWithDefaultOccupancy(String boardStr, int idxPlayerArray,
                                                           GUIConnector gui) {
         PlayerType defaultPlayerTypeRelativeToIdx = 0 == idxPlayerArray ? PlayerType.HUMAN
                 : PlayerType.DEFAULT;
-        return convertStrToPlayer(input, defaultPlayerTypeRelativeToIdx, idxPlayerArray, gui);
-    }
-
-    /**
-     * Method calls the static factory method to instanciate a the desired
-     * player with the given information.
-     *
-     * @param input          board for the player
-     * @param type           type of the player that will be instanciated
-     * @param idxPlayerArray index of the player that later on will be
-     *                       instanciated
-     * @param gui            reference to the gui
-     * @return a fully instanciated Player containing a board and the
-     * corresponding districts
-     */
-    private Player convertStrToPlayer(String input, PlayerType type, int idxPlayerArray, GUIConnector gui) {
-        // TODO update possible dominos list
-        return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(type, input, idxPlayerArray, gui);
+        return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(defaultPlayerTypeRelativeToIdx, boardStr, idxPlayerArray, gui);
     }
 
     // --- convert bank ---

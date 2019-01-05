@@ -45,30 +45,17 @@ public class Loader {
      */
     private Stage stage;
 
-//    public static getTestingInstance() {
-//        if(null == this.singleInstance) {
-//            this.singleInstance =
-//        }
-//    }
-//
-//    /**
-//     * Testing Constructor, Junit does not make it possible to set stages during testing (normal constructor)
-//     */
-//    public Loader() {
-//
-//    }
 
 
     /**
      * Constructor for the Loader class. Sets the initial dirctory for the loader as well as the stage for the
      * and filechooser itself
      */
-    public Loader() {
+    private Loader() {
         fChooser = new FileChooser();
         fChooser.setTitle("Open Resource File");
         fChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT", "*.txt"));
         fChooser.setInitialDirectory(new File(DEFAULT_DIRECTORY));
-//        stage = new Stage(); // TODO entfernen -> mag er beim Testen nicht
     }
 
     /**
@@ -89,13 +76,10 @@ public class Loader {
      * @param text   data that will be written
      */
     private static void actualSavingProcess(File output, String text) {
-        try {
-            PrintWriter outputStream = new PrintWriter(output);
+        try (PrintWriter outputStream = new PrintWriter(output)){
             outputStream.print(text);
-            outputStream.close();
         } catch (FileNotFoundException e) {
-            Logger.getInstance().printAndSafe("Could not save file");
-            e.printStackTrace();
+            Logger.getInstance().printAndSafe("Could not save file\n" + e.getMessage());
         }
     }
 
@@ -127,17 +111,14 @@ public class Loader {
      */
     public static String openGivenFile(File file) throws FileNotFoundException {
         assert file.isFile();
-        Scanner in = null;
         StringBuilder sb = new StringBuilder();
-        try {
-            // has to be UTF8 to read german "Umlaute"
-            in = new Scanner(file, "UTF8");
+        // has to be UTF8 to read german "Umlaute"
+        try (Scanner in = new Scanner(file, "UTF8")) {
             while (in.hasNextLine()) {
                 sb.append(in.nextLine() + "\n");
             }
-            in.close();
         } catch (FileNotFoundException e) {
-            throw new FileNotFoundException("Platzhalter");
+            throw e;
         }
         return removeUTF8BOM(sb.toString());
     }
@@ -175,7 +156,7 @@ public class Loader {
                 temp = openGivenFile(file);
             }
         } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            Logger.getInstance().printAndSafe(e.getMessage());
         }
         return temp;
     }
