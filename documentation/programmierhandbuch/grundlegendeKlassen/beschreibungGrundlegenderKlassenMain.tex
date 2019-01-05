@@ -1,8 +1,10 @@
 \section{Beschreibung grundlegender Klassen}
 \sectionmark{Grundlegende Klassen}
-Alle Klassen wurden in folgende Packages unterteilt. Im folgenden werden diese vom Gesamtprogram isoliert betrachtet. Eine globale "Ubersicht "uber s"amtliche Zusammenh"ange findet sich erst im Kapitel ...
-\todo{Kapitelref einfuegen}
+Alle Klassen wurden in folgende Packages unterteilt. Im folgenden werden diese vom Gesamtprogram isoliert betrachtet. Eine globale "Ubersicht "uber s"amtliche Zusammenh"ange findet sich erst im Kapitel \ref{sec:programmorganisationsplan} \nameref{sec:programmorganisationsplan}, auf Seite \pageref{sec:programmorganisationsplan}. 
+
+\begin{multicols}{2}
 \begin{itemize}
+
 	\item \ref{ss:token} \nameref{ss:token}
 	\begin{itemize}
 		\item \nameref{par:pos}
@@ -16,14 +18,48 @@ Alle Klassen wurden in folgende Packages unterteilt. Im folgenden werden diese v
 		\item \nameref{par:loader}
 		\item \nameref{par:logger}
 	\end{itemize}
+	\item \ref{ss:bankSelection} \nameref{ss:bankSelection}
+	\begin{itemize}
+		\item \nameref{par:bank}
+		\item \nameref{par:choose}
+		\item \nameref{par:entry}
+	\end{itemize}
+	\begin{minipage}{\linewidth}
+	\item \ref{ss:playerState} \nameref{ss:playerState}
+	\begin{itemize}
+		\item \nameref{par:district}
+		\item \nameref{par:board}
+		\item \nameref{par:botbehavior}
+		\item \nameref{par:result}		
+		\item \nameref{par:resultRanking}	
+	\end{itemize}
+	\end{minipage}
+	\item \ref{ss:differentPlayerTypes} \nameref{ss:differentPlayerTypes}
+	\begin{itemize}
+		\item \nameref{par:defaultAIPlayer}
+		\item \nameref{par:humanPlayer}
+		\item \nameref{par:PlayerType}
+	\end{itemize}
+	\item \ref{ss:logicTransfer} \nameref{ss:logicTransfer}
+	\begin{itemize}
+		\item \nameref{par:exception}
+		\item \nameref{par:converter}
+		\item \nameref{par:gui2Game}		
+		\item \nameref{par:guiConnector}
+		\item \nameref{par:possibleField}		
+		\item \nameref{par:game}
+	\end{itemize}
 \end{itemize}
+\end{multicols}
+
+
 \import{programmierhandbuch/grundlegendeKlassen/token/}{tokenPackageDoc.tex}
 \newpage
 \import{programmierhandbuch/grundlegendeKlassen/dataPreservation/}{dataPreservationPackageDoc.tex}
 \newpage
-\import{programmierhandbuch/grundlegendeKlassen/playerState/}{playerStatePackageMain.tex}
-\newpage
 \import{programmierhandbuch/grundlegendeKlassen/bankSelection/}{bankSelectionPackageMain.tex}
+\newpage
+\import{programmierhandbuch/grundlegendeKlassen/playerState/}{playerStatePackageMain.tex}
 \newpage
 \import{programmierhandbuch/grundlegendeKlassen/differentPlayerTypes/}{differentPlayerTypesPackageMain.tex}
 \newpage

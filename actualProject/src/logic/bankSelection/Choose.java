@@ -10,17 +10,17 @@ public class Choose implements Comparable<Choose> {
     /**
      * Domino with a position and rotation
      */
-    private Domino domWithPosAndRot;
+    private final Domino domWithPosAndRot;
 
     /**
      * sum of potential points for domino when put at the right pos / rot
      */
-    private int potentialPointsOnBoard;
+    private final int potentialPointsOnBoard;
 
     /**
      * Index of the domino on the bank
      */
-    private int idxOnBank;
+    private final int idxOnBank;
 
     /**
      * Constructor setting both fields

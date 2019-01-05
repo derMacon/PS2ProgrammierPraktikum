@@ -44,7 +44,7 @@ Der Punkt Benutzer entspricht in diesem Projekt s"amtlichen Anfragen die ein Ben
 \todo{Anfuehrungszeichen}
  Schnittstelle mit aufnimmt. Dies führt allerdings zu unuebersichtlichem Code. 
 
-\paragraph{Spieler}
+\paragraph{Spielerverhalten}
 Der Punkt Spieler beschreibt die wirklichen Spielteilnehmer. Er muss in der Lage sein selbststaendig oder durch die Interatktion mit der Gui einen Zug vollziehen zu koennen. Hierzu gehoert das auswahlen, drehen und setzen eines Dominos. Hier gilt es abzuwaehlen ob dies durch eine gemeinsame Klasse geschehen soll, ich habe mich allerdings fuer eine Unterteilung entschieden da der menschliche Spieler auf die Eingabe des Benutzers, ueber die Benutzerobflaeche, abarbeitet, waehrend die Bots diese mehr oder weniger ignorieren und isoliert ihre Zuege vollziehen. 
 
 Desweiteren ben"otigt der Spieler ein Spielbrett auf dem er Dominos setzen kann. Man k"onnte das Spielbrett auch der Verwaltung (also der Spiel-Klasse) "uberlassen, dann w"aere ein Spieler aber nicht mehr so unabh"angig vom Spiel wie in diesem Fall. Es ist so m"oglich eine minimale Schnittstelle dem Spiel gegen"uber bereitzustellen, indem der Spieler selbst alle wichtigen Schritte ausf"uhrt um einen Zug zu machen. 
@@ -52,6 +52,20 @@ Desweiteren ben"otigt der Spieler ein Spielbrett auf dem er Dominos setzen kann.
 Die Kapsellung des Spielerverhaltens erm"oglicht es ausserdem wartbaren Code zu erzeugen. Es ist einfacher Fehler zu beheben oder bestimmte Prozesse auszutauschen ohne das komplette Programm umstrukturieren zu m"ussen, aber am wichtigsten hierbei ist die M"oglichkeit der Erweiterbarkeit. 
 \todo{Moegliche Erweiterung referenzieren... das intro fenster}
 Durch die Kapselung ist es m"oglich s"amtliche Schritte eines Spielers polymorph zu gestalten. Jede Spielerart reagiert also anders auf eine Anfrage und es nicht n"otig den Aufruf hierf"ur zu ver"andern. All diese M"oglichkeiten w"urden entfallen, wenn man das Spielverhalten der k"unstlichen Spieler in der Spiel-Klasse aufrufen w"urde.
+
+\paragraph{Spielerinstantiierung}
+Um die Bindung zum Spiel so gering wie m"oglich zu halten (wie im letzten Absatz erkl"art). Habe ich versucht auch bei der Instantiierung m"oglichst nachhaltigen Code zu schreiben indem ich eine statische Fabrikmethode verwende um die einzelnen Spieler zu instantiieren. Letztendlich verschiebt man mit solch einer einfach Fabrik lediglich die Instantierung in eine gemeinsame Methode, allerdings muss man im sp"ateren Verlauf der Entwicklung auch nur hier Dinge "andern. Dies ist besonders hilfreich beim hinzuf"ugen weiterer Spielertypen. Die Fabrik-Methode befindet sich in einem Enum namens \emph{Playertypes}. Diese Enum-Werte k"onnen in gewisser Weise aber auch als Platzhalter f"ur die \glqq richtigen\grqq  Spieler herhalten. Wie das funktioniert wird im folgendem Abschnitt beschrieben. 
+
+\paragraph{Alternative Spielerinitialisierung}
+\label{par:alternativeSpielerinitialisierung}
+Der Vorgang des Instantiierens in der Fabrik-Methode ist relativ aufwendig. Man h"atte s"amtliche Operationen theoretisch auch im Konstruktor behandeln k"onnen, auf lange Sicht ist es aber effektiver Sie hier anzusiedeln da man sonst nur sehr umst"andlich ein Auswahlfeld f"ur m"ogliche Spieler starten kann. Hierzu folgendes Szenario: Es gibt N Spielertypen unter denen der Benutzer seine Gegner w"ahlen kann. Daf"ur gibt es ein eigenes Auswahlfenster, welches vor dem eigentlichen Spiel auftauchen soll (siehe Abbildung \ref{fig:auswahlfenster}, S. \pageref{fig:auswahlfenster}). Der Controller dieses Fensters "ubernimmt somit die Aufgabe der Main-Methode das Spiel zu starten. Diese tut genau dasselbe wie die urspr"ungliche Main-Methode indem Sie das FXML-Dokument aufruft. Der Controller wird dabei automatisch gestartet und die Initialize-Methode der Controller-Klasse des GameFXML-Dokuments durchlaufen. Hierbei habe ich bei meinen "Uberlegungen keinen Weg gefunden Argumente der Initialize-Methode zu "ubergeben, da diese ja das Interface Initializable implementiert und somit die Signatur nicht ver"andert werden kann. Daher gibt es eine eine Methode welche losgel"ost vom Konstruktor das Spiel mit "ubergebenen Spielertypen starten kann. Dieser Ansatz funktioniert soweit und ist in der Main-Klasse als auskommentierter Block mit dem Schl"usselwort \glqq Alternative\grqq  gekennzeichnet. Falls dieser Block einkommentiert und der Rest der Main-Methode auskommentiert wird startet ein Auswahlfenster mit einer M"oglichkeiten der Spielerselektierung. Dies ist allerdings noch nicht ausgereift da es lediglich zur Darstellung des Problems dienen soll, sodass bei invalider Selektierung eine Exception geworfen wird.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.4\linewidth]{pics/Intro240918}
+	\caption[Auswahlfenster]{Auswahlfenster}
+	\label{fig:auswahlfenster}
+\end{figure}
 
 \paragraph{Spiel}
 Dieser Begriff beschreibt koordinierte Abarbeitung der Spielerzuege. Es wird der Benutzeroberflaeche mitgeteilt was angezeigt werden soll. Ausserdem werden saemtliche saemtliche Stapel von Dominos bereitgestellt die fuer ein vollwertiges Spiel genutzt werden sollen (Beutel, Baenke). Alle benoetigten Dateioperationen werden hier eingeleitet aber nicht direkt in dieser Klasse bearbeitet. Durch das ganze Exceptionhandling wird es ziemlich unuebersichtlich alles in das Spiel zu packen, da dieses in erster Linie fuer die uebergeordnete Organisation des ganzen Programms gedacht ist. 
@@ -66,7 +80,7 @@ Auch beim Speichern und Laden wird in diesem Entwurf ein \emph{singleton Muster}
 \todo{Verweis auf genauere Beschreibung des Musters einbinden} 
 
 \paragraph{Grobe Klassenuebersicht}
-Mit dieser Uebersicht bin ich zu folgender groben Klassenstruktur gelagt: 
+Mit dieser Uebersicht bin ich zu folgender groben Klassenstruktur gelangt: 
 \begin{itemize}
 	\item Interfaces: Waren zwar mehr oder weniger durch die Bonusaufgabe vorgegeben, aber gerade zum Testen des Programms bietet sich die Verwendung dieser Interfaces natuerlich an. 
 	\begin{itemize}

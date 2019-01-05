@@ -1,2 +1,7 @@
 \paragraph{Choose}
 \label{par:choose}
+\subparagraph{Einleitung}
+Diese Klasse dient den Bots als Hilfsstruktur beim Analysieren der Dominos auf den B"anken. Ist ein reines Datenobjekt das einen Domino h"alt. Au"serdem wird gespeichert wie viele Punkte der Domino an seiner Position einbringt (bzw. wie viele Punkte das Brett danch insgesamt wert ist). Um dem Spieler mitzuteilen wo der Domino wiederzufinden ist, wird ebenfalls der Index auf der Bank gespeichert. Im Konstruktor werden diese gesetzt und da sie als final gekennzeichnet sind anschlie"send auch nicht mehr ver"andert. 
+
+\subparagraph{Methoden}
+Neben Gettern stellt diese Klasse lediglich eine equals- und eine compareTo-Methode bereit. Durch die Implementierung des Comparable-Interfaces ist es m"oglich diese in der defaultAIKlasse zu verwenden um das maximale Choose-Objekt einer Liste zu finden. 
