@@ -42,6 +42,8 @@
 % Standardbreite um Text und Bilder gem. darzustellen
 \setkeys{Gin}{width=0.8\linewidth}
 
+% Floatbarrier
+\usepackage{placeins}
 
 % Einfacheres Navigieren im PDF/Web
 \usepackage{url}
@@ -134,7 +136,8 @@ stringstyle=\color{Blue}
 \newpage
 \pagestyle{plain}
 \tableofcontents
-\todo{Literaturverzeichnis noch anfuehren}
+\newpage
+\bibliography{literatur}
 \listoffigures
 %\pagestyle{main}
 \newpage

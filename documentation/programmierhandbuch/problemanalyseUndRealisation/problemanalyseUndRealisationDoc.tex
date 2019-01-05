@@ -31,8 +31,7 @@ Hierbei habe ich mich einer Technik bedient in der man versucht sich in eine jew
 
 \subsection{Realisationsanalyse}
 \paragraph{Grunds"atzlich ben"otigte Datenstrukturen}
-Um eine Partie spielen zu k"onnen werden erst einmal Spielsteine ben"otigt. Hierbei wurden diverse Klassen eingef"uhrt die im Kapitel 
-\todo{Kapitel mit Beschreibung der Dominos einbinden}
+Um eine Partie spielen zu k"onnen werden erst einmal Spielsteine ben"otigt. Hierbei wurden diverse Klassen eingef"uhrt die im Kapitel \nameref{par:domino} \ref{par:domino} auf Seite \pageref{par:domino}
 genauer beschrieben werden. Letztendich bieten diese allerdings s"aemtliche ben"otigte Schnittstellen um einen Domino mit einer bestimmten Aufschrift an mit einer Position zu versehen. 
 
 Diese Dominos k"onnen auf Spielbrettern positioniert werden. Jeder Spieler besitzt hierbei eins, und die Gui ist in der Lage diese ordnungsgem"ass darzustellen. 
@@ -40,18 +39,14 @@ Diese Dominos k"onnen auf Spielbrettern positioniert werden. Jeder Spieler besit
 Um einen Domino w"ahlen zu k"onnen ist es essentiell ein Konstrukt f"ur eine Bank zu implementieren. Ich habe dabei eine eine Struktur gew"ahlt in der s"amtliche Spieler nicht anhand irgendeines Indices, sondern anhand ihrer Referenz gespeichert werden. Dies erm"oglicht eine genaue Zuordnung, da es ja m"oglicherweise Spieler mit identischem Index geben k"onnte. 
 
 \paragraph{Benutzerschnittstelle}
-Der Punkt Benutzer entspricht in diesem Projekt s"amtlichen Anfragen die ein Benutzer dem Programm stellen kann. Es bietet sich an eine Struktur zu waehlen in der eine Klasse oder Schnittstelle als Anlaufstelle dient ueber die sämtliche Anfragen bearbeitet werden koennen. Hierbei ist nur abzuwaegen ob man eventuell die "Antwort" des Programms gleich in diese
-\todo{Anfuehrungszeichen}
- Schnittstelle mit aufnimmt. Dies führt allerdings zu unuebersichtlichem Code. 
+Der Punkt Benutzer entspricht in diesem Projekt s"amtlichen Anfragen die ein Benutzer dem Programm stellen kann. Es bietet sich an eine Struktur zu waehlen in der eine Klasse oder Schnittstelle als Anlaufstelle dient ueber die sämtliche Anfragen bearbeitet werden koennen. Hierbei ist nur abzuwaegen ob man eventuell die \glqq Antwort\grqq  des Programms gleich in diese Schnittstelle mit aufnimmt. Dies führt allerdings zu unuebersichtlichem Code. 
 
 \paragraph{Spielerverhalten}
 Der Punkt Spieler beschreibt die wirklichen Spielteilnehmer. Er muss in der Lage sein selbststaendig oder durch die Interatktion mit der Gui einen Zug vollziehen zu koennen. Hierzu gehoert das auswahlen, drehen und setzen eines Dominos. Hier gilt es abzuwaehlen ob dies durch eine gemeinsame Klasse geschehen soll, ich habe mich allerdings fuer eine Unterteilung entschieden da der menschliche Spieler auf die Eingabe des Benutzers, ueber die Benutzerobflaeche, abarbeitet, waehrend die Bots diese mehr oder weniger ignorieren und isoliert ihre Zuege vollziehen. 
 
 Desweiteren ben"otigt der Spieler ein Spielbrett auf dem er Dominos setzen kann. Man k"onnte das Spielbrett auch der Verwaltung (also der Spiel-Klasse) "uberlassen, dann w"aere ein Spieler aber nicht mehr so unabh"angig vom Spiel wie in diesem Fall. Es ist so m"oglich eine minimale Schnittstelle dem Spiel gegen"uber bereitzustellen, indem der Spieler selbst alle wichtigen Schritte ausf"uhrt um einen Zug zu machen. 
 
-Die Kapsellung des Spielerverhaltens erm"oglicht es ausserdem wartbaren Code zu erzeugen. Es ist einfacher Fehler zu beheben oder bestimmte Prozesse auszutauschen ohne das komplette Programm umstrukturieren zu m"ussen, aber am wichtigsten hierbei ist die M"oglichkeit der Erweiterbarkeit. 
-\todo{Moegliche Erweiterung referenzieren... das intro fenster}
-Durch die Kapselung ist es m"oglich s"amtliche Schritte eines Spielers polymorph zu gestalten. Jede Spielerart reagiert also anders auf eine Anfrage und es nicht n"otig den Aufruf hierf"ur zu ver"andern. All diese M"oglichkeiten w"urden entfallen, wenn man das Spielverhalten der k"unstlichen Spieler in der Spiel-Klasse aufrufen w"urde.
+Die Kapsellung des Spielerverhaltens erm"oglicht es ausserdem wartbaren Code zu erzeugen. Es ist einfacher Fehler zu beheben oder bestimmte Prozesse auszutauschen ohne das komplette Programm umstrukturieren zu m"ussen, aber am wichtigsten hierbei ist die M"oglichkeit der Erweiterbarkeit. Durch die Kapselung ist es m"oglich s"amtliche Schritte eines Spielers polymorph zu gestalten. Jede Spielerart reagiert also anders auf eine Anfrage und es nicht n"otig den Aufruf hierf"ur zu ver"andern. All diese M"oglichkeiten w"urden entfallen, wenn man das Spielverhalten der k"unstlichen Spieler in der Spiel-Klasse aufrufen w"urde.
 
 \paragraph{Spielerinstantiierung}
 Um die Bindung zum Spiel so gering wie m"oglich zu halten (wie im letzten Absatz erkl"art). Habe ich versucht auch bei der Instantiierung m"oglichst nachhaltigen Code zu schreiben indem ich eine statische Fabrikmethode verwende um die einzelnen Spieler zu instantiieren. Letztendlich verschiebt man mit solch einer einfach Fabrik lediglich die Instantierung in eine gemeinsame Methode, allerdings muss man im sp"ateren Verlauf der Entwicklung auch nur hier Dinge "andern. Dies ist besonders hilfreich beim hinzuf"ugen weiterer Spielertypen. Die Fabrik-Methode befindet sich in einem Enum namens \emph{Playertypes}. Diese Enum-Werte k"onnen in gewisser Weise aber auch als Platzhalter f"ur die \glqq richtigen\grqq  Spieler herhalten. Wie das funktioniert wird im folgendem Abschnitt beschrieben. 
@@ -75,36 +70,4 @@ Da man vermehrt, und vor allem an vielen verschiedenen Stellen im Code, eine neu
 
 \paragraph{Speichern und Laden}
 Auch beim Speichern und Laden wird in diesem Entwurf ein \emph{singleton Muster} verwendet. Da man beim Speichern jeweils den Dateipfad nach erstmaliger Eingabe nicht erneut eingeben m"ochte wenn dies nicht unbedingt erforderlich ist (siehe Abschnitt 
-\todo{Benutzerhandbuch einbinden} 
-\emph{Speichern als} gegen"ueber \emph{Speichern}). Und auch das Speichern und Laden tritt immer wieder vermehrt und verteilt ueber den gesamten Code auf. Alternativ k"onnte man auch ein klassische Klasse verwenden, wegen den genannten Punkten empfiehlt sich aber gerade f"ur diese beiden Anwendungsf"alle dieses Muster. 
-\todo{Verweis auf genauere Beschreibung des Musters einbinden} 
-
-\paragraph{Grobe Klassenuebersicht}
-Mit dieser Uebersicht bin ich zu folgender groben Klassenstruktur gelangt: 
-\begin{itemize}
-	\item Interfaces: Waren zwar mehr oder weniger durch die Bonusaufgabe vorgegeben, aber gerade zum Testen des Programms bietet sich die Verwendung dieser Interfaces natuerlich an. 
-	\begin{itemize}
-		\item GUI2Game
-		\item GUIConnector
-	\end{itemize}
-	\item Klassen
-	\begin{itemize}
-		\item Game
-		\item Player
-		\item Verschiedene Auspraegungen der abstrakten Spieler-Klasse
-		\item District
-		\item Bank
-		\item Entry
-		\item Board
-		\item Domino
-		\item Pos
-		\item Logger
-	\end{itemize}
-	\item Aufzaehlungstypen
-	\begin{itemize}
-		\item Tiles
-		\item SingleTile
-		\item DistrictType
-	\end{itemize}
-\end{itemize}
-
+\emph{Speichern als} gegen"ueber \emph{Speichern}, \ref{spar:anleitung_speichern} auf Seite \pageref{spar:anleitung_speichern}). Und auch das Speichern und Laden tritt immer wieder vermehrt und verteilt ueber den gesamten Code auf. Alternativ k"onnte man auch ein klassische Klasse verwenden, wegen den genannten Punkten empfiehlt sich aber gerade f"ur diese beiden Anwendungsf"alle dieses Muster. F"ur eine genauere Beschreibung des Musters siehe \ref{par:singletonMuster} \nameref{par:singletonMuster} auf Seite \pageref{par:singletonMuster}. 

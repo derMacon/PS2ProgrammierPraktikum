@@ -1,17 +1,20 @@
 \babel@toc {ngerman}{}
-\contentsline {figure}{\numberline {1}{\ignorespaces Erstes Selektieren}}{10}{figure.caption.13}
-\contentsline {figure}{\numberline {2}{\ignorespaces Schwebender Domino ueber gueltiger Position\relax }}{11}{figure.caption.17}
-\contentsline {figure}{\numberline {3}{\ignorespaces Schwebender Domino ueber ungueltiger Position\relax }}{11}{figure.caption.18}
-\contentsline {figure}{\numberline {4}{\ignorespaces Menueoptionen\relax }}{12}{figure.caption.19}
-\contentsline {figure}{\numberline {5}{\ignorespaces Nachtraegliches Abspeichern\relax }}{12}{figure.caption.22}
-\contentsline {figure}{\numberline {6}{\ignorespaces Filechooser}}{13}{figure.caption.26}
-\contentsline {figure}{\numberline {7}{\ignorespaces \relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \add@extra@listi {sml}Unterschiedliche Fehlermeldungen beim Einlesen einer Datei\relax }}{14}{figure.caption.27}
-\contentsline {figure}{\numberline {8}{\ignorespaces Spielbeginn}}{15}{figure.caption.31}
-\contentsline {figure}{\numberline {9}{\ignorespaces Initiales Selektieren - oben}}{15}{figure.caption.32}
-\contentsline {figure}{\numberline {10}{\ignorespaces Initiales Selektieren - mittig}}{16}{figure.caption.34}
-\contentsline {figure}{\numberline {11}{\ignorespaces Erstes Rotieren\relax }}{17}{figure.caption.35}
-\contentsline {figure}{\numberline {12}{\ignorespaces Erste Ablage}}{17}{figure.caption.36}
-\contentsline {figure}{\numberline {13}{\ignorespaces Auswahlfenster}}{22}{figure.caption.50}
-\contentsline {figure}{\numberline {14}{\ignorespaces UML-Darstellung des token packages\relax }}{26}{figure.caption.57}
-\contentsline {figure}{\numberline {15}{\ignorespaces UML-Darstellung des dataPreservation packages\relax }}{30}{figure.caption.70}
-\contentsline {figure}{\numberline {16}{\ignorespaces Vereinfachte UML-Darstellung des gesamten Projekts\relax }}{55}{figure.caption.138}
+\contentsline {figure}{\numberline {1}{\ignorespaces Erstes Selektieren}}{11}{figure.caption.9}
+\contentsline {figure}{\numberline {2}{\ignorespaces Schwebender Domino ueber gueltiger Position\relax }}{12}{figure.caption.13}
+\contentsline {figure}{\numberline {3}{\ignorespaces Schwebender Domino ueber ungueltiger Position\relax }}{12}{figure.caption.14}
+\contentsline {figure}{\numberline {4}{\ignorespaces Menueoptionen\relax }}{13}{figure.caption.15}
+\contentsline {figure}{\numberline {5}{\ignorespaces Nachtraegliches Abspeichern\relax }}{13}{figure.caption.18}
+\contentsline {figure}{\numberline {6}{\ignorespaces Filechooser}}{15}{figure.caption.21}
+\contentsline {figure}{\numberline {7}{\ignorespaces \relax \fontsize {10}{12}\selectfont \abovedisplayskip 10\p@ plus2\p@ minus5\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6\p@ plus3\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 4.5\p@ plus2\p@ minus\p@ \topsep 9\p@ plus3\p@ minus5\p@ \itemsep 4.5\p@ plus2\p@ minus\p@ {\leftmargin \leftmargini \topsep 6\p@ plus2\p@ minus2\p@ \parsep 3\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \add@extra@listi {sml}Unterschiedliche Fehlermeldungen beim Einlesen einer Datei\relax }}{15}{figure.caption.22}
+\contentsline {figure}{\numberline {8}{\ignorespaces Spielbeginn}}{16}{figure.caption.26}
+\contentsline {figure}{\numberline {9}{\ignorespaces Initiales Selektieren - oben}}{17}{figure.caption.27}
+\contentsline {figure}{\numberline {10}{\ignorespaces Initiales Selektieren - mittig}}{18}{figure.caption.29}
+\contentsline {figure}{\numberline {11}{\ignorespaces Erstes Rotieren\relax }}{18}{figure.caption.30}
+\contentsline {figure}{\numberline {12}{\ignorespaces Erste Ablage}}{19}{figure.caption.31}
+\contentsline {figure}{\numberline {13}{\ignorespaces Auswahlfenster}}{23}{figure.caption.41}
+\contentsline {figure}{\numberline {14}{\ignorespaces UML-Darstellung des token packages\relax }}{26}{figure.caption.45}
+\contentsline {figure}{\numberline {15}{\ignorespaces UML-Darstellung des dataPreservation packages\relax }}{30}{figure.caption.58}
+\contentsline {figure}{\numberline {16}{\ignorespaces UML-Darstellung des token packages\relax }}{35}{figure.caption.71}
+\contentsline {figure}{\numberline {17}{\ignorespaces UML-Darstellung des playerState packages\relax }}{37}{figure.caption.88}
+\contentsline {figure}{\numberline {18}{\ignorespaces UML-Darstellung des differentPlayerTypes packages\relax }}{41}{figure.caption.103}
+\contentsline {figure}{\numberline {19}{\ignorespaces Vereinfachte UML-Darstellung des gesamten Projekts\relax }}{50}{figure.caption.131}
