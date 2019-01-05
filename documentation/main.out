@@ -1,31 +1,32 @@
 \BOOKMARK [-1][-]{part.1}{Allgemeine Problemstellung}{}% 1
-\BOOKMARK [0][-]{section.1}{Spielregeln}{part.1}% 2
-\BOOKMARK [1][-]{section.2}{Spielablauf}{section.1}% 3
-\BOOKMARK [1][-]{section.3}{Anlegeregeln}{section.1}% 4
-\BOOKMARK [1][-]{section.4}{Spielende}{section.1}% 5
-\BOOKMARK [1][-]{section.5}{KI}{section.1}% 6
-\BOOKMARK [1][-]{section.6}{Oberfl\344che}{section.1}% 7
-\BOOKMARK [1][-]{section.7}{Karten}{section.1}% 8
-\BOOKMARK [1][-]{section.8}{Log}{section.1}% 9
-\BOOKMARK [1][-]{section.9}{Spielstand}{section.1}% 10
-\BOOKMARK [-1][-]{part.2}{Benutzerhandbuch}{}% 11
-\BOOKMARK [0][-]{section.10}{Ablaufbedingungen}{part.2}% 12
-\BOOKMARK [1][-]{section.11}{Programminstallation / Programmstart}{section.10}% 13
-\BOOKMARK [1][-]{section.12}{Bedienungsanleitung}{section.10}% 14
-\BOOKMARK [2][-]{subsection.12.1}{Hintergrundinformationen}{section.12}% 15
-\BOOKMARK [2][-]{subsection.12.2}{Programmfunktionalitaet}{section.12}% 16
-\BOOKMARK [-1][-]{part.3}{Programmierhandbuch}{}% 17
-\BOOKMARK [0][-]{section.13}{Entwicklungskonfiguration}{part.3}% 18
-\BOOKMARK [1][-]{section.14}{Problemanalyse und Realisation}{section.13}% 19
-\BOOKMARK [2][-]{subsection.14.1}{Problemanalyse}{section.14}% 20
-\BOOKMARK [2][-]{subsection.14.2}{Realisationsanalyse}{section.14}% 21
-\BOOKMARK [1][-]{section.15}{Beschreibung grundlegender Klassen}{section.13}% 22
-\BOOKMARK [2][-]{subsection.15.1}{token}{section.15}% 23
-\BOOKMARK [2][-]{subsection.15.2}{dataPreservation}{section.15}% 24
-\BOOKMARK [2][-]{subsection.15.3}{playerState}{section.15}% 25
-\BOOKMARK [2][-]{subsection.15.4}{bankSelection}{section.15}% 26
-\BOOKMARK [2][-]{subsection.15.5}{differentPlayerTypes}{section.15}% 27
-\BOOKMARK [2][-]{subsection.15.6}{logicTransfer}{section.15}% 28
-\BOOKMARK [1][-]{section.16}{Programmorganisationsplan}{section.13}% 29
-\BOOKMARK [1][-]{section.17}{Programmtests}{section.13}% 30
-\BOOKMARK [1][-]{appendix.A}{Im Anhang Eins}{section.13}% 31
+\BOOKMARK [0][-]{section.1}{Erkl\344rung des Spiels}{part.1}% 2
+\BOOKMARK [1][-]{subsection.1.1}{Spielregeln}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.2}{Anlegeregeln}{subsection.1.1}% 4
+\BOOKMARK [2][-]{subsection.1.3}{Spielende}{subsection.1.1}% 5
+\BOOKMARK [1][-]{section.2}{Implementierungsdetails}{section.1}% 6
+\BOOKMARK [2][-]{subsection.2.1}{KI}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.2}{Oberfl\344che}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.3}{Karten}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.4}{Log}{section.2}% 10
+\BOOKMARK [2][-]{subsection.2.5}{Spielstand}{section.2}% 11
+\BOOKMARK [-1][-]{part.2}{Benutzerhandbuch}{}% 12
+\BOOKMARK [0][-]{section.3}{Ablaufbedingungen}{part.2}% 13
+\BOOKMARK [1][-]{section.4}{Programminstallation / Programmstart}{section.3}% 14
+\BOOKMARK [1][-]{section.5}{Bedienungsanleitung}{section.3}% 15
+\BOOKMARK [2][-]{subsection.5.1}{Hintergrundinformationen}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.2}{Programmfunktionalitaet}{section.5}% 17
+\BOOKMARK [-1][-]{part.3}{Programmierhandbuch}{}% 18
+\BOOKMARK [0][-]{section.6}{Entwicklungskonfiguration}{part.3}% 19
+\BOOKMARK [1][-]{section.7}{Problemanalyse und Realisation}{section.6}% 20
+\BOOKMARK [2][-]{subsection.7.1}{Problemanalyse}{section.7}% 21
+\BOOKMARK [2][-]{subsection.7.2}{Realisationsanalyse}{section.7}% 22
+\BOOKMARK [1][-]{section.8}{Beschreibung grundlegender Klassen}{section.6}% 23
+\BOOKMARK [2][-]{subsection.8.1}{token}{section.8}% 24
+\BOOKMARK [2][-]{subsection.8.2}{dataPreservation}{section.8}% 25
+\BOOKMARK [2][-]{subsection.8.3}{playerState}{section.8}% 26
+\BOOKMARK [2][-]{subsection.8.4}{bankSelection}{section.8}% 27
+\BOOKMARK [2][-]{subsection.8.5}{differentPlayerTypes}{section.8}% 28
+\BOOKMARK [2][-]{subsection.8.6}{logicTransfer}{section.8}% 29
+\BOOKMARK [1][-]{section.9}{Programmorganisationsplan}{section.6}% 30
+\BOOKMARK [1][-]{section.10}{Programmtests}{section.6}% 31
+\BOOKMARK [1][-]{appendix.A}{Im Anhang Eins}{section.6}% 32

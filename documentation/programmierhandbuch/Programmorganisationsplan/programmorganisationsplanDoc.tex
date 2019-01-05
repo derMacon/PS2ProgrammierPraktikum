@@ -1,14 +1,75 @@
 \section{Programmorganisationsplan}
 \paragraph{Einleitung}
-Im folgenden Abschnitt wird eine Gesamt"ubersicht "uber das Zusammenspiel s"amtlicher Klassen gegeben. Das dazu verwendete UML-Diagram (siehe Abbildung \ref{fig:umlGesamtVereinfacht}, S.  \pageref{fig:umlGesamtVereinfacht}) ist leider relativ gro"s geworden. Falls Sie eine vergr"o"serte Version in ihrem Bildbetrachter sehen m"ochten, folgen Sie bitte dem Link in Lesezeichen"ubersicht des Pdf-Readers. Ansonsten liegt das Bild diesem Projekt auch bei (Name \emph{PP18Vereinfacht.png}). 
+Im folgenden Abschnitt wird eine Gesamt"ubersicht "uber das Zusammenspiel s"amtlicher Klassen gegeben. Das dazu verwendete UML-Diagram (siehe Abbildung \ref{fig:umlGesamtVereinfacht}, S.  \pageref{fig:umlGesamtVereinfacht}) ist leider relativ gro"s geworden. Falls Sie eine vergr"o"serte Version in ihrem Bildbetrachter sehen m"ochten, folgen Sie bitte dem Link in Lesezeichen- bzw. Anlagen"ubersicht des Pdf-Readers
+\footnote{\url{https://www.acrobat-tutorials.de/2013/03/26/dateianlagen-und-seitenanlagen-in-pdf-dokumenten/}}
+. Ansonsten liegt das Bild diesem Projekt auch bei (Name \emph{PP18Vereinfacht.png}). 
 \todo{Falls noch Zeit ist, Bild schoener ans Projekt anhaengen}
 
 \embedfilesetup{mimetype=image/png}
-\embedfile{programmierhandbuch/Programmorganisationsplan/PP18Vereinfacht.png}
+\embedfile{programmierhandbuch/Programmorganisationsplan/pics/PP18Vereinfacht.png}
 
-\begin{figure}[b]
+\begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{pics/PP18Vereinfacht}
 	\caption{Vereinfachte UML-Darstellung des gesamten Projekts}
 	\label{fig:umlGesamtVereinfacht}
 \end{figure}
+
+\paragraph{Start einer herk"ommlichen Runde}
+Die Klasse welche die gesammte Anwendung startet wurde im UML-Diagramm nicht eingezeichnet, da sie nichts anderes tut als das das entsprechende FXML-Dokument zu laden und ein neues Spiel zu starten. Mit dem laden des FXML-Dokuments wird allerdings auch der dazugeh"orende Controller mit einer initialize-Methode geladen. Diese instantiiert ein JavaFX-Objekt sowie das Spiel selbst. Im Spiel werden alle Teilkomponenten einzeln initialisiert. Es werden demnach alle Spieler, die Gui-Schnittstelle, die B"anke, der Beutel, der aktuelle Bankindex und das gerade betrachtete Feld gesetzt, wobei f"ur dynamische Datenstrukturen hier lediglich ein Typ festgesetzt wird. Die Spieler nehmen hierbei eine besondere Funktion ein, denn sie verwalten intern ihre eigenen Spielfelder, Punkte und Gui-Aktionen. Die Schnittstelle mit dem Spiel soll so minimal wie m"oglich gehalten werden, damit der Spieler m"oglichst autonom handeln um die Erweiterung in einem sp"ateren Entwicklungsstadium mit anderen Spielertypen zu erm"oglichen. Im Konstruktor selbst werden die Spieler allerdings noch nicht instantiiert. Dies geschieht erst in der startGame-Methode. "Ahnlich wie bei den anderen dynamischen Datenstrukturen werden hier die eigentlichen Werte gesetzt. Dazu wird die Hilfsmethode createNewPlayers aufgerufen. Diese bekommt einen Array an Spielertypen als \glqq Blaupause\grqq  f"ur die zu erstellenden Spieler. in der Schleife wird die statische factory-Methode aufgerufen welche in der Lage ist einen gegebenen Spielertypen zu interpretieren und in eine Spielerinstanz umzuwandeln. Der Stack wird nach dem Initialisieren der Spieler ebenfalls gef"ullt. 
+
+\paragraph{Alternative Spielerinitialisierung}
+Dieser ganze Vorgang ist relativ aufwendig man h"atte s"amtliche Operationen theoretisch auch im Konstruktor behandeln k"onnen, auf lange Sicht ist es aber effektiver Sie hier anzusiedeln da man sonst nur sehr umst"andlich ein Auswahlfeld f"ur m"ogliche Spieler starten kann. Hierzu folgendes Szenario: Es gibt N Spielertypen unter denen der Benutzer seine Gegner w"ahlen kann. Daf"ur gibt es ein eigenes Auswahlfenster, welches vor dem eigentlichen Spiel auftauchen soll (siehe Abbildung \ref{fig:auswahlfenster}, S. \pageref{fig:auswahlfenster}). Der Controller dieses Fensters "ubernimmt somit die Aufgabe der Main-Methode das Spiel zu starten. Diese tut genau dasselbe wie die urspr"ungliche Main-Methode indem Sie das FXML-Dokument aufruft. Der Controller wird dabei automatisch gestartet und die Initialize-Methode der Controller-Klasse des GameFXML-Dokuments durchlaufen. Hierbei habe ich bei meinen "Uberlegungen keinen Weg gefunden Argumente der Initialize-Methode zu "ubergeben, da diese ja das Interface Initializable implementiert und somit die Signatur nicht ver"andert werden kann. Daher gibt es eine eine Methode welche losgel"ost vom Konstruktor das Spiel mit "ubergebenen Spielertypen starten kann. Dieser Ansatz funktioniert soweit und ist in der Main-Klasse als auskommentierter Block mit dem Schl"usselwort \glqq Alternative\grqq  gekennzeichnet. Falls dieser Block einkommentiert und der Rest der Main-Methode auskommentiert wird startet ein Auswahlfenster mit einer M"oglichkeiten der Spielerselektierung. Dies ist allerdings noch nicht ausgereift da es lediglich zur Darstellung des Problems dienen soll, sodass bei invalider Selektierung eine Exception geworfen wird.
+
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Game - startGame,label=game_startGame]
+@Override
+public void startGame(PlayerType[] playerTypes, int sizeX, int sizeY) {
+    // instanciate players with given playertypes
+    this.players = createNewPlayers(playerTypes, sizeX, sizeY);
+
+    for (int i = 0; i < this.players.length; i++) {
+        this.gui.updatePlayer(this.players[i]);
+    }
+
+    // fill stack
+    this.stack = Domino.fill(this.stack);
+
+    // fill current bank
+    this.stack = this.currentRoundBank.randomlyDrawFromStack(this.stack);
+    this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
+
+    this.currBankIdx = 0;
+    this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
+
+    Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nStarted new game\n");
+}
+
+private Player[] createNewPlayers(PlayerType[] playerTypes, int sizeX, int sizeY) {
+    Player[] output = new Player[playerTypes.length];
+    for (int i = 0; i < playerTypes.length; i++) {
+        output[i] = PlayerType.getPlayerInstanceWithGivenType(playerTypes[i], i, 
+        		this.gui, sizeX, sizeY);
+    }
+    return output;
+}
+\end{lstlisting}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=.4\linewidth]{pics/Intro240918}
+	\caption[Auswahlfenster]{Auswahlfenster}
+	\label{fig:auswahlfenster}
+\end{figure}
+
+\paragraph{Selektieren}
+Um einen Domino zu selektieren ben"otigt es eine Spielerreferenz und den Index des Dominos welcher selektiert werden soll. Die B"anke bestehen aus Entry-Objekten. Ein Entry-Objekt h"alt eine Domino sowie eine Spielerrefernz. 
+Auf der Bank ist es m"oglich einen bisher noch nicht selektierten Eintrag (gekennzeichnet durch einen Null-Pointer an der Stelle der Spielerreferenz des Entry-Objektes) mit der eigenen Spielerreferenz zu "uberschreiben und somit zu selektieren. Wie bereits erw"ahnt k"onnen die Bots ihre Z"uge selbstst"andig ausf"uhren wenn sie vom Spiel dazu aufgefordert, und mit den entsprechenden Daten versorgt, werden. Dabei bedienen Sie sich noch einer Hilfsstruktur (der \emph{Choose}-Klasse) um die Dominos zu untersuchen. Da der menschliche Spieler zu gro"sen Teilen von der Eingabe des Benutzers auf der Gui abh"angen, befinden sich s"amtliche Funktionalit"aten dieses Spielertyps in der Game-Klasse selbst. 
+
+\paragraph{Ablegen}
+Mit dem Ablegen eines Steins auf dem Spielfeld muss nicht nur das spielereigene Board erweitert werden, sondern auch die Liste der Distrikte. Dies geschieht bei beiden Spielertypen aber bereits im abstrakten Supertyp Player und muss nicht gesondert behandelt werden. 
+
+\paragraph{Berechnung des Ergebnisses}
+Um das Ergebnis zu berechnen wird eine Instanz des Result-Objektes instantiiert. Diese erstellt selbstst"andig eine Liste mit dem Datenobjekt \emph{ResultRanking}. Diese Art des Rankings erlaubt es mehreren Spielern den selben Platz zuzuweisen und bringt selbst noch einige hilfreiche Methoden um die gesamte Rechnung / Darstellung zu vereinfachen. 
+
+\paragraph{Logging}
+Die Logger-Klasse nimmt eine Sonderrolle ein, da sie nichts anderes tut als eine Nachricht abzuspeichern. Dies wird immer genutzt wenn es darum geht ein Zwischenergebnis festzuhalten. Daher wird sie in relativ vielen Klassen verwendet. 

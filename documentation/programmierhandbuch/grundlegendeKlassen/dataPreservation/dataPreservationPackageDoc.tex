@@ -81,6 +81,40 @@ private void appendFileWithNewMove(String logInput) {
 
 \paragraph{Loader}
 \label{par:loader}
+\subparagraph{Einleitung}
+Diese Klasse ist zum laden und speichern von Spielst"anden gedacht. Im Konstruktor wird ein Filechoose-Objekt initialisiert. Dieses wird immer wieder verwendet wenn ein Filechooser-Fenster ge"offnet werden soll um ein neues File-Objekt zu erstellen in dem der Spielstand gespeichert werden soll. 
 
+\subparagraph{Speichern}
+Um ein Spiel initial abzuspeichern ben"otigt man in jedem Fall den beschriebenen Filechooser. Hierzu verwendet man die Methode \emph{saveFileAs}, welche eine Stage initialisiert, den Chooser "offnet und eine weitere Hilfsmethode f"ur den Schreibprozess aufruft \lstref{lst:loader_saveFileAs}. Diese Methode nennt sich \emph{actualSavingProcess} und "offnet einen Ausgabestrom auf den der gegebene Text geschrieben wird \lstref{lst:loader_actualSavingProcess}. Es wird von den einem Ressourcen-Block gebrauch gemacht, der den Ausgabestrom selbst bei Abbruch mit einer Exception sicher schlie"st 
+\cite{try-with-resources}. 
+Neben dem Speichern mit der expliziten Verwendung des Filechooser-Objekts gibt es ebenfalls die Methode {saveFile}, welche die Datei "uberschreibt falls diese bereits vorhanden ist. Falls dies nicht der Fall sein sollte wird erneut \emph{saveFileAs} aufgerufen. 
 
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Loader - actualSavingProcess,label=lst:loader_actualSavingProcess]
+private static void actualSavingProcess(File output, String text) {
+    try (PrintWriter outputStream = new PrintWriter(output)){
+        outputStream.print(text);
+    } catch (FileNotFoundException e) {
+        Logger.getInstance().printAndSafe("Could not save file\n" + e.getMessage());
+    }
+}
+\end{lstlisting}
 
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Loader - saveFileAs,label=lst:loader_saveFileAs]
+public void saveFileAs(String input) {
+    if (null == stage) {
+        this.stage = new Stage();
+    }
+    if (null != this.file) {
+        this.fChooser.setInitialDirectory(this.file.getParentFile());
+    }
+    this.file = fChooser.showSaveDialog(stage);
+    if (null == this.file) {
+        Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
+                + "\nUser aborted the saving process\n" + Logger.ERROR_DELIMITER + "\n");
+    } else {
+        actualSavingProcess(this.file, input);
+        Logger.getInstance().printAndSafe("User saved the game as \""
+        		 + this.file.getName() + "\" to " + this.file.getPath() + "\n");
+    }
+}
+\end{lstlisting}

@@ -298,7 +298,6 @@ public class Game implements GUI2Game {
         }
 
         // fill stack
-        // TODO Problem beim Laden, Stack wird einfach ueberschrieben
         this.stack = Domino.fill(this.stack);
 
         // fill current bank
@@ -309,9 +308,6 @@ public class Game implements GUI2Game {
         this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
 
         Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nStarted new game\n");
-
-        // TODO insert code - update all players
-        // TODO blur out boxes which are not accessible when user selects the first domino from the current bank
     }
 
     /**

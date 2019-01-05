@@ -38,7 +38,9 @@ Bevor es zur wirklichen Aufteilung der Rohdaten kommt wird initial schon mal "ub
 
 Im n"achsten Schritt werden die Daten "uber die Funktion \emph{fillFieldsWithDescriptiveBlocks} interpretiert \lstref{lst:converter_fillFieldsWithDescriptiveBlocks}. Hier werden die im vorherigen Schritt erzeugten Felder durchlaufen, es wird jeweils der das Feld mit dem Bezeichner zugeordnet. F"ur jeden unterschiedlichen Bezeichner gibt es eine eigene Methode zum interpretieren der Daten. Wenn man zum Beispiel mit i == 0 auf ein Feld mit einem Spielfeld-Bezeichner im erst Feld des zweidimensionalen Arrays zugreift wird im Case-Verteiler der BOARD\_IDENTIFIER greifen und es wird zuerst einmal die Spielfeld-Syntax "uberpr"uft. Hierbei spielen Dinge wie Leerzeichen oder die Dimensionen des Bretts eine Rolle, aber auch invalide Zellen werden abgefangen. Da in meinem Modell die Spieler ein Feld mit dem Brett besitzen, habe ich den Besitzer des Spielfeldes gleich mit initialisiert, da so die Liste der Distrikte gleich mit aufgebaut werden. Hierzu wird die Methode \emph{convertStrToPlayerWithDefaultOccupancy} aufgerufen. Diese ist eine Hilfsmethode und macht nichts anderes als anhand des "ubergebenen Indices festzustellen ob es sich um einen Bot oder um den menschlichen Spieler handelt. Um den Spieler letztendlich zu initialisieren wird die statische Factory-Methode des PlayerType Enums aufgerufen. Wieso hier eine Factory benutzt wird, wird im Abschnitt \ref{par:playerType} auf S. \pageref{par:playerType} gelk"art. 
 
-\todo{fillDescriptiveBlocks - Bank als naechstes dran}
+Wenn nach und nach alle Felder des Arrays mit Spielfeldern abgearbeitet wurden, folgen die B"anke. Auch hier wird wieder zuerst die Syntax mit der Methode \emph{checkBankSyntax} "uberpr"uft um anschlie"send per \emph{convertStrToBanks} die ben"otigten B"anke zu generieren \lstref{lst:converter_convertStrToBanks}. In dieser Methode wird der Eingabe-String der B"anke am Zeilenumbruch geteilt und entsprechend dem Bank Konstruktor "ubergeben. Nach dem Generieren der B"anke in dem Case-Verteiler der fillFields...-Methode wird allerdings ebenfalls die aktuelle Bankposition der Bank f"ur die jeweils aktuelle Runde berechnet. Diese wird im Spiel ben"otigt um zu kennzeichnen welcher Spieler gerade am Zug ist. Dies soll zwar beim Speichern / Laden stets der menschliche Spieler sein, dennoch ist es sinnvoll hier ein Feld entsprechend zu setzen um sich sp"ater im Spiel eine weitere Suche nach der Bankposition zu sparen. 
+
+Um den Beutel zu generieren wird genauso wie bisher vorgegangen. Es wird per \emph{checkStackSyntax} die Beutelsyntax "uberpr"uft. Anschlie"send wird die Zeichenkette mit den Beutelelementen in die einzelnen Elemente zerteilt und dem Domino Konstruktor "uber Umwege weitergereicht, denn es muss vorher erst einmal ein Tiles-Objekt erzeugt werden welches dem Domino "ubergeben werden kann \lstref{lst:converter_convertStrToStack}. 
 
 \begin{table}
 \centering
@@ -111,5 +113,43 @@ public void fillFieldsWithDescriptiveBlocks(String[][] descriptionBlocks,
                 		descriptionBlocks[i][DESCRIPTION_IDX]));
         }
     }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=CodeHighlighting,float,caption=Converter - convertStrToBanks,label=lst:converter_convertStrToBanks]
+private Bank[] convertStrToBanks(String input) {
+    assert null != input && input.contains("\n");
+    // both banks empty
+    if (input.length() == 0 || "\n".equals(input)) {
+        return new Bank[]{new Bank(this.players.size()),
+                new Bank(this.players.size())};
+    }
+    String[] bothBanks = input.split("\n");
+    Bank[] output = new Bank[2];
+    output[Game.CURRENT_BANK_IDX] = new Bank(bothBanks[0], this.players, new Random());
+    // determines if the next round bank is filled
+    if (bothBanks.length > 1) {
+        output[Game.NEXT_BANK_IDX] = new Bank(bothBanks[1], this.players, new Random());
+    } else {
+        output[Game.NEXT_BANK_IDX] = new Bank(this.players.size());
+    }
+    return output;
+}
+\end{lstlisting}
+
+\begin{lstlisting}[style=CodeHighlighting,float,caption=Converter - convertStrToStack,label=lst:converter_convertStrToStack]
+private List<Domino> convertStrToStack(String input) {
+    // Stay maybe empty -> must be checked
+    List<Domino> output = new LinkedList<>();
+    if (0 < input.length()) {
+        String[] dominosStr = input.split(",");
+        // Last element is \n doesn't have to be evaluated
+        String temp;
+        for (int i = 0; i < dominosStr.length; i++) {
+            temp = dominosStr[i].substring(0, 4);
+            output.add(new Domino(Tiles.fromString(temp)));
+        }
+    }
+    return output;
 }
 \end{lstlisting}

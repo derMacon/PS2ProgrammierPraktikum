@@ -161,7 +161,7 @@ public class Converter {
                 throw new IOException(UNSUCCESSFUL_READ_MESSAGE);
             }
             // Tag syntax roughly checked -> further analysis further down the line
-            if (!input.matches("(<Spielfeld [^>]*>\n(?s)[^<,>]*)*<Bänke>\n(?s)[^<>]*<Beutel>\n[^<>]*")) {
+            if (!input.matches("(<Spielfeld[^>]*>\n(?s)[^<,>]*)*<Bänke>\n(?s)[^<>]*<Beutel>\n[^<>]*")) {
                 System.out.println(input);
                 throw new WrongTagException();
             }
@@ -181,7 +181,7 @@ public class Converter {
      * &lt;Spielfeld&gt;\n text
      * &lt;Spielfeld&gt;\n text
      * &lt;Spielfeld&gt;\n text
-     * &lt;Baenke&gt;\n text \\TODO find out what checkstyle means with parse error
+     * &lt;Baenke&gt;\n text
      * &lt;Beutel&gt;\n text
      * <p>
      * Procedure: - Genereate a 2-dim String array containing a the tag for the
@@ -447,21 +447,20 @@ public class Converter {
      */
     private Bank[] convertStrToBanks(String input) {
         assert null != input && input.contains("\n");
+        // both banks empty
         if (input.length() == 0 || "\n".equals(input)) {
             return new Bank[]{new Bank(this.players.size()),
                     new Bank(this.players.size())};
         }
-        // TODO ueberarbeiten
         String[] bothBanks = input.split("\n");
         Bank[] output = new Bank[2];
         output[Game.CURRENT_BANK_IDX] = new Bank(bothBanks[0], this.players, new Random());
-
+        // determines if the next round bank is filled
         if (bothBanks.length > 1) {
             output[Game.NEXT_BANK_IDX] = new Bank(bothBanks[1], this.players, new Random());
         } else {
             output[Game.NEXT_BANK_IDX] = new Bank(this.players.size());
         }
-        // TODO update possible dominos list
         return output;
     }
 
@@ -478,7 +477,7 @@ public class Converter {
         List<Domino> output = new LinkedList<>();
         if (0 < input.length()) {
             String[] dominosStr = input.split(",");
-            // Last elements \n doesn't have to to be evaluated
+            // Last element is \n doesn't have to be evaluated
             String temp;
             for (int i = 0; i < dominosStr.length; i++) {
                 temp = dominosStr[i].substring(0, 4);
