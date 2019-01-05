@@ -73,24 +73,26 @@ für eine Karte mit einem Symbol auf einem Haus und ohne Symbol in einem Park un
 
 \section{Log}
 In einer Datei (gleichzeitig auch auf System.out) sind durchgeführte Aktionen zu protokollieren. Der zuerst angegebene Stadtteil einer Karte ist dabei immer der an der angegebenen Position, bei horizontaler Ausrichtung liegt der zweite Stadtteil rechts davon, bei vertikaler darunter. Beispiel:\\
-\\BOT1 chose [H1, P0] at index 1 for next round
-\\BOT1 put [A0, P2] horizontally to (1, 2)\\
-\\HUMAN chose [P0, S0] at index 0 for next round
-\\HUMAN dragged center to (2, 3)
-\\HUMAN put [A0, A0] vertically to (0, 0)\\
-\\BOT3 chose [O0,I2] at index 3 for next round
-\\BOT3 did not use [O0, A1]
+\\ \verb|BOT1 chose [H1, P0] at index 1 for next round|
+\\ \verb|BOT1 put [A0, P2] horizontally to (1, 2)|\\
+\\ \verb|HUMAN chose [P0, S0] at index 0 for next round|
+\\ \verb|HUMAN dragged center to (2, 3)|
+\\ \verb|HUMAN put [A0, A0] vertically to (0, 0)|\\
+\\ \verb|BOT3 chose [O0,I2] at index 3 for next round|
+\\ \verb|BOT3 did not use [O0, A1]|
 
 \section{Spielstand}
 Der aktuelle Spielstand soll gespeichert und geladen werden können. Laden/Speichern soll nur möglich sein, wenn der menschliche Spieler am Zug ist. Eine Spielstandsdatei enthält die 4 Spielfelder der Spieler in ihrer Reihenfolge (das erste Feld gehört immer dem menschlichen Spieler 0), die zwei Auswahlbereiche und die im Beutel verbliebenen Karten mit folgenden Bereichen:\\
 
 \begin{addmargin}[50pt]{0pt}
+\begin{samepage}
 <Spielfeld>
 \\<Spielfeld>
 \\<Spielfeld>
 \\<Spielfeld>
 \\<B"anke>
 \\<Beutel>\\
+\end{samepage}
 \end{addmargin}
 
 Die einzelnen Bereiche enthalten jeweils eine Einf"uhrungszeile (einen Kommentar) gefolgt von Inhaltsangaben:
@@ -102,12 +104,14 @@ Die einzelnen Bereiche enthalten jeweils eine Einf"uhrungszeile (einen Kommentar
 		\item zwei Buchstaben für eine H"alftenbeschreibung.
 	\end{itemize}
 	\item Die Zellen sind durch Leerzeichen separiert. Beispiel:
-	\\ <Spielfeld>
-	\\-- -- -- -- --
-	\\-- -- H1 P0 --
-	\\-- -- CC -- --
-	\\-- -- -- -- --
-	\\-- -- -- -- --
+	\begin{samepage}
+	\\ \verb|<Spielfeld>|
+	\\ \verb|-- -- -- -- --|
+	\\ \verb|-- -- H1 P0 --|
+	\\ \verb|-- -- CC -- --|
+	\\ \verb|-- -- -- -- --|
+	\\ \verb|-- -- -- -- --|
+	\end{samepage}
 	\item Die Bänke enthalten Angaben für die aufliegenden Karten und von wem diese bereits gewählt wurde. Die erste Bank kann weniger als vier Karten enthalten, in entsprechender Anzahl enthält die zweite Bank dann bereits Markierungen (sonst '-' für fehlende Markierung). Die erste Bank wird als erste Markierung immer Spieler 0 (den menschlichen Spieler) aufweisen. Beispiel:
 	\\<B"anke>
   \\0 H1P0,2 P0O1,3 I1P0
@@ -116,4 +120,5 @@ Die einzelnen Bereiche enthalten jeweils eine Einf"uhrungszeile (einen Kommentar
   \\<Beutel>
   \\P0P0,P0P0,A1H0,I2P0
 \end{itemize}
+\todo{herausbekommen wie man Spielfeldsyntax auf eine Seite bekommt}
 

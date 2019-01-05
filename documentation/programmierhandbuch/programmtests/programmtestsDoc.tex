@@ -35,13 +35,26 @@ public static void assertFilesEqual(String filename) {
 }
 \end{lstlisting}
 
-\subparagraph{Beschreibung eines Testfalls}
+\subparagraph{Beschreibung der Testf"alle}
 Im Ordner namens \glqq test\grqq befindet sich ein Unterordner namens \glqq fileTests\grqq . Dies ist der Oberordner, in welchem sich alle Testdateien zum Dateieinlesen / ausgeben befinden. Die Dateien mit dem Pr"afix \glqq inv\_\grqq spiegeln invalide, w"ahrend die mit dem Pr"afix \glqq val\_\grqq valide Dateien wiederspiegeln. Da es im Converter drei unterschiedliche Komponenten generiert werden, wurden die Testf"alle hieran angelehnt. Es gibt also jeweils Testf"alle f"ur Fehler im Spielbrett, den B"anken und dem Stapel. Zu validen Spielsituationen gibt es deutlich weniger Tests, da viele der Situationen in den Unittests zu den einzelnen Datenstrukturen bereits behandelt wurden. Invalide Dateitests laufen immer nach dem selben Schema ab \lstref{lst:test_noTagOpenerAtBeginningOfDoc}. Es wird die erwartete Fehlermeldung in eine Variable gespeichert. Anschlie"send wird der String aus der Datei mittels \emph{readAsString} aus der Toolkit-Klasse gelesen und dem Converter "ubergeben um dieselbe Situation zu erzeugen wie es beim Einlesen im normalen Spielverlauf der Fall ist. Im letzten Schritt werden String-Ausagbe mit der Fehlermeldung vom Anfang verglichen. 
 
-Etwas komplexer gestalten sich die Tests bez"uglich der validen Spielsituationen. Hierbei wird ein Spiel mit den erwarteten Daten erzeugt. Danach wird die Methode \emph{read} der TestToolkit-Klasse verwendet um ein Spiel zu erzeugen. Diese wurde bereits im vorherigen Absatz erw"ahnt, denn sie ruft lediglich die readAsString-Methode auf um den generierten String dem Game-Konstruktor zu "ubergeben. Wie der Einleseprozess im Detail funktioniert wird in der Erkl"arung der Converter-Klasse beschrieben (siehe Abschnitt \ref{spar:converter_ablauf}, S. \pageref{spar:converter_ablauf}).
+Etwas komplexer gestalten sich die Tests bez"uglich der validen Spielsituationen. Hierbei wird ein Spiel mit den erwarteten Daten erzeugt. Danach wird die Methode \emph{read} der TestToolkit-Klasse verwendet um ein Spiel zu erzeugen. Diese wurde bereits im vorherigen Absatz erw"ahnt, denn sie ruft lediglich die readAsString-Methode auf um den generierten String dem Game-Konstruktor zu "ubergeben. Wie der Einleseprozess im Detail funktioniert wird in der Erkl"arung der Converter-Klasse beschrieben (siehe Abschnitt \ref{spar:converter_ablauf}, S. \pageref{spar:converter_ablauf}). Das so generierte Spiel wird mit einem Spiel verglichen welches vorher \glqq per Hand\grqq  erzeugt wurde. Hierzu wird die equals-Methode der Game-Klasse verwendet, welche "uber assertEquals angesteuert wird. Im Anschluss wird das gelesene Spiel einmal abgespeichert und per \emph{writeAndAssert} von der TestToolkit-Klasse "uberpr"uft ob die Datei den selben Spielstand enth"alt. In der \emph{writeAndAssert}-Methode wird zuerst eine neue Datei mit dem gegebenen Namen in dem Unterordner namen \glqq results\grqq  erstellt. Anschlie"send ist der Loader zum abspeichern zust"andig. Wie der Loader vorgeht um eine Datei abzurufen wird im Abschnitt \ref{par:loader}, S. \pageref{par:loader} n"aher erl"autert. 
 
+\subparagraph{Auflistung wichtiger Testf"alle}
 
-\todo{Noch nicht fertig}
+\begin{tabular}{lll}
+\toprule
+Testf"alle\\
+\midrule
+Testfall & erwartetes Ergebnis & erzieltes Ergebnis\\
+\midrule
+test & asdf & abc\\
+\bottomrule
+\end{tabular}
+\label{tab:testfaelle}
+
+\todo{Tabelle unvollstaendig}
+
 
 
 

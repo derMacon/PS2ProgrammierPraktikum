@@ -24,33 +24,50 @@ public class Converter {
      * Index for the Description in the two-dim String array
      */
     public static final int DESCRIPTION_IDX = 0;
+
     /**
      * Index for the Data in the two-dim String array
      */
     public static final int DATA_IDX = 1;
+
     /**
      * Identifier for the boards
      */
     public static final String BOARD_IDENTIFIER = "Spielfeld";
+
     /**
      * Identifier for both banks
      */
-    // TODO Problem mit dem ä beim Einlesen
-    public static final String BANK_IDENTIFIER = "Bänke"; //"B�nke";
+    public static final String BANK_IDENTIFIER = "Bänke";
+
     /**
      * Identifier for the stack
      */
     public static final String STACK_IDENTIFIER = "Beutel";
+
     /**
      * String message for displaying an unsuccessful read from the given data
      */
     public static final String UNSUCCESSFUL_READ_MESSAGE = "Loading unsuccessful";
+
     /**
      * String message for displaying a successful read from the given data
      */
     public static final String SUCCESSFUL_READ_MESSAGE = "Loading successful";
+
+    /**
+     * Opening char of a valid tag identifier
+     */
     public static final String TAG_OPENER = "<";
+
+    /**
+     * Closing char of a valid tag identifier
+     */
     public static final String TAG_CLOSER = ">";
+
+    /**
+     * Constant defining a not already initialized state (used in the checkBankSyntax-Method)
+     */
     private static final int NOT_INITIALIZED = -1;
 
     // --- fields that will be filled by this class -> Will be transfered to the game via Getter
@@ -140,15 +157,14 @@ public class Converter {
      */
     public String readStr(GUIConnector gui, String input) {
         try {
-
             if (input == null || input.length() == 0) {
                 throw new IOException(UNSUCCESSFUL_READ_MESSAGE);
             }
-            if (!input.matches("(<Spielfeld[^>]*>\n(?s)[^<,>]*)*<Bänke>\n(?s)[^<>]*<Beutel>\n[^<>]*")) {
+            // Tag syntax roughly checked -> further analysis further down the line
+            if (!input.matches("(<Spielfeld [^>]*>\n(?s)[^<,>]*)*<Bänke>\n(?s)[^<>]*<Beutel>\n[^<>]*")) {
                 System.out.println(input);
                 throw new WrongTagException();
             }
-
             String[][] descriptionBlocks = genDescriptiveField(input);
             fillFieldsWithDescriptiveBlocks(descriptionBlocks, gui);
             return SUCCESSFUL_READ_MESSAGE;
