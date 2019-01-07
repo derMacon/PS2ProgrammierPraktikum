@@ -124,10 +124,9 @@ public class Game implements GUI2Game {
     public Game(GUIConnector gui, String input) {
         this.gui = gui;
         Converter gameContent = new Converter();
-        // TODO use error message - error message used for treatment, maybe with a new Pop-Up Window or just in the
-        // log-File.
         String returnMessage = gameContent.readStr(gui, input);
         System.out.println(returnMessage);
+        // Checking the actual reference
         if (Converter.SUCCESSFUL_READ_MESSAGE == returnMessage) {
             initTestingLoadingConstructor(gui, gameContent.getPlayers(), gameContent.getCurrBankPos(),
                     gameContent.getCurrentBank(),
@@ -153,6 +152,7 @@ public class Game implements GUI2Game {
 
     /**
      * Loads up gui after loading file //todo ueberarbeiten
+     *
      * @param playerTypes
      * @param sizeX
      * @param sizeY
@@ -195,20 +195,10 @@ public class Game implements GUI2Game {
         this.currBankIdx = currBankIdx;
         this.currDomino = currDomino;
 
-//        if(null == this.currField) {
-//            if(this.nextRoundBank.isEmpty()) {
-//                this.currField = PossibleField.CURR_DOM;
-//            } else {
-//                this.currField = PossibleField.NEXT_BANK;
-//            }
-//        } else {
-//            this.currField = PossibleField.CURR_DOM;
-//        }
         evaluateCurrDom();
         evaluateCurrField();
         this.gui.blurOtherFields(this.currField);
         setToChooseBox(this.currDomino);
-        // TODO check if setting values was successful
         return Converter.SUCCESSFUL_READ_MESSAGE;
     }
 
@@ -272,6 +262,7 @@ public class Game implements GUI2Game {
 
     /**
      * Getter for the number of players (including HumanPlayer)
+     *
      * @return number of players participating of in the game
      */
     public int getNumberOfPlayers() {
@@ -323,7 +314,6 @@ public class Game implements GUI2Game {
     @Override
     public void selectDomOnCurrBank(int idx) {
         if (PossibleField.CURR_BANK == this.currField && this.currentRoundBank.isNotSelected(idx)) {
-            // TODO check if it's the first round or not (since this method only can be called if it is)
             // update human player selection
             this.currentRoundBank.selectEntry(this.players[HUMAN_PLAYER_IDX], idx);
             this.gui.selectDomino(CURRENT_BANK_IDX, idx, HUMAN_PLAYER_IDX);
@@ -454,9 +444,8 @@ public class Game implements GUI2Game {
      * Creates a new Player array. Used to initialize the players field.
      *
      * @param playerTypes instanciates the players of the current field for the game
-     * @param sizeX width if the players' boards
-     * @param sizeY height of the players' boards
-     *
+     * @param sizeX       width if the players' boards
+     * @param sizeY       height of the players' boards
      * @return new Player array with the human player on the first index and the
      * default player on the remaining array slots.
      */
@@ -564,6 +553,7 @@ public class Game implements GUI2Game {
 
     /**
      * The bots do their last turn (not selecting anything on the next bank, since it is empty)
+     *
      * @param bankIdx index of the current bank index
      * @return the next bank slot
      */
@@ -652,7 +642,8 @@ public class Game implements GUI2Game {
 
     /**
      * generates the string representation of the game used in the file format
-      * @return string representation used in the file formation
+     *
+     * @return string representation used in the file formation
      */
     public String toFile() {
         return genString(true);
@@ -660,8 +651,9 @@ public class Game implements GUI2Game {
 
     /**
      * generates String representation of the game
+     *
      * @param forFileRepresentation flag that determines if the board will be displayed in file format or in 'normal'
-     *                             string format // todo explain difference
+     *                              string format // todo explain difference
      * @return string representation of the game
      */
     private String genString(boolean forFileRepresentation) {

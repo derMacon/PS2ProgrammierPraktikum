@@ -1,1 +1,145 @@
 \paragraph{Game}
+\label{par:game}
+
+\subparagraph{Einleitung}
+Die Game-Klasse verwaltet s"amtliche Spieleraktionen und stellt die ben"otigten B"anke und den Beutel bereit. Sie implementiert das GUI2-Interface um in der Lage zu die Gui-Interaktionen der Gui zu verarbeiten. 
+
+\subparagraph{Konstruktor}
+In der Klasse werden die beiden B"anke, der Beutel, der Domino im Rotationsfeld des Spielers, eine Gui-Schnittstelle sowie das Feld welches sich gerade im Fokus befindet verwaltet. All diese Attribute werden im Konstruktor gesetzt. Hierbei gibt es drei verschiedene Auspr"agungen \lstref{lst:game_konstruktor}. Die erste Version bekommt lediglich ein gui-Objekt sowie die Anzahl der Spieler gegeben. Wie in 
+\todo{problemanalyse und realisation einbinden}
+xxx bereits beschrieben wurde, wurde die letzendliche Initialisierung der Spieler in in die \emph{loadGuiAfterLoadingFile}-Methode bzw. die emph{PlayerType}-Klasse verlagert. 
+
+In der zweiten Auspr"agung wird ein String gegeben welcher vom Converter interpretiert wird. Die Idee dabei war, s"amtliche Verarbeitungsschritte zur Konvertierung der Daten in die jeweiligen Objekte dieser Klasse zu "uberlassen. "Uber diverse Getter k"onnen diese vom Spiel \grqq abgeholt\glqq  werden. Um die generierten Werte zu setzen wird eine Hilfsfunktion namens \emph{initTestingLoadingConstructor} verwendet, welche nichts anderes tut als die Attribute der Klasse zu belegen. Anschlie"send wird die Gui mit einer entsprechenden Methode beschrieben und es werden die Boards der Spieler intern mit den bereits selektierten Dominos belegt. Dies muss wie bereits angesprochen geschehen, damit der Spieler in der Lage bei der Evaluierung der Dominos auf der Bank den Domino der momentan (auf der gui) noch nicht auf der Bank liegt mit in die "Uberlegungen einzubeziehen. 
+\todo{Referenziere die Erklaerung...}
+S"amtliche Verarbeitungsschritte werden dem Logger noch kenntlich gemacht. 
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Game - Konstruktoren,label=game_konstruktor]
+// Konstruktor im normalen Spiel
+public Game(GUIConnector gui, int playerCnt) {
+    this.gui = gui;
+    this.players = new Player[playerCnt];
+    this.currentRoundBank = new Bank(playerCnt);
+    this.nextRoundBank = new Bank(playerCnt);
+    this.stack = new LinkedList<>();
+    this.currBankIdx = 0;
+    this.currDomino = null;
+    this.currField = PossibleField.CURR_BANK;
+}
+
+// Konstruktor zum Einlesen einer Datei
+public Game(GUIConnector gui, String input) {
+    this.gui = gui;
+    Converter gameContent = new Converter();
+    String returnMessage = gameContent.readStr(gui, input);
+    System.out.println(returnMessage);
+    if (Converter.SUCCESSFUL_READ_MESSAGE == returnMessage) {
+        initTestingLoadingConstructor(gui, gameContent.getPlayers(),
+        		gameContent.getCurrBankPos(),gameContent.getCurrentBank(),
+                gameContent.getNextBank(), gameContent.getStack(), null);
+
+        Board humanBoard = this.players[HUMAN_PLAYER_IDX].getBoard();
+        loadGuiAfterLoadingFile(genDefaultPlayerTypeArray(this.players.length),
+        		humanBoard.getSizeX(), humanBoard.getSizeY());
+        for (Player player : this.players) {
+            if (player instanceof BotBehavior) {
+                ((BotBehavior) player).updateSelectedDom(this.currentRoundBank);
+                ((BotBehavior) player).updateSelectedDom(this.nextRoundBank);
+            }
+        }
+    } else {
+        this.gui.showPopUp(returnMessage);
+    }
+    Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nLoading process: " 
+    	+ returnMessage);
+}
+\end{lstlisting}
+
+\subparagraph{Methoden}
+Wichtige Methoden: 
+\todo{Referenzen fuer die Methoden einbinden}
+\begin{itemize}
+	\item startGame
+	\item selectDomOnCurrBank
+	\item selectDomOnNextBank
+\end{itemize}
+
+\todo{Fett machen}
+\lstref{game_startGame}: Im ersten Schritt werden s"amtliche Spieler mit emph{createNewPlayers} initialisiert. Die muss der Gui mit dem Aufruf emph{updatePlayers} mitgeteilt werden. Anschlie"send wird der Beutel per \emph{fill}-Methode gef"ullt werden. Nach dem dies geschehen ist wird die Bank der aktuellen Runde mit zuf"allig gezogenen Dominos bef"ullt. Auch dies wird wieder auf der Gui dargestellt. Nachdem der aktuelle Bank slot mit dem Wert 0 beschrieben wurde wird dem Logger mitgeteilt, dass das Spiel gestartet wurde. 
+
+\begin{lstlisting}[float,style=CodeHighlighting,label=game_startGame,caption=Game - startGame]
+@Override
+public void startGame(PlayerType[] playerTypes, int sizeX, int sizeY) {
+    // instanciate players with given playertypes
+    this.players = createNewPlayers(playerTypes, sizeX, sizeY);
+
+    for (int i = 0; i < this.players.length; i++) {
+        this.gui.updatePlayer(this.players[i]);
+    }
+
+    // fill stack
+    this.stack = Domino.fill(this.stack);
+
+    // fill current bank
+    this.stack = this.currentRoundBank.randomlyDrawFromStack(this.stack);
+    this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
+
+    this.currBankIdx = 0;
+    this.gui.showWhosTurn(HUMAN_PLAYER_IDX);
+
+    Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nStarted new game\n");
+}
+\end{lstlisting}
+
+selectDomOnCurrBank \lstref{game_selectDomOnCurrBank}: Dieser Schritt wird w"ahrend der initialen Selektierungsphase ben"otigt. Die Bank der aktuellen Runde selektiert den einen gegebenen Index mit der menschlichen Spielerreferenz. Dies wird wieder auf der Gui sowie im Logger dargestellt. Anschlie"send selektieren die alle Bots mithilfe der Methode \emph{botsDoInitialSelect} jeweils einen Domino auf der Bank der aktuellen Runde. Um die B"anke f"ur die n"achste Runde vorzubereiten wird die Bank der n"achsten Runde mit zuf"allig gezogenen Dominos gef"ullt. Da nun eine regul"are Runde startet ziehen s"amtliche Bots, welche einen niederwertigen Domino gezogen haben, ihren Domino auf ihr Feld und selektieren einen neuen Domino auf der Bank der n"achsten Runde. Um dem Benutzer klar zu machen, dass er im n"achsten Schritt nur auf der n"achsten Bank einen Domino selektieren darf wird das Attribut \emph{currField} entsprechend gesetzt. Dies wird auf der Gui anhand eines Gaussian-Blur-Effekts dargestellt. Die Bank der aktuellen Runde wird mit dem Aufruf der Methode \emph{blurOtherFields} leicht verschwommen dargestellt. 
+
+\begin{lstlisting}[float,style=CodeHighlighting,label=game_selectDomOnCurrBank,caption=Game - selectDomOnCurrBank]
+@Override
+public void selectDomOnCurrBank(int idx) {
+    if (PossibleField.CURR_BANK == this.currField &&
+    		this.currentRoundBank.isNotSelected(idx)) {
+        // update human player selection
+        this.currentRoundBank.selectEntry(this.players[HUMAN_PLAYER_IDX], idx);
+        this.gui.selectDomino(CURRENT_BANK_IDX, idx, HUMAN_PLAYER_IDX);
+        Logger.getInstance().printAndSafe(String.format(Logger.SELECTION_LOGGER_FORMAT,
+                this.players[HUMAN_PLAYER_IDX].getName(),
+                this.currentRoundBank.getDomino(idx), idx,
+                "current"));
+
+        botsDoInitialSelect();
+        randomlyDrawNewDominosForNextRound();
+        this.currBankIdx = botsDoTheirTurn(this.currBankIdx);
+        this.currField = PossibleField.NEXT_BANK;
+        this.gui.blurOtherFields(this.currField);
+    } else {
+        Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
+                + "\nHUMAN tried to select a domino from the " + "current bank\n" 
+                + Logger.ERROR_DELIMITER + "\n");
+    }
+}
+\end{lstlisting}
+
+selectDomOnNextBank: Diese Methode ist Teil eines standardm"a"sigen Zuges w"ahrend des Spielverlaufs. "Ahnlich wie beim selektieren auf der Bank der n"achsten Runde wird hier die entsprechende Bank aufgerufen und mit der Methode \emph{selectEntry} der gew"unschte Domino ausgew"ahlt. Dies wird auf der Gui dargestellt. Anschlie"send wird allerdings der gew"ahlte Domino der Vorrunde in der Drehbox des Benutzers dargestellt.
+
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Game - selectDomOnNextBank,label=game_selectDomOnNextBank]
+@Override
+public void selectDomOnNextBank(int idx) {
+    if (PossibleField.NEXT_BANK == this.currField 
+    		&& this.nextRoundBank.isNotSelected(idx)) {
+        assert null == this.currDomino;
+        Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
+        // Human player selects domino on next bank
+        this.nextRoundBank.selectEntry(humanPlayer, idx);
+        this.gui.selectDomino(NEXT_BANK_IDX, idx, HUMAN_PLAYER_IDX);
+        setToChooseBox(this.currentRoundBank.getPlayerSelectedDomino(humanPlayer));
+        this.currField = PossibleField.CURR_DOM;
+        this.gui.blurOtherFields(this.currField);
+        Logger.getInstance().printAndSafe("\n" + String.format(
+        		Logger.SELECTION_LOGGER_FORMAT,
+                humanPlayer.getName(), this.nextRoundBank.getDomino(idx).toString(),
+                idx, "next"));
+    } else {
+        Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
+                + "\nHUMAN tried to make an impossible bank " + "selection\n" 
+                + Logger.ERROR_DELIMITER + "\n");
+    }
+}
+\end{lstlisting}
