@@ -111,8 +111,8 @@ public class Result {
             output.append(i + ". Spot");
             for (int j = 0; j < this.ranking.get(i).getRankedPlayers().size(); j++) {
                 currPlayer = this.ranking.get(i).getRankedPlayers().get(j);
-                output.append("\tPlayer " + j + " Result{" + "points="
-                        + this.ranking.get(i).getRankedPlayers().get(j).getBoardPoints() + '}' + "\n");
+                output.append("\t" + currPlayer.getName() + " -> Result{" + "points="
+                        + currPlayer.getBoardPoints() + '}' + "\n");
             }
         }
         return output.toString();

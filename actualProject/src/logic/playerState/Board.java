@@ -387,7 +387,7 @@ public class Board {
      * @return the board instance without the given domino
      */
     private Board remove(Domino dom) {
-        if (null != dom) {
+        if (null != dom && isValidPos(dom.getFstPos()) && isValidPos(dom.getSndPos())) {
             Pos fstPos = dom.getFstPos();
             Pos sndPos = dom.getSndPos();
             this.cells[fstPos.x()][fstPos.y()] = SingleTile.EC;

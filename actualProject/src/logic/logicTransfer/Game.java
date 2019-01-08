@@ -428,8 +428,8 @@ public class Game implements GUI2Game {
             Logger.getInstance().printAndSafe(String.format(Logger.DISMISSAL_LOGGER_FORMAT, "HUMAN",
                     this.currDomino.toString()));
             setToChooseBox(null);
-            setupCurrDomAndBotsDoTurn();
             this.currField = PossibleField.NEXT_BANK;
+            setupCurrDomAndBotsDoTurn();
             this.gui.blurOtherFields(currField);
         } else {
             Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nHUMAN tried to dispose the current "
@@ -503,6 +503,7 @@ public class Game implements GUI2Game {
                 copyAndRemoveNextRoundBankToCurrentBank();
                 this.gui.setToBank(NEXT_BANK_IDX, this.nextRoundBank);
             }
+            this.currField = PossibleField.CURR_DOM;
             this.currBankIdx = botsDoLastTurn(this.currBankIdx + 1);
         } else {
             this.currBankIdx = botsDoTheirTurn(this.currBankIdx + 1);

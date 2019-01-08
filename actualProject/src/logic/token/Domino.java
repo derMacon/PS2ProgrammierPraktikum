@@ -62,7 +62,8 @@ public class Domino implements Comparable {
     /**
      * Default Pos for a domino
      */
-    public static final Pos DEFAULT_POS = new Pos(0, 0);
+//    public static final Pos DEFAULT_POS = new Pos(0, 0);
+    public static final Pos DEFAULT_POS = new Pos(-1, -1);
 
     /**
      * Default rotation for a domino
@@ -130,6 +131,7 @@ public class Domino implements Comparable {
      */
     public Domino(Tiles tiles) {
         this(tiles, DEFAULT_POS, DEFAULT_ROT);
+//        this(tiles, null, DEFAULT_ROT);
     }
 
     /**
@@ -176,6 +178,7 @@ public class Domino implements Comparable {
         }
         for (Tiles tile : Tiles.values()) {
             list.add(new Domino(tile, DEFAULT_POS));
+//            list.add(new Domino(tile, null));
         }
         return list;
     }

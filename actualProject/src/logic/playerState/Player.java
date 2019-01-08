@@ -106,6 +106,7 @@ public abstract class Player implements Comparable {
 
     /**
      * Getter for the full name of the player
+     *
      * @return the full name of the player
      */
     public abstract String getName();
@@ -129,6 +130,7 @@ public abstract class Player implements Comparable {
 
     /**
      * Generates the district points of a given district list
+     *
      * @param districts list of districts to which the number of points will be generated
      * @return number of points the list of districts is worth
      */
@@ -227,12 +229,19 @@ public abstract class Player implements Comparable {
             this.gui.showOnGrid(this.idxInPlayerArray, playerSelectedDomino);
             this.gui.showPointsForPlayer(this.idxInPlayerArray, getBoardPoints());
 
+
             // update logger
-            Logger.getInstance().printAndSafe(String.format(Logger.DEPOSIT_LOGGER_FORMAT, getName(),
-                    playerSelectedDomino.toString(),
-                    playerSelectedDomino.getStrAllignment(),
-                    playerSelectedDomino.getFstPos().toString())
-            );
+            if (playerSelectedDomino.getFstPos().equals(Domino.DEFAULT_POS)) {
+                Logger.getInstance().printAndSafe(String.format(Logger.DISMISSAL_LOGGER_FORMAT, getName(),
+                        playerSelectedDomino.toString()));
+            } else {
+
+                Logger.getInstance().printAndSafe(String.format(Logger.DEPOSIT_LOGGER_FORMAT, getName(),
+                        playerSelectedDomino.toString(),
+                        playerSelectedDomino.getStrAllignment(),
+                        playerSelectedDomino.getFstPos().toString())
+                );
+            }
         }
     }
 
@@ -260,14 +269,17 @@ public abstract class Player implements Comparable {
         for (District currDistrict : districts) {
             output.add(currDistrict);
         }
-        // adding domino to slots
-        output = addToAppropriateDistrict(domino.getFstVal(), domino.getFstPos(), output);
-        output = addToAppropriateDistrict(domino.getSndVal(), domino.getSndPos(), output);
+        if (!domino.getFstPos().equals(Domino.DEFAULT_POS)) {
+            // adding domino to slots
+            output = addToAppropriateDistrict(domino.getFstVal(), domino.getFstPos(), output);
+            output = addToAppropriateDistrict(domino.getSndVal(), domino.getSndPos(), output);
+        }
         return output;
     }
 
     /**
      * Finds the district with the most members
+     *
      * @return number of members the largest district contains
      */
     public int getLargestDistrictSize() {
@@ -286,6 +298,7 @@ public abstract class Player implements Comparable {
 
     /**
      * Generates a treeView element of the player (used to display the result)
+     *
      * @return treeView representation of the player
      */
     public TreeItem<String> toTreeItem() {

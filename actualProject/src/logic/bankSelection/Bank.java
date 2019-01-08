@@ -77,6 +77,7 @@ public class Bank {
         assert null != preallocation && null != players && null != rand;
         this.bankSize = players.size();
         this.entries = new Entry[this.bankSize];
+        this.rand = rand;
         if (0 < preallocation.length()) {
             String[] singleEntries = preallocation.split(SEPERATOR_STRING_REPRESENTATION);
             int offset = this.bankSize - singleEntries.length;
@@ -121,7 +122,6 @@ public class Bank {
      * @return domino which the given player selected
      */
     public int getSelectedDominoIdx(Player player) {
-        // TODO write tests
         int i = 0;
         do {
             // actually checking for reference
