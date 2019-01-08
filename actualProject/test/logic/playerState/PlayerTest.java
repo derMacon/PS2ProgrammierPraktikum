@@ -242,7 +242,7 @@ public class PlayerTest {
                 "-- -- --\n"
                         + "S1 CC --\n"
                         + "S2 -- --\n");
-        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), 2));
+        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), new Pos(0,0), 2));
         Board actualBoard = player.getBoard();
         List<District> actualDistricts = player.getDistricts();
 

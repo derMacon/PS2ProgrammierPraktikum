@@ -239,7 +239,8 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
                 }
             }
         }
-        return null == maxChoose ? genChoose(domino.setPos(new Pos(0, 0)), bankSlotIndex) : maxChoose;
+//        return null == maxChoose ? genChoose(domino.setPos(new Pos(0, 0)), bankSlotIndex) : maxChoose;
+        return null == maxChoose ? genChoose(domino.setPos(Domino.DEFAULT_POS), bankSlotIndex) : maxChoose;
     }
 
     /**
@@ -286,6 +287,9 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
             // tie
             int fstSingleCellCount = countSingleCellDistricts(fstChoose);
             int sndSingleCellCount = countSingleCellDistricts(sndChoose);
+
+//            int fstSingleCellCount = countSingleCellsOnBoard(fstChoose);
+//            int sndSingleCellCount = countSingleCellsOnBoard(sndChoose);
 
             if (fstSingleCellCount < sndSingleCellCount) {
                 res = fstChoose;
@@ -350,6 +354,7 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
         Domino currDomino;
         while (idxOnBank < bank.getBankSize() && null == output) {
             currDomino = bank.getDomino(idxOnBank);
+//            currDomino.setPos(null);
             if (null != currDomino) {
                 output = new Choose(currDomino, 0, idxOnBank);
             }
