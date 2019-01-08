@@ -235,6 +235,28 @@ public class Board {
     }
 
     /**
+     * Checks if a position has at least one valid and empty neighbouring position on the board
+     *
+     * @param pos pos to check the board for
+     * @return true if if a position has at least one valid and empty neighbouring position on the board, false if
+     * not / the given position is invalid / not empty
+     */
+    public boolean isEmptySingleCell(Pos pos) {
+        assert null != pos;
+        if (isValidPos(pos) && !isEmpty(pos)) {
+            return false;
+        }
+        boolean output = true;
+        List<Pos> neighbours = pos.getNeighbours();
+        for (Pos currPos : neighbours) {
+            if (isValidPos(currPos) && isEmpty(currPos)) {
+                output = false;
+            }
+        }
+        return output;
+    }
+
+    /**
      * Collects the touching cells from a given position.
      *
      * @param position position to examine

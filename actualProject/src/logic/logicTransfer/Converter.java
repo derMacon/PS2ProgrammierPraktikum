@@ -97,7 +97,6 @@ public class Converter {
     private List<Domino> stack;
 
 
-
     /**
      * getter for the players
      *
@@ -176,7 +175,7 @@ public class Converter {
     /**
      * Takes a given String and extracts the information about the game. The
      * data structure can be described as follows:
-     *
+     * <p>
      * &lt;Spielfeld&gt;\n text
      * &lt;Spielfeld&gt;\n text
      * &lt;Spielfeld&gt;\n text
@@ -322,17 +321,25 @@ public class Converter {
 
             Set<Integer> playerIdxs = new HashSet<>();
             // check if every player has selected something
-            for (int i = 0; i < playerCnt; i++) {
+            for (int i = 1; i < playerCnt; i++) {
                 if (!banks.contains(i + " ")) {
                     playerIdxs.add(i);
                 }
             }
-            if (playerIdxs.size() != playerCnt && playerIdxs.size() != 0) {
+            if (playerIdxs.size() != playerCnt - 1 && playerIdxs.size() != 0) {
+                throw new WrongBankSyntaxException();
+            }
+
+            if(individualBanks.length > 1 && individualBanks[0].contains("-")) {
                 throw new WrongBankSyntaxException();
             }
 
             int temp;
-            for (String currBank : individualBanks) {
+            int banksize;
+            String currBank;
+            for (int i = 0; i <individualBanks.length; i++) {
+                currBank = individualBanks[i];
+                banksize = 0;
                 elems = currBank.split(",");
                 for (String currElem : elems) {
                     if (currElem.startsWith(" ") || currElem.endsWith(" ")) {
@@ -351,7 +358,15 @@ public class Converter {
                     if (!Tiles.contains(currSlotArr[1])) {
                         throw new WrongBankSyntaxException();
                     }
+
+                    banksize++;
                 }
+
+                //check banksize for next round
+                if (i != 0 && banksize != 0 && banksize != 4) {
+                    throw new WrongBankSyntaxException();
+                }
+
             }
         } catch (Exception e) {
             throw new WrongBankSyntaxException();
@@ -383,7 +398,7 @@ public class Converter {
      * // TODO pattern angeben.
      *
      * @param dimensions array contaning the width and height of the board that will be checked
-     * @param board board to check for syntax errors
+     * @param board      board to check for syntax errors
      * @return // TODO check why there is a return value
      * @throws WrongBoardSyntaxException exception that will be thrown if anything was found.
      */
@@ -423,7 +438,7 @@ public class Converter {
      * convertStrToPlayer method to convert the given String to the players
      * board.
      *
-     * @param boardStr          board for the player
+     * @param boardStr       board for the player
      * @param idxPlayerArray index of the player that later on will be
      *                       instanciated
      * @param gui            reference to the gui
@@ -434,7 +449,8 @@ public class Converter {
                                                           GUIConnector gui) {
         PlayerType defaultPlayerTypeRelativeToIdx = 0 == idxPlayerArray ? PlayerType.HUMAN
                 : PlayerType.DEFAULT;
-        return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(defaultPlayerTypeRelativeToIdx, boardStr, idxPlayerArray, gui);
+        return PlayerType.loadPlayerInstanceWithGivenTypeAndBoard(defaultPlayerTypeRelativeToIdx, boardStr,
+                idxPlayerArray, gui);
     }
 
     // --- convert bank ---

@@ -71,21 +71,21 @@ public class ValidFileReadTests {
                 new DefaultAIPlayer(fakeGui, 3, board4)
         };
 
-        Entry[] currRoundEntries = new Entry[]{
+        Entry[] nextRoundEntries = new Entry[]{
                 new Entry(new Domino(Tiles.P0P0_Val1)),
                 new Entry(new Domino(Tiles.P0P0_Val2)),
                 new Entry(new Domino(Tiles.S0O1_Val39)),
                 new Entry(new Domino(Tiles.I1P0_Val40))
         };
-        Bank expCurrBank = new Bank(currRoundEntries, new Random());
+        Bank expNextBank = new Bank(nextRoundEntries, new Random());
 
-        Entry[] nextRoundEntries = new Entry[]{
+        Entry[] currRoundEntries = new Entry[]{
                 new Entry(new Domino(Tiles.A1H0_Val32), expPlayers[3]),
                 new Entry(new Domino(Tiles.A1H0_Val33), expPlayers[0]),
                 new Entry(new Domino(Tiles.A1H0_Val34), expPlayers[2]),
                 new Entry(new Domino(Tiles.P0S1_Val36), expPlayers[1])
         };
-        Bank expNextBank = new Bank(nextRoundEntries, new Random());
+        Bank expCurrBank = new Bank(currRoundEntries, new Random());
 
         List<Domino> stack = new LinkedList<>();
         stack.add(new Domino(Tiles.P0P0_Val1));

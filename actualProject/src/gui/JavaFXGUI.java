@@ -301,7 +301,6 @@ public class JavaFXGUI implements GUIConnector {
 
     @Override
     public void updatePlayer(Player player) {
-        // TODO maybe leave ordPlayer out of Parameters since it can be accessed through the
         // player instance
         Board board = player.getBoard();
         int width = board.getSizeX();

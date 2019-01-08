@@ -511,13 +511,12 @@ public class InvalidFileReadTests {
         assertEquals(expOutput, actOutput);
     }
 
-
-    public void test_wrongStack_cntNotDividableByPlayerCnt() {
-        // Is no invalid file
-        String expOutput = WrongStackSyntaxException.DEFAULT_MESSAGE;
-        String fileOutput = TestToolkit.readAsString("inv_wrongStack_cntNotDividableByPlayerCnt");
+    @Test
+    public void test_noSelectOnCurrBank() {
+        String expOutput = WrongBankSyntaxException.DEFAULT_MESSAGE;
+        String fileOutput = TestToolkit.readAsString("inv_noSelectOnCurrBank");
         String actOutput = new Converter().readStr(new FakeGUI(), fileOutput);
-//        assertEquals(expOutput, actOutput);
+        assertEquals(expOutput, actOutput);
     }
 
 }

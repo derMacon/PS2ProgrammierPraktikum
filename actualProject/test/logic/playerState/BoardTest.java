@@ -11,6 +11,7 @@ import logic.token.Domino;
 import logic.token.Pos;
 import logic.token.SingleTile;
 import logic.token.Tiles;
+import org.junit.Assert;
 import org.junit.Test;
 import other.FakeGUI;
 
@@ -684,7 +685,23 @@ public class BoardTest {
 
         assertEquals(exp, board2.toString());
         assertEquals(exp, board2.toFile(expPlayers[1], currBank, nextBank));
+    }
+
+    // --- isEmptySingleCell ---
+    @Test
+    public void testAllNeighboursOccupied_EmptyBoard() {
+        Board board = new Board(
+                "-- H0 --\n" +
+                        "H0 CC --\n" +
+                        "-- P0 P0\n" +
+                        "P0 -- --");
+        Assert.assertTrue(board.isEmptySingleCell(new Pos(0,0)));
+        Assert.assertTrue(board.isEmptySingleCell(new Pos(0,2)));
+        Assert.assertFalse(board.isEmptySingleCell(new Pos(0,1)));
+        Assert.assertFalse(board.isEmptySingleCell(new Pos(2,0)));
+        Assert.assertFalse(board.isEmptySingleCell(new Pos(0,1)));
 
     }
+
 
 }

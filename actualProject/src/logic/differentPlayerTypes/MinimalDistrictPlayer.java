@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Default bot logic rules: TODO fill in the bots logic rules
  */
-public class DefaultAIPlayer extends Player implements BotBehavior {
+public class MinimalDistrictPlayer extends Player implements BotBehavior {
 
     /**
      * Prefix that will be displayed before each call of the printing Method of the Logger instance
@@ -35,7 +35,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * @param boardSizeX width of the board
      * @param boardSizeY height of the board
      */
-    public DefaultAIPlayer(GUIConnector gui, int idx, int boardSizeX, int boardSizeY) {
+    public MinimalDistrictPlayer(GUIConnector gui, int idx, int boardSizeX, int boardSizeY) {
         super(gui, idx, boardSizeX, boardSizeY);
     }
 
@@ -46,7 +46,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * @param idx   index of the player in the player array in the game class
      * @param board board reference of the player
      */
-    public DefaultAIPlayer(GUIConnector gui, int idx, Board board) {
+    public MinimalDistrictPlayer(GUIConnector gui, int idx, Board board) {
         super(gui, idx, board);
     }
 
@@ -59,7 +59,7 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
      * @param idx      index of the player in the player array in the game class
      * @param strBoard String representation of the players board
      */
-    public DefaultAIPlayer(GUIConnector gui, int idx, String strBoard) {
+    public MinimalDistrictPlayer(GUIConnector gui, int idx, String strBoard) {
         super(gui, idx, strBoard);
     }
 
@@ -284,11 +284,8 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
             res = sndChoose;
         } else {
             // tie
-//            int fstSingleCellCount = countSingleCellDistricts(fstChoose);
-//            int sndSingleCellCount = countSingleCellDistricts(sndChoose);
-
-            int fstSingleCellCount = countSingleCellsOnBoard(fstChoose);
-            int sndSingleCellCount = countSingleCellsOnBoard(sndChoose);
+            int fstSingleCellCount = countSingleCellDistricts(fstChoose);
+            int sndSingleCellCount = countSingleCellDistricts(sndChoose);
 
             if (fstSingleCellCount < sndSingleCellCount) {
                 res = fstChoose;

@@ -9,6 +9,7 @@ import logic.playerState.Player;
 public enum PlayerType {
     HUMAN("Menschlicher Spieler"),
     DEFAULT("Standard Gegner"),
+    MINIMAL_DISTRICT("Minimale Distritanzahl"),
     CAPABLE_OF_MOVING_BOARD("Not supported yet"),
     INVOLVE_NEXT_BANK("Not supported yet"),
     INVOLVE_OTHER_PLAYERS("Not supported yet"),
@@ -43,6 +44,8 @@ public enum PlayerType {
             case DEFAULT:
                 output = new DefaultAIPlayer(gui, idx, boardStr);
                 break;
+            case MINIMAL_DISTRICT:
+                output = new MinimalDistrictPlayer(gui, idx, boardStr);
             default:
                 System.out.println("Not supported yet -> cannot instanciate desired playertype");
         }
@@ -68,6 +71,9 @@ public enum PlayerType {
                 break;
             case DEFAULT:
                 output = new DefaultAIPlayer(gui, idx, boardSizeX, boardSizeY);
+                break;
+            case MINIMAL_DISTRICT:
+                output = new MinimalDistrictPlayer(gui, idx, boardSizeX, boardSizeY);
                 break;
             default:
                 System.out.println("Not supported yet -> cannot instanciate desired playertype");
