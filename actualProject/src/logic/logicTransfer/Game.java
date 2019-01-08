@@ -145,7 +145,7 @@ public class Game implements GUI2Game {
                 }
             }
         } else {
-            this.gui.showPopUp(returnMessage);
+            this.gui.showPopUp(returnMessage + ", bitte starten / öffnen Sie ein neues Spiel.");
         }
         Logger.getInstance().printAndSafe(Logger.GAME_SEPARATOR + "\nLoading process: " + returnMessage);
     }
@@ -323,7 +323,7 @@ public class Game implements GUI2Game {
 
             botsDoInitialSelect();
             randomlyDrawNewDominosForNextRound();
-            this.currBankIdx = botsDoTheirTurn(this.currBankIdx);
+            this.currBankIdx = botsDoTheirTurn(0);
             this.currField = PossibleField.NEXT_BANK;
             this.gui.blurOtherFields(this.currField);
         } else {
@@ -407,17 +407,21 @@ public class Game implements GUI2Game {
 
     @Override
     public void moveBoard(Board.Direction dir) {
-        Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
-        if (humanPlayer.getBoard().canMoveBoardToDir(dir) && (humanPlayer instanceof HumanPlayer)) {
-            HumanPlayer humanInstance = (HumanPlayer) humanPlayer; // only Human player has a
-            // setter for the board -> needs to cast
-            humanInstance.updateBoard(humanInstance.getBoard().moveBoard(dir));
-            this.gui.updatePlayer(players[HUMAN_PLAYER_IDX]);
-            Logger.getInstance().printAndSafe(String.format(Logger.CC_DRAG_LOGGER_FORMAT,
-                    humanInstance.getName(), humanInstance.getBoard().findPos(SingleTile.CC)));
-        } else {
-            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
-                    + "\nHUMAN tried to move board in an impossible direction\n" + Logger.ERROR_DELIMITER + "\n");
+        try {
+            Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
+            if (humanPlayer.getBoard().canMoveBoardToDir(dir) && (humanPlayer instanceof HumanPlayer)) {
+                HumanPlayer humanInstance = (HumanPlayer) humanPlayer; // only Human player has a
+                // setter for the board -> needs to cast
+                humanInstance.updateBoard(humanInstance.getBoard().moveBoard(dir));
+                this.gui.updatePlayer(players[HUMAN_PLAYER_IDX]);
+                Logger.getInstance().printAndSafe(String.format(Logger.CC_DRAG_LOGGER_FORMAT,
+                        humanInstance.getName(), humanInstance.getBoard().findPos(SingleTile.CC)));
+            } else {
+                Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
+                        + "\nHUMAN tried to move board in an impossible direction\n" + Logger.ERROR_DELIMITER + "\n");
+            }
+        } catch(RuntimeException e) {
+            Logger.getInstance().printAndSafe("Nicht moeglich das Board zu bewegen.\n");
         }
 
     }
@@ -658,35 +662,41 @@ public class Game implements GUI2Game {
      * @return string representation of the game
      */
     private String genString(boolean forFileRepresentation) {
-        StringBuilder strbOutput = new StringBuilder();
-        // all player boards to String
-        for (Player currPlayer : this.players) {
-            strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " " + (currPlayer.getIdxInPlayerArray() + 1) + ">\n");
-            if (forFileRepresentation) {
-                strbOutput.append(currPlayer.getBoard().toFile(currPlayer,
-                        this.currentRoundBank,
-                        this.nextRoundBank));
+        try {
+            StringBuilder strbOutput = new StringBuilder();
+            // all player boards to String
+            for (Player currPlayer : this.players) {
+                strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " " + (currPlayer.getIdxInPlayerArray() + 1) + ">\n");
+                if (forFileRepresentation) {
+                    strbOutput.append(currPlayer.getBoard().toFile(currPlayer,
+                            this.currentRoundBank,
+                            this.nextRoundBank));
+                } else {
+                    strbOutput.append(currPlayer.getBoard().toString());
+                }
+            }
+            // all banks to String (current round Bank first)
+            strbOutput.append("<" + Converter.BANK_IDENTIFIER + ">\n");
+            strbOutput.append(this.currentRoundBank.toString() + "\n");
+            if (this.nextRoundBank == null) {
+                strbOutput.append("\n");
             } else {
-                strbOutput.append(currPlayer.getBoard().toString());
+                strbOutput.append(this.nextRoundBank.toString() + "\n");
             }
-        }
-        // all banks to String (current round Bank first)
-        strbOutput.append("<" + Converter.BANK_IDENTIFIER + ">\n");
-        strbOutput.append(this.currentRoundBank.toString() + "\n");
-        if (this.nextRoundBank == null) {
-            strbOutput.append("\n");
-        } else {
-            strbOutput.append(this.nextRoundBank.toString() + "\n");
-        }
-        // stack to String
-        strbOutput.append("<" + Converter.STACK_IDENTIFIER + ">\n");
-        for (int i = 0; i < this.stack.size(); i++) {
-            strbOutput.append(this.stack.get(i).toFile());
-            if (i < this.stack.size() - 1) {
-                strbOutput.append(",");
+            // stack to String
+            strbOutput.append("<" + Converter.STACK_IDENTIFIER + ">\n");
+            for (int i = 0; i < this.stack.size(); i++) {
+                strbOutput.append(this.stack.get(i).toFile());
+                if (i < this.stack.size() - 1) {
+                    strbOutput.append(",");
+                }
             }
+            return strbOutput.toString();
+        } catch(RuntimeException e) {
+            Logger.getInstance().printAndSafe("Das Spiel konnte nicht in eine String-Darstellung konvertiert" +
+                    " werden.\n");
+            return "";
         }
-        return strbOutput.toString();
     }
 
 
@@ -713,10 +723,6 @@ public class Game implements GUI2Game {
             i++;
         }
 
-        // TODO Delete before final commit
-        boolean debugBankCurr = this.currentRoundBank.equals(other.currentRoundBank);
-        boolean debugBankNext = this.nextRoundBank.equals(other.nextRoundBank);
-
         return equals && this.currentRoundBank.equals(other.currentRoundBank)
                 && this.nextRoundBank.equals(other.nextRoundBank)
                 && (this.currDomino == null && other.currDomino == null || this.currDomino.equals(other.currDomino))
@@ -729,8 +735,19 @@ public class Game implements GUI2Game {
         if (null == input) {
             return false;
         }
-        System.out.println("this: " + this.toFile());
-        System.out.println("input: " + input);
-        return (this.toFile() + "\n").equals(input);
+
+        try {
+            String thisFile = this.toFile();
+            if (thisFile.endsWith("\n")) {
+                return (thisFile).equals(input + "\n");
+            } else if (input.endsWith("\n")) {
+                return (thisFile + "\n").equals(input);
+            } else {
+                return (thisFile).equals(input);
+            }
+        } catch (RuntimeException e) {
+            Logger.getInstance().printAndSafe("Game-Instanz konnte nicht in einen String ueberfuehrt werden.");
+            return true;
+        }
     }
 }

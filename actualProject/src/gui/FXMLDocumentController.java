@@ -29,10 +29,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import logic.dataPreservation.Loader;
 import logic.dataPreservation.Logger;
+import logic.differentPlayerTypes.PlayerType;
 import logic.logicTransfer.GUI2Game;
 import logic.logicTransfer.Game;
 import logic.playerState.Board;
-import logic.differentPlayerTypes.PlayerType;
 import logic.token.Pos;
 
 import java.awt.*;
@@ -475,6 +475,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Drag and drop handler used to highlight position of domino while hovering over the board
+     *
      * @param imgVws multidimensional array holding the images of the board
      */
     private void addDragAndDropHandlers(ImageView[][] imgVws) {
@@ -554,6 +555,7 @@ public class FXMLDocumentController implements Initializable {
     // --- Menu interaction ---
 
     // todo loeschen
+
     /**
      * @param event user action on the gui
      */
@@ -565,6 +567,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      * Possible Intro Window to determine playertypes, not used in this version of the game since there is only one
      * type of Bot playertype
+     *
      * @param event user action on the gui
      * @throws IOException will be thrown if fxml doc cannot be loaded
      */
@@ -583,6 +586,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * opens a new game window with a new game instance
+     *
      * @param event user action on the gui
      * @throws Exception will be thrown if it is not possible to open a new game instance
      */
@@ -591,6 +595,7 @@ public class FXMLDocumentController implements Initializable {
         if (!this.game.equalsStr(Loader.openSavedFile())) {
             showConfirmationDialog(event);
         }
+        Loader.getInstance().setFile(null);
         Main main = new Main();
         main.start(new Stage());
         // Casts to stage to be able to close the intro stage with code
@@ -602,6 +607,7 @@ public class FXMLDocumentController implements Initializable {
     /**
      * Saves the current game instance to the already specified location. If no location was specified earlier on a
      * new Filechooser will be opened so that the user can select a new location.
+     *
      * @param event user action on the gui
      */
     @FXML
@@ -611,6 +617,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Opens a filechooser and saves the game to the selected location
+     *
      * @param event user action on the gui
      */
     @FXML
@@ -620,6 +627,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Loads a game from the specified location
+     *
      * @param event user action on the gui
      * @throws FileNotFoundException will be thrown if the specified file was not found
      */
@@ -628,6 +636,8 @@ public class FXMLDocumentController implements Initializable {
         if (!this.game.equalsStr(Loader.openSavedFile())) {
             showConfirmationDialog(event);
         }
+        Loader.getInstance().setFile(null);
+
         this.game = new Game(this.gui, Loader.getInstance().openFileChooser());
     }
 
@@ -636,7 +646,7 @@ public class FXMLDocumentController implements Initializable {
      * Show Confirmationdialog window, click on ok to save the file / abbrechen to cancel the whole process
      *
      * @param event event which was passed from the calling mathod to make it possible to call the method to save the
-     *             file
+     *              file
      */
     private void showConfirmationDialog(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -654,6 +664,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Exits game
+     *
      * @param event user action on the gui
      */
     @FXML
@@ -661,6 +672,8 @@ public class FXMLDocumentController implements Initializable {
         if (!this.game.equalsStr(Loader.openSavedFile())) {
             showConfirmationDialog(event);
         }
+        Loader.getInstance().setFile(null);
+
         System.exit(0);
     }
 
@@ -682,7 +695,6 @@ public class FXMLDocumentController implements Initializable {
     // --- Game interactions ---
 
     /**
-     *
      * @param event user action on the gui
      */
     @FXML
@@ -711,7 +723,6 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     *
      * @param event user action on the gui
      */
     @FXML
@@ -740,7 +751,6 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     *
      * @param event user action on the gui
      */
     @FXML
@@ -749,7 +759,6 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     *
      * @param event user action on the gui
      */
     @FXML
@@ -769,7 +778,6 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     *
      * @param event user action on the gui
      */
     @FXML

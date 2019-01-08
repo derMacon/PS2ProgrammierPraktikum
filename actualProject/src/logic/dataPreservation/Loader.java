@@ -27,7 +27,7 @@ public class Loader {
     /**
      * Default directory for the filechooser
      */
-    private static final String DEFAULT_DIRECTORY = "./test/fileTests/expected_results";
+    private static final String DEFAULT_DIRECTORY = "./dataOutput";
 
     /**
      * Filechoose that will be used to to save or read the file from
@@ -54,7 +54,9 @@ public class Loader {
         fChooser = new FileChooser();
         fChooser.setTitle("Open Resource File");
         fChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("TXT", "*.txt"));
-        fChooser.setInitialDirectory(new File(DEFAULT_DIRECTORY));
+        File dir = new File(DEFAULT_DIRECTORY);
+        dir.mkdir();
+        fChooser.setInitialDirectory(dir);
     }
 
     /**
@@ -68,6 +70,9 @@ public class Loader {
         return singleInstance;
     }
 
+    public void setFile(File file) {
+        this.file = file;
+    }
 
     // --- saving ---
 
@@ -101,10 +106,14 @@ public class Loader {
      * @param input text that will be saved
      */
     public void saveFile(String input) {
-        if (null == this.file) {
-            saveFileAs(input);
-        } else {
-            actualSavingProcess(this.file, input);
+        try {
+            if (null == this.file) {
+                saveFileAs(input);
+            } else {
+                actualSavingProcess(this.file, input);
+            }
+        } catch (RuntimeException e) {
+            Logger.getInstance().printAndSafe(e.getMessage() + ", das Spiel konnte nicht gespeichert werden.");
         }
     }
 

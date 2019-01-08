@@ -47,6 +47,7 @@ public class Logger {
      * Constructor only setting the playerCnt, taking a default path as the file path for the data
      */
     private Logger() {
+        DEFAULT_FILE.getParentFile().mkdir();
         this.dir = DEFAULT_FILE;
     }
 
