@@ -54,16 +54,17 @@ public Game(GUIConnector gui, String input) {
 \end{lstlisting}
 
 \subparagraph{Methoden}
-Wichtige Methoden: 
-\todo{Referenzen fuer die Methoden einbinden}
+Wichtige Methoden (betreffen vorallem den menschlichen Spieler): 
 \begin{itemize}
 	\item startGame
 	\item selectDomOnCurrBank
 	\item selectDomOnNextBank
+	\item setOnBoard
+	\item moveBoard
 \end{itemize}
 
 \todo{Fett machen}
-\lstref{game_startGame}: Im ersten Schritt werden s"amtliche Spieler mit emph{createNewPlayers} initialisiert. Die muss der Gui mit dem Aufruf emph{updatePlayers} mitgeteilt werden. Anschlie"send wird der Beutel per \emph{fill}-Methode gef"ullt werden. Nach dem dies geschehen ist wird die Bank der aktuellen Runde mit zuf"allig gezogenen Dominos bef"ullt. Auch dies wird wieder auf der Gui dargestellt. Nachdem der aktuelle Bank slot mit dem Wert 0 beschrieben wurde wird dem Logger mitgeteilt, dass das Spiel gestartet wurde. 
+\underline{startGame} (siehe Listing \ref{game_startGame}): Im ersten Schritt werden s"amtliche Spieler mit emph{createNewPlayers} initialisiert. Die muss der Gui mit dem Aufruf emph{updatePlayers} mitgeteilt werden. Anschlie"send wird der Beutel per \emph{fill}-Methode gef"ullt werden. Nach dem dies geschehen ist wird die Bank der aktuellen Runde mit zuf"allig gezogenen Dominos bef"ullt. Auch dies wird wieder auf der Gui dargestellt. Nachdem der aktuelle Bank slot mit dem Wert 0 beschrieben wurde wird dem Logger mitgeteilt, dass das Spiel gestartet wurde. 
 
 \begin{lstlisting}[float,style=CodeHighlighting,label=game_startGame,caption=Game - startGame]
 @Override
@@ -89,7 +90,7 @@ public void startGame(PlayerType[] playerTypes, int sizeX, int sizeY) {
 }
 \end{lstlisting}
 
-selectDomOnCurrBank \lstref{game_selectDomOnCurrBank}: Dieser Schritt wird w"ahrend der initialen Selektierungsphase ben"otigt. Die Bank der aktuellen Runde selektiert den einen gegebenen Index mit der menschlichen Spielerreferenz. Dies wird wieder auf der Gui sowie im Logger dargestellt. Anschlie"send selektieren die alle Bots mithilfe der Methode \emph{botsDoInitialSelect} jeweils einen Domino auf der Bank der aktuellen Runde. Um die B"anke f"ur die n"achste Runde vorzubereiten wird die Bank der n"achsten Runde mit zuf"allig gezogenen Dominos gef"ullt. Da nun eine regul"are Runde startet ziehen s"amtliche Bots, welche einen niederwertigen Domino gezogen haben, ihren Domino auf ihr Feld und selektieren einen neuen Domino auf der Bank der n"achsten Runde. Um dem Benutzer klar zu machen, dass er im n"achsten Schritt nur auf der n"achsten Bank einen Domino selektieren darf wird das Attribut \emph{currField} entsprechend gesetzt. Dies wird auf der Gui anhand eines Gaussian-Blur-Effekts dargestellt. Die Bank der aktuellen Runde wird mit dem Aufruf der Methode \emph{blurOtherFields} leicht verschwommen dargestellt. 
+\underline{selectDomOnCurrBank} (siehe Listing \ref{game_selectDomOnCurrBank}): Dieser Schritt wird w"ahrend der initialen Selektierungsphase ben"otigt. Die Bank der aktuellen Runde selektiert den einen gegebenen Index mit der menschlichen Spielerreferenz. Dies wird wieder auf der Gui sowie im Logger dargestellt. Anschlie"send selektieren die alle Bots mithilfe der Methode \emph{botsDoInitialSelect} jeweils einen Domino auf der Bank der aktuellen Runde. Um die B"anke f"ur die n"achste Runde vorzubereiten wird die Bank der n"achsten Runde mit zuf"allig gezogenen Dominos gef"ullt. Da nun eine regul"are Runde startet ziehen s"amtliche Bots, welche einen niederwertigen Domino gezogen haben, ihren Domino auf ihr Feld und selektieren einen neuen Domino auf der Bank der n"achsten Runde. Um dem Benutzer klar zu machen, dass er im n"achsten Schritt nur auf der n"achsten Bank einen Domino selektieren darf wird das Attribut \emph{currField} entsprechend gesetzt. Dies wird auf der Gui anhand eines Gaussian-Blur-Effekts dargestellt. Die Bank der aktuellen Runde wird mit dem Aufruf der Methode \emph{blurOtherFields} leicht verschwommen dargestellt. 
 
 \begin{lstlisting}[float,style=CodeHighlighting,label=game_selectDomOnCurrBank,caption=Game - selectDomOnCurrBank]
 @Override
@@ -117,7 +118,7 @@ public void selectDomOnCurrBank(int idx) {
 }
 \end{lstlisting}
 
-selectDomOnNextBank: Diese Methode ist Teil eines standardm"a"sigen Zuges w"ahrend des Spielverlaufs. "Ahnlich wie beim selektieren auf der Bank der n"achsten Runde wird hier die entsprechende Bank aufgerufen und mit der Methode \emph{selectEntry} der gew"unschte Domino ausgew"ahlt. Dies wird auf der Gui dargestellt. Anschlie"send wird allerdings der gew"ahlte Domino der Vorrunde in der Drehbox des Benutzers dargestellt.
+\underline{selectDomOnNextBank} (siehe Listing \ref{game_selectDomOnNextBank}): Diese Methode ist Teil eines standardm"a"sigen Zuges w"ahrend des Spielverlaufs. "Ahnlich wie beim selektieren auf der Bank der n"achsten Runde wird hier die entsprechende Bank aufgerufen und mit der Methode \emph{selectEntry} der gew"unschte Domino ausgew"ahlt. Dies wird auf der Gui dargestellt. Anschlie"send wird allerdings der gew"ahlte Domino der Vorrunde in der Drehbox des Benutzers dargestellt. Auch hier werden mit der Methode \emph{blurOtherFields} die gerade nicht betrachteten Selektionsfelder verschwommen dargestellt. 
 
 \begin{lstlisting}[float,style=CodeHighlighting,caption=Game - selectDomOnNextBank,label=game_selectDomOnNextBank]
 @Override
@@ -140,6 +141,73 @@ public void selectDomOnNextBank(int idx) {
         Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
                 + "\nHUMAN tried to make an impossible bank " + "selection\n" 
                 + Logger.ERROR_DELIMITER + "\n");
+    }
+}
+\end{lstlisting}
+
+\underline{setOnBoard} (siehe Listing \ref{lst:game_setOnBoard}: Eine Methode um den Domino in der Drehbox des Benutzers auf dem Board zu platzieren \lstref{lst:game_setOnBoard}. Dazu wird die Position des Dominos angepasst und die Methode \emph{showOnBoard} mit aufgerufen. Da diese Methode neben dem zeigen auf der Gui ebenfalls noch die Distrikte entsprechend erweitert ist es nicht mehr n"otig dies an dieser Stelle zu tun. Ansonsten werden auch hier die nicht betrachteten Felder verschwommen dargestellt, s"amtliche Bots f"uhren ihre Z"uge aus und die kommende Runde wird vorbereitet. 
+
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Game - setOnBoard,label=lst:game_setOnBoard]
+@Override
+public void setOnBoard(Pos pos) {
+    if (PossibleField.CURR_DOM == this.currField) {
+        this.currDomino.setPos(new Pos(pos.x(), pos.y()));
+        this.players[HUMAN_PLAYER_IDX].showOnBoard(currDomino);
+        this.currField = PossibleField.NEXT_BANK;
+        this.gui.blurOtherFields(this.currField);
+        setupCurrDomAndBotsDoTurn();
+    } else {
+        Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "HUMAN tried to make "
+        		+ "an impossible bank selection\n" + Logger.ERROR_DELIMITER + "\n");
+    }
+}
+\end{lstlisting}
+
+
+\underline{moveBoard} (siehe Listing \ref{lst:game_moveBoard}): Diese Methode verschiebt das Board des Spieler. In diesem Entwurf sind s"amtliche ben"otigte Schritte in dieser Klasse implementiert, falls es sp"ater allerdings dazu kommen sollte, dass ein k"unstlicher Spieler ebenfalls in der Lage sein soll dies zu tun muss diese Funktionalit"at in die abstrakte Spieler-Klasse verschoben werden. Diese Methode geht jedoch wie folgt vor. Es ist eine gegebene Richtung angegeben in die das Board bewegt werden soll. Die Board-Klasse besitzt bereits eine Methode die "uberpr"uft ob es m"oglich ist es in diese Richtung zu bewegen. Nach der "Uberpr"ufung wird mithilfe der Methode \emph{moveBoard} der Board-Klasse das Spielfeld bewegt. Dies wird zuletzt der Gui mitgeteilt und entsprechend geloggt. Falls es nicht m"oglich sein sollte das Board in die Richtung zu bewegen, wird auch dies dem Logger mitgeteilt. 
+
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Game - moveBoard,label=lst:game_moveBoard]
+@Override
+public void moveBoard(Board.Direction dir) {
+    try {
+        Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
+        if (humanPlayer.getBoard().canMoveBoardToDir(dir) && (humanPlayer instanceof 
+        			HumanPlayer)) {
+            HumanPlayer humanInstance = (HumanPlayer) humanPlayer; 
+            // only Human player has a setter for the board -> need to cast
+            humanInstance.updateBoard(humanInstance.getBoard().moveBoard(dir));
+            this.gui.updatePlayer(players[HUMAN_PLAYER_IDX]);
+            Logger.getInstance().printAndSafe(String.format(Logger.CC_DRAG_LOGGER_FORMAT,
+                    humanInstance.getName(), 
+                    humanInstance.getBoard().findPos(SingleTile.CC)));
+        } else {
+            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
+                    + "\nHUMAN tried to move board in an impossible direction\n" 
+                    + Logger.ERROR_DELIMITER + "\n");
+        }
+    } catch(RuntimeException e) {
+        Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER 
+        		+ "\nNot possible to move board.\n"
+                + Logger.ERROR_DELIMITER + "\n");
+    }
+}
+\end{lstlisting}
+
+\underline{disposeCurrDomino} (siehe \ref{disposeCurrDomino}): Hierbei wird sowohl intern als auch auf der Gui der Domino innerhalb der Drehbox des Benutzers entfernt \lstref{lst:game_disposeCurrDomino}. Hierf"ur wird lediglich ein Nullpointer als aktueller Domino der \emph{setToChooseBox}-Methode "ubergeben. Desweiteren wird das gerade fokussierte Feld neu gesetzt, die Bots ziehen und es wird die n"achste Runde vorbereitet. 
+
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Game - disposeCurrDomino,label=lst:game_disposeCurrDomino]
+@Override
+public void disposeCurrDomino() {
+    if (PossibleField.CURR_DOM == this.currField) {
+        Logger.getInstance().printAndSafe(String.format(Logger.DISMISSAL_LOGGER_FORMAT, 
+        		"HUMAN", this.currDomino.toString()));
+        setToChooseBox(null);
+        this.currField = PossibleField.NEXT_BANK;
+        setupCurrDomAndBotsDoTurn();
+        this.gui.blurOtherFields(currField);
+    } else {
+        Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nHUMAN tried to "
+        		+ "dispose the current domino\n" + Logger.ERROR_DELIMITER + "\n");
     }
 }
 \end{lstlisting}

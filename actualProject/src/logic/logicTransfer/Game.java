@@ -361,7 +361,7 @@ public class Game implements GUI2Game {
                     idx, "next"));
         } else {
             Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
-                    + "\nHUMAN tried to make an impossible bank " + "selection\n" + Logger.ERROR_DELIMITER + "\n");
+                    + "\nHUMAN tried to make an impossible bank selection\n" + Logger.ERROR_DELIMITER + "\n");
         }
     }
 
@@ -421,9 +421,9 @@ public class Game implements GUI2Game {
                         + "\nHUMAN tried to move board in an impossible direction\n" + Logger.ERROR_DELIMITER + "\n");
             }
         } catch(RuntimeException e) {
-            Logger.getInstance().printAndSafe("Nicht moeglich das Board zu bewegen.\n");
+            Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nNot possible to move board.\n"
+                    + Logger.ERROR_DELIMITER + "\n");
         }
-
     }
 
     @Override
@@ -489,7 +489,6 @@ public class Game implements GUI2Game {
         for (int i = 1; i < this.players.length; i++) {
             // rest of the players HAVE to be bots
             this.currentRoundBank = ((BotBehavior) this.players[i]).doInitialSelect(currentRoundBank, CURRENT_BANK_IDX);
-            // TODO insert code -> show Who's Turn
         }
         Logger.getInstance().printAndSafe("\n");
     }
