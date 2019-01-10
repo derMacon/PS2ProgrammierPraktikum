@@ -21,12 +21,13 @@
 \BOOKMARK [2][-]{subsection.7.1}{Problemanalyse}{section.7}% 21
 \BOOKMARK [2][-]{subsection.7.2}{Realisationsanalyse}{section.7}% 22
 \BOOKMARK [1][-]{section.8}{Beschreibung grundlegender Klassen}{section.6}% 23
-\BOOKMARK [2][-]{subsection.8.1}{token}{section.8}% 24
-\BOOKMARK [2][-]{subsection.8.2}{dataPreservation}{section.8}% 25
-\BOOKMARK [2][-]{subsection.8.3}{bankSelection}{section.8}% 26
-\BOOKMARK [2][-]{subsection.8.4}{playerState}{section.8}% 27
-\BOOKMARK [2][-]{subsection.8.5}{differentPlayerTypes}{section.8}% 28
-\BOOKMARK [2][-]{subsection.8.6}{logicTransfer}{section.8}% 29
-\BOOKMARK [1][-]{section.9}{Programmorganisationsplan}{section.6}% 30
-\BOOKMARK [1][-]{section.10}{Programmtests}{section.6}% 31
-\BOOKMARK [1][-]{appendix.A}{Im Anhang Eins}{section.6}% 32
+\BOOKMARK [2][-]{subsection.8.1}{gui}{section.8}% 24
+\BOOKMARK [2][-]{subsection.8.2}{token}{section.8}% 25
+\BOOKMARK [2][-]{subsection.8.3}{dataPreservation}{section.8}% 26
+\BOOKMARK [2][-]{subsection.8.4}{bankSelection}{section.8}% 27
+\BOOKMARK [2][-]{subsection.8.5}{playerState}{section.8}% 28
+\BOOKMARK [2][-]{subsection.8.6}{differentPlayerTypes}{section.8}% 29
+\BOOKMARK [2][-]{subsection.8.7}{logicTransfer}{section.8}% 30
+\BOOKMARK [1][-]{section.9}{Programmorganisationsplan}{section.6}% 31
+\BOOKMARK [1][-]{section.10}{Programmtests}{section.6}% 32
+\BOOKMARK [1][-]{appendix.A}{Im Anhang Eins}{section.6}% 33

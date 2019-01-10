@@ -1,0 +1,20 @@
+\paragraph{Controller}
+\label{par:Controller}
+Hiermit sind die beiden Klassen namens \emph{FXMLDocumentController} sowie \emph{FXMLIntroController} gemeint. Beide Klassen bilden die direkte Schnittstelle mit ihrem jeweiligen FXML-Dokument und reichen im Kern alle Befehle an die betreffende Klasse weiter. Im FXMLDokumentController findet sich allerdings au"serdem die Modifikation der Gui. Um den Hintergrund mit einem eigenem Bild zu versehen wurde eine Methode namens \emph{setPnWithImage} implementiert \lstref{lst:fxmlDocumentController_setPnWithImage}. Um diese Methode effektiv nutzen zu k"onnen wurde im FXML-Dokument selbst f"ur jedes Bild eine leere Pane eingef"ugt. Diese dient dieser Methode als Anker. Der Flag \emph{addAsForeground} gibt an, ob das Bild im Vorder- oder Hintergrund eingef"ugt werden soll. 
+
+Die Klasse FXMLIntroController dient als Schnittstelle f"ur das Intro-Fenster falls mehr Spielertypen implementiert werden sollen und es eine M"oglichkeit geben soll es dem Benutzer zu erm"oglichen seine Gegnertypen selbst zu w"ahlen. 
+\todo{Referenz zum intro fenster einbauen}
+
+\begin{lstlisting}[float,style=CodeHighlighting,caption=FXMLDocumentController - setPnWithImage,label=lst:fxmlDocumentController_setPnWithImage]
+private void setPnWithImage(Pane pane, Image image, boolean addAsForeground) {
+    ImageView imgVW = new ImageView(image);
+    imgVW.setPreserveRatio(false);
+    imgVW.fitHeightProperty().bind(pane.heightProperty());
+    imgVW.fitWidthProperty().bind(pane.widthProperty());
+    if (addAsForeground) {
+        pane.getChildren().add(imgVW);
+    } else {
+        pane.getChildren().add(0, imgVW);
+    }
+}
+\end{lstlisting}

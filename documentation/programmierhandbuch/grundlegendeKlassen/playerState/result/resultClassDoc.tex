@@ -1,2 +1,54 @@
 \paragraph{Result}
 \label{par:result}
+
+\subparagraph{Einleitung}
+Die Klasse Result verwaltet eine Liste von \emph{ResultRanking}-Objekten und ist in der Lage die Ergebnisse des Spiels zu verwalten sowie zu generieren. 
+
+\subparagraph{Konstruktor}
+Der einzige Konstruktor dieser Klasse erwartet eine Playerarray als Eingabe und generiert direkt im Aufruf das Ergebnis \lstref{lst:result_konstruktor}. Hierbei wird der Playerarray zuerst in eine Liste umgewandelt und per \emph{sort}-Methode des \emph{Collections}-Frameworks sortiert. Dies ist soweit m"oglich, da die Player-Klasse das \emph{Comparable}-Interface implementiert. Hierbei werden allerdings keine gleichwertigen Spieler zusammengefasst. Um dies nachzuholen erfolgt ein Aufruf der Methode \emph{orderRanking}.  
+
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Result - Konstruktor,label=lst:result_konstruktor]
+private List<ResultRanking> genResultRankingList(Player[] players) {
+    assert players.length > 0;
+    LinkedList<Player> rankedWithoutEqualTemperedPlayers = 
+    		new LinkedList<>(Arrays.asList(players));
+    Collections.sort(rankedWithoutEqualTemperedPlayers);
+
+    return orderRanking(new LinkedList<>(), rankedWithoutEqualTemperedPlayers);
+}
+\end{lstlisting}
+
+
+\subparagraph{Methoden}
+OrderRanking stellt die wohl wichtigste Methode der Klasse dar. Hierbei wird eine Liste eingelesen welche eine aufsteigend Sortierte Reihenfolge der Spieler einh"alt. Diese wird rekursiv durchlaufen und entsprechend an die Output-Liste angeh"angt \lstref{lst:result_orderRanking}. Es wurde hier bewusst ein spezieller Listen-Typ (LinkedList) gew"ahlt, da dieser Typ die M"oglichkeit des direkten Zugriffs auf das Listenende gew"ahrleistet (Methode \emph{getLast}). Au"serdem wird eine Gui-Darstellung generiert. Ansonsten besitzt diese Klasse wenig Funktionalit"at. 
+
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Result - orderRanking,label=lst:result_orderRanking]
+private LinkedList<ResultRanking> orderRanking(LinkedList<ResultRanking> output,
+                                               LinkedList<Player> players) {
+    assert null != output && null != players;
+    // exit condition -> sorted when no players are left
+    if (players.isEmpty()) {
+        return output;
+    }
+    // output is empty -> first initialize Result Ranking in List,
+    if (output.isEmpty()) {
+        ResultRanking resRank = new ResultRanking(1);
+        output.add(resRank);
+        return orderRanking(output, players);
+    }
+    // Put highest ranking player in ResultRanking
+    if (output.getLast().isEmpty()) {
+        ResultRanking resRank = output.getLast();
+        resRank.addPlayer(players.removeLast());
+        return orderRanking(output, players);
+    }
+    // last player always most valuable one, matches current ranking
+    if (output.getLast().matchesRank(players.getLast())) {
+        output.getLast().addPlayer(players.removeLast());
+        return orderRanking(output, players);
+    }
+    // last player doesn't match last rank in list
+    output.add(new ResultRanking(output.getLast().getRankingPosition() + 1));
+    return orderRanking(output, players);
+}
+\end{lstlisting}
