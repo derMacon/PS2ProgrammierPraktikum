@@ -14,18 +14,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a35e8ce1-009a-4daf-9449-6b01f63d4d17" name="Default Changelist" comment="Board Syntax angefangen, noch sehr fehleranfaellig.">
-      <change afterPath="$PROJECT_DIR$/../CommentLogger/.idea/artifacts/CommentLogger_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CommentLogger/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CommentLogger/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CommentLogger/src/gui/GUIFXMLDocumentController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../CommentLogger/src/gui/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CommentLogger/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../CommentLogger/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CommentLogger/out/artifacts/CommentLogger_jar/CommentLogger.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../CommentLogger/out/artifacts/CommentLogger_jar/CommentLogger.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../CommentLogger/src/gui/GUIFXMLDocumentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../CommentLogger/src/gui/GUIFXMLDocumentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logic/playerState/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/playerState/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/benutzerhandbuch/bedienungsanleitung/bedienungsanleitungDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/benutzerhandbuch/bedienungsanleitung/bedienungsanleitungDoc.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/main.lof" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.lof" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/logicTransfer/game/gameClassDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/logicTransfer/game/gameClassDoc.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -222,30 +214,30 @@
     <session id="1164813950">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="21" />
+          <entry key="project.closed" value="24" />
           <entry key="project.open.time.0" value="2" />
           <entry key="project.open.time.10" value="6" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.14" value="1" />
-          <entry key="project.open.time.7" value="4" />
+          <entry key="project.open.time.7" value="6" />
           <entry key="project.open.time.8" value="4" />
           <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="23" />
+          <entry key="project.opened" value="25" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="13" />
           <entry key="fxml" value="8" />
-          <entry key="java" value="395" />
+          <entry key="java" value="396" />
           <entry key="txt" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="13" />
-          <entry key="JAVA" value="395" />
+          <entry key="JAVA" value="396" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="XML" value="8" />
         </counts>
@@ -308,11 +300,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="614">
-              <caret line="448" column="6" lean-forward="true" selection-start-line="448" selection-start-column="6" selection-end-line="448" selection-end-column="6" />
+            <state relative-caret-position="326">
+              <caret line="432" column="49" lean-forward="true" selection-start-line="432" selection-start-column="49" selection-end-line="432" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -320,11 +312,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/logic/dataPreservation/Logger.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="198">
+              <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/logic/playerState/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="223" column="31" lean-forward="true" selection-start-line="223" selection-start-column="31" selection-end-line="223" selection-end-column="31" />
+            <state relative-caret-position="3870">
+              <caret line="223" column="31" selection-start-line="223" selection-start-column="31" selection-end-line="223" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -912,8 +913,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -1042,7 +1041,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1057,11 +1058,11 @@
     <property name="SearchEverywhereHistoryKey" value="equals&#9;PSI&#9;JAVA://logic.bankSelection.Choose#equals&#10;AiP&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerTypes/DefaultAIPlayer.java&#10;platest&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/test/logic/playerState/DefaultAIPlayerTest.java&#10;board&#9;FILE&#9;file://F:/Studium/2.Semester/ProgrammStrukturen2/Repos/Git/Both/PS2ProgrammierPraktikum/src/logic/playerState/Board.java&#10;neigh&#9;PSI&#9;JAVA://logic.playerState.Board#checkIfNeighborsAreValid" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546990007107" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546990119169" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../CommentLogger" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -1264,7 +1265,9 @@
       <workItem from="1546898037411" duration="58000" />
       <workItem from="1546898117639" duration="15190000" />
       <workItem from="1546973422396" duration="6196000" />
-      <workItem from="1546988092812" duration="1913000" />
+      <workItem from="1546988092812" duration="2621000" />
+      <workItem from="1547052209978" duration="551000" />
+      <workItem from="1547144784585" duration="659000" />
     </task>
     <task id="LOCAL-00001" summary="Ein paar Equals Methoden getestet und umgeschrieben.">
       <created>1545498451822</created>
@@ -1386,7 +1389,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="434997000" />
+    <option name="totallyTimeSpent" value="436915000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1401,7 +1404,7 @@
     <frame x="-1288" y="539" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5387841" visible="true" weight="0.10194175" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.5387841" visible="true" weight="0.10517799" />
       <window_info id="Structure" order="1" sideWeight="0.46121594" side_tool="true" weight="0.27588996" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -2084,30 +2087,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/dataPreservation/Logger.java">
+    <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="54" column="37" selection-start-line="54" selection-start-column="37" selection-end-line="54" selection-end-column="37" />
+        <state relative-caret-position="326">
+          <caret line="432" column="49" lean-forward="true" selection-start-line="432" selection-start-column="49" selection-end-line="432" selection-end-column="49" />
           <folding>
-            <element signature="n#!!doc;n#DEPOSIT_LOGGER_FORMAT#0;n#Logger#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/logic/playerState/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="223" column="31" lean-forward="true" selection-start-line="223" selection-start-column="31" selection-end-line="223" selection-end-column="31" />
+        <state relative-caret-position="3870">
+          <caret line="223" column="31" selection-start-line="223" selection-start-column="31" selection-end-line="223" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Game.java">
+    <entry file="file://$PROJECT_DIR$/src/logic/dataPreservation/Logger.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
-          <caret line="448" column="6" lean-forward="true" selection-start-line="448" selection-start-column="6" selection-end-line="448" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="198">
+          <caret line="22" column="45" lean-forward="true" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
         </state>
       </provider>
     </entry>

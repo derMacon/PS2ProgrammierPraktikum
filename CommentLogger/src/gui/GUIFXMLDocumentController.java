@@ -14,11 +14,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.net.URL;
+import java.time.ZonedDateTime;
 import java.util.ResourceBundle;
 
 public class GUIFXMLDocumentController implements Initializable {
 
-    private static final String MESSAGE_PREFIX = "****************************\n#";
+    private static final String MESSAGE_PREFIX = "****************************\n" + ZonedDateTime.now().toString() +
+            "\n";
     private static String PARENT = "./dataOutput/";
     private static String NAME = "logfile.txt";
 
