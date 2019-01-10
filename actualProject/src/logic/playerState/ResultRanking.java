@@ -12,8 +12,14 @@ import java.util.List;
  */
 public class ResultRanking {
 
+    /**
+     * Ranking of the players in the list item
+     */
     private final int rankingPosition;
 
+    /**
+     * List of players sharing the same ranking
+     */
     private List<Player> rankedPlayers;
 
     /**
@@ -117,7 +123,6 @@ public class ResultRanking {
             boolean samePlayers = true;
             int i = 0;
             do {
-//                samePlayers = this.rankedPlayers.get(i).equals(other.rankedPlayers.get(i));
                 samePlayers = this.rankedPlayers.contains(other.rankedPlayers.get(i))
                         && other.rankedPlayers.contains(this.rankedPlayers.get(i));
                 i++;

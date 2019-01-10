@@ -60,14 +60,19 @@ public class Result {
      */
     private List<ResultRanking> genResultRankingList(Player[] players) {
         assert players.length > 0;
-        LinkedList<Player> rankedWithoutEqualTemperedPlayers =
-                new LinkedList<>(Arrays.asList(players));
+        LinkedList<Player> rankedWithoutEqualTemperedPlayers = new LinkedList<>(Arrays.asList(players));
         Collections.sort(rankedWithoutEqualTemperedPlayers);
 
         return orderRanking(new LinkedList<>(), rankedWithoutEqualTemperedPlayers);
-
     }
 
+    /**
+     * Converts a conventional ordered player list into a list of ResultRanking objects. Equally Ranked Players will
+     * be put into the same ranking index.
+     * @param output output list of ResultRanking objects
+     * @param players ordered list of players
+     * @return output list containing ranked players
+     */
     private LinkedList<ResultRanking> orderRanking(LinkedList<ResultRanking> output,
                                                    LinkedList<Player> players) {
         assert null != output && null != players;
@@ -141,7 +146,6 @@ public class Result {
             return false;
         }
         final Result other = (Result) obj;
-        // TODO Use iterator
         int i = 0;
         int thisSize = this.ranking.size();
         boolean equals = thisSize == other.ranking.size();
