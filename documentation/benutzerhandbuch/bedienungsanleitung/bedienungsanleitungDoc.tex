@@ -4,7 +4,7 @@
 
 \paragraph{Spielinteraktion}
 \subparagraph{Selektierungsvorgang}
-Um einen gew"unschten Domino zu selektieren, muss der Spieler auf einen der schwarzen Kaesten rechts neben dem angezeigten Domino per Mausklick auswaehlen (siehe Abbildung \ref{fig:erstesSelektierenNaechsteBank}). Anschlie"send erscheint die Zahl \emph{1} in diesem Feld. Diese Zahl repr"asentiert den menschlichen Spieler. Um dem Benutzer deutlich zu machen von welcher Bank, oder ob er "uberhaupt in seinem aktuellen Zug einen Domino selektieren darf, kann dieser nur auf der Bank welche nicht verschwommen ist einen Domino ausw"ahlen. Um jederzeit ablesen zu k"onnen welcher Spieler gerade am Zug ist, gibt es hierf"ur ein Feld oberhalb der Darstellung der beiden B"anke eine Anzeige. 
+Um einen gew"unschten Domino zu selektieren, muss der Spieler auf einen der schwarzen Kaesten rechts neben dem angezeigten Domino per Mausklick ausw"ahlen (siehe Abbildung \ref{fig:erstesSelektierenNaechsteBank}). Anschlie"send erscheint die Zahl \emph{1} in diesem Feld. Diese Zahl repr"asentiert den menschlichen Spieler. Um dem Benutzer deutlich zu machen von welcher Bank, oder ob er "uberhaupt in seinem aktuellen Zug einen Domino selektieren darf, kann dieser nur auf der Bank, welche nicht verschwommen ist, einen Domino ausw"ahlen. Um jederzeit ablesen zu k"onnen welcher Spieler gerade am Zug ist, gibt es hierf"ur ein Feld oberhalb der Darstellung der beiden B"anke eine Anzeige. 
 
 \begin{figure}
 	\centering
@@ -42,12 +42,12 @@ Um den Domino zu verwerfen reicht es per Mausklick einmal auf das M"ulleimer-Sym
 \begin{figure}
 	\centering
 	\includegraphics{screenshots/screenshot_Menue}
-	\caption{Menueoptionen}
+	\caption{Men"uoptionen}
 	\label{fig:menueoptionen}
 \end{figure}
 
 \paragraph{Men"uinteraktion}
-\subparagraph{Starten bzw. Schliessen}
+\subparagraph{Starten bzw. Schlie"sen}
 Um ein neues Spiel zu starten w"ahlt der Benutzer den Men"upunkt "\emph{Neues Spiel}". Alternativ ist dies auch per Tastenkombination \verb|strg + N| m"oglich. Um das ge"offnete Fenster zu schlie"sen und das bestehende Spiel zu verwerfen, w"ahlt der Benutzer den Reiter \emph{Beenden} (Tastenkombination \verb|strg + E|). Falls der Benutzer das Spiel nicht vorher gespeichert hat erscheint hierbei ein weiteres Fenster, welches den Benutzer darauf hinweist und ihm die M"oglichkeit gibt dies nachzuholen (siehe folgenden Abschnitt). M"ochte er fortfahren, ohne den aktuellen Spielstand zu speichern, muss der Button mit der Aufschrift \emph{Abbrechen} bet"atigt werden (siehe Abbildung \ref{fig:nachtrSpeichern}). 
 
 \begin{figure}
@@ -59,17 +59,17 @@ Um ein neues Spiel zu starten w"ahlt der Benutzer den Men"upunkt "\emph{Neues Sp
 
 \subparagraph{Spielstand abspeichern}
 \label{spar:anleitung_speichern}
-Um ein Spielstand zu speichern gibt es zwei Reiter mit folgenden M"oglichkeiten:
+Um einen Spielstand zu speichern gibt es zwei Reiter mit folgenden M"oglichkeiten:
 \begin{enumerate}
 	\item Speichern: \verb|Strg + S|
 	\item Speichern unter: \verb|Strg + Shift + S|
 \end{enumerate}
-\emph{Speichern unter} gibt dem Benutzer die M"oglichkeit, ausgehend vom Ablageverzeichnis, den gew"unschten Speicherort anzugeben. Hierzu navigiert er mit dem gegebenen Filechooser an den gewuenschten Speicherort und gibt der abzuspeichernden Datei einen Namen. Hierbei wurde die ben"otigte Dateiendung \emph{.txt} bereits ausgewaehlt, sodass der Benutzer seine Auswahl lediglich auf dem Feld \emph{Speichern} per Mausklick zu best"atigen braucht (siehe Abbildung \ref{fig:filechooser}). 
+\glqq \emph{Speichern unter}\grqq {} gibt dem Benutzer die M"oglichkeit, ausgehend vom Ablageverzeichnis, den gew"unschten Speicherort anzugeben. Hierzu navigiert er mit dem gegebenen Filechooser an den gew"unschten Speicherort und gibt der abzuspeichernden Datei einen Namen. Hierbei wurde die ben"otigte Dateiendung \emph{.txt} bereits ausgew"ahlt, sodass der Benutzer seine Auswahl lediglich auf dem Feld \emph{Speichern} per Mausklick zu best"atigen braucht (siehe Abbildung \ref{fig:filechooser}). 
 
-Der Reiter \emph{Speichern} ermo"glicht es einen bereits gespeicherten Spielstand ohne "offnen eines Filechoosers zu "uberschreiben. Falls der Benutzer diesen Reiter bet"atigt, ohne dass zuvor ein Spielstand des aktuellen Spiels abgespeichert worden ist, "offnet sich bei der Auswahl dieses Reiters dennoch ein Filechooser und es wird nach der Funktionsweise von \emph{Speichern unter} vorgegangen.
+Der Reiter \glqq \emph{Speichern}\grqq {} erm"oglicht es einen bereits gespeicherten Spielstand ohne "Offnen eines Filechoosers zu "uberschreiben. Falls der Benutzer diesen Reiter bet"atigt, ohne dass zuvor ein Spielstand des aktuellen Spiels abgespeichert worden ist, "offnet sich bei der Auswahl dieses Reiters dennoch ein Filechooser und es wird nach der Funktionsweise von \glqq \emph{Speichern unter}\grqq {} vorgegangen.
 
 \subparagraph{"Offnen}
-"Ahnlich wie beim Reiter \emph{Speichern unter} wird hier ein Filechooser ge"offnet. Dieser wird jedoch dazu verwendet eine Datei auszuw"ahlen um aus dieser einen Spielstand zu lesen. Falls die Datei nicht der geforderten Syntax entspricht, erscheint eine Fehlermeldung in Form eines Popup-Fensters mit dem einer groben Fehlermeldung wo der Fehler liegt \lstref{fig:Fehleruebersicht}. Falls der Benutzer vor dem "Offnen eines neuen Spielstands den alten nicht gespeichert hat, wird er "ahnlich wie beim Beenden darauf hingewiesen und es wird per Filechooser eine M"oglichkeit bereitgestellt dies nachzuholen. Falls eine fehlerhafte Datei ge"offnet wurde, wird dies dem Benutzer wieder per Pop-Up-Fenster mitgeteilt. Allerdings muss anschlie"send ein valides Spiel ge"offnet oder ein neues Spiel gestartet werden. Der Benutzer kann also nicht einfach das gerade laufende Spiel weiterspielen. 
+"Ahnlich wie beim Reiter \glqq \emph{Speichern unter}\grqq {} wird hier ein Filechooser ge"offnet. Dieser wird jedoch dazu verwendet eine Datei auszuw"ahlen um aus dieser einen Spielstand zu lesen. Falls die Datei nicht der geforderten Syntax entspricht, erscheint eine Fehlermeldung in Form eines Popup-Fensters mit dem einer groben Fehlermeldung wo der Fehler liegt \lstref{fig:Fehleruebersicht}. Falls der Benutzer vor dem "Offnen eines neuen Spielstands den alten nicht gespeichert hat, wird er "ahnlich wie beim Beenden darauf hingewiesen und es wird per Filechooser eine M"oglichkeit bereitgestellt dies nachzuholen. Falls eine fehlerhafte Datei ge"offnet wurde, wird dies dem Benutzer wieder per Pop-Up-Fenster mitgeteilt. Allerdings muss anschlie"send ein valides Spiel ge"offnet oder ein neues Spiel gestartet werden. Der Benutzer kann also nicht einfach das gerade laufende Spiel weiterspielen. 
 
 \begin{figure}
 	\centering
@@ -117,11 +117,11 @@ Der Reiter \emph{Speichern} ermo"glicht es einen bereits gespeicherten Spielstan
     \end{figure*}
 
 \subparagraph{Hilfestellung}
-Unter dem Reiter \emph{Hilfe} ist die Aufgabenstellung im Pdf-Format zu finden. Beim Auswaehlen des Men"upunktes \emph{Aufgabenstellung} "offnet sich diese im, vom Benutzer standardm"a"sig genutzten, Pdf-Reader. 
+Unter dem Reiter \glqq \emph{Hilfe}\grqq {} ist die Aufgabenstellung im Pdf-Format zu finden. Beim Ausw"ahlen des Men"upunktes \emph{Aufgabenstellung} "offnet sich diese im, vom Benutzer standardm"a"sig genutzten, Pdf-Reader. 
 
 
 \subsection{Programmfunktionalit"at}
-Generell gilt es zwischen einem standardm"a"sig ausgefuehrten Spiel und einem aus einer Datei eingelesenem Spiel zu unterscheiden. 
+Generell gilt es zwischen einem standardm"a"sig ausgef"uhrten Spiel und einem aus einer Datei eingelesenem Spiel zu unterscheiden. 
 
 \paragraph{Spiel ohne Einlesen einer Datei}
 \subparagraph{Spielbeginn}
@@ -152,7 +152,7 @@ aus dem zweiten Auswahlbereich markiert und dadurch f체r die kommende Runde gew�
 markierte Karte in dieser Runde ist, desto sp채ter ist der Spieler am Zug und desto weniger Auswahl hat er f체r die
 kommende Runde.}
 \cite{aufgabenstellung}
-Zwischen dem initialen Selektieren und dem beschriebenen Spielablauf gibt es keine Pause. Wie man in Abbildung \ref{fig:initialesSelektierenMittig} sehen kann, ziehen die Gegner bereits ihre ersten Dominos auf ihr Feld, obwohl der Benutzer noch gar nicht an der Reihe war. Nun kann der Benutzer einen Domino auf dem n"achsten Auswahlstapel beziehungsweise der n"achsten Bank einen der "ubrig gebliebenen Dominosteine ausw"ahlen. Nun wird der Domino welcher als erstes Selektiert wurde in den Kasten zum Rotieren geladen (siehe Abbildung \ref{fig:erstesRotieren}). Der Benutzer kann nun den Stein auf sein Brett legen (Abbildung \ref{fig:ersteAblage}). Nach dieser Aktion selektiert der Benutzer einen Domino auf der Bank f"ur die n"achste Runde. Danach muss er wieder "warten" bis er an der Reihe ist um einen ausgew"ahlten Domino auf seinem Brett zu platzieren. Alternativ kann er seinen Domino aber auch verwerfen.
+Zwischen dem initialen Selektieren und dem beschriebenen Spielablauf gibt es keine Pause. Wie man in Abbildung \ref{fig:initialesSelektierenMittig} sehen kann, ziehen die Gegner bereits ihre ersten Dominos auf ihr Feld, obwohl der Benutzer noch gar nicht an der Reihe war. Nun kann der Benutzer einen Domino auf dem n"achsten Auswahlstapel beziehungsweise der n"achsten Bank einen der "ubrig gebliebenen Dominosteine ausw"ahlen. Nun wird der Domino, welcher als erstes selektiert wurde, in den Kasten zum Rotieren geladen (siehe Abbildung \ref{fig:erstesRotieren}). Der Benutzer kann nun den Stein auf sein Brett legen (Abbildung \ref{fig:ersteAblage}). Nach dieser Aktion selektiert der Benutzer einen Domino auf der Bank f"ur die n"achste Runde. Danach muss er wieder "warten" bis er an der Reihe ist um einen ausgew"ahlten Domino auf seinem Brett zu platzieren. Alternativ kann er seinen Domino aber auch verwerfen.
 
 \begin{figure}
 	\centering
@@ -176,7 +176,7 @@ Zwischen dem initialen Selektieren und dem beschriebenen Spielablauf gibt es kei
 \end{figure}
 
 \paragraph{Einlesen einer Datei}
-Nachdem der Benutzer eine Datei eingelesen hat, ist dieser auch gleichzeitig am Zug. Je nachdem ob der Spielstand w"ahrend des initialen Selektierens oder w"ahrend einer standardm"a"sigen Runde abgespeichert wurde, muss der Benutzer entweder von der Bank der aktuellen Runde oder von der Bank der n"achsten Runde selektieren. Generell gelten hier die gleichen Regeln zum Spielablauf wie beim Spielen ohne gespeicherten Spielstand, allerdings kann hierbei der Schritt des initialen Selektierens "ubersprungen werden. 
+Nachdem der Benutzer eine Datei eingelesen hat, ist dieser auch gleichzeitig am Zug. Je nachdem, ob der Spielstand w"ahrend des initialen Selektierens oder w"ahrend einer standardm"a"sigen Runde abgespeichert wurde, muss der Benutzer entweder von der Bank der aktuellen Runde oder von der Bank der n"achsten Runde selektieren. Generell gelten hier die gleichen Regeln zum Spielablauf wie beim Spielen ohne gespeicherten Spielstand, allerdings kann hierbei der Schritt des initialen Selektierens "ubersprungen werden. 
 
 \paragraph{Anlegeregeln}
 \emph{Die erste Karte muss an das Stadtzentrum angrenzen. An das Stadtzentrum darf jeder Stadtteil angrenzen. Legt man eine Karte an eine andere Karte an, so muss mindestens eine H채lfte mit einer Seite an einen identischen Stadtteiltyp einer liegenden Karte angrenzen. Passt die abzulegende Karte weder an das Stadtzentrum noch an eine bereits ausliegende Karte, so wird sie verworfen. Alle Spielkarten m체ssen in das 5*5-Feld passen, keine H채lfte darf hinausragen. Das Stadtzentrum muss aber nicht in der Mitte liegen, sondern kann im Spielverlauf verschoben werden, wodurch sich alle bereits gelegten Karten mit verschieben. Eine abgelegte Karte kann nicht verschoben werden.}
@@ -187,7 +187,7 @@ Nachdem der Benutzer eine Datei eingelesen hat, ist dieser auch gleichzeitig am 
 Auswahlbereichen auf die Spielfelder platziert bzw. verworfen, werden die
 Punkte ermittelt.
 \begin{itemize}
-	\item Jede Stadt besteht aus mehreren Stadtteilen. Ein Stadtteil setzt sich aus waagerecht und/oder senkrecht verbundenen Zellen desselben Stadtteiltyps zusammen. Das Stadtzentrum z채hlt zu keinem Stadtteil dazu
+	\item Jede Stadt besteht aus mehreren Stadtteilen. Ein Stadtteil setzt sich aus waagerecht und/oder senkrecht verbundenen Zellen desselben Stadtteiltyps zusammen. Das Stadtzentrum z채hlt zu keinem Stadtteil dazu.
 	\item Die Punkte eines Stadtteils ergeben sich aus der Anzahl seiner Zellen
 multipliziert mit der Anzahl darin enthaltener Prestigesymbole.
 	\item Innerhalb einer Stadt kann es mehrere voneinander getrennte Stadtteile
