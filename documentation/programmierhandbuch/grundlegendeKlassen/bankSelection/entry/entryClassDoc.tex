@@ -1,12 +1,6 @@
 \paragraph{Entry}
 \label{par:entry}
-
-\todo{Bild einbinden}
-
-\subparagraph{Einleitung}
-Diese Klasse dient als Datenstruktur f"ur die einzelnen Bankelemente. Sie verh"alt sich "ahnlich zu einer herk"ommlichen Map, eine Map bietet allerdings nicht die M"oglichkeit einen Nullpointer als Schl"ussel zu verwenden. Dies ist bei einem Entry-Objekt jedoch essentiell, daher wurde hier eine eigene Klasse daf"ur angelegt. 
+Diese Klasse dient als Datenstruktur f"ur die einzelnen Bankelemente. Sie verh"alt sich "ahnlich zu einer herk"ommlichen Map. Eine Map bietet allerdings nicht die M"oglichkeit einen Nullpointer als Schl"ussel zu verwenden, dies ist bei einem Entry-Objekt jedoch essentiell, daher wurde hierf"ur eine eigene Klasse angelegt. 
 
 \subparagraph{Konstruktor}
-Diese Klasse besitzt zwei Felder zum speichern eines Dominos und dem Spieler der diesen Domino verwendet. Im ersten Konstruktor werden diese ohne weitere Aktionen gesetzt. Im zweiten, wird eine Zeichenfolge und die Liste der teilnehmenden Spieler hereingereicht. Es wird hierbei davon ausgegangen das der String bereits beim initialen Einlesen derartig "uberpr"uft wurde, dass die Syntax den Richtilinien entspricht. 
-\todo{Referenz zu Syntax-Richtlinien einbetten.}
-Nun wird der eingegebene String an der Stelle geteilt an der sich das Leerzeichen befindet. Der vordere Teil repr"asentiert den Spieler und wird daher zu einem Integer geparsed (falls dies m"oglich sein sollte). Anschie"send wird der Domino gebildet. Neben zahlreichen Gettern und Settern besitzt die Klasse noch eine \emph{toString}- sowie eine \emph{copy}- und \emph{equals}-Methode. 
+Diese Klasse besitzt zwei Felder zum Speichern eines Dominos und dem Spieler der diesen Domino verwendet. Im ersten Konstruktor werden diese ohne weitere Aktionen gesetzt. Im zweiten, wird eine Zeichenfolge und die Liste der teilnehmenden Spieler hereingereicht. Es wird hierbei davon ausgegangen, dass der String bereits beim initialen Einlesen derartig "uberpr"uft wurde, dass die Syntax den Richtilinien entspricht. Nun wird der eingegebene String an der Stelle geteilt an der sich das Leerzeichen befindet. Der vordere Teil repr"asentiert den Spieler und wird daher zu einem Integer geparsed (falls dies m"oglich sein sollte). Anschie"send wird der Domino gebildet. Neben zahlreichen Gettern und Settern besitzt die Klasse noch eine \emph{toString}- sowie eine \emph{copy}- und \emph{equals}-Methode. 

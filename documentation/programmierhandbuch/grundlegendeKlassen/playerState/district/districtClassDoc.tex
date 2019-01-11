@@ -11,6 +11,16 @@ Es gibt drei Auspr"agungen des Distrikt-Konstruktors \lstref{district_konstrukto
 	\item Zum zusammenf"uhren mehrerer gegebener Distrikte. Die gegebenen Distrikte werden hierbei durchlaufen und jede Teilkomponente (SingleTile / Position) wird per Aufruf der Listen-Methode \emph{addAll} in die Listen der aufrufenden Instanz eingepflegt. 
 	\item Zum Testen. Der Programmierer setzt hierbei lediglich die gew"unschten SingleTiles sowie Positionen die in dem Distrikt enthalten sein sollen. Wie bei allen Formen des Konstruktors dieser Klasse wird lediglich erwartet, dass die gegebenen Argumente keine Null-Pointer enthalten, ansonsten werden die Daten aber direkt (und ohne jegliche "Uberpr"ufung) "ubernommen.
 \end{enumerate}
+
+\subparagraph{Methoden}
+\label{spar:districtMethoden}
+Die Klasse Distrikt besitzt eine Methode namens \emph{typeAndPosMatchCurrDistrict} welche, zum Beispiel im abstrakten Typ Player, verwendet wird um festzustellen ob ein SingleTile-Objekt an einer bestimmten Position in einen bestimmten Distrikt passt oder nicht \lstref{lst:district_typeAndPosMatchCurrDistrict}. Hierbei wird geschaut ob die SingleTile-Referenz den Distriktyp mit dem aufrufendem Distrikt teilt. Dazu wird die Methode \emph{matchingDistrictTypes} verwendet \lstref{lst:district_matchingDistrictTypes}.
+
+Um festzustellen ob sich die gegebene Position neben dem aufrufenden Distrikt befindet wird die Methode \emph{elemPosIsNextToExistingElem} verwendet \lstref{lst:district_elemPosIsNextToExistingElem}. Es werden jeweils die Nachbarn der einzelnen Distriktelemente gebildet und nach der gegebenen Position durchsucht. Falls es eine "Ubereinstimmung geben sollte, wird die Schleife direkt abgebrochen. 
+
+In einigen Hilfsmethoden wird au"serdem eine Kopie eines Distrikts verlangt. Hierf"ur gibt es die Methode \emph{copy}, die ein Deep-Copy erstellt. Daf"ur werden die Daten der Listen einzeln in neue Ausgabelisten kopiert. Ein neuer Distrikt wird per Konstruktoraufruf geformt und zur"uckgegeben. 
+
+Um das Ergebnis darstellen zu k"onnen wird ein ein TreeItem generiert das die Punkte sowie den Namen des Distrikts enth"alt. 
 \begin{lstlisting}[style=CodeHighlighting,float,caption=District - Konstruktoren,label=district_konstruktoren]
 // Constructor used for standard round
 public District(SingleTile fstDistrictMember, Pos pos) {
@@ -38,7 +48,6 @@ public District(List<SingleTile> singleTiles, List<Pos> pos) {
     this.tilePositions = pos;
 }
 \end{lstlisting}
-
 \begin{lstlisting}[style=CodeHighlighting,float,caption=District - add,label=district_add]
 public void add(SingleTile newTile, Pos newPos) {
     assert null != newTile && null != newPos && !this.tilePositions.contains(newPos);
@@ -46,25 +55,12 @@ public void add(SingleTile newTile, Pos newPos) {
     this.tilePositions.add(newPos);
 }
 \end{lstlisting}
-
-\subparagraph{Methoden}
-\label{spar:districtMethoden}
-Die Klasse Distrikt besitzt eine Methode namens \emph{typeAndPosMatchCurrDistrict} die, zum Beispiel im abstrakten Typ Player verwendet wird um festzustellen ob ein SingleTile-Objekt an einer bestimmten Position in einen bestimmten Distrikt passt oder nicht \lstref{lst:district_typeAndPosMatchCurrDistrict}. Hierbei wird geschaut ob die SingleTile-Referenz den Distriktyp mit dem aufrufendem Distrikt teilt oder nicht. Dazu wird die Methode \emph{matchingDistrictTypes} verwendet \lstref{lst:district_matchingDistrictTypes}.
-
-Um festzustellen ob sich die gegebene Position neben dem aufrufenden Distrikt befindet wird die Methode \emph{elemPosIsNextToExistingElem} verwendet \lstref{lst:district_elemPosIsNextToExistingElem}. Es werden jeweils die Nachbarn der einzelnen Distriktelemente gebildet und nach der gegebenen Position durchsucht. Falls es eine "Ubereinstimmung geben sollte wird die Schleife direkt abgebrochen. 
-
-In einigen Hilfsmethoden wird au"serdem eine Kopie eines Distrikts verlangt. Hierf"ur gibt es die Methode \emph{copy}, die ein Deep Copy erstellt. Daf"ur werden die Daten der Listen einzeln in neue Ausgabelisten kopiert. Ein neuer Distrikt wird per Konstruktoraufruf geformt und zur"uckgegeben. 
-
-Um das Ergebnis darstellen zu k"onnen wird ein ein TreeItem generiert das die Punkte sowie den Namen des Distrikts enth"alt. 
-
-
 \begin{lstlisting}[style=CodeHighlighting,float,caption=District - typeAndPosMatchCurrDistrict,label=lst:district_typeAndPosMatchCurrDistrict]
 public boolean typeAndPosMatchCurrDistrict(SingleTile tile, Pos pos) {
     assert null != tile && null != pos;
     return matchingDistrictTypes(tile) && elemPosIsNextToExistingElem(pos);
 }
 \end{lstlisting}
-
 \begin{lstlisting}[style=CodeHighlighting,float,caption=District - matchingDistrictTypes,label=lst:district_matchingDistrictTypes]
 private boolean matchingDistrictTypes(SingleTile tile) {
     return tile.getDistrictType() == this.singleTiles.get(0).getDistrictType();
