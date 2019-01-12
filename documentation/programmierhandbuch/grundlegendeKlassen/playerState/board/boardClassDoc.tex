@@ -1,2 +1,91 @@
 \paragraph{Board}
 \label{par:board}
+Diese Klasse dient als Datenobjekt f"ur alle Spielertypen, um Dominos ablegen zu k"onnen. In erster Linie besitzt die Klasse ein zweidimensionalen \emph{SingleTile}-Array auf dem s"amtliche Dominos platziert werden k"onnen. Es bietet allerdings auch noch weitere Funktionalit"aten die es den Spielern erlauben einfacher ihre Z"uge planen und absolvieren zu k"onnen. 
+
+\subparagraph{Konstruktoren}
+Auch bei dieser Klasse gibt es drei verschiedene Konstruktoren \lstref{lst:board_konstruktor}. 
+\begin{enumerate}
+	\item Konstruktor: Standard-Konstruktor bekommt die Dimensionen "ubergeben und generiert ein leeres Feld. 
+	\item Konstruktor: Konstruktor zur Evaluation eines Strings. Der gegebene String wird an den Zeilenumbr"uchen und anschlie"send an den Leerzeichen geteilt. Danach wird ein Feld mit der entsprechenden Gr"o"se gebildet und die Elemente werden per Schleifendurchlauf gesetzt. 
+	\item Konstruktor: Fungiert als Copy-Konstruktor um eine neue Referenz eines bereits existierenden Objekts zu erzeugen. 
+\end{enumerate}
+
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Board - Konstruktor,label=lst:board_konstruktor]
+// default constructor
+public Board(int sizeX, int sizeY) {
+    assert 0 < sizeX && 0 < sizeY;
+    this.sizeX = sizeX;
+    this.sizeY = sizeY;
+    this.cells = initCCinMiddleOfBoard(sizeX, sizeY);
+    this.cells = fillEmptyCellsWithTile(this.cells);
+}
+
+// with String evaluation (used for fileIO)
+public Board(String input) {
+    assert input != null && input.length() > 0;
+    // filled input String
+    String[] lines = input.split("\n");
+    String[][] inputCells = new String[lines.length][];
+    for (int i = 0; i < lines.length; i++) {
+    // split at whitespaces
+        inputCells[i] = lines[i].trim().split("\\s+");
+    }
+
+    // setting the actual SingleTile cells field
+    this.sizeX = inputCells[0].length;
+    this.sizeY = inputCells.length;
+    this.cells = new SingleTile[sizeX][sizeY];
+    for (int y = 0; y < sizeY; y++) {
+        assert inputCells[y].length == sizeX;
+        for (int x = 0; x < sizeX; x++) {
+            String currentElement = inputCells[y][x];
+            if (currentElement.equals(STRING_EMPTY_CELL)) {
+                cells[x][y] = SingleTile.EC;
+            } else {
+                this.cells[x][y] = SingleTile.valueOf(currentElement);
+            }
+        }
+    }
+}
+
+// copy-Construktor
+public Board(Board other) {
+    assert null != other;
+    this.sizeX = other.sizeX;
+    this.sizeY = other.sizeY;
+    this.cells = new SingleTile[this.sizeX][this.sizeY];
+    for (int y = 0; y < this.sizeY; y++) {
+        for (int x = 0; x < this.sizeX; x++) {
+            this.cells[x][y] = other.cells[x][y];
+        }
+    }
+}
+\end{lstlisting}
+
+\subparagraph{Methoden}
+Um diverse Vermutungen "uber das Board anstellen zu k"onnen, bietet es eine Reihe an Methoden um spezifische Dinge abzupr"ufen. Es ist zum Beispiel m"oglich zu pr"ufen ob sich eine gegebene Position auf dem Board befindet, ohne h"andisch die Dimensionen pr"ufen zu m"ussen. Au"serdem ist es m"ogliche zu pr"ufen ob ein Domino, mit einer gegebenen Position, auf das Board passt oder nicht \lstref{lst:board_fits}. Da die fits Methode die wohl wichtigste Pr"ufungsmethode darstellt, folgt eine kurze Erl"auterung. Zuerst werden die beiden Positionen der Domino-\emph{Tiles} ermittelt. Wenn beide valide und leer sein sollten, werden von beiden Positionen alle ber"uhrenden Nachbardominos ermittelt. Wenn mindestens ein Nachbar gefunden werden kann und die Typen passen, liefert diese Methode den Wahrheitswert \emph{true} ansonsten entsprechend \emph{false}. 
+
+Neben dem Bereitsstellen von Pr"ufungsmethoden, implementiert diese Klasse auch die Methoden um das Board selbst zu ver"andern. 
+\begin{itemize}
+	\item Mit der Methode \emph{lay} wird ein Domino auf dem Board platziert. Dabei wird noch einmal gepr"uft ob es "uberhaupt passt. Anschlie"send werden die entsprechenden Werte in das intern gespeicherte \emph{SingleTile}-Array gespeichert. 
+	\item Die Methode \emph{remove} erm"oglicht es ein gegebenes Domino vom Board zu l"oschen. Hierbei wird nicht geschaut, ob das Domino tats"achlich an der Stelle positioniert ist, es wird lediglich die Position des Dominos mit dem Wert eines leeren Feldes belegt. 
+	\item Um das Stadtzentrum in eine Richtung zu bewegen, wurde die Methode \emph{moveBoard} implementiert. Diese kopiert die Elemente, nach einer Pr"ufung ob dies "uberhaupt m"oglich ist, aber einfach nur entsprechend um. 
+\end{itemize}
+
+Um ein Board sachgem"a"s abspeichern bzw. ausgeben zu k"onnen, wurden die beiden Methoden \emph{toString} sowie \emph{toFile} implementiert. Die \emph{toString}-Methode durchl"auft das Board und h"angt den jeweiligen Enum-Wert an einen StringBuilder an. Die \emph{toFile}-Methode benutzt diese Methode, l"oscht allerdings vorher den selektierten Domino auf einer der beiden B"anke. Dies ist n"otig, da die interne Board-Repr"asentation von der Darstellung auf der Gui abweicht. Die k"unstlichen Spieler setzen die Dominos direkt beim Selektieren um im n"achsten Schritt den gerade selektierten Domino mit in den Evaluierungsprozess des Selektierens einzubeziehen. Bei der Darstellung des Spiels auf der Gui ist es aber nicht gewollt, dass dieser Domino bereits zu sehen ist. Er wird daher erst sp"ater gesetzt. Beim Abspeichern muss man darauf achten ihn zu l"oschen um keine Unterschiede zur Gui festzuhalten. 
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Board - fits,label=lst:board_fits]
+public boolean fits(Domino domino) {
+    assert null != domino;
+    Pos posFst = domino.getFstPos();
+    Pos posSnd = domino.getSndPos();
+    if (isValidPos(posFst) && isValidPos(posSnd) && isEmpty(posFst) && isEmpty(posSnd)) {
+        List<Pos> fstTouchingNeighbour = genTouchingCells(posFst);
+        List<Pos> sndTouchingNeighbour = genTouchingCells(posSnd);
+        return (!fstTouchingNeighbour.isEmpty() || !sndTouchingNeighbour.isEmpty())
+                && checkIfNeighborsAreValid(domino.getFstVal(), fstTouchingNeighbour)
+                && checkIfNeighborsAreValid(domino.getSndVal(), sndTouchingNeighbour);
+    } else {
+        return false;
+    }
+}
+\end{lstlisting}

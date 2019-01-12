@@ -1,13 +1,15 @@
 \paragraph{DefaultAIPlayer}
 \label{par:defaultAIPlayer}
-
-\subparagraph{Einleitung}
-Diese Klasse implementiert die in der Aufgabenstellung vorgegebene k"unstliche Intelligenz. Sie erbt von der Player-Klasse um auf s"amtliche Grundfunktionen und Attribute die jeder Spieler haben sollte, zugreifen zu k"onnen. Au"serdem implementiert sie das Interface \emph{Botbehavior} um die KI spezifischen Methoden zu implementieren. 
+Diese Klasse implementiert die in der Aufgabenstellung vorgegebene k"unstliche Intelligenz. Sie erbt von der Player-Klasse um auf s"amtliche Grundfunktionen und Attribute, die jeder Spieler haben sollte, zugreifen zu k"onnen. Au"serdem implementiert sie das Interface \emph{Botbehavior} um die KI spezifischen Methoden zu implementieren. 
 
 \subparagraph{Methoden}
-Der Spieler ist in der Lage zwischen dem initialen Selektieren auf der Bank der aktuellen Runde und dem auf der Bank der n"achsten Runde zu unterscheiden. Hierzu werden zwei unterschiedliche Methoden verwendet. 
+Der Spieler ist in der Lage zwischen dem initialen Selektieren auf der Bank der aktuellen Runde, und dem auf der Bank der n"achsten Runde, zu unterscheiden. Hierzu werden zwei unterschiedliche Methoden verwendet. 
 
-\emph{doInitialSelect} selektiert auf der \emph{aktuellen} Bank \lstref{lst:defaultAIPlayer_doInitialSelect}. Hierbei gilt es zu beachten, dass der Bot direkt nach dem Selektieren bereits den Domino auf seinem Board positioniert. Dies ist erforderlich um diesen beim Selektieren des n"achsten Dominos bei der Berechnung der Position mit einzubeziehen. 
+Die Methode \emph{doInitialSelect} selektiert einen Domino auf der \emph{aktuellen} Bank \lstref{lst:defaultAIPlayer_doInitialSelect}. Hierbei gilt es zu beachten, dass der Bot direkt nach dem Selektieren bereits den Domino auf seinem Board positioniert. Dies ist erforderlich, um diesen beim Selektieren des n"achsten Dominos, bei der Berechnung der Position mit einzubeziehen. 
+
+Um einen Domino auf einer Bank zu selektieren wird die Methode \emph{selectFromBank} verwendet \lstref{lst:defaultAIPlayer_selectFromBank}. Diese sucht f"ur jeden Domino der Bank, die am besten geeignete Position, und schreibt diese in ein Choose-Objekt. Dies geschieht f"ur jeden Domino, sodass eine Liste geformt wird. Diese Liste wird darauf untersucht, welches Choose-Objekt insgesamt am besten geeignet ist. Dieses Choose-Objekt wird anschlie"send weitergereicht um das Selektieren auf der normalen Bank zu ver"andern. Im Anschluss wird die interne Board-Repr"asentation mit dem Domino belegt, und es wird per Flag entschieden ob, diese "Anderung auch auf der Gui dargestellt werden soll (Testdurchlauf oder richtiger Spieldurchlauf). Nachdem alle n"otigen Z"uge veranlasst wurden, wird alles in der Logdatei festgehalten. Die Methode \emph{bestOverallChoose} ruft eine Schleife auf, mit welcher alle Dominos der Bank durchgegangen und an die Methode \emph{genBestChoose} weitergereicht werden \lstref{lst:defaultAIPlayer_genBestChoose}. Diese Methode setzt die Positition des Dominos einzeln auf alle Felder des Spielfelds und schaut ob der Domino passt. Dies ist nur m"oglich, da vorher ein Deep-Copy angefertig wurde, um den Domino auf der Bank nicht zu ver"andern. Falls dies der Fall ist wird ein neues Choose-Objekt erstellt. Falls dieses effizienter sein sollte als das aktuelle maximale Choose-Objekt, so "uberschreibt dieses das alte \lstref{lst:defaultAIPlayer_mostEfficient}. 
+
+Um einen gesamten Spielzug auszuf"uhren wurde die Methode \emph{doStandardTurn} implementiert. Diese fasst das Selektieren auf der n"achsten Bank, sowie das Darstellen des zuvor gew"ahlten Dominos auf der Gui, zusammen. F"ur den Fall, dass das Spielende erreicht wurde und der letzte Zug ausgef"uhrt werden muss, gibt es die Methode \emph{doLastTurn}. Diese agiert sehr "ahnlich zur Methdoede \emph{doStandardTurn}, es wird allerdings das Selektieren auf der n"achsten Bank weggelassen. 
 
 \begin{lstlisting}[float,style=CodeHighlighting,caption=DefaultAIPlayer - doInitialSelect,label=lst:defaultAIPlayer_doInitialSelect]
 @Override
@@ -20,9 +22,6 @@ public Bank doInitialSelect(Bank currBank, int bankOrd) {
     return output;
 }
 \end{lstlisting}
-
-Um einen Domino auf einer Bank zu selektieren wird die Methode \emph{selectFromBank} verwendet \lstref{lst:defaultAIPlayer_selectFromBank}. Diese sucht f"ur jeden Domino der Bank die am besten geeignete Position und schreibt die am besten geeignete Position in ein Choose-Objekt. Dies geschieht f"ur jeden Domino, sodass eine Liste geformt wird. Diese Liste wird darauf untersucht welches Choose-Objekt insgesamt am besten geeignet ist. Dieses Choose-Objekt wird anschlie"send weitergereicht um das Selektieren auf der normalen Bank zu ver"andern. Im Anschluss wird die interne Board-Repr"asentation mit dem Domino belegt und es wird per Flag entschieden ob diese "Anderung auch auf der Gui dargestellt werden soll (Testdurchlauf oder richtiger Spieldurchlauf). Nachdem alle n"otigen Z"uge veranlasst wurden, wird alles in der Logdatei festgehalten. Die Methode \emph{bestOverallChoose} ruft eine Schleife auf mit welcher alle Dominos der Bank durchgegangen werden und an die Methode \emph{genBestChoose} weitergereicht werden \lstref{lst:defaultAIPlayer_genBestChoose}. Diese Methode setzt die Positition des Dominos einzeln auf alle Felder des Bretts und schaut ob der Domino passt. Dies ist so nur m"oglich, da vorher ein Deep-Copy angefertig wurde um den Domino auf der Bank nicht zu ver"andern. Falls dies der Fall ist wird ein neues Choose-Objekt erstellt. Falls dieses effizienter sein sollte als das aktuelle maximale Choose-Objekt, "uberschreibt dieses das alte \lstref{lst:defaultAIPlayer_mostEfficient}. 
-
 \begin{lstlisting}[float,style=CodeHighlighting,caption=DefaultAIPlayer - selectFromBank,label=lst:defaultAIPlayer_selectFromBank]
 @Override
 public Bank selectFromBank(Bank bank, int ordBank, boolean displayOnGui) {
@@ -48,7 +47,6 @@ public Bank selectFromBank(Bank bank, int ordBank, boolean displayOnGui) {
     return bank;
 }
 \end{lstlisting}
-
 \begin{lstlisting}[float,style=CodeHighlighting,caption=DefaultAIPlayer - genBestChoose,label=lst:defaultAIPlayer_genBestChoose]
 private Choose genBestChoose(Domino domino, int bankSlotIndex) {
     Choose currChoose;
@@ -69,7 +67,6 @@ private Choose genBestChoose(Domino domino, int bankSlotIndex) {
     				bankSlotIndex) : maxChoose;
 }
 \end{lstlisting}
-
 \begin{lstlisting}[float,style=CodeHighlighting,caption=DefaultAIPlayer - mostEfficient,label=lst:defaultAIPlayer_mostEfficient]
 private Choose mostEfficient(Choose fstChoose, Choose sndChoose) {
     Choose res;
@@ -113,7 +110,3 @@ private int countSingleCells(Choose choose) {
     return out;
 }
 \end{lstlisting}
-
-\todo{Falls noch Zeit ist den Selektiervorgang genauer Beschreiben}
-
-\todo{Es fehlen doLastTurn und doStandardTurn}

@@ -397,6 +397,7 @@ public class Game implements GUI2Game {
         if (null != this.currDomino) {
             this.currDomino.incRot();
             this.gui.showInChooseBox(this.currDomino);
+            Logger.getInstance().printAndSafe("HUMAN rotated the domino in the choose box by 90 degrees");
         }
     }
 

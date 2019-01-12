@@ -201,7 +201,6 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         this.gui.deleteDomFromBank(Game.CURRENT_BANK_IDX,
                 currBank.getSelectedDominoIdx(this));
         showOnBoard(playersSelectedDomino);
-        // todo vielleicht dolastturn verwenden
     }
 
     @Override

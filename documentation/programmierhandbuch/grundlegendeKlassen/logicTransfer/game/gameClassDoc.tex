@@ -1,18 +1,13 @@
 \paragraph{Game}
 \label{par:game}
-
-\subparagraph{Einleitung}
-Die Game-Klasse verwaltet s"amtliche Spieleraktionen und stellt die ben"otigten B"anke und den Beutel bereit. Sie implementiert das GUI2-Interface um in der Lage zu die Gui-Interaktionen der Gui zu verarbeiten. 
+Die Game-Klasse verwaltet s"amtliche Spieleraktionen und stellt die ben"otigten B"anke und den Beutel bereit. Sie implementiert das \emph{GUI2Game}-Interface um in der Lage zu die Gui-Interaktionen des Benutzers zu verarbeiten. 
 
 \subparagraph{Konstruktor}
-In der Klasse werden die beiden B"anke, der Beutel, der Domino im Rotationsfeld des Spielers, eine Gui-Schnittstelle sowie das Feld welches sich gerade im Fokus befindet verwaltet. All diese Attribute werden im Konstruktor gesetzt. Hierbei gibt es drei verschiedene Auspr"agungen \lstref{lst:game_konstruktor}. Die erste Version bekommt lediglich ein gui-Objekt sowie die Anzahl der Spieler gegeben. Wie in 
-\todo{problemanalyse und realisation einbinden}
-xxx bereits beschrieben wurde, wurde die letzendliche Initialisierung der Spieler in in die \emph{loadGuiAfterLoadingFile}-Methode bzw. die emph{PlayerType}-Klasse verlagert. 
+In der Klasse werden die beiden B"anke, der Beutel, der Domino im Rotationsfeld des Spielers, eine Gui-Schnittstelle sowie das Feld welches sich gerade im Fokus befindet, verwaltet. All diese Attribute werden im Konstruktor gesetzt. Hierbei gibt es drei verschiedene Auspr"agungen \lstref{lst:game_konstruktor}. Die erste Version bekommt lediglich ein gui-Objekt, sowie die Anzahl der Spieler, gegeben. Wie in Abschnitt \ref{sec:analyseUndRealisation} - \nameref{sec:analyseUndRealisation} bereits beschrieben, wurde die letzendliche Initialisierung der Spieler in in die \emph{loadGuiAfterLoadingFile}-Methode bzw. die \emph{PlayerType}-Klasse verlagert. 
 
-In der zweiten Auspr"agung wird ein String gegeben welcher vom Converter interpretiert wird. Die Idee dabei war, s"amtliche Verarbeitungsschritte zur Konvertierung der Daten in die jeweiligen Objekte dieser Klasse zu "uberlassen. "Uber diverse Getter k"onnen diese vom Spiel \grqq abgeholt\glqq  werden. Um die generierten Werte zu setzen wird eine Hilfsfunktion namens \emph{initTestingLoadingConstructor} verwendet, welche nichts anderes tut als die Attribute der Klasse zu belegen. Anschlie"send wird die Gui mit einer entsprechenden Methode beschrieben und es werden die Boards der Spieler intern mit den bereits selektierten Dominos belegt. Dies muss wie bereits angesprochen geschehen, damit der Spieler in der Lage bei der Evaluierung der Dominos auf der Bank den Domino der momentan (auf der gui) noch nicht auf der Bank liegt mit in die "Uberlegungen einzubeziehen. 
-\todo{Referenziere die Erklaerung...}
+In der zweiten Auspr"agung wird ein String gegeben, welcher vom Converter interpretiert wird. Die Idee dabei war, s"amtliche Verarbeitungsschritte zur Konvertierung der Daten in die jeweiligen Objekte dieser Klasse zu "uberlassen. "Uber diverse Getter k"onnen diese vom Spiel \grqq abgeholt\glqq {} werden. Um die generierten Werte zu setzen wird eine Hilfsfunktion namens \emph{initTestingLoadingConstructor} verwendet, welche nichts anderes tut, als die Attribute der Klasse zu belegen. Anschlie"send wird die Gui mit einer entsprechenden Methode beschrieben und es werden die Boards der Spieler intern mit den bereits selektierten Dominos belegt. Dies muss wie bereits angesprochen geschehen, damit der Spieler in der Lage bei der Evaluierung der Dominos auf der Bank den Domino der momentan (auf der gui) noch nicht auf der Bank liegt mit in die "Uberlegungen einzubeziehen. 
 S"amtliche Verarbeitungsschritte werden dem Logger noch kenntlich gemacht. 
-\begin{lstlisting}[float,style=CodeHighlighting,caption=Game - Konstruktoren,label=game_konstruktor]
+\begin{lstlisting}[float,style=CodeHighlighting,caption=Game - Konstruktoren,label=lst:game_konstruktor]
 // Konstruktor im normalen Spiel
 public Game(GUIConnector gui, int playerCnt) {
     this.gui = gui;
@@ -63,9 +58,7 @@ Wichtige Methoden (betreffen vorallem den menschlichen Spieler):
 	\item moveBoard
 \end{itemize}
 
-\todo{Fett machen}
-\underline{startGame} (siehe Listing \ref{game_startGame}): Im ersten Schritt werden s"amtliche Spieler mit emph{createNewPlayers} initialisiert. Die muss der Gui mit dem Aufruf emph{updatePlayers} mitgeteilt werden. Anschlie"send wird der Beutel per \emph{fill}-Methode gef"ullt werden. Nach dem dies geschehen ist wird die Bank der aktuellen Runde mit zuf"allig gezogenen Dominos bef"ullt. Auch dies wird wieder auf der Gui dargestellt. Nachdem der aktuelle Bank slot mit dem Wert 0 beschrieben wurde wird dem Logger mitgeteilt, dass das Spiel gestartet wurde. 
-
+\underline{startGame} (siehe Listing \ref{game_startGame}): Im ersten Schritt werden s"amtliche Spieler mit emph{createNewPlayers} initialisiert. Die muss der Gui mit dem Aufruf emph{updatePlayers} mitgeteilt werden. Anschlie"send wird der Beutel per \emph{fill}-Methode gef"ullt. Nach dem dies geschehen ist wird die Bank der aktuellen Runde mit zuf"allig gezogenen Dominos bef"ullt. Auch dies wird wieder auf der Gui dargestellt. Nachdem der aktuelle Bank-Slot mit dem Wert 0 beschrieben wurde, wird dem Logger mitgeteilt, dass das Spiel gestartet wurde. 
 \begin{lstlisting}[float,style=CodeHighlighting,label=game_startGame,caption=Game - startGame]
 @Override
 public void startGame(PlayerType[] playerTypes, int sizeX, int sizeY) {
@@ -90,7 +83,7 @@ public void startGame(PlayerType[] playerTypes, int sizeX, int sizeY) {
 }
 \end{lstlisting}
 
-\underline{selectDomOnCurrBank} (siehe Listing \ref{game_selectDomOnCurrBank}): Dieser Schritt wird w"ahrend der initialen Selektierungsphase ben"otigt. Die Bank der aktuellen Runde selektiert den einen gegebenen Index mit der menschlichen Spielerreferenz. Dies wird wieder auf der Gui sowie im Logger dargestellt. Anschlie"send selektieren die alle Bots mithilfe der Methode \emph{botsDoInitialSelect} jeweils einen Domino auf der Bank der aktuellen Runde. Um die B"anke f"ur die n"achste Runde vorzubereiten wird die Bank der n"achsten Runde mit zuf"allig gezogenen Dominos gef"ullt. Da nun eine regul"are Runde startet ziehen s"amtliche Bots, welche einen niederwertigen Domino gezogen haben, ihren Domino auf ihr Feld und selektieren einen neuen Domino auf der Bank der n"achsten Runde. Um dem Benutzer klar zu machen, dass er im n"achsten Schritt nur auf der n"achsten Bank einen Domino selektieren darf wird das Attribut \emph{currField} entsprechend gesetzt. Dies wird auf der Gui anhand eines Gaussian-Blur-Effekts dargestellt. Die Bank der aktuellen Runde wird mit dem Aufruf der Methode \emph{blurOtherFields} leicht verschwommen dargestellt. 
+\underline{selectDomOnCurrBank} (siehe Listing \ref{game_selectDomOnCurrBank}): Dieser Schritt wird w"ahrend der initialen Selektierungsphase ben"otigt. Die Bank der aktuellen Runde selektiert den Bank-Slot am gegebenen Index mit der menschlichen Spielerreferenz. Dies wird wieder auf der Gui sowie im Logger dargestellt. Anschlie"send selektieren alle Bots mithilfe der Methode \emph{botsDoInitialSelect} jeweils einen Domino auf der Bank der aktuellen Runde. Um die B"anke f"ur die n"achste Runde vorzubereiten, wird die Bank mit zuf"allig gezogenen Dominos gef"ullt. Da nun eine regul"are Runde startet, ziehen s"amtliche Bots, welche einen niederwertigen Domino gegen"uber dem menschlichen Spieler gezogen haben, ihren Domino auf ihr Feld und selektieren einen neuen Domino auf der Bank der n"achsten Runde. Um dem Benutzer klar zu machen, dass er im n"achsten Schritt nur auf der n"achsten Bank einen Domino selektieren darf, wird das Attribut \emph{currField} entsprechend gesetzt. Dies wird auf der Gui anhand eines Gaussian-Blur-Effekts dargestellt. Die Bank der aktuellen Runde wird mit dem Aufruf der Methode \emph{blurOtherFields} leicht verschwommen dargestellt. 
 
 \begin{lstlisting}[float,style=CodeHighlighting,label=game_selectDomOnCurrBank,caption=Game - selectDomOnCurrBank]
 @Override
@@ -118,7 +111,7 @@ public void selectDomOnCurrBank(int idx) {
 }
 \end{lstlisting}
 
-\underline{selectDomOnNextBank} (siehe Listing \ref{game_selectDomOnNextBank}): Diese Methode ist Teil eines standardm"a"sigen Zuges w"ahrend des Spielverlaufs. "Ahnlich wie beim selektieren auf der Bank der n"achsten Runde wird hier die entsprechende Bank aufgerufen und mit der Methode \emph{selectEntry} der gew"unschte Domino ausgew"ahlt. Dies wird auf der Gui dargestellt. Anschlie"send wird allerdings der gew"ahlte Domino der Vorrunde in der Drehbox des Benutzers dargestellt. Auch hier werden mit der Methode \emph{blurOtherFields} die gerade nicht betrachteten Selektionsfelder verschwommen dargestellt. 
+\underline{selectDomOnNextBank} (siehe Listing \ref{game_selectDomOnNextBank}): Diese Methode ist Teil eines standardm"a"sigen Zuges w"ahrend des Spielverlaufs. "Ahnlich wie beim Selektieren auf der Bank der n"achsten Runde, wird hier die entsprechende Bank aufgerufen und mit der Methode \emph{selectEntry} der gew"unschte Domino ausgew"ahlt. Dies wird auf der Gui dargestellt. Anschlie"send wird allerdings der gew"ahlte Domino der Vorrunde in der Drehbox des Benutzers dargestellt. Auch hier werden mit der Methode \emph{blurOtherFields} die gerade nicht betrachteten Selektionsfelder verschwommen dargestellt. 
 
 \begin{lstlisting}[float,style=CodeHighlighting,caption=Game - selectDomOnNextBank,label=game_selectDomOnNextBank]
 @Override
@@ -145,7 +138,7 @@ public void selectDomOnNextBank(int idx) {
 }
 \end{lstlisting}
 
-\underline{setOnBoard} (siehe Listing \ref{lst:game_setOnBoard}: Eine Methode um den Domino in der Drehbox des Benutzers auf dem Board zu platzieren \lstref{lst:game_setOnBoard}. Dazu wird die Position des Dominos angepasst und die Methode \emph{showOnBoard} mit aufgerufen. Da diese Methode neben dem zeigen auf der Gui ebenfalls noch die Distrikte entsprechend erweitert ist es nicht mehr n"otig dies an dieser Stelle zu tun. Ansonsten werden auch hier die nicht betrachteten Felder verschwommen dargestellt, s"amtliche Bots f"uhren ihre Z"uge aus und die kommende Runde wird vorbereitet. 
+\underline{setOnBoard} (siehe Listing \ref{lst:game_setOnBoard}: Eine Methode um den Domino in der Drehbox des Benutzers auf dem Board zu platzieren \lstref{lst:game_setOnBoard}. Dazu wird die Position des Dominos angepasst und die Methode \emph{showOnBoard} mit aufgerufen. Da diese Methode neben dem Zeigen auf der Gui ebenfalls noch die Distrikte entsprechend erweitert, ist es nicht mehr n"otig dies an dieser Stelle zu tun. Ansonsten werden auch hier die nicht betrachteten Felder verschwommen dargestellt, s"amtliche Bots f"uhren ihre Z"uge aus und die kommende Runde wird vorbereitet. 
 
 \begin{lstlisting}[float,style=CodeHighlighting,caption=Game - setOnBoard,label=lst:game_setOnBoard]
 @Override
@@ -163,8 +156,7 @@ public void setOnBoard(Pos pos) {
 }
 \end{lstlisting}
 
-
-\underline{moveBoard} (siehe Listing \ref{lst:game_moveBoard}): Diese Methode verschiebt das Board des Spieler. In diesem Entwurf sind s"amtliche ben"otigte Schritte in dieser Klasse implementiert, falls es sp"ater allerdings dazu kommen sollte, dass ein k"unstlicher Spieler ebenfalls in der Lage sein soll dies zu tun muss diese Funktionalit"at in die abstrakte Spieler-Klasse verschoben werden. Diese Methode geht jedoch wie folgt vor. Es ist eine gegebene Richtung angegeben in die das Board bewegt werden soll. Die Board-Klasse besitzt bereits eine Methode die "uberpr"uft ob es m"oglich ist es in diese Richtung zu bewegen. Nach der "Uberpr"ufung wird mithilfe der Methode \emph{moveBoard} der Board-Klasse das Spielfeld bewegt. Dies wird zuletzt der Gui mitgeteilt und entsprechend geloggt. Falls es nicht m"oglich sein sollte das Board in die Richtung zu bewegen, wird auch dies dem Logger mitgeteilt. 
+\underline{moveBoard} (siehe Listing \ref{lst:game_moveBoard}): Diese Methode verschiebt das Board des Spieler. In diesem Entwurf sind s"amtliche ben"otigte Schritte in dieser Klasse implementiert. Falls es sp"ater allerdings dazu kommen sollte, dass ein k"unstlicher Spieler ebenfalls in der Lage sein soll dies zu tun, muss diese Funktionalit"at in die abstrakte Spieler-Klasse verschoben werden. Diese Methode geht jedoch wie folgt vor. Es ist eine Richtung angegeben, in die das Board bewegt werden soll. Die Board-Klasse besitzt bereits eine Methode die "uberpr"uft ob es m"oglich ist es in diese Richtung zu bewegen. Nach der "Uberpr"ufung wird mithilfe der Methode \emph{moveBoard} der Board-Klasse das Spielfeld bewegt. Dies wird zuletzt der Gui mitgeteilt und entsprechend geloggt. Falls es nicht m"oglich sein sollte das Board in die Richtung zu bewegen, wird auch dies dem Logger mitgeteilt. 
 
 \begin{lstlisting}[float,style=CodeHighlighting,caption=Game - moveBoard,label=lst:game_moveBoard]
 @Override

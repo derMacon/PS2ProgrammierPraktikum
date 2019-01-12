@@ -75,6 +75,7 @@ public class Board {
         String[] lines = input.split("\n");
         String[][] inputCells = new String[lines.length][];
         for (int i = 0; i < lines.length; i++) {
+            // split at whitespaces
             inputCells[i] = lines[i].trim().split("\\s+");
         }
 
@@ -225,7 +226,6 @@ public class Board {
         if (isValidPos(posFst) && isValidPos(posSnd) && isEmpty(posFst) && isEmpty(posSnd)) {
             List<Pos> fstTouchingNeighbour = genTouchingCells(posFst);
             List<Pos> sndTouchingNeighbour = genTouchingCells(posSnd);
-
             return (!fstTouchingNeighbour.isEmpty() || !sndTouchingNeighbour.isEmpty())
                     && checkIfNeighborsAreValid(domino.getFstVal(), fstTouchingNeighbour)
                     && checkIfNeighborsAreValid(domino.getSndVal(), sndTouchingNeighbour);

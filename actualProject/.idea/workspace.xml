@@ -2,23 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86363fab-4042-49b9-97d4-bc410a9b55c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/dataOutput/logFile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dataOutput/logFile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Result.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/CityDominoSilasHoffmann/logic/playerState/Result.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/differentPlayerTypes/DefaultAIPlayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/differentPlayerTypes/DefaultAIPlayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/logic/playerState/Board.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/logic/playerState/Board.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../documentation/main.lof" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.lof" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../documentation/main.out" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../documentation/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/bankSelection/bank/bankClassDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/bankSelection/bank/bankClassDoc.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/bankSelection/bankSelectionPackageMain.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/bankSelection/bankSelectionPackageMain.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/bankSelection/choose/chooseClassDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/bankSelection/choose/chooseClassDoc.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/bankSelection/entry/entryClassDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/bankSelection/entry/entryClassDoc.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/beschreibungGrundlegenderKlassenMain.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/beschreibungGrundlegenderKlassenMain.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/dataPreservation/dataPreservationPackageDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/dataPreservation/dataPreservationPackageDoc.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/gui/controller/controllerClassDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/gui/controller/controllerClassDoc.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/gui/guiPackageMain.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/gui/guiPackageMain.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/gui/javaFXGUI/javaFXGUIClassDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/gui/javaFXGUI/javaFXGUIClassDoc.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/gui/main/mainClassDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/gui/main/mainClassDoc.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/playerState/playerStatePackageMain.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/playerState/playerStatePackageMain.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/token/tokenPackageDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/token/tokenPackageDoc.tex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/problemanalyseUndRealisation/problemanalyseUndRealisationDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/problemanalyseUndRealisation/problemanalyseUndRealisationDoc.tex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/playerState/board/boardClassDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/grundlegendeKlassen/playerState/board/boardClassDoc.tex" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,10 +33,112 @@
           <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="fxml" value="1" />
+          <entry key="java" value="6" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="6" />
+          <entry key="XML" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="126" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="126" />
+        </counts>
+      </usages-collector>
     </session>
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="actualProject" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/logic/playerState/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="326">
+              <caret line="412" column="33" lean-forward="true" selection-start-line="412" selection-start-column="33" selection-end-line="412" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2756">
+              <caret line="501" column="42" selection-start-line="501" selection-start-column="17" selection-end-line="501" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/logic/differentPlayerTypes/DefaultAIPlayer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="203" selection-start-line="203" selection-end-line="203" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/FXMLGame.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+            </state>
+          </provider>
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/FXMLDocumentController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="757" column="21" lean-forward="true" selection-start-line="757" selection-start-column="21" selection-end-line="757" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/GUI2Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="185">
+              <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/logic/playerState/Board.java" />
+        <option value="$PROJECT_DIR$/src/logic/logicTransfer/Game.java" />
+        <option value="$PROJECT_DIR$/src/logic/differentPlayerTypes/DefaultAIPlayer.java" />
+      </list>
+    </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -53,9 +146,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="444" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1329" />
+    <option name="y" value="539" />
     <option name="width" value="1296" />
     <option name="height" value="1000" />
   </component>
@@ -93,6 +186,13 @@
               <item name="actualProject" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="logic" type="462c0819:PsiDirectoryNode" />
+              <item name="differentPlayerTypes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="actualProject" type="b2602c69:ProjectViewProjectNode" />
+              <item name="actualProject" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="logic" type="462c0819:PsiDirectoryNode" />
               <item name="playerState" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -107,7 +207,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547239250997" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547254241400" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -152,23 +252,33 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1547239222722</updated>
-      <workItem from="1547239223923" duration="629000" />
+      <workItem from="1547239223923" duration="4911000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="629000" />
+    <option name="totallyTimeSpent" value="4911000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1416" extended-state="7" />
+    <frame x="-1288" y="539" width="1296" height="1000" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Image Layers" />
       <window_info id="Designer" />
       <window_info id="UI Designer" />
       <window_info id="Capture Tool" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" sideWeight="0.5011547" side_tool="true" weight="0.5088997" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49884528" visible="true" weight="0.11326861" />
+      <window_info id="Structure" order="1" sideWeight="0.5011547" side_tool="true" weight="0.15048544" />
       <window_info anchor="bottom" id="CheckStyle" />
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
@@ -176,12 +286,12 @@
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3290993" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39937598" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39937598" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.48845264" />
       <window_info anchor="right" id="Palette" />
       <window_info anchor="right" id="Theme Preview" />
       <window_info anchor="right" id="Capture Analysis" />
@@ -192,11 +302,94 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Image Layers" order="0" />
+      <window_info id="Designer" order="1" />
+      <window_info id="UI Designer" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Favorites" order="4" sideWeight="0.5011547" side_tool="true" weight="0.5088997" />
+      <window_info active="true" content_ui="combo" id="Project" order="5" sideWeight="0.49884528" visible="true" weight="0.15048544" />
+      <window_info id="Structure" order="6" sideWeight="0.5011547" side_tool="true" visible="true" weight="0.15048544" />
+      <window_info anchor="bottom" id="CheckStyle" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="1" />
+      <window_info anchor="bottom" id="Terminal" order="2" />
+      <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" order="4" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Messages" order="5" />
+      <window_info anchor="bottom" id="Message" order="6" />
+      <window_info anchor="bottom" id="Find" order="7" weight="0.3290993" />
+      <window_info anchor="bottom" id="Run" order="8" />
+      <window_info anchor="bottom" id="Debug" order="9" weight="0.39937598" />
+      <window_info anchor="bottom" id="Cvs" order="10" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="11" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="12" weight="0.48845264" />
+      <window_info anchor="right" id="Palette" order="0" />
+      <window_info anchor="right" id="Capture Analysis" order="1" />
+      <window_info anchor="right" id="Database" order="2" />
+      <window_info anchor="right" id="Theme Preview" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="6" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="7" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="8" weight="0.25" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/gui/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/playerState/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="326">
+          <caret line="412" column="33" lean-forward="true" selection-start-line="412" selection-start-column="33" selection-end-line="412" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/FXMLGame.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/GUI2Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="25" column="9" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/FXMLDocumentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="757" column="21" lean-forward="true" selection-start-line="757" selection-start-column="21" selection-end-line="757" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/logicTransfer/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2756">
+          <caret line="501" column="42" selection-start-line="501" selection-start-column="17" selection-end-line="501" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/logic/differentPlayerTypes/DefaultAIPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="203" selection-start-line="203" selection-end-line="203" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
