@@ -163,7 +163,7 @@ public class ValidFileReadTests {
     }
 
     @Test
-    public void test_lastTurnInRotBoxk() throws IOException {
+    public void test_lastTurnInRotBox() throws IOException {
         // setting up game
         GUIConnector fakeGui = new FakeGUI();
         Board board1 = new Board(
@@ -217,7 +217,6 @@ public class ValidFileReadTests {
 
         // actual tests
         assertEquals(expOutput, actOutput);
-//        TestToolkit.writeAndAssert(actOutput, "exp_noStack");
     }
 
 }

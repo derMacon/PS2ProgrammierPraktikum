@@ -13,10 +13,6 @@ import static org.junit.Assert.*;
 public class GameLoadingConstructorTest {
     @Test
     public void testStringConstructor_GetBoard() {
-        // Conversion class for string -> obj. not yet implemented, needed to generate objects to test the game's fields
-        // against. Idea: Save a .txt file with a desired gamestatus somewhere in the repository and read it with this
-        // test to generate a game.
-
         String testGameRepresentation =
                 "<Spielfeld 1>\n" +
                         "-- -- -- -- --\n" +
@@ -87,10 +83,6 @@ public class GameLoadingConstructorTest {
         assertEquals(4, gameTestingConstr.getNextRoundBank().getBankSize());
     }
 
-    ;
-
-    // TODO generate districts (individual player points not yet implemented) -> will be also tested here
-
     @Test
     public void testStringConstructor_GetBank() {
         String testGameRepresentation =
@@ -150,9 +142,6 @@ public class GameLoadingConstructorTest {
         Domino dom3Actual = outputCurrentBank.getDomino(3);
         assertEquals(dom3Expected, dom3Actual);
         assertEquals(3, outputCurrentBank.getSelectedPlayer(3).getIdxInPlayerArray());
-
-        // next round bank
-        // TODO test next round bank
     }
 
     @Test
