@@ -40,20 +40,17 @@ public List<Pos> getNeighbours() {
 }
 \end{lstlisting}
 
-
 Eine \emph{equals}-Methode wurde ebenfalls implementiert, diese vergleicht allerdings nur die jeweiligen x- und y-Komponenten der beiden Positionen. Bei der \emph{toString}-Methode werden die beiden Komponten, zwischen einem Klammernpaar und mit Komma getrennt, ausgegeben. 
 
 \paragraph{DistrictType}
 \label{par:districtType}
 In diesem Aufz"ahlungstyp werden die m"oglichen Kategorien der Distrikte aufgef"uhrt. Wichtig hierbei, auch ein leeres Feld sowie das Stadtzentrum besitzen einen Typ (siehe listing \ref{lst:districtType}). 
 Dieser Aufz"ahlungstyp spielt vor allem beim Ausz"ahlen der Punkte bzw. dem Verwalten der verschiedenen Distrikte eine wichtige Rolle. 
-
 \begin{lstlisting}[float,style=CodeHighlighting,caption=DistrictType,label=lst:districtType]
 public enum DistrictType {
     EMPTY_CELL, CENTER, AMUSEMENT, INDUSTRY, OFFICE, PARK, SHOPPING, HOME
 }
 \end{lstlisting}
-
 
 \paragraph{SingleTile}
 \label{par:singleTile}
@@ -111,7 +108,6 @@ Dieser Aufz"ahlungstyp beschreibt alle m"oglichen \emph{SingleTile}-Kombinatione
 Auch hier gibt es wieder einen Konstruktor der diverse Werte an die jeweiligen Enum-Werte bindet. Es werden neben den beiden SingleTile-Kombinationen auch der Wert dieser spezifischen Kombination gespeichert. Der Wert dient dem Sortieren der B"anke und wurde aus der Aufgabenstellung entnommen (wurde also nicht willk"urliche festgelegt). 
 
 um von au"serhalb einfacher bestimmte Tile-Kombinationen zu erstellen und einfacher Testen gestalten zu k"onnen, wurden mehrere Methoden eingef"uhrt die dies erleichtern sollen. Diese sind allerdings im Hauptprogramm nicht von Bedeutung. Neben sonstigen Gettern besitzt diese Klasse lediglich eine \emph{toString()}-Methode wo nur die ersten 4 Buchstaben der Enum-Werte zur"uckgegeben werden, da diese die Tile-Kombination angeben. Der Wert der Kombination entf"allt hierbei (ist aber in dieser Methode auch unbedeutend).
-
 
 \paragraph{Domino}
 \label{par:domino}
