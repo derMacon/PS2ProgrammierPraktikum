@@ -12,8 +12,6 @@ import static org.junit.Assert.assertNotNull;
 
 public class ResultTest {
 
-    // TODO test equals method
-
     @Test
     public void testGetWinner_OnlyOnePlayerHasPoints() {
         Player expWinner = new DefaultAIPlayer(new FakeGUI(), 0,
@@ -88,21 +86,5 @@ public class ResultTest {
         assertEquals(res1, res3);
         assertEquals(res2, res3);
     }
-
-    @Test
-    public void testGetWinner_TwoPlayersHaveSameNumOfPoints_OneActualWinner() {
-
-    }
-
-    @Test
-    public void testGetWinner_TwoPlayersHaveSameNumOfPoints_BothWinners() {
-
-    }
-
-    @Test
-    public void testGetWinner_ThreePlayersHaveEmptyBoards_AllWinners() {
-
-    }
-
 
 }

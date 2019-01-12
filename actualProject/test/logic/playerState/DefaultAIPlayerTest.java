@@ -225,7 +225,6 @@ public class DefaultAIPlayerTest {
     }
 
     // tests for tie
-    // TODO write tests for draw / tie
     @Test
     public void testSelectFromBank_TieBetweenTwoDominos_BothInefficient() {
         DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
@@ -325,12 +324,8 @@ public class DefaultAIPlayerTest {
         assertEquals(expectedOutput, selectedDom);
     }
 
-    // TODO more tests for tie
-
 
     // --- error occurred during manual testing ---
-    // All screenshots can be found in the documentation
-    // TODO put Screenshots in docu
     @Test
     public void testSelectFromBank_Screenshot1() {
         DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,

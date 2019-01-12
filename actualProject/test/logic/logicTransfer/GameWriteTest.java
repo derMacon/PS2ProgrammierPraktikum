@@ -17,12 +17,6 @@ import java.util.Random;
 
 public class GameWriteTest {
 
-    private boolean filesAreEqual(String nameFile1, String nameFile2) {
-        String file1Content = new File(nameFile1).toString();
-        String file2Content = new File(nameFile2).toString();
-        return file1Content.equals(file2Content);
-    }
-
     @Test
     public void testWriteStartOfGame() throws IOException {
         GUIConnector fakeGui = new FakeGUI();

@@ -269,10 +269,6 @@ public class BoardTest {
 
 
     // --- 1. Constructor - only used for testing ---
-//    @Test(expected = AssertionError.class)
-//    public void testConstructor_NullParam() {
-//        Board board = new Board(null);
-//    }
 
     @Test(expected = AssertionError.class)
     public void testConstructor_EmptyString() {
@@ -547,55 +543,6 @@ public class BoardTest {
         assertTrue(board.fits(dom.setPos(new Pos(3, 0))));
     }
 
-
-//    // --- isEfficient ---
-//    @Test
-//    public void testIsEfficient_InCorner_NotEfficient() {
-//        Board board = new Board(
-//                "-- -- P1\n" +
-//                        "-- CC A0\n");
-//        Domino dom = new Domino(Tiles.genTile(P0, I3), 3);
-//        Choose choose = new Choose(dom, 6, 0);
-//        assertTrue(board.fits(dom));
-//        assertFalse(board.isEfficient(choose));
-//    }
-//
-//    @Test
-//    public void testIsEfficient_InCorner_Efficient() {
-//        Board board = new Board(
-//                "-- -- P1\n" +
-//                        "-- CC A0\n");
-//        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.DOWN_ROT); // rotation has been modified
-//        Choose choose = new Choose(dom, 6, 0);
-//        assertTrue(board.fits(dom));
-//        assertTrue(board.isEfficient(choose));
-//    }
-//
-//    @Test
-//    public void testIsEfficient_InCorner_Efficient_MultipleCell() {
-//        Board board = new Board(
-//                "-- -- P1\n" +
-//                        "-- CC A0\n" +
-//                        "-- I1 --");
-//        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.DOWN_ROT); // rotation has been modified
-//        Choose choose = new Choose(dom, 6, 0);
-//        assertTrue(board.fits(dom));
-//        assertTrue(board.isEfficient(choose));
-//    }
-//
-//    @Test
-//    public void testIsEfficient_InCorner_NotEfficient_MultipleCell() {
-//        Board board = new Board(
-//                "-- -- P1\n" +
-//                        "-- CC A0\n" +
-//                        "-- I1 --");
-//        Domino dom = new Domino(Tiles.genTile(P0, I3), Pos.UP_ROT); // rotation has been modified
-//        Choose choose = new Choose(dom, 6, 0);
-//        assertTrue(board.fits(dom));
-//        assertFalse(board.isEfficient(choose));
-//    }
-
-
     // --- findPos ---
     @Test(expected = AssertionError.class)
     public void testFindPos_NullParam() {
@@ -671,17 +618,12 @@ public class BoardTest {
         };
         Bank nextBank = new Bank(nextRoundEntries, new Random());
 
-        Game expOutput = new Game(new FakeGUI(), expPlayers, 0, currBank, nextBank,
-                new LinkedList<>(), null);
-
         // actual tests
         String exp = "-- -- P0 -- --\n" +
                 "-- -- I3 -- --\n" +
                 "A0 S1 CC -- --\n" +
                 "-- S1 P0 -- --\n" +
                 "-- -- -- -- --\n";
-
-
 
         assertEquals(exp, board2.toString());
         assertEquals(exp, board2.toFile(expPlayers[1], currBank, nextBank));

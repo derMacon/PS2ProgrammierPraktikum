@@ -127,23 +127,6 @@ public class PlayerTest {
         assertEquals(expectedDistricts, actualDistricts);
     }
 
-//    @Test
-//    public void testConstructor_MultipleTokensSameVal() {
-//        // expected districts
-//        List<District> expectedDistricts = new LinkedList<>();
-//        expectedDistricts.add(new District(new District[]{
-//            new District(SingleTile.P0, new Pos(0, 0)),
-//            new District(SingleTile.P1, new Pos(1, 0))
-//        }));
-//        // actual districts
-//        Player player = new DefaultAIPlayer(new FakeGUI(), 1,
-//                "P0 P1 --\n"
-//                + "-- CC --\n"
-//                + "-- -- --\n");
-//        List<District> actualDistricts = player.getDistricts();
-//        // testing
-//        assertEquals(expectedDistricts, actualDistricts);
-//    }
 
     // --- lay ---
     @Test
