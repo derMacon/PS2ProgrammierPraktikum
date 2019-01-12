@@ -2,14 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86363fab-4042-49b9-97d4-bc410a9b55c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/logic/logicTransfer/GameWriteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/logic/logicTransfer/GameWriteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/logic/playerState/BoardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/logic/playerState/BoardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/logic/playerState/DefaultAIPlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/logic/playerState/DefaultAIPlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/logic/playerState/PlayerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/logic/playerState/PlayerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/logic/playerState/ResultPopUpWindowGUITest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/logic/playerState/ResultTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/logic/playerState/ResultTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../documentation/main.lof" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.lof" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../documentation/main.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/main.pdf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../documentation/programmierhandbuch/programmtests/programmtestsDoc.tex" beforeDir="false" afterPath="$PROJECT_DIR$/../documentation/programmierhandbuch/programmtests/programmtestsDoc.tex" afterDir="false" />
     </list>
@@ -40,7 +32,7 @@
     <session id="1164813950">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.opened" value="2" />
@@ -194,7 +186,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-954" />
     <option name="y" value="539" />
     <option name="width" value="648" />
@@ -307,7 +299,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547306489271" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547306621190" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
@@ -386,7 +378,7 @@
       <option name="presentableId" value="Default" />
       <updated>1547239222722</updated>
       <workItem from="1547239223923" duration="7745000" />
-      <workItem from="1547299838451" duration="6532000" />
+      <workItem from="1547299838451" duration="7130000" />
     </task>
     <servers />
   </component>
@@ -411,7 +403,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14277000" />
+    <option name="totallyTimeSpent" value="14875000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
