@@ -1,6 +1,10 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
 The style file: plain.bst
+Illegal, another \bibdata command---line 344 of file main.aux
+ : \bibdata
+ :         {Verweise}
+I'm skipping whatever remains of this command
 Database file #1: Verweise.bib
 Warning--to sort, need author or key in aufgabenstellung
 Warning--to sort, need author or key in try-with-resources
-(There were 2 warnings)
+(There was 1 error message)
