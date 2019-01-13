@@ -95,6 +95,8 @@ public class Domino implements Comparable {
      * @param tiles    tiles of the domino
      * @param posFst   first position of the domino
      * @param rotation rotation of the domino
+     * @pre null != tiles
+     * @pre isValidRot(rotation)
      */
     public Domino(Tiles tiles, Pos posFst, int rotation) {
         // pos may be null, will be later on disposed if pos is not filled

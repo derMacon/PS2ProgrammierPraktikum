@@ -357,12 +357,6 @@ public class FXMLDocumentController implements Initializable {
      */
     private PlayerType[] chosenPlayerTypes;
 
-    /**
-     * Loader used for the user interaction in terms of choosing a file
-     */
-    // TODO delete before final commit -> Loader uses sinleton pattern
-//    private Loader loader;
-
 
     // --- Setting up game ---
     @Override
@@ -554,16 +548,6 @@ public class FXMLDocumentController implements Initializable {
 
     // --- Menu interaction ---
 
-    // todo loeschen
-
-    /**
-     * @param event user action on the gui
-     */
-    @FXML
-    private void onClickStartGame(ActionEvent event) {
-        System.out.println("Not implemented yet");
-    }
-
     /**
      * Possible Intro Window to determine playertypes, not used in this version of the game since there is only one
      * type of Bot playertype
@@ -675,20 +659,6 @@ public class FXMLDocumentController implements Initializable {
         Loader.getInstance().setFile(null);
 
         System.exit(0);
-    }
-
-    /**
-     * TODO delete method
-     * Testprint will be deleted in final commit, implemented just to check if the right player types are passed to
-     * this controller.
-     *
-     * @param event user action on the gui
-     */
-    @FXML
-    private void testPrintPlayerTypes(ActionEvent event) {
-        for (PlayerType type : this.chosenPlayerTypes) {
-            System.out.println(type.getStringRepresentation());
-        }
     }
 
 
@@ -819,6 +789,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Opens the rules of the game in the default pdf reader from the user of the programm
+     * @pre myFile.isFile()
      */
     @FXML
     private void openRulesInPdfReader() {

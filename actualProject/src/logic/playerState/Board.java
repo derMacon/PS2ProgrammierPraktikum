@@ -52,6 +52,7 @@ public class Board {
      *
      * @param sizeX x dimension of the board
      * @param sizeY y dimension of the board
+     * @pre 0 < sizeX && 0 < sizeY;
      */
     public Board(int sizeX, int sizeY) {
         assert 0 < sizeX && 0 < sizeY;
@@ -68,6 +69,8 @@ public class Board {
      *
      * @param input String representing the ordinal values of the individual
      *              board elements. -1 for an empty cell.
+     * @pre input != null && input.length() > 0;
+     * @pre inputCells[y].length == sizeX;
      */
     public Board(String input) {
         assert input != null && input.length() > 0;
@@ -101,6 +104,7 @@ public class Board {
      * the board (DefaultAIPlayer)
      *
      * @param other board to copyWithoutSelection
+     * @pre null != other;
      */
     public Board(Board other) {
         assert null != other;
@@ -218,6 +222,7 @@ public class Board {
      *
      * @param domino to check
      * @return true if the domino fits at the given position on the board
+     * @pre null != domino;
      */
     public boolean fits(Domino domino) {
         assert null != domino;
@@ -240,6 +245,7 @@ public class Board {
      * @param pos pos to check the board for
      * @return true if if a position has at least one valid and empty neighbouring position on the board, false if
      * not / the given position is invalid / not empty
+     * @pre null != pos;
      */
     public boolean isEmptySingleCell(Pos pos) {
         assert null != pos;
@@ -315,6 +321,7 @@ public class Board {
      * position it will not be layed / disposed
      *
      * @param domino domino to lay on the board
+     * @pre null != domino;
      */
     public void lay(Domino domino) {
         assert null != domino;
@@ -366,6 +373,9 @@ public class Board {
      *                      in order to check both of them.
      * @return a String representation used for the file in which the board does not contain any previous selected
      * dominos who have not been explicitly put / layed on the board by the player.
+     * @pre null != player
+     * @pre null != currRoundBank
+     * @pre null != nextRoundBank
      */
     public String toFile(Player player, Bank currRoundBank, Bank nextRoundBank) {
         assert null != player && null != currRoundBank && null != nextRoundBank;
@@ -429,6 +439,7 @@ public class Board {
      * @param direction direction to move the board to
      * @return new board reference (easier for other Bots to evaluate which dir to choose to
      * score max. points)
+     * @pre canMoveBoardToDir(direction)
      */
     public Board moveBoard(Direction direction) {
         assert canMoveBoardToDir(direction);
@@ -471,6 +482,7 @@ public class Board {
      *
      * @param tile tile to search the board for
      * @return the position of a given tile, null if board does not contain it
+     * @pre null != tile
      */
     public Pos findPos(SingleTile tile) {
         assert null != tile;

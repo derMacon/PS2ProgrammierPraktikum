@@ -27,6 +27,7 @@ public class Result {
      * Constructor used in the actual game.
      *
      * @param players players participating in the game
+     * @pre null != players
      */
     public Result(Player[] players) {
         assert null != players;
@@ -37,6 +38,7 @@ public class Result {
      * Constructor used for testing
      *
      * @param ranking ranking of the players
+     * @pre null != ranking
      */
     public Result(List<ResultRanking> ranking) {
         assert null != ranking;
@@ -53,10 +55,12 @@ public class Result {
     }
 
     /**
+     * todo javadoc
      * https://stackoverflow.com/questions/18410035/ways-to-iterate-over-a-list-in-java
      *
      * @param players
      * @return
+     * @pre players.length > 0;
      */
     private List<ResultRanking> genResultRankingList(Player[] players) {
         assert players.length > 0;
@@ -72,6 +76,8 @@ public class Result {
      * @param output output list of ResultRanking objects
      * @param players ordered list of players
      * @return output list containing ranked players
+     * @pre null != output
+     * @pre null != players
      */
     private LinkedList<ResultRanking> orderRanking(LinkedList<ResultRanking> output,
                                                    LinkedList<Player> players) {

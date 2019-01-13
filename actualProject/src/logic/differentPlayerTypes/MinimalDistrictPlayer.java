@@ -250,6 +250,7 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
      * @param input input list to evaluate
      * @return the Choose Object with the most possible points on the board (ignoring the single cell districts it
      * might create, this must only be dealt with when finding the position of a domino)
+     * @pre !input.isEmpty()
      */
     private Choose max(List<Choose> input) {
         assert !input.isEmpty();
@@ -304,6 +305,12 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
     }
 
 
+    /**
+     * todo javadoc
+     * @param choose
+     * @return
+     * @pre null != choose
+     */
     private int countSingleCellsOnBoard(Choose choose) {
         assert null != choose;
         int singleCellCnt = 0;
@@ -327,6 +334,7 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
      *
      * @param choose choose object containing the domino with which the counting process will be computed
      * @return number of single tile districts after the choose object was added to the district representation
+     * @pre null != choose
      */
     private int countSingleCellDistricts(Choose choose) {
         assert null != choose;

@@ -348,6 +348,7 @@ public class Game implements GUI2Game {
     @Override
     public void selectDomOnNextBank(int idx) {
         if (PossibleField.NEXT_BANK == this.currField && this.nextRoundBank.isNotSelected(idx)) {
+            // todo assert ins javadoc
             assert null == this.currDomino;
             Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
             // Human player selects domino on next bank
@@ -472,6 +473,7 @@ public class Game implements GUI2Game {
      * @param playerCnt number of players participating in the game
      * @return Playertype array containing a Human player type on the first slot
      * and the default pllayer type on all other slots.
+     * @pre 0 < playerCnt
      */
     private PlayerType[] genDefaultPlayerTypeArray(int playerCnt) {
         assert 0 < playerCnt;

@@ -225,7 +225,6 @@ public class Converter {
         }
         String modifiedInput = input.replaceAll(TAG_CLOSER + "(?s).*", "");
 
-        // todo nochmal testen ob Spielfeldabc Fehler wirft
         if (modifiedInput.matches(BOARD_IDENTIFIER + ".*")) {
             return BOARD_IDENTIFIER;
         }
@@ -276,7 +275,6 @@ public class Converter {
     public void fillFieldsWithDescriptiveBlocks(String[][] descriptionBlocks, GUIConnector gui)
             throws WrongTagException, WrongBoardSyntaxException, WrongBankSyntaxException,
             WrongStackSyntaxException {
-        // TODO delete before final commit
         int[] dimensions = new int[]{NOT_INITIALIZED, NOT_INITIALIZED};
         for (int i = 0; i < descriptionBlocks.length; i++) {
             switch (descriptionBlocks[i][DESCRIPTION_IDX]) {
@@ -290,7 +288,6 @@ public class Converter {
                     Bank[] banks = convertStrToBanks(descriptionBlocks[i][DATA_IDX]);
                     this.currentBank = banks[Game.CURRENT_BANK_IDX];
                     this.nextBank = banks[Game.NEXT_BANK_IDX];
-                    // TODO Konstante verwenden (4 ist eine magic number)
                     this.currBankPos = 4 - descriptionBlocks[Game.CURRENT_BANK_IDX].length;
                     break;
                 case STACK_IDENTIFIER:
@@ -306,7 +303,6 @@ public class Converter {
 
     /**
      * Checks if the bank syntax is correct, otherwise a WrongBankSyntaxException will be thrown
-     * \\TODO pattern angeben
      *
      * @param banks     string that will be checked
      * @param playerCnt number of players participating in the game (is equivalent to the number of needed bank slots)
@@ -375,7 +371,6 @@ public class Converter {
 
     /**
      * Checks if a given string matches the necessary stack syntax
-     * \\ TODO pattern angeben
      *
      * @param stack string that will be checked
      * @throws WrongStackSyntaxException Syntax containing an error message if syntax was not followed
@@ -395,11 +390,10 @@ public class Converter {
 
     /**
      * Checks if Board syntax matches the following pattern:
-     * // TODO pattern angeben.
      *
      * @param dimensions array contaning the width and height of the board that will be checked
      * @param board      board to check for syntax errors
-     * @return // TODO check why there is a return value
+     * @return dimensions of the checked board
      * @throws WrongBoardSyntaxException exception that will be thrown if anything was found.
      */
     private int[] checkBoardSyntax(int[] dimensions, String board) throws WrongBoardSyntaxException {
@@ -460,6 +454,8 @@ public class Converter {
      *
      * @param input String representation of the boards content
      * @return both Bank types in a Bank array
+     * @pre null != input
+     * @pre input.contains("\n")
      */
     private Bank[] convertStrToBanks(String input) {
         assert null != input && input.contains("\n");

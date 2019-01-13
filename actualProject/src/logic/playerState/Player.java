@@ -213,6 +213,7 @@ public abstract class Player implements Comparable {
      * Displays the given domino on the players board
      *
      * @param playerSelectedDomino domino to display
+     * @pre null != playerSelectedDomino
      */
     public void showOnBoard(Domino playerSelectedDomino) {
         assert null != playerSelectedDomino;
@@ -280,6 +281,7 @@ public abstract class Player implements Comparable {
      * Finds the district with the most members
      *
      * @return number of members the largest district contains
+     * @pre null != this.districts
      */
     public int getLargestDistrictSize() {
         assert null != this.districts;
@@ -312,6 +314,7 @@ public abstract class Player implements Comparable {
 
     @Override
     public int compareTo(Object o) {
+        // todo assert ins javadoc
         assert null != o && (o instanceof Player);
         Player other = (Player) o;
         if (other.getBoardPoints() == this.getBoardPoints()) {

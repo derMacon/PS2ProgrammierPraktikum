@@ -23,6 +23,7 @@ public class PseudoRandZeroResidueClass extends Random {
     /**
      * Constructor setting the residue class
      * @param modOperand asdfsadf
+     * @pre 0 < modOperand
      */
     public PseudoRandZeroResidueClass(int modOperand) {
         super();

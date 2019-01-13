@@ -38,6 +38,8 @@ public class ResultRanking {
      *
      * @param rankingPosition number that represents the rank of this instance
      * @param rankedPlayers players which socred this rank in the result of the game
+     * @pre 0 < rankingPosition
+     * @pre null != rankedPlayers;
      */
     public ResultRanking(int rankingPosition, Player[] rankedPlayers) {
         assert 0 < rankingPosition && null != rankedPlayers;

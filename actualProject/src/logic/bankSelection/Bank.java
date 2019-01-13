@@ -50,7 +50,7 @@ public class Bank {
         // TODO uncomment before final commit
 //            this.rand = new Random();
         this.rand = new PseudoRandAlwaysHighestVal();
-    //        this.rand = new PseudoRandZeroResidueClass(2);
+        //        this.rand = new PseudoRandZeroResidueClass(2);
     }
 
     /**
@@ -72,6 +72,9 @@ public class Bank {
      * @param players       List of players to which the entries will be linked. Number of players
      *                      determines the bank size.
      * @param rand          random object used when drawing dominos for the next round
+     * @pre null != preallocation
+     * @pre null != players
+     * @pre null != rand
      */
     public Bank(String preallocation, List<Player> players, Random rand) {
         assert null != preallocation && null != players && null != rand;
@@ -218,6 +221,8 @@ public class Bank {
      * Deletes a specific entry with a given index
      *
      * @param entryIdx index of the entry that will deleted
+     * @pre isValidBankIdx(entryIdx)
+     * @pre this.entries != null
      */
     public void deleteEntry(int entryIdx) {
         assert isValidBankIdx(entryIdx) && this.entries != null;
@@ -243,10 +248,12 @@ public class Bank {
      * @param player  reference of the player to select the entry at the given index
      * @param bankIdx index for the domino on the bank
      *                <p>
-     *                TODO find out how to tag a precondition
      * @pre player must be unequal to null, bankIdx must be a valid bank index, and the
      * slot which the player
      * wants to select hold a domino (you can't select an empty slot)
+     * @pre null != player
+     * @pre isValidBankIdx(bankIdx)
+     * @pre null != this.entries
      */
     public void selectEntry(Player player, int bankIdx) {
         assert null != player && isValidBankIdx(bankIdx) && null != this.entries
@@ -271,6 +278,7 @@ public class Bank {
      *
      * @param player player which selected a domino
      * @return the domino which the player selected, null if there is no such domino.
+     * @pre null != player
      */
     public Domino getPlayerSelectedDomino(Player player) {
         assert null != player;
@@ -295,6 +303,7 @@ public class Bank {
      * @param stack list of dominos currently in the stack
      * @return List of dominos equivalent to the banksize. (Dominos will be sorted and removed
      * from the input stack)
+     * @pre null != stack
      */
     public List<Domino> randomlyDrawFromStack(List<Domino> stack) {
         assert null != stack;
@@ -325,6 +334,8 @@ public class Bank {
      *
      * @param domino domino to be set in the given entry, domino may be null
      * @param idx    index of the entry that will be modified
+     * @pre 0 <= idx
+     * @pre bankSize > idx
      */
     public void fill(Domino domino, int idx) {
         assert 0 <= idx && bankSize > idx;

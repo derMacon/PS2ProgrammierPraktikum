@@ -509,7 +509,6 @@ public class JavaFXGUI implements GUIConnector {
      *               is value is null any previous effects are removed.
      */
     private void addEffectToDominoPos(Pos pos, ColorAdjust effect) {
-        // TODO code inserted here
         if (this.currDomino != null && this.isValidPosOnGameGrid(this.imgVwsPlayerBoard, this.currDomino.getSndPos())) {
             this.imgVwsPlayerBoard[pos.x()][pos.y()].setEffect(effect);
 

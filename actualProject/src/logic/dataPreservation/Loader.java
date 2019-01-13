@@ -198,6 +198,7 @@ public class Loader {
      * @param file file from which the content should be read
      * @return content of the file
      * @throws FileNotFoundException Exception that will be thrown if the file was not found
+     * @pre file.isFile()
      */
     public static String openGivenFile(File file) throws FileNotFoundException {
         assert file.isFile();

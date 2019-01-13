@@ -113,7 +113,6 @@ public class Entry {
      */
     @Override
     public String toString() {
-        // TODO tertiary operator
         String selectedPlayer;
         if (null == this.selectedPlayer) {
             selectedPlayer = "-";

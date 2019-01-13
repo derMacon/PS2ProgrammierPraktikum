@@ -39,6 +39,7 @@ public class PlayerTest {
      *
      * @param tiles tiles of the district
      * @param pos   positions of the district
+     * @pre null != tiles && null != pos && tiles.length == pos.length;
      * @return a district from a given SingleTile array and another Pos array
      */
     private District setupDistrict(SingleTile[] tiles, Pos[] pos) {
