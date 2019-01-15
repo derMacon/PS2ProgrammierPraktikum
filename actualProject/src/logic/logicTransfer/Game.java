@@ -152,10 +152,6 @@ public class Game implements GUI2Game {
 
     /**
      * Loads up gui after loading file
-     *
-     * @param playerTypes
-     * @param sizeX
-     * @param sizeY
      */
     private void loadGuiAfterLoadingFile() {
         // update boards
