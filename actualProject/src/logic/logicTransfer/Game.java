@@ -412,9 +412,16 @@ public class Game implements GUI2Game {
             Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
             if (humanPlayer.getBoard().canMoveBoardToDir(dir) && (humanPlayer instanceof HumanPlayer)) {
                 HumanPlayer humanInstance = (HumanPlayer) humanPlayer; // only Human player has a
+
+                // todo checken ob das soweit ueberhaupt meogich ist
                 // setter for the board -> needs to cast
-                humanInstance.updateBoard(humanInstance.getBoard().moveBoard(dir));
-                this.gui.updatePlayer(players[HUMAN_PLAYER_IDX]);
+//                humanInstance.updateBoard(humanInstance.getBoard().moveBoard(dir));
+//                this.gui.updatePlayer(players[HUMAN_PLAYER_IDX]);
+
+                humanInstance.moveUpdateBaord(dir);
+
+
+
                 Logger.getInstance().printAndSafe(String.format(Logger.CC_DRAG_LOGGER_FORMAT,
                         humanInstance.getName(), humanInstance.getBoard().findPos(SingleTile.CC)));
             } else {

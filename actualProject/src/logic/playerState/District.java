@@ -4,6 +4,7 @@ import javafx.scene.control.TreeItem;
 import logic.token.Pos;
 import logic.token.SingleTile;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -27,6 +28,15 @@ public class District {
      * All SingleTiles of this district
      */
     private List<SingleTile> singleTiles;
+
+    /**
+     * District to generate an output for the shifting operation. Needed to initialize an empty district to be able
+     * to fill with copies.
+     */
+    public District() {
+        this.tilePositions = new ArrayList<>();
+        this.singleTiles = new ArrayList<>();
+    }
 
     /**
      * constructor for this class
@@ -204,5 +214,40 @@ public class District {
     public TreeItem<String> toTreeItem() {
         return new TreeItem<>(genPoints() + " Punkte" + "\t"
                 + this.singleTiles.get(0).getDistrictType());
+    }
+
+
+    public District shiftDirection(Board.Direction dir) {
+        District shiftedDistrict = new District();
+        // copy singletiles
+        for(SingleTile currTile : this.singleTiles) {
+            shiftedDistrict.singleTiles.add(currTile);
+        }
+
+        // copy and modify positions
+        switch (dir) {
+            case UP_MOVE:
+                for (Pos currPos : this.tilePositions) {
+                    shiftedDistrict.tilePositions.add(new Pos(currPos.x(), currPos.y() - 1));
+                }
+                break;
+            case LEFT_MOVE:
+                for (Pos currPos : this.tilePositions) {
+                    shiftedDistrict.tilePositions.add(new Pos(currPos.x() - 1, currPos.y()));
+                }
+                break;
+            case DOWN_MOVE:
+                for (Pos currPos : this.tilePositions) {
+                    shiftedDistrict.tilePositions.add(new Pos(currPos.x(), currPos.y() + 1));
+                }
+                break;
+            case RIGHT_MOVE:
+                for (Pos currPos : this.tilePositions) {
+                    shiftedDistrict.tilePositions.add(new Pos(currPos.x() + 1, currPos.y()));
+                }
+                break;
+        }
+
+        return shiftedDistrict;
     }
 }

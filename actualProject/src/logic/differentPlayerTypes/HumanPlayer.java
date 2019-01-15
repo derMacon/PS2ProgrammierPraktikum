@@ -2,6 +2,7 @@ package logic.differentPlayerTypes;
 
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Board;
+import logic.playerState.District;
 import logic.playerState.Player;
 
 /**
@@ -64,6 +65,18 @@ public class HumanPlayer extends Player {
      */
     public void updateBoard(Board board) {
         this.board = board;
+
+    }
+
+    public void moveUpdateBaord(Board.Direction dir) {
+        // update board representation
+        this.board = this.board.moveBoard(dir);
+        this.gui.updatePlayer(this);
+
+        // update districts
+        for(int i = 0; i < this.districts.size(); i++) {
+            this.districts.set(i, this.districts.get(i).shiftDirection(dir));
+        }
     }
 
 }

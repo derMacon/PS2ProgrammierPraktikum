@@ -12519,3 +12519,1223 @@ BOT4 chose [O0,I2] at index 2 for current round
 
 BOT3 chose [S2,P0] at index 0 for next round
 BOT3 put [I2,P0] vertical to (2,0)
+-----------------------------------
+2019-01-15T19:53:21.023+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [P0,O2] at index 2 for next round
+HUMAN put [O0,I2] horizontal to (3,2)
+
+BOT4 chose [A0,S2] at index 1 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [S2,P0] horizontal to (0,1)
+
+BOT4 chose [P0,O1] at index 1 for next round
+BOT4 put [A0,S2] horizontal to (0,2)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN put [P0,O2] horizontal to (2,3)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [S1,P0] at index 3 for next round
+BOT2 put [A0,S1] vertical to (0,0)
+
+BOT4 chose [A1,H0] at index 0 for next round
+BOT4 put [P0,O1] horizontal to (0,0)
+
+HUMAN chose [A1,H0] at index 1 for next round
+HUMAN put [S0,O1] horizontal to (2,1)
+
+BOT3 chose [A1,H0] at index 2 for next round
+BOT3 put [I1,P0] horizontal to (3,0)
+
+BOT4 chose [H1,S0] at index 0 for next round
+BOT4 put [A1,H0] vertical to (0,3)
+HUMAN dragged center to (2,1)
+
+HUMAN chose [A1,P0] at index 1 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN did not use [A1,H0]
+
+BOT3 chose [P0,A1] at index 2 for next round
+BOT3 put [A1,H0] horizontal to (3,2)
+
+BOT2 chose [A1,H0] at index 3 for next round
+BOT2 put [S1,P0] vertical to (0,3)
+
+BOT4 chose [H1,P0] at index 0 for next round
+BOT4 put [H1,S0] horizontal to (3,2)
+
+HUMAN chose [H1,P0] at index 1 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [A1,P0] vertical to (1,1)
+
+BOT3 chose [A0,H1] at index 3 for next round
+BOT3 put [P0,A1] vertical to (1,2)
+
+BOT2 chose [P0,H1] at index 2 for next round
+BOT2 put [A1,H0] horizontal to (3,2)
+
+BOT4 chose [P0,H1] at index 3 for next round
+BOT4 put [H1,P0] horizontal to (1,4)
+
+HUMAN chose [P1,O0] at index 1 for next round
+HUMAN put [H1,P0] horizontal to (0,3)
+
+BOT2 chose [P1,S0] at index 0 for next round
+BOT2 put [P0,H1] horizontal to (3,0)
+
+BOT3 chose [P1,I0] at index 2 for next round
+BOT3 put [A0,H1] horizontal to (3,3)
+
+BOT2 chose [A0,H0] at index 0 for next round
+BOT2 put [P1,S0] horizontal to (1,4)
+
+HUMAN chose [P1,H0] at index 2 for next round
+HUMAN put [P1,O0] horizontal to (2,3)
+
+BOT3 chose [A0,P1] at index 3 for next round
+BOT3 did not use [P1,I0]
+
+BOT4 chose [H0,S0] at index 1 for next round
+BOT4 put [P0,H1] horizontal to (2,3)
+
+BOT2 chose [P0,H0] at index 0 for next round
+BOT2 put [A0,H0] horizontal to (3,3)
+
+BOT4 chose [P0,A0] at index 1 for next round
+BOT4 put [H0,S0] vertical to (4,0)
+
+HUMAN chose [P0,O0] at index 3 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [H0,P1] horizontal to (0,4)
+
+BOT3 chose [P0,S0] at index 2 for next round
+BOT3 put [A0,P1] vertical to (2,3)
+
+BOT2 chose [A0,A0] at index 0 for next round
+BOT2 did not use [P0,H0]
+
+BOT4 chose [S0,S0] at index 1 for next round
+BOT4 did not use [P0,A0]
+
+BOT3 chose [S0,S0] at index 2 for next round
+BOT3 did not use [P0,S0]
+
+HUMAN chose [O0,O0] at index 3 for next round
+HUMAN put [P0,O0] horizontal to (2,4)
+
+BOT2 chose [H0,H0] at index 0 for next round
+BOT2 did not use [A0,A0]
+
+BOT4 chose [H0,H0] at index 1 for next round
+BOT4 did not use [S0,S0]
+
+BOT3 chose [A0,A0] at index 2 for next round
+BOT3 did not use [S0,S0]
+
+HUMAN chose [A0,A0] at index 3 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [O0,O0] vertical to (4,3)
+
+BOT2 chose [P0,P0] at index 0 for next round
+BOT2 did not use [H0,H0]
+
+BOT4 chose [P0,P0] at index 1 for next round
+BOT4 did not use [H0,H0]
+
+BOT3 chose [H0,H0] at index 2 for next round
+BOT3 put [A0,A0] vertical to (0,3)
+
+HUMAN chose [H0,H0] at index 3 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [A0,A0] vertical to (0,0)
+BOT2 did not use [P0,P0]
+BOT4 did not use [P0,P0]
+BOT3 did not use [H0,H0]
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN did not use [H0,H0]
+round ended
+Ordered Ranking:
+0. Spot	HUMAN -> Result{points=40}
+1. Spot	BOT3 -> Result{points=23}
+2. Spot	BOT2 -> Result{points=16}
+3. Spot	BOT4 -> Result{points=14}
+
+-----------------------------------
+2019-01-15T20:15:52.805+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [O0,I2] at index 1 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [I2,P0] at index 0 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+BOT3 chose [S2,P0] at index 0 for next round
+BOT3 put [I2,P0] vertical to (2,0)
+
+HUMAN chose [A0,S2] at index 1 for next round
+HUMAN put [O0,I2] horizontal to (3,2)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [S2,P0] horizontal to (0,1)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S2,A0] horizontal to (0,2)
+
+BOT4 chose [O1,P0] at index 1 for next round
+BOT4 put [P0,O2] horizontal to (0,0)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [S1,P0] at index 3 for next round
+BOT2 put [A0,S1] vertical to (0,0)
+
+BOT4 chose [A1,H0] at index 0 for next round
+BOT4 put [O1,P0] horizontal to (3,0)
+
+HUMAN chose [A1,H0] at index 1 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S0,O1] vertical to (0,3)
+
+BOT3 chose [A1,H0] at index 2 for next round
+BOT3 put [I1,P0] horizontal to (3,0)
+
+BOT4 chose [H1,S0] at index 0 for next round
+BOT4 put [A1,H0] horizontal to (0,2)
+
+HUMAN chose [A1,P0] at index 1 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [H0,A1] vertical to (1,0)
+
+BOT3 chose [P0,A1] at index 2 for next round
+BOT3 put [A1,H0] horizontal to (3,2)
+
+BOT2 chose [A1,H0] at index 3 for next round
+BOT2 put [S1,P0] vertical to (0,3)
+
+BOT4 chose [A0,H1] at index 3 for next round
+BOT4 put [H1,S0] horizontal to (3,2)
+
+HUMAN chose [H1,P0] at index 0 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [A1,P0] vertical to (2,3)
+
+BOT3 chose [H1,P0] at index 1 for next round
+BOT3 put [P0,A1] vertical to (1,2)
+
+BOT2 chose [P0,H1] at index 2 for next round
+BOT2 put [A1,H0] horizontal to (3,2)
+
+HUMAN chose [P1,S0] at index 0 for next round
+HUMAN put [H1,P0] horizontal to (2,0)
+
+BOT3 chose [O0,P1] at index 1 for next round
+BOT3 put [H1,P0] vertical to (4,3)
+
+BOT2 chose [P1,I0] at index 2 for next round
+BOT2 put [P0,H1] horizontal to (3,0)
+
+BOT4 chose [H1,P0] at index 3 for next round
+BOT4 put [A0,H1] horizontal to (0,3)
+
+HUMAN chose [P1,H0] at index 2 for next round
+HUMAN put [P1,S0] horizontal to (3,4)
+
+BOT3 chose [A0,P1] at index 3 for next round
+BOT3 put [O0,P1] horizontal to (2,4)
+
+BOT2 chose [A0,H0] at index 0 for next round
+BOT2 put [P1,I0] horizontal to (1,4)
+
+BOT4 chose [H0,S0] at index 1 for next round
+BOT4 put [H1,P0] vertical to (3,3)
+
+BOT2 chose [P0,H0] at index 0 for next round
+BOT2 put [A0,H0] horizontal to (3,3)
+
+BOT4 chose [P0,A0] at index 1 for next round
+BOT4 did not use [H0,S0]
+
+HUMAN chose [P0,S0] at index 2 for next round
+HUMAN did not use [P1,H0]
+
+BOT3 chose [P0,O0] at index 3 for next round
+BOT3 put [A0,P1] vertical to (0,3)
+
+BOT2 chose [A0,A0] at index 0 for next round
+BOT2 did not use [P0,H0]
+
+BOT4 chose [S0,S0] at index 1 for next round
+BOT4 did not use [P0,A0]
+
+HUMAN chose [S0,S0] at index 2 for next round
+HUMAN did not use [P0,S0]
+
+BOT3 chose [O0,O0] at index 3 for next round
+BOT3 did not use [P0,O0]
+
+BOT2 chose [H0,H0] at index 0 for next round
+BOT2 did not use [A0,A0]
+
+BOT4 chose [H0,H0] at index 1 for next round
+BOT4 did not use [S0,S0]
+
+HUMAN chose [A0,A0] at index 2 for next round
+HUMAN did not use [S0,S0]
+
+BOT3 chose [A0,A0] at index 3 for next round
+BOT3 did not use [O0,O0]
+
+BOT2 chose [P0,P0] at index 0 for next round
+BOT2 did not use [H0,H0]
+
+BOT4 chose [P0,P0] at index 1 for next round
+BOT4 did not use [H0,H0]
+
+HUMAN chose [H0,H0] at index 2 for next round
+HUMAN did not use [A0,A0]
+
+BOT3 chose [H0,H0] at index 3 for next round
+BOT3 did not use [A0,A0]
+BOT2 did not use [P0,P0]
+BOT4 did not use [P0,P0]
+HUMAN did not use [H0,H0]
+BOT3 did not use [H0,H0]
+round ended
+Ordered Ranking:
+0. Spot	BOT4 -> Result{points=19}
+1. Spot	BOT2 -> Result{points=16}
+2. Spot	BOT3 -> Result{points=16}
+3. Spot	HUMAN -> Result{points=14}
+
+-----------------------------------
+2019-01-15T20:15:52.805+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [P0,I2] horizontal to (3,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+HUMAN chose [P0,O1] at index 1 for next round
+-----------------------------------
+2019-01-15T20:15:52.805+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [P0,I2] horizontal to (3,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S2,P0] horizontal to (2,3)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [A0,S2] horizontal to (0,2)
+
+BOT4 chose [O1,P0] at index 1 for next round
+BOT4 put [P0,O2] horizontal to (0,0)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [S1,P0] at index 3 for next round
+BOT2 put [A0,S1] vertical to (0,0)
+
+BOT4 chose [A1,H0] at index 0 for next round
+BOT4 put [O1,P0] horizontal to (3,0)
+
+HUMAN chose [A1,H0] at index 1 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [O1,S0] vertical to (1,2)
+
+BOT3 chose [H0,A1] at index 2 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+
+BOT4 chose [H1,S0] at index 0 for next round
+BOT4 put [A1,H0] horizontal to (0,2)
+
+HUMAN chose [A1,P0] at index 1 for next round
+HUMAN did not use [A1,H0]
+
+BOT3 chose [A1,P0] at index 2 for next round
+BOT3 put [H0,A1] vertical to (0,0)
+
+BOT2 chose [A1,H0] at index 3 for next round
+BOT2 put [S1,P0] vertical to (0,3)
+
+BOT4 chose [A0,H1] at index 3 for next round
+BOT4 put [H1,S0] horizontal to (3,2)
+
+HUMAN chose [H1,P0] at index 0 for next round
+HUMAN put [A1,P0] horizontal to (2,1)
+
+BOT3 chose [P0,H1] at index 1 for next round
+BOT3 put [A1,P0] vertical to (0,3)
+
+BOT2 chose [P0,H1] at index 2 for next round
+BOT2 put [A1,H0] horizontal to (3,2)
+
+HUMAN chose [P1,S0] at index 0 for next round
+HUMAN dragged center to (1,2)
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [P0,H1] horizontal to (2,0)
+
+BOT3 chose [P1,O0] at index 1 for next round
+BOT3 put [P0,H1] vertical to (4,2)
+
+BOT2 chose [P1,I0] at index 2 for next round
+BOT2 put [P0,H1] horizontal to (3,0)
+
+BOT4 chose [H1,P0] at index 3 for next round
+BOT4 put [A0,H1] horizontal to (0,3)
+
+HUMAN chose [P1,H0] at index 2 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S0,P1] horizontal to (1,4)
+
+BOT3 chose [H0,A0] at index 0 for next round
+BOT3 put [P1,O0] horizontal to (1,4)
+
+BOT2 chose [H0,S0] at index 1 for next round
+BOT2 put [P1,I0] horizontal to (1,4)
+
+BOT4 chose [P1,A0] at index 3 for next round
+BOT4 put [H1,P0] vertical to (3,3)
+
+BOT3 chose [P0,H0] at index 0 for next round
+BOT3 did not use [H0,A0]
+
+BOT2 chose [P0,A0] at index 1 for next round
+BOT2 put [H0,S0] vertical to (4,3)
+
+HUMAN chose [P0,S0] at index 2 for next round
+HUMAN put [P1,H0] horizontal to (3,4)
+
+BOT4 chose [P0,O0] at index 3 for next round
+BOT4 did not use [P1,A0]
+
+BOT3 chose [A0,A0] at index 0 for next round
+BOT3 did not use [P0,H0]
+
+BOT2 chose [S0,S0] at index 1 for next round
+BOT2 did not use [P0,A0]
+
+HUMAN chose [S0,S0] at index 2 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN did not use [S0,P0]
+
+BOT4 chose [O0,O0] at index 3 for next round
+BOT4 did not use [P0,O0]
+
+BOT3 chose [H0,H0] at index 0 for next round
+BOT3 did not use [A0,A0]
+
+BOT2 chose [H0,H0] at index 1 for next round
+BOT2 did not use [S0,S0]
+
+HUMAN chose [A0,A0] at index 2 for next round
+HUMAN did not use [S0,S0]
+
+BOT4 chose [A0,A0] at index 3 for next round
+BOT4 did not use [O0,O0]
+
+BOT3 chose [P0,P0] at index 0 for next round
+BOT3 did not use [H0,H0]
+
+BOT2 chose [P0,P0] at index 1 for next round
+BOT2 did not use [H0,H0]
+
+HUMAN chose [H0,H0] at index 2 for next round
+HUMAN did not use [A0,A0]
+
+BOT4 chose [H0,H0] at index 3 for next round
+BOT4 did not use [A0,A0]
+BOT3 did not use [P0,P0]
+BOT2 did not use [P0,P0]
+HUMAN did not use [H0,H0]
+BOT4 did not use [H0,H0]
+round ended
+Ordered Ranking:
+0. Spot	HUMAN -> Result{points=21}
+1. Spot	BOT4 -> Result{points=19}
+2. Spot	BOT3 -> Result{points=17}
+3. Spot	BOT2 -> Result{points=15}
+
+-----------------------------------
+2019-01-15T20:26:02.132+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [P0,I2] horizontal to (3,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S2,P0] horizontal to (2,3)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [A0,S2] horizontal to (0,2)
+
+BOT4 chose [O1,P0] at index 1 for next round
+BOT4 put [P0,O2] horizontal to (0,0)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [S1,P0] at index 3 for next round
+BOT2 put [A0,S1] vertical to (0,0)
+
+BOT4 chose [A1,H0] at index 0 for next round
+BOT4 put [O1,P0] horizontal to (3,0)
+
+HUMAN chose [A1,H0] at index 1 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [O1,S0] vertical to (1,2)
+
+BOT3 chose [H0,A1] at index 2 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+
+BOT4 chose [H1,S0] at index 0 for next round
+BOT4 put [A1,H0] horizontal to (0,2)
+
+HUMAN chose [A1,P0] at index 1 for next round
+HUMAN did not use [A1,H0]
+
+BOT3 chose [A1,P0] at index 2 for next round
+BOT3 put [H0,A1] vertical to (0,0)
+
+BOT2 chose [A1,H0] at index 3 for next round
+BOT2 put [S1,P0] vertical to (0,3)
+
+BOT4 chose [A0,H1] at index 3 for next round
+BOT4 put [H1,S0] horizontal to (3,2)
+
+HUMAN chose [H1,P0] at index 0 for next round
+HUMAN put [A1,P0] horizontal to (2,1)
+
+BOT3 chose [P0,H1] at index 1 for next round
+BOT3 put [A1,P0] vertical to (0,3)
+
+BOT2 chose [P0,H1] at index 2 for next round
+BOT2 put [A1,H0] horizontal to (3,2)
+
+HUMAN chose [P1,S0] at index 0 for next round
+HUMAN dragged center to (1,2)
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [P0,H1] horizontal to (2,0)
+
+BOT3 chose [P1,O0] at index 1 for next round
+BOT3 put [P0,H1] vertical to (4,2)
+
+BOT2 chose [P1,I0] at index 2 for next round
+BOT2 put [P0,H1] horizontal to (3,0)
+
+BOT4 chose [H1,P0] at index 3 for next round
+BOT4 put [A0,H1] horizontal to (0,3)
+
+HUMAN chose [P1,H0] at index 2 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S0,P1] horizontal to (1,4)
+
+BOT3 chose [H0,A0] at index 0 for next round
+BOT3 put [P1,O0] horizontal to (1,4)
+
+BOT2 chose [H0,S0] at index 1 for next round
+BOT2 put [P1,I0] horizontal to (1,4)
+
+BOT4 chose [P1,A0] at index 3 for next round
+BOT4 put [H1,P0] vertical to (3,3)
+
+BOT3 chose [P0,H0] at index 0 for next round
+BOT3 did not use [H0,A0]
+
+BOT2 chose [P0,A0] at index 1 for next round
+BOT2 put [H0,S0] vertical to (4,3)
+-----------------------------------
+2019-01-15T21:00:34.584+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2019-01-15T21:00:43.425+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2019-01-15T21:00:43.425+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [A0,H0] at index 0 for current round
+
+BOT3 chose [P0,O1] at index 0 for current round
+
+BOT4 chose [P0,I1] at index 0 for current round
+-----------------------------------
+2019-01-15T21:00:43.425+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2019-01-15T21:00:43.425+01:00[Europe/Berlin]
+Started new game
+
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [H0,A1] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2019-01-15T21:00:43.425+01:00[Europe/Berlin]
+Loading process: Loading successful
+-----------------------------------
+2019-01-15T21:00:43.425+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2019-01-15T21:00:43.425+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [S1,P0] at index 0 for current round
+
+BOT3 chose [I1,P0] at index 0 for current round
+
+BOT4 chose [A1,H0] at index 0 for current round
+-----------------------------------
+2019-01-15T21:00:43.425+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [P0,P0] at index 0 for current round
+
+BOT3 chose [H0,H0] at index 0 for current round
+
+BOT4 chose [H0,H0] at index 0 for current round
+-----------------------------------
+2019-01-15T21:00:43.425+01:00[Europe/Berlin]
+Loading process: Loading successful
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [P0,H1] at index 0 for next round
+
+BOT2 chose [S0,S0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A1] at index 1 for next round
+
+BOT2 chose [P1,H0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [S2,P0] at index 1 for next round
+
+BOT2 chose [S2,P0] at index 0 for next round
+
+BOT2 chose [A0,P0] at index 0 for next round
+
+BOT2 chose [P0,I1] at index 0 for next round
+BOT2 put [A0,S1] horizontal to (0,2)
+
+BOT2 chose [H0,P1] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [O0,I2] at index 1 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+
+BOT2 chose [P0,A0] at index 0 for next round
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [S0,P0] horizontal to (0,0)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P1,S0] vertical to (2,1)
+BOT2 put [S0,S0] horizontal to (1,0)
+BOT2 put [P0,S0] horizontal to (2,1)
+BOT2 did not use [P0,S0]
+-----------------------------------
+2019-01-15T21:00:52.367+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN put [I2,P0] horizontal to (3,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+HUMAN chose [A0,S1] at index 0 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S2,P0] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [A0,S2] horizontal to (0,2)
+
+BOT4 chose [O1,P0] at index 1 for next round
+BOT4 put [P0,O2] horizontal to (0,0)
+
+BOT2 chose [O1,S0] at index 2 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+HUMAN chose [A1,H0] at index 0 for next round
+HUMAN dragged center to (2,2)
+HUMAN dragged center to (2,2)
+HUMAN dragged center to (2,2)
+HUMAN dragged center to (2,2)
+HUMAN dragged center to (2,2)
+HUMAN dragged center to (2,2)
+HUMAN dragged center to (2,2)
+-----------------------------------
+2019-01-15T21:02:06.744+01:00[Europe/Berlin]
+Started new game
+
+HUMAN dragged center to (1,2)
+HUMAN dragged center to (2,2)
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN put [I2,P0] horizontal to (3,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+HUMAN chose [A0,S1] at index 0 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S2,P0] vertical to (2,0)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [A0,S2] horizontal to (0,2)
+
+BOT4 chose [O1,P0] at index 1 for next round
+BOT4 put [P0,O2] horizontal to (0,0)
+
+BOT2 chose [O1,S0] at index 2 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+HUMAN chose [A1,H0] at index 0 for next round
+HUMAN dragged center to (1,2)
+HUMAN dragged center to (0,2)
+HUMAN dragged center to (0,3)
+HUMAN dragged center to (0,4)
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S1,A0] horizontal to (1,2)
+
+BOT4 chose [A1,H0] at index 1 for next round
+BOT4 put [O1,P0] horizontal to (3,0)
+
+BOT2 chose [S1,P0] at index 3 for next round
+BOT2 put [O1,S0] vertical to (0,0)
+
+BOT3 chose [H0,A1] at index 2 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+-----------------------------------
+2019-01-15T21:03:17.820+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [P0,I2] horizontal to (3,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S2,P0] horizontal to (2,3)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [A0,S2] horizontal to (0,2)
+
+BOT4 chose [O1,P0] at index 1 for next round
+BOT4 put [P0,O2] horizontal to (0,0)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [S1,P0] at index 3 for next round
+BOT2 put [A0,S1] vertical to (0,0)
+
+BOT4 chose [A1,H0] at index 0 for next round
+BOT4 put [O1,P0] horizontal to (3,0)
+
+HUMAN chose [A1,H0] at index 1 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [O1,S0] vertical to (1,2)
+
+BOT3 chose [H0,A1] at index 2 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+
+BOT4 chose [H1,S0] at index 0 for next round
+BOT4 put [A1,H0] horizontal to (0,2)
+
+HUMAN chose [A1,P0] at index 1 for next round
+HUMAN did not use [A1,H0]
+
+BOT3 chose [A1,P0] at index 2 for next round
+BOT3 put [H0,A1] vertical to (0,0)
+
+BOT2 chose [A1,H0] at index 3 for next round
+BOT2 put [S1,P0] vertical to (0,3)
+
+BOT4 chose [A0,H1] at index 3 for next round
+BOT4 put [H1,S0] horizontal to (3,2)
+
+HUMAN chose [H1,P0] at index 0 for next round
+HUMAN put [A1,P0] horizontal to (2,1)
+
+BOT3 chose [P0,H1] at index 1 for next round
+BOT3 put [A1,P0] vertical to (0,3)
+
+BOT2 chose [P0,H1] at index 2 for next round
+BOT2 put [A1,H0] horizontal to (3,2)
+
+HUMAN chose [P1,S0] at index 0 for next round
+HUMAN dragged center to (1,2)
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [P0,H1] horizontal to (2,0)
+
+BOT3 chose [P1,O0] at index 1 for next round
+BOT3 put [P0,H1] vertical to (4,2)
+
+BOT2 chose [P1,I0] at index 2 for next round
+BOT2 put [P0,H1] horizontal to (3,0)
+
+BOT4 chose [H1,P0] at index 3 for next round
+BOT4 put [A0,H1] horizontal to (0,3)
+-----------------------------------
+2019-01-15T21:07:26.509+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN put [I2,P0] horizontal to (3,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+HUMAN dragged center to (1,2)
+-----------------------------------
+2019-01-15T21:10:05.103+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN put [I2,P0] horizontal to (3,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+HUMAN dragged center to (1,2)
+-----------------------------------
+2019-01-15T21:11:55.295+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN put [I2,P0] horizontal to (3,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+HUMAN dragged center to (1,2)
+-----------------------------------
+2019-01-15T21:14:18.735+01:00[Europe/Berlin]
+Started new game
+
+HUMAN chose [I2,P0] at index 0 for current round
+
+BOT2 chose [P0,I3] at index 3 for current round
+
+BOT3 chose [O0,I2] at index 1 for current round
+
+BOT4 chose [O0,I2] at index 2 for current round
+
+
+
+HUMAN chose [P0,S2] at index 0 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [P0,I2] horizontal to (3,2)
+
+BOT3 chose [A0,S2] at index 1 for next round
+BOT3 put [O0,I2] vertical to (2,0)
+
+BOT4 chose [P0,O2] at index 2 for next round
+BOT4 put [O0,I2] vertical to (2,0)
+
+BOT2 chose [S0,O2] at index 3 for next round
+BOT2 put [P0,I3] vertical to (2,0)
+
+HUMAN chose [S0,O1] at index 2 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S2,P0] horizontal to (2,3)
+
+BOT3 chose [I1,P0] at index 3 for next round
+BOT3 put [A0,S2] horizontal to (0,2)
+
+BOT4 chose [O1,P0] at index 1 for next round
+BOT4 put [P0,O2] horizontal to (0,0)
+
+BOT2 chose [A0,S1] at index 0 for next round
+BOT2 put [S0,O2] horizontal to (0,2)
+
+BOT2 chose [S1,P0] at index 3 for next round
+BOT2 put [A0,S1] vertical to (0,0)
+
+BOT4 chose [A1,H0] at index 0 for next round
+BOT4 put [O1,P0] horizontal to (3,0)
+
+HUMAN chose [A1,H0] at index 1 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [O1,S0] vertical to (1,2)
+
+BOT3 chose [H0,A1] at index 2 for next round
+BOT3 put [I1,P0] horizontal to (3,1)
+
+BOT4 chose [H1,S0] at index 0 for next round
+BOT4 put [A1,H0] horizontal to (0,2)
+
+HUMAN chose [A1,P0] at index 1 for next round
+HUMAN did not use [A1,H0]
+
+BOT3 chose [A1,P0] at index 2 for next round
+BOT3 put [H0,A1] vertical to (0,0)
+
+BOT2 chose [A1,H0] at index 3 for next round
+BOT2 put [S1,P0] vertical to (0,3)
+
+BOT4 chose [A0,H1] at index 3 for next round
+BOT4 put [H1,S0] horizontal to (3,2)
+
+HUMAN chose [H1,P0] at index 0 for next round
+HUMAN put [A1,P0] horizontal to (2,1)
+
+BOT3 chose [P0,H1] at index 1 for next round
+BOT3 put [A1,P0] vertical to (0,3)
+
+BOT2 chose [P0,H1] at index 2 for next round
+BOT2 put [A1,H0] horizontal to (3,2)
+
+HUMAN chose [P1,S0] at index 0 for next round
+HUMAN dragged center to (1,2)
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [P0,H1] horizontal to (2,0)
+
+BOT3 chose [P1,O0] at index 1 for next round
+BOT3 put [P0,H1] vertical to (4,2)
+
+BOT2 chose [P1,I0] at index 2 for next round
+BOT2 put [P0,H1] horizontal to (3,0)
+
+BOT4 chose [H1,P0] at index 3 for next round
+BOT4 put [A0,H1] horizontal to (0,3)
+
+HUMAN chose [P1,H0] at index 2 for next round
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN rotated the domino in the choose box by 90 degrees
+HUMAN put [S0,P1] horizontal to (1,4)
+
+BOT3 chose [H0,A0] at index 0 for next round
+BOT3 put [P1,O0] horizontal to (1,4)
+
+BOT2 chose [H0,S0] at index 1 for next round
+BOT2 put [P1,I0] horizontal to (1,4)
+
+BOT4 chose [P1,A0] at index 3 for next round
+BOT4 put [H1,P0] vertical to (3,3)
+
+BOT3 chose [P0,H0] at index 0 for next round
+BOT3 did not use [H0,A0]
+
+BOT2 chose [P0,A0] at index 1 for next round
+BOT2 put [H0,S0] vertical to (4,3)
+
+HUMAN chose [P0,S0] at index 2 for next round
+HUMAN put [P1,H0] horizontal to (3,4)
+
+BOT4 chose [P0,O0] at index 3 for next round
+BOT4 did not use [P1,A0]
+
+BOT3 chose [A0,A0] at index 0 for next round
+BOT3 did not use [P0,H0]
+
+BOT2 chose [S0,S0] at index 1 for next round
+BOT2 did not use [P0,A0]
+
+HUMAN chose [S0,S0] at index 2 for next round
+HUMAN did not use [P0,S0]
+
+BOT4 chose [O0,O0] at index 3 for next round
+BOT4 did not use [P0,O0]
+
+BOT3 chose [H0,H0] at index 0 for next round
+BOT3 did not use [A0,A0]
+
+BOT2 chose [H0,H0] at index 1 for next round
+BOT2 did not use [S0,S0]
+
+HUMAN chose [A0,A0] at index 2 for next round
+HUMAN did not use [S0,S0]
+
+BOT4 chose [A0,A0] at index 3 for next round
+BOT4 did not use [O0,O0]
+
+BOT3 chose [P0,P0] at index 0 for next round
+BOT3 did not use [H0,H0]
+
+BOT2 chose [P0,P0] at index 1 for next round
+BOT2 did not use [H0,H0]
+
+HUMAN chose [H0,H0] at index 2 for next round
+HUMAN did not use [A0,A0]
+
+BOT4 chose [H0,H0] at index 3 for next round
+BOT4 did not use [A0,A0]
+BOT3 did not use [P0,P0]
+BOT2 did not use [P0,P0]
+HUMAN did not use [H0,H0]
+BOT4 did not use [H0,H0]
+round ended
+Ordered Ranking:
+0. Spot	HUMAN -> Result{points=23}
+1. Spot	BOT4 -> Result{points=19}
+2. Spot	BOT3 -> Result{points=17}
+3. Spot	BOT2 -> Result{points=15}
+
