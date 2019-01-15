@@ -113,7 +113,6 @@ public abstract class Player implements Comparable {
 
     /**
      * Generates the sum of points the districts represent
-     * //TODO delete this method -> use genDistrictPoints
      *
      * @return the sum of points the districts represent
      */
@@ -121,11 +120,15 @@ public abstract class Player implements Comparable {
         if (this.districts == null || this.districts.isEmpty()) {
             return 0;
         }
-        int sum = 0;
-        for (District currDistrict : this.districts) {
-            sum += currDistrict.genPoints();
-        }
-        return sum;
+
+        return genDistrictPoints(this.districts);
+
+        // todo delete after testing
+//        int sum = 0;
+//        for (District currDistrict : this.districts) {
+//            sum += currDistrict.genPoints();
+//        }
+//        return sum;
     }
 
     /**
@@ -182,12 +185,24 @@ public abstract class Player implements Comparable {
     private List<District> addToAppropriateDistrict(SingleTile tile, Pos pos, List<District> districts) {
         if (SingleTile.EC != tile && SingleTile.CC != tile) {
             List<District> possibleDistricts = findPossibleDistricts(tile, pos, districts);
+
             districts.removeAll(possibleDistricts); // to avoid duplicates
+//            removeDuplicates(possibleDistricts);
             District updatedDistrict = new District(possibleDistricts); // merging districts
             updatedDistrict.add(tile, pos); // put new element in merged playdistrict
             districts.add(updatedDistrict);
         }
         return districts;
+    }
+
+    private void removeDuplicates(List<District> touchingDistricts) {
+        for (District currDistrict : touchingDistricts) {
+            boolean temp = this.districts.remove(currDistrict);
+            if(temp) {
+                // todo delete before final commit
+                System.out.println("hier laeuft was falsch");
+            }
+        }
     }
 
     /**
@@ -314,7 +329,6 @@ public abstract class Player implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        // todo assert ins javadoc
         assert null != o && (o instanceof Player);
         Player other = (Player) o;
         if (other.getBoardPoints() == this.getBoardPoints()) {

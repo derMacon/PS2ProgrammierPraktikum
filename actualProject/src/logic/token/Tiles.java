@@ -133,7 +133,6 @@ public enum Tiles {
      * @return the enum member corresponding with this String, null if no tile matches
      */
     public static Tiles fromString(String input) {
-        // TODO insert code
         Tiles output = null;
         Tiles[] possibleTiles = values();
         int i = 0;

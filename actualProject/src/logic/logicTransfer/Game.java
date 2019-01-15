@@ -133,9 +133,9 @@ public class Game implements GUI2Game {
                     gameContent.getNextBank(), gameContent.getStack(), null);
 
 
-            Board humanBoard = this.players[HUMAN_PLAYER_IDX].getBoard();
-            loadGuiAfterLoadingFile(genDefaultPlayerTypeArray(this.players.length), humanBoard.getSizeX(),
-                    humanBoard.getSizeY());
+            // todo delete after testing
+//            Board humanBoard = this.players[HUMAN_PLAYER_IDX].getBoard();
+            loadGuiAfterLoadingFile();
             // Selected Doms in Bank don't have any set position on each player's board -> must
             // be set through calling updateSelectedDom(...)
             for (Player player : this.players) {
@@ -151,13 +151,13 @@ public class Game implements GUI2Game {
     }
 
     /**
-     * Loads up gui after loading file //todo ueberarbeiten
+     * Loads up gui after loading file
      *
      * @param playerTypes
      * @param sizeX
      * @param sizeY
      */
-    private void loadGuiAfterLoadingFile(PlayerType[] playerTypes, int sizeX, int sizeY) {
+    private void loadGuiAfterLoadingFile() {
         // update boards
         for (int i = 0; i < this.players.length; i++) {
             this.gui.updatePlayer(this.players[i]);
@@ -172,7 +172,6 @@ public class Game implements GUI2Game {
      * Helping method, called for initializing the Testing / Loading
      * constructor. Necessary for avoiding code doubling in the Loading
      * constructor.
-     * // TODO javadoc parameters
      *
      * @param gui              gui for the game
      * @param players          players participating in this game
@@ -344,11 +343,11 @@ public class Game implements GUI2Game {
      *
      * @param idx index of the domino the human player wants to select on the
      *            next round bank
+     * @pre null == this.currDomino
      */
     @Override
     public void selectDomOnNextBank(int idx) {
         if (PossibleField.NEXT_BANK == this.currField && this.nextRoundBank.isNotSelected(idx)) {
-            // todo assert ins javadoc
             assert null == this.currDomino;
             Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
             // Human player selects domino on next bank
@@ -603,8 +602,7 @@ public class Game implements GUI2Game {
     /**
      * Ends round and displays the result of all players
      */
-    // TODO make private
-    public void endRound() {
+    private void endRound() {
         this.currentRoundBank.clearAllEntries();
         this.gui.setToBank(CURRENT_BANK_IDX, this.currentRoundBank);
         this.nextRoundBank.clearAllEntries();
@@ -660,7 +658,7 @@ public class Game implements GUI2Game {
      * generates String representation of the game
      *
      * @param forFileRepresentation flag that determines if the board will be displayed in file format or in 'normal'
-     *                              string format // todo explain difference
+     *                              string format. In Filemode it is needed to remove the players' selected domino.
      * @return string representation of the game
      */
     private String genString(boolean forFileRepresentation) {

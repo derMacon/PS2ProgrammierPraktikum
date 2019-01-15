@@ -83,7 +83,7 @@ public interface GUI2Game {
 
     /**
      * Needed to check if the saved file is on the most recent state or if it needs to be updated before any new
-     * instance can be loaded. //TODO ueberarbeiten.
+     * instance can be loaded.
      *
      * @param input input to check
      * @return true  if the saved file is on the most recent state or if it needs to be updated before any new

@@ -55,7 +55,8 @@ public class Result {
     }
 
     /**
-     * todo javadoc
+     * Generates a list of ResultRanking objects.
+     * // todo check link
      * https://stackoverflow.com/questions/18410035/ways-to-iterate-over-a-list-in-java
      *
      * @param players
@@ -115,7 +116,6 @@ public class Result {
 
     @Override
     public String toString() {
-        // TODO adjust method
         StringBuilder output = new StringBuilder("Ordered Ranking:\n");
         Player currPlayer = null;
         for (int i = 0; i < this.ranking.size(); i++) {

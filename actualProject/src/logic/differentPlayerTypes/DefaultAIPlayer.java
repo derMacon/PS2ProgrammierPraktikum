@@ -72,15 +72,6 @@ public class DefaultAIPlayer extends Player implements BotBehavior {
         return NAME_PREFIX + (this.idxInPlayerArray + 1);
     }
 
-    /**
-     * Approach: - Find domino with highest number of possible points - If
-     * multtiple dominos share the highest score the one with the most efficient
-     * domino will be selected
-     * todo javadoc woanders hin (interface)
-     * @param bank    the bank that the player will select from
-     * @param ordBank ordinal value of the bank
-     * @return the edited bank
-     */
     @Override
     public Bank selectFromBank(Bank bank, int ordBank, boolean displayOnGui) {
         if (null == bank || bank.isEmpty()) {
