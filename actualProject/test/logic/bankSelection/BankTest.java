@@ -114,7 +114,7 @@ public class BankTest {
                 new DefaultAIPlayer(fakeGui, 3, 5, 5),
         });
         Bank bank = new Bank("0 S0O1,2 I1P0", players, new Random());
-        Entry[] expEntries = new Entry[] {
+        Entry[] expEntries = new Entry[]{
                 null, null,
                 new Entry(new Domino(Tiles.S0O1_Val39), players.get(0)),
                 new Entry(new Domino(Tiles.I1P0_Val40), players.get(2))
@@ -132,7 +132,7 @@ public class BankTest {
                 new DefaultAIPlayer(fakeGui, 3, 5, 5),
         });
         Bank bank = new Bank("0 S0O1,2 I1P0,3 P0P0,1 P0P0", players, new Random());
-        Entry[] expEntries = new Entry[] {
+        Entry[] expEntries = new Entry[]{
                 new Entry(new Domino(Tiles.S0O1_Val39), players.get(0)),
                 new Entry(new Domino(Tiles.I1P0_Val40), players.get(2)),
                 new Entry(new Domino(Tiles.P0P0_Val2), players.get(3)),
@@ -151,7 +151,7 @@ public class BankTest {
                 new DefaultAIPlayer(fakeGui, 3, 5, 5),
         });
         Bank bank = new Bank("0 S0O1", players, new Random());
-        Entry[] expEntries = new Entry[] {
+        Entry[] expEntries = new Entry[]{
                 null, null, null,
                 new Entry(new Domino(Tiles.S0O1_Val39), players.get(0))
         };
@@ -168,7 +168,7 @@ public class BankTest {
                 new DefaultAIPlayer(fakeGui, 3, 5, 5),
         });
         Bank bank = new Bank("", players, new Random());
-        Entry[] expEntries = new Entry[] {
+        Entry[] expEntries = new Entry[]{
                 null, null, null, null
         };
         assertArrayEquals(expEntries, bank.getEntries());

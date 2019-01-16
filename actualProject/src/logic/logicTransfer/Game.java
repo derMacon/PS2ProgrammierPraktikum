@@ -407,16 +407,8 @@ public class Game implements GUI2Game {
         try {
             Player humanPlayer = this.players[HUMAN_PLAYER_IDX];
             if (humanPlayer.getBoard().canMoveBoardToDir(dir) && (humanPlayer instanceof HumanPlayer)) {
-                HumanPlayer humanInstance = (HumanPlayer) humanPlayer; // only Human player has a
-
-                // todo checken ob das soweit ueberhaupt meogich ist
-                // setter for the board -> needs to cast
-//                humanInstance.updateBoard(humanInstance.getBoard().moveBoard(dir));
-//                this.gui.updatePlayer(players[HUMAN_PLAYER_IDX]);
-
+                HumanPlayer humanInstance = (HumanPlayer) humanPlayer;
                 humanInstance.moveUpdateBaord(dir);
-
-
 
                 Logger.getInstance().printAndSafe(String.format(Logger.CC_DRAG_LOGGER_FORMAT,
                         humanInstance.getName(), humanInstance.getBoard().findPos(SingleTile.CC)));
@@ -424,7 +416,7 @@ public class Game implements GUI2Game {
                 Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
                         + "\nHUMAN tried to move board in an impossible direction\n" + Logger.ERROR_DELIMITER + "\n");
             }
-        } catch(RuntimeException e) {
+        } catch (RuntimeException e) {
             Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER + "\nNot possible to move board.\n"
                     + Logger.ERROR_DELIMITER + "\n");
         }
@@ -669,7 +661,8 @@ public class Game implements GUI2Game {
             StringBuilder strbOutput = new StringBuilder();
             // all player boards to String
             for (Player currPlayer : this.players) {
-                strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " " + (currPlayer.getIdxInPlayerArray() + 1) + ">\n");
+                strbOutput.append("<" + Converter.BOARD_IDENTIFIER + " "
+                        + (currPlayer.getIdxInPlayerArray() + 1) + ">\n");
                 if (forFileRepresentation) {
                     strbOutput.append(currPlayer.getBoard().toFile(currPlayer,
                             this.currentRoundBank,
@@ -695,9 +688,9 @@ public class Game implements GUI2Game {
                 }
             }
             return strbOutput.toString();
-        } catch(RuntimeException e) {
-            Logger.getInstance().printAndSafe("Das Spiel konnte nicht in eine String-Darstellung konvertiert" +
-                    " werden.\n");
+        } catch (RuntimeException e) {
+            Logger.getInstance().printAndSafe("Das Spiel konnte nicht in eine String-Darstellung konvertiert"
+                    + " werden.\n");
             return "";
         }
     }

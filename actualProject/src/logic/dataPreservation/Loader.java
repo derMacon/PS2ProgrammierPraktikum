@@ -45,7 +45,6 @@ public class Loader {
     private Stage stage;
 
 
-
     /**
      * Constructor for the Loader class. Sets the initial dirctory for the loader as well as the stage for the
      * and filechooser itself
@@ -61,6 +60,7 @@ public class Loader {
 
     /**
      * Getter for the logger instance
+     *
      * @return the logger instance
      */
     public static Loader getInstance() {
@@ -70,6 +70,10 @@ public class Loader {
         return singleInstance;
     }
 
+    /**
+     * Setter for the file of the loader instance
+     * @param file file to be set
+     */
     public void setFile(File file) {
         this.file = file;
     }
@@ -124,7 +128,7 @@ public class Loader {
      * @param text   data that will be written
      */
     private static void actualSavingProcess(File output, String text) {
-        try (PrintWriter outputStream = new PrintWriter(output)){
+        try (PrintWriter outputStream = new PrintWriter(output)) {
             outputStream.print(text);
         } catch (FileNotFoundException e) {
             Logger.getInstance().printAndSafe("Could not save file\n" + e.getMessage());
@@ -133,9 +137,10 @@ public class Loader {
 
     /**
      * Saving process used in the tests to avoid calling a javafx gui
+     *
      * @param filename name of the directory to which the given Game should be saved. The file is located in the
      *                 directory defined in the according field of this class.
-     * @param game game instance that should be saved
+     * @param game     game instance that should be saved
      */
     public static void saveWithoutGUI(String filename, Game game) {
         actualSavingProcess(new File(filename), game.toFile());
@@ -168,6 +173,7 @@ public class Loader {
 
     /**
      * Opens the file that was saved earlier on in the game
+     *
      * @return String that was saved earlier on in the game
      */
     public static String openSavedFile() {
@@ -185,6 +191,7 @@ public class Loader {
 
     /**
      * opens a the string from the given filepath in its' string representation
+     *
      * @param filePath filepath from which the string should be read
      * @return string that was saved in the file at the specified location
      * @throws FileNotFoundException Exception that will be thrown if the file was not found
@@ -195,6 +202,7 @@ public class Loader {
 
     /**
      * opens a given file
+     *
      * @param file file from which the content should be read
      * @return content of the file
      * @throws FileNotFoundException Exception that will be thrown if the file was not found

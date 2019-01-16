@@ -18,6 +18,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Javafx controller class for the small intro screen. Used to evaluate the users' selection and start a new game.
+ */
 public class FXMLIntroController implements Initializable {
 
     /**
@@ -78,6 +81,7 @@ public class FXMLIntroController implements Initializable {
     /**
      * Adds an item for every type of player in the game, also sets the first item as the default item
      * <p>
+     *     todo check links
      * https://docs.oracle.com/javafx/2/ui_controls/choice-box.htm
      * https://stackoverflow.com/questions/9605346/how-to-make-javafx-2-0-choicebox-to-select-its-first-element
      */

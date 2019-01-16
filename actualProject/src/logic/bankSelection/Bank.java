@@ -49,8 +49,9 @@ public class Bank {
         this.bankSize = playerCnt;
         // TODO uncomment before final commit
 //            this.rand = new Random();
+        // Alternative random objects used for manual testing
         this.rand = new PseudoRandAlwaysHighestVal();
-        //        this.rand = new PseudoRandZeroResidueClass(2);
+        // this.rand = new PseudoRandZeroResidueClass(2);
     }
 
     /**
@@ -235,9 +236,11 @@ public class Bank {
      * @param player refernce of a player whos entry will be deleted
      */
     public void deleteEntry(Player player) {
-        for (int i = 0; i < bankSize; i++) {
-            if (this.entries[i].getSelectedPlayer() == player) {
-                this.entries[i] = null;
+        if (this.entries != null) {
+            for (int i = 0; i < bankSize; i++) {
+                if (this.entries[i] != null && this.entries[i].getSelectedPlayer() == player) {
+                    this.entries[i] = null;
+                }
             }
         }
     }

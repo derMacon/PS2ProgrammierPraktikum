@@ -1,0 +1,6 @@
+-----------------------------------
+2019-01-16T13:16:43.246+01:00[Europe/Berlin]
+Started new game
+
+HUMAN dragged center to (3,2)
+HUMAN dragged center to (4,2)

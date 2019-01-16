@@ -145,6 +145,7 @@ public enum Tiles {
 
     /**
      * Checks if the given string matches any string representation of this enum
+     *
      * @param input input to check
      * @return true if the given string matches any string representation of this enum
      */

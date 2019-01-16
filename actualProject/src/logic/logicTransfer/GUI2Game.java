@@ -91,5 +91,12 @@ public interface GUI2Game {
      */
     boolean equalsStr(String input);
 
+    /**
+     * Generates a String representation where the selected player dominos are not already put on the board.
+     *
+     * @return a String representation where the selected player dominos are not already put on the board.
+     */
+    String toFile();
+
 
 }

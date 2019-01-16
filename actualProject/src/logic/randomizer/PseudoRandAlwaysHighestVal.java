@@ -9,6 +9,7 @@ import java.util.Random;
 
 /**
  * Random Object that always returns the highest value. Used for testing.
+ *
  * @pre 0 < bound
  */
 public class PseudoRandAlwaysHighestVal extends Random {

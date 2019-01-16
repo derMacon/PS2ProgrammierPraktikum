@@ -637,11 +637,11 @@ public class BoardTest {
                         "H0 CC --\n" +
                         "-- P0 P0\n" +
                         "P0 -- --");
-        Assert.assertTrue(board.isEmptySingleCell(new Pos(0,0)));
-        Assert.assertTrue(board.isEmptySingleCell(new Pos(0,2)));
-        Assert.assertFalse(board.isEmptySingleCell(new Pos(0,1)));
-        Assert.assertFalse(board.isEmptySingleCell(new Pos(2,0)));
-        Assert.assertFalse(board.isEmptySingleCell(new Pos(0,1)));
+        Assert.assertTrue(board.isEmptySingleCell(new Pos(0, 0)));
+        Assert.assertTrue(board.isEmptySingleCell(new Pos(0, 2)));
+        Assert.assertFalse(board.isEmptySingleCell(new Pos(0, 1)));
+        Assert.assertFalse(board.isEmptySingleCell(new Pos(2, 0)));
+        Assert.assertFalse(board.isEmptySingleCell(new Pos(0, 1)));
 
     }
 

@@ -37,7 +37,7 @@ public interface GUIConnector {
     /**
      * updates all data concerning a certain player (board, districts, points, etc.)
      *
-     * @param player    player to update gui section for
+     * @param player player to update gui section for
      */
     void updatePlayer(Player player);
 
@@ -60,7 +60,7 @@ public interface GUIConnector {
     /**
      * Shows players points.
      *
-     * @param ordPlayer ordinal value of the player
+     * @param ordPlayer   ordinal value of the player
      * @param boardPoints points that should be displayed
      */
     void showPointsForPlayer(int ordPlayer, int boardPoints);
@@ -84,6 +84,7 @@ public interface GUIConnector {
 
     /**
      * Shows popup window with the given message
+     *
      * @param text masseage to display in the popup window
      */
     void showPopUp(String text);
@@ -91,6 +92,7 @@ public interface GUIConnector {
     /**
      * Given Field stays focused but all other fields are blured out to indicate where the human player is supposed
      * to make his next move
+     *
      * @param saturatedField field that's currently in focus, may be null -> blur will be removed from every field
      */
     void blurOtherFields(PossibleField saturatedField);

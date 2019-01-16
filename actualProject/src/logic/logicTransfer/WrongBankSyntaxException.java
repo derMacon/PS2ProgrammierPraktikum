@@ -10,6 +10,9 @@ public class WrongBankSyntaxException extends Exception {
      */
     public static final String DEFAULT_MESSAGE = "Invalide Bank-Syntax";
 
+    /**
+     * Constructor setting the default error message
+     */
     public WrongBankSyntaxException() {
         super(DEFAULT_MESSAGE);
     }

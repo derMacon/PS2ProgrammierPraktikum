@@ -37,7 +37,7 @@ public class ResultRanking {
      * Used for testing
      *
      * @param rankingPosition number that represents the rank of this instance
-     * @param rankedPlayers players which socred this rank in the result of the game
+     * @param rankedPlayers   players which socred this rank in the result of the game
      * @pre 0 < rankingPosition
      * @pre null != rankedPlayers;
      */
@@ -49,6 +49,7 @@ public class ResultRanking {
 
     /**
      * Getter for the number which represents this rnak
+     *
      * @return the number which represents this rnak
      */
     public int getRankingPosition() {
@@ -57,6 +58,7 @@ public class ResultRanking {
 
     /**
      * Getter for the ranked players
+     *
      * @return ranked players
      */
     public List<Player> getRankedPlayers() {
@@ -65,6 +67,7 @@ public class ResultRanking {
 
     /**
      * Adds a player to this rank
+     *
      * @param player player to set
      */
     public void addPlayer(Player player) {
@@ -73,6 +76,7 @@ public class ResultRanking {
 
     /**
      * Checks if a given player matches this rank
+     *
      * @param player player to check
      * @return true if a given player matches this rank
      */
@@ -82,6 +86,7 @@ public class ResultRanking {
 
     /**
      * Checks if rank is empty
+     *
      * @return true if rank is empty
      */
     public boolean isEmpty() {
@@ -90,6 +95,7 @@ public class ResultRanking {
 
     /**
      * Checks if the rank is initialized but empty
+     *
      * @return if the rank is initialized but empty
      */
     public boolean rankInitializedButNoPlayerAddedYet() {
@@ -98,6 +104,7 @@ public class ResultRanking {
 
     /**
      * Generates a treeItem for the treeView from the result
+     *
      * @return a treeItem for the treeView from the result
      */
     public TreeItem<String> toTreeItem() {

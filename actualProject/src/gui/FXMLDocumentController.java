@@ -596,7 +596,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void mnTmSaveGame(ActionEvent event) {
-        Loader.getInstance().saveFile(this.game.toString());
+        Loader.getInstance().saveFile(this.game.toFile());
     }
 
     /**
@@ -606,7 +606,7 @@ public class FXMLDocumentController implements Initializable {
      */
     @FXML
     private void mnTmSaveGameAs(ActionEvent event) {
-        Loader.getInstance().saveFileAs(this.game.toString());
+        Loader.getInstance().saveFileAs(this.game.toFile());
     }
 
     /**
@@ -789,6 +789,7 @@ public class FXMLDocumentController implements Initializable {
 
     /**
      * Opens the rules of the game in the default pdf reader from the user of the programm
+     *
      * @pre myFile.isFile()
      */
     @FXML

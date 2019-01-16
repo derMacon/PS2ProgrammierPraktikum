@@ -114,7 +114,7 @@ public class DistrictTest {
     @Test(expected = AssertionError.class)
     public void testMerge_NullParam() {
         District district1 = new District(SingleTile.A0, new Pos(0, 0));
-        new District(Arrays.asList(new District[] {district1, null}));
+        new District(Arrays.asList(new District[]{district1, null}));
     }
 
     @Test
@@ -133,7 +133,7 @@ public class DistrictTest {
         District district2 = new District(SingleTile.S0, new Pos(0, 1));
 
         // testing
-        District actualOutput = new District(Arrays.asList(new District[] {district1, district2}));
+        District actualOutput = new District(Arrays.asList(new District[]{district1, district2}));
         assertEquals(districtTiles, actualOutput.getSingleTiles());
         assertEquals(districtPos, actualOutput.getTilePositions());
         assertEquals(expectedOutput, actualOutput);
@@ -156,7 +156,7 @@ public class DistrictTest {
         District district1 = new District(SingleTile.A0, new Pos(0, 0));
         district1.add(SingleTile.S0, new Pos(0, 1));
         District district2 = new District(SingleTile.H0, new Pos(0, 2));
-        District actualOutput = new District(Arrays.asList(new District[] {district1, district2}));
+        District actualOutput = new District(Arrays.asList(new District[]{district1, district2}));
 
 
         // testing
@@ -182,7 +182,7 @@ public class DistrictTest {
         District district1 = new District(SingleTile.H0, new Pos(0, 2));
         District district2 = new District(SingleTile.A0, new Pos(0, 0));
         district2.add(SingleTile.S0, new Pos(0, 1));
-        District actualOutput = new District(Arrays.asList(new District[] {district1, district2}));
+        District actualOutput = new District(Arrays.asList(new District[]{district1, district2}));
 
         // testing
         assertEquals(districtTiles, actualOutput.getSingleTiles());
@@ -210,7 +210,7 @@ public class DistrictTest {
         district1.add(SingleTile.S0, new Pos(0, 1));
         District district2 = new District(SingleTile.A1, new Pos(0, 2));
         district2.add(SingleTile.S1, new Pos(0, 3));
-        District actualOutput = new District(Arrays.asList(new District[] {district1, district2}));
+        District actualOutput = new District(Arrays.asList(new District[]{district1, district2}));
 
         // testing
         assertEquals(districtTiles, actualOutput.getSingleTiles());

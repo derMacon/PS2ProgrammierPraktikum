@@ -6,7 +6,6 @@ import logic.token.SingleTile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,7 +41,7 @@ public class District {
      * constructor for this class
      *
      * @param fstDistrictMember first tile of this district
-     * @param pos first position of this district
+     * @param pos               first position of this district
      * @pre null != fstDistrictMember && null != pos
      */
     public District(SingleTile fstDistrictMember, Pos pos) {
@@ -72,7 +71,7 @@ public class District {
      * Cosntructor used for testing
      *
      * @param singleTiles list of singleTiles which form the district
-     * @param pos List of positions from the district
+     * @param pos         List of positions from the district
      */
     public District(List<SingleTile> singleTiles, List<Pos> pos) {
         assert null != singleTiles && null != pos;
@@ -209,6 +208,7 @@ public class District {
 
     /**
      * Generates a treeItem which is neeeded when the result of the game should be displayed
+     *
      * @return treeItem containing all the district type and points this district is worth
      */
     public TreeItem<String> toTreeItem() {
@@ -216,11 +216,18 @@ public class District {
                 + this.singleTiles.get(0).getDistrictType());
     }
 
-
+    /**
+     * Shifts all district positions to a given direction. Generates a new instance to make it possible for future
+     * bot types to use this method to evaluate a domino from a bank without shifting their actual districts if the
+     * given domino is not suitable for their case.
+     *
+     * @param dir direction to which the district positions should be shifted
+     * @return new district reference with updated / shifted positions
+     */
     public District shiftDirection(Board.Direction dir) {
         District shiftedDistrict = new District();
         // copy singletiles
-        for(SingleTile currTile : this.singleTiles) {
+        for (SingleTile currTile : this.singleTiles) {
             shiftedDistrict.singleTiles.add(currTile);
         }
 
@@ -246,6 +253,8 @@ public class District {
                     shiftedDistrict.tilePositions.add(new Pos(currPos.x() + 1, currPos.y()));
                 }
                 break;
+            default:
+                new AssertionError();
         }
 
         return shiftedDistrict;

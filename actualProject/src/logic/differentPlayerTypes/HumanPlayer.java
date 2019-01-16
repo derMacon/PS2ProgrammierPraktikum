@@ -2,7 +2,6 @@ package logic.differentPlayerTypes;
 
 import logic.logicTransfer.GUIConnector;
 import logic.playerState.Board;
-import logic.playerState.District;
 import logic.playerState.Player;
 
 /**
@@ -21,7 +20,7 @@ public class HumanPlayer extends Player {
      * Constructor used in the game, sets the gui and the board dimensions for the player.
      *
      * @param gui        gui reference
-     * @param idx index of the player in the player array of the game
+     * @param idx        index of the player in the player array of the game
      * @param boardSizeX width of the board
      * @param boardSizeY height of the board
      */
@@ -33,7 +32,7 @@ public class HumanPlayer extends Player {
      * Constructor setting the gui and board
      *
      * @param gui   reference to the GUIConnector
-     * @param idx index of the player in the player array of the game
+     * @param idx   index of the player in the player array of the game
      * @param board board to play on
      */
     public HumanPlayer(GUIConnector gui, int idx, Board board) {
@@ -44,7 +43,7 @@ public class HumanPlayer extends Player {
      * Constructor setting the gui and the board (in String formatting), used for testing / reloading.
      *
      * @param gui      reference to the GUIConnector
-     * @param idx index of the player in the player array of the game
+     * @param idx      index of the player in the player array of the game
      * @param strBoard String representation of the board
      */
     public HumanPlayer(GUIConnector gui, int idx, String strBoard) {
@@ -53,6 +52,7 @@ public class HumanPlayer extends Player {
 
     /**
      * Getter for the full name of the player
+     *
      * @return the full name of the player
      */
     public String getName() {
@@ -61,6 +61,7 @@ public class HumanPlayer extends Player {
 
     /**
      * Setter for the board. only human player needs this setter, since each Bot handles the movement locally
+     *
      * @param board board that will be set
      */
     public void updateBoard(Board board) {
@@ -68,13 +69,17 @@ public class HumanPlayer extends Player {
 
     }
 
+    /**
+     * Moves and updates the players' board with a given direction
+     * @param dir direction to which the board will be shifted
+     */
     public void moveUpdateBaord(Board.Direction dir) {
         // update board representation
         this.board = this.board.moveBoard(dir);
         this.gui.updatePlayer(this);
 
         // update districts
-        for(int i = 0; i < this.districts.size(); i++) {
+        for (int i = 0; i < this.districts.size(); i++) {
             this.districts.set(i, this.districts.get(i).shiftDirection(dir));
         }
     }

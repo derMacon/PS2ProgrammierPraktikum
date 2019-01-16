@@ -132,7 +132,7 @@ public class DominoTest {
 
     @Test
     public void testIncRot0() {
-        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(0,0));
+        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(0, 0));
         assertEquals(0, dom.getRot());
         assertEquals(P0, dom.getFstVal());
         assertEquals(H0, dom.getSndVal());
@@ -141,7 +141,7 @@ public class DominoTest {
 
     @Test
     public void testIncRot1() {
-        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(0,0));
+        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(0, 0));
         dom.incRot();
         assertEquals(1, dom.getRot());
         assertEquals(P0, dom.getFstVal());
@@ -151,7 +151,7 @@ public class DominoTest {
 
     @Test
     public void testIncRot2() {
-        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(0,0));
+        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(0, 0));
         dom.incRot();
         dom.incRot();
         assertEquals(2, dom.getRot());
@@ -162,7 +162,7 @@ public class DominoTest {
 
     @Test
     public void testIncRot3() {
-        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(0,0));
+        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(0, 0));
         dom.incRot();
         dom.incRot();
         dom.incRot();
@@ -174,7 +174,7 @@ public class DominoTest {
 
     @Test
     public void testIncRot4() {
-        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(0,0));
+        Domino dom = new Domino(Tiles.P0H0_Val13, new Pos(0, 0));
         dom.incRot();
         dom.incRot();
         dom.incRot();

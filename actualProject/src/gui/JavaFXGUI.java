@@ -139,9 +139,10 @@ public class JavaFXGUI implements GUIConnector {
 
     /**
      * Sets a given domino on the bank with the given ordinal value at the position with the given index
+     *
      * @param ordBank ordinal value of the bank
-     * @param index index of the position on the bank
-     * @param domino domino that will be put on the bank
+     * @param index   index of the position on the bank
+     * @param domino  domino that will be put on the bank
      */
     public void setToBank(int ordBank, int index, Domino domino) {
         ImageView[][] imgVwsBank = ordBank == Game.CURRENT_BANK_IDX ? this.imgVwsCurrentBank : this.imgVwsNextBank;
@@ -330,8 +331,8 @@ public class JavaFXGUI implements GUIConnector {
      * grid.
      *
      * @param imgVwBoard multi dimensional image view array representing a board
-     * @param pos   position on the game grid
-     * @param value value for which the image should be displayed at pos
+     * @param pos        position on the game grid
+     * @param value      value for which the image should be displayed at pos
      */
     private void showCellOnGrid(ImageView[][] imgVwBoard, Pos pos, int value) {
         if (isValidPosOnGameGrid(imgVwBoard, pos)) {
@@ -591,11 +592,14 @@ public class JavaFXGUI implements GUIConnector {
                 focusImageView(this.imgVwsNextBank);
                 blurImageView(this.imgVwsCurrentBank);
                 break;
+            default:
+                new AssertionError();
         }
     }
 
     /**
      * Puts a gaussian blur effect on every field of a given bank
+     *
      * @param bank multi dimensional image view array representing a bank of the game
      */
     private void blurImageView(ImageView[][] bank) {
@@ -610,6 +614,7 @@ public class JavaFXGUI implements GUIConnector {
 
     /**
      * Deletes the blur effect from every field of a given bank
+     *
      * @param bank multi dimensional image view array representing a bank of the game
      */
     private void focusImageView(ImageView[][] bank) {

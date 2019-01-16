@@ -382,11 +382,15 @@ public class Board {
         if (!(player instanceof BotBehavior)) {
             return toString();
         } else {
+            Board board = new Board(this);
+            board.remove(currRoundBank.getPlayerSelectedDomino(player));
+            board.remove(nextRoundBank.getPlayerSelectedDomino(player));
+            return board.toString();
             // find player selected domino from both banks -> null if not found
-            Domino playerSelectedDom = currRoundBank.getPlayerSelectedDomino(player);
-            playerSelectedDom = null == playerSelectedDom ? nextRoundBank.getPlayerSelectedDomino(player)
-                    : playerSelectedDom;
-            return new Board(this).remove(playerSelectedDom).toString();
+//            Domino playerSelectedDom = currRoundBank.getPlayerSelectedDomino(player);
+//            playerSelectedDom = null == playerSelectedDom ? nextRoundBank.getPlayerSelectedDomino(player)
+//                    : playerSelectedDom;
+//            return new Board(this).remove(playerSelectedDom).toString();
         }
     }
 

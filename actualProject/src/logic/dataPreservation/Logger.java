@@ -29,14 +29,15 @@ public class Logger {
     private static final File DEFAULT_FILE = new File("./dataOutput/logFile.txt");
 
     /**
+     * Single instance of the logger. Initialized with null, can be returned with the corresponding getter.
+     */
+    private static Logger singleInstance = null;
+
+    /**
      * Determines if the logfile can be opened / used for logging
      */
     private boolean loggingPossible = true;
 
-    /**
-     * Single instance of the logger. Initialized with null, can be returned with the corresponding getter.
-     */
-    private static Logger singleInstance = null;
 
     /**
      * Path to dir where log data should be stored

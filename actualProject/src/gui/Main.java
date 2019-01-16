@@ -13,6 +13,7 @@ import logic.differentPlayerTypes.PlayerType;
 public class Main extends Application {
 
     // TODO max. / min. Groessen festlegen.
+    // Optimal size: 1202 x 932
 
     //<editor-fold defaultstate="collapsed" desc="Alternative loading screen">
     // Loading intro screen
@@ -53,8 +54,6 @@ public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-
 
 
 }

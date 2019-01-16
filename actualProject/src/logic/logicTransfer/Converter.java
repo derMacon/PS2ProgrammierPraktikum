@@ -326,14 +326,14 @@ public class Converter {
                 throw new WrongBankSyntaxException();
             }
 
-            if(individualBanks.length > 1 && individualBanks[0].contains("-")) {
+            if (individualBanks.length > 1 && individualBanks[0].contains("-")) {
                 throw new WrongBankSyntaxException();
             }
 
             int temp;
             int banksize;
             String currBank;
-            for (int i = 0; i <individualBanks.length; i++) {
+            for (int i = 0; i < individualBanks.length; i++) {
                 currBank = individualBanks[i];
                 banksize = 0;
                 elems = currBank.split(",");
@@ -455,7 +455,7 @@ public class Converter {
      * @param input String representation of the boards content
      * @return both Bank types in a Bank array
      * @pre null != input
-     * @pre input.contains("\n")
+     * @pre input.contains(" \ n ")
      */
     private Bank[] convertStrToBanks(String input) {
         assert null != input && input.contains("\n");

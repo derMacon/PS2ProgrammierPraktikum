@@ -39,8 +39,8 @@ public class PlayerTest {
      *
      * @param tiles tiles of the district
      * @param pos   positions of the district
-     * @pre null != tiles && null != pos && tiles.length == pos.length;
      * @return a district from a given SingleTile array and another Pos array
+     * @pre null != tiles && null != pos && tiles.length == pos.length;
      */
     private District setupDistrict(SingleTile[] tiles, Pos[] pos) {
         assert null != tiles && null != pos && tiles.length == pos.length;
@@ -226,7 +226,7 @@ public class PlayerTest {
                 "-- -- --\n"
                         + "S1 CC --\n"
                         + "S2 -- --\n");
-        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), new Pos(0,0), 2));
+        player.showOnBoard(new Domino(Tiles.genTile(SingleTile.P0, SingleTile.S0), new Pos(0, 0), 2));
         Board actualBoard = player.getBoard();
         List<District> actualDistricts = player.getDistricts();
 

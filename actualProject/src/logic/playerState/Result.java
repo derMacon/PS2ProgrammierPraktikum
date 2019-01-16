@@ -59,8 +59,8 @@ public class Result {
      * // todo check link
      * https://stackoverflow.com/questions/18410035/ways-to-iterate-over-a-list-in-java
      *
-     * @param players
-     * @return
+     * @param players player array that will be sorted
+     * @return ordered list containing ResultRanking objects
      * @pre players.length > 0;
      */
     private List<ResultRanking> genResultRankingList(Player[] players) {
@@ -74,7 +74,8 @@ public class Result {
     /**
      * Converts a conventional ordered player list into a list of ResultRanking objects. Equally Ranked Players will
      * be put into the same ranking index.
-     * @param output output list of ResultRanking objects
+     *
+     * @param output  output list of ResultRanking objects
      * @param players ordered list of players
      * @return output list containing ranked players
      * @pre null != output
@@ -109,11 +110,6 @@ public class Result {
         return orderRanking(output, players);
     }
 
-
-    public List<Player> getWinner() {
-        return this.ranking.get(0).getRankedPlayers();
-    }
-
     @Override
     public String toString() {
         StringBuilder output = new StringBuilder("Ordered Ranking:\n");
@@ -131,6 +127,7 @@ public class Result {
 
     /**
      * Generates a treeView object (used by the gui to show result to the user)
+     *
      * @return a treeView object (used by the gui to show result to the user)
      */
     public TreeView<String> toTreeView() {

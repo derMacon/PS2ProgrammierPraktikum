@@ -120,15 +120,7 @@ public abstract class Player implements Comparable {
         if (this.districts == null || this.districts.isEmpty()) {
             return 0;
         }
-
         return genDistrictPoints(this.districts);
-
-        // todo delete after testing
-//        int sum = 0;
-//        for (District currDistrict : this.districts) {
-//            sum += currDistrict.genPoints();
-//        }
-//        return sum;
     }
 
     /**
@@ -187,7 +179,6 @@ public abstract class Player implements Comparable {
             List<District> possibleDistricts = findPossibleDistricts(tile, pos, districts);
 
             districts.removeAll(possibleDistricts); // to avoid duplicates
-//            removeDuplicates(possibleDistricts);
             District updatedDistrict = new District(possibleDistricts); // merging districts
             updatedDistrict.add(tile, pos); // put new element in merged playdistrict
             districts.add(updatedDistrict);
@@ -195,15 +186,6 @@ public abstract class Player implements Comparable {
         return districts;
     }
 
-    private void removeDuplicates(List<District> touchingDistricts) {
-        for (District currDistrict : touchingDistricts) {
-            boolean temp = this.districts.remove(currDistrict);
-            if(temp) {
-                // todo delete before final commit
-                System.out.println("hier laeuft was falsch");
-            }
-        }
-    }
 
     /**
      * Finds one or more possible districts to which the tile / pos can be added. If no district was found, an empty

@@ -96,8 +96,9 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
 
     /**
      * Updates the board with the selected domino
-     * @param ordBank ordinal value of the bank
-     * @param displayOnGui flag determining if the selection should be displayed on the gui or not
+     *
+     * @param ordBank           ordinal value of the bank
+     * @param displayOnGui      flag determining if the selection should be displayed on the gui or not
      * @param overallBestChoose choose object containing the domino that should be put on the board
      */
     private void updateBoard(int ordBank, boolean displayOnGui, Choose overallBestChoose) {
@@ -111,7 +112,8 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
 
     /**
      * updating / selecting the domino on the actual bank
-     * @param bank bank to select domino from
+     *
+     * @param bank              bank to select domino from
      * @param overallBestChoose choose containing the best fitting domino
      */
     private void doSelect(Bank bank, Choose overallBestChoose) {
@@ -123,7 +125,8 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
 
     /**
      * Generates the best overall choose from the list of choose objects
-     * @param bank bank to choose lowest domino from if imput list is empty
+     *
+     * @param bank                               bank to choose lowest domino from if imput list is empty
      * @param bestChoosesForEachPossibleBankSlot list of best chooses for each bank slot
      * @return the overall best choose from the given list
      */
@@ -141,6 +144,7 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
 
     /**
      * Generate potentially best Choose for each possible domino on the given bank
+     *
      * @param bank bank to choose from
      * @return list of best chooses for the dominos which have a fitting position on the board
      */
@@ -297,6 +301,7 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
 
     /**
      * Counts single board districts
+     *
      * @param choose choose from which the domino will be included in the process
      * @return number of single cell districts
      * @pre null != choose
@@ -306,15 +311,13 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
         int singleCellCnt = 0;
         for (int y = 0; y < this.board.getSizeY(); y++) {
             for (int x = 0; x < this.board.getSizeX(); x++) {
-                if(board.isEmptySingleCell(new Pos(x,y))) {
+                if (board.isEmptySingleCell(new Pos(x, y))) {
                     singleCellCnt++;
                 }
             }
         }
         return singleCellCnt;
     }
-
-
 
 
     /**
@@ -365,7 +368,7 @@ public class MinimalDistrictPlayer extends Player implements BotBehavior {
     /**
      * Generates a choose object from the given domino with its bank slot index
      *
-     * @param domino domino to generate the choose object with
+     * @param domino        domino to generate the choose object with
      * @param bankSlotIndex index of the domino on the bank from which it was taken
      * @return new choose object containing the given domino with its bank slot index and the potential number of
      * points on the field

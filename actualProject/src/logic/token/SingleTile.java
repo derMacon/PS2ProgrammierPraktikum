@@ -62,6 +62,7 @@ public enum SingleTile {
 
     /**
      * Checks if the current single tile contains the given enum identifier
+     *
      * @param input enum identifier that should be checked
      * @return true if the current single tile contains the given enum identifier
      */

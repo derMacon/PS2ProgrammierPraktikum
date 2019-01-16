@@ -63,6 +63,7 @@ public class TestToolkit {
 
     /**
      * Liest eine Datei mit dem Namen filename as dem test-Verzeichnis in Form einer Zeichenkette aus
+     *
      * @param filename Dateiname
      * @return Inhalt der Datei als Zeichenfolge
      */

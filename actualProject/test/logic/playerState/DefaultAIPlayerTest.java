@@ -310,10 +310,10 @@ public class DefaultAIPlayerTest {
     @Test
     public void testSelectFromBank_TieBetweenTwoDominos_OneWithNoSingleCells() {
         DefaultAIPlayer player = new DefaultAIPlayer(new FakeGUI(), 1,
-                        "-- CC\n"
+                "-- CC\n"
                         + "-- P0\n"
                         + "-- A0\n"
-                        );
+        );
         Tiles mostValuableTiles = Tiles.genTile(P1, H0);
         Bank nextBank = new Bank(new Entry[]{
                 new Entry(new Domino(mostValuableTiles)),
