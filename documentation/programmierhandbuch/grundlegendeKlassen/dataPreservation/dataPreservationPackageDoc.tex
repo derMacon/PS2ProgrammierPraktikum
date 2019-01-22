@@ -1,6 +1,6 @@
 \subsection{dataPreservation}
 \label{ss:dataPreservation}
-Dieses Package beinhaltet die beiden Klassen dieses Projekts welche sich mit dem Schreiben und lesen von Dateien auseinandersetzen. Die Loader Klasse ist hierbei zur Speicherung / zum Laden des Spiels gedacht, w"ahrend sich die Logger Klasse mit dem Schreiben in die Log-Datei besch"aftigt. 
+Dieses Package beinhaltet die beiden Klassen dieses Projekts, welche sich mit dem Schreiben und Lesen von Dateien auseinandersetzen. Die Loader Klasse ist hierbei zur Speicherung / zum Laden des Spiels gedacht, w"ahrend sich die Logger Klasse mit dem Schreiben in die Log-Datei besch"aftigt. 
 
 \begin{figure}
 	\centering
@@ -12,11 +12,11 @@ Dieses Package beinhaltet die beiden Klassen dieses Projekts welche sich mit dem
 \paragraph{Singleton-Muster}
 \label{par:singletonMuster}
 \emph{Das Singleton-Muster sichert, dass es nur eine Instanz einer Klasse gibt, und bietet einen globalen Zugriffspunkt f"ur diese Instanz.} \cite{Freeman2006}
-Der Konstruktor einer Singleton-Klasse ist als private deklariert und kann somit nur innerhalb der Klasse selbst verwendet werden. Es gibt allerdings eine statische Getter-Methode um auf das Objekt zugreifen zu k"onnen. Hierbei ist zu beachten, dass ein neues Objekt nur erstellt wird, wenn vorher \emph{kein} Objekt der Klasse existiert (siehe \ref{lst:singletonMuster}, \nameref{lst:singletonMuster}). Dieses Muster eignet sich hervorragend f"ur Objekte wo es von Nachteil ist wenn es mehrere Instanzen gibt. 
+Der Konstruktor einer Singleton-Klasse ist als private deklariert und kann somit nur innerhalb der Klasse selbst verwendet werden. Es gibt allerdings eine statische Getter-Methode um auf das Objekt zugreifen zu k"onnen. Hierbei ist zu beachten, dass ein neues Objekt nur erstellt wird, wenn vorher \emph{kein} Objekt der Klasse existiert (siehe \ref{lst:singletonMuster}, \nameref{lst:singletonMuster}). Dieses Muster eignet sich hervorragend f"ur Objekte, bei denen es von Nachteil ist, wenn es mehrere Instanzen gibt. 
 
 Die Logger-Klasse ben"otigt nur eine Instanz, da eine gegebene Log-Datei stets erweitert werden soll. Da st"andig von unterschiedlichen Ebenen des Projekts auf diese Instanz zugegriffen wird, ist es sehr praktisch eine statische (globale) Instanz zu halten, welche von allen Klassen problemlos erreicht werden kann. 
 
-Beim Loader gestaltet sich dies "ahnlich. Zwar gibt es nicht allzu viele Zugriffspunkte, allerdings gibt es nur eine globale Instanz der Datei in die gespeichert werden soll. Insbesondere der Fall des Speichern eines bereits vorher im Spielverlauf gespeicherten Spiels gestaltet sich einfacher, da man bereits die zu "uberschreibende Datei in der statischen Instanz mit verwaltet. 
+Beim Loader gestaltet sich dies "ahnlich. Zwar gibt es nicht allzu viele Zugriffspunkte, allerdings gibt es nur eine globale Instanz der Datei in die gespeichert werden soll. Insbesondere der Fall des Speicherns eines bereits vorher im Spielverlauf gespeicherten Spiels gestaltet sich einfacher, da man bereits die zu "uberschreibende Datei in der statischen Instanz mit verwaltet. 
 
 \begin{lstlisting}[float,style=CodeHighlighting,caption=Singleton-Muster,label=lst:singletonMuster]
 public class Singleton {
@@ -45,7 +45,7 @@ Die Logger-Klasse h"alt, wie im Paragraph \nameref{par:singletonMuster} bereits 
 
 Au"serdem besitzt die Klasse ein Feld mit dem Datentyp \emph{File} um eine Datei zu speichern beziehungsweise zu erweitern. Im Konstruktor wird diese mit einem Konstanten beschrieben, welche eine Datei im Ordner \emph{./dataOutput/logFile.txt} referenziert. Die Datei ist allerdings nicht \emph{final} und kann "uber diverse Setter entsprechend ver"andert werden. 
 
-Um eine Nachricht auf der Konsole auszugeben, sowie in eine Datei zu schreiben, wird die Methode \emph{printAndSafe(...)} verwendet (siehe \ref{lst:logger_printAndSafe}, \nameref{lst:logger_printAndSafe}). Die Methode verwendet neben dem standard Ausgabestrom eine weitere Hifsmethode um die Nachricht an die Log-Datei anzuh"angen (siehe Listing \ref{lst:logger_appendFileWithNewMove}, \nameref{lst:logger_appendFileWithNewMove}). "Uber ein Flag wird erst einmal "uberpr"uft ob in einem vorherigen Schreibvorgang der Log-Datei ein Fehler festgestellt worden ist (Zeile 2). Anschlie"send wird eine \emph{try-with-resources}-Anweisung beschrieben. Diese besitzt den Vorteil, dass der Ausgabestrom im Fehlerfall noch geschlossen werden kann. Andernfalls m"usste man dieses Exception-handling "uber einen finally-Block abfangen
+Um eine Nachricht auf der Konsole auszugeben, sowie in eine Datei zu schreiben, wird die Methode \emph{printAndSafe(...)} verwendet (siehe \ref{lst:logger_printAndSafe}, \nameref{lst:logger_printAndSafe}). Die Methode verwendet neben dem standard Ausgabestrom eine weitere Hifsmethode um die Nachricht an die Log-Datei anzuh"angen (siehe Listing \ref{lst:logger_appendFileWithNewMove}, \nameref{lst:logger_appendFileWithNewMove}). "Uber ein Flag wird erst einmal "uberpr"uft, ob in einem vorherigen Schreibvorgang der Log-Datei ein Fehler festgestellt worden ist (Zeile 2). Anschlie"send wird eine \emph{try-with-resources}-Anweisung beschrieben. Diese besitzt den Vorteil, dass der Ausgabestrom im Fehlerfall noch geschlossen werden kann. Andernfalls m"usste man dieses Exception-handling "uber einen finally-Block abfangen
 \cite{try-with-resources}
 . Der Ausgabestrom wird also sicher ge"offnet und der gegebene Text an diesen per \emph{write}-Operation angeh"angt. Im Fehlerfall wird der ein kurzer Hinweis, dass es nicht m"oglich sei eine Logdatei f"ur das laufende Spiel anzufertigen, auf dem standard Fehlerstrom ausgegeben. Anschlie"send wird die Nachricht der ausgel"osten Exception angezeigt. Um in Zukunft nicht erneut in diesen Catch-Block zu laufen wird das Flag \emph{loggingPossible} auf \emph{false} gesetzt. 
 
@@ -83,9 +83,9 @@ private void appendFileWithNewMove(String logInput) {
 \end{lstlisting}
 
 \subparagraph{Speichern}
-Um ein Spiel initial abzuspeichern, ben"otigt man in jedem Fall den beschriebenen Filechooser. Hierzu verwendet man die Methode \emph{saveFileAs}, welche eine Stage initialisiert, den Chooser "offnet und eine weitere Hilfsmethode f"ur den Schreibprozess aufruft \lstref{lst:loader_saveFileAs}. Diese Methode nennt sich \emph{actualSavingProcess} und "offnet einen Ausgabestrom auf den der gegebene Text geschrieben wird \lstref{lst:loader_actualSavingProcess}. Es wird von den einem Ressourcen-Block gebrauch gemacht, der den Ausgabestrom selbst bei Abbruch mit einer Exception sicher schlie"st 
+Um ein Spiel initial abzuspeichern, ben"otigt man in jedem Fall den beschriebenen Filechooser. Hierzu verwendet man die Methode \emph{saveFileAs}, welche eine Stage initialisiert, den Chooser "offnet und eine weitere Hilfsmethode f"ur den Schreibprozess aufruft \lstref{lst:loader_saveFileAs}. Diese Methode nennt sich \emph{actualSavingProcess} und "offnet einen Ausgabestrom auf den der gegebene Text geschrieben wird \lstref{lst:loader_actualSavingProcess}. Es wird von dem einen Ressourcen-Block Gebrauch gemacht, der den Ausgabestrom selbst bei Abbruch mit einer Exception sicher schlie"st 
 \cite{try-with-resources}. 
-Neben dem Speichern mit der expliziten Verwendung des Filechooser-Objekts gibt es ebenfalls die Methode {saveFile}, welche die Datei "uberschreibt falls diese bereits vorhanden ist. Falls dies nicht der Fall sein sollte wird erneut \emph{saveFileAs} aufgerufen. 
+Neben dem Speichern mit der expliziten Verwendung des Filechooser-Objekts gibt es ebenfalls die Methode {saveFile}, welche die Datei "uberschreibt falls diese bereits vorhanden ist. Falls dies nicht der Fall sein sollte, wird erneut \emph{saveFileAs} aufgerufen. 
 
 \begin{lstlisting}[float,style=CodeHighlighting,caption=Loader - actualSavingProcess,label=lst:loader_actualSavingProcess]
 private static void actualSavingProcess(File output, String text) {
