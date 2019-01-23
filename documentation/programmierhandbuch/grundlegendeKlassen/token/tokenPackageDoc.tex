@@ -12,7 +12,7 @@ Das package \emph{token} (siehe Abbildung \ref{fig:tokenPackage}) vereint s"amtl
 
 \paragraph{Pos}
 \label{par:pos}
-Diese Klasse wurde von der Bonusaufgabe der PS2-"Ubungung "ubernommen. Es wurde lediglich die  \emph{toString()}-Methode sowie \emph{getNeighbours()} abge"andert und einige Konstanten hinzugef"ugt um den Checkstyle-Richtilinien 
+Diese Klasse wurde von der Bonusaufgabe der PS2-"Ubungung "ubernommen. Es wurde lediglich die \emph{toString()}-Methode sowie \emph{getNeighbours()} abge"andert und einige Konstanten hinzugef"ugt um den Checkstyle-Richtilinien 
 (siehe Abschnitt \ref{sec:entwicklungskonfiguration} - \nameref{sec:entwicklungskonfiguration}) 
 folge zu leisten. Dennoch folgt hier ein kurzer "Uberblick "uber diese Klasse: 
 
@@ -44,7 +44,7 @@ Eine \emph{equals}-Methode wurde ebenfalls implementiert, diese vergleicht aller
 
 \paragraph{DistrictType}
 \label{par:districtType}
-In diesem Aufz"ahlungstyp werden die m"oglichen Kategorien der Distrikte aufgef"uhrt. Wichtig hierbei auch ein leeres Feld sowie das Stadtzentrum besitzen einen Typ (siehe listing \ref{lst:districtType}). 
+In diesem Aufz"ahlungstyp werden die m"oglichen Kategorien der Distrikte aufgef"uhrt. Wichtig hierbei, auch ein leeres Feld sowie das Stadtzentrum besitzen einen Typ (siehe listing \ref{lst:districtType}). 
 Dieser Aufz"ahlungstyp spielt vor allem beim Ausz"ahlen der Punkte bzw. dem Verwalten der verschiedenen Distrikte eine wichtige Rolle. 
 \begin{lstlisting}[float,style=CodeHighlighting,caption=DistrictType,label=lst:districtType]
 public enum DistrictType {
@@ -56,7 +56,7 @@ public enum DistrictType {
 \label{par:singleTile}
 Dieser Aufz"ahlungstyp repr"asentiert einen Domino Aufdruck. 
 
-Ein Konstruktur verbindet die Enum-Darstellung mit einem Distrikttypen und eine Anzahl an Punkten, welche auf dem betrachteten Tile verf"ugbar sind (siehe Listing \ref{lst:singleTile}).
+Ein Konstruktur verbindet die Enum-Darstellung mit einem Distrikttypen und einer Anzahl an Punkten, welche auf dem betrachteten Tile verf"ugbar sind (siehe Listing \ref{lst:singleTile}).
 
 Au"serdem verf"ugt der Aufz"ahlungstyp "uber Getter f"ur beide Felder und eine Methode, die "uberpr"uft, ob eine gegebene String-Repr"asentation dem Wert eines der Enumobjekte entspricht. Hierzu wird eine Schleife durchlaufen, die beim Fund mit \emph{true} und ansonsten mit \emph{false} abbricht. 
 
