@@ -14,7 +14,7 @@ Es gibt drei Auspr"agungen des Distrikt-Konstruktors \lstref{district_konstrukto
 
 \subparagraph{Methoden}
 \label{spar:districtMethoden}
-Die Klasse Distrikt besitzt eine Methode namens \emph{typeAndPosMatchCurrDistrict} welche, zum Beispiel im abstrakten Typ Player, verwendet wird um festzustellen ob ein SingleTile-Objekt an einer bestimmten Position in einen bestimmten Distrikt passt oder nicht \lstref{lst:district_typeAndPosMatchCurrDistrict}. Hierbei wird geschaut ob die SingleTile-Referenz den Distrikttyp mit dem aufrufenden Distrikt teilt. Dazu wird die Methode \emph{matchingDistrictTypes} verwendet \lstref{lst:district_matchingDistrictTypes}.
+Die Klasse Distrikt besitzt eine Methode namens \emph{typeAndPosMatchCurrDistrict} welche, zum Beispiel im abstrakten Typ Player, verwendet wird um festzustellen ob ein SingleTile-Objekt an einer bestimmten Position in einen bestimmten Distrikt passt oder nicht \lstref{lst:district_typeAndPosMatchCurrDistrict}. Hierbei wird geschaut, ob die SingleTile-Referenz den Distrikttyp mit dem aufrufenden Distrikt teilt. Dazu wird die Methode \emph{matchingDistrictTypes} verwendet \lstref{lst:district_matchingDistrictTypes}.
 
 Um festzustellen, ob sich die gegebene Position neben dem aufrufenden Distrikt befindet, wird die Methode \emph{elemPosIsNextToExistingElem} verwendet \lstref{lst:district_elemPosIsNextToExistingElem}. Es werden jeweils die Nachbarn der einzelnen Distriktelemente gebildet und nach der gegebenen Position durchsucht. Falls es eine "Ubereinstimmung geben sollte, wird die Schleife direkt abgebrochen. 
 

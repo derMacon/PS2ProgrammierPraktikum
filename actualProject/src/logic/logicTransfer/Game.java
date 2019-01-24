@@ -133,8 +133,6 @@ public class Game implements GUI2Game {
                     gameContent.getNextBank(), gameContent.getStack(), null);
 
 
-            // todo delete after testing
-//            Board humanBoard = this.players[HUMAN_PLAYER_IDX].getBoard();
             loadGuiAfterLoadingFile();
             // Selected Doms in Bank don't have any set position on each player's board -> must
             // be set through calling updateSelectedDom(...)

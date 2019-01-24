@@ -799,6 +799,7 @@ public class FXMLDocumentController implements Initializable {
                 File myFile = new File("./otherDocs/CityDominoAufgabenstellung.pdf");
                 assert myFile.isFile();
                 Desktop.getDesktop().open(myFile);
+                // todo pop up einbinden
             } catch (IOException ex) {
                 Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
                         + "\nno application registered for PDFs\n" + Logger.ERROR_DELIMITER);
