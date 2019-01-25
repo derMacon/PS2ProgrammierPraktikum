@@ -55,6 +55,7 @@ public class HumanPlayer extends Player {
      *
      * @return the full name of the player
      */
+    @Override
     public String getName() {
         return NAME_PREFIX;
     }

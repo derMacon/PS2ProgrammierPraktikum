@@ -36,9 +36,10 @@ import logic.playerState.Board;
 import logic.token.Pos;
 
 import java.awt.*;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -122,6 +123,9 @@ public class FXMLDocumentController implements Initializable {
     public static final Image ARROW_TEXTURE = new Image("gui/textures/ArrowDownV2.png");
 
     //</editor-fold>
+
+    private static final String RULES_LINK= "http://intern.fh-wedel.de/mitarbeiter/klk/programmierpraktikum-java" +
+            "/aufgabentermine/ss18-citydomino/";
 
 
     // --- Boards ---
@@ -788,21 +792,15 @@ public class FXMLDocumentController implements Initializable {
     }
 
     /**
-     * Opens the rules of the game in the default pdf reader from the user of the programm
-     *
-     * @pre myFile.isFile()
+     * Opens the rules of the game in the default browser
      */
     @FXML
     private void openRulesInPdfReader() {
         if (Desktop.isDesktopSupported()) {
             try {
-                File myFile = new File("./otherDocs/CityDominoAufgabenstellung.pdf");
-                assert myFile.isFile();
-                Desktop.getDesktop().open(myFile);
-                // todo pop up einbinden
-            } catch (IOException ex) {
-                Logger.getInstance().printAndSafe(Logger.ERROR_DELIMITER
-                        + "\nno application registered for PDFs\n" + Logger.ERROR_DELIMITER);
+                Desktop.getDesktop().browse(new URI(RULES_LINK));
+            } catch (IOException | URISyntaxException e) {
+                Logger.getInstance().printAndSafe("Not possible to open the following link:\n" + RULES_LINK);
             }
         }
     }

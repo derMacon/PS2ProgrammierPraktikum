@@ -81,7 +81,6 @@ public class FXMLIntroController implements Initializable {
     /**
      * Adds an item for every type of player in the game, also sets the first item as the default item
      * <p>
-     *     todo check links
      * https://docs.oracle.com/javafx/2/ui_controls/choice-box.htm
      * https://stackoverflow.com/questions/9605346/how-to-make-javafx-2-0-choicebox-to-select-its-first-element
      */

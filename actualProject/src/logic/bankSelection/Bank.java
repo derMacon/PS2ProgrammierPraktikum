@@ -50,7 +50,7 @@ public class Bank {
         this.rand = new Random();
         // Alternative random objects used for manual testing
         //this.rand = new PseudoRandAlwaysHighestVal();
-        // this.rand = new PseudoRandZeroResidueClass(2);
+        //this.rand = new PseudoRandZeroResidueClass(2);
     }
 
     /**

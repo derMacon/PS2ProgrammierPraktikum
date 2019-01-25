@@ -8,7 +8,7 @@ Dieses Package beinhaltet die beiden Klassen dieses Projekts, welche sich mit de
 	\caption{UML-Darstellung des dataPreservation packages}
 	\label{fig:dataPreservationPackage}
 \end{figure}
-o
+
 \paragraph{Singleton-Muster}
 \label{par:singletonMuster}
 \emph{Das Singleton-Muster sichert, dass es nur eine Instanz einer Klasse gibt, und bietet einen globalen Zugriffspunkt f"ur diese Instanz.} \cite{Freeman2006}
@@ -17,7 +17,6 @@ Der Konstruktor einer Singleton-Klasse ist als private deklariert und kann somit
 Die Logger-Klasse ben"otigt nur eine Instanz, da eine gegebene Log-Datei stets erweitert werden soll. Da st"andig von unterschiedlichen Ebenen des Projekts auf diese Instanz zugegriffen wird, ist es sehr praktisch eine statische (globale) Instanz zu halten, welche von allen Klassen problemlos erreicht werden kann. 
 
 Beim Loader gestaltet sich dies "ahnlich. Zwar gibt es nicht allzu viele Zugriffspunkte, allerdings gibt es nur eine globale Instanz der Datei in die gespeichert werden soll. Insbesondere der Fall des Speicherns eines bereits vorher im Spielverlauf gespeicherten Spiels gestaltet sich einfacher, da man bereits die zu "uberschreibende Datei in der statischen Instanz mit verwaltet. 
-
 \begin{lstlisting}[float,style=CodeHighlighting,caption=Singleton-Muster,label=lst:singletonMuster]
 public class Singleton {
 	private static Singleton singleInstance; 
@@ -37,7 +36,6 @@ public class Singleton {
 	
 }
 \end{lstlisting}
-
 
 \paragraph{Logger}
 \label{par:logger}

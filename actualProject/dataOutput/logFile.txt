@@ -14452,3 +14452,54 @@ BOT3 put [A0,S2] horizontal to (0,2)
 
 BOT4 chose [O1,S0] at index 2 for next round
 BOT4 put [P0,O2] horizontal to (0,0)
+-----------------------------------
+2019-01-25T00:32:03.786+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2019-01-25T00:32:03.786+01:00[Europe/Berlin]
+Started new game
+
+User saved the game as "out8.txt" to F:\Studium\Semesterunterlagen\2.Semester\ProgrammStrukturen2\Repos\Git\Both\PS2ProgrammierPraktikum\actualProject\dataOutput\out8.txt
+
+-----------------------------------
+2019-01-25T00:32:03.786+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2019-01-25T00:34:57.367+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2019-01-25T00:35:22.175+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2019-01-25T00:35:50.380+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2019-01-25T00:39:30.583+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2019-01-25T01:02:39.319+01:00[Europe/Berlin]
+Started new game
+
+-----------------------------------
+2019-01-25T01:05:50.039+01:00[Europe/Berlin]
+Started new game
+
+HUMAN dragged center to (2,3)
+HUMAN dragged center to (2,4)
+HUMAN chose [S0,S0] at index 0 for current round
+
+BOT2 chose [P1,S0] at index 1 for current round
+
+BOT3 chose [H1,P0] at index 2 for current round
+
+BOT4 chose [S0,O1] at index 3 for current round
+
+
+
+HUMAN chose [P0,A0] at index 2 for next round

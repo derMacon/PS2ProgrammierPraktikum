@@ -56,8 +56,6 @@ public class Result {
 
     /**
      * Generates a list of ResultRanking objects.
-     * // todo check link
-     * https://stackoverflow.com/questions/18410035/ways-to-iterate-over-a-list-in-java
      *
      * @param players player array that will be sorted
      * @return ordered list containing ResultRanking objects
