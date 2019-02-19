@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="CityDominoSilasHoffmann:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/CityDominoSilasHoffmann_jar</output-path>
-    <root id="archive" name="CityDominoSilasHoffmann.jar">
-      <element id="module-output" name="CityDominoSilasHoffmann" />
-    </root>
-  </artifact>
-</component>
