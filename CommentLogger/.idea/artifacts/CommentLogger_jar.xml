@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="CommentLogger:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/CommentLogger_jar</output-path>
-    <root id="archive" name="CommentLogger.jar">
-      <element id="module-output" name="CommentLogger" />
-    </root>
-  </artifact>
-</component>
