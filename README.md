@@ -11,7 +11,7 @@ Ein Spielbeutel für alle Spieler enthält 48 Spielkarten in der Größe von zwe
 - Dokumentation: https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/documentation/main.pdf
 - Subversion Repository (zur finalen Abgabe): https://stud.fh-wedel.de/repos/uebungen/ppss/ppss_52
 - Link zur Website: http://intern.fh-wedel.de/mitarbeiter/klk/programmierpraktikum-java/
-
+- Ausführbare Dateien: https://github.com/derMacon/PS2ProgrammierPraktikum/tree/master/final-binaries
 
 ### UML Darstellung
 ![alt text](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/anhang/programmorganisationsplan/PP18Vereinfacht.png)
