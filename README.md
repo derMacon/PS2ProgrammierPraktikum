@@ -6,9 +6,7 @@ Jeder Spieler besitzt ein eigenes 5x5-Zellen großes Spielfeld und legt zu Begin
 
 Ein Spielbeutel für alle Spieler enthält 48 Spielkarten in der Größe von zwei Zellen, die auf ihren zwei Hälften jeweils einen (evtl. auch den gleichen) Stadtteiltyp anzeigen. Die Stadtteiltypen unterscheiden sich durch Bild und Hintergrundfarbe voneinander. Jede Spielkarte besitzt eine definierte Wertigkeit. Auf manchen Stadtteilen sind zusätzlich ein bis drei Prestigesymbole abgebildet.([komplette Aufgabenstellung](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/otherDocs/InfosProgrammierpraktikum/Aufgabenstellung_SS18_%20CityDomino.pdf))
 
-### Build
-Build: [CityDomino1.0.jar](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/final-binaries/CityDominoSilasHoffmann.jar)
-
+### Build [CityDomino1.0.jar](https://github.com/derMacon/PS2ProgrammierPraktikum/blob/master/final-binaries/CityDominoSilasHoffmann.jar)
 Um das Spiel zu starten tippe folgenden Aufruf in die Konsole: `java -jar [Dateiname].jar`
 
 ### Links
